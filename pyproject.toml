@@ -1,0 +1,27 @@
+[project]
+name = "low-cost-water-ai-loop"
+version = "0.1.0"
+description = "Prototype agents for low-cost sensing circular water-treatment grey-box control research."
+requires-python = ">=3.12"
+dependencies = [
+  "matplotlib==3.10.9",
+  "numpy==2.4.6",
+  "pandas==3.0.3",
+  "scikit-learn==1.8.0",
+]
+
+[dependency-groups]
+dev = [
+  "pytest==9.0.3",
+]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]

@@ -1,0 +1,1000 @@
+{
+  "checklist_id": "R8u11_pressure_resolution_real_rows_collection_checklist",
+  "field_rows_collection_checklist_status": "field_rows_collection_checklist_ready_needs_source_package",
+  "checklist_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_collection_checklist.json",
+  "model_core_layers": [
+    "observability_layer",
+    "diagnostic_decision_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "observability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "source_status": "field_rows_file_missing",
+  "patch_plan_status": "field_rows_patch_plan_blocked_at_source_preflight",
+  "highest_priority_patch_id": "R8P_SOURCE_MISSING_FIELD_ROWS_FILE",
+  "schema_validation_status": "schema_validation_blocked_at_source_preflight",
+  "batch_bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight",
+  "complete_batch_bundle_count": 0,
+  "partial_batch_bundle_count": 0,
+  "missing_bundle_table_count": 0,
+  "temporal_window_preflight_status": "temporal_window_preflight_blocked_at_source_preflight",
+  "temporal_valid_batch_count": 0,
+  "temporal_violation_count": 0,
+  "hold_time_violation_count": 0,
+  "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight",
+  "semantic_valid_batch_count": 0,
+  "semantic_violation_count": 0,
+  "required_scenario_count": 5,
+  "missing_scenario_count": 5,
+  "accepted_scenario_count": 0,
+  "minimum_real_batch_count": 5,
+  "required_table_count": 6,
+  "required_tables": [
+    "agent52_replay_table",
+    "campaign_operation_log",
+    "fast_proxy_event_log",
+    "node_modality_sensor_timeseries",
+    "offline_lab_results",
+    "pressure_headloss_event_log"
+  ],
+  "table_field_checklist": [
+    {
+      "table": "agent52_replay_table",
+      "table_role": "offline_control_replay_action_evidence",
+      "table_schema_status": "schema_table_missing",
+      "minimum_real_rows_per_required_scenario": 1,
+      "required_fields": [
+        {
+          "field": "batch_id",
+          "expected_type": "string",
+          "evidence_role": "same_batch_join_key",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "scenario",
+          "expected_type": "string",
+          "evidence_role": "scenario_linkage",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "policy_action_id",
+          "expected_type": "string",
+          "evidence_role": "control_replay_action_pair",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "expert_action_id",
+          "expected_type": "string",
+          "evidence_role": "control_replay_action_pair",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "pressure_source_conflict_count",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "pressure_conflict_resolution_counter",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "resolved_pressure_source_conflict_count",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "pressure_conflict_resolution_counter",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "unresolved_pressure_source_conflict_count",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "pressure_conflict_resolution_counter",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "pressure_source_resolution_record_count",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "pressure_conflict_resolution_counter",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "pressure_source_conflict_requires_operator_review",
+          "expected_type": "boolean",
+          "evidence_role": "binary_gate_or_guardrail_state",
+          "validation_rule": "must_be_boolean_not_string",
+          "required": true
+        },
+        {
+          "field": "pressure_source_conflict_control_block",
+          "expected_type": "boolean",
+          "evidence_role": "binary_gate_or_guardrail_state",
+          "validation_rule": "must_be_boolean_not_string",
+          "required": true
+        },
+        {
+          "field": "data_origin",
+          "expected_type": "string",
+          "evidence_role": "field_provenance_gate",
+          "validation_rule": "must_be_field_origin_not_template_synthetic_or_todo",
+          "required": true
+        }
+      ]
+    },
+    {
+      "table": "campaign_operation_log",
+      "table_role": "operator_review_and_control_action_evidence",
+      "table_schema_status": "schema_table_missing",
+      "minimum_real_rows_per_required_scenario": 1,
+      "required_fields": [
+        {
+          "field": "batch_id",
+          "expected_type": "string",
+          "evidence_role": "same_batch_join_key",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "action_id",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "operator_review_required",
+          "expected_type": "boolean",
+          "evidence_role": "binary_gate_or_guardrail_state",
+          "validation_rule": "must_be_boolean_not_string",
+          "required": true
+        },
+        {
+          "field": "pressure_source_resolution",
+          "expected_type": "string",
+          "evidence_role": "operator_review_calibration_record",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "authoritative_pressure_source",
+          "expected_type": "string",
+          "evidence_role": "operator_review_calibration_record",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "reviewer_id",
+          "expected_type": "string",
+          "evidence_role": "operator_review_calibration_record",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "review_time",
+          "expected_type": "string",
+          "evidence_role": "operator_review_calibration_record",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "calibration_action_id",
+          "expected_type": "string",
+          "evidence_role": "operator_review_calibration_record",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "calibration_note",
+          "expected_type": "string",
+          "evidence_role": "operator_review_calibration_record",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "hold_time_min",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "recycle_ratio",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "data_origin",
+          "expected_type": "string",
+          "evidence_role": "field_provenance_gate",
+          "validation_rule": "must_be_field_origin_not_template_synthetic_or_todo",
+          "required": true
+        }
+      ]
+    },
+    {
+      "table": "fast_proxy_event_log",
+      "table_role": "fast_proxy_protective_trigger_evidence",
+      "table_schema_status": "schema_table_missing",
+      "minimum_real_rows_per_required_scenario": 1,
+      "required_fields": [
+        {
+          "field": "batch_id",
+          "expected_type": "string",
+          "evidence_role": "same_batch_join_key",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "proxy_label_time_min",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "timestamp_ordering",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "proxy_event_type",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "protective_triggered",
+          "expected_type": "boolean",
+          "evidence_role": "binary_gate_or_guardrail_state",
+          "validation_rule": "must_be_boolean_not_string",
+          "required": true
+        },
+        {
+          "field": "false_positive_cost_index",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "data_origin",
+          "expected_type": "string",
+          "evidence_role": "field_provenance_gate",
+          "validation_rule": "must_be_field_origin_not_template_synthetic_or_todo",
+          "required": true
+        }
+      ]
+    },
+    {
+      "table": "node_modality_sensor_timeseries",
+      "table_role": "low_cost_node_pressure_signal",
+      "table_schema_status": "schema_table_missing",
+      "minimum_real_rows_per_required_scenario": 1,
+      "required_fields": [
+        {
+          "field": "batch_id",
+          "expected_type": "string",
+          "evidence_role": "same_batch_join_key",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "node_id",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "modality",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "value",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "measured_process_signal",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "unit",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "sample_time_min",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "timestamp_ordering",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "instrument_id",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "sensor_status",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "data_origin",
+          "expected_type": "string",
+          "evidence_role": "field_provenance_gate",
+          "validation_rule": "must_be_field_origin_not_template_synthetic_or_todo",
+          "required": true
+        }
+      ]
+    },
+    {
+      "table": "offline_lab_results",
+      "table_role": "slow_label_and_holdout_evidence",
+      "table_schema_status": "schema_table_missing",
+      "minimum_real_rows_per_required_scenario": 1,
+      "required_fields": [
+        {
+          "field": "batch_id",
+          "expected_type": "string",
+          "evidence_role": "same_batch_join_key",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "sample_time_min",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "timestamp_ordering",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "lab_label_time_min",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "timestamp_ordering",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "analyte",
+          "expected_type": "string",
+          "evidence_role": "offline_label_or_method_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "value",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "measured_process_signal",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "unit",
+          "expected_type": "string",
+          "evidence_role": "offline_label_or_method_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "method",
+          "expected_type": "string",
+          "evidence_role": "offline_label_or_method_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "qa_flag",
+          "expected_type": "string",
+          "evidence_role": "offline_label_or_method_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "data_origin",
+          "expected_type": "string",
+          "evidence_role": "field_provenance_gate",
+          "validation_rule": "must_be_field_origin_not_template_synthetic_or_todo",
+          "required": true
+        }
+      ]
+    },
+    {
+      "table": "pressure_headloss_event_log",
+      "table_role": "pressure_headloss_event_evidence",
+      "table_schema_status": "schema_table_missing",
+      "minimum_real_rows_per_required_scenario": 1,
+      "required_fields": [
+        {
+          "field": "batch_id",
+          "expected_type": "string",
+          "evidence_role": "same_batch_join_key",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "bed_id",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "pressure_drop_kPa",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "measured_process_signal",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "headloss_kPa_per_m",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "measured_process_signal",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "flow_Lmin",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "measured_process_signal",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "event_time_min",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "timestamp_ordering",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "matched_lab_sample_time_min",
+          "expected_type": [
+            "number",
+            "integer"
+          ],
+          "evidence_role": "timestamp_ordering",
+          "validation_rule": "must_be_numeric_not_boolean",
+          "required": true
+        },
+        {
+          "field": "hydraulic_anomaly_label",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "instrument_id",
+          "expected_type": "string",
+          "evidence_role": "field_metadata",
+          "validation_rule": "must_be_non_empty_string",
+          "required": true
+        },
+        {
+          "field": "data_origin",
+          "expected_type": "string",
+          "evidence_role": "field_provenance_gate",
+          "validation_rule": "must_be_field_origin_not_template_synthetic_or_todo",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "scenario_collection_checklist": [
+    {
+      "collection_id": "R8P_ROW_BUNDLE_01",
+      "scenario_id": "R8O_S1_unresolved_pressure_conflict_review_block",
+      "scenario_type": "unresolved_conflict_review_block",
+      "purpose": "证明 node pressure 与 pressure/headloss event 冲突未复核时，Agent51/49/52 必须保持阻断。",
+      "batch_role": "BATCH_WITH_UNRESOLVED_PRESSURE_SOURCE_CONFLICT",
+      "minimum_real_batches": 1,
+      "required_tables": [
+        "node_modality_sensor_timeseries",
+        "pressure_headloss_event_log",
+        "campaign_operation_log",
+        "offline_lab_results",
+        "fast_proxy_event_log"
+      ],
+      "agent52_replay_required_fields": [
+        "batch_id",
+        "scenario",
+        "policy_action_id",
+        "expert_action_id",
+        "pressure_source_conflict_count",
+        "resolved_pressure_source_conflict_count",
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "data_origin"
+      ],
+      "cross_table_join_keys": [
+        "batch_id",
+        "node_modality_sensor_timeseries.sample_time_min <= pressure_headloss_event_log.event_time_min <= offline_lab_results.lab_label_time_min",
+        "campaign_operation_log.batch_id links pressure_source_resolution to the same batch",
+        "fast_proxy_event_log.batch_id links protective_triggered and false_positive_cost_index"
+      ],
+      "minimum_resolution_fields": [
+        "pressure_source_resolution",
+        "authoritative_pressure_source",
+        "reviewer_id",
+        "review_time",
+        "calibration_action_id",
+        "calibration_note"
+      ],
+      "acceptance_metrics": [
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "pressure_source_conflict_replay_blocked_case_count"
+      ],
+      "current_acceptance_status": "missing_field_rows",
+      "current_blocking_reasons": [
+        "no_field_replay_rows_supplied"
+      ],
+      "candidate_batches_seen": [],
+      "accepted_batches": []
+    },
+    {
+      "collection_id": "R8P_ROW_BUNDLE_02",
+      "scenario_id": "R8O_S2_resolved_pressure_conflict_authoritative_source",
+      "scenario_type": "resolved_conflict_authoritative_source",
+      "purpose": "证明 operator review 选择 authoritative pressure source 后，冲突 batch 可以被重新纳入 scoreability/replay。",
+      "batch_role": "BATCH_WITH_RESOLVED_PRESSURE_SOURCE_CONFLICT",
+      "minimum_real_batches": 1,
+      "required_tables": [
+        "node_modality_sensor_timeseries",
+        "pressure_headloss_event_log",
+        "campaign_operation_log",
+        "offline_lab_results",
+        "fast_proxy_event_log"
+      ],
+      "agent52_replay_required_fields": [
+        "batch_id",
+        "scenario",
+        "policy_action_id",
+        "expert_action_id",
+        "pressure_source_conflict_count",
+        "resolved_pressure_source_conflict_count",
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "data_origin"
+      ],
+      "cross_table_join_keys": [
+        "batch_id",
+        "node_modality_sensor_timeseries.sample_time_min <= pressure_headloss_event_log.event_time_min <= offline_lab_results.lab_label_time_min",
+        "campaign_operation_log.batch_id links pressure_source_resolution to the same batch",
+        "fast_proxy_event_log.batch_id links protective_triggered and false_positive_cost_index"
+      ],
+      "minimum_resolution_fields": [
+        "pressure_source_resolution",
+        "authoritative_pressure_source",
+        "reviewer_id",
+        "review_time",
+        "calibration_action_id",
+        "calibration_note"
+      ],
+      "acceptance_metrics": [
+        "resolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "authoritative_pressure_source",
+        "calibration_action_id"
+      ],
+      "current_acceptance_status": "missing_field_rows",
+      "current_blocking_reasons": [
+        "no_field_replay_rows_supplied"
+      ],
+      "candidate_batches_seen": [],
+      "accepted_batches": []
+    },
+    {
+      "collection_id": "R8P_ROW_BUNDLE_03",
+      "scenario_id": "R8O_S3_operator_review_latency_budget",
+      "scenario_type": "operator_review_latency_budget",
+      "purpose": "证明循环/暂存结构为人工复核和校准争取到足够时间，不要求高速在线传感。",
+      "batch_role": "BATCH_WITH_REVIEW_LATENCY_AND_HOLD_TIME",
+      "minimum_real_batches": 1,
+      "required_tables": [
+        "node_modality_sensor_timeseries",
+        "pressure_headloss_event_log",
+        "campaign_operation_log",
+        "offline_lab_results",
+        "fast_proxy_event_log"
+      ],
+      "agent52_replay_required_fields": [
+        "batch_id",
+        "scenario",
+        "policy_action_id",
+        "expert_action_id",
+        "pressure_source_conflict_count",
+        "resolved_pressure_source_conflict_count",
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "data_origin"
+      ],
+      "cross_table_join_keys": [
+        "batch_id",
+        "node_modality_sensor_timeseries.sample_time_min <= pressure_headloss_event_log.event_time_min <= offline_lab_results.lab_label_time_min",
+        "campaign_operation_log.batch_id links pressure_source_resolution to the same batch",
+        "fast_proxy_event_log.batch_id links protective_triggered and false_positive_cost_index"
+      ],
+      "minimum_resolution_fields": [
+        "pressure_source_resolution",
+        "authoritative_pressure_source",
+        "reviewer_id",
+        "review_time",
+        "calibration_action_id",
+        "calibration_note"
+      ],
+      "acceptance_metrics": [
+        "operator_review_latency_min",
+        "hold_or_recycle_time_budget_min",
+        "latency_margin_min",
+        "review_completed_before_release"
+      ],
+      "current_acceptance_status": "missing_field_rows",
+      "current_blocking_reasons": [
+        "no_field_replay_rows_supplied"
+      ],
+      "candidate_batches_seen": [],
+      "accepted_batches": []
+    },
+    {
+      "collection_id": "R8P_ROW_BUNDLE_04",
+      "scenario_id": "R8O_S4_agent51_scoreability_recovery_after_resolution",
+      "scenario_type": "agent51_scoreability_recovery",
+      "purpose": "证明压力源复核后 Agent51 catalyst proxy holdout 的 scoreable batch 能恢复，而不是永久丢弃该批次。",
+      "batch_role": "BATCH_WITH_AGENT51_SCOREABILITY_RECOVERY_AFTER_RESOLUTION",
+      "minimum_real_batches": 1,
+      "required_tables": [
+        "node_modality_sensor_timeseries",
+        "pressure_headloss_event_log",
+        "campaign_operation_log",
+        "offline_lab_results",
+        "fast_proxy_event_log"
+      ],
+      "agent52_replay_required_fields": [
+        "batch_id",
+        "scenario",
+        "policy_action_id",
+        "expert_action_id",
+        "pressure_source_conflict_count",
+        "resolved_pressure_source_conflict_count",
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "data_origin"
+      ],
+      "cross_table_join_keys": [
+        "batch_id",
+        "node_modality_sensor_timeseries.sample_time_min <= pressure_headloss_event_log.event_time_min <= offline_lab_results.lab_label_time_min",
+        "campaign_operation_log.batch_id links pressure_source_resolution to the same batch",
+        "fast_proxy_event_log.batch_id links protective_triggered and false_positive_cost_index"
+      ],
+      "minimum_resolution_fields": [
+        "pressure_source_resolution",
+        "authoritative_pressure_source",
+        "reviewer_id",
+        "review_time",
+        "calibration_action_id",
+        "calibration_note"
+      ],
+      "acceptance_metrics": [
+        "agent51_scoreable_batch_count_before_resolution",
+        "agent51_scoreable_batch_count_after_resolution",
+        "scoreability_recovered_batch_count",
+        "field_proxy_holdout_summary_status"
+      ],
+      "current_acceptance_status": "missing_field_rows",
+      "current_blocking_reasons": [
+        "no_field_replay_rows_supplied"
+      ],
+      "candidate_batches_seen": [],
+      "accepted_batches": []
+    },
+    {
+      "collection_id": "R8P_ROW_BUNDLE_05",
+      "scenario_id": "R8O_S5_agent49_agent52_guardrail_clearance_replay",
+      "scenario_type": "guardrail_clearance_replay",
+      "purpose": "证明已解决压力冲突能通过 Agent49/52 replay clearance，但仍不能绕过 actuator/release gate 的人工复核边界。",
+      "batch_role": "BATCH_WITH_AGENT49_AGENT52_PRESSURE_GUARDRAIL_CLEARANCE",
+      "minimum_real_batches": 1,
+      "required_tables": [
+        "node_modality_sensor_timeseries",
+        "pressure_headloss_event_log",
+        "campaign_operation_log",
+        "offline_lab_results",
+        "fast_proxy_event_log"
+      ],
+      "agent52_replay_required_fields": [
+        "batch_id",
+        "scenario",
+        "policy_action_id",
+        "expert_action_id",
+        "pressure_source_conflict_count",
+        "resolved_pressure_source_conflict_count",
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "data_origin"
+      ],
+      "cross_table_join_keys": [
+        "batch_id",
+        "node_modality_sensor_timeseries.sample_time_min <= pressure_headloss_event_log.event_time_min <= offline_lab_results.lab_label_time_min",
+        "campaign_operation_log.batch_id links pressure_source_resolution to the same batch",
+        "fast_proxy_event_log.batch_id links protective_triggered and false_positive_cost_index"
+      ],
+      "minimum_resolution_fields": [
+        "pressure_source_resolution",
+        "authoritative_pressure_source",
+        "reviewer_id",
+        "review_time",
+        "calibration_action_id",
+        "calibration_note"
+      ],
+      "acceptance_metrics": [
+        "agent49_pressure_conflict_guardrail_clear",
+        "agent52_pressure_source_conflict_clear",
+        "can_write_to_actuator",
+        "can_write_to_release_gate"
+      ],
+      "current_acceptance_status": "missing_field_rows",
+      "current_blocking_reasons": [
+        "no_field_replay_rows_supplied"
+      ],
+      "candidate_batches_seen": [],
+      "accepted_batches": []
+    }
+  ],
+  "scenario_bundle_status": [
+    {
+      "scenario_id": "R8O_S1_unresolved_pressure_conflict_review_block",
+      "scenario_type": "unresolved_conflict_review_block",
+      "batch_role": "BATCH_WITH_UNRESOLVED_PRESSURE_SOURCE_CONFLICT",
+      "candidate_batches": [],
+      "complete_candidate_batches": [],
+      "missing_tables_by_candidate_batch": {},
+      "bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S2_resolved_pressure_conflict_authoritative_source",
+      "scenario_type": "resolved_conflict_authoritative_source",
+      "batch_role": "BATCH_WITH_RESOLVED_PRESSURE_SOURCE_CONFLICT",
+      "candidate_batches": [],
+      "complete_candidate_batches": [],
+      "missing_tables_by_candidate_batch": {},
+      "bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S3_operator_review_latency_budget",
+      "scenario_type": "operator_review_latency_budget",
+      "batch_role": "BATCH_WITH_REVIEW_LATENCY_AND_HOLD_TIME",
+      "candidate_batches": [],
+      "complete_candidate_batches": [],
+      "missing_tables_by_candidate_batch": {},
+      "bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S4_agent51_scoreability_recovery_after_resolution",
+      "scenario_type": "agent51_scoreability_recovery",
+      "batch_role": "BATCH_WITH_AGENT51_SCOREABILITY_RECOVERY_AFTER_RESOLUTION",
+      "candidate_batches": [],
+      "complete_candidate_batches": [],
+      "missing_tables_by_candidate_batch": {},
+      "bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S5_agent49_agent52_guardrail_clearance_replay",
+      "scenario_type": "guardrail_clearance_replay",
+      "batch_role": "BATCH_WITH_AGENT49_AGENT52_PRESSURE_GUARDRAIL_CLEARANCE",
+      "candidate_batches": [],
+      "complete_candidate_batches": [],
+      "missing_tables_by_candidate_batch": {},
+      "bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight"
+    }
+  ],
+  "scenario_temporal_status": [
+    {
+      "scenario_id": "R8O_S1_unresolved_pressure_conflict_review_block",
+      "scenario_type": "unresolved_conflict_review_block",
+      "complete_candidate_batches": [],
+      "temporal_valid_batches": [],
+      "violations_by_batch": {},
+      "latency_margin_min_by_batch": {},
+      "temporal_preflight_status": "temporal_window_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S2_resolved_pressure_conflict_authoritative_source",
+      "scenario_type": "resolved_conflict_authoritative_source",
+      "complete_candidate_batches": [],
+      "temporal_valid_batches": [],
+      "violations_by_batch": {},
+      "latency_margin_min_by_batch": {},
+      "temporal_preflight_status": "temporal_window_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S3_operator_review_latency_budget",
+      "scenario_type": "operator_review_latency_budget",
+      "complete_candidate_batches": [],
+      "temporal_valid_batches": [],
+      "violations_by_batch": {},
+      "latency_margin_min_by_batch": {},
+      "temporal_preflight_status": "temporal_window_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S4_agent51_scoreability_recovery_after_resolution",
+      "scenario_type": "agent51_scoreability_recovery",
+      "complete_candidate_batches": [],
+      "temporal_valid_batches": [],
+      "violations_by_batch": {},
+      "latency_margin_min_by_batch": {},
+      "temporal_preflight_status": "temporal_window_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S5_agent49_agent52_guardrail_clearance_replay",
+      "scenario_type": "guardrail_clearance_replay",
+      "complete_candidate_batches": [],
+      "temporal_valid_batches": [],
+      "violations_by_batch": {},
+      "latency_margin_min_by_batch": {},
+      "temporal_preflight_status": "temporal_window_preflight_blocked_at_source_preflight"
+    }
+  ],
+  "scenario_semantic_status": [
+    {
+      "scenario_id": "R8O_S1_unresolved_pressure_conflict_review_block",
+      "scenario_type": "unresolved_conflict_review_block",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S2_resolved_pressure_conflict_authoritative_source",
+      "scenario_type": "resolved_conflict_authoritative_source",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S3_operator_review_latency_budget",
+      "scenario_type": "operator_review_latency_budget",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S4_agent51_scoreability_recovery_after_resolution",
+      "scenario_type": "agent51_scoreability_recovery",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S5_agent49_agent52_guardrail_clearance_replay",
+      "scenario_type": "guardrail_clearance_replay",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    }
+  ],
+  "operator_acceptance_sequence": [
+    {
+      "step": "source_package",
+      "required_evidence": "Create or point PRESSURE_RESOLUTION_REPLAY_ROWS_PATH to a real JSON table-mapping file or a metadata.json plus six required CSV directory package.",
+      "acceptance_check": "field_rows_source_status is loaded and expected tables map to non-empty row lists, regardless of JSON or CSV-directory source format."
+    },
+    {
+      "step": "schema_contract",
+      "required_evidence": "All six required tables are present, non-empty, and required fields have coarse valid types.",
+      "acceptance_check": "field_rows_schema_validation_status becomes schema_validation_passed_structure_contract."
+    },
+    {
+      "step": "scenario_bundle",
+      "required_evidence": "Each pressure-resolution scenario has a same-batch bundle across sensor, pressure/headloss, operation, lab, proxy, and Agent52 replay rows.",
+      "acceptance_check": "field_row_acceptance_status becomes field_replay_rows_accepted_for_all_scenarios."
+    },
+    {
+      "step": "downstream_routing",
+      "required_evidence": "Accepted rows are routed to Agent51 holdout, Agent49 guardrail context, Agent52 replay, and R7 evidence chain.",
+      "acceptance_check": "R8v/R7 gates pass before any protective-control or field claim upgrade."
+    }
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "Low-cost sparse sensing cannot directly observe internal pressure-source conflicts, operator review status, and downstream guardrail clearance in a circular treatment loop.",
+    "technical_means": "Use a same-batch six-table field-row bundle plus schema validation, scenario acceptance, and downstream replay gates to turn pressure conflict resolution into auditable grey-box evidence.",
+    "technical_effect": "The system can keep protective blocking when conflicts are unresolved and only route resolved operator-reviewed batches toward holdout/replay gates without increasing online sensor speed.",
+    "prior_art_distinction_candidate": "The checklist couples sparse pressure observations, operator calibration records, replay actions, and circular hold/recycle timing into one field-validation contract rather than using a single black-box prediction score.",
+    "claim_boundary": "Technical-feature scaffold only; not a legal opinion and not field-supported without real rows."
+  },
+  "evidence_boundaries": [
+    "This checklist is not field evidence.",
+    "Template/TODO rows remain rejected.",
+    "Every required table row must include field-origin data_origin.",
+    "Schema validity does not prove field origin or scenario linkage.",
+    "Scenario acceptance still cannot write actuator or release gate.",
+    "Field-supported claims require R8v/R7 downstream gates and human review."
+  ],
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false
+}

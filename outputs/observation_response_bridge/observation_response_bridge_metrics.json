@@ -1,0 +1,221 @@
+{
+  "bridge_id": "R8u109_observation_response_bridge",
+  "bridge_type": "observation_contract_to_field_activation_response_bridge",
+  "bridge_status": "observation_response_bridge_ready_for_priority_field_response_fill",
+  "target_hidden_states": [
+    "catalyst_activity"
+  ],
+  "primary_target_hidden_state": "catalyst_activity",
+  "source_observation_contract_status": "synthetic_observation_contract_ready_needs_field_topology_proxy_labels_and_missingness",
+  "source_response_template_id": "R8u98_field_activation_evidence_response_template",
+  "source_submission_packet_id": "R8u108_field_activation_response_submission_packet",
+  "response_submission_packet_status": "field_activation_response_submission_packet_waiting_for_external_response",
+  "response_submission_next_operator_action": "fill_response_template_and_set_FIELD_ACTIVATION_RESPONSE_PATH",
+  "r2_fv4_requirement": {
+    "requirement_id": "R2_FV4_agent48_hidden_state_requirement_patch",
+    "needed_for": "resolving Agent48 hard unresolved hidden-state sensing needs",
+    "minimum_matched_batch_count": 3,
+    "required_tables": [
+      "node_modality_sensor_timeseries",
+      "offline_lab_results",
+      "campaign_operation_log",
+      "site_topology_or_bed_geometry"
+    ],
+    "required_signals_or_fields": [
+      "pressure_drop_kPa_or_headloss_proxy",
+      "catalyst_activity_label",
+      "regeneration_event",
+      "nominal_HRT_min"
+    ],
+    "pressure_headloss_candidate_ids": [
+      "N3_catalyst_bed:pressure_drop_kPa",
+      "N3_catalyst_bed:headloss_kPa_per_m",
+      "N3_catalyst_bed:flow_normalized_pressure_residual"
+    ]
+  },
+  "agent51_holdout_context": {
+    "summary_status": "field_proxy_holdout_coverage_gaps",
+    "ready_for_agent51_validation": false,
+    "field_validation_pass": false,
+    "scoreable_batch_count": 0,
+    "minimum_batch_count": 3,
+    "required_node_signals": [
+      "N3_catalyst_bed:pressure_drop_kPa",
+      "N3_catalyst_bed_outlet:ORP_mV",
+      "N3_catalyst_bed_outlet:UV254_abs"
+    ],
+    "missing_required_signals": [
+      "N3_catalyst_bed_outlet:UV254_abs",
+      "N3_catalyst_bed_outlet:ORP_mV",
+      "N3_catalyst_bed:pressure_drop_kPa"
+    ],
+    "can_relax_agent49_catalyst_uncertainty_block": false
+  },
+  "agent54_soft_sensor_context": {
+    "soft_sensor_matrix_status": "synthetic_layout_aware_soft_sensor_contract_ready_needs_field_missingness",
+    "pressure_headloss_candidate_pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+    "pressure_headloss_schema_ready": false,
+    "pressure_headloss_candidate_ids": [
+      "N3_catalyst_bed:pressure_drop_kPa",
+      "N3_catalyst_bed:headloss_kPa_per_m",
+      "N3_catalyst_bed:flow_normalized_pressure_residual"
+    ],
+    "can_use_pressure_headloss_for_field_claim": false
+  },
+  "response_row_count": 6,
+  "mapped_response_row_count": 6,
+  "required_role_count": 6,
+  "mapped_role_count": 6,
+  "required_role_coverage_rate": 1.0,
+  "missing_required_roles": [],
+  "priority_response_rows": [
+    {
+      "response_row_id": "catalyst_activity_03",
+      "hidden_state": "catalyst_activity",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed:pressure_drop_kPa",
+      "evidence_channel": "R7_REAL_FIELD_PACKAGE",
+      "table_name": "node_modality_sensor_timeseries",
+      "field_name": "N3_catalyst_bed:pressure_drop_kPa",
+      "observation_role": "pressure_headloss_proxy",
+      "priority": "P1",
+      "priority_rank": 1,
+      "mapped_to_observation_requirement": true,
+      "source_requirement_id": "R2_FV4_agent48_hidden_state_requirement_patch",
+      "downstream_consumers": [
+        "Agent51 catalyst proxy field holdout",
+        "Agent49 catalyst uncertainty guardrail",
+        "Agent54 pressure/headloss soft-sensor schema"
+      ],
+      "field_value_boundary": "Fill with real data_origin=field provenance and evidence references only; TODO/template/sample values keep the row blocked."
+    },
+    {
+      "response_row_id": "catalyst_activity_04",
+      "hidden_state": "catalyst_activity",
+      "required_evidence": "offline_lab_results.catalyst_activity",
+      "evidence_channel": "R7_REAL_FIELD_PACKAGE",
+      "table_name": "offline_lab_results",
+      "field_name": "catalyst_activity",
+      "observation_role": "catalyst_activity_label",
+      "priority": "P1",
+      "priority_rank": 1,
+      "mapped_to_observation_requirement": true,
+      "source_requirement_id": "R2_FV4_agent48_hidden_state_requirement_patch",
+      "downstream_consumers": [
+        "Agent51 catalyst proxy field holdout",
+        "Agent49 catalyst uncertainty guardrail",
+        "Agent54 pressure/headloss soft-sensor schema"
+      ],
+      "field_value_boundary": "Fill with real data_origin=field provenance and evidence references only; TODO/template/sample values keep the row blocked."
+    },
+    {
+      "response_row_id": "catalyst_activity_05",
+      "hidden_state": "catalyst_activity",
+      "required_evidence": "campaign_operation_log.regeneration_event",
+      "evidence_channel": "R7_REAL_FIELD_PACKAGE",
+      "table_name": "campaign_operation_log",
+      "field_name": "regeneration_event",
+      "observation_role": "regeneration_event",
+      "priority": "P1",
+      "priority_rank": 1,
+      "mapped_to_observation_requirement": true,
+      "source_requirement_id": "R2_FV4_agent48_hidden_state_requirement_patch",
+      "downstream_consumers": [
+        "Agent51 catalyst proxy field holdout",
+        "Agent49 catalyst uncertainty guardrail",
+        "Agent54 pressure/headloss soft-sensor schema"
+      ],
+      "field_value_boundary": "Fill with real data_origin=field provenance and evidence references only; TODO/template/sample values keep the row blocked."
+    },
+    {
+      "response_row_id": "catalyst_activity_06",
+      "hidden_state": "catalyst_activity",
+      "required_evidence": "site_topology_or_bed_geometry.nominal_HRT_min",
+      "evidence_channel": "R7_REAL_FIELD_PACKAGE",
+      "table_name": "site_topology_or_bed_geometry",
+      "field_name": "nominal_HRT_min",
+      "observation_role": "hydraulic_normalizer",
+      "priority": "P1",
+      "priority_rank": 1,
+      "mapped_to_observation_requirement": true,
+      "source_requirement_id": "R2_FV4_agent48_hidden_state_requirement_patch",
+      "downstream_consumers": [
+        "Agent51 catalyst proxy field holdout",
+        "Agent49 catalyst uncertainty guardrail",
+        "Agent54 pressure/headloss soft-sensor schema"
+      ],
+      "field_value_boundary": "Fill with real data_origin=field provenance and evidence references only; TODO/template/sample values keep the row blocked."
+    },
+    {
+      "response_row_id": "catalyst_activity_01",
+      "hidden_state": "catalyst_activity",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:UV254_abs",
+      "evidence_channel": "R7_REAL_FIELD_PACKAGE",
+      "table_name": "node_modality_sensor_timeseries",
+      "field_name": "N3_catalyst_bed_outlet:UV254_abs",
+      "observation_role": "bed_outlet_uv254_proxy",
+      "priority": "P2",
+      "priority_rank": 2,
+      "mapped_to_observation_requirement": true,
+      "source_requirement_id": "R2_FV4_agent48_hidden_state_requirement_patch",
+      "downstream_consumers": [
+        "Agent51 catalyst proxy field holdout",
+        "Agent49 catalyst uncertainty guardrail",
+        "Agent54 pressure/headloss soft-sensor schema"
+      ],
+      "field_value_boundary": "Fill with real data_origin=field provenance and evidence references only; TODO/template/sample values keep the row blocked."
+    },
+    {
+      "response_row_id": "catalyst_activity_02",
+      "hidden_state": "catalyst_activity",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:ORP_mV",
+      "evidence_channel": "R7_REAL_FIELD_PACKAGE",
+      "table_name": "node_modality_sensor_timeseries",
+      "field_name": "N3_catalyst_bed_outlet:ORP_mV",
+      "observation_role": "bed_outlet_orp_proxy",
+      "priority": "P2",
+      "priority_rank": 2,
+      "mapped_to_observation_requirement": true,
+      "source_requirement_id": "R2_FV4_agent48_hidden_state_requirement_patch",
+      "downstream_consumers": [
+        "Agent51 catalyst proxy field holdout",
+        "Agent49 catalyst uncertainty guardrail",
+        "Agent54 pressure/headloss soft-sensor schema"
+      ],
+      "field_value_boundary": "Fill with real data_origin=field provenance and evidence references only; TODO/template/sample values keep the row blocked."
+    }
+  ],
+  "operator_priority_fill_plan": [
+    {
+      "step_id": "R8U109_FILL_CATALYST_OBSERVATION_RESPONSE_ROWS",
+      "priority": "P1",
+      "target_response_row_ids": [
+        "catalyst_activity_03",
+        "catalyst_activity_04",
+        "catalyst_activity_05",
+        "catalyst_activity_06",
+        "catalyst_activity_01",
+        "catalyst_activity_02"
+      ],
+      "minimum_matched_batch_count": 3,
+      "acceptance": "Fill these response rows with real field provenance and references to downstream package tables; then run FIELD_ACTIVATION_RESPONSE_PATH=/path/to/filled_response.json .venv/bin/python experiments/run_field_activation_matrix.py."
+    },
+    {
+      "step_id": "R8U109_KEEP_CATALYST_GUARDRAIL_UNTIL_AGENT51_HOLDOUT",
+      "priority": "P1",
+      "target_response_row_ids": [
+        "catalyst_activity_03",
+        "catalyst_activity_04",
+        "catalyst_activity_05"
+      ],
+      "minimum_matched_batch_count": 3,
+      "acceptance": "Agent49 catalyst guardrail stays active until Agent51 scores matched pressure/headloss, offline catalyst labels and regeneration events from real field batches."
+    }
+  ],
+  "can_route_to_agent51_field_proxy_holdout": false,
+  "can_relax_agent49_catalyst_uncertainty_block": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "batch_alignment_policy": "The response rows identify which field evidence must be submitted first, but batch alignment is proved only when at least 3 real field batch_id values are matched across node_modality_sensor_timeseries, offline_lab_results, campaign_operation_log and site_topology_or_bed_geometry. A filled response JSON alone is not field validation.",
+  "no_write_boundary": "This bridge only prioritizes existing observation-contract evidence rows inside the field activation response template. It does not create field evidence, does not validate catalyst activity, does not relax Agent49 guardrails, and cannot write actuator policy or release gate."
+}

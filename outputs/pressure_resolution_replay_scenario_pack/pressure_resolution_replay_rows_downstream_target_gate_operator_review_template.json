@@ -1,0 +1,56 @@
+{
+  "downstream_target_gate_operator_review_template_id": "R8u54_downstream_target_gate_operator_review_template",
+  "template_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_operator_review_template.json",
+  "operator_review_env_var": "R8V_TARGET_GATE_OPERATOR_REVIEW_PATH",
+  "linked_result_arbitration_status": "downstream_target_gate_result_arbitration_blocked_by_result_preflight",
+  "expected_target_count": 0,
+  "expected_target_ids": [],
+  "required_top_level_fields": [
+    "review_metadata",
+    "review_rows"
+  ],
+  "review_rows_type": "list_of_objects",
+  "required_review_row_fields": [
+    "target_id",
+    "target_gate_status",
+    "operator_review_decision",
+    "reviewer_id",
+    "review_time",
+    "review_notes",
+    "boundary_acknowledgement",
+    "can_write_to_actuator",
+    "can_write_to_release_gate",
+    "field_claim_upgrade_allowed"
+  ],
+  "accepted_operator_review_decisions": [
+    "operator_approved_for_post_review_gate",
+    "operator_rejected_requires_remediation",
+    "operator_hold_requires_more_evidence"
+  ],
+  "target_review_templates": [],
+  "model_core_layers": [
+    "diagnostic_decision_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "controllability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "A target-gate arbitration result still needs a traceable human review response before any later post-review control gate can consider protective action candidates.",
+    "technical_means": "The operator-review template binds every arbitrated target decision to reviewer identity, review time, explicit approve/reject/hold decision, boundary acknowledgement, and no-write flags.",
+    "technical_effect": "The closed-loop system can collect human review without letting review text or pass labels silently bypass actuator, release-gate, or field-claim protection.",
+    "prior_art_distinction_candidate": "Unlike generic manual approval notes, the template is target-level, batch-preserving, machine-preflighted, and coupled to no-write grey-box safety boundaries."
+  },
+  "evidence_boundaries": [
+    "The template is not an operator review response.",
+    "Operator approval can only route to a later post-review gate; it cannot write actuators or release gates.",
+    "Rejected or held targets remain remediation items, not control candidates."
+  ],
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false
+}

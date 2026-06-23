@@ -1,0 +1,203 @@
+{
+  "main_chain_reconnection": {
+    "agent_name": "main_chain_reconnection_agent",
+    "confidence": 0.765,
+    "summary": "主链回接审计：synthetic_main_chain_reconnection_ready_needs_field_replay；prior_consumption_rate=1.000。",
+    "recommendations": [
+      "后续所有新增核心 agent 必须进入 coupling_table，证明是否被主闭环消费，而不是只生成独立报告。",
+      "当前回接只允许改变软传感不确定性、机理证据、动作排序、成本安全评分和仲裁阻断。",
+      "下一步应把 field_validation_queue 与真实数据接口逐项对齐，避免继续堆 synthetic prior。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "P8_cross_agent_core_reconnection",
+        "borrowed_from": [
+          "model integration audit",
+          "agentic pipeline contract testing",
+          "evidence-to-action traceability"
+        ],
+        "reality_mapping": "检查各核心模型成果是否真正进入低成本传感闭环主链，而不是停留在独立实验报告。",
+        "data_needs": [
+          "soft_sensor_layout_context",
+          "soft_sensor_grey_box_prior_context",
+          "mechanism_kg_reasoning",
+          "control_knowledge_reasoning_source",
+          "cost_safety_engineering_patch",
+          "arbitration_engineering_constraints_used",
+          "agent49_joint_action_matrix",
+          "arbitration_joint_action_bridge"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/soft_sensor_agent.py",
+          "src/water_ai/agents/main_chain_reconnection_agent.py",
+          "experiments/run_agent57_main_chain_reconnection.py"
+        ],
+        "evaluation_metrics": [
+          "main_chain_prior_consumption_rate",
+          "consumed_link_count",
+          "critical_links_ready",
+          "can_write_to_actuator"
+        ],
+        "failure_boundary": "主链回接只证明模型 prior 被消费；没有 field replay 时不能证明现场控制效果。"
+      },
+      "coupling_table": [
+        {
+          "link_id": "L0_agent54_layout_to_agent2_soft_sensor",
+          "source_agent": "Agent54/Agent48",
+          "target_agent": "Agent2_SoftSensor",
+          "consumed": true,
+          "evidence": {
+            "layout_status": "global_modality_fallback_used_for_layout",
+            "node_specific_value_rate": 0.0
+          },
+          "writeback_boundary": "layout fallback can inform uncertainty; field node values required for deployment claims"
+        },
+        {
+          "link_id": "L1_agent53_grey_box_to_agent2_soft_sensor",
+          "source_agent": "Agent53",
+          "target_agent": "Agent2_SoftSensor",
+          "consumed": true,
+          "evidence": {
+            "grey_box_status": "synthetic_grey_box_physics_prior_ready_needs_field_calibration",
+            "grey_box_residual_prior": 0.206,
+            "grey_box_byproduct_prior": 0.597
+          },
+          "writeback_boundary": "synthetic grey-box prior can raise uncertainty and byproduct guard only; no release authorization"
+        },
+        {
+          "link_id": "L2_agent56_kg_to_agent3_mechanism",
+          "source_agent": "Agent56",
+          "target_agent": "Agent3_Mechanism",
+          "consumed": true,
+          "evidence": {
+            "evidence_path_count": 1
+          },
+          "writeback_boundary": "literature/synthetic KG evidence can explain hypotheses; field edges required for claims"
+        },
+        {
+          "link_id": "L3_agent56_kg_to_agent5_control",
+          "source_agent": "Agent56",
+          "target_agent": "Agent5_ControlStrategy",
+          "consumed": true,
+          "evidence": {
+            "knowledge_reasoning_source": "typed_kg_action_constraint_patch",
+            "knowledge_action_biases": {
+              "hold_for_validation": 0.108,
+              "recirculate": 0.094,
+              "release": -0.121
+            }
+          },
+          "writeback_boundary": "KG action constraints can alter scores only; no actuator writeback"
+        },
+        {
+          "link_id": "L4_agent55_engineering_to_agent9_cost_safety",
+          "source_agent": "Agent55",
+          "target_agent": "Agent9_CostSafety",
+          "consumed": true,
+          "evidence": {
+            "evaluated_action_count": 12,
+            "patched_action_count": 7
+          },
+          "writeback_boundary": "engineering patch affects objective scoring, not direct actuator execution"
+        },
+        {
+          "link_id": "L5_agent55_engineering_to_agent10_arbitration",
+          "source_agent": "Agent55",
+          "target_agent": "Agent10_Arbitration",
+          "consumed": true,
+          "evidence": {
+            "available": true,
+            "blocked_action_ids": [
+              "regenerate_catalyst",
+              "replace_catalyst"
+            ],
+            "readiness": {
+              "engineering_constraints_status": "synthetic_engineering_constraints_reward_patch_ready_needs_plc_scada_and_field_replay",
+              "engineering_constraints_score": 0.815,
+              "constraint_contract_score": 1.0,
+              "reward_patch_coverage": 1.0,
+              "arbitration_patch_coverage": 1.0,
+              "mean_execution_feasibility": 0.98,
+              "hard_blocked_joint_action_count": 1,
+              "storage_violation_rate": 0.2,
+              "actuator_switch_pressure": 0.125,
+              "inventory_risk_score": 0.0,
+              "human_review_bottleneck_score": 0.0,
+              "field_ready": false,
+              "can_update_agent49_reward_contract": true,
+              "can_patch_final_arbitration": true,
+              "can_write_to_actuator": false,
+              "can_write_to_release_gate": false,
+              "next_recommended_core_action": "P6_reasonable_knowledge_graph_upgrade"
+            }
+          },
+          "writeback_boundary": "arbitration can block actions; field execution replay required before execution"
+        },
+        {
+          "link_id": "L6_agent49_multi_facility_to_agent10_arbitration",
+          "source_agent": "Agent49",
+          "target_agent": "Agent10_Arbitration",
+          "consumed": true,
+          "evidence": {
+            "agent49_joint_action_count": 5,
+            "cost_safety_joint_action_count": 3,
+            "arbitration_final_plan_count": 2,
+            "final_plan_contains_joint_action": false
+          },
+          "writeback_boundary": "Agent49 remains a collaborative policy candidate until replay and arbitration bridge are explicit"
+        }
+      ],
+      "readiness": {
+        "main_chain_reconnection_status": "synthetic_main_chain_reconnection_ready_needs_field_replay",
+        "main_chain_reconnection_score": 1.0,
+        "main_chain_prior_consumption_rate": 1.0,
+        "consumed_link_count": 7,
+        "total_link_count": 7,
+        "critical_links_ready": true,
+        "can_update_agent50_priority": true,
+        "can_write_to_actuator": false,
+        "can_write_to_release_gate": false,
+        "next_recommended_core_action": "field_validation_queue_alignment_or_live_agent49_arbitration_bridge"
+      },
+      "agent50_writeback": {
+        "allowed_writeback": [
+          "main_chain_reconnection_status",
+          "core_prior_consumption_metrics",
+          "P8_completion_status_for_governance"
+        ],
+        "blocked_writeback": [
+          "actuator_policy",
+          "release_gate_policy",
+          "field_validation_claim"
+        ],
+        "can_advance_governance_priority": true,
+        "policy_effect": "move_to_field_validation_queue_alignment"
+      }
+    },
+    "issues": [
+      {
+        "sensor": "main_chain_reconnection",
+        "issue_type": "synthetic_reconnection_not_execution_ready",
+        "severity": "warning",
+        "message": "主链回接只证明 synthetic prior 已进入推理链，不能替代 field replay 或执行器许可。",
+        "evidence": {
+          "main_chain_reconnection_status": "synthetic_main_chain_reconnection_ready_needs_field_replay",
+          "main_chain_reconnection_score": 1.0,
+          "main_chain_prior_consumption_rate": 1.0,
+          "consumed_link_count": 7,
+          "total_link_count": 7,
+          "critical_links_ready": true,
+          "can_update_agent50_priority": true,
+          "can_write_to_actuator": false,
+          "can_write_to_release_gate": false,
+          "next_recommended_core_action": "field_validation_queue_alignment_or_live_agent49_arbitration_bridge"
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "main_chain_reconnection": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/main_chain_reconnection.md",
+    "agent57_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent57_main_chain_reconnection/agent57_report.md",
+    "main_chain_reconnection_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/main_chain_reconnection/main_chain_reconnection_metrics.json"
+  }
+}

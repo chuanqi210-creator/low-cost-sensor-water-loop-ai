@@ -1,0 +1,1 @@
+site_id,node_id,zone,upstream_node_id,downstream_node_id,bed_id,bed_depth_m,bed_area_m2,nominal_flow_Lmin,nominal_HRT_min,pressure_sensor_location,install_access_score,bed_media,hydraulic_position,expected_clean_bed_pressure_drop_kPa

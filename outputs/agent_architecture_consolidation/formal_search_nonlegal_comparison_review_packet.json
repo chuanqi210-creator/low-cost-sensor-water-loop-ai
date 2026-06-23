@@ -1,0 +1,28 @@
+{
+  "formal_search_nonlegal_comparison_review_packet_status": "formal_search_nonlegal_review_packet_blocked_at_validation_execution",
+  "validation_execution_status": "formal_search_result_validation_execution_blocked_at_row_preflight",
+  "formal_search_result_package_path": "",
+  "review_packet_row_count": 0,
+  "required_reviewer_field_count": 8,
+  "review_packet_rows": [],
+  "review_packet_patch_plan": [],
+  "human_review_completed": false,
+  "can_enter_human_nonlegal_comparison_review": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "required_reviewer_fields": [
+    "reviewer_id",
+    "review_time",
+    "nonlegal_overlap_assessment",
+    "distinguishing_technical_detail",
+    "fallback_scope_recommendation",
+    "preserved_field_validation_gate",
+    "evidence_boundary_acknowledgement",
+    "reviewer_signature_or_trace_id"
+  ],
+  "failure_boundary": "该 review packet 只把结构验收通过的命中项组织成人工非法律技术比较审查任务；它不包含审查结论，不输出新颖性/创造性/授权判断，也不能替代正式检索报告、专利代理人意见或 field validation。",
+  "preflight_blockers": [
+    "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+  ]
+}

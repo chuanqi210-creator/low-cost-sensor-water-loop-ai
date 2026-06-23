@@ -1,0 +1,789 @@
+{
+  "method_contract": {
+    "upgrade_id": "P5_soft_sensor_node_modality_missingness",
+    "borrowed_from": [
+      "GRU-D-style use of missingness masks and time gaps as signals",
+      "BRITS-style bidirectional imputation framing for multivariate time series",
+      "scikit-learn native missing-value handling in histogram gradient boosting as a lightweight tabular option",
+      "PySensors-style sparse sensor placement/reconstruction interface from Agent48",
+      "pressure/headloss proxy channel for weak catalyst and hydraulic-state observability from R8b",
+      "hydraulic path coverage contract from Agent48 for process-stage-aware feature annotation"
+    ],
+    "reality_mapping": "把低成本传感从全局列升级为 node-zone-modality-time-path 张量，并把缺失、延迟、低频采样和循环路径阶段作为状态估计证据。",
+    "data_needs": [
+      "batch_id",
+      "timestamp_min",
+      "layout_id",
+      "node_id",
+      "zone",
+      "modality",
+      "sensor_value",
+      "availability_mask",
+      "missingness_reason",
+      "time_since_last_observed_min",
+      "sensor_quality_score",
+      "path_stage_id",
+      "hydraulic_path_role",
+      "stage_coverage_mask",
+      "direct_path_stage_coverage_mask",
+      "proxy_path_stage_coverage_mask",
+      "release_boundary_flag",
+      "recirculation_loop_flag"
+    ],
+    "implementation_path": [
+      "src/water_ai/agents/soft_sensor_agent.py",
+      "src/water_ai/agents/soft_sensor_matrix_coupling_agent.py",
+      "experiments/run_agent54_soft_sensor_matrix_coupling.py"
+    ],
+    "evaluation_metrics": [
+      "layout_contract_score",
+      "missingness_robustness_score",
+      "masked_state_support",
+      "node_specific_value_rate",
+      "layout_holdout_masked_mae",
+      "hydraulic_path_covered_stage_count",
+      "hydraulic_path_release_endpoint_label_completion"
+    ],
+    "failure_boundary": "synthetic mask stress only proves schema and interface; field missingness and layout holdout are required before release-gate claims."
+  },
+  "feature_contract": {
+    "layout_id": "greedy_marginal:6x10",
+    "layout_source": "Agent48.soft_sensor_interface",
+    "tensor_axes": [
+      "time",
+      "node",
+      "modality",
+      "feature_channel"
+    ],
+    "feature_channels": [
+      "sensor_value",
+      "availability_mask",
+      "time_since_last_observed_min",
+      "data_quality_score",
+      "observation_axis_weight",
+      "hydraulic_path_stage_prior",
+      "grey_box_residual_prior"
+    ],
+    "selected_nodes": [
+      "N0_influent",
+      "N1_equalization_tank",
+      "N2_reactor_mid",
+      "N3_catalyst_bed_outlet",
+      "N4_recirculation_loop",
+      "N5_polishing_inlet"
+    ],
+    "selected_modalities": [
+      "EC_uScm",
+      "ORP_mV",
+      "UV254_abs",
+      "flow_Lmin",
+      "turbidity_NTU"
+    ],
+    "node_count": 6,
+    "modality_count": 5,
+    "matrix_shape": [
+      6,
+      10
+    ],
+    "mask_shape": [
+      6,
+      5
+    ],
+    "field_schema_patch": [
+      "batch_id",
+      "timestamp_min",
+      "layout_id",
+      "node_id",
+      "zone",
+      "modality",
+      "sensor_value",
+      "availability_mask",
+      "missingness_reason",
+      "time_since_last_observed_min",
+      "sensor_quality_score",
+      "path_stage_id",
+      "hydraulic_path_role",
+      "stage_coverage_mask",
+      "direct_path_stage_coverage_mask",
+      "proxy_path_stage_coverage_mask",
+      "release_boundary_flag",
+      "recirculation_loop_flag"
+    ],
+    "coverage_for_soft_sensor": {
+      "pollutant_residual_observability": 0.814,
+      "reaction_completion_observability": 0.712,
+      "oxidant_observability": 0.775,
+      "catalyst_activity_observability": 0.3,
+      "matrix_interference_observability": 0.851,
+      "hydraulic_observability": 0.76,
+      "fault_classification_observability": 0.587,
+      "control_latency_gain": 0.837,
+      "soft_sensor_reconstruction_gain": 0.827,
+      "cost_efficiency": 1.0,
+      "weak_state_coverage": 0.3,
+      "total_cost_index": 4.176,
+      "node_diversity_count": 6.0,
+      "modality_diversity_count": 5.0
+    },
+    "grey_box_prior_available": true,
+    "grey_box_status": "synthetic_grey_box_physics_prior_ready_needs_field_calibration",
+    "hydraulic_path_feature_contract": {
+      "contract_id": "R8u63_hydraulic_path_aware_soft_sensor_contract",
+      "source": "Agent48.hydraulic_path_coverage_contract",
+      "contract_status": "hydraulic_path_contract_ready_needs_field_topology_and_release_endpoint",
+      "path_id": "low_cost_circular_treatment_path_v1",
+      "path_stage_count": 6,
+      "covered_stage_count": 6,
+      "stage_rows_available": 6,
+      "feature_terms": [
+        "hydraulic_path_coverage_rate",
+        "direct_hydraulic_path_coverage_rate",
+        "proxy_hydraulic_path_coverage_rate",
+        "recirculation_loop_observed_flag",
+        "low_frequency_time_buffer_observed_flag",
+        "release_boundary_proxy_flag",
+        "final_effluent_direct_observed_flag",
+        "release_endpoint_label_missing_flag"
+      ],
+      "field_schema_terms": [
+        "path_stage_id",
+        "hydraulic_path_role",
+        "stage_coverage_mask",
+        "direct_path_stage_coverage_mask",
+        "proxy_path_stage_coverage_mask",
+        "release_boundary_flag",
+        "recirculation_loop_flag",
+        "low_frequency_time_buffer_flag"
+      ],
+      "recirculation_loop_observed": true,
+      "low_frequency_time_buffer_observed": true,
+      "final_release_gate_needs_effluent_label": true,
+      "release_boundary_directly_observed": false,
+      "can_support_soft_sensor_path_prior": true,
+      "can_support_control_replay_design_prior": true,
+      "can_use_for_release_gate": false,
+      "field_validation_required": true,
+      "field_required_tables": [
+        "site_topology_or_bed_geometry",
+        "node_modality_sensor_timeseries",
+        "campaign_operation_log",
+        "offline_lab_results",
+        "agent52_replay_table"
+      ],
+      "unresolved_requirements": [
+        "field_topology_and_hydraulic_path_labels_required",
+        "final_effluent_release_endpoint_not_directly_observed",
+        "pressure_drop_or_headloss_proxy_not_installed_in_selected_layout"
+      ],
+      "failure_boundary": "numeric hydraulic path features can annotate soft-sensor models with process-stage context, while field schema terms preserve the human-readable stage labels; neither can convert polishing proxy coverage into final effluent release support without field topology, path labels and endpoint labels."
+    },
+    "hydraulic_path_feature_terms": [
+      "hydraulic_path_coverage_rate",
+      "direct_hydraulic_path_coverage_rate",
+      "proxy_hydraulic_path_coverage_rate",
+      "recirculation_loop_observed_flag",
+      "low_frequency_time_buffer_observed_flag",
+      "release_boundary_proxy_flag",
+      "final_effluent_direct_observed_flag",
+      "release_endpoint_label_missing_flag"
+    ],
+    "field_path_endpoint_label_package_contract": {
+      "contract_id": "R8u66_field_path_endpoint_label_package_contract",
+      "package_status": "field_path_endpoint_label_package_contract_ready_needs_real_rows",
+      "minimum_matched_batch_count": 5,
+      "required_tables": [
+        "site_topology_or_bed_geometry",
+        "node_modality_sensor_timeseries",
+        "hydraulic_path_stage_labels",
+        "final_effluent_endpoint_labels",
+        "campaign_operation_log",
+        "offline_lab_results"
+      ],
+      "table_contracts": {
+        "site_topology_or_bed_geometry": {
+          "required_fields": [
+            "site_id",
+            "node_id",
+            "zone",
+            "upstream_node_id",
+            "downstream_node_id",
+            "path_stage_id",
+            "hydraulic_path_role",
+            "nominal_flow_Lmin",
+            "nominal_HRT_min",
+            "recycle_ratio",
+            "release_boundary_flag",
+            "recirculation_loop_flag"
+          ],
+          "primary_key": [
+            "site_id",
+            "node_id"
+          ],
+          "purpose": "map installed nodes to hydraulic path stages before field layout holdout"
+        },
+        "node_modality_sensor_timeseries": {
+          "required_fields": [
+            "batch_id",
+            "timestamp_min",
+            "layout_id",
+            "node_id",
+            "zone",
+            "modality",
+            "sensor_value",
+            "availability_mask",
+            "time_since_last_observed_min",
+            "data_origin"
+          ],
+          "primary_key": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "modality"
+          ],
+          "purpose": "replace global modality fallback with node-specific field observations"
+        },
+        "hydraulic_path_stage_labels": {
+          "required_fields": [
+            "batch_id",
+            "layout_id",
+            "node_id",
+            "zone",
+            "path_stage_id",
+            "hydraulic_path_role",
+            "stage_coverage_label",
+            "direct_path_stage_coverage_label",
+            "proxy_path_stage_coverage_label",
+            "label_source",
+            "reviewer_id",
+            "review_time_min"
+          ],
+          "primary_key": [
+            "batch_id",
+            "layout_id",
+            "node_id",
+            "path_stage_id"
+          ],
+          "purpose": "validate whether synthetic path-stage coverage features match field-reviewed path labels"
+        },
+        "final_effluent_endpoint_labels": {
+          "required_fields": [
+            "batch_id",
+            "endpoint_node_id",
+            "sample_time_min",
+            "final_effluent_direct_observed",
+            "release_gate_label",
+            "release_risk_label",
+            "analyte",
+            "value",
+            "unit",
+            "qa_flag",
+            "reviewer_id"
+          ],
+          "primary_key": [
+            "batch_id",
+            "endpoint_node_id",
+            "sample_time_min",
+            "analyte"
+          ],
+          "purpose": "prevent polishing proxy observations from being treated as final effluent release support"
+        },
+        "campaign_operation_log": {
+          "required_fields": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "start_min",
+            "end_min",
+            "recycle_ratio",
+            "hold_time_min",
+            "release_policy",
+            "operator_override"
+          ],
+          "primary_key": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "start_min"
+          ],
+          "purpose": "connect field labels to recycle, hold, dose, switch and release candidate actions"
+        },
+        "offline_lab_results": {
+          "required_fields": [
+            "batch_id",
+            "sample_time_min",
+            "sample_source",
+            "analyte",
+            "value",
+            "unit",
+            "method",
+            "qa_flag"
+          ],
+          "primary_key": [
+            "batch_id",
+            "sample_time_min",
+            "sample_source",
+            "analyte"
+          ],
+          "purpose": "provide field labels for residual, byproduct/release risk and soft-sensor holdout targets"
+        }
+      },
+      "template_marker_policy": {
+        "reject_template_only": true,
+        "reject_todo_values": true,
+        "reject_sample_only": true
+      },
+      "acceptance_gates": [
+        "all_required_tables_present",
+        "no_template_or_todo_rows",
+        "required_fields_nonempty",
+        "minimum_matched_batch_count_met",
+        "node_specific_values_present",
+        "final_effluent_endpoint_labels_present",
+        "operator_or_reviewer_fields_present"
+      ],
+      "can_route_to_field_layout_holdout_when": "all required tables contain non-template field rows and at least 5 batch_id values are matched across node sensor values, path stage labels, final endpoint labels, operation logs and lab labels",
+      "cannot_do": [
+        "cannot upgrade synthetic layout holdout to field performance without accepted package rows",
+        "cannot use final effluent release gate labels without direct endpoint lab/reviewer evidence",
+        "cannot write actuator or release gate from this package contract alone"
+      ]
+    },
+    "field_path_endpoint_label_package_preflight": {
+      "preflight_status": "no_field_path_endpoint_label_package_supplied",
+      "required_tables": [
+        "site_topology_or_bed_geometry",
+        "node_modality_sensor_timeseries",
+        "hydraulic_path_stage_labels",
+        "final_effluent_endpoint_labels",
+        "campaign_operation_log",
+        "offline_lab_results"
+      ],
+      "missing_tables": [
+        "site_topology_or_bed_geometry",
+        "node_modality_sensor_timeseries",
+        "hydraulic_path_stage_labels",
+        "final_effluent_endpoint_labels",
+        "campaign_operation_log",
+        "offline_lab_results"
+      ],
+      "empty_tables": [],
+      "invalid_table_shapes": [],
+      "template_marker_count": 0,
+      "required_field_gap_count": 0,
+      "table_row_counts": {
+        "site_topology_or_bed_geometry": 0,
+        "node_modality_sensor_timeseries": 0,
+        "hydraulic_path_stage_labels": 0,
+        "final_effluent_endpoint_labels": 0,
+        "campaign_operation_log": 0,
+        "offline_lab_results": 0
+      },
+      "table_batch_counts": {
+        "site_topology_or_bed_geometry": 0,
+        "node_modality_sensor_timeseries": 0,
+        "hydraulic_path_stage_labels": 0,
+        "final_effluent_endpoint_labels": 0,
+        "campaign_operation_log": 0,
+        "offline_lab_results": 0
+      },
+      "batch_alignment_gap_count": 0,
+      "required_matched_batch_deficit": 5,
+      "missing_batch_ids_by_table": {},
+      "alignment_patch_plan": {
+        "patch_plan_id": "R8u76_field_path_endpoint_batch_alignment_patch_plan",
+        "patch_plan_status": "field_path_endpoint_alignment_blocked_by_preflight",
+        "required_tables": [
+          "site_topology_or_bed_geometry",
+          "node_modality_sensor_timeseries",
+          "hydraulic_path_stage_labels",
+          "final_effluent_endpoint_labels",
+          "campaign_operation_log",
+          "offline_lab_results"
+        ],
+        "batch_alignment_tables": [
+          "node_modality_sensor_timeseries",
+          "hydraulic_path_stage_labels",
+          "final_effluent_endpoint_labels",
+          "campaign_operation_log",
+          "offline_lab_results"
+        ],
+        "table_row_counts": {
+          "site_topology_or_bed_geometry": 0,
+          "node_modality_sensor_timeseries": 0,
+          "hydraulic_path_stage_labels": 0,
+          "final_effluent_endpoint_labels": 0,
+          "campaign_operation_log": 0,
+          "offline_lab_results": 0
+        },
+        "table_batch_counts": {
+          "site_topology_or_bed_geometry": 0,
+          "node_modality_sensor_timeseries": 0,
+          "hydraulic_path_stage_labels": 0,
+          "final_effluent_endpoint_labels": 0,
+          "campaign_operation_log": 0,
+          "offline_lab_results": 0
+        },
+        "matched_batch_count": 0,
+        "minimum_matched_batch_count": 5,
+        "required_matched_batch_deficit": 5,
+        "batch_alignment_gap_count": 0,
+        "item_count": 7,
+        "items": [
+          {
+            "item_id": "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED",
+            "priority": "P2",
+            "target_table": "site_topology_or_bed_geometry",
+            "action": "add_real_field_rows",
+            "minimum_rows_hint": 1,
+            "acceptance": "site_topology_or_bed_geometry has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+          },
+          {
+            "item_id": "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED",
+            "priority": "P1",
+            "target_table": "node_modality_sensor_timeseries",
+            "action": "add_real_field_rows",
+            "minimum_rows_hint": 5,
+            "acceptance": "node_modality_sensor_timeseries has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+          },
+          {
+            "item_id": "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED",
+            "priority": "P1",
+            "target_table": "hydraulic_path_stage_labels",
+            "action": "add_real_field_rows",
+            "minimum_rows_hint": 5,
+            "acceptance": "hydraulic_path_stage_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+          },
+          {
+            "item_id": "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED",
+            "priority": "P1",
+            "target_table": "final_effluent_endpoint_labels",
+            "action": "add_real_field_rows",
+            "minimum_rows_hint": 5,
+            "acceptance": "final_effluent_endpoint_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+          },
+          {
+            "item_id": "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED",
+            "priority": "P1",
+            "target_table": "campaign_operation_log",
+            "action": "add_real_field_rows",
+            "minimum_rows_hint": 5,
+            "acceptance": "campaign_operation_log has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+          },
+          {
+            "item_id": "R8U76_OFFLINE_LAB_RESULTS_ROWS_REQUIRED",
+            "priority": "P1",
+            "target_table": "offline_lab_results",
+            "action": "add_real_field_rows",
+            "minimum_rows_hint": 5,
+            "acceptance": "offline_lab_results has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+          },
+          {
+            "item_id": "R8U76_MINIMUM_MATCHED_BATCH_DEFICIT",
+            "priority": "P1",
+            "target_table": "cross_table_batch_alignment",
+            "action": "collect_same_batch_bundle_across_path_endpoint_tables",
+            "required_matched_batch_deficit": 5,
+            "acceptance": "matched_batch_count >= 5 across node_modality_sensor_timeseries, hydraulic_path_stage_labels, final_effluent_endpoint_labels, campaign_operation_log, offline_lab_results."
+          }
+        ],
+        "field_boundary": "This patch plan only describes how to collect or align field package rows. It does not create field evidence, does not validate control performance, and cannot authorize actuator or release gate writeback."
+      },
+      "matched_batch_count": 0,
+      "accepted_batch_ids": [],
+      "can_route_to_field_layout_holdout": false,
+      "next_operator_action": "submit_field_path_endpoint_label_package_rows",
+      "field_boundary": "contract only; no real path/endpoint package rows have been supplied"
+    },
+    "pressure_headloss_candidate_contract": {
+      "contract_id": "R8c_pressure_headloss_candidate_soft_sensor_contract",
+      "source": "R2.observation_contract.base_layout",
+      "pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+      "candidate_count": 3,
+      "candidate_ids": [
+        "N3_catalyst_bed:pressure_drop_kPa",
+        "N3_catalyst_bed:headloss_kPa_per_m",
+        "N3_catalyst_bed:flow_normalized_pressure_residual"
+      ],
+      "candidate_feature_terms": [
+        "pressure_drop_kPa",
+        "headloss_kPa_per_m",
+        "flow_normalized_pressure_residual"
+      ],
+      "field_required_tables": [
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "campaign_operation_log",
+        "site_topology_or_bed_geometry"
+      ],
+      "minimum_matched_batch_count": 3,
+      "soft_sensor_use": "optional_candidate_feature_channel_for_catalyst_activity_and_hydraulic_state_only",
+      "field_validation_required": true,
+      "can_use_as_installed_sensor": false,
+      "can_write_to_release_gate": false,
+      "failure_boundary": "pressure/headloss candidates can shape the soft-sensor schema and missingness stress plan, but cannot be interpreted as field evidence until topology, bed geometry, matched lab labels and operation logs are imported."
+    },
+    "pressure_headloss_candidate_feature_terms": [
+      "pressure_drop_kPa",
+      "headloss_kPa_per_m",
+      "flow_normalized_pressure_residual"
+    ],
+    "layout_context_from_live_agent": {
+      "layout_status": "global_modality_fallback_used_for_layout",
+      "layout_id": "greedy_marginal:6x10",
+      "selected_nodes": [
+        "N0_influent",
+        "N1_equalization_tank",
+        "N2_reactor_mid",
+        "N3_catalyst_bed_outlet",
+        "N4_recirculation_loop",
+        "N5_polishing_inlet"
+      ],
+      "selected_modalities": [
+        "EC_uScm",
+        "ORP_mV",
+        "UV254_abs",
+        "flow_Lmin",
+        "turbidity_NTU"
+      ],
+      "mask_shape": [
+        6,
+        5
+      ],
+      "mask_availability_rate": 1.0,
+      "layout_missingness_penalty": 0.0,
+      "node_specific_value_rate": 0.0,
+      "missingness_by_modality": {
+        "EC_uScm": 0.0,
+        "ORP_mV": 0.0,
+        "UV254_abs": 0.0,
+        "flow_Lmin": 0.0,
+        "turbidity_NTU": 0.0
+      },
+      "hydraulic_path_feature_values": {
+        "hydraulic_path_coverage_rate": 1.0,
+        "direct_hydraulic_path_coverage_rate": 0.0,
+        "proxy_hydraulic_path_coverage_rate": 0.0,
+        "recirculation_loop_observed_flag": 1.0,
+        "low_frequency_time_buffer_observed_flag": 1.0,
+        "release_boundary_proxy_flag": 1.0,
+        "final_effluent_direct_observed_flag": 0.0,
+        "release_endpoint_label_missing_flag": 1.0
+      },
+      "hydraulic_path_contract": {
+        "path_id": "low_cost_circular_treatment_path_v1",
+        "contract_status": "hydraulic_path_contract_ready_needs_field_topology_and_release_endpoint",
+        "covered_stage_count": 6,
+        "path_stage_count": 6,
+        "recirculation_loop_observed": true,
+        "low_frequency_time_buffer_observed": true,
+        "final_release_gate_needs_effluent_label": true,
+        "can_support_soft_sensor_path_prior": true,
+        "can_support_control_replay_design_prior": true
+      },
+      "requires_field_node_values": true,
+      "field_boundary": "global modality fallback is an interface bridge; field deployment must provide node-specific values or explicit missingness masks"
+    },
+    "cannot_do": [
+      "cannot train a field-validated layout-aware model without node-specific field values",
+      "cannot treat synthetic dropout as real fouling, communication loss or delayed lab evidence",
+      "cannot treat pressure/headloss candidates as installed sensors before field topology and labels",
+      "cannot treat polishing proxy coverage as final effluent release support",
+      "cannot write release gate from layout contract alone"
+    ]
+  },
+  "missingness_stress_tests": [
+    {
+      "scenario_id": "full_layout_available",
+      "missing_cells": 0,
+      "critical_target": "all_states",
+      "fallback": "direct_node_modality_values",
+      "missing_fraction": 0.0,
+      "target_support_score": 0.922,
+      "layout_reconstruction_gain": 0.827,
+      "estimated_masked_state_support": 0.824,
+      "field_validation_boundary": "synthetic mask stress only; must replay field missingness, fouling, delay and maintenance events"
+    },
+    {
+      "scenario_id": "catalyst_bed_uv254_orp_missing",
+      "missing_cells": 2,
+      "critical_target": "catalyst_activity",
+      "fallback": "pressure_drop_regeneration_response_and_grey_box_rate_residual",
+      "missing_fraction": 0.067,
+      "target_support_score": 0.3,
+      "layout_reconstruction_gain": 0.827,
+      "estimated_masked_state_support": 0.472,
+      "field_validation_boundary": "synthetic mask stress only; must replay field missingness, fouling, delay and maintenance events"
+    },
+    {
+      "scenario_id": "recycle_loop_flow_delay",
+      "missing_cells": 3,
+      "critical_target": "hydraulic_confidence",
+      "fallback": "time_since_last_observed_and_loop_hold_time_prior",
+      "missing_fraction": 0.1,
+      "target_support_score": 0.76,
+      "layout_reconstruction_gain": 0.827,
+      "estimated_masked_state_support": 0.697,
+      "field_validation_boundary": "synthetic mask stress only; must replay field missingness, fouling, delay and maintenance events"
+    },
+    {
+      "scenario_id": "matrix_shock_ec_turbidity_sparse",
+      "missing_cells": 3,
+      "critical_target": "matrix_interference",
+      "fallback": "uv254_ph_orp_proxy_and_fast_proxy_event_log",
+      "missing_fraction": 0.1,
+      "target_support_score": 0.851,
+      "layout_reconstruction_gain": 0.827,
+      "estimated_masked_state_support": 0.745,
+      "field_validation_boundary": "synthetic mask stress only; must replay field missingness, fouling, delay and maintenance events"
+    }
+  ],
+  "training_schema_gap": {
+    "training_features": [
+      "timestamp_min",
+      "cycle_id",
+      "pH",
+      "ORP_mV",
+      "EC_uScm",
+      "turbidity_NTU",
+      "temp_C",
+      "flow_Lmin",
+      "UV254_abs",
+      "uv254_removal",
+      "orp_norm",
+      "ec_norm",
+      "turbidity_norm",
+      "ph_penalty",
+      "flow_penalty",
+      "hydraulic_path_coverage_rate",
+      "direct_hydraulic_path_coverage_rate",
+      "proxy_hydraulic_path_coverage_rate",
+      "recirculation_loop_observed_flag",
+      "low_frequency_time_buffer_observed_flag",
+      "release_boundary_proxy_flag",
+      "final_effluent_direct_observed_flag",
+      "release_endpoint_label_missing_flag"
+    ],
+    "required_layout_terms": [
+      "layout_id",
+      "node_id",
+      "zone",
+      "modality",
+      "availability_mask",
+      "time_since_last_observed_min"
+    ],
+    "missing_layout_terms": [
+      "layout_id",
+      "node_id",
+      "zone",
+      "modality",
+      "availability_mask",
+      "time_since_last_observed_min",
+      "grey_box_residual_prior"
+    ],
+    "pressure_headloss_candidate_terms": [
+      "pressure_drop_kPa",
+      "headloss_kPa_per_m",
+      "flow_normalized_pressure_residual"
+    ],
+    "missing_pressure_headloss_terms": [
+      "pressure_drop_kPa",
+      "headloss_kPa_per_m",
+      "flow_normalized_pressure_residual"
+    ],
+    "hydraulic_path_feature_terms": [
+      "hydraulic_path_coverage_rate",
+      "direct_hydraulic_path_coverage_rate",
+      "proxy_hydraulic_path_coverage_rate",
+      "recirculation_loop_observed_flag",
+      "low_frequency_time_buffer_observed_flag",
+      "release_boundary_proxy_flag",
+      "final_effluent_direct_observed_flag",
+      "release_endpoint_label_missing_flag"
+    ],
+    "missing_hydraulic_path_terms": [],
+    "current_model_layout_aware": false,
+    "current_model_pressure_headloss_ready": false,
+    "current_model_hydraulic_path_ready": true,
+    "field_blockers": [
+      "node_specific_sensor_values_missing",
+      "field_missingness_reason_labels_missing",
+      "layout_id_holdout_split_missing",
+      "pressure_headloss_field_topology_missing",
+      "pressure_headloss_matched_lab_labels_missing",
+      "hydraulic_path_stage_labels_missing",
+      "final_effluent_release_endpoint_labels_missing"
+    ]
+  },
+  "readiness": {
+    "soft_sensor_matrix_status": "synthetic_layout_aware_soft_sensor_contract_ready_needs_field_missingness",
+    "soft_sensor_matrix_score": 0.844,
+    "layout_contract_score": 1.0,
+    "mask_shape_ok": true,
+    "missingness_robustness_score": 0.684,
+    "live_layout_context_status": "global_modality_fallback_used_for_layout",
+    "current_model_layout_aware": false,
+    "field_ready": false,
+    "can_update_soft_sensor_training_schema": true,
+    "pressure_headloss_candidate_pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+    "pressure_headloss_candidate_count": 3,
+    "pressure_headloss_candidate_ids": [
+      "N3_catalyst_bed:pressure_drop_kPa",
+      "N3_catalyst_bed:headloss_kPa_per_m",
+      "N3_catalyst_bed:flow_normalized_pressure_residual"
+    ],
+    "pressure_headloss_schema_ready": false,
+    "can_update_pressure_headloss_candidate_schema": true,
+    "can_use_pressure_headloss_for_field_claim": false,
+    "hydraulic_path_contract_status": "hydraulic_path_contract_ready_needs_field_topology_and_release_endpoint",
+    "hydraulic_path_feature_term_count": 8,
+    "hydraulic_path_stage_count": 6,
+    "hydraulic_path_covered_stage_count": 6,
+    "hydraulic_path_schema_ready": true,
+    "hydraulic_path_feature_variation_status": "synthetic_path_feature_variation_ready_for_layout_holdout",
+    "hydraulic_path_feature_variation_ready": true,
+    "layout_holdout_status": "synthetic_layout_holdout_ready_needs_field_path_labels",
+    "layout_holdout_ready": true,
+    "layout_holdout_mean_mae": 0.01524,
+    "layout_holdout_train_layout_count": 5,
+    "layout_holdout_heldout_layout_count": 2,
+    "layout_holdout_field_boundary": "synthetic layout holdout checks path-feature schema generalization only; it cannot prove field performance without path labels, node-specific values and endpoint lab labels",
+    "field_path_endpoint_label_package_status": "no_field_path_endpoint_label_package_supplied",
+    "field_path_endpoint_label_package_ready": false,
+    "field_path_endpoint_label_matched_batch_count": 0,
+    "field_path_endpoint_label_minimum_matched_batch_count": 5,
+    "field_path_endpoint_label_missing_tables": [
+      "site_topology_or_bed_geometry",
+      "node_modality_sensor_timeseries",
+      "hydraulic_path_stage_labels",
+      "final_effluent_endpoint_labels",
+      "campaign_operation_log",
+      "offline_lab_results"
+    ],
+    "field_path_endpoint_label_preflight_blockers": [],
+    "can_route_to_field_layout_holdout": false,
+    "hydraulic_path_final_release_gate_needs_effluent_label": true,
+    "hydraulic_path_release_boundary_directly_observed": false,
+    "can_update_hydraulic_path_feature_schema": true,
+    "can_use_hydraulic_path_for_release_gate": false,
+    "can_update_live_soft_sensor_inference_context": true,
+    "can_write_to_release_gate": false,
+    "next_recommended_core_action": "R8u66_collect_field_path_endpoint_labels_for_layout_holdout"
+  },
+  "agent50_writeback": {
+    "allowed_writeback": [
+      "soft_sensor_training_schema_patch",
+      "soft_sensor_inference_layout_context",
+      "hydraulic_path_feature_schema_patch",
+      "field_path_endpoint_label_package_preflight",
+      "P5_completion_status_for_governance"
+    ],
+    "blocked_writeback": [
+      "release_gate_policy",
+      "field_missingness_claim",
+      "layout_holdout_performance_claim",
+      "field_layout_holdout_performance_claim_without_accepted_package"
+    ],
+    "can_advance_governance_priority": true,
+    "policy_effect": "move_to_P7_engineering_constraints_in_reward_and_arbitration"
+  }
+}

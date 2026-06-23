@@ -1,0 +1,1088 @@
+[
+  {
+    "timestamp_min": 0,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.241,
+      "ORP_mV": 354.09,
+      "EC_uScm": 1325.93,
+      "turbidity_NTU": 31.748,
+      "temp_C": 24.726,
+      "flow_Lmin": 1.197,
+      "UV254_abs": 1.1778
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 1,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.282,
+      "ORP_mV": 367.98,
+      "EC_uScm": 1340.31,
+      "turbidity_NTU": 31.215,
+      "temp_C": 24.845,
+      "flow_Lmin": 1.183,
+      "UV254_abs": 1.143
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 2,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.302,
+      "ORP_mV": 372.93,
+      "EC_uScm": 1311.17,
+      "turbidity_NTU": 28.441,
+      "temp_C": 24.789,
+      "flow_Lmin": 1.209,
+      "UV254_abs": 1.1015
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 3,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.298,
+      "ORP_mV": 381.95,
+      "EC_uScm": 1335.76,
+      "turbidity_NTU": 29.057,
+      "temp_C": 24.922,
+      "flow_Lmin": 1.214,
+      "UV254_abs": 1.1098
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 4,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.334,
+      "ORP_mV": 395.82,
+      "EC_uScm": 1341.74,
+      "turbidity_NTU": 27.228,
+      "temp_C": 24.892,
+      "flow_Lmin": 1.229,
+      "UV254_abs": 1.0564
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 5,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.337,
+      "ORP_mV": 390.75,
+      "EC_uScm": 1341.11,
+      "turbidity_NTU": 26.446,
+      "temp_C": 25.048,
+      "flow_Lmin": 1.225,
+      "UV254_abs": 1.021
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 6,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.356,
+      "ORP_mV": 390.14,
+      "EC_uScm": 1364.43,
+      "turbidity_NTU": 26.984,
+      "temp_C": 24.819,
+      "flow_Lmin": 1.237,
+      "UV254_abs": 0.9872
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 7,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.322,
+      "ORP_mV": 413.43,
+      "EC_uScm": 1367.44,
+      "turbidity_NTU": 23.875,
+      "temp_C": 25.076,
+      "flow_Lmin": 1.256,
+      "UV254_abs": 0.989
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 8,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.41,
+      "ORP_mV": 419.41,
+      "EC_uScm": 1375.43,
+      "turbidity_NTU": 23.146,
+      "temp_C": 25.089,
+      "flow_Lmin": 1.239,
+      "UV254_abs": 0.9302
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 9,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.321,
+      "ORP_mV": 415.52,
+      "EC_uScm": 1368.15,
+      "turbidity_NTU": 24.384,
+      "temp_C": 24.907,
+      "flow_Lmin": 1.228,
+      "UV254_abs": 0.9243
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 10,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.419,
+      "ORP_mV": null,
+      "EC_uScm": 1347.61,
+      "turbidity_NTU": 20.535,
+      "temp_C": 25.129,
+      "flow_Lmin": 1.239,
+      "UV254_abs": 0.8676
+    },
+    "ground_truth_faults": [
+      "missing_orp"
+    ]
+  },
+  {
+    "timestamp_min": 11,
+    "cycle_id": 0,
+    "values": {
+      "pH": 7.404,
+      "ORP_mV": 444.71,
+      "EC_uScm": 1388.38,
+      "turbidity_NTU": 21.971,
+      "temp_C": 25.165,
+      "flow_Lmin": 1.272,
+      "UV254_abs": 0.889
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 12,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.387,
+      "ORP_mV": 446.18,
+      "EC_uScm": 1360.67,
+      "turbidity_NTU": 22.051,
+      "temp_C": 25.236,
+      "flow_Lmin": 1.253,
+      "UV254_abs": 0.8026
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 13,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.343,
+      "ORP_mV": 454.18,
+      "EC_uScm": 1359.24,
+      "turbidity_NTU": 20.155,
+      "temp_C": 25.272,
+      "flow_Lmin": 1.222,
+      "UV254_abs": 0.8712
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 14,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.378,
+      "ORP_mV": 451.63,
+      "EC_uScm": 1400.21,
+      "turbidity_NTU": 20.124,
+      "temp_C": 25.23,
+      "flow_Lmin": 1.253,
+      "UV254_abs": 0.7939
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 15,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.336,
+      "ORP_mV": 466.32,
+      "EC_uScm": 1396.91,
+      "turbidity_NTU": 18.225,
+      "temp_C": 25.326,
+      "flow_Lmin": 1.252,
+      "UV254_abs": 0.7793
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 16,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.292,
+      "ORP_mV": 461.84,
+      "EC_uScm": 1395.35,
+      "turbidity_NTU": 18.04,
+      "temp_C": 25.392,
+      "flow_Lmin": 1.207,
+      "UV254_abs": 0.8024
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 17,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.284,
+      "ORP_mV": 461.33,
+      "EC_uScm": 1410.54,
+      "turbidity_NTU": 18.553,
+      "temp_C": 25.379,
+      "flow_Lmin": 1.22,
+      "UV254_abs": 0.7554
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 18,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.32,
+      "ORP_mV": 476.73,
+      "EC_uScm": 1366.25,
+      "turbidity_NTU": 17.265,
+      "temp_C": 25.386,
+      "flow_Lmin": 1.207,
+      "UV254_abs": 0.7524
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 19,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.32,
+      "ORP_mV": 492.52,
+      "EC_uScm": 1375.44,
+      "turbidity_NTU": 16.115,
+      "temp_C": 25.34,
+      "flow_Lmin": 1.199,
+      "UV254_abs": 0.7383
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 20,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.272,
+      "ORP_mV": 483.64,
+      "EC_uScm": 1402.35,
+      "turbidity_NTU": 13.839,
+      "temp_C": 25.31,
+      "flow_Lmin": 1.194,
+      "UV254_abs": 0.7075
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 21,
+    "cycle_id": 1,
+    "values": {
+      "pH": 10.95,
+      "ORP_mV": 481.04,
+      "EC_uScm": 1380.27,
+      "turbidity_NTU": 15.57,
+      "temp_C": 25.388,
+      "flow_Lmin": 1.219,
+      "UV254_abs": 0.6892
+    },
+    "ground_truth_faults": [
+      "ph_spike"
+    ]
+  },
+  {
+    "timestamp_min": 22,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.23,
+      "ORP_mV": 487.46,
+      "EC_uScm": 1363.14,
+      "turbidity_NTU": 14.766,
+      "temp_C": 25.242,
+      "flow_Lmin": 1.168,
+      "UV254_abs": 0.6887
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 23,
+    "cycle_id": 1,
+    "values": {
+      "pH": 7.192,
+      "ORP_mV": 491.32,
+      "EC_uScm": 1382.62,
+      "turbidity_NTU": 14.992,
+      "temp_C": 25.609,
+      "flow_Lmin": 1.143,
+      "UV254_abs": 0.6383
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 24,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.204,
+      "ORP_mV": 500.28,
+      "EC_uScm": 1382.9,
+      "turbidity_NTU": 11.668,
+      "temp_C": 25.607,
+      "flow_Lmin": 1.14,
+      "UV254_abs": 0.6482
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 25,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.148,
+      "ORP_mV": 499.98,
+      "EC_uScm": 1382.11,
+      "turbidity_NTU": 13.22,
+      "temp_C": 25.565,
+      "flow_Lmin": 1.169,
+      "UV254_abs": 0.6191
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 26,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.182,
+      "ORP_mV": 513.99,
+      "EC_uScm": 1376.41,
+      "turbidity_NTU": 12.646,
+      "temp_C": 25.8,
+      "flow_Lmin": 1.136,
+      "UV254_abs": 0.6232
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 27,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.162,
+      "ORP_mV": 505.78,
+      "EC_uScm": 1366.76,
+      "turbidity_NTU": 12.616,
+      "temp_C": 25.661,
+      "flow_Lmin": 1.128,
+      "UV254_abs": 0.5478
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 28,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.181,
+      "ORP_mV": 499.89,
+      "EC_uScm": 1331.74,
+      "turbidity_NTU": 10.834,
+      "temp_C": 25.741,
+      "flow_Lmin": 1.161,
+      "UV254_abs": 0.6079
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 29,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.116,
+      "ORP_mV": 510.35,
+      "EC_uScm": 1325.49,
+      "turbidity_NTU": 12.21,
+      "temp_C": 25.797,
+      "flow_Lmin": 1.137,
+      "UV254_abs": 0.596
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 30,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.175,
+      "ORP_mV": 511.54,
+      "EC_uScm": 1306.0,
+      "turbidity_NTU": 12.323,
+      "temp_C": 25.692,
+      "flow_Lmin": 1.143,
+      "UV254_abs": 0.5532
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 31,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.149,
+      "ORP_mV": 527.46,
+      "EC_uScm": 1318.32,
+      "turbidity_NTU": 11.722,
+      "temp_C": 25.849,
+      "flow_Lmin": 1.177,
+      "UV254_abs": 0.5253
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 32,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.105,
+      "ORP_mV": 526.02,
+      "EC_uScm": 1410.0,
+      "turbidity_NTU": 10.54,
+      "temp_C": 25.874,
+      "flow_Lmin": 1.155,
+      "UV254_abs": 0.4593
+    },
+    "ground_truth_faults": [
+      "ec_flatline"
+    ]
+  },
+  {
+    "timestamp_min": 33,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.116,
+      "ORP_mV": 505.34,
+      "EC_uScm": 1410.0,
+      "turbidity_NTU": 10.335,
+      "temp_C": 25.741,
+      "flow_Lmin": 1.165,
+      "UV254_abs": 0.5248
+    },
+    "ground_truth_faults": [
+      "ec_flatline"
+    ]
+  },
+  {
+    "timestamp_min": 34,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.134,
+      "ORP_mV": 532.97,
+      "EC_uScm": 1410.0,
+      "turbidity_NTU": 10.567,
+      "temp_C": 25.939,
+      "flow_Lmin": 1.195,
+      "UV254_abs": 0.4747
+    },
+    "ground_truth_faults": [
+      "ec_flatline"
+    ]
+  },
+  {
+    "timestamp_min": 35,
+    "cycle_id": 2,
+    "values": {
+      "pH": 7.166,
+      "ORP_mV": 509.45,
+      "EC_uScm": 1410.0,
+      "turbidity_NTU": 7.83,
+      "temp_C": 25.936,
+      "flow_Lmin": 1.16,
+      "UV254_abs": 0.4791
+    },
+    "ground_truth_faults": [
+      "ec_flatline"
+    ]
+  },
+  {
+    "timestamp_min": 36,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.134,
+      "ORP_mV": 526.23,
+      "EC_uScm": 1410.0,
+      "turbidity_NTU": 9.264,
+      "temp_C": 26.023,
+      "flow_Lmin": 1.187,
+      "UV254_abs": 0.4808
+    },
+    "ground_truth_faults": [
+      "ec_flatline"
+    ]
+  },
+  {
+    "timestamp_min": 37,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.184,
+      "ORP_mV": 526.79,
+      "EC_uScm": 1410.0,
+      "turbidity_NTU": 8.32,
+      "temp_C": 25.996,
+      "flow_Lmin": 1.169,
+      "UV254_abs": 0.4411
+    },
+    "ground_truth_faults": [
+      "ec_flatline"
+    ]
+  },
+  {
+    "timestamp_min": 38,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.195,
+      "ORP_mV": 536.55,
+      "EC_uScm": 1410.0,
+      "turbidity_NTU": 9.107,
+      "temp_C": 25.953,
+      "flow_Lmin": 1.185,
+      "UV254_abs": 0.4057
+    },
+    "ground_truth_faults": [
+      "ec_flatline"
+    ]
+  },
+  {
+    "timestamp_min": 39,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.149,
+      "ORP_mV": 539.34,
+      "EC_uScm": 1410.0,
+      "turbidity_NTU": 7.45,
+      "temp_C": 25.908,
+      "flow_Lmin": 1.188,
+      "UV254_abs": 0.4308
+    },
+    "ground_truth_faults": [
+      "ec_flatline"
+    ]
+  },
+  {
+    "timestamp_min": 40,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.144,
+      "ORP_mV": 536.55,
+      "EC_uScm": 1243.78,
+      "turbidity_NTU": 8.153,
+      "temp_C": 25.949,
+      "flow_Lmin": 1.19,
+      "UV254_abs": 0.4412
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 41,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.191,
+      "ORP_mV": 517.39,
+      "EC_uScm": 1264.84,
+      "turbidity_NTU": 7.853,
+      "temp_C": 25.993,
+      "flow_Lmin": 1.238,
+      "UV254_abs": 0.4313
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 42,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.24,
+      "ORP_mV": 539.38,
+      "EC_uScm": 1299.05,
+      "turbidity_NTU": 7.885,
+      "temp_C": 26.096,
+      "flow_Lmin": 1.202,
+      "UV254_abs": 0.4248
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 43,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.279,
+      "ORP_mV": 535.85,
+      "EC_uScm": 1261.22,
+      "turbidity_NTU": 8.657,
+      "temp_C": 25.949,
+      "flow_Lmin": 1.246,
+      "UV254_abs": 0.4531
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 44,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.218,
+      "ORP_mV": 545.14,
+      "EC_uScm": 1298.47,
+      "turbidity_NTU": 6.764,
+      "temp_C": 26.165,
+      "flow_Lmin": 1.257,
+      "UV254_abs": 0.3602
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 45,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.264,
+      "ORP_mV": 543.3,
+      "EC_uScm": 1274.45,
+      "turbidity_NTU": 6.597,
+      "temp_C": 26.134,
+      "flow_Lmin": 1.232,
+      "UV254_abs": 0.3644
+    },
+    "ground_truth_faults": []
+  },
+  {
+    "timestamp_min": 46,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.315,
+      "ORP_mV": 543.05,
+      "EC_uScm": 1239.59,
+      "turbidity_NTU": 6.443,
+      "temp_C": 26.393,
+      "flow_Lmin": 1.266,
+      "UV254_abs": 0.3801
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 47,
+    "cycle_id": 3,
+    "values": {
+      "pH": 7.209,
+      "ORP_mV": 548.43,
+      "EC_uScm": 1259.27,
+      "turbidity_NTU": 8.964,
+      "temp_C": 26.244,
+      "flow_Lmin": 1.249,
+      "UV254_abs": 0.3682
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 48,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.247,
+      "ORP_mV": 552.89,
+      "EC_uScm": 1252.47,
+      "turbidity_NTU": 7.562,
+      "temp_C": 26.346,
+      "flow_Lmin": 1.277,
+      "UV254_abs": 0.3113
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 49,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.306,
+      "ORP_mV": 548.08,
+      "EC_uScm": 1246.3,
+      "turbidity_NTU": 8.32,
+      "temp_C": 26.192,
+      "flow_Lmin": 1.279,
+      "UV254_abs": 0.3638
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 50,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.299,
+      "ORP_mV": 536.05,
+      "EC_uScm": 1270.42,
+      "turbidity_NTU": 9.952,
+      "temp_C": 26.446,
+      "flow_Lmin": 1.257,
+      "UV254_abs": 0.3077
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 51,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.36,
+      "ORP_mV": 530.55,
+      "EC_uScm": 1223.48,
+      "turbidity_NTU": 9.642,
+      "temp_C": 26.372,
+      "flow_Lmin": 1.229,
+      "UV254_abs": 0.3182
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 52,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.375,
+      "ORP_mV": 551.82,
+      "EC_uScm": 1246.05,
+      "turbidity_NTU": 10.392,
+      "temp_C": 26.334,
+      "flow_Lmin": 1.246,
+      "UV254_abs": 0.3146
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 53,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.336,
+      "ORP_mV": 544.73,
+      "EC_uScm": 1232.63,
+      "turbidity_NTU": 10.679,
+      "temp_C": 26.403,
+      "flow_Lmin": 1.228,
+      "UV254_abs": 0.3101
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 54,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.364,
+      "ORP_mV": 540.56,
+      "EC_uScm": 1238.76,
+      "turbidity_NTU": 12.157,
+      "temp_C": 26.455,
+      "flow_Lmin": 1.218,
+      "UV254_abs": 0.3093
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 55,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.336,
+      "ORP_mV": 536.31,
+      "EC_uScm": 1231.25,
+      "turbidity_NTU": 11.124,
+      "temp_C": 26.509,
+      "flow_Lmin": 1.197,
+      "UV254_abs": 0.2251
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 56,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.332,
+      "ORP_mV": 564.92,
+      "EC_uScm": 1222.8,
+      "turbidity_NTU": 11.332,
+      "temp_C": 26.419,
+      "flow_Lmin": 1.212,
+      "UV254_abs": 0.296
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 57,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.371,
+      "ORP_mV": 564.95,
+      "EC_uScm": 1242.37,
+      "turbidity_NTU": 12.976,
+      "temp_C": 26.558,
+      "flow_Lmin": 1.221,
+      "UV254_abs": 0.3009
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 58,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.395,
+      "ORP_mV": 545.16,
+      "EC_uScm": 1227.44,
+      "turbidity_NTU": 14.147,
+      "temp_C": 26.516,
+      "flow_Lmin": 0.247,
+      "UV254_abs": 0.2847
+    },
+    "ground_truth_faults": [
+      "turbidity_drift",
+      "flow_drop"
+    ]
+  },
+  {
+    "timestamp_min": 59,
+    "cycle_id": 4,
+    "values": {
+      "pH": 7.343,
+      "ORP_mV": 574.91,
+      "EC_uScm": 1253.38,
+      "turbidity_NTU": 13.966,
+      "temp_C": 26.577,
+      "flow_Lmin": 0.247,
+      "UV254_abs": 0.2545
+    },
+    "ground_truth_faults": [
+      "turbidity_drift",
+      "flow_drop"
+    ]
+  },
+  {
+    "timestamp_min": 60,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.375,
+      "ORP_mV": 555.27,
+      "EC_uScm": 1211.47,
+      "turbidity_NTU": 14.869,
+      "temp_C": 26.629,
+      "flow_Lmin": 0.24,
+      "UV254_abs": 0.2762
+    },
+    "ground_truth_faults": [
+      "turbidity_drift",
+      "flow_drop"
+    ]
+  },
+  {
+    "timestamp_min": 61,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.358,
+      "ORP_mV": 560.18,
+      "EC_uScm": 1238.07,
+      "turbidity_NTU": 15.348,
+      "temp_C": 26.611,
+      "flow_Lmin": 0.235,
+      "UV254_abs": 0.2239
+    },
+    "ground_truth_faults": [
+      "turbidity_drift",
+      "flow_drop"
+    ]
+  },
+  {
+    "timestamp_min": 62,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.315,
+      "ORP_mV": 544.78,
+      "EC_uScm": 1228.85,
+      "turbidity_NTU": 14.287,
+      "temp_C": 26.605,
+      "flow_Lmin": 0.24,
+      "UV254_abs": 0.2582
+    },
+    "ground_truth_faults": [
+      "turbidity_drift",
+      "flow_drop"
+    ]
+  },
+  {
+    "timestamp_min": 63,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.291,
+      "ORP_mV": 545.75,
+      "EC_uScm": 1272.38,
+      "turbidity_NTU": 16.901,
+      "temp_C": 26.777,
+      "flow_Lmin": 0.225,
+      "UV254_abs": 0.2334
+    },
+    "ground_truth_faults": [
+      "turbidity_drift",
+      "flow_drop"
+    ]
+  },
+  {
+    "timestamp_min": 64,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.311,
+      "ORP_mV": 565.13,
+      "EC_uScm": 1208.51,
+      "turbidity_NTU": 17.045,
+      "temp_C": 26.77,
+      "flow_Lmin": 1.126,
+      "UV254_abs": 0.1865
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 65,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.229,
+      "ORP_mV": 553.16,
+      "EC_uScm": 1221.0,
+      "turbidity_NTU": 17.715,
+      "temp_C": 26.77,
+      "flow_Lmin": 1.16,
+      "UV254_abs": 0.244
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 66,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.302,
+      "ORP_mV": 568.03,
+      "EC_uScm": 1226.6,
+      "turbidity_NTU": 17.892,
+      "temp_C": 26.695,
+      "flow_Lmin": 1.134,
+      "UV254_abs": 0.2188
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 67,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.233,
+      "ORP_mV": 563.13,
+      "EC_uScm": 1225.95,
+      "turbidity_NTU": 17.917,
+      "temp_C": 26.808,
+      "flow_Lmin": 1.148,
+      "UV254_abs": 0.2076
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 68,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.214,
+      "ORP_mV": 553.61,
+      "EC_uScm": 1271.75,
+      "turbidity_NTU": 19.805,
+      "temp_C": 26.833,
+      "flow_Lmin": 1.143,
+      "UV254_abs": 0.2057
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 69,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.104,
+      "ORP_mV": 552.29,
+      "EC_uScm": 1264.69,
+      "turbidity_NTU": 18.936,
+      "temp_C": 26.886,
+      "flow_Lmin": 1.158,
+      "UV254_abs": 0.1705
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 70,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.176,
+      "ORP_mV": 558.06,
+      "EC_uScm": 1277.44,
+      "turbidity_NTU": 21.251,
+      "temp_C": 26.897,
+      "flow_Lmin": 1.148,
+      "UV254_abs": 0.1962
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  },
+  {
+    "timestamp_min": 71,
+    "cycle_id": 5,
+    "values": {
+      "pH": 7.169,
+      "ORP_mV": 566.86,
+      "EC_uScm": 1279.81,
+      "turbidity_NTU": 20.808,
+      "temp_C": 26.822,
+      "flow_Lmin": 1.161,
+      "UV254_abs": 0.1764
+    },
+    "ground_truth_faults": [
+      "turbidity_drift"
+    ]
+  }
+]

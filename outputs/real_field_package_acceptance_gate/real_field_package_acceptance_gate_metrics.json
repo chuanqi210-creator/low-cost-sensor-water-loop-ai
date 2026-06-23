@@ -1,0 +1,254 @@
+{
+  "method_contract": {
+    "upgrade_id": "R7_real_field_package_import_acceptance_gate",
+    "borrowed_from": [
+      "field data package acceptance gates",
+      "timestamped campaign replay validation",
+      "soft sensor field holdout release gate",
+      "multi-facility replay control-promotion gate",
+      "evidence-before-claims workflow",
+      "human-reviewed field deployment gate"
+    ],
+    "reality_mapping": "把真实 sensor/lab/operation/catalyst 数据包导入、timestamped replay、G6/P6 保护性控制门、软传感 field holdout 和 claim-specific 采集包验收合成一个 R7 总门。",
+    "data_needs": [
+      "metadata.json with data_origin=field",
+      "sensor_timeseries.csv",
+      "offline_lab_results.csv",
+      "campaign_operation_log.csv",
+      "fast_proxy_event_log.csv",
+      "catalyst_lifecycle.csv",
+      "claim-specific holdout labels and chain-of-custody metadata"
+    ],
+    "evaluation_metrics": [
+      "field_package_import_pass",
+      "timestamped_replay_pass",
+      "field_replay_evidence_chain_pass",
+      "multi_facility_control_promotion_pass",
+      "catalyst_proxy_field_validation_pass",
+      "soft_sensor_field_holdout_gate_pass",
+      "claim_specific_field_package_pass",
+      "field_supported_edge_ratio"
+    ],
+    "failure_boundary": "R7 can produce acceptance status and human-review candidates only. It must not treat synthetic templates as field replay, must not bypass offline lab confirmation, and must not auto-write actuator or release-gate policy."
+  },
+  "minimum_real_field_package": {
+    "metadata_required_fields": [
+      "data_origin",
+      "site_id",
+      "campaign_id",
+      "sampling_start",
+      "sampling_end",
+      "operator_id",
+      "instrument_snapshot_id",
+      "chain_of_custody_id"
+    ],
+    "metadata_required_values": {
+      "data_origin": "field"
+    },
+    "csv_tables": [
+      "sensor_timeseries.csv",
+      "offline_lab_results.csv",
+      "campaign_operation_log.csv",
+      "fast_proxy_event_log.csv",
+      "catalyst_lifecycle.csv",
+      "cost_deployment.csv"
+    ],
+    "guardrail_required_fields": [
+      "proxy_holdout_label",
+      "regeneration_event",
+      "tank_storage_margin",
+      "actuator_latency_p90",
+      "pump_valve_result",
+      "hold_time_min",
+      "recycle_ratio"
+    ],
+    "minimum_gate_sequence": [
+      "Agent44 field origin/import gate",
+      "Agent42 timestamped replay",
+      "Agent43 G6/P6 replay gate",
+      "Agent45 field replay evidence chain",
+      "Agent52 multi-facility replay promotion gate with Agent51 catalyst proxy holdout",
+      "Agent46 soft-sensor field holdout gate",
+      "human review before any release-gate calibration writeback"
+    ]
+  },
+  "acceptance_matrix": [
+    {
+      "stage_id": "R7S1_field_package_import",
+      "title": "真实 field package 导入与 provenance",
+      "status": "field_replay_import_blocked_non_field_origin",
+      "passed": false,
+      "gate_metric": "can_pass_to_timestamped_replay",
+      "blocker": "field_package_not_imported_or_data_origin_not_field",
+      "evidence": {
+        "accepted_data_origin": "blocked",
+        "accepted_table_count": 4,
+        "total_table_count": 4
+      }
+    },
+    {
+      "stage_id": "R7S2_timestamped_replay",
+      "title": "sensor/lab/operation/proxy 同轴 replay",
+      "status": "synthetic_timestamp_schema_ready_needs_field_replay",
+      "passed": false,
+      "gate_metric": "timestamped_replay_ready",
+      "blocker": "timestamped_replay_not_field_ready",
+      "evidence": {
+        "timestamp_coverage": 1.0,
+        "proxy_precision": 1.0,
+        "proxy_recall": 1.0
+      }
+    },
+    {
+      "stage_id": "R7S3_g6_p6_replay_gate",
+      "title": "G6/P6 replay gate 与保护性控制候选",
+      "status": "synthetic_replay_gate_blocked",
+      "passed": false,
+      "gate_metric": "can_write_to_protective_control",
+      "blocker": "g6_p6_replay_gate_not_passed",
+      "evidence": {
+        "accepted_gate_count": 7,
+        "total_gate_count": 8,
+        "failed_gate_ids": [
+          "G6_1_field_origin"
+        ]
+      }
+    },
+    {
+      "stage_id": "R7S4_field_replay_evidence_chain",
+      "title": "Agent44 -> Agent42 -> Agent43 -> Agent45 证据链",
+      "status": "field_replay_evidence_chain_blocked_at_import",
+      "passed": false,
+      "gate_metric": "can_emit_protective_writeback_candidate",
+      "blocker": "field_replay_evidence_chain_not_passed",
+      "evidence": {
+        "import_ready": false,
+        "timestamped_replay_ready": false,
+        "g6_ready": false
+      }
+    },
+    {
+      "stage_id": "R7S4b_multi_facility_control_promotion",
+      "title": "Agent49/52 多设施控制晋级与催化剂代理验证门",
+      "status": "synthetic_replay_evaluation_ready_needs_field_replay",
+      "passed": false,
+      "gate_metric": "field_ready_and_catalyst_proxy_field_validation_pass",
+      "blocker": "multi_facility_control_or_catalyst_proxy_holdout_not_passed",
+      "evidence": {
+        "field_ready": false,
+        "can_write_to_actuator_candidate": false,
+        "field_replay_coverage": 0.0,
+        "joint_action_accuracy": 0.667,
+        "mean_reward_regret": 0.055,
+        "catalyst_proxy_summary_status": "field_proxy_holdout_coverage_gaps",
+        "catalyst_proxy_scoreable_batch_count": 0,
+        "catalyst_proxy_field_validation_pass": false,
+        "catalyst_guardrail_mode": "agent51_holdout_coverage_gaps_keep_catalyst_guardrail"
+      }
+    },
+    {
+      "stage_id": "R7S5_soft_sensor_field_holdout",
+      "title": "软传感 field holdout release calibration gate",
+      "status": "soft_sensor_release_gate_blocked_non_field_holdout",
+      "passed": false,
+      "gate_metric": "can_write_to_release_gate",
+      "blocker": "soft_sensor_field_holdout_gate_not_passed",
+      "evidence": {
+        "passed_check_count": 5,
+        "total_check_count": 7,
+        "failed_check_ids": [
+          "SFG0_field_holdout_origin",
+          "SFG5_weak_target_coverage"
+        ]
+      }
+    },
+    {
+      "stage_id": "R7S6_claim_specific_field_package",
+      "title": "claim-specific 字段、source_basis 与真实 field rows",
+      "status": "claim_specific_package_ready_needs_real_data_and_source_basis_detail",
+      "passed": false,
+      "gate_metric": "minimal_field_package_field_pass_rate",
+      "blocker": "claim_specific_real_field_rows_not_passed",
+      "evidence": {
+        "source_basis_completion_rate": 1.0,
+        "minimal_field_package_schema_pass_rate": 1.0,
+        "minimal_field_package_field_pass_rate": 0.0
+      }
+    },
+    {
+      "stage_id": "R7S7_unified_field_evidence_gate",
+      "title": "统一 evidence gate 的 field-supported 升级判断",
+      "status": "unified_gate_ready_blocking_field_claim_upgrade",
+      "passed": false,
+      "gate_metric": "can_emit_field_claim_upgrade",
+      "blocker": "unified_field_evidence_gate_not_passed",
+      "evidence": {
+        "field_import_pass": false,
+        "field_replay_evidence_chain_pass": false,
+        "soft_sensor_field_holdout_gate_pass": false,
+        "field_supported_edge_ratio": 0.0
+      }
+    }
+  ],
+  "readiness": {
+    "real_field_package_acceptance_status": "real_field_package_acceptance_blocked_at_import",
+    "real_field_package_acceptance_score": 0.0,
+    "passed_stage_count": 0,
+    "total_stage_count": 8,
+    "failed_stage_ids": [
+      "R7S1_field_package_import",
+      "R7S2_timestamped_replay",
+      "R7S3_g6_p6_replay_gate",
+      "R7S4_field_replay_evidence_chain",
+      "R7S4b_multi_facility_control_promotion",
+      "R7S5_soft_sensor_field_holdout",
+      "R7S6_claim_specific_field_package",
+      "R7S7_unified_field_evidence_gate"
+    ],
+    "blocking_reasons": [
+      "field_package_not_imported_or_data_origin_not_field",
+      "timestamped_replay_not_field_ready",
+      "g6_p6_replay_gate_not_passed",
+      "field_replay_evidence_chain_not_passed",
+      "multi_facility_control_or_catalyst_proxy_holdout_not_passed",
+      "soft_sensor_field_holdout_gate_not_passed",
+      "claim_specific_real_field_rows_not_passed",
+      "unified_field_evidence_gate_not_passed"
+    ],
+    "field_package_import_pass": false,
+    "timestamped_replay_pass": false,
+    "field_replay_evidence_chain_pass": false,
+    "multi_facility_control_promotion_pass": false,
+    "catalyst_proxy_field_validation_pass": false,
+    "soft_sensor_field_holdout_gate_pass": false,
+    "claim_specific_field_package_pass": false,
+    "unified_field_evidence_gate_pass": false,
+    "can_emit_protective_control_candidate": false,
+    "can_emit_release_gate_calibration_candidate": false,
+    "can_emit_field_supported_claim_candidate": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "next_recommended_core_action": "R7a_import_real_field_package_with_metadata_and_csv"
+  },
+  "writeback_policy": {
+    "allowed_writeback": [
+      "R7_acceptance_status_for_governance",
+      "field_package_blocker_table"
+    ],
+    "blocked_writeback": [
+      "actuator_policy",
+      "automatic_release_gate_policy",
+      "field_control_effectiveness_claim_without_human_review",
+      "synthetic_template_as_field_evidence"
+    ],
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "policy_effect": "R7 can route real-field acceptance evidence to human review; it cannot auto-authorize control or discharge."
+  },
+  "next_refactor_action": {
+    "action_id": "R7a_import_real_field_package_with_metadata_and_csv",
+    "title": "导入 data_origin=field 的真实 metadata 与 CSV 包",
+    "reason": "field_package_not_imported_or_data_origin_not_field; timestamped_replay_not_field_ready; g6_p6_replay_gate_not_passed; field_replay_evidence_chain_not_passed; multi_facility_control_or_catalyst_proxy_holdout_not_passed; soft_sensor_field_holdout_gate_not_passed; claim_specific_real_field_rows_not_passed; unified_field_evidence_gate_not_passed",
+    "must_not_do": "不能把 synthetic/sample 包当成真实现场 replay；不能绕过人工复核写执行器或 release gate。"
+  }
+}

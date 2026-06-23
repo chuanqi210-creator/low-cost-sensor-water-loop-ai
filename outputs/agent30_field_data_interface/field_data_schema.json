@@ -1,0 +1,197 @@
+{
+  "sensor_timeseries": {
+    "description": "低成本在线传感器原始时间序列。",
+    "required_fields": [
+      "batch_id",
+      "timestamp_min",
+      "cycle_id",
+      "pH",
+      "ORP_mV",
+      "EC_uScm",
+      "turbidity_NTU",
+      "temp_C",
+      "flow_Lmin",
+      "UV254_abs"
+    ],
+    "optional_fields": [
+      "sensor_status",
+      "operator_note",
+      "instrument_id",
+      "acquisition_time_min",
+      "ingest_time_min",
+      "pressure_drop_kPa",
+      "headloss_kPa_per_m",
+      "bed_inlet_pressure_kPa",
+      "bed_outlet_pressure_kPa",
+      "flow_normalized_pressure_residual"
+    ],
+    "primary_key": [
+      "batch_id",
+      "timestamp_min"
+    ],
+    "calibrates": [
+      "DataQualityAgent",
+      "SoftSensorAgent",
+      "sensor_noise_multiplier"
+    ]
+  },
+  "offline_lab_results": {
+    "description": "旁路快检/离线检测标签，用于校准软传感器和放行门。",
+    "required_fields": [
+      "batch_id",
+      "sample_time_min",
+      "analyte",
+      "value",
+      "unit",
+      "method",
+      "qa_flag"
+    ],
+    "optional_fields": [
+      "result_time_min",
+      "turnaround_min",
+      "detection_limit",
+      "lab_id",
+      "replicate_id",
+      "sample_source",
+      "proxy_holdout_label"
+    ],
+    "primary_key": [
+      "batch_id",
+      "sample_time_min",
+      "analyte"
+    ],
+    "calibrates": [
+      "SoftSensorAgent",
+      "ValidationPlanningAgent",
+      "release_gate"
+    ]
+  },
+  "catalyst_lifecycle": {
+    "description": "催化剂寿命、再生和更换记录。",
+    "required_fields": [
+      "catalyst_id",
+      "batch_id",
+      "cycle_count",
+      "regen_count",
+      "activity_assay",
+      "pressure_drop_kPa",
+      "lifetime_fraction"
+    ],
+    "optional_fields": [
+      "surface_pollution_index",
+      "replacement_flag",
+      "regen_method",
+      "regeneration_event",
+      "headloss_kPa_per_m",
+      "bed_geometry_id",
+      "catalyst_bed_depth_m"
+    ],
+    "primary_key": [
+      "catalyst_id",
+      "batch_id"
+    ],
+    "calibrates": [
+      "CatalystLifecycleAgent",
+      "RecoveryStrategyWritebackAgent"
+    ]
+  },
+  "campaign_operation_log": {
+    "description": "批次运行、动作执行和闭环控制日志。",
+    "required_fields": [
+      "campaign_id",
+      "batch_id",
+      "action_id",
+      "start_min",
+      "end_min",
+      "intake_fraction",
+      "success"
+    ],
+    "optional_fields": [
+      "command_time_min",
+      "effect_time_min",
+      "recycle_start_min",
+      "recycle_end_min",
+      "pretreatment_effect_time_min",
+      "fast_proxy_score",
+      "release_policy",
+      "recycle_ratio",
+      "dose_factor",
+      "validation_minutes",
+      "operator_override",
+      "tank_storage_margin",
+      "actuator_latency_p90",
+      "pump_valve_result",
+      "hold_time_min",
+      "regeneration_event",
+      "bed_id",
+      "pressure_headloss_review_required"
+    ],
+    "primary_key": [
+      "campaign_id",
+      "batch_id",
+      "action_id",
+      "start_min"
+    ],
+    "calibrates": [
+      "CampaignTelemetryAgent",
+      "RecoveryRampAgent",
+      "RecoveryOnlineControlAgent"
+    ]
+  },
+  "site_topology_or_bed_geometry": {
+    "description": "处理单元拓扑、催化剂床几何和水力先验，用于把压降/水头损失候选信号从黑箱代理转成可校准灰箱边界。",
+    "required_fields": [
+      "site_id",
+      "node_id",
+      "zone",
+      "upstream_node_id",
+      "downstream_node_id",
+      "bed_id",
+      "bed_depth_m",
+      "bed_area_m2",
+      "nominal_flow_Lmin",
+      "nominal_HRT_min"
+    ],
+    "optional_fields": [
+      "pressure_sensor_location",
+      "install_access_score",
+      "bed_media",
+      "hydraulic_position",
+      "expected_clean_bed_pressure_drop_kPa"
+    ],
+    "primary_key": [
+      "site_id",
+      "node_id",
+      "bed_id"
+    ],
+    "calibrates": [
+      "SensorNetworkSparsePlacementAgent",
+      "SoftSensorMatrixCouplingAgent",
+      "MultiFacilityReplayEvaluationAgent",
+      "RealFieldReplayPipeline"
+    ]
+  },
+  "cost_deployment": {
+    "description": "传感器、试剂、催化剂、人工和部署接口的经济性参数。",
+    "required_fields": [
+      "item_id",
+      "category",
+      "unit_cost_cny",
+      "quantity",
+      "lead_time_days"
+    ],
+    "optional_fields": [
+      "vendor",
+      "maintenance_hours_per_month",
+      "interface_point"
+    ],
+    "primary_key": [
+      "item_id"
+    ],
+    "calibrates": [
+      "SensitivityAnalysisAgent",
+      "ResourceExpansionAgent",
+      "LongTermEconomicsAgent"
+    ]
+  }
+}

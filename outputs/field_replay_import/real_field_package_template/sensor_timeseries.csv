@@ -1,0 +1,1 @@
+batch_id,timestamp_min,EC_uScm,turbidity_NTU,UV254_abs,pH,ORP_mV,flow_Lmin,pressure_drop_kPa,headloss_kPa_per_m,bed_inlet_pressure_kPa,bed_outlet_pressure_kPa,sensor_status,instrument_id,acquisition_time_min,ingest_time_min

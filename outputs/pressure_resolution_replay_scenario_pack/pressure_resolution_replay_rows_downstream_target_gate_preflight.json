@@ -1,0 +1,245 @@
+{
+  "downstream_target_gate_preflight_id": "R8u51_downstream_target_gate_preflight",
+  "downstream_target_gate_preflight_status": "downstream_target_gate_preflight_blocked_by_downstream_route_handoff",
+  "target_gate_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_preflight.json",
+  "linked_downstream_route_handoff_status": "downstream_route_handoff_blocked_by_upstream_r8p_preflight",
+  "model_core_layers": [
+    "diagnostic_decision_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "controllability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "target_gate_count": 4,
+  "ready_target_gate_count": 0,
+  "blocked_target_gate_count": 4,
+  "target_gate_execution_order": [
+    "agent51_catalyst_proxy_holdout",
+    "agent49_guardrail_context",
+    "agent52_replay_clearance",
+    "r7_evidence_chain"
+  ],
+  "target_gate_preflights": [
+    {
+      "execution_order": 1,
+      "target_id": "agent51_catalyst_proxy_holdout",
+      "target_agent": "Agent51",
+      "target_gate_preflight_status": "target_gate_preflight_blocked_by_route_handoff",
+      "linked_handoff_status": "downstream_target_handoff_blocked_by_r8p_or_r8v_preflight",
+      "accepted_batches": [],
+      "required_input_tables_or_artifacts": [
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "campaign_operation_log",
+        "pressure_headloss_event_log"
+      ],
+      "required_input_count": 4,
+      "expected_gate_metrics": [
+        "field_proxy_holdout_summary_status",
+        "scoreable_batch_count",
+        "agent51_scoreable_batch_count_after_resolution"
+      ],
+      "expected_gate_metric_count": 3,
+      "validation_command": ".venv/bin/python experiments/run_agent51_catalyst_activity_proxy.py",
+      "expected_metrics_artifact": "outputs/catalyst_activity_proxy/catalyst_activity_proxy_metrics.json",
+      "target_gate_output_contract": {
+        "must_report_expected_metrics": [
+          "field_proxy_holdout_summary_status",
+          "scoreable_batch_count",
+          "agent51_scoreable_batch_count_after_resolution"
+        ],
+        "must_preserve_batch_id": true,
+        "must_preserve_operator_review_boundary": true,
+        "must_report_can_write_to_actuator": false,
+        "must_report_can_write_to_release_gate": false
+      },
+      "target_gate_preflight_blocking_reasons": [
+        "handoff_status=downstream_target_handoff_blocked_by_r8p_or_r8v_preflight",
+        "linked_route_handoff_status=downstream_route_handoff_blocked_by_upstream_r8p_preflight"
+      ],
+      "blocked_writes": [
+        "actuator",
+        "release_gate",
+        "protective_control_relaxation",
+        "field_supported_claim_upgrade"
+      ],
+      "next_operator_action": "R8p_fix_field_rows_source_preflight",
+      "field_boundary": "Target gate preflight only confirms the target can receive R8p accepted batches. The downstream gate output must still pass replay/holdout/operator-review checks.",
+      "can_execute_target_gate": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_claim_upgrade_allowed": false
+    },
+    {
+      "execution_order": 2,
+      "target_id": "agent49_guardrail_context",
+      "target_agent": "Agent49",
+      "target_gate_preflight_status": "target_gate_preflight_blocked_by_route_handoff",
+      "linked_handoff_status": "downstream_target_handoff_blocked_by_r8p_or_r8v_preflight",
+      "accepted_batches": [],
+      "required_input_tables_or_artifacts": [
+        "pressure_headloss_event_log",
+        "campaign_operation_log",
+        "agent52_replay_table"
+      ],
+      "required_input_count": 3,
+      "expected_gate_metrics": [
+        "agent49_pressure_conflict_guardrail_clear",
+        "pressure_source_conflict_control_block",
+        "can_write_to_actuator"
+      ],
+      "expected_gate_metric_count": 3,
+      "validation_command": ".venv/bin/python experiments/run_agent49_multi_facility_collaborative_control.py",
+      "expected_metrics_artifact": "outputs/multi_facility_collaborative_control/collaborative_control_metrics.json",
+      "target_gate_output_contract": {
+        "must_report_expected_metrics": [
+          "agent49_pressure_conflict_guardrail_clear",
+          "pressure_source_conflict_control_block",
+          "can_write_to_actuator"
+        ],
+        "must_preserve_batch_id": true,
+        "must_preserve_operator_review_boundary": true,
+        "must_report_can_write_to_actuator": true,
+        "must_report_can_write_to_release_gate": false
+      },
+      "target_gate_preflight_blocking_reasons": [
+        "handoff_status=downstream_target_handoff_blocked_by_r8p_or_r8v_preflight",
+        "linked_route_handoff_status=downstream_route_handoff_blocked_by_upstream_r8p_preflight"
+      ],
+      "blocked_writes": [
+        "actuator",
+        "release_gate",
+        "protective_control_relaxation",
+        "field_supported_claim_upgrade"
+      ],
+      "next_operator_action": "R8p_fix_field_rows_source_preflight",
+      "field_boundary": "Target gate preflight only confirms the target can receive R8p accepted batches. The downstream gate output must still pass replay/holdout/operator-review checks.",
+      "can_execute_target_gate": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_claim_upgrade_allowed": false
+    },
+    {
+      "execution_order": 3,
+      "target_id": "agent52_replay_clearance",
+      "target_agent": "Agent52",
+      "target_gate_preflight_status": "target_gate_preflight_blocked_by_route_handoff",
+      "linked_handoff_status": "downstream_target_handoff_blocked_by_r8p_or_r8v_preflight",
+      "accepted_batches": [],
+      "required_input_tables_or_artifacts": [
+        "agent52_replay_table",
+        "campaign_operation_log",
+        "field_rows_scenario_semantic_preflight"
+      ],
+      "required_input_count": 3,
+      "expected_gate_metrics": [
+        "agent52_pressure_source_conflict_clear",
+        "joint_action_accuracy",
+        "human_review_gate_pass"
+      ],
+      "expected_gate_metric_count": 3,
+      "validation_command": ".venv/bin/python experiments/run_agent52_multi_facility_replay_evaluation.py",
+      "expected_metrics_artifact": "outputs/multi_facility_replay_evaluation/replay_evaluation_metrics.json",
+      "target_gate_output_contract": {
+        "must_report_expected_metrics": [
+          "agent52_pressure_source_conflict_clear",
+          "joint_action_accuracy",
+          "human_review_gate_pass"
+        ],
+        "must_preserve_batch_id": true,
+        "must_preserve_operator_review_boundary": true,
+        "must_report_can_write_to_actuator": false,
+        "must_report_can_write_to_release_gate": false
+      },
+      "target_gate_preflight_blocking_reasons": [
+        "handoff_status=downstream_target_handoff_blocked_by_r8p_or_r8v_preflight",
+        "linked_route_handoff_status=downstream_route_handoff_blocked_by_upstream_r8p_preflight"
+      ],
+      "blocked_writes": [
+        "actuator",
+        "release_gate",
+        "protective_control_relaxation",
+        "field_supported_claim_upgrade"
+      ],
+      "next_operator_action": "R8p_fix_field_rows_source_preflight",
+      "field_boundary": "Target gate preflight only confirms the target can receive R8p accepted batches. The downstream gate output must still pass replay/holdout/operator-review checks.",
+      "can_execute_target_gate": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_claim_upgrade_allowed": false
+    },
+    {
+      "execution_order": 4,
+      "target_id": "r7_evidence_chain",
+      "target_agent": "R7 facade",
+      "target_gate_preflight_status": "target_gate_preflight_blocked_by_route_handoff",
+      "linked_handoff_status": "downstream_target_handoff_blocked_by_r8p_or_r8v_preflight",
+      "accepted_batches": [],
+      "required_input_tables_or_artifacts": [
+        "all_six_r8p_required_tables",
+        "field_rows_temporal_window_preflight",
+        "field_rows_scenario_semantic_preflight",
+        "field_rows_operator_handoff"
+      ],
+      "required_input_count": 4,
+      "expected_gate_metrics": [
+        "field_replay_evidence_chain_pass",
+        "claim_gate_status",
+        "operator_review_gate_pass",
+        "can_write_to_release_gate"
+      ],
+      "expected_gate_metric_count": 4,
+      "validation_command": ".venv/bin/python experiments/run_r7_real_field_replay_pipeline.py",
+      "expected_metrics_artifact": "outputs/r7_real_field_replay_pipeline/r7_real_field_replay_pipeline_metrics.json",
+      "target_gate_output_contract": {
+        "must_report_expected_metrics": [
+          "field_replay_evidence_chain_pass",
+          "claim_gate_status",
+          "operator_review_gate_pass",
+          "can_write_to_release_gate"
+        ],
+        "must_preserve_batch_id": true,
+        "must_preserve_operator_review_boundary": true,
+        "must_report_can_write_to_actuator": false,
+        "must_report_can_write_to_release_gate": true
+      },
+      "target_gate_preflight_blocking_reasons": [
+        "handoff_status=downstream_target_handoff_blocked_by_r8p_or_r8v_preflight",
+        "linked_route_handoff_status=downstream_route_handoff_blocked_by_upstream_r8p_preflight"
+      ],
+      "blocked_writes": [
+        "actuator",
+        "release_gate",
+        "protective_control_relaxation",
+        "field_supported_claim_upgrade"
+      ],
+      "next_operator_action": "R8p_fix_field_rows_source_preflight",
+      "field_boundary": "Target gate preflight only confirms the target can receive R8p accepted batches. The downstream gate output must still pass replay/holdout/operator-review checks.",
+      "can_execute_target_gate": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_claim_upgrade_allowed": false
+    }
+  ],
+  "next_operator_action": "R8p_fix_field_rows_source_preflight",
+  "technical_feature_mapping": {
+    "technical_problem": "A route handoff can identify downstream validation targets, but an operator still needs a deterministic gate-execution contract for each target before replay, holdout, or evidence-chain checks.",
+    "technical_means": "A target-gate preflight board binds each R8v target to validation command, required inputs, expected output metrics, batch preservation rules, blocked writes, and target-specific blocking reasons.",
+    "technical_effect": "The pressure-resolution handoff becomes executable without treating handoff readiness as gate success or allowing actuator/release writes before downstream validation.",
+    "prior_art_distinction_candidate": "Unlike generic workflow dispatch, the target-gate preflight preserves grey-box control safety, field evidence tiers, and operator-review boundaries for each downstream validation target."
+  },
+  "evidence_boundaries": [
+    "Target-gate preflight is not downstream replay, holdout, evidence-chain pass, or field evidence.",
+    "Ready target gates only mean R8p accepted batches can be submitted to the target gate.",
+    "Any actuator, release-gate, protective-control relaxation, or field-claim upgrade remains blocked until target outputs pass their own gates."
+  ],
+  "can_route_to_r8v": false,
+  "can_execute_all_target_gates": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false
+}

@@ -1,0 +1,131 @@
+{
+  "handle": "agent-fc0beffe98",
+  "agent_id": "agent:52:multi_facility_replay_evaluation",
+  "agent_number": 52,
+  "slug": "multi_facility_replay_evaluation",
+  "runner": "experiments/run_agent52_multi_facility_replay_evaluation.py",
+  "source": "src/water_ai/agents/multi_facility_replay_evaluation_agent.py",
+  "deliverable": "deliverables/multi_facility_replay_evaluation.md",
+  "test": "tests/test_multi_facility_replay_evaluation_agent.py",
+  "output_dir": "outputs/agent52_multi_facility_replay_evaluation",
+  "related_nodes": [
+    {
+      "handle": "agent-fc0beffe98",
+      "node_id": "agent:52:multi_facility_replay_evaluation",
+      "kind": "agent_workflow",
+      "label": "Agent52 multi_facility_replay_evaluation",
+      "path": "experiments/run_agent52_multi_facility_replay_evaluation.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 52
+      }
+    },
+    {
+      "handle": "dir-debe11e688",
+      "node_id": "dir:outputs/agent52_multi_facility_replay_evaluation",
+      "kind": "output_dir",
+      "label": "agent52_multi_facility_replay_evaluation",
+      "path": "outputs/agent52_multi_facility_replay_evaluation",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-9aaef07f01",
+      "node_id": "file:deliverables/multi_facility_replay_evaluation.md",
+      "kind": "referenced_path",
+      "label": "multi_facility_replay_evaluation.md",
+      "path": "deliverables/multi_facility_replay_evaluation.md",
+      "layer": "deliverable",
+      "summary": "多设施协同控制 Replay-Ready 离线评估",
+      "metrics": {
+        "lines": 135,
+        "size_bytes": 8504
+      }
+    },
+    {
+      "handle": "file-f864e99422",
+      "node_id": "file:experiments/run_agent52_multi_facility_replay_evaluation.py",
+      "kind": "file",
+      "label": "run_agent52_multi_facility_replay_evaluation.py",
+      "path": "experiments/run_agent52_multi_facility_replay_evaluation.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 441,
+        "size_bytes": 23297
+      }
+    },
+    {
+      "handle": "file-f5970b30c7",
+      "node_id": "file:src/water_ai/agents/multi_facility_replay_evaluation_agent.py",
+      "kind": "referenced_path",
+      "label": "multi_facility_replay_evaluation_agent.py",
+      "path": "src/water_ai/agents/multi_facility_replay_evaluation_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 1413,
+        "size_bytes": 78005
+      }
+    },
+    {
+      "handle": "file-48bd404e38",
+      "node_id": "file:tests/test_multi_facility_replay_evaluation_agent.py",
+      "kind": "referenced_path",
+      "label": "test_multi_facility_replay_evaluation_agent.py",
+      "path": "tests/test_multi_facility_replay_evaluation_agent.py",
+      "layer": "verification",
+      "summary": "from experiments.run_agent52_multi_facility_replay_evaluation import (",
+      "metrics": {
+        "lines": 565,
+        "size_bytes": 26374
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:52:multi_facility_replay_evaluation",
+      "target": "file:deliverables/multi_facility_replay_evaluation.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:52:multi_facility_replay_evaluation",
+      "target": "file:src/water_ai/agents/multi_facility_replay_evaluation_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:52:multi_facility_replay_evaluation",
+      "target": "file:experiments/run_agent52_multi_facility_replay_evaluation.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:52:multi_facility_replay_evaluation",
+      "target": "file:tests/test_multi_facility_replay_evaluation_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:52:multi_facility_replay_evaluation",
+      "target": "dir:outputs/agent52_multi_facility_replay_evaluation",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

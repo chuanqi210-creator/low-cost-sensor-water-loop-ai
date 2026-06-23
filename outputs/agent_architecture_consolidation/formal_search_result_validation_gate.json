@@ -1,0 +1,892 @@
+{
+  "coverage": {
+    "formal_search_result_validation_gate_status": "formal_search_result_validation_gate_ready_waiting_for_external_result_package",
+    "validation_gate_count": 7,
+    "complete_validation_gate_count": 7,
+    "formal_search_result_validation_gate_coverage_rate": 1.0,
+    "incomplete_validation_gates": [],
+    "covered_intake_ids": [
+      "FSRI1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "FSRI2_FSWP2_node_modality_sparse_hidden_state_search",
+      "FSRI3_FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "FSRI4_FSWP4_low_cost_observation_gated_flowsheet_search",
+      "FSRI5_FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "FSRI6_FSWP6_operational_catalyst_activity_guardrail_search",
+      "FSRI7_FSWP7_pressure_resolution_protective_release_gate_search"
+    ],
+    "missing_intake_coverage": [],
+    "formal_search_result_package_supplied": false,
+    "validated_hit_count": 0,
+    "rejected_hit_count": 0,
+    "can_generate_prior_art_result": false,
+    "legal_opinion_allowed": false,
+    "field_claim_upgrade_allowed": false,
+    "required_validation_gate_fields": [
+      "validation_gate_id",
+      "linked_intake_id",
+      "linked_work_package_id",
+      "linked_distinction_ids",
+      "mapped_claim_ids",
+      "mapped_feature_ids",
+      "mapped_effect_ids",
+      "accepted_input_artifacts",
+      "allowed_source_databases",
+      "allowed_query_sources",
+      "hit_table_required_fields",
+      "comparison_chart_required_fields",
+      "runtime_validation_steps",
+      "blocking_conditions",
+      "patch_plan_outputs",
+      "prior_art_result_generation_rule",
+      "formal_search_result_package_supplied",
+      "validated_hit_count",
+      "rejected_hit_count",
+      "can_generate_prior_art_result",
+      "legal_opinion_allowed",
+      "field_claim_upgrade_allowed",
+      "failure_boundary",
+      "validation_gate_status"
+    ],
+    "evidence_boundary": "该 validation gate 只是正式检索结果包进入模型前的结构、来源、比对和 reviewer 边界门；当前没有外部结果包，因此不能生成 prior-art comparison、法律意见或 field-supported claim。"
+  },
+  "validation_gates": [
+    {
+      "validation_gate_id": "FSRG1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "linked_intake_id": "FSRI1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "linked_work_package_id": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "linked_distinction_ids": [
+        "PAD1_soft_sensor_ml_vs_cyclic_greybox_release_gated_control"
+      ],
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "mapped_effect_ids": [
+        "TEM1_observability_gain_under_sparse_sensing",
+        "TEM2_blackbox_to_greybox_state_estimation",
+        "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+        "TEM5_field_replay_protective_writeback_reduces_false_release"
+      ],
+      "accepted_input_artifacts": [
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_prior_art_hit_table.csv_or_json",
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "allowed_source_databases": [
+        "CNIPA",
+        "Google Patents",
+        "Espacenet",
+        "WIPO Patentscope",
+        "Google Scholar"
+      ],
+      "allowed_query_sources": [
+        "\"wastewater\" \"soft sensor\" \"recycle\" \"release gate\"",
+        "\"low cost sensor\" \"grey-box\" \"wastewater\" \"closed-loop control\"",
+        "\"soft sensing\" \"hydraulic retention\" \"recycle\" \"effluent release\"",
+        "\"sensor-limited\" \"water treatment\" \"hold tank\" \"control\"",
+        "污水处理 软传感 回流 放行 门控",
+        "低成本传感 灰箱 水处理 闭环控制",
+        "低频传感 暂存 回流 水处理 控制",
+        "软测量 出水放行 证据门控",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "hit_table_required_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "comparison_chart_required_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "runtime_validation_steps": [
+        "load prior_art_hit_table and claim_element_comparison_chart from the linked intake artifacts",
+        "reject package if required table fields or comparison fields are missing",
+        "reject hit rows whose linked_work_package_id is not the current work package",
+        "reject source_database values outside the linked formal search work package search_databases",
+        "reject matched_query values that are neither generated queries nor reviewer-approved expansions",
+        "require every accepted hit to state disclosed capabilities and missing project elements",
+        "require claim element comparisons to cover at least one mapped claim, feature or effect element",
+        "reject reviewer text that asserts legal conclusion, authorization likelihood or field-supported claim",
+        "route accepted overlap to claim_scope_decision_options without producing legal opinion"
+      ],
+      "blocking_conditions": [
+        "result package missing or unreadable",
+        "hit table or comparison chart missing required fields",
+        "unknown linked_work_package_id",
+        "source_database not in allowed_source_databases",
+        "matched_query lacks generated-query or reviewer-approved-expansion provenance",
+        "matched_claim_elements or prior_art_disclosure_text empty",
+        "missing_project_elements empty for full_or_near_full overlap",
+        "review_status or review_note contains novelty/inventiveness/legal conclusion",
+        "field_claim_upgrade_allowed set before field validation gate",
+        "can_generate_prior_art_result set without accepted hits and human/external review"
+      ],
+      "patch_plan_outputs": [
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_missing_required_fields_patch",
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_source_database_or_query_provenance_patch",
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_claim_element_comparison_gap_patch",
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_reviewer_boundary_patch",
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_claim_scope_fallback_patch"
+      ],
+      "prior_art_result_generation_rule": "Only after a non-empty external/human-reviewed result package passes hit-table, comparison-chart, query-provenance and reviewer-boundary checks may Agent60 generate a non-legal prior-art comparison summary. It must still preserve formal counsel and field validation gates.",
+      "formal_search_result_package_supplied": false,
+      "validated_hit_count": 0,
+      "rejected_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 gate 只验证正式检索结果包的结构、来源、比对覆盖和 reviewer 边界；没有真实外部/人工检索结果时不能生成 prior-art comparison，任何情况下都不是法律意见，也不能把检索结果升级为 field-supported claim。",
+      "validation_gate_status": "formal_search_result_validation_gate_ready_waiting_for_result_package",
+      "missing_formal_search_result_validation_gate_fields": [],
+      "validation_ready_status": "formal_search_result_validation_gate_complete_waiting_for_external_result_package"
+    },
+    {
+      "validation_gate_id": "FSRG2_FSWP2_node_modality_sparse_hidden_state_search",
+      "linked_intake_id": "FSRI2_FSWP2_node_modality_sparse_hidden_state_search",
+      "linked_work_package_id": "FSWP2_node_modality_sparse_hidden_state_search",
+      "linked_distinction_ids": [
+        "PAD2_sparse_sensor_placement_vs_node_modality_hidden_state_layout"
+      ],
+      "mapped_claim_ids": [
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation"
+      ],
+      "mapped_effect_ids": [
+        "TEM1_observability_gain_under_sparse_sensing"
+      ],
+      "accepted_input_artifacts": [
+        "FSWP2_node_modality_sparse_hidden_state_search_prior_art_hit_table.csv_or_json",
+        "FSWP2_node_modality_sparse_hidden_state_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP2_node_modality_sparse_hidden_state_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "allowed_source_databases": [
+        "Google Patents",
+        "Espacenet",
+        "CNIPA",
+        "IEEE Xplore",
+        "Google Scholar",
+        "GitHub"
+      ],
+      "allowed_query_sources": [
+        "\"sparse sensor placement\" \"wastewater\" \"hidden state\"",
+        "\"node modality\" \"sensor placement\" \"water treatment\"",
+        "\"SSPOR\" OR \"SSPOC\" \"water quality\" \"sensor placement\"",
+        "\"catalyst activity\" \"sensor placement\" \"soft sensor\"",
+        "稀疏传感 布点 污水处理 隐藏状态",
+        "节点 模态 传感器布设 水处理",
+        "催化剂活性 软传感 布点",
+        "低成本传感 布点 水质 状态估计",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "hit_table_required_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "comparison_chart_required_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "runtime_validation_steps": [
+        "load prior_art_hit_table and claim_element_comparison_chart from the linked intake artifacts",
+        "reject package if required table fields or comparison fields are missing",
+        "reject hit rows whose linked_work_package_id is not the current work package",
+        "reject source_database values outside the linked formal search work package search_databases",
+        "reject matched_query values that are neither generated queries nor reviewer-approved expansions",
+        "require every accepted hit to state disclosed capabilities and missing project elements",
+        "require claim element comparisons to cover at least one mapped claim, feature or effect element",
+        "reject reviewer text that asserts legal conclusion, authorization likelihood or field-supported claim",
+        "route accepted overlap to claim_scope_decision_options without producing legal opinion"
+      ],
+      "blocking_conditions": [
+        "result package missing or unreadable",
+        "hit table or comparison chart missing required fields",
+        "unknown linked_work_package_id",
+        "source_database not in allowed_source_databases",
+        "matched_query lacks generated-query or reviewer-approved-expansion provenance",
+        "matched_claim_elements or prior_art_disclosure_text empty",
+        "missing_project_elements empty for full_or_near_full overlap",
+        "review_status or review_note contains novelty/inventiveness/legal conclusion",
+        "field_claim_upgrade_allowed set before field validation gate",
+        "can_generate_prior_art_result set without accepted hits and human/external review"
+      ],
+      "patch_plan_outputs": [
+        "FSWP2_node_modality_sparse_hidden_state_search_missing_required_fields_patch",
+        "FSWP2_node_modality_sparse_hidden_state_search_source_database_or_query_provenance_patch",
+        "FSWP2_node_modality_sparse_hidden_state_search_claim_element_comparison_gap_patch",
+        "FSWP2_node_modality_sparse_hidden_state_search_reviewer_boundary_patch",
+        "FSWP2_node_modality_sparse_hidden_state_search_claim_scope_fallback_patch"
+      ],
+      "prior_art_result_generation_rule": "Only after a non-empty external/human-reviewed result package passes hit-table, comparison-chart, query-provenance and reviewer-boundary checks may Agent60 generate a non-legal prior-art comparison summary. It must still preserve formal counsel and field validation gates.",
+      "formal_search_result_package_supplied": false,
+      "validated_hit_count": 0,
+      "rejected_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 gate 只验证正式检索结果包的结构、来源、比对覆盖和 reviewer 边界；没有真实外部/人工检索结果时不能生成 prior-art comparison，任何情况下都不是法律意见，也不能把检索结果升级为 field-supported claim。",
+      "validation_gate_status": "formal_search_result_validation_gate_ready_waiting_for_result_package",
+      "missing_formal_search_result_validation_gate_fields": [],
+      "validation_ready_status": "formal_search_result_validation_gate_complete_waiting_for_external_result_package"
+    },
+    {
+      "validation_gate_id": "FSRG3_FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "linked_intake_id": "FSRI3_FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "linked_work_package_id": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "linked_distinction_ids": [
+        "PAD3_marl_pump_coordination_vs_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_claim_ids": [
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_feature_ids": [
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF7_engineering_execution_constraints",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions",
+        "TEM7_engineering_execution_constraint_feasibility"
+      ],
+      "accepted_input_artifacts": [
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_prior_art_hit_table.csv_or_json",
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "allowed_source_databases": [
+        "CNIPA",
+        "Google Patents",
+        "Espacenet",
+        "IEEE Xplore",
+        "ACM Digital Library",
+        "Google Scholar"
+      ],
+      "allowed_query_sources": [
+        "\"multi-agent\" \"wastewater\" \"grey-box\" \"safety arbitration\"",
+        "\"multi-agent reinforcement learning\" \"pump station\" \"policy distillation\"",
+        "\"offline reinforcement learning\" \"water treatment\" \"operator review\"",
+        "\"grey-box\" \"multi-agent\" \"control\" \"release gate\"",
+        "多智能体 污水处理 灰箱 安全仲裁",
+        "多智能体强化学习 泵站 协同控制 策略蒸馏",
+        "离线强化学习 水处理 人工复核",
+        "灰箱 多智能体 控制 放行门控",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "hit_table_required_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "comparison_chart_required_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "runtime_validation_steps": [
+        "load prior_art_hit_table and claim_element_comparison_chart from the linked intake artifacts",
+        "reject package if required table fields or comparison fields are missing",
+        "reject hit rows whose linked_work_package_id is not the current work package",
+        "reject source_database values outside the linked formal search work package search_databases",
+        "reject matched_query values that are neither generated queries nor reviewer-approved expansions",
+        "require every accepted hit to state disclosed capabilities and missing project elements",
+        "require claim element comparisons to cover at least one mapped claim, feature or effect element",
+        "reject reviewer text that asserts legal conclusion, authorization likelihood or field-supported claim",
+        "route accepted overlap to claim_scope_decision_options without producing legal opinion"
+      ],
+      "blocking_conditions": [
+        "result package missing or unreadable",
+        "hit table or comparison chart missing required fields",
+        "unknown linked_work_package_id",
+        "source_database not in allowed_source_databases",
+        "matched_query lacks generated-query or reviewer-approved-expansion provenance",
+        "matched_claim_elements or prior_art_disclosure_text empty",
+        "missing_project_elements empty for full_or_near_full overlap",
+        "review_status or review_note contains novelty/inventiveness/legal conclusion",
+        "field_claim_upgrade_allowed set before field validation gate",
+        "can_generate_prior_art_result set without accepted hits and human/external review"
+      ],
+      "patch_plan_outputs": [
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_missing_required_fields_patch",
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_source_database_or_query_provenance_patch",
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_claim_element_comparison_gap_patch",
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_reviewer_boundary_patch",
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_claim_scope_fallback_patch"
+      ],
+      "prior_art_result_generation_rule": "Only after a non-empty external/human-reviewed result package passes hit-table, comparison-chart, query-provenance and reviewer-boundary checks may Agent60 generate a non-legal prior-art comparison summary. It must still preserve formal counsel and field validation gates.",
+      "formal_search_result_package_supplied": false,
+      "validated_hit_count": 0,
+      "rejected_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 gate 只验证正式检索结果包的结构、来源、比对覆盖和 reviewer 边界；没有真实外部/人工检索结果时不能生成 prior-art comparison，任何情况下都不是法律意见，也不能把检索结果升级为 field-supported claim。",
+      "validation_gate_status": "formal_search_result_validation_gate_ready_waiting_for_result_package",
+      "missing_formal_search_result_validation_gate_fields": [],
+      "validation_ready_status": "formal_search_result_validation_gate_complete_waiting_for_external_result_package"
+    },
+    {
+      "validation_gate_id": "FSRG4_FSWP4_low_cost_observation_gated_flowsheet_search",
+      "linked_intake_id": "FSRI4_FSWP4_low_cost_observation_gated_flowsheet_search",
+      "linked_work_package_id": "FSWP4_low_cost_observation_gated_flowsheet_search",
+      "linked_distinction_ids": [
+        "PAD4_flowsheet_optimization_vs_low_cost_observation_gated_greybox_control"
+      ],
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "mapped_feature_ids": [
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF7_engineering_execution_constraints"
+      ],
+      "mapped_effect_ids": [
+        "TEM2_blackbox_to_greybox_state_estimation",
+        "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+        "TEM7_engineering_execution_constraint_feasibility"
+      ],
+      "accepted_input_artifacts": [
+        "FSWP4_low_cost_observation_gated_flowsheet_search_prior_art_hit_table.csv_or_json",
+        "FSWP4_low_cost_observation_gated_flowsheet_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP4_low_cost_observation_gated_flowsheet_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "allowed_source_databases": [
+        "Google Patents",
+        "CNIPA",
+        "Espacenet",
+        "Google Scholar",
+        "WaterTAP/QSDsan/Pyomo documentation"
+      ],
+      "allowed_query_sources": [
+        "\"water treatment\" \"flowsheet\" \"low-cost sensors\" \"control\"",
+        "\"grey-box\" \"water treatment\" \"optimization\" \"sensor limited\"",
+        "\"hydraulic retention\" \"soft sensor\" \"process optimization\"",
+        "\"unit model\" \"release gate\" \"water treatment\"",
+        "水处理 流程模拟 低成本传感 控制",
+        "灰箱 水处理 优化 传感受限",
+        "水力停留时间 软传感 工艺优化",
+        "单元模型 放行门控 水处理",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "hit_table_required_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "comparison_chart_required_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "runtime_validation_steps": [
+        "load prior_art_hit_table and claim_element_comparison_chart from the linked intake artifacts",
+        "reject package if required table fields or comparison fields are missing",
+        "reject hit rows whose linked_work_package_id is not the current work package",
+        "reject source_database values outside the linked formal search work package search_databases",
+        "reject matched_query values that are neither generated queries nor reviewer-approved expansions",
+        "require every accepted hit to state disclosed capabilities and missing project elements",
+        "require claim element comparisons to cover at least one mapped claim, feature or effect element",
+        "reject reviewer text that asserts legal conclusion, authorization likelihood or field-supported claim",
+        "route accepted overlap to claim_scope_decision_options without producing legal opinion"
+      ],
+      "blocking_conditions": [
+        "result package missing or unreadable",
+        "hit table or comparison chart missing required fields",
+        "unknown linked_work_package_id",
+        "source_database not in allowed_source_databases",
+        "matched_query lacks generated-query or reviewer-approved-expansion provenance",
+        "matched_claim_elements or prior_art_disclosure_text empty",
+        "missing_project_elements empty for full_or_near_full overlap",
+        "review_status or review_note contains novelty/inventiveness/legal conclusion",
+        "field_claim_upgrade_allowed set before field validation gate",
+        "can_generate_prior_art_result set without accepted hits and human/external review"
+      ],
+      "patch_plan_outputs": [
+        "FSWP4_low_cost_observation_gated_flowsheet_search_missing_required_fields_patch",
+        "FSWP4_low_cost_observation_gated_flowsheet_search_source_database_or_query_provenance_patch",
+        "FSWP4_low_cost_observation_gated_flowsheet_search_claim_element_comparison_gap_patch",
+        "FSWP4_low_cost_observation_gated_flowsheet_search_reviewer_boundary_patch",
+        "FSWP4_low_cost_observation_gated_flowsheet_search_claim_scope_fallback_patch"
+      ],
+      "prior_art_result_generation_rule": "Only after a non-empty external/human-reviewed result package passes hit-table, comparison-chart, query-provenance and reviewer-boundary checks may Agent60 generate a non-legal prior-art comparison summary. It must still preserve formal counsel and field validation gates.",
+      "formal_search_result_package_supplied": false,
+      "validated_hit_count": 0,
+      "rejected_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 gate 只验证正式检索结果包的结构、来源、比对覆盖和 reviewer 边界；没有真实外部/人工检索结果时不能生成 prior-art comparison，任何情况下都不是法律意见，也不能把检索结果升级为 field-supported claim。",
+      "validation_gate_status": "formal_search_result_validation_gate_ready_waiting_for_result_package",
+      "missing_formal_search_result_validation_gate_fields": [],
+      "validation_ready_status": "formal_search_result_validation_gate_complete_waiting_for_external_result_package"
+    },
+    {
+      "validation_gate_id": "FSRG5_FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "linked_intake_id": "FSRI5_FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "linked_work_package_id": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "linked_distinction_ids": [
+        "PAD5_scientific_kg_vs_action_constraint_and_claim_gate"
+      ],
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_feature_ids": [
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM5_field_replay_protective_writeback_reduces_false_release",
+        "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions"
+      ],
+      "accepted_input_artifacts": [
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_prior_art_hit_table.csv_or_json",
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "allowed_source_databases": [
+        "Google Scholar",
+        "Google Patents",
+        "CNIPA",
+        "WIPO Patentscope",
+        "Semantic Scholar"
+      ],
+      "allowed_query_sources": [
+        "\"scientific knowledge graph\" \"water treatment\" \"control constraint\"",
+        "\"knowledge graph\" \"wastewater\" \"claim verification\"",
+        "\"literature evidence\" \"release gate\" \"water treatment\"",
+        "\"knowledge graph\" \"multi-agent\" \"action constraint\"",
+        "科学知识图谱 水处理 控制约束",
+        "知识图谱 污水处理 证据链",
+        "文献证据 放行门控 水处理",
+        "知识图谱 多智能体 动作约束",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "hit_table_required_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "comparison_chart_required_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "runtime_validation_steps": [
+        "load prior_art_hit_table and claim_element_comparison_chart from the linked intake artifacts",
+        "reject package if required table fields or comparison fields are missing",
+        "reject hit rows whose linked_work_package_id is not the current work package",
+        "reject source_database values outside the linked formal search work package search_databases",
+        "reject matched_query values that are neither generated queries nor reviewer-approved expansions",
+        "require every accepted hit to state disclosed capabilities and missing project elements",
+        "require claim element comparisons to cover at least one mapped claim, feature or effect element",
+        "reject reviewer text that asserts legal conclusion, authorization likelihood or field-supported claim",
+        "route accepted overlap to claim_scope_decision_options without producing legal opinion"
+      ],
+      "blocking_conditions": [
+        "result package missing or unreadable",
+        "hit table or comparison chart missing required fields",
+        "unknown linked_work_package_id",
+        "source_database not in allowed_source_databases",
+        "matched_query lacks generated-query or reviewer-approved-expansion provenance",
+        "matched_claim_elements or prior_art_disclosure_text empty",
+        "missing_project_elements empty for full_or_near_full overlap",
+        "review_status or review_note contains novelty/inventiveness/legal conclusion",
+        "field_claim_upgrade_allowed set before field validation gate",
+        "can_generate_prior_art_result set without accepted hits and human/external review"
+      ],
+      "patch_plan_outputs": [
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_missing_required_fields_patch",
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_source_database_or_query_provenance_patch",
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_claim_element_comparison_gap_patch",
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_reviewer_boundary_patch",
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_claim_scope_fallback_patch"
+      ],
+      "prior_art_result_generation_rule": "Only after a non-empty external/human-reviewed result package passes hit-table, comparison-chart, query-provenance and reviewer-boundary checks may Agent60 generate a non-legal prior-art comparison summary. It must still preserve formal counsel and field validation gates.",
+      "formal_search_result_package_supplied": false,
+      "validated_hit_count": 0,
+      "rejected_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 gate 只验证正式检索结果包的结构、来源、比对覆盖和 reviewer 边界；没有真实外部/人工检索结果时不能生成 prior-art comparison，任何情况下都不是法律意见，也不能把检索结果升级为 field-supported claim。",
+      "validation_gate_status": "formal_search_result_validation_gate_ready_waiting_for_result_package",
+      "missing_formal_search_result_validation_gate_fields": [],
+      "validation_ready_status": "formal_search_result_validation_gate_complete_waiting_for_external_result_package"
+    },
+    {
+      "validation_gate_id": "FSRG6_FSWP6_operational_catalyst_activity_guardrail_search",
+      "linked_intake_id": "FSRI6_FSWP6_operational_catalyst_activity_guardrail_search",
+      "linked_work_package_id": "FSWP6_operational_catalyst_activity_guardrail_search",
+      "linked_distinction_ids": [
+        "PAD6_ai_catalyst_discovery_vs_operational_catalyst_activity_guardrail"
+      ],
+      "mapped_claim_ids": [
+        "TCS3_dependent_catalyst_activity_regeneration_control"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "mapped_effect_ids": [
+        "TEM4_catalyst_proxy_guardrail_effect"
+      ],
+      "accepted_input_artifacts": [
+        "FSWP6_operational_catalyst_activity_guardrail_search_prior_art_hit_table.csv_or_json",
+        "FSWP6_operational_catalyst_activity_guardrail_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP6_operational_catalyst_activity_guardrail_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "allowed_source_databases": [
+        "Google Scholar",
+        "Google Patents",
+        "CNIPA",
+        "Espacenet",
+        "WIPO Patentscope"
+      ],
+      "allowed_query_sources": [
+        "\"catalyst activity\" \"soft sensor\" \"water treatment\"",
+        "\"photocatalyst\" \"regeneration\" \"ORP\" \"UV254\"",
+        "\"AI\" \"catalyst discovery\" \"wastewater\" \"closed-loop control\"",
+        "\"pressure drop\" \"catalyst bed\" \"activity\" \"water purification\"",
+        "催化剂活性 软传感 水处理",
+        "光催化剂 再生 ORP UV254",
+        "AI 催化剂发现 污水处理 闭环控制",
+        "压降 催化剂床 活性 水净化",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "hit_table_required_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "comparison_chart_required_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "runtime_validation_steps": [
+        "load prior_art_hit_table and claim_element_comparison_chart from the linked intake artifacts",
+        "reject package if required table fields or comparison fields are missing",
+        "reject hit rows whose linked_work_package_id is not the current work package",
+        "reject source_database values outside the linked formal search work package search_databases",
+        "reject matched_query values that are neither generated queries nor reviewer-approved expansions",
+        "require every accepted hit to state disclosed capabilities and missing project elements",
+        "require claim element comparisons to cover at least one mapped claim, feature or effect element",
+        "reject reviewer text that asserts legal conclusion, authorization likelihood or field-supported claim",
+        "route accepted overlap to claim_scope_decision_options without producing legal opinion"
+      ],
+      "blocking_conditions": [
+        "result package missing or unreadable",
+        "hit table or comparison chart missing required fields",
+        "unknown linked_work_package_id",
+        "source_database not in allowed_source_databases",
+        "matched_query lacks generated-query or reviewer-approved-expansion provenance",
+        "matched_claim_elements or prior_art_disclosure_text empty",
+        "missing_project_elements empty for full_or_near_full overlap",
+        "review_status or review_note contains novelty/inventiveness/legal conclusion",
+        "field_claim_upgrade_allowed set before field validation gate",
+        "can_generate_prior_art_result set without accepted hits and human/external review"
+      ],
+      "patch_plan_outputs": [
+        "FSWP6_operational_catalyst_activity_guardrail_search_missing_required_fields_patch",
+        "FSWP6_operational_catalyst_activity_guardrail_search_source_database_or_query_provenance_patch",
+        "FSWP6_operational_catalyst_activity_guardrail_search_claim_element_comparison_gap_patch",
+        "FSWP6_operational_catalyst_activity_guardrail_search_reviewer_boundary_patch",
+        "FSWP6_operational_catalyst_activity_guardrail_search_claim_scope_fallback_patch"
+      ],
+      "prior_art_result_generation_rule": "Only after a non-empty external/human-reviewed result package passes hit-table, comparison-chart, query-provenance and reviewer-boundary checks may Agent60 generate a non-legal prior-art comparison summary. It must still preserve formal counsel and field validation gates.",
+      "formal_search_result_package_supplied": false,
+      "validated_hit_count": 0,
+      "rejected_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 gate 只验证正式检索结果包的结构、来源、比对覆盖和 reviewer 边界；没有真实外部/人工检索结果时不能生成 prior-art comparison，任何情况下都不是法律意见，也不能把检索结果升级为 field-supported claim。",
+      "validation_gate_status": "formal_search_result_validation_gate_ready_waiting_for_result_package",
+      "missing_formal_search_result_validation_gate_fields": [],
+      "validation_ready_status": "formal_search_result_validation_gate_complete_waiting_for_external_result_package"
+    },
+    {
+      "validation_gate_id": "FSRG7_FSWP7_pressure_resolution_protective_release_gate_search",
+      "linked_intake_id": "FSRI7_FSWP7_pressure_resolution_protective_release_gate_search",
+      "linked_work_package_id": "FSWP7_pressure_resolution_protective_release_gate_search",
+      "linked_distinction_ids": [
+        "PAD7_replay_validation_vs_pressure_resolution_protective_release_gate"
+      ],
+      "mapped_claim_ids": [
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS6_dependent_low_frequency_cycle_window_control"
+      ],
+      "mapped_feature_ids": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM5_field_replay_protective_writeback_reduces_false_release"
+      ],
+      "accepted_input_artifacts": [
+        "FSWP7_pressure_resolution_protective_release_gate_search_prior_art_hit_table.csv_or_json",
+        "FSWP7_pressure_resolution_protective_release_gate_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP7_pressure_resolution_protective_release_gate_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "allowed_source_databases": [
+        "CNIPA",
+        "Google Patents",
+        "Espacenet",
+        "WIPO Patentscope",
+        "Google Scholar"
+      ],
+      "allowed_query_sources": [
+        "\"pressure source conflict\" \"water treatment\" \"operator review\"",
+        "\"field replay\" \"release gate\" \"wastewater\"",
+        "\"data provenance\" \"water treatment\" \"protective control\"",
+        "\"pressure drop\" \"replay\" \"catalyst bed\" \"release\"",
+        "压力源 冲突 水处理 人工复核",
+        "现场回放 放行门控 污水处理",
+        "数据溯源 水处理 保护性控制",
+        "压降 回放 催化剂床 放行",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "hit_table_required_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "comparison_chart_required_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "runtime_validation_steps": [
+        "load prior_art_hit_table and claim_element_comparison_chart from the linked intake artifacts",
+        "reject package if required table fields or comparison fields are missing",
+        "reject hit rows whose linked_work_package_id is not the current work package",
+        "reject source_database values outside the linked formal search work package search_databases",
+        "reject matched_query values that are neither generated queries nor reviewer-approved expansions",
+        "require every accepted hit to state disclosed capabilities and missing project elements",
+        "require claim element comparisons to cover at least one mapped claim, feature or effect element",
+        "reject reviewer text that asserts legal conclusion, authorization likelihood or field-supported claim",
+        "route accepted overlap to claim_scope_decision_options without producing legal opinion"
+      ],
+      "blocking_conditions": [
+        "result package missing or unreadable",
+        "hit table or comparison chart missing required fields",
+        "unknown linked_work_package_id",
+        "source_database not in allowed_source_databases",
+        "matched_query lacks generated-query or reviewer-approved-expansion provenance",
+        "matched_claim_elements or prior_art_disclosure_text empty",
+        "missing_project_elements empty for full_or_near_full overlap",
+        "review_status or review_note contains novelty/inventiveness/legal conclusion",
+        "field_claim_upgrade_allowed set before field validation gate",
+        "can_generate_prior_art_result set without accepted hits and human/external review"
+      ],
+      "patch_plan_outputs": [
+        "FSWP7_pressure_resolution_protective_release_gate_search_missing_required_fields_patch",
+        "FSWP7_pressure_resolution_protective_release_gate_search_source_database_or_query_provenance_patch",
+        "FSWP7_pressure_resolution_protective_release_gate_search_claim_element_comparison_gap_patch",
+        "FSWP7_pressure_resolution_protective_release_gate_search_reviewer_boundary_patch",
+        "FSWP7_pressure_resolution_protective_release_gate_search_claim_scope_fallback_patch"
+      ],
+      "prior_art_result_generation_rule": "Only after a non-empty external/human-reviewed result package passes hit-table, comparison-chart, query-provenance and reviewer-boundary checks may Agent60 generate a non-legal prior-art comparison summary. It must still preserve formal counsel and field validation gates.",
+      "formal_search_result_package_supplied": false,
+      "validated_hit_count": 0,
+      "rejected_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 gate 只验证正式检索结果包的结构、来源、比对覆盖和 reviewer 边界；没有真实外部/人工检索结果时不能生成 prior-art comparison，任何情况下都不是法律意见，也不能把检索结果升级为 field-supported claim。",
+      "validation_gate_status": "formal_search_result_validation_gate_ready_waiting_for_result_package",
+      "missing_formal_search_result_validation_gate_fields": [],
+      "validation_ready_status": "formal_search_result_validation_gate_complete_waiting_for_external_result_package"
+    }
+  ]
+}

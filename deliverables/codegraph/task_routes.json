@@ -1,0 +1,357 @@
+{
+  "sparse_sensing_and_observation": [
+    {
+      "agent_number": 48,
+      "slug": "sensor_network_sparse_placement",
+      "runner": "experiments/run_agent48_sensor_network_sparse_placement.py",
+      "source": "src/water_ai/agents/sensor_network_sparse_placement_agent.py",
+      "deliverable": "deliverables/sensor_network_sparse_placement.md",
+      "test": "tests/test_sensor_network_sparse_placement_agent.py",
+      "output_dir": "outputs/agent48_sensor_network_sparse_placement"
+    },
+    {
+      "agent_number": 54,
+      "slug": "soft_sensor_matrix_coupling",
+      "runner": "experiments/run_agent54_soft_sensor_matrix_coupling.py",
+      "source": "src/water_ai/agents/soft_sensor_matrix_coupling_agent.py",
+      "deliverable": "deliverables/soft_sensor_matrix_coupling.md",
+      "test": "tests/test_soft_sensor_matrix_coupling_agent.py",
+      "output_dir": "outputs/agent54_soft_sensor_matrix_coupling"
+    },
+    {
+      "agent_number": 46,
+      "slug": "soft_sensor_field_holdout_gate",
+      "runner": "experiments/run_agent46_soft_sensor_field_holdout_gate.py",
+      "source": "src/water_ai/agents/soft_sensor_field_holdout_gate_agent.py",
+      "deliverable": "deliverables/soft_sensor_field_holdout_gate.md",
+      "test": "tests/test_soft_sensor_field_holdout_gate_agent.py",
+      "output_dir": "outputs/agent46_soft_sensor_field_holdout_gate"
+    },
+    {
+      "agent_number": 47,
+      "slug": "weak_target_stratified_conformal",
+      "runner": "experiments/run_agent47_weak_target_stratified_conformal.py",
+      "source": "src/water_ai/agents/weak_target_stratified_conformal_agent.py",
+      "deliverable": "deliverables/weak_target_stratified_conformal.md",
+      "test": "tests/test_weak_target_stratified_conformal_agent.py",
+      "output_dir": "outputs/agent47_weak_target_stratified_conformal"
+    }
+  ],
+  "grey_box_and_soft_sensor": [
+    {
+      "agent_number": 2,
+      "slug": "soft_sensor",
+      "runner": "experiments/run_agent2_soft_sensor.py",
+      "source": "src/water_ai/agents/soft_sensor_agent.py",
+      "deliverable": null,
+      "test": "tests/test_soft_sensor_agent.py",
+      "output_dir": "outputs/agent2_soft_sensor"
+    },
+    {
+      "agent_number": 36,
+      "slug": "soft_sensor_uncertainty_validation",
+      "runner": "experiments/run_agent36_soft_sensor_uncertainty_validation.py",
+      "source": "src/water_ai/agents/soft_sensor_uncertainty_validation_agent.py",
+      "deliverable": "deliverables/soft_sensor_uncertainty_validation.md",
+      "test": "tests/test_soft_sensor_uncertainty_validation_agent.py",
+      "output_dir": "outputs/agent36_soft_sensor_uncertainty_validation"
+    },
+    {
+      "agent_number": 39,
+      "slug": "soft_sensor_conformal_calibration",
+      "runner": "experiments/run_agent39_soft_sensor_conformal_calibration.py",
+      "source": "src/water_ai/agents/soft_sensor_conformal_calibration_agent.py",
+      "deliverable": "deliverables/soft_sensor_conformal_calibration.md",
+      "test": "tests/test_soft_sensor_conformal_calibration_agent.py",
+      "output_dir": "outputs/agent39_soft_sensor_conformal_calibration"
+    },
+    {
+      "agent_number": 53,
+      "slug": "minimal_grey_box_physics",
+      "runner": "experiments/run_agent53_minimal_grey_box_physics.py",
+      "source": "src/water_ai/agents/minimal_grey_box_physics_agent.py",
+      "deliverable": "deliverables/minimal_grey_box_physics.md",
+      "test": "tests/test_minimal_grey_box_physics_agent.py",
+      "output_dir": "outputs/agent53_minimal_grey_box_physics"
+    },
+    {
+      "agent_number": 40,
+      "slug": "grey_box_dynamic_latency",
+      "runner": "experiments/run_agent40_grey_box_dynamic_latency.py",
+      "source": "src/water_ai/agents/grey_box_dynamic_latency_agent.py",
+      "deliverable": "deliverables/grey_box_dynamic_latency.md",
+      "test": "tests/test_grey_box_dynamic_latency_agent.py",
+      "output_dir": "outputs/agent40_grey_box_dynamic_latency"
+    }
+  ],
+  "catalyst_activity_and_weak_state": [
+    {
+      "agent_number": 51,
+      "slug": "catalyst_activity_proxy",
+      "runner": "experiments/run_agent51_catalyst_activity_proxy.py",
+      "source": "src/water_ai/agents/catalyst_activity_proxy_agent.py",
+      "deliverable": "deliverables/catalyst_activity_proxy.md",
+      "test": "tests/test_catalyst_activity_proxy_agent.py",
+      "output_dir": "outputs/agent51_catalyst_activity_proxy"
+    },
+    {
+      "agent_number": 47,
+      "slug": "weak_target_stratified_conformal",
+      "runner": "experiments/run_agent47_weak_target_stratified_conformal.py",
+      "source": "src/water_ai/agents/weak_target_stratified_conformal_agent.py",
+      "deliverable": "deliverables/weak_target_stratified_conformal.md",
+      "test": "tests/test_weak_target_stratified_conformal_agent.py",
+      "output_dir": "outputs/agent47_weak_target_stratified_conformal"
+    },
+    {
+      "agent_number": 53,
+      "slug": "minimal_grey_box_physics",
+      "runner": "experiments/run_agent53_minimal_grey_box_physics.py",
+      "source": "src/water_ai/agents/minimal_grey_box_physics_agent.py",
+      "deliverable": "deliverables/minimal_grey_box_physics.md",
+      "test": "tests/test_minimal_grey_box_physics_agent.py",
+      "output_dir": "outputs/agent53_minimal_grey_box_physics"
+    }
+  ],
+  "control_and_replay": [
+    {
+      "agent_number": 5,
+      "slug": "control_strategy",
+      "runner": "experiments/run_agent5_control_strategy.py",
+      "source": "src/water_ai/agents/control_strategy_agent.py",
+      "deliverable": null,
+      "test": "tests/test_control_strategy_agent.py",
+      "output_dir": "outputs/agent5_control_strategy"
+    },
+    {
+      "agent_number": 49,
+      "slug": "multi_facility_collaborative_control",
+      "runner": "experiments/run_agent49_multi_facility_collaborative_control.py",
+      "source": "src/water_ai/agents/multi_facility_collaborative_control_agent.py",
+      "deliverable": "deliverables/multi_facility_collaborative_control.md",
+      "test": "tests/test_multi_facility_collaborative_control_agent.py",
+      "output_dir": "outputs/agent49_multi_facility_collaborative_control"
+    },
+    {
+      "agent_number": 52,
+      "slug": "multi_facility_replay_evaluation",
+      "runner": "experiments/run_agent52_multi_facility_replay_evaluation.py",
+      "source": "src/water_ai/agents/multi_facility_replay_evaluation_agent.py",
+      "deliverable": "deliverables/multi_facility_replay_evaluation.md",
+      "test": "tests/test_multi_facility_replay_evaluation_agent.py",
+      "output_dir": "outputs/agent52_multi_facility_replay_evaluation"
+    },
+    {
+      "agent_number": 55,
+      "slug": "engineering_execution_constraints",
+      "runner": "experiments/run_agent55_engineering_execution_constraints.py",
+      "source": null,
+      "deliverable": "deliverables/engineering_execution_constraints.md",
+      "test": null,
+      "output_dir": "outputs/agent55_engineering_execution_constraints"
+    },
+    {
+      "agent_number": 61,
+      "slug": "pressure_resolution_replay_scenario_pack",
+      "runner": "experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "source": "src/water_ai/agents/pressure_resolution_replay_scenario_pack_agent.py",
+      "deliverable": "deliverables/model_core_optimization/pressure_resolution_replay_scenario_pack.md",
+      "test": "tests/test_pressure_resolution_replay_scenario_pack_agent.py",
+      "output_dir": "outputs/agent61_pressure_resolution_replay_scenario_pack"
+    }
+  ],
+  "field_evidence_and_release_gates": [
+    {
+      "agent_number": 44,
+      "slug": "field_replay_import",
+      "runner": "experiments/run_agent44_field_replay_import.py",
+      "source": "src/water_ai/agents/field_replay_import_agent.py",
+      "deliverable": null,
+      "test": "tests/test_field_replay_import_agent.py",
+      "output_dir": "outputs/agent44_field_replay_import"
+    },
+    {
+      "agent_number": 42,
+      "slug": "timestamped_campaign_replay",
+      "runner": "experiments/run_agent42_timestamped_campaign_replay.py",
+      "source": "src/water_ai/agents/timestamped_campaign_replay_agent.py",
+      "deliverable": null,
+      "test": "tests/test_timestamped_campaign_replay_agent.py",
+      "output_dir": "outputs/agent42_timestamped_campaign_replay"
+    },
+    {
+      "agent_number": 43,
+      "slug": "field_replay_calibration_gate",
+      "runner": "experiments/run_agent43_field_replay_calibration_gate.py",
+      "source": "src/water_ai/agents/field_replay_calibration_gate_agent.py",
+      "deliverable": "deliverables/field_replay_calibration_gate.md",
+      "test": "tests/test_field_replay_calibration_gate_agent.py",
+      "output_dir": "outputs/agent43_field_replay_calibration_gate"
+    },
+    {
+      "agent_number": 45,
+      "slug": "field_replay_evidence_chain",
+      "runner": "experiments/run_agent45_field_replay_evidence_chain.py",
+      "source": "src/water_ai/agents/field_replay_evidence_chain_agent.py",
+      "deliverable": "deliverables/field_replay_evidence_chain.md",
+      "test": "tests/test_field_replay_evidence_chain_agent.py",
+      "output_dir": "outputs/agent45_field_replay_evidence_chain"
+    },
+    {
+      "agent_number": 58,
+      "slug": "field_validation_queue_alignment",
+      "runner": "experiments/run_agent58_field_validation_queue_alignment.py",
+      "source": "src/water_ai/agents/field_validation_queue_alignment_agent.py",
+      "deliverable": "deliverables/field_validation_queue_alignment.md",
+      "test": "tests/test_field_validation_queue_alignment_agent.py",
+      "output_dir": "outputs/agent58_field_validation_queue_alignment"
+    },
+    {
+      "agent_number": 59,
+      "slug": "claim_specific_field_package",
+      "runner": "experiments/run_agent59_claim_specific_field_package.py",
+      "source": "src/water_ai/agents/claim_specific_field_package_agent.py",
+      "deliverable": "deliverables/claim_specific_field_package.md",
+      "test": "tests/test_claim_specific_field_package_agent.py",
+      "output_dir": "outputs/agent59_claim_specific_field_package"
+    }
+  ],
+  "knowledge_and_governance": [
+    {
+      "agent_number": 37,
+      "slug": "knowledge_graph_curation",
+      "runner": "experiments/run_agent37_knowledge_graph_curation.py",
+      "source": "src/water_ai/agents/knowledge_graph_curation_agent.py",
+      "deliverable": "deliverables/knowledge_graph_curation.md",
+      "test": "tests/test_knowledge_graph_curation_agent.py",
+      "output_dir": "outputs/agent37_knowledge_graph_curation"
+    },
+    {
+      "agent_number": 38,
+      "slug": "literature_evidence",
+      "runner": "experiments/run_agent38_literature_evidence.py",
+      "source": "src/water_ai/agents/literature_evidence_agent.py",
+      "deliverable": null,
+      "test": "tests/test_literature_evidence_agent.py",
+      "output_dir": "outputs/agent38_literature_evidence"
+    },
+    {
+      "agent_number": 56,
+      "slug": "knowledge_graph_reasoning",
+      "runner": "experiments/run_agent56_knowledge_graph_reasoning.py",
+      "source": "src/water_ai/agents/knowledge_graph_reasoning_agent.py",
+      "deliverable": "deliverables/knowledge_graph_reasoning.md",
+      "test": "tests/test_knowledge_graph_reasoning_agent.py",
+      "output_dir": "outputs/agent56_knowledge_graph_reasoning"
+    },
+    {
+      "agent_number": 57,
+      "slug": "main_chain_reconnection",
+      "runner": "experiments/run_agent57_main_chain_reconnection.py",
+      "source": "src/water_ai/agents/main_chain_reconnection_agent.py",
+      "deliverable": "deliverables/main_chain_reconnection.md",
+      "test": "tests/test_main_chain_reconnection_agent.py",
+      "output_dir": "outputs/agent57_main_chain_reconnection"
+    },
+    {
+      "agent_number": 50,
+      "slug": "model_core_governance",
+      "runner": "experiments/run_agent50_model_core_governance.py",
+      "source": null,
+      "deliverable": null,
+      "test": null,
+      "output_dir": "outputs/agent50_model_core_governance"
+    },
+    {
+      "agent_number": 60,
+      "slug": "agent_architecture_consolidation",
+      "runner": "experiments/run_agent60_agent_architecture_consolidation.py",
+      "source": "src/water_ai/agents/agent_architecture_consolidation_agent.py",
+      "deliverable": "deliverables/model_core_optimization/agent_architecture_consolidation.md",
+      "test": "tests/test_agent_architecture_consolidation_agent.py",
+      "output_dir": "outputs/agent60_agent_architecture_consolidation"
+    }
+  ],
+  "fallback_hotspots": [
+    {
+      "path": "deliverables/artifact_index.md",
+      "layer": "deliverable",
+      "in_degree": 4,
+      "out_degree": 164,
+      "scan_priority_score": 172,
+      "summary": "成果索引"
+    },
+    {
+      "path": "src/water_ai/domain.py",
+      "layer": "core_model",
+      "in_degree": 79,
+      "out_degree": 8,
+      "scan_priority_score": 166,
+      "summary": "from __future__ import annotations"
+    },
+    {
+      "path": "experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "layer": "experiment_runner",
+      "in_degree": 5,
+      "out_degree": 131,
+      "scan_priority_score": 141,
+      "summary": "from __future__ import annotations"
+    },
+    {
+      "path": "src/water_ai/agents/base.py",
+      "layer": "agent_logic",
+      "in_degree": 61,
+      "out_degree": 7,
+      "scan_priority_score": 129,
+      "summary": "from __future__ import annotations"
+    },
+    {
+      "path": "README.md",
+      "layer": "project_root",
+      "in_degree": 0,
+      "out_degree": 111,
+      "scan_priority_score": 111,
+      "summary": "低成本传感循环式水处理智能闭环项目"
+    },
+    {
+      "path": "src/water_ai/agents/data_quality_agent.py",
+      "layer": "agent_logic",
+      "in_degree": 31,
+      "out_degree": 17,
+      "scan_priority_score": 79,
+      "summary": "from __future__ import annotations"
+    },
+    {
+      "path": "src/water_ai/agents/control_strategy_agent.py",
+      "layer": "agent_logic",
+      "in_degree": 21,
+      "out_degree": 22,
+      "scan_priority_score": 64,
+      "summary": "from __future__ import annotations"
+    },
+    {
+      "path": "src/water_ai/agents/fault_diagnosis_agent.py",
+      "layer": "agent_logic",
+      "in_degree": 22,
+      "out_degree": 19,
+      "scan_priority_score": 63,
+      "summary": "from __future__ import annotations"
+    },
+    {
+      "path": "src/water_ai/agents/long_term_economics_agent.py",
+      "layer": "agent_logic",
+      "in_degree": 12,
+      "out_degree": 26,
+      "scan_priority_score": 50,
+      "summary": "from __future__ import annotations"
+    },
+    {
+      "path": "src/water_ai/agents/cost_safety_agent.py",
+      "layer": "agent_logic",
+      "in_degree": 14,
+      "out_degree": 21,
+      "scan_priority_score": 49,
+      "summary": "from __future__ import annotations"
+    }
+  ]
+}

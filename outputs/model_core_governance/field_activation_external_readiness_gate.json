@@ -1,0 +1,121 @@
+{
+  "gate_id": "R8u106_field_activation_external_readiness_gate",
+  "gate_type": "field_activation_external_handoff_sequence_gate",
+  "gate_status": "field_activation_external_readiness_waiting_for_external_response",
+  "ready_step_count": 1,
+  "blocked_step_count": 7,
+  "total_step_count": 8,
+  "first_blocked_step": "response_source",
+  "highest_priority_blocker": "R8U106_SUBMIT_FIELD_ACTIVATION_RESPONSE",
+  "next_operator_action": "set_FIELD_ACTIVATION_RESPONSE_PATH_to_filled_external_response_json",
+  "can_submit_to_external_activation_router": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "sequence_steps": [
+    {
+      "step_id": "response_source",
+      "status": "field_activation_response_source_using_default_template",
+      "ready": false,
+      "blocker_id": "R8U106_SUBMIT_FIELD_ACTIVATION_RESPONSE",
+      "next_operator_action": "set_FIELD_ACTIVATION_RESPONSE_PATH_to_filled_external_response_json",
+      "evidence": {
+        "source_env_var": "FIELD_ACTIVATION_RESPONSE_PATH",
+        "external_response_supplied": false,
+        "using_default_template": true
+      }
+    },
+    {
+      "step_id": "schema_preflight",
+      "status": "field_activation_schema_preflight_passed",
+      "ready": true,
+      "blocker_id": "",
+      "next_operator_action": "step_ready_continue",
+      "evidence": {
+        "response_top_level_missing_count": 0,
+        "evidence_row_missing_field_count": 0,
+        "no_write_violation_count": 0
+      }
+    },
+    {
+      "step_id": "response_preflight",
+      "status": "field_activation_response_blocked_before_external_package_preflight",
+      "ready": false,
+      "blocker_id": "R8U106_REPAIR_FIELD_ACTIVATION_RESPONSE_ROWS",
+      "next_operator_action": "fill_response_template_and_set_FIELD_ACTIVATION_RESPONSE_PATH",
+      "evidence": {
+        "expected_response_row_count": 33,
+        "template_marker_row_count": 33,
+        "non_field_row_count": 33
+      }
+    },
+    {
+      "step_id": "response_coherence_audit",
+      "status": "field_activation_response_coherence_audit_waiting_for_response_preflight",
+      "ready": false,
+      "blocker_id": "R8U106_REPAIR_FIELD_ACTIVATION_RESPONSE_COHERENCE",
+      "next_operator_action": "complete_response_preflight_before_coherence_audit",
+      "evidence": {
+        "hard_blocker_count": 0,
+        "warning_count": 0,
+        "highest_priority_blocker": ""
+      }
+    },
+    {
+      "step_id": "repair_work_order",
+      "status": "field_activation_response_repair_work_order_waiting_for_external_response",
+      "ready": false,
+      "blocker_id": "R8U102_SUBMIT_FIELD_ACTIVATION_RESPONSE",
+      "next_operator_action": "fill_response_template_and_set_FIELD_ACTIVATION_RESPONSE_PATH",
+      "evidence": {
+        "repair_item_count": 7,
+        "highest_priority_repair_id": "R8U102_SUBMIT_FIELD_ACTIVATION_RESPONSE"
+      }
+    },
+    {
+      "step_id": "package_assembly",
+      "status": "field_activation_package_assembly_plan_blocked_by_response_preflight",
+      "ready": false,
+      "blocker_id": "R8U106_COMPLETE_PACKAGE_ASSEMBLY",
+      "next_operator_action": "regenerate_package_assembly_plan_after_response_preflight_ready",
+      "evidence": {
+        "channel_plan_count": 1,
+        "candidate_channel_plan_count": 2
+      }
+    },
+    {
+      "step_id": "package_staging",
+      "status": "field_activation_package_staging_manifest_blocked_by_response_preflight",
+      "ready": false,
+      "blocker_id": "R8U106_COMPLETE_PACKAGE_STAGING",
+      "next_operator_action": "complete_response_preflight_and_package_assembly_before_staging",
+      "evidence": {
+        "selected_channel_manifest_count": 1,
+        "candidate_channel_requirement_count": 2,
+        "package_pointers_to_set": [
+          "REAL_FIELD_REPLAY_PACKAGE_DIR"
+        ]
+      }
+    },
+    {
+      "step_id": "materialized_package_preflight",
+      "status": "field_activation_materialized_package_preflight_blocked_by_staging_manifest",
+      "ready": false,
+      "blocker_id": "R8U105_STAGING_MANIFEST_NOT_READY",
+      "next_operator_action": "complete_field_activation_staging_manifest_before_materializing_package",
+      "evidence": {
+        "package_pointer": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+        "blocker_count": 1,
+        "highest_priority_blocker": "R8U105_STAGING_MANIFEST_NOT_READY"
+      }
+    }
+  ],
+  "operator_sequence": [
+    "Submit a filled FIELD_ACTIVATION_RESPONSE_PATH before materializing any package directory.",
+    "Pass schema, response preflight and repair work order before package assembly/staging.",
+    "Materialize the selected package directory from the staging manifest.",
+    "Set the selected package pointer, such as REAL_FIELD_REPLAY_PACKAGE_DIR, only after the directory preflight passes.",
+    "Run experiments/run_external_activation_router.py, then downstream R7/Agent44 or path/endpoint preflights."
+  ],
+  "no_write_boundary": "This readiness gate only orders existing field-activation preflights. It does not create field evidence, does not run replay/holdout, does not resume the model chain, and cannot write actuator policy, release gate, legal conclusions or field-supported claims."
+}

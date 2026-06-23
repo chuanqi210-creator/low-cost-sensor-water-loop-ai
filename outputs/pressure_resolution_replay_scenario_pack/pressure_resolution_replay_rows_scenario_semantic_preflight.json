@@ -1,0 +1,65 @@
+{
+  "field_rows_scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight",
+  "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
+  "source_status": "field_rows_file_missing",
+  "schema_validation_status": "schema_validation_blocked_at_source_preflight",
+  "batch_bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight",
+  "temporal_window_preflight_status": "temporal_window_preflight_blocked_at_source_preflight",
+  "checked_batch_count": 0,
+  "semantic_valid_batch_count": 0,
+  "semantic_violation_count": 0,
+  "condition_violation_counts": {},
+  "scenario_semantic_ready_count": 0,
+  "batch_semantic_checks": [],
+  "scenario_semantic_status": [
+    {
+      "scenario_id": "R8O_S1_unresolved_pressure_conflict_review_block",
+      "scenario_type": "unresolved_conflict_review_block",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S2_resolved_pressure_conflict_authoritative_source",
+      "scenario_type": "resolved_conflict_authoritative_source",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S3_operator_review_latency_budget",
+      "scenario_type": "operator_review_latency_budget",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S4_agent51_scoreability_recovery_after_resolution",
+      "scenario_type": "agent51_scoreability_recovery",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    },
+    {
+      "scenario_id": "R8O_S5_agent49_agent52_guardrail_clearance_replay",
+      "scenario_type": "guardrail_clearance_replay",
+      "temporal_valid_batches": [],
+      "semantic_valid_batches": [],
+      "violations_by_batch": {},
+      "condition_checks_by_batch": {},
+      "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight"
+    }
+  ],
+  "scenario_semantic_boundary": "This preflight checks pressure-resolution scenario meaning: unresolved conflicts must remain reviewed and blocked, resolved conflicts must cite an authoritative source and resolution record, and guardrail clearance must not bypass control-block/review flags. It does not prove field-supported claims or permit actuator/release-gate writes.",
+  "next_operator_action": "R8p_fix_field_rows_source_preflight",
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false
+}

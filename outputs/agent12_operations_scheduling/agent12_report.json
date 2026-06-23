@@ -1,0 +1,432 @@
+{
+  "campaign": {
+    "records": [
+      {
+        "batch_id": 0,
+        "scenario": "sensor_faults",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 66,
+        "cumulative_cost": 0.468,
+        "cumulative_energy": 0.264,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "inspect_hydraulics",
+          "calibrate_sensors",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "cost_first"
+        ],
+        "validation_minutes": 40,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 3,
+        "catalyst_regen_count_end": 0,
+        "catalyst_lifetime_fraction_end": 0.88,
+        "catalyst_activity_end": 0.77,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 1,
+        "scenario": "oxidant_limitation",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 173,
+        "cumulative_cost": 1.146,
+        "cumulative_energy": 0.681,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "dose_oxidant",
+          "recirculate",
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "replace_catalyst",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "emergency_response",
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 46,
+        "regeneration_count": 1,
+        "replacement_count": 0,
+        "oxidant_dose_count": 1,
+        "catalyst_age_cycles_end": 6,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.768,
+        "catalyst_activity_end": 0.814,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 2,
+        "scenario": "reaction_time_insufficient",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 202,
+        "cumulative_cost": 0.785,
+        "cumulative_energy": 0.604,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "hold_for_validation",
+          "recirculate",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "balanced",
+          "balanced",
+          "balanced"
+        ],
+        "validation_minutes": 146,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 8,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.729,
+        "catalyst_activity_end": 0.792,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 3,
+        "scenario": "matrix_shock",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 147,
+        "cumulative_cost": 0.76,
+        "cumulative_energy": 0.524,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "switch_or_pretreat",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 73,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 9,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.708,
+        "catalyst_activity_end": 0.779,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 4,
+        "scenario": "catalyst_deactivation",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 363,
+        "cumulative_cost": 2.169,
+        "cumulative_energy": 0.73,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "replace_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "safety_first",
+          "cost_first"
+        ],
+        "validation_minutes": 146,
+        "regeneration_count": 1,
+        "replacement_count": 1,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 1,
+        "catalyst_regen_count_end": 0,
+        "catalyst_lifetime_fraction_end": 0.981,
+        "catalyst_activity_end": 0.908,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 5,
+        "scenario": "oxidant_limitation",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 172,
+        "cumulative_cost": 1.142,
+        "cumulative_energy": 0.683,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "dose_oxidant",
+          "recirculate",
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "replace_catalyst",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "emergency_response",
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 46,
+        "regeneration_count": 1,
+        "replacement_count": 0,
+        "oxidant_dose_count": 1,
+        "catalyst_age_cycles_end": 4,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.867,
+        "catalyst_activity_end": 0.87,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 6,
+        "scenario": "matrix_shock",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 146,
+        "cumulative_cost": 0.76,
+        "cumulative_energy": 0.524,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "switch_or_pretreat",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 73,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 5,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.846,
+        "catalyst_activity_end": 0.857,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 7,
+        "scenario": "catalyst_deactivation",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 311,
+        "cumulative_cost": 1.479,
+        "cumulative_energy": 0.699,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst",
+          "regenerate_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 146,
+        "regeneration_count": 2,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 9,
+        "catalyst_regen_count_end": 3,
+        "catalyst_lifetime_fraction_end": 0.628,
+        "catalyst_activity_end": 0.667,
+        "terminal_label": "clean_release"
+      }
+    ],
+    "catalyst_spares_remaining": 0,
+    "oxidant_stock_units_remaining": 1.5,
+    "total_elapsed_min": 1580,
+    "total_cost": 8.709,
+    "total_energy": 4.709
+  },
+  "operations_scheduling": {
+    "agent_name": "operations_scheduling_agent",
+    "confidence": 0.61,
+    "summary": "运行调度：pause_or_limit_intake；成功率 1.0，验证工时占用 2.17，催化剂备件 0。",
+    "recommendations": [
+      "限制新批次进水，优先消化待验证批次和维护风险。",
+      "增加旁路快检班次或压缩低价值验证项，优先保障放行门和副产物验证。",
+      "补充催化剂模块库存，并把寿命低于 0.45 的批次列入预防性维护。"
+    ],
+    "metrics": {
+      "campaign_metrics": {
+        "batch_count": 8,
+        "success_rate": 1.0,
+        "total_elapsed_min": 1580.0,
+        "mean_elapsed_min": 197.5,
+        "total_cost": 8.709,
+        "total_energy": 4.709,
+        "validation_hours": 11.933,
+        "validation_staff_usage": 2.17,
+        "time_budget_usage": 1.646,
+        "regeneration_count": 5,
+        "replacement_count": 1,
+        "oxidant_dose_count": 2,
+        "catalyst_lifetime_fraction_end": 0.628,
+        "catalyst_activity_end": 0.667,
+        "catalyst_spares_remaining": 0,
+        "oxidant_stock_units_remaining": 1.5,
+        "evidence_strength": 1.0
+      },
+      "bottlenecks": [
+        {
+          "bottleneck_id": "validation_capacity",
+          "severity": "critical",
+          "message": "旁路/离线验证工时接近或超过可用容量。",
+          "value": 2.17,
+          "threshold": 0.9
+        },
+        {
+          "bottleneck_id": "campaign_time_budget",
+          "severity": "warning",
+          "message": "循环、验证和维护占用的总时间接近运行窗口上限。",
+          "value": 1.646,
+          "threshold": 0.9
+        },
+        {
+          "bottleneck_id": "catalyst_inventory",
+          "severity": "critical",
+          "message": "催化剂备件已耗尽，禁止依赖更换动作作为默认兜底。",
+          "value": 0,
+          "threshold": 1
+        }
+      ],
+      "schedule": {
+        "operating_mode": "pause_or_limit_intake",
+        "action_queue": [
+          {
+            "action_id": "limit_intake",
+            "instruction": "限制新批次进水，优先消化待验证批次和维护风险。",
+            "priority": 1
+          },
+          {
+            "action_id": "reserve_validation_shift",
+            "instruction": "增加旁路快检班次或压缩低价值验证项，优先保障放行门和副产物验证。",
+            "priority": 2
+          },
+          {
+            "action_id": "reorder_catalyst_modules",
+            "instruction": "补充催化剂模块库存，并把寿命低于 0.45 的批次列入预防性维护。",
+            "priority": 2
+          }
+        ],
+        "next_campaign_review_after_batches": 3
+      }
+    },
+    "issues": [
+      {
+        "sensor": "operations",
+        "issue_type": "validation_capacity",
+        "severity": "critical",
+        "message": "旁路/离线验证工时接近或超过可用容量。",
+        "evidence": {
+          "bottleneck_id": "validation_capacity",
+          "severity": "critical",
+          "message": "旁路/离线验证工时接近或超过可用容量。",
+          "value": 2.17,
+          "threshold": 0.9
+        }
+      },
+      {
+        "sensor": "operations",
+        "issue_type": "campaign_time_budget",
+        "severity": "warning",
+        "message": "循环、验证和维护占用的总时间接近运行窗口上限。",
+        "evidence": {
+          "bottleneck_id": "campaign_time_budget",
+          "severity": "warning",
+          "message": "循环、验证和维护占用的总时间接近运行窗口上限。",
+          "value": 1.646,
+          "threshold": 0.9
+        }
+      },
+      {
+        "sensor": "operations",
+        "issue_type": "catalyst_inventory",
+        "severity": "critical",
+        "message": "催化剂备件已耗尽，禁止依赖更换动作作为默认兜底。",
+        "evidence": {
+          "bottleneck_id": "catalyst_inventory",
+          "severity": "critical",
+          "message": "催化剂备件已耗尽，禁止依赖更换动作作为默认兜底。",
+          "value": 0,
+          "threshold": 1
+        }
+      }
+    ]
+  }
+}

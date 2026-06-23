@@ -1,0 +1,131 @@
+{
+  "handle": "agent-0e7189e876",
+  "agent_id": "agent:57:main_chain_reconnection",
+  "agent_number": 57,
+  "slug": "main_chain_reconnection",
+  "runner": "experiments/run_agent57_main_chain_reconnection.py",
+  "source": "src/water_ai/agents/main_chain_reconnection_agent.py",
+  "deliverable": "deliverables/main_chain_reconnection.md",
+  "test": "tests/test_main_chain_reconnection_agent.py",
+  "output_dir": "outputs/agent57_main_chain_reconnection",
+  "related_nodes": [
+    {
+      "handle": "agent-0e7189e876",
+      "node_id": "agent:57:main_chain_reconnection",
+      "kind": "agent_workflow",
+      "label": "Agent57 main_chain_reconnection",
+      "path": "experiments/run_agent57_main_chain_reconnection.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 57
+      }
+    },
+    {
+      "handle": "dir-4d64e7063d",
+      "node_id": "dir:outputs/agent57_main_chain_reconnection",
+      "kind": "output_dir",
+      "label": "agent57_main_chain_reconnection",
+      "path": "outputs/agent57_main_chain_reconnection",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-15a9dc46a3",
+      "node_id": "file:deliverables/main_chain_reconnection.md",
+      "kind": "referenced_path",
+      "label": "main_chain_reconnection.md",
+      "path": "deliverables/main_chain_reconnection.md",
+      "layer": "deliverable",
+      "summary": "主闭环链条回接审计",
+      "metrics": {
+        "lines": 24,
+        "size_bytes": 3339
+      }
+    },
+    {
+      "handle": "file-f44cdecf7a",
+      "node_id": "file:experiments/run_agent57_main_chain_reconnection.py",
+      "kind": "file",
+      "label": "run_agent57_main_chain_reconnection.py",
+      "path": "experiments/run_agent57_main_chain_reconnection.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 243,
+        "size_bytes": 10999
+      }
+    },
+    {
+      "handle": "file-a63783b7f2",
+      "node_id": "file:src/water_ai/agents/main_chain_reconnection_agent.py",
+      "kind": "file",
+      "label": "main_chain_reconnection_agent.py",
+      "path": "src/water_ai/agents/main_chain_reconnection_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 314,
+        "size_bytes": 15728
+      }
+    },
+    {
+      "handle": "file-d7f78efe9c",
+      "node_id": "file:tests/test_main_chain_reconnection_agent.py",
+      "kind": "file",
+      "label": "test_main_chain_reconnection_agent.py",
+      "path": "tests/test_main_chain_reconnection_agent.py",
+      "layer": "verification",
+      "summary": "from water_ai.agents.arbitration_agent import ArbitrationAgent",
+      "metrics": {
+        "lines": 87,
+        "size_bytes": 4495
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:57:main_chain_reconnection",
+      "target": "file:deliverables/main_chain_reconnection.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:57:main_chain_reconnection",
+      "target": "file:src/water_ai/agents/main_chain_reconnection_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:57:main_chain_reconnection",
+      "target": "file:experiments/run_agent57_main_chain_reconnection.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:57:main_chain_reconnection",
+      "target": "file:tests/test_main_chain_reconnection_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:57:main_chain_reconnection",
+      "target": "dir:outputs/agent57_main_chain_reconnection",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

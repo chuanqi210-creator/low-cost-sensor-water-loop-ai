@@ -1,0 +1,46 @@
+{
+  "downstream_target_gate_result_preflight_id": "R8u52_downstream_target_gate_result_preflight",
+  "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_preflight.json",
+  "result_package_env_var": "R8V_TARGET_GATE_RESULT_PACKAGE_PATH",
+  "result_package_source_path": "",
+  "linked_target_gate_preflight_status": "downstream_target_gate_preflight_blocked_by_downstream_route_handoff",
+  "expected_target_count": 4,
+  "expected_target_ids": [
+    "agent51_catalyst_proxy_holdout",
+    "agent49_guardrail_context",
+    "agent52_replay_clearance",
+    "r7_evidence_chain"
+  ],
+  "model_core_layers": [
+    "diagnostic_decision_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "downstream_target_gate_result_preflight_status": "downstream_target_gate_result_preflight_blocked_by_target_gate_preflight",
+  "source_status": "result_package_not_checked_until_target_gates_ready",
+  "submitted_target_result_count": 0,
+  "accepted_target_result_count": 0,
+  "rejected_target_result_count": 0,
+  "missing_target_ids": [
+    "agent51_catalyst_proxy_holdout",
+    "agent49_guardrail_context",
+    "agent52_replay_clearance",
+    "r7_evidence_chain"
+  ],
+  "unknown_target_ids": [],
+  "target_result_validations": [],
+  "blocking_reasons": [
+    "target_gate_preflight_status=downstream_target_gate_preflight_blocked_by_downstream_route_handoff",
+    "target gates cannot accept results until R8p accepted rows can execute all target gates"
+  ],
+  "next_operator_action": "R8p_fix_field_rows_source_preflight",
+  "can_route_to_result_arbitration": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false
+}

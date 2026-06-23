@@ -1,0 +1,44 @@
+{
+  "formal_search_nonlegal_review_response_template_status": "formal_search_nonlegal_review_response_template_blocked_at_review_packet",
+  "linked_review_packet_status": "formal_search_nonlegal_review_packet_blocked_at_validation_execution",
+  "expected_env_var": "FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH",
+  "recommended_output_path": "outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response.json",
+  "required_root_keys": [
+    "review_metadata",
+    "review_rows"
+  ],
+  "review_metadata_required_fields": [
+    "response_package_id",
+    "reviewer_id",
+    "review_time",
+    "evidence_boundary_acknowledgement",
+    "legal_status"
+  ],
+  "review_row_required_fields": [
+    "review_packet_row_id",
+    "linked_work_package_id",
+    "hit_id",
+    "reviewer_id",
+    "review_time",
+    "nonlegal_overlap_assessment",
+    "distinguishing_technical_detail",
+    "fallback_scope_recommendation",
+    "preserved_field_validation_gate",
+    "evidence_boundary_acknowledgement",
+    "reviewer_signature_or_trace_id",
+    "legal_status"
+  ],
+  "expected_review_packet_row_ids": [],
+  "response_template_rows": [],
+  "review_response_supplied": false,
+  "human_review_completed": false,
+  "can_route_to_claim_scope_patch_draft": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "template_marker_policy": "Template/TODO rows must be replaced by human nonlegal technical comparison review records before source preflight may route the response.",
+  "failure_boundary": "该 template 只定义人工非法律技术比较审查结果如何回填；它不是审查结果，不是法律意见，不判断授权概率，也不能升级 field-supported claim。",
+  "preflight_blockers": [
+    "review_packet:not_ready_for_human_review"
+  ]
+}

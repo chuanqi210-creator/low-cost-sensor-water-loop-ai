@@ -1,0 +1,13 @@
+batch_id,sample_time_min,result_time_min,analyte,value,qa_flag,proxy_holdout_label,catalyst_activity_label,pressure_headloss_proxy_label
+TS001,19,93,matrix_shock_label,1.0,synthetic_pass,True,,True
+TS002,20,94,matrix_shock_label,1.0,synthetic_pass,True,,True
+TS003,18,95,matrix_shock_label,1.0,synthetic_pass,True,,True
+TS004,19,96,matrix_shock_label,1.0,synthetic_pass,True,,True
+TS005,20,97,matrix_shock_label,1.0,synthetic_pass,True,,True
+TS006,18,98,matrix_shock_label,1.0,synthetic_pass,True,,True
+TS007,19,99,matrix_shock_label,0.0,synthetic_pass,True,,False
+TS008,20,100,matrix_shock_label,0.0,synthetic_pass,True,,False
+TS009,18,92,matrix_shock_label,0.0,synthetic_pass,True,,False
+TS010,19,93,matrix_shock_label,0.0,synthetic_pass,True,,False
+TS011,20,94,matrix_shock_label,0.0,synthetic_pass,True,,True
+TS012,18,95,matrix_shock_label,0.0,synthetic_pass,True,,False

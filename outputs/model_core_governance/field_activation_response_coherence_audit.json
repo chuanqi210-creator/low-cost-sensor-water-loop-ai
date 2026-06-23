@@ -1,0 +1,535 @@
+{
+  "audit_id": "R8u117_field_activation_response_coherence_audit",
+  "audit_type": "field_activation_response_batch_node_custody_coherence_audit",
+  "audit_status": "field_activation_response_coherence_audit_waiting_for_response_preflight",
+  "response_preflight_status": "field_activation_response_blocked_before_external_package_preflight",
+  "response_ready_for_audit": false,
+  "audit_execution_status": "coherence_checks_deferred_until_response_preflight_ready",
+  "evidence_row_count": 33,
+  "hidden_state_audit_count": 6,
+  "row_scope_audit_count": 33,
+  "hard_blocker_count": 0,
+  "warning_count": 0,
+  "highest_priority_blocker": "",
+  "hidden_state_alignment_audits": [
+    {
+      "hidden_state": "pollutant_residual",
+      "response_row_count": 6,
+      "table_count": 5,
+      "table_names": [
+        "context_or_manual_review",
+        "field_holdout_release_labels",
+        "final_effluent_endpoint_labels",
+        "offline_lab_results",
+        "sensor_timeseries"
+      ],
+      "distinct_batch_count": 0,
+      "batch_ids": [],
+      "distinct_chain_of_custody_count": 0,
+      "batch_alignment_status": "hidden_state_batch_alignment_missing",
+      "can_assemble_state_evidence_group": false
+    },
+    {
+      "hidden_state": "reaction_completion",
+      "response_row_count": 6,
+      "table_count": 4,
+      "table_names": [
+        "campaign_operation_log",
+        "context_or_manual_review",
+        "offline_lab_results",
+        "site_topology_or_bed_geometry"
+      ],
+      "distinct_batch_count": 0,
+      "batch_ids": [],
+      "distinct_chain_of_custody_count": 0,
+      "batch_alignment_status": "hidden_state_batch_alignment_missing",
+      "can_assemble_state_evidence_group": false
+    },
+    {
+      "hidden_state": "catalyst_activity",
+      "response_row_count": 6,
+      "table_count": 4,
+      "table_names": [
+        "campaign_operation_log",
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "site_topology_or_bed_geometry"
+      ],
+      "distinct_batch_count": 0,
+      "batch_ids": [],
+      "distinct_chain_of_custody_count": 0,
+      "batch_alignment_status": "hidden_state_batch_alignment_missing",
+      "can_assemble_state_evidence_group": false
+    },
+    {
+      "hidden_state": "matrix_interference",
+      "response_row_count": 5,
+      "table_count": 3,
+      "table_names": [
+        "field_labeled_fast_proxy_event_log",
+        "offline_lab_results",
+        "sensor_timeseries"
+      ],
+      "distinct_batch_count": 0,
+      "batch_ids": [],
+      "distinct_chain_of_custody_count": 0,
+      "batch_alignment_status": "hidden_state_batch_alignment_missing",
+      "can_assemble_state_evidence_group": false
+    },
+    {
+      "hidden_state": "hydraulic_delay",
+      "response_row_count": 5,
+      "table_count": 3,
+      "table_names": [
+        "campaign_operation_log",
+        "hydraulic_path_stage_labels",
+        "site_topology_or_bed_geometry"
+      ],
+      "distinct_batch_count": 0,
+      "batch_ids": [],
+      "distinct_chain_of_custody_count": 0,
+      "batch_alignment_status": "hidden_state_batch_alignment_missing",
+      "can_assemble_state_evidence_group": false
+    },
+    {
+      "hidden_state": "release_or_byproduct_risk",
+      "response_row_count": 5,
+      "table_count": 5,
+      "table_names": [
+        "campaign_operation_log",
+        "context_or_manual_review",
+        "final_effluent_endpoint_labels",
+        "human_reviewed_release_gate_labels",
+        "offline_lab_results"
+      ],
+      "distinct_batch_count": 0,
+      "batch_ids": [],
+      "distinct_chain_of_custody_count": 0,
+      "batch_alignment_status": "hidden_state_batch_alignment_missing",
+      "can_assemble_state_evidence_group": false
+    }
+  ],
+  "row_scope_audits": [
+    {
+      "response_row_id": "pollutant_residual_01",
+      "hidden_state": "pollutant_residual",
+      "table_name": "offline_lab_results",
+      "required_evidence": "offline_lab_results.pollutant_residual",
+      "missing_scope_fields": [
+        "offline_method_id",
+        "detection_limit"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "pollutant_residual_02",
+      "hidden_state": "pollutant_residual",
+      "table_name": "context_or_manual_review",
+      "required_evidence": "field_holdout_release_labels",
+      "missing_scope_fields": [],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": true
+    },
+    {
+      "response_row_id": "pollutant_residual_03",
+      "hidden_state": "pollutant_residual",
+      "table_name": "sensor_timeseries",
+      "required_evidence": "sensor_timeseries.final_effluent:UV254_abs",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_needs_review_against_required_evidence",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "pollutant_residual_04",
+      "hidden_state": "pollutant_residual",
+      "table_name": "sensor_timeseries",
+      "required_evidence": "sensor_timeseries.final_effluent:ORP_mV",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_needs_review_against_required_evidence",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "pollutant_residual_05",
+      "hidden_state": "pollutant_residual",
+      "table_name": "final_effluent_endpoint_labels",
+      "required_evidence": "final_effluent_endpoint_labels.release_label",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "pollutant_residual_06",
+      "hidden_state": "pollutant_residual",
+      "table_name": "field_holdout_release_labels",
+      "required_evidence": "field_holdout_release_labels.batch_id",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "reaction_completion_01",
+      "hidden_state": "reaction_completion",
+      "table_name": "offline_lab_results",
+      "required_evidence": "offline_lab_results.reaction_completion_proxy",
+      "missing_scope_fields": [
+        "offline_method_id",
+        "detection_limit"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "reaction_completion_02",
+      "hidden_state": "reaction_completion",
+      "table_name": "context_or_manual_review",
+      "required_evidence": "known_HRT_or_contact_time",
+      "missing_scope_fields": [],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": true
+    },
+    {
+      "response_row_id": "reaction_completion_03",
+      "hidden_state": "reaction_completion",
+      "table_name": "campaign_operation_log",
+      "required_evidence": "campaign_operation_log.hold_time_min",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "reaction_completion_04",
+      "hidden_state": "reaction_completion",
+      "table_name": "campaign_operation_log",
+      "required_evidence": "campaign_operation_log.effect_time_min",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "reaction_completion_05",
+      "hidden_state": "reaction_completion",
+      "table_name": "campaign_operation_log",
+      "required_evidence": "campaign_operation_log.recycle_ratio",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "reaction_completion_06",
+      "hidden_state": "reaction_completion",
+      "table_name": "site_topology_or_bed_geometry",
+      "required_evidence": "site_topology_or_bed_geometry.nominal_HRT_min",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "catalyst_activity_01",
+      "hidden_state": "catalyst_activity",
+      "table_name": "node_modality_sensor_timeseries",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:UV254_abs",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_needs_review_against_required_evidence",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "catalyst_activity_02",
+      "hidden_state": "catalyst_activity",
+      "table_name": "node_modality_sensor_timeseries",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:ORP_mV",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_needs_review_against_required_evidence",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "catalyst_activity_03",
+      "hidden_state": "catalyst_activity",
+      "table_name": "node_modality_sensor_timeseries",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed:pressure_drop_kPa",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_needs_review_against_required_evidence",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "catalyst_activity_04",
+      "hidden_state": "catalyst_activity",
+      "table_name": "offline_lab_results",
+      "required_evidence": "offline_lab_results.catalyst_activity",
+      "missing_scope_fields": [
+        "offline_method_id",
+        "detection_limit"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "catalyst_activity_05",
+      "hidden_state": "catalyst_activity",
+      "table_name": "campaign_operation_log",
+      "required_evidence": "campaign_operation_log.regeneration_event",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "catalyst_activity_06",
+      "hidden_state": "catalyst_activity",
+      "table_name": "site_topology_or_bed_geometry",
+      "required_evidence": "site_topology_or_bed_geometry.nominal_HRT_min",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "matrix_interference_01",
+      "hidden_state": "matrix_interference",
+      "table_name": "field_labeled_fast_proxy_event_log",
+      "required_evidence": "field_labeled_fast_proxy_event_log.matrix_shock",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "matrix_interference_02",
+      "hidden_state": "matrix_interference",
+      "table_name": "offline_lab_results",
+      "required_evidence": "offline_lab_results.matrix_interference",
+      "missing_scope_fields": [
+        "offline_method_id",
+        "detection_limit"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "matrix_interference_03",
+      "hidden_state": "matrix_interference",
+      "table_name": "sensor_timeseries",
+      "required_evidence": "sensor_timeseries.influent:conductivity_uScm",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_needs_review_against_required_evidence",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "matrix_interference_04",
+      "hidden_state": "matrix_interference",
+      "table_name": "sensor_timeseries",
+      "required_evidence": "sensor_timeseries.influent:turbidity_NTU",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_needs_review_against_required_evidence",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "matrix_interference_05",
+      "hidden_state": "matrix_interference",
+      "table_name": "sensor_timeseries",
+      "required_evidence": "sensor_timeseries.influent:ORP_mV",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_needs_review_against_required_evidence",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "hydraulic_delay_01",
+      "hidden_state": "hydraulic_delay",
+      "table_name": "campaign_operation_log",
+      "required_evidence": "campaign_operation_log.effect_time_min",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "hydraulic_delay_02",
+      "hidden_state": "hydraulic_delay",
+      "table_name": "campaign_operation_log",
+      "required_evidence": "campaign_operation_log.hold_time_min",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "hydraulic_delay_03",
+      "hidden_state": "hydraulic_delay",
+      "table_name": "campaign_operation_log",
+      "required_evidence": "campaign_operation_log.recycle_ratio",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "hydraulic_delay_04",
+      "hidden_state": "hydraulic_delay",
+      "table_name": "site_topology_or_bed_geometry",
+      "required_evidence": "site_topology_or_bed_geometry.flow_Lmin",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "hydraulic_delay_05",
+      "hidden_state": "hydraulic_delay",
+      "table_name": "hydraulic_path_stage_labels",
+      "required_evidence": "hydraulic_path_stage_labels.stage_id",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "release_or_byproduct_risk_01",
+      "hidden_state": "release_or_byproduct_risk",
+      "table_name": "offline_lab_results",
+      "required_evidence": "offline_lab_results.byproduct_or_release_risk",
+      "missing_scope_fields": [
+        "offline_method_id",
+        "detection_limit"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "release_or_byproduct_risk_02",
+      "hidden_state": "release_or_byproduct_risk",
+      "table_name": "context_or_manual_review",
+      "required_evidence": "human_reviewed_release_gate_labels",
+      "missing_scope_fields": [],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": true
+    },
+    {
+      "response_row_id": "release_or_byproduct_risk_03",
+      "hidden_state": "release_or_byproduct_risk",
+      "table_name": "final_effluent_endpoint_labels",
+      "required_evidence": "final_effluent_endpoint_labels.release_label",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "release_or_byproduct_risk_04",
+      "hidden_state": "release_or_byproduct_risk",
+      "table_name": "human_reviewed_release_gate_labels",
+      "required_evidence": "human_reviewed_release_gate_labels.batch_id",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    },
+    {
+      "response_row_id": "release_or_byproduct_risk_05",
+      "hidden_state": "release_or_byproduct_risk",
+      "table_name": "campaign_operation_log",
+      "required_evidence": "campaign_operation_log.operator_review_decision",
+      "missing_scope_fields": [
+        "timestamp",
+        "node_id",
+        "sensor_id"
+      ],
+      "node_alignment_status": "node_not_applicable",
+      "can_assemble_row_scope": false
+    }
+  ],
+  "blockers": [],
+  "warnings": [],
+  "can_route_to_package_assembly": false,
+  "can_route_to_external_activation_router": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "next_operator_action": "complete_response_preflight_before_coherence_audit",
+  "no_write_boundary": "This coherence audit checks whether a filled field-activation response can be assembled into replayable package candidates with batch/node/sensor/custody/method alignment. It does not prove field truth, does not run replay/holdout, and cannot write actuator policy, release gate, legal conclusions or field-supported claims."
+}

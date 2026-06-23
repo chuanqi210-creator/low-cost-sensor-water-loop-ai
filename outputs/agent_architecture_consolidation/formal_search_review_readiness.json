@@ -1,0 +1,177 @@
+{
+  "gate_id": "R8u78_formal_search_review_readiness_gate",
+  "formal_search_review_readiness_status": "formal_search_review_blocked_at_result_package_source_preflight",
+  "highest_priority_blocker": "FSR_SOURCE_PREFLIGHT",
+  "blocking_stage_count": 9,
+  "next_operator_action": "submit_formal_search_result_package",
+  "stage_checks": [
+    {
+      "stage_id": "NO_LEGAL_OR_FIELD_CLAIM_BOUNDARY",
+      "status": "boundary_passed",
+      "passed": true,
+      "next_operator_action": "remove_forbidden_legal_claim_or_field_upgrade_flag",
+      "blockers": []
+    },
+    {
+      "stage_id": "FSR_SOURCE_PREFLIGHT",
+      "status": "formal_search_result_package_preflight_waiting_for_submission_path",
+      "passed": false,
+      "next_operator_action": "submit_formal_search_result_package",
+      "blockers": [
+        "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+      ]
+    },
+    {
+      "stage_id": "FSR_ROW_PREFLIGHT",
+      "status": "formal_search_result_package_row_preflight_blocked_at_source_preflight",
+      "passed": false,
+      "next_operator_action": "repair_formal_search_result_package_rows",
+      "blockers": [
+        "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+      ]
+    },
+    {
+      "stage_id": "FSR_VALIDATION_EXECUTION",
+      "status": "formal_search_result_validation_execution_blocked_at_row_preflight",
+      "passed": false,
+      "next_operator_action": "repair_validation_execution_linkage_or_comparison_coverage",
+      "blockers": [
+        "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+      ]
+    },
+    {
+      "stage_id": "FSR_NONLEGAL_REVIEW_PACKET",
+      "status": "formal_search_nonlegal_review_packet_blocked_at_validation_execution",
+      "passed": false,
+      "next_operator_action": "repair_nonlegal_review_packet_inputs",
+      "blockers": [
+        "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+      ]
+    },
+    {
+      "stage_id": "FSR_NONLEGAL_REVIEW_RESPONSE",
+      "status": "formal_search_nonlegal_review_response_preflight_blocked_at_template",
+      "passed": false,
+      "next_operator_action": "complete_human_nonlegal_comparison_review_response",
+      "blockers": [
+        "review_packet:not_ready_for_human_review"
+      ]
+    },
+    {
+      "stage_id": "FSR_CLAIM_SCOPE_PATCH_DRAFT",
+      "status": "formal_search_claim_scope_patch_draft_blocked_at_nonlegal_review_response",
+      "passed": false,
+      "next_operator_action": "repair_claim_scope_patch_draft_inputs",
+      "blockers": [
+        "nonlegal_review_response_status:formal_search_nonlegal_review_response_preflight_blocked_at_template"
+      ]
+    },
+    {
+      "stage_id": "FSR_FORMAL_COUNSEL_RESPONSE",
+      "status": "formal_counsel_review_response_preflight_blocked_at_template",
+      "passed": false,
+      "next_operator_action": "complete_external_formal_counsel_review_response",
+      "blockers": [
+        "claim_scope_patch_draft:not_ready_for_formal_review"
+      ]
+    },
+    {
+      "stage_id": "FSR_DISCLOSURE_REVISION_QUEUE",
+      "status": "formal_disclosure_revision_queue_blocked_at_formal_counsel_review_response",
+      "passed": false,
+      "next_operator_action": "repair_formal_disclosure_revision_queue",
+      "blockers": [
+        "formal_counsel_review_response_status:formal_counsel_review_response_preflight_blocked_at_template"
+      ]
+    },
+    {
+      "stage_id": "FSR_DISCLOSURE_REVISION_IMPACT_PLAN",
+      "status": "formal_disclosure_revision_impact_plan_blocked_at_revision_queue",
+      "passed": false,
+      "next_operator_action": "perform_human_disclosure_revision_against_impact_plan",
+      "blockers": [
+        "formal_disclosure_revision_queue_status:formal_disclosure_revision_queue_blocked_at_formal_counsel_review_response"
+      ]
+    }
+  ],
+  "operator_action_queue": [
+    {
+      "stage_id": "FSR_SOURCE_PREFLIGHT",
+      "next_operator_action": "submit_formal_search_result_package",
+      "blockers": [
+        "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+      ]
+    },
+    {
+      "stage_id": "FSR_ROW_PREFLIGHT",
+      "next_operator_action": "repair_formal_search_result_package_rows",
+      "blockers": [
+        "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+      ]
+    },
+    {
+      "stage_id": "FSR_VALIDATION_EXECUTION",
+      "next_operator_action": "repair_validation_execution_linkage_or_comparison_coverage",
+      "blockers": [
+        "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+      ]
+    },
+    {
+      "stage_id": "FSR_NONLEGAL_REVIEW_PACKET",
+      "next_operator_action": "repair_nonlegal_review_packet_inputs",
+      "blockers": [
+        "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+      ]
+    },
+    {
+      "stage_id": "FSR_NONLEGAL_REVIEW_RESPONSE",
+      "next_operator_action": "complete_human_nonlegal_comparison_review_response",
+      "blockers": [
+        "review_packet:not_ready_for_human_review"
+      ]
+    },
+    {
+      "stage_id": "FSR_CLAIM_SCOPE_PATCH_DRAFT",
+      "next_operator_action": "repair_claim_scope_patch_draft_inputs",
+      "blockers": [
+        "nonlegal_review_response_status:formal_search_nonlegal_review_response_preflight_blocked_at_template"
+      ]
+    },
+    {
+      "stage_id": "FSR_FORMAL_COUNSEL_RESPONSE",
+      "next_operator_action": "complete_external_formal_counsel_review_response",
+      "blockers": [
+        "claim_scope_patch_draft:not_ready_for_formal_review"
+      ]
+    },
+    {
+      "stage_id": "FSR_DISCLOSURE_REVISION_QUEUE",
+      "next_operator_action": "repair_formal_disclosure_revision_queue",
+      "blockers": [
+        "formal_counsel_review_response_status:formal_counsel_review_response_preflight_blocked_at_template"
+      ]
+    },
+    {
+      "stage_id": "FSR_DISCLOSURE_REVISION_IMPACT_PLAN",
+      "next_operator_action": "perform_human_disclosure_revision_against_impact_plan",
+      "blockers": [
+        "formal_disclosure_revision_queue_status:formal_disclosure_revision_queue_blocked_at_formal_counsel_review_response"
+      ]
+    }
+  ],
+  "can_route_to_validation_gate": false,
+  "can_enter_human_nonlegal_comparison_review": false,
+  "human_nonlegal_review_completed": false,
+  "can_route_to_claim_scope_patch_draft": false,
+  "can_route_to_formal_counsel_review": false,
+  "external_formal_review_completed": false,
+  "can_route_to_disclosure_editor": false,
+  "can_route_to_human_artifact_revision": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "can_emit_claim_text": false,
+  "field_claim_upgrade_allowed": false,
+  "boundary_violation_count": 0,
+  "boundary_violations": [],
+  "failure_boundary": "该 gate 只聚合 formal search、人工非法律技术比较、外部正式审查和交底修订的路由状态；它不执行正式检索、不生成 prior-art 结论、不写法律意见、不生成权利要求文本，也不能把 synthetic/template/literature 证据升级为 field-supported claim。"
+}

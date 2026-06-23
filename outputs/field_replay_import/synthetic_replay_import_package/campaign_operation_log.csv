@@ -1,0 +1,13 @@
+campaign_id,batch_id,action_id,command_time_min,effect_time_min,start_min,end_min,release_policy,recycle_ratio,tank_storage_margin,actuator_latency_p90,pump_valve_result,hold_time_min,regeneration_event,bed_id,pressure_headloss_review_required
+synthetic_timestamped_campaign,TS001,switch_or_pretreat,11,17,17,62,block_release_until_lab_and_field_conformal_calibration,0.25,0.42,6,ok,45,False,BED_A,True
+synthetic_timestamped_campaign,TS002,switch_or_pretreat,12,18,18,63,block_release_until_lab_and_field_conformal_calibration,0.25,0.42,6,ok,45,False,BED_A,True
+synthetic_timestamped_campaign,TS003,switch_or_pretreat,13,19,19,64,block_release_until_lab_and_field_conformal_calibration,0.25,0.42,6,ok,45,False,BED_A,True
+synthetic_timestamped_campaign,TS004,switch_or_pretreat,10,16,16,61,block_release_until_lab_and_field_conformal_calibration,0.25,0.42,6,ok,45,False,BED_A,True
+synthetic_timestamped_campaign,TS005,switch_or_pretreat,11,17,17,62,block_release_until_lab_and_field_conformal_calibration,0.25,0.42,6,ok,45,False,BED_A,True
+synthetic_timestamped_campaign,TS006,switch_or_pretreat,12,18,18,63,block_release_until_lab_and_field_conformal_calibration,0.25,0.42,6,ok,45,False,BED_A,True
+synthetic_timestamped_campaign,TS007,standard_monitoring,45,55,55,75,standard_release_gate,0.0,0.67,10,ok,20,False,BED_A,False
+synthetic_timestamped_campaign,TS008,standard_monitoring,46,56,56,76,standard_release_gate,0.0,0.67,10,ok,20,False,BED_A,False
+synthetic_timestamped_campaign,TS009,standard_monitoring,47,57,57,77,standard_release_gate,0.0,0.67,10,ok,20,False,BED_A,False
+synthetic_timestamped_campaign,TS010,standard_monitoring,48,58,58,78,standard_release_gate,0.0,0.67,10,ok,20,False,BED_A,False
+synthetic_timestamped_campaign,TS011,standard_monitoring,49,59,59,79,standard_release_gate,0.0,0.67,10,ok,20,False,BED_A,True
+synthetic_timestamped_campaign,TS012,standard_monitoring,50,60,60,80,standard_release_gate,0.0,0.67,10,ok,20,False,BED_A,False

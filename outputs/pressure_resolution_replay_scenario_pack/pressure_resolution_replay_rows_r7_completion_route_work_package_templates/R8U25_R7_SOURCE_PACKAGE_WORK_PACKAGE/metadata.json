@@ -1,0 +1,11 @@
+{
+  "work_package_id": "R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE",
+  "route_id": "r7_source_package",
+  "data_origin": "TODO_REPLACE_WITH_REAL_ORIGIN",
+  "submission_status": "template_only_not_evidence",
+  "evidence_boundary": "Template JSON must be replaced with real submission metadata before preflight can pass.",
+  "site_id": "TODO_REAL_SITE_ID",
+  "campaign_id": "TODO_REAL_CAMPAIGN_ID",
+  "collection_window": "TODO_REAL_COLLECTION_WINDOW",
+  "chain_of_custody_id": "TODO_SIGNED_CHAIN_OF_CUSTODY_ID"
+}

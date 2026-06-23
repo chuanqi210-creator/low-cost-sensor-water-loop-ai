@@ -1,0 +1,39 @@
+{
+  "formal_search_result_package_path": "",
+  "expected_env_var": "FORMAL_SEARCH_RESULT_PACKAGE_PATH",
+  "required_root_keys": [
+    "package_metadata",
+    "work_package_results"
+  ],
+  "expected_work_package_ids": [
+    "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+    "FSWP2_node_modality_sparse_hidden_state_search",
+    "FSWP3_greybox_multi_agent_safety_arbitration_search",
+    "FSWP4_low_cost_observation_gated_flowsheet_search",
+    "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+    "FSWP6_operational_catalyst_activity_guardrail_search",
+    "FSWP7_pressure_resolution_protective_release_gate_search"
+  ],
+  "required_result_tables": [
+    "prior_art_hit_table",
+    "claim_element_comparison_chart",
+    "fallback_claim_scope_recommendation"
+  ],
+  "missing_root_keys": [],
+  "unknown_work_package_ids": [],
+  "missing_work_package_results": [],
+  "invalid_table_shapes": [],
+  "empty_required_tables": [],
+  "template_marker_gaps": [],
+  "template_marker_gap_count": 0,
+  "preflight_blockers": [
+    "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+  ],
+  "formal_search_result_package_supplied": false,
+  "can_route_to_validation_gate": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "failure_boundary": "该 preflight 只检查正式检索结果包的 source/path/root shape；即使通过，也只允许进入 formal_search_result_validation_gate，不能直接生成法律意见、prior-art 结论或 field-supported claim。",
+  "formal_search_result_package_source_status": "formal_search_result_package_preflight_waiting_for_submission_path"
+}

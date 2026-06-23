@@ -1,0 +1,67 @@
+{
+  "package_id": "R8u151_sparse_topology_installability_package_preflight",
+  "package_type": "sparse_topology_installability_package_preflight",
+  "source_env_var": "SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR",
+  "source_path": "",
+  "external_package_supplied": false,
+  "package_status": "sparse_topology_installability_package_waiting_for_SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR",
+  "package_preflight_pass": false,
+  "required_table_count": 5,
+  "required_tables": [
+    "site_topology_graph",
+    "candidate_node_modality_costs",
+    "installability_maintenance_constraints",
+    "node_hydraulic_delay",
+    "labeled_state_matrix"
+  ],
+  "minimum_matched_node_count": 3,
+  "matched_node_count": 0,
+  "matched_node_ids": [],
+  "sparse_topology_coverage_candidate": 0.0,
+  "installable_candidate_node_count": 0,
+  "path_stage_count": 0,
+  "hidden_state_count": 0,
+  "table_audits": {},
+  "topology_audit": {
+    "signal_family": "site_topology",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_node_ids": []
+  },
+  "cost_audit": {
+    "signal_family": "node_modality_cost",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_node_ids": []
+  },
+  "constraint_audit": {
+    "signal_family": "installability_constraint",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_node_ids": []
+  },
+  "hydraulic_delay_audit": {
+    "signal_family": "hydraulic_delay",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_node_ids": []
+  },
+  "label_audit": {
+    "signal_family": "labeled_state_matrix",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_node_ids": []
+  },
+  "blocking_reasons": [
+    "missing_external_package_dir"
+  ],
+  "can_route_to_agent48_sparse_layout_holdout": false,
+  "can_generate_field_evidence": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "can_authorize_field_deployment": false,
+  "next_operator_action": "fill_sparse_topology_installability_package_template_and_set_SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR",
+  "field_boundary": "This preflight only checks whether an external topology/installability package is ready for Agent48 sparse layout-holdout work. Passing this gate does not prove a deployable sensor layout, field soft-sensor performance, actuator readiness or release-gate readiness.",
+  "no_write_boundary": "This package is only a sparse topology and installability preflight input. It cannot write actuator policy, release-gate policy, deployable sensor layout approval, field soft-sensor claims or deployment clearance."
+}

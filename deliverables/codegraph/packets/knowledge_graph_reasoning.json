@@ -1,0 +1,131 @@
+{
+  "handle": "agent-65718487ad",
+  "agent_id": "agent:56:knowledge_graph_reasoning",
+  "agent_number": 56,
+  "slug": "knowledge_graph_reasoning",
+  "runner": "experiments/run_agent56_knowledge_graph_reasoning.py",
+  "source": "src/water_ai/agents/knowledge_graph_reasoning_agent.py",
+  "deliverable": "deliverables/knowledge_graph_reasoning.md",
+  "test": "tests/test_knowledge_graph_reasoning_agent.py",
+  "output_dir": "outputs/agent56_knowledge_graph_reasoning",
+  "related_nodes": [
+    {
+      "handle": "agent-65718487ad",
+      "node_id": "agent:56:knowledge_graph_reasoning",
+      "kind": "agent_workflow",
+      "label": "Agent56 knowledge_graph_reasoning",
+      "path": "experiments/run_agent56_knowledge_graph_reasoning.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 56
+      }
+    },
+    {
+      "handle": "dir-0f17a01a81",
+      "node_id": "dir:outputs/agent56_knowledge_graph_reasoning",
+      "kind": "output_dir",
+      "label": "agent56_knowledge_graph_reasoning",
+      "path": "outputs/agent56_knowledge_graph_reasoning",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-28c17df262",
+      "node_id": "file:deliverables/knowledge_graph_reasoning.md",
+      "kind": "referenced_path",
+      "label": "knowledge_graph_reasoning.md",
+      "path": "deliverables/knowledge_graph_reasoning.md",
+      "layer": "deliverable",
+      "summary": "可推理知识图谱与主链回接",
+      "metrics": {
+        "lines": 33,
+        "size_bytes": 2199
+      }
+    },
+    {
+      "handle": "file-db62aa8e32",
+      "node_id": "file:experiments/run_agent56_knowledge_graph_reasoning.py",
+      "kind": "file",
+      "label": "run_agent56_knowledge_graph_reasoning.py",
+      "path": "experiments/run_agent56_knowledge_graph_reasoning.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 241,
+        "size_bytes": 10672
+      }
+    },
+    {
+      "handle": "file-8c441bad29",
+      "node_id": "file:src/water_ai/agents/knowledge_graph_reasoning_agent.py",
+      "kind": "file",
+      "label": "knowledge_graph_reasoning_agent.py",
+      "path": "src/water_ai/agents/knowledge_graph_reasoning_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 265,
+        "size_bytes": 13986
+      }
+    },
+    {
+      "handle": "file-f125f1fcd4",
+      "node_id": "file:tests/test_knowledge_graph_reasoning_agent.py",
+      "kind": "file",
+      "label": "test_knowledge_graph_reasoning_agent.py",
+      "path": "tests/test_knowledge_graph_reasoning_agent.py",
+      "layer": "verification",
+      "summary": "from water_ai.agents.control_strategy_agent import ControlStrategyAgent",
+      "metrics": {
+        "lines": 82,
+        "size_bytes": 3716
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:56:knowledge_graph_reasoning",
+      "target": "file:deliverables/knowledge_graph_reasoning.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:56:knowledge_graph_reasoning",
+      "target": "file:src/water_ai/agents/knowledge_graph_reasoning_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:56:knowledge_graph_reasoning",
+      "target": "file:experiments/run_agent56_knowledge_graph_reasoning.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:56:knowledge_graph_reasoning",
+      "target": "file:tests/test_knowledge_graph_reasoning_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:56:knowledge_graph_reasoning",
+      "target": "dir:outputs/agent56_knowledge_graph_reasoning",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

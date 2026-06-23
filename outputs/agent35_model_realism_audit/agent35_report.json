@@ -1,0 +1,359 @@
+{
+  "source_reports": {
+    "manifest": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/manifest.json",
+    "training_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_training/soft_sensor_training_metrics.json",
+    "agent34": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent34_field_calibration_gate/agent34_report.json"
+  },
+  "model_realism_audit": {
+    "agent_name": "model_realism_audit_agent",
+    "confidence": 0.637,
+    "summary": "模型现实性审计：simulation_baseline_needs_field_grounding；知识库 9 条，field 门控 5/6 通过。",
+    "recommendations": [
+      "P0 先通过真实数据 G0-G2，再允许任何参数写回",
+      "P1 用 field holdout 和保形校准验证软传感不确定性",
+      "P1 把知识库扩展为污染物-材料-机制-信号-动作-证据等级矩阵",
+      "P2 引入污染物类别、催化剂、pH、基质和停留时间的参数化速率范围。",
+      "P2 用真实离线标签做 prediction interval coverage、release probability calibration 和 conformal calibration。"
+    ],
+    "metrics": {
+      "knowledge_audit": {
+        "entry_count": 9,
+        "pollutant_classes": [
+          "PFAS 或高度持久性氟代有机物",
+          "低浓度目标污染物或慢检测指标",
+          "含络合物、天然有机质或颗粒物的复杂废水",
+          "含芳香族、卤代前体或天然有机质的废水",
+          "生化尾水或含营养盐/可生化有机物废水",
+          "目标污染物需慢检测或低成本代理检测的废水",
+          "重金属或金属络合物废水",
+          "高盐/高 COD 难降解有机废水",
+          "高负荷还原性或难降解有机污染物"
+        ],
+        "material_families": [
+          "低成本传感 + 软传感系统",
+          "吸附/离子交换/膜分离/抛光单元",
+          "强氧化体系",
+          "循环式反应器/旁路快检系统",
+          "氧化剂驱动体系",
+          "沉淀/吸附/离子交换/膜分离材料",
+          "生物处理耦合/曝气/后氧化抛光",
+          "负载型催化剂/类芬顿/光催化材料",
+          "高级氧化或催化氧化材料"
+        ],
+        "mechanism_tag_count": 25,
+        "mechanism_tags": [
+          "active_site_blocking",
+          "biological_residual_load",
+          "byproduct_risk",
+          "catalyst_deactivation",
+          "electron_demand_excess",
+          "grey_box_inference",
+          "hybrid_treatment_needed",
+          "loop_buffer_needed",
+          "low_aop_destructibility",
+          "mass_transfer_limitation",
+          "matrix_interference",
+          "non_degradable_species",
+          "overoxidation",
+          "oxidant_limitation",
+          "oxygen_demand",
+          "persistent_micropollutant",
+          "polishing_unit_needed",
+          "precursor_control",
+          "radical_scavenging",
+          "release_evidence_gap",
+          "sensor_uncertainty",
+          "separation_required",
+          "soft_sensor_delay",
+          "speciation_control",
+          "surface_fouling"
+        ],
+        "field_validation_need_count": 12,
+        "source_basis_count": 8,
+        "expected_axes": {
+          "persistent_micropollutant": true,
+          "heavy_metal_or_speciation": true,
+          "biological_or_nutrient_effluent": true,
+          "catalyst_lifecycle": true,
+          "sensor_uncertainty": true,
+          "byproduct_risk": true
+        },
+        "missing_axes": [],
+        "coverage_score": 0.912,
+        "coverage_status": "knowledge_base_seed_ready"
+      },
+      "validation_audit": {
+        "model_version": "rf_multioutput_v3_catalyst",
+        "rows": 51840,
+        "field_rows": 0,
+        "synthetic_rows": 51840,
+        "rows_by_source": {
+          "process_dynamics": 34560,
+          "legacy_scenario": 17280
+        },
+        "mean_mae": 0.01383,
+        "weaker_targets": [
+          "catalyst_activity",
+          "matrix_interference"
+        ],
+        "has_uncertainty_layer": true,
+        "uncertainty_evidence_stage": "synthetic_holdout",
+        "validation_score": 0.62,
+        "validation_status": "synthetic_uncertainty_ready_field_holdout_missing",
+        "required_next_metrics": [
+          "field holdout MAE/R2",
+          "calibration curve for release probability",
+          "prediction interval coverage",
+          "out-of-distribution / extrapolation flag",
+          "target-specific uncertainty for catalyst and matrix estimates"
+        ]
+      },
+      "field_audit": {
+        "calibration_gate_status": "calibration_protocol_ready_waiting_for_field_data",
+        "accepted_gate_count": 5,
+        "total_gate_count": 6,
+        "blocking_gates": [
+          "G0_data_origin"
+        ],
+        "data_origin": "synthetic",
+        "field_data_required": true,
+        "field_status": "field_validation_blocked"
+      },
+      "process_audit": {
+        "gap_count": 4,
+        "gaps": [
+          {
+            "gap_id": "mechanistic_kinetics_parameterization",
+            "current_state": "过程动力学使用可解释启发式速率，尚未由真实反应动力学或现场参数校准。",
+            "realism_upgrade": "引入污染物类别、催化剂、pH、基质和停留时间的参数化速率范围。",
+            "validation_data": [
+              "批内浓度时间序列",
+              "剂量/停留时间记录",
+              "目标物和副产物标签"
+            ]
+          },
+          {
+            "gap_id": "uncertainty_and_extrapolation",
+            "current_state": "软传感器已有 synthetic 不确定性、预测区间和 OOD 风险门，但尚未用真实 field holdout 校准。",
+            "realism_upgrade": "用真实离线标签做 prediction interval coverage、release probability calibration 和 conformal calibration。",
+            "validation_data": [
+              "field holdout set",
+              "离线标签",
+              "传感器漂移与缺失日志"
+            ]
+          },
+          {
+            "gap_id": "target_specific_byproduct_speciation",
+            "current_state": "副产物风险是综合指标，尚未区分卤代副产物、过氧化残留或目标物中间体。",
+            "realism_upgrade": "按污染物类别建立副产物风险子节点，并绑定必须检测的离线指标。",
+            "validation_data": [
+              "副产物检测",
+              "余氧化剂",
+              "目标物中间体"
+            ]
+          },
+          {
+            "gap_id": "field_control_latency",
+            "current_state": "循环和延迟已建模，但 PLC/SCADA 接口、人工复核和检测排队时间仍偏简化。",
+            "realism_upgrade": "把控制动作拆为可执行时序、人工/仪器资源和失败重试。",
+            "validation_data": [
+              "操作日志",
+              "采样/检测排队",
+              "人工覆盖记录"
+            ]
+          }
+        ],
+        "process_realism_status": "grey_box_seed_needs_field_parameterization"
+      },
+      "skill_inspired_workflow": [
+        {
+          "skill_family": "systematic_literature_review",
+          "borrowed_idea": "从单篇论文阅读转为跨论文抽取研究问题、方法、发现、限制和可迁移参数。",
+          "project_use": "建立污染物-材料-机制-信号-动作的证据矩阵。"
+        },
+        {
+          "skill_family": "academic_research_agent",
+          "borrowed_idea": "evidence before claims、claim verification 和 human approval gates。",
+          "project_use": "所有 field 结论必须经过 G0-G5 门控，synthetic 只能标注为仿真基线。"
+        },
+        {
+          "skill_family": "scientific_knowledge_graph",
+          "borrowed_idea": "用结构化知识图谱组织异构科学证据，并用可追溯路径解释预测。",
+          "project_use": "把知识库从动作偏置升级为可审计机制证据层。"
+        },
+        {
+          "skill_family": "model_validation_and_uncertainty",
+          "borrowed_idea": "校准曲线、预测区间、bootstrap/ensemble uncertainty 和外推风险。",
+          "project_use": "升级 SoftSensorAgent 的 release gate 和 field holdout 评价。"
+        }
+      ],
+      "model_upgrade_backlog": [
+        {
+          "priority": "P0",
+          "work_id": "field_data_acceptance_before_retraining",
+          "title": "先通过真实数据 G0-G2，再允许任何参数写回",
+          "why": "当前最大现实性风险是 synthetic/sample 被误当成现场校准。",
+          "blocks": [
+            "G0_data_origin"
+          ],
+          "target_files": [
+            "outputs/agent30_field_data_interface/",
+            "deliverables/field_data_acceptance_gates.md"
+          ]
+        },
+        {
+          "priority": "P1",
+          "work_id": "soft_sensor_uncertainty_field_calibration",
+          "title": "用 field holdout 和保形校准验证软传感不确定性",
+          "why": "当前已有 synthetic 不确定性层，但还不能替代真实现场 holdout 与释放概率校准。",
+          "blocks": [
+            "field holdout MAE/R2",
+            "calibration curve for release probability",
+            "prediction interval coverage",
+            "out-of-distribution / extrapolation flag",
+            "target-specific uncertainty for catalyst and matrix estimates"
+          ],
+          "target_files": [
+            "src/water_ai/agents/soft_sensor_agent.py",
+            "src/water_ai/agents/soft_sensor_uncertainty_validation_agent.py",
+            "experiments/train_soft_sensor_model.py"
+          ]
+        },
+        {
+          "priority": "P1",
+          "work_id": "knowledge_graph_evidence_matrix",
+          "title": "把知识库扩展为污染物-材料-机制-信号-动作-证据等级矩阵",
+          "why": "知识库已有 seed，但仍需要系统文献综述式扩展和证据等级管理。",
+          "blocks": [],
+          "target_files": [
+            "src/water_ai/knowledge.py",
+            "deliverables/model_realism_audit.md"
+          ]
+        },
+        {
+          "priority": "P2",
+          "work_id": "mechanistic_kinetics_parameterization",
+          "title": "引入污染物类别、催化剂、pH、基质和停留时间的参数化速率范围。",
+          "why": "过程动力学使用可解释启发式速率，尚未由真实反应动力学或现场参数校准。",
+          "blocks": [
+            "批内浓度时间序列",
+            "剂量/停留时间记录",
+            "目标物和副产物标签"
+          ],
+          "target_files": [
+            "src/water_ai/process_dynamics.py",
+            "outputs/agent35_model_realism_audit/"
+          ]
+        },
+        {
+          "priority": "P2",
+          "work_id": "uncertainty_and_extrapolation",
+          "title": "用真实离线标签做 prediction interval coverage、release probability calibration 和 conformal calibration。",
+          "why": "软传感器已有 synthetic 不确定性、预测区间和 OOD 风险门，但尚未用真实 field holdout 校准。",
+          "blocks": [
+            "field holdout set",
+            "离线标签",
+            "传感器漂移与缺失日志"
+          ],
+          "target_files": [
+            "src/water_ai/process_dynamics.py",
+            "outputs/agent35_model_realism_audit/"
+          ]
+        },
+        {
+          "priority": "P2",
+          "work_id": "target_specific_byproduct_speciation",
+          "title": "按污染物类别建立副产物风险子节点，并绑定必须检测的离线指标。",
+          "why": "副产物风险是综合指标，尚未区分卤代副产物、过氧化残留或目标物中间体。",
+          "blocks": [
+            "副产物检测",
+            "余氧化剂",
+            "目标物中间体"
+          ],
+          "target_files": [
+            "src/water_ai/process_dynamics.py",
+            "outputs/agent35_model_realism_audit/"
+          ]
+        },
+        {
+          "priority": "P2",
+          "work_id": "field_control_latency",
+          "title": "把控制动作拆为可执行时序、人工/仪器资源和失败重试。",
+          "why": "循环和延迟已建模，但 PLC/SCADA 接口、人工复核和检测排队时间仍偏简化。",
+          "blocks": [
+            "操作日志",
+            "采样/检测排队",
+            "人工覆盖记录"
+          ],
+          "target_files": [
+            "src/water_ai/process_dynamics.py",
+            "outputs/agent35_model_realism_audit/"
+          ]
+        }
+      ],
+      "readiness": {
+        "realism_status": "simulation_baseline_needs_field_grounding",
+        "realism_score": 0.771,
+        "p0_blocker_count": 1,
+        "p1_upgrade_count": 2
+      },
+      "latest_regression": "153 passed"
+    },
+    "issues": [
+      {
+        "sensor": "model_realism",
+        "issue_type": "field_validation_missing",
+        "severity": "warning",
+        "message": "当前模型只能作为仿真基线，真实参数写回必须等待 field 数据通过 G0-G5。",
+        "evidence": {
+          "calibration_gate_status": "calibration_protocol_ready_waiting_for_field_data",
+          "accepted_gate_count": 5,
+          "total_gate_count": 6,
+          "blocking_gates": [
+            "G0_data_origin"
+          ],
+          "data_origin": "synthetic",
+          "field_data_required": true,
+          "field_status": "field_validation_blocked"
+        }
+      },
+      {
+        "sensor": "soft_sensor_model",
+        "issue_type": "uncertainty_validation_missing",
+        "severity": "warning",
+        "message": "软传感器仍缺少现场 holdout 校准；当前不确定性层不能替代 field validation。",
+        "evidence": {
+          "model_version": "rf_multioutput_v3_catalyst",
+          "rows": 51840,
+          "field_rows": 0,
+          "synthetic_rows": 51840,
+          "rows_by_source": {
+            "process_dynamics": 34560,
+            "legacy_scenario": 17280
+          },
+          "mean_mae": 0.01383,
+          "weaker_targets": [
+            "catalyst_activity",
+            "matrix_interference"
+          ],
+          "has_uncertainty_layer": true,
+          "uncertainty_evidence_stage": "synthetic_holdout",
+          "validation_score": 0.62,
+          "validation_status": "synthetic_uncertainty_ready_field_holdout_missing",
+          "required_next_metrics": [
+            "field holdout MAE/R2",
+            "calibration curve for release probability",
+            "prediction interval coverage",
+            "out-of-distribution / extrapolation flag",
+            "target-specific uncertainty for catalyst and matrix estimates"
+          ]
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "model_realism_audit": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_realism_audit.md",
+    "model_upgrade_backlog": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_upgrade_backlog.md",
+    "agent35_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent35_model_realism_audit/agent35_report.md"
+  }
+}

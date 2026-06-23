@@ -1,0 +1,10 @@
+{
+  "work_package_id": "R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE",
+  "route_id": "agent52_replay_export",
+  "producer": "Agent49/Agent52 replay evaluation chain",
+  "submission_contract": "Provide Agent49/52 replay export rows after pressure-source conflict replay, including policy/expert actions, conflict counters, replay episode identity, and replay evidence provenance.",
+  "evidence_level_after_package": "replay_candidate_until_agent52_and_r8v_routing_gates_clear",
+  "data_origin": "TODO_REPLACE_WITH_FIELD_OPERATOR_OR_REPLAY_ORIGIN",
+  "submission_status": "template_only_not_evidence",
+  "evidence_boundary": "Fill this package with real source/operator/replay values and rerun Agent61 preflight. This template is not field evidence."
+}

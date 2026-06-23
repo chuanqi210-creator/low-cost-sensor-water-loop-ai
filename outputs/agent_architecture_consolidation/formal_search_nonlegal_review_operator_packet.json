@@ -1,0 +1,371 @@
+{
+  "operator_packet_metadata": {
+    "packet_id": "R8u136_formal_search_nonlegal_review_operator_packet",
+    "packet_status": "formal_search_nonlegal_review_operator_packet_ready_waiting_for_human_response",
+    "packet_role": "human_nonlegal_review_submission_operator_packet",
+    "created_at": "2026-06-22T09:41:16Z",
+    "linked_ai_brief_id": "R8u134_formal_search_ai_nonlegal_review_brief",
+    "linked_ai_brief_status": "formal_search_ai_nonlegal_review_brief_ready_for_human_review",
+    "linked_review_readiness_status": "formal_search_review_blocked_at_result_package_source_preflight"
+  },
+  "operator_action": {
+    "upstream_source_env_var": "FORMAL_SEARCH_RESULT_PACKAGE_PATH",
+    "upstream_formal_search_result_package_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json",
+    "required_env_vars": [
+      "FORMAL_SEARCH_RESULT_PACKAGE_PATH",
+      "FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH"
+    ],
+    "source_env_var": "FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH",
+    "recommended_output_path": "outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response.json",
+    "expected_review_packet_row_count": 7,
+    "accepted_review_row_count": 0,
+    "rejected_review_row_count": 0,
+    "high_priority_review_row_count": 1,
+    "next_operator_action": "complete a human nonlegal review response at outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response.json, set FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH, keep FORMAL_SEARCH_RESULT_PACKAGE_PATH=/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json, then run Agent60 source preflight",
+    "validation_commands": [
+      "FORMAL_SEARCH_RESULT_PACKAGE_PATH=/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH=outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response.json .venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
+      ".venv/bin/python experiments/run_agent50_model_core_governance.py"
+    ]
+  },
+  "response_contract": {
+    "contract_basis": "ai_brief_rows_with_upstream_formal_search_package_dependency",
+    "required_root_keys": [
+      "review_metadata",
+      "review_rows"
+    ],
+    "review_metadata_required_fields": [
+      "response_package_id",
+      "reviewer_id",
+      "review_time",
+      "evidence_boundary_acknowledgement",
+      "legal_status"
+    ],
+    "review_row_required_fields": [
+      "review_packet_row_id",
+      "linked_work_package_id",
+      "hit_id",
+      "reviewer_id",
+      "review_time",
+      "nonlegal_overlap_assessment",
+      "distinguishing_technical_detail",
+      "fallback_scope_recommendation",
+      "preserved_field_validation_gate",
+      "evidence_boundary_acknowledgement",
+      "reviewer_signature_or_trace_id",
+      "legal_status"
+    ],
+    "expected_review_packet_row_ids": [
+      "FSNCRP1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_R8U133_HIT_01",
+      "FSNCRP2_FSWP2_node_modality_sparse_hidden_state_search_R8U133_HIT_02",
+      "FSNCRP3_FSWP3_greybox_multi_agent_safety_arbitration_search_R8U133_HIT_03",
+      "FSNCRP4_FSWP4_low_cost_observation_gated_flowsheet_search_R8U133_HIT_04",
+      "FSNCRP5_FSWP5_scientific_kg_action_constraint_claim_gate_search_R8U133_HIT_05",
+      "FSNCRP6_FSWP6_operational_catalyst_activity_guardrail_search_R8U133_HIT_06",
+      "FSNCRP7_FSWP7_pressure_resolution_protective_release_gate_search_R8U133_HIT_07"
+    ],
+    "expected_review_packet_row_id_count": 7,
+    "template_row_count": 7
+  },
+  "human_review_rows": [
+    {
+      "operator_row_id": "FSNROP1_FSNCRP1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_R8U133_HIT_01",
+      "review_packet_row_id": "FSNCRP1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_R8U133_HIT_01",
+      "linked_work_package_id": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "hit_id": "R8U133_HIT_01",
+      "risk_tier_for_human_triage": "partial_overlap_review",
+      "ai_suggested_nonlegal_starting_option": "narrow_to_distinguishing_greybox_loop_feature",
+      "mapped_claim_scaffold_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture",
+        "TCS3_dependent_catalyst_activity_regeneration_control",
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation",
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS6_dependent_low_frequency_cycle_window_control",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "required_human_fields": [
+        "review_packet_row_id",
+        "linked_work_package_id",
+        "hit_id",
+        "reviewer_id",
+        "review_time",
+        "nonlegal_overlap_assessment",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "evidence_boundary_acknowledgement",
+        "reviewer_signature_or_trace_id",
+        "legal_status"
+      ],
+      "must_confirm": [
+        "overlap_level",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "whether additional search rows are needed"
+      ],
+      "preserved_field_validation_gate": "field replay, operator review and release gate",
+      "boundary": "AI briefing only; it may help a human compare technical overlap, but it is not a human review response, not legal advice and not field evidence."
+    },
+    {
+      "operator_row_id": "FSNROP2_FSNCRP2_FSWP2_node_modality_sparse_hidden_state_search_R8U133_HIT_02",
+      "review_packet_row_id": "FSNCRP2_FSWP2_node_modality_sparse_hidden_state_search_R8U133_HIT_02",
+      "linked_work_package_id": "FSWP2_node_modality_sparse_hidden_state_search",
+      "hit_id": "R8U133_HIT_02",
+      "risk_tier_for_human_triage": "component_or_architecture_overlap_review",
+      "ai_suggested_nonlegal_starting_option": "move_to_dependent_or_fallback_claim",
+      "mapped_claim_scaffold_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture",
+        "TCS3_dependent_catalyst_activity_regeneration_control",
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation"
+      ],
+      "required_human_fields": [
+        "review_packet_row_id",
+        "linked_work_package_id",
+        "hit_id",
+        "reviewer_id",
+        "review_time",
+        "nonlegal_overlap_assessment",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "evidence_boundary_acknowledgement",
+        "reviewer_signature_or_trace_id",
+        "legal_status"
+      ],
+      "must_confirm": [
+        "overlap_level",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "whether additional search rows are needed"
+      ],
+      "preserved_field_validation_gate": "field replay, operator review and release gate",
+      "boundary": "AI briefing only; it may help a human compare technical overlap, but it is not a human review response, not legal advice and not field evidence."
+    },
+    {
+      "operator_row_id": "FSNROP3_FSNCRP3_FSWP3_greybox_multi_agent_safety_arbitration_search_R8U133_HIT_03",
+      "review_packet_row_id": "FSNCRP3_FSWP3_greybox_multi_agent_safety_arbitration_search_R8U133_HIT_03",
+      "linked_work_package_id": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "hit_id": "R8U133_HIT_03",
+      "risk_tier_for_human_triage": "component_or_architecture_overlap_review",
+      "ai_suggested_nonlegal_starting_option": "move_to_dependent_or_fallback_claim",
+      "mapped_claim_scaffold_ids": [
+        "TCS2_independent_system_architecture",
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS6_dependent_low_frequency_cycle_window_control",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "required_human_fields": [
+        "review_packet_row_id",
+        "linked_work_package_id",
+        "hit_id",
+        "reviewer_id",
+        "review_time",
+        "nonlegal_overlap_assessment",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "evidence_boundary_acknowledgement",
+        "reviewer_signature_or_trace_id",
+        "legal_status"
+      ],
+      "must_confirm": [
+        "overlap_level",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "whether additional search rows are needed"
+      ],
+      "preserved_field_validation_gate": "field replay, operator review and release gate",
+      "boundary": "AI briefing only; it may help a human compare technical overlap, but it is not a human review response, not legal advice and not field evidence."
+    },
+    {
+      "operator_row_id": "FSNROP4_FSNCRP4_FSWP4_low_cost_observation_gated_flowsheet_search_R8U133_HIT_04",
+      "review_packet_row_id": "FSNCRP4_FSWP4_low_cost_observation_gated_flowsheet_search_R8U133_HIT_04",
+      "linked_work_package_id": "FSWP4_low_cost_observation_gated_flowsheet_search",
+      "hit_id": "R8U133_HIT_04",
+      "risk_tier_for_human_triage": "component_or_architecture_overlap_review",
+      "ai_suggested_nonlegal_starting_option": "move_to_dependent_or_fallback_claim",
+      "mapped_claim_scaffold_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture",
+        "TCS3_dependent_catalyst_activity_regeneration_control",
+        "TCS6_dependent_low_frequency_cycle_window_control",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "required_human_fields": [
+        "review_packet_row_id",
+        "linked_work_package_id",
+        "hit_id",
+        "reviewer_id",
+        "review_time",
+        "nonlegal_overlap_assessment",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "evidence_boundary_acknowledgement",
+        "reviewer_signature_or_trace_id",
+        "legal_status"
+      ],
+      "must_confirm": [
+        "overlap_level",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "whether additional search rows are needed"
+      ],
+      "preserved_field_validation_gate": "field replay, operator review and release gate",
+      "boundary": "AI briefing only; it may help a human compare technical overlap, but it is not a human review response, not legal advice and not field evidence."
+    },
+    {
+      "operator_row_id": "FSNROP5_FSNCRP5_FSWP5_scientific_kg_action_constraint_claim_gate_search_R8U133_HIT_05",
+      "review_packet_row_id": "FSNCRP5_FSWP5_scientific_kg_action_constraint_claim_gate_search_R8U133_HIT_05",
+      "linked_work_package_id": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "hit_id": "R8U133_HIT_05",
+      "risk_tier_for_human_triage": "component_or_architecture_overlap_review",
+      "ai_suggested_nonlegal_starting_option": "move_to_dependent_or_fallback_claim",
+      "mapped_claim_scaffold_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "required_human_fields": [
+        "review_packet_row_id",
+        "linked_work_package_id",
+        "hit_id",
+        "reviewer_id",
+        "review_time",
+        "nonlegal_overlap_assessment",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "evidence_boundary_acknowledgement",
+        "reviewer_signature_or_trace_id",
+        "legal_status"
+      ],
+      "must_confirm": [
+        "overlap_level",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "whether additional search rows are needed"
+      ],
+      "preserved_field_validation_gate": "field replay, operator review and release gate",
+      "boundary": "AI briefing only; it may help a human compare technical overlap, but it is not a human review response, not legal advice and not field evidence."
+    },
+    {
+      "operator_row_id": "FSNROP6_FSNCRP6_FSWP6_operational_catalyst_activity_guardrail_search_R8U133_HIT_06",
+      "review_packet_row_id": "FSNCRP6_FSWP6_operational_catalyst_activity_guardrail_search_R8U133_HIT_06",
+      "linked_work_package_id": "FSWP6_operational_catalyst_activity_guardrail_search",
+      "hit_id": "R8U133_HIT_06",
+      "risk_tier_for_human_triage": "high_overlap_human_review_priority",
+      "ai_suggested_nonlegal_starting_option": "mark_high_overlap_needs_external_patent_counsel_review",
+      "mapped_claim_scaffold_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture",
+        "TCS3_dependent_catalyst_activity_regeneration_control",
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation",
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS6_dependent_low_frequency_cycle_window_control"
+      ],
+      "required_human_fields": [
+        "review_packet_row_id",
+        "linked_work_package_id",
+        "hit_id",
+        "reviewer_id",
+        "review_time",
+        "nonlegal_overlap_assessment",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "evidence_boundary_acknowledgement",
+        "reviewer_signature_or_trace_id",
+        "legal_status"
+      ],
+      "must_confirm": [
+        "overlap_level",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "whether additional search rows are needed"
+      ],
+      "preserved_field_validation_gate": "field replay, operator review and release gate",
+      "boundary": "AI briefing only; it may help a human compare technical overlap, but it is not a human review response, not legal advice and not field evidence."
+    },
+    {
+      "operator_row_id": "FSNROP7_FSNCRP7_FSWP7_pressure_resolution_protective_release_gate_search_R8U133_HIT_07",
+      "review_packet_row_id": "FSNCRP7_FSWP7_pressure_resolution_protective_release_gate_search_R8U133_HIT_07",
+      "linked_work_package_id": "FSWP7_pressure_resolution_protective_release_gate_search",
+      "hit_id": "R8U133_HIT_07",
+      "risk_tier_for_human_triage": "component_or_architecture_overlap_review",
+      "ai_suggested_nonlegal_starting_option": "move_to_dependent_or_fallback_claim",
+      "mapped_claim_scaffold_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture",
+        "TCS3_dependent_catalyst_activity_regeneration_control",
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "required_human_fields": [
+        "review_packet_row_id",
+        "linked_work_package_id",
+        "hit_id",
+        "reviewer_id",
+        "review_time",
+        "nonlegal_overlap_assessment",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "evidence_boundary_acknowledgement",
+        "reviewer_signature_or_trace_id",
+        "legal_status"
+      ],
+      "must_confirm": [
+        "overlap_level",
+        "distinguishing_technical_detail",
+        "fallback_scope_recommendation",
+        "preserved_field_validation_gate",
+        "whether additional search rows are needed"
+      ],
+      "preserved_field_validation_gate": "field replay, operator review and release gate",
+      "boundary": "AI briefing only; it may help a human compare technical overlap, but it is not a human review response, not legal advice and not field evidence."
+    }
+  ],
+  "pre_submission_checklist": [
+    "Replace every TODO_* value and remove template_only markers.",
+    "Use only human nonlegal technical comparison wording.",
+    "Preserve field replay, operator review and release gate as validation boundaries.",
+    "Do not assert novelty, inventiveness, patentability or authorization likelihood.",
+    "Do not state that literature/search results are field-supported claims.",
+    "Submit all expected review_packet_row_ids exactly once."
+  ],
+  "rejection_conditions": [
+    "missing review_metadata root",
+    "missing review_rows root",
+    "unknown or missing review_packet_row_id",
+    "TODO/template marker remains",
+    "legal opinion or authorization likelihood wording appears",
+    "field claim upgrade wording appears",
+    "accepted row count is below expected row count"
+  ],
+  "downstream_state": {
+    "source_preflight_status": "formal_search_nonlegal_review_response_preflight_blocked_at_template",
+    "review_response_supplied": false,
+    "human_review_completed": false,
+    "can_route_to_claim_scope_patch_draft": false,
+    "claim_scope_patch_draft_status": "formal_search_claim_scope_patch_draft_blocked_at_nonlegal_review_response"
+  },
+  "boundary": {
+    "can_generate_prior_art_result": false,
+    "legal_opinion_allowed": false,
+    "field_claim_upgrade_allowed": false,
+    "can_emit_claim_text": false,
+    "can_resume_model_chain": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "can_route_to_claim_scope_patch_draft_without_human_response": false,
+    "boundary_statement": "This packet only helps a human prepare and submit a nonlegal technical comparison response. It is not a review result, legal opinion, claim text, field evidence or control authorization."
+  }
+}

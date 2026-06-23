@@ -1,0 +1,349 @@
+{
+  "agent_name": "fault_diagnosis_agent",
+  "confidence": 0.727,
+  "summary": "首要故障模式：达标证据不足导致放行受阻，评分 0.793。",
+  "metrics": {
+    "ranked_faults": [
+      {
+        "fault_id": "release_evidence_insufficient",
+        "fault_name": "达标证据不足导致放行受阻",
+        "score": 0.793,
+        "risk_level": "medium",
+        "evidence": {
+          "release_readiness": 0.755,
+          "mechanism_ids": [
+            "likely_treated_but_not_releasable",
+            "sensor_uncertainty",
+            "hydraulic_anomaly",
+            "matrix_interference"
+          ]
+        },
+        "next_check": "维持暂存并进行快速离线验证；验证通过后再进入放行候选。"
+      },
+      {
+        "fault_id": "hydraulic_retention_anomaly",
+        "fault_name": "水力停留时间或回流执行异常",
+        "score": 0.73,
+        "risk_level": "medium",
+        "evidence": {
+          "sustained_shift": true,
+          "low_flow_absolute": false,
+          "hydraulic_confidence": 0.997,
+          "mechanism_ids": [
+            "likely_treated_but_not_releasable",
+            "sensor_uncertainty",
+            "hydraulic_anomaly",
+            "matrix_interference"
+          ],
+          "recycle_gain": 0.066
+        },
+        "next_check": "核查泵、阀、回流管路和实际流量；必要时重新计算 HRT。"
+      },
+      {
+        "fault_id": "sensor_data_unreliable",
+        "fault_name": "传感数据不可靠",
+        "score": 0.659,
+        "risk_level": "medium",
+        "evidence": {
+          "sensor_confidence": 0.755,
+          "dq_issue_types": [
+            "drift_suspected",
+            "flatline",
+            "missing",
+            "spike",
+            "sustained_shift"
+          ]
+        },
+        "next_check": "先做传感器校准/旁路快检；在校准前禁止自动放行。"
+      },
+      {
+        "fault_id": "matrix_interference",
+        "fault_name": "基质干扰或新扰动进入系统",
+        "score": 0.558,
+        "risk_level": "medium",
+        "evidence": {
+          "matrix_interference": 0.414,
+          "drift_suspected": true,
+          "knowledge_support": []
+        },
+        "next_check": "检测盐度、COD/TOC、浊度来源；判断是否需要预处理或切换单元。"
+      },
+      {
+        "fault_id": "byproduct_or_overoxidation_risk",
+        "fault_name": "副产物或过氧化风险",
+        "score": 0.229,
+        "risk_level": "medium",
+        "evidence": {
+          "byproduct_risk": 0.459,
+          "oxidant_remaining": 0.775,
+          "matrix_interference": 0.414,
+          "mechanism_ids": [
+            "likely_treated_but_not_releasable",
+            "sensor_uncertainty",
+            "hydraulic_anomaly",
+            "matrix_interference"
+          ],
+          "knowledge_support": []
+        },
+        "next_check": "暂停追加氧化剂，检测余氧化剂和潜在副产物；必要时转入预处理或吸附抛光。"
+      },
+      {
+        "fault_id": "cycle_window_insufficient",
+        "fault_name": "循环缓冲或验证窗口不足",
+        "score": 0.071,
+        "risk_level": "medium",
+        "evidence": {
+          "pollutant_residual_risk": 0.156,
+          "oxidant_remaining": 0.775,
+          "release_readiness": 0.755,
+          "recycle_gain": 0.066,
+          "mechanism_ids": [
+            "likely_treated_but_not_releasable",
+            "sensor_uncertainty",
+            "hydraulic_anomaly",
+            "matrix_interference"
+          ],
+          "knowledge_support": [
+            {
+              "entry_id": "kb_loop_buffer_for_slow_sensing",
+              "match_score": 0.587,
+              "pollutant_class": "目标污染物需慢检测或低成本代理检测的废水",
+              "material_family": "循环式反应器/旁路快检系统"
+            }
+          ]
+        },
+        "next_check": "安排下一回流/停留窗口，并同步进行软传感复估与旁路快检，而不是立即放行。"
+      },
+      {
+        "fault_id": "reaction_time_insufficient",
+        "fault_name": "反应时间不足",
+        "score": 0.013,
+        "risk_level": "medium",
+        "evidence": {
+          "pollutant_residual_risk": 0.156,
+          "oxidant_remaining": 0.775,
+          "catalyst_activity": 0.761,
+          "recycle_gain": 0.066,
+          "knowledge_support": []
+        },
+        "next_check": "优先延长停留或增加回流窗口，而不是立即加药。"
+      },
+      {
+        "fault_id": "oxidant_limitation",
+        "fault_name": "氧化剂不足",
+        "score": 0.0,
+        "risk_level": "medium",
+        "evidence": {
+          "pollutant_residual_risk": 0.156,
+          "oxidant_remaining": 0.775,
+          "knowledge_support": []
+        },
+        "next_check": "做余氧化剂快检；若确认不足，再进入补加药剂策略。"
+      },
+      {
+        "fault_id": "catalyst_deactivation",
+        "fault_name": "催化剂失活或活性位受污染",
+        "score": 0.0,
+        "risk_level": "medium",
+        "evidence": {
+          "reaction_completion": 0.822,
+          "catalyst_activity": 0.761,
+          "knowledge_support": []
+        },
+        "next_check": "检查催化剂循环前后活性，必要时进行再生或替换对照实验。"
+      }
+    ],
+    "state_used": {
+      "pollutant_residual_risk": 0.156,
+      "reaction_completion": 0.822,
+      "oxidant_remaining": 0.775,
+      "catalyst_activity": 0.761,
+      "matrix_interference": 0.414,
+      "byproduct_risk": 0.459,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 0.997,
+      "sensor_confidence": 0.755,
+      "compliance_probability": 0.943,
+      "recycle_gain": 0.066,
+      "release_readiness": 0.755,
+      "cycle_id": 5.0
+    },
+    "dq_issue_types": [
+      "drift_suspected",
+      "flatline",
+      "missing",
+      "spike",
+      "sustained_shift"
+    ],
+    "mechanism_ids": [
+      "likely_treated_but_not_releasable",
+      "sensor_uncertainty",
+      "hydraulic_anomaly",
+      "matrix_interference"
+    ],
+    "knowledge_matches": [
+      {
+        "entry_id": "kb_sensor_limited_release_evidence",
+        "pollutant_class": "低浓度目标污染物或慢检测指标",
+        "material_family": "低成本传感 + 软传感系统",
+        "mechanism_tags": [
+          "sensor_uncertainty",
+          "release_evidence_gap"
+        ],
+        "supports_rules": [
+          "sensor_uncertainty",
+          "likely_treated_but_not_releasable"
+        ],
+        "action_biases": {
+          "calibrate_sensors": 0.2,
+          "hold_for_validation": 0.18,
+          "release": -0.25
+        },
+        "explanation": "低成本代理信号出现缺失、漂移或置信度不足时，软传感结果不能直接等同于放行证据。",
+        "action_hint": "进入校准、降权或旁路检测流程；模型估计只能作为排序依据，不能替代放行门槛。",
+        "signal_hits": [
+          {
+            "signal": "sensor_confidence",
+            "op": "<",
+            "threshold": 0.82,
+            "value": 0.755
+          },
+          {
+            "signal": "release_readiness",
+            "op": "<",
+            "threshold": 0.82,
+            "value": 0.755
+          }
+        ],
+        "signal_misses": [],
+        "dq_issue_hits": [
+          "drift_suspected",
+          "flatline",
+          "missing",
+          "spike"
+        ],
+        "soft_issue_hits": [
+          "release_blocked_by_uncertainty"
+        ],
+        "match_score": 0.97
+      },
+      {
+        "entry_id": "kb_loop_buffer_for_slow_sensing",
+        "pollutant_class": "目标污染物需慢检测或低成本代理检测的废水",
+        "material_family": "循环式反应器/旁路快检系统",
+        "mechanism_tags": [
+          "loop_buffer_needed",
+          "soft_sensor_delay",
+          "grey_box_inference"
+        ],
+        "supports_rules": [
+          "loop_buffer_needed"
+        ],
+        "action_biases": {
+          "hold_for_validation": 0.16,
+          "recirculate": 0.14,
+          "release": -0.18
+        },
+        "explanation": "当软传感认为继续循环仍有收益，而放行证据不足时，循环结构可以为慢检测、模型复估和旁路验证争取时间。",
+        "action_hint": "不要强行实时控制；设置暂存/回流窗口，让慢证据进入下一轮状态估计。",
+        "signal_hits": [
+          {
+            "signal": "release_readiness",
+            "op": "<",
+            "threshold": 0.86,
+            "value": 0.755
+          }
+        ],
+        "signal_misses": [
+          {
+            "signal": "pollutant_residual_risk",
+            "op": ">",
+            "threshold": 0.32,
+            "value": 0.156
+          },
+          {
+            "signal": "recycle_gain",
+            "op": ">",
+            "threshold": 0.2,
+            "value": 0.066
+          }
+        ],
+        "dq_issue_hits": [],
+        "soft_issue_hits": [
+          "release_blocked_by_uncertainty"
+        ],
+        "match_score": 0.587
+      }
+    ]
+  },
+  "recommendations": [
+    "维持暂存并进行快速离线验证；验证通过后再进入放行候选。",
+    "核查泵、阀、回流管路和实际流量；必要时重新计算 HRT。",
+    "先做传感器校准/旁路快检；在校准前禁止自动放行。",
+    "检测盐度、COD/TOC、浊度来源；判断是否需要预处理或切换单元。"
+  ],
+  "issues": [
+    {
+      "sensor": "fault",
+      "issue_type": "release_evidence_insufficient",
+      "severity": "warning",
+      "message": "达标证据不足导致放行受阻",
+      "evidence": {
+        "release_readiness": 0.755,
+        "mechanism_ids": [
+          "likely_treated_but_not_releasable",
+          "sensor_uncertainty",
+          "hydraulic_anomaly",
+          "matrix_interference"
+        ]
+      }
+    },
+    {
+      "sensor": "fault",
+      "issue_type": "hydraulic_retention_anomaly",
+      "severity": "warning",
+      "message": "水力停留时间或回流执行异常",
+      "evidence": {
+        "sustained_shift": true,
+        "low_flow_absolute": false,
+        "hydraulic_confidence": 0.997,
+        "mechanism_ids": [
+          "likely_treated_but_not_releasable",
+          "sensor_uncertainty",
+          "hydraulic_anomaly",
+          "matrix_interference"
+        ],
+        "recycle_gain": 0.066
+      }
+    },
+    {
+      "sensor": "fault",
+      "issue_type": "sensor_data_unreliable",
+      "severity": "warning",
+      "message": "传感数据不可靠",
+      "evidence": {
+        "sensor_confidence": 0.755,
+        "dq_issue_types": [
+          "drift_suspected",
+          "flatline",
+          "missing",
+          "spike",
+          "sustained_shift"
+        ]
+      }
+    },
+    {
+      "sensor": "fault",
+      "issue_type": "matrix_interference",
+      "severity": "warning",
+      "message": "基质干扰或新扰动进入系统",
+      "evidence": {
+        "matrix_interference": 0.414,
+        "drift_suspected": true,
+        "knowledge_support": []
+      }
+    }
+  ]
+}

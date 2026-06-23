@@ -1,0 +1,2011 @@
+{
+  "max_steps": 6,
+  "observation_window_min": 24,
+  "sampling_interval_min": 1,
+  "disabled_sensors": [],
+  "sensor_noise_multiplier": 0.0,
+  "scenario_summaries": [
+    {
+      "scenario": "sensor_faults",
+      "runs": 30,
+      "success_rate": 1.0,
+      "mean_steps": 2.3,
+      "mean_cost": 0.496,
+      "mean_energy": 0.245,
+      "mean_elapsed_min": 66.8,
+      "failures": []
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "runs": 30,
+      "success_rate": 1.0,
+      "mean_steps": 3.067,
+      "mean_cost": 1.166,
+      "mean_energy": 0.711,
+      "mean_elapsed_min": 177.2,
+      "failures": []
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "runs": 30,
+      "success_rate": 1.0,
+      "mean_steps": 3.067,
+      "mean_cost": 0.235,
+      "mean_energy": 0.637,
+      "mean_elapsed_min": 65.3,
+      "failures": []
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "runs": 30,
+      "success_rate": 1.0,
+      "mean_steps": 3.067,
+      "mean_cost": 1.957,
+      "mean_energy": 0.764,
+      "mean_elapsed_min": 314.6,
+      "failures": []
+    },
+    {
+      "scenario": "matrix_shock",
+      "runs": 30,
+      "success_rate": 1.0,
+      "mean_steps": 2.1,
+      "mean_cost": 0.709,
+      "mean_energy": 0.557,
+      "mean_elapsed_min": 132.6,
+      "failures": []
+    }
+  ],
+  "episodes": [
+    {
+      "scenario": "sensor_faults",
+      "seed": 0,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.8735,
+      "cumulative_energy": 0.5946,
+      "elapsed_min": 149
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 1,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.4703,
+      "cumulative_energy": 0.2708,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 2,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.621,
+      "cumulative_energy": 0.336,
+      "elapsed_min": 82
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 3,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 4,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 5,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.621,
+      "cumulative_energy": 0.336,
+      "elapsed_min": 82
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 6,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 7,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 8,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.22,
+      "cumulative_energy": 0.0,
+      "elapsed_min": 0
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 9,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 10,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.22,
+      "cumulative_energy": 0.0,
+      "elapsed_min": 0
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 11,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.5949,
+      "cumulative_energy": 0.3242,
+      "elapsed_min": 79
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 12,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.6108,
+      "cumulative_energy": 0.3339,
+      "elapsed_min": 80
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 13,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.22,
+      "cumulative_energy": 0.0,
+      "elapsed_min": 0
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 14,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.3242,
+      "cumulative_energy": 0.3394,
+      "elapsed_min": 246
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 15,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 16,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 17,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.301,
+      "cumulative_energy": 0.2431,
+      "elapsed_min": 19
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 18,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.52,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 79
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 19,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 20,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 21,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.22,
+      "cumulative_energy": 0.0,
+      "elapsed_min": 0
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 22,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.6176,
+      "cumulative_energy": 0.3353,
+      "elapsed_min": 81
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 23,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 24,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.52,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 79
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 25,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.52,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 79
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 26,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.5223,
+      "cumulative_energy": 0.2708,
+      "elapsed_min": 79
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 27,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.468,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 66
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 28,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.22,
+      "cumulative_energy": 0.0,
+      "elapsed_min": 0
+    },
+    {
+      "scenario": "sensor_faults",
+      "seed": 29,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.52,
+      "cumulative_energy": 0.2641,
+      "elapsed_min": 79
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 0,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.9808,
+      "cumulative_energy": 0.6984,
+      "elapsed_min": 130
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 1,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1607,
+      "cumulative_energy": 0.6955,
+      "elapsed_min": 176
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 2,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1573,
+      "cumulative_energy": 0.6948,
+      "elapsed_min": 174
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 3,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1505,
+      "cumulative_energy": 0.6934,
+      "elapsed_min": 173
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 4,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8295,
+      "cumulative_energy": 1.0411,
+      "elapsed_min": 329
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 5,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1282,
+      "cumulative_energy": 0.6801,
+      "elapsed_min": 171
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 6,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.0297,
+      "cumulative_energy": 0.6865,
+      "elapsed_min": 160
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 7,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1437,
+      "cumulative_energy": 0.692,
+      "elapsed_min": 173
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 8,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1824,
+      "cumulative_energy": 0.6822,
+      "elapsed_min": 173
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 9,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.9858,
+      "cumulative_energy": 0.673,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 10,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.9767,
+      "cumulative_energy": 0.6955,
+      "elapsed_min": 128
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 11,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1573,
+      "cumulative_energy": 0.6948,
+      "elapsed_min": 173
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 12,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1426,
+      "cumulative_energy": 0.6948,
+      "elapsed_min": 174
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 13,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1452,
+      "cumulative_energy": 0.6836,
+      "elapsed_min": 174
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 14,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.18,
+      "cumulative_energy": 0.6751,
+      "elapsed_min": 174
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 15,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1609,
+      "cumulative_energy": 0.6808,
+      "elapsed_min": 173
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 16,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1654,
+      "cumulative_energy": 0.6751,
+      "elapsed_min": 173
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 17,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.0811,
+      "cumulative_energy": 0.6872,
+      "elapsed_min": 169
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 18,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.9627,
+      "cumulative_energy": 0.6977,
+      "elapsed_min": 130
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 19,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8599,
+      "cumulative_energy": 1.0325,
+      "elapsed_min": 327
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 20,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1607,
+      "cumulative_energy": 0.6955,
+      "elapsed_min": 175
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 21,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1505,
+      "cumulative_energy": 0.6934,
+      "elapsed_min": 174
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 22,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.146,
+      "cumulative_energy": 0.6955,
+      "elapsed_min": 176
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 23,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1473,
+      "cumulative_energy": 0.6744,
+      "elapsed_min": 173
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 24,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1089,
+      "cumulative_energy": 0.6731,
+      "elapsed_min": 168
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 25,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1287,
+      "cumulative_energy": 0.697,
+      "elapsed_min": 175
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 26,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1263,
+      "cumulative_energy": 0.6935,
+      "elapsed_min": 174
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 27,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1641,
+      "cumulative_energy": 0.6962,
+      "elapsed_min": 175
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 28,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1395,
+      "cumulative_energy": 0.6794,
+      "elapsed_min": 172
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "seed": 29,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.1384,
+      "cumulative_energy": 0.6822,
+      "elapsed_min": 173
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 0,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.3048,
+      "cumulative_energy": 0.9144,
+      "elapsed_min": 86
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 1,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.3465,
+      "cumulative_energy": 0.6315,
+      "elapsed_min": 94
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 2,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2032,
+      "cumulative_energy": 0.6097,
+      "elapsed_min": 57
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 3,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2975,
+      "cumulative_energy": 0.8926,
+      "elapsed_min": 84
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 4,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2087,
+      "cumulative_energy": 0.6261,
+      "elapsed_min": 58
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 5,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.1049,
+      "cumulative_energy": 0.3146,
+      "elapsed_min": 29
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 6,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2129,
+      "cumulative_energy": 0.6386,
+      "elapsed_min": 59
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 7,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2046,
+      "cumulative_energy": 0.6138,
+      "elapsed_min": 57
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 8,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2056,
+      "cumulative_energy": 0.6168,
+      "elapsed_min": 57
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 9,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2023,
+      "cumulative_energy": 0.6069,
+      "elapsed_min": 57
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 10,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.303,
+      "cumulative_energy": 0.909,
+      "elapsed_min": 85
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 11,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.1973,
+      "cumulative_energy": 0.5919,
+      "elapsed_min": 55
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 12,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.3447,
+      "cumulative_energy": 0.6261,
+      "elapsed_min": 92
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 13,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2033,
+      "cumulative_energy": 0.6098,
+      "elapsed_min": 57
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 14,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2064,
+      "cumulative_energy": 0.6191,
+      "elapsed_min": 58
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 15,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2046,
+      "cumulative_energy": 0.6138,
+      "elapsed_min": 57
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 16,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.108,
+      "cumulative_energy": 0.324,
+      "elapsed_min": 30
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 17,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2989,
+      "cumulative_energy": 0.8967,
+      "elapsed_min": 84
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 18,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2105,
+      "cumulative_energy": 0.6315,
+      "elapsed_min": 59
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 19,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2064,
+      "cumulative_energy": 0.6191,
+      "elapsed_min": 59
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 20,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2087,
+      "cumulative_energy": 0.6261,
+      "elapsed_min": 58
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 21,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2064,
+      "cumulative_energy": 0.6191,
+      "elapsed_min": 59
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 22,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.3447,
+      "cumulative_energy": 0.6261,
+      "elapsed_min": 93
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 23,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.4326,
+      "cumulative_energy": 0.8898,
+      "elapsed_min": 119
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 24,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2046,
+      "cumulative_energy": 0.6138,
+      "elapsed_min": 57
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 25,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2087,
+      "cumulative_energy": 0.6261,
+      "elapsed_min": 58
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 26,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.3547,
+      "cumulative_energy": 0.644,
+      "elapsed_min": 96
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 27,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2064,
+      "cumulative_energy": 0.6191,
+      "elapsed_min": 58
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 28,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.108,
+      "cumulative_energy": 0.324,
+      "elapsed_min": 30
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "seed": 29,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.2046,
+      "cumulative_energy": 0.6138,
+      "elapsed_min": 57
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 0,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9036,
+      "cumulative_energy": 0.7505,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 1,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9029,
+      "cumulative_energy": 0.7483,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 2,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 2.1956,
+      "cumulative_energy": 0.7505,
+      "elapsed_min": 373
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 3,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9067,
+      "cumulative_energy": 0.749,
+      "elapsed_min": 299
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 4,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9067,
+      "cumulative_energy": 0.749,
+      "elapsed_min": 302
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 5,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 2.1868,
+      "cumulative_energy": 0.735,
+      "elapsed_min": 370
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 6,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9036,
+      "cumulative_energy": 0.7505,
+      "elapsed_min": 303
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 7,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8967,
+      "cumulative_energy": 0.7404,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 8,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8998,
+      "cumulative_energy": 0.7498,
+      "elapsed_min": 299
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 9,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8834,
+      "cumulative_energy": 0.7329,
+      "elapsed_min": 297
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 10,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 2.2988,
+      "cumulative_energy": 1.059,
+      "elapsed_min": 402
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 11,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 2.1918,
+      "cumulative_energy": 0.7498,
+      "elapsed_min": 372
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 12,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8948,
+      "cumulative_energy": 0.735,
+      "elapsed_min": 299
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 13,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9005,
+      "cumulative_energy": 0.7411,
+      "elapsed_min": 300
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 14,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9043,
+      "cumulative_energy": 0.7418,
+      "elapsed_min": 302
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 15,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9023,
+      "cumulative_energy": 0.7418,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 16,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.891,
+      "cumulative_energy": 0.7343,
+      "elapsed_min": 299
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 17,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8967,
+      "cumulative_energy": 0.7404,
+      "elapsed_min": 300
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 18,
+      "success": true,
+      "steps": 4,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 2.2945,
+      "cumulative_energy": 1.0519,
+      "elapsed_min": 404
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 19,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9067,
+      "cumulative_energy": 0.749,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 20,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9067,
+      "cumulative_energy": 0.749,
+      "elapsed_min": 302
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 21,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9029,
+      "cumulative_energy": 0.7483,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 22,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8967,
+      "cumulative_energy": 0.7404,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 23,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9001,
+      "cumulative_energy": 0.7293,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 24,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9043,
+      "cumulative_energy": 0.7418,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 25,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9067,
+      "cumulative_energy": 0.749,
+      "elapsed_min": 302
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 26,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9074,
+      "cumulative_energy": 0.7512,
+      "elapsed_min": 303
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 27,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9087,
+      "cumulative_energy": 0.749,
+      "elapsed_min": 302
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 28,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.8963,
+      "cumulative_energy": 0.7286,
+      "elapsed_min": 299
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "seed": 29,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.9063,
+      "cumulative_energy": 0.7371,
+      "elapsed_min": 301
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 0,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 1,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 2,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 3,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 4,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 5,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 6,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.7831,
+      "cumulative_energy": 0.8332,
+      "elapsed_min": 154
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 7,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 8,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 9,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 10,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.0681,
+      "cumulative_energy": 0.8688,
+      "elapsed_min": 206
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 11,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 12,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 13,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 14,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 15,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 16,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 17,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 18,
+      "success": true,
+      "steps": 3,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 1.0572,
+      "cumulative_energy": 0.8551,
+      "elapsed_min": 205
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 19,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 20,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 21,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 22,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 23,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 24,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 25,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 26,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 27,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 28,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 126
+    },
+    {
+      "scenario": "matrix_shock",
+      "seed": 29,
+      "success": true,
+      "steps": 2,
+      "final_actions": [
+        "release"
+      ],
+      "final_scenario": null,
+      "cumulative_cost": 0.68,
+      "cumulative_energy": 0.524,
+      "elapsed_min": 127
+    }
+  ]
+}

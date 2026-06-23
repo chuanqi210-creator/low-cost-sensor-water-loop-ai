@@ -1,0 +1,67 @@
+{
+  "package_id": "R8u153_field_missingness_replay_package_preflight",
+  "package_type": "field_missingness_replay_package_preflight",
+  "source_env_var": "FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR",
+  "source_path": "",
+  "external_package_supplied": false,
+  "package_status": "field_missingness_replay_package_waiting_for_FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR",
+  "package_preflight_pass": false,
+  "required_table_count": 5,
+  "required_tables": [
+    "node_modality_time_series",
+    "availability_mask",
+    "time_since_last_observed_min",
+    "sensor_quality_status",
+    "offline_hidden_state_labels"
+  ],
+  "minimum_matched_sample_count": 3,
+  "matched_sample_count": 0,
+  "matched_sample_ids": [],
+  "field_missingness_replay_coverage_candidate": 0.0,
+  "unavailable_sample_count": 0,
+  "mean_sensor_quality_score": null,
+  "hidden_state_count": 0,
+  "table_audits": {},
+  "timeseries_audit": {
+    "signal_family": "node_modality_time_series",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_sample_ids": []
+  },
+  "availability_audit": {
+    "signal_family": "availability_mask",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_sample_ids": []
+  },
+  "time_since_audit": {
+    "signal_family": "time_since_last_observed",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_sample_ids": []
+  },
+  "quality_audit": {
+    "signal_family": "sensor_quality_status",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_sample_ids": []
+  },
+  "label_audit": {
+    "signal_family": "offline_hidden_state_label",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_sample_ids": []
+  },
+  "blocking_reasons": [
+    "missing_external_package_dir"
+  ],
+  "can_route_to_agent54_field_missingness_replay": false,
+  "can_route_to_soft_sensor_missingness_holdout": false,
+  "can_generate_field_evidence": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "next_operator_action": "fill_field_missingness_replay_package_template_and_set_FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR",
+  "field_boundary": "This preflight only checks whether an external field missingness replay package is ready for soft-sensor missingness holdout work. Passing this gate does not prove field soft-sensor accuracy, authorize release decisions, or relax actuator guardrails.",
+  "no_write_boundary": "This package is only a field missingness replay preflight input. It cannot write soft-sensor field performance claims, actuator policy, release-gate policy or deployment clearance."
+}

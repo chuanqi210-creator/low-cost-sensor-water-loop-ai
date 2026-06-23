@@ -1,0 +1,1445 @@
+{
+  "manifest_id": "R8u104_field_activation_package_staging_manifest",
+  "manifest_type": "field_activation_no_write_package_staging_manifest",
+  "source_response_id": "R8u98_field_activation_evidence_response_template",
+  "response_source_preflight_status": "field_activation_response_source_using_default_template",
+  "external_response_supplied": false,
+  "response_preflight_status": "field_activation_response_blocked_before_external_package_preflight",
+  "package_assembly_status": "field_activation_package_assembly_plan_blocked_by_response_preflight",
+  "staging_status": "field_activation_package_staging_manifest_blocked_by_response_preflight",
+  "selected_channel_manifest_count": 1,
+  "selected_table_manifest_count": 11,
+  "selected_row_blueprint_count": 0,
+  "selected_value_payload_mapping_count": 0,
+  "candidate_channel_requirement_count": 2,
+  "candidate_table_requirement_count": 21,
+  "selected_channel_ids": [
+    "R7_REAL_FIELD_PACKAGE"
+  ],
+  "candidate_channel_ids": [
+    "R7_REAL_FIELD_PACKAGE",
+    "R8U66_PATH_ENDPOINT_LABEL_PACKAGE"
+  ],
+  "package_pointers_to_set": [
+    "REAL_FIELD_REPLAY_PACKAGE_DIR"
+  ],
+  "can_materialize_no_write_package_candidates": false,
+  "can_route_to_external_activation_router": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "selected_channel_manifests": [
+    {
+      "channel_id": "R7_REAL_FIELD_PACKAGE",
+      "package_pointer": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+      "plan_basis": "selected_filled_response_channel",
+      "package_directory_placeholder": "TODO_CREATE_NO_WRITE_PACKAGE_DIR_FOR_R7_REAL_FIELD_PACKAGE",
+      "can_materialize_from_selected_response": false,
+      "source_response_row_count": 33,
+      "table_manifest_count": 11,
+      "table_manifests": [
+        {
+          "table_name": "campaign_operation_log",
+          "output_file": "campaign_operation_log.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "reaction_completion_03",
+            "reaction_completion_04",
+            "reaction_completion_05",
+            "catalyst_activity_05",
+            "hydraulic_delay_01",
+            "hydraulic_delay_02",
+            "hydraulic_delay_03",
+            "release_or_byproduct_risk_05"
+          ],
+          "source_response_row_count": 8,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "context_or_manual_review",
+          "output_file": "context_or_manual_review.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "pollutant_residual_02",
+            "reaction_completion_02",
+            "release_or_byproduct_risk_02"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "field_holdout_release_labels",
+          "output_file": "field_holdout_release_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "pollutant_residual"
+          ],
+          "source_response_row_ids": [
+            "pollutant_residual_06"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "field_labeled_fast_proxy_event_log",
+          "output_file": "field_labeled_fast_proxy_event_log.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "matrix_shock"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "matrix_shock"
+          ],
+          "hidden_states": [
+            "matrix_interference"
+          ],
+          "source_response_row_ids": [
+            "matrix_interference_01"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "final_effluent_endpoint_labels",
+          "output_file": "final_effluent_endpoint_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "release_label"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "release_label"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "pollutant_residual_05",
+            "release_or_byproduct_risk_03"
+          ],
+          "source_response_row_count": 2,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "human_reviewed_release_gate_labels",
+          "output_file": "human_reviewed_release_gate_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "release_or_byproduct_risk_04"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "hydraulic_path_stage_labels",
+          "output_file": "hydraulic_path_stage_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "stage_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "stage_id"
+          ],
+          "hidden_states": [
+            "hydraulic_delay"
+          ],
+          "source_response_row_ids": [
+            "hydraulic_delay_05"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "node_modality_sensor_timeseries",
+          "output_file": "node_modality_sensor_timeseries.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "hidden_states": [
+            "catalyst_activity"
+          ],
+          "source_response_row_ids": [
+            "catalyst_activity_01",
+            "catalyst_activity_02",
+            "catalyst_activity_03"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "offline_lab_results",
+          "output_file": "offline_lab_results.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "offline_method_id",
+            "detection_limit",
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "pollutant_residual_01",
+            "reaction_completion_01",
+            "catalyst_activity_04",
+            "matrix_interference_02",
+            "release_or_byproduct_risk_01"
+          ],
+          "source_response_row_count": 5,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "sensor_timeseries",
+          "output_file": "sensor_timeseries.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs",
+            "influent:ORP_mV",
+            "influent:conductivity_uScm",
+            "influent:turbidity_NTU"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs",
+            "influent:ORP_mV",
+            "influent:conductivity_uScm",
+            "influent:turbidity_NTU"
+          ],
+          "hidden_states": [
+            "matrix_interference",
+            "pollutant_residual"
+          ],
+          "source_response_row_ids": [
+            "pollutant_residual_03",
+            "pollutant_residual_04",
+            "matrix_interference_03",
+            "matrix_interference_04",
+            "matrix_interference_05"
+          ],
+          "source_response_row_count": 5,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "site_topology_or_bed_geometry",
+          "output_file": "site_topology_or_bed_geometry.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion"
+          ],
+          "source_response_row_ids": [
+            "reaction_completion_06",
+            "catalyst_activity_06",
+            "hydraulic_delay_04"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        }
+      ],
+      "validation_command_preview": "REAL_FIELD_REPLAY_PACKAGE_DIR=<package_dir> .venv/bin/python experiments/run_external_activation_router.py",
+      "operator_action": "use_R7_REAL_FIELD_PACKAGE_as_requirement_reference_until_rows_are_selected_for_this_channel",
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    }
+  ],
+  "candidate_channel_requirements": [
+    {
+      "channel_id": "R7_REAL_FIELD_PACKAGE",
+      "package_pointer": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+      "plan_basis": "matrix_required_channels_not_filled_response_choice",
+      "package_directory_placeholder": "TODO_CREATE_NO_WRITE_PACKAGE_DIR_FOR_R7_REAL_FIELD_PACKAGE",
+      "can_materialize_from_selected_response": false,
+      "source_response_row_count": 33,
+      "table_manifest_count": 11,
+      "table_manifests": [
+        {
+          "table_name": "campaign_operation_log",
+          "output_file": "campaign_operation_log.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_reaction_completion_03",
+            "candidate_reaction_completion_04",
+            "candidate_reaction_completion_05",
+            "candidate_catalyst_activity_05",
+            "candidate_hydraulic_delay_01",
+            "candidate_hydraulic_delay_02",
+            "candidate_hydraulic_delay_03",
+            "candidate_release_or_byproduct_risk_05"
+          ],
+          "source_response_row_count": 8,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "context_or_manual_review",
+          "output_file": "context_or_manual_review.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_02",
+            "candidate_reaction_completion_02",
+            "candidate_release_or_byproduct_risk_02"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "field_holdout_release_labels",
+          "output_file": "field_holdout_release_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "pollutant_residual"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_06"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "field_labeled_fast_proxy_event_log",
+          "output_file": "field_labeled_fast_proxy_event_log.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "matrix_shock"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "matrix_shock"
+          ],
+          "hidden_states": [
+            "matrix_interference"
+          ],
+          "source_response_row_ids": [
+            "candidate_matrix_interference_01"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "final_effluent_endpoint_labels",
+          "output_file": "final_effluent_endpoint_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "release_label"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "release_label"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_05",
+            "candidate_release_or_byproduct_risk_03"
+          ],
+          "source_response_row_count": 2,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "human_reviewed_release_gate_labels",
+          "output_file": "human_reviewed_release_gate_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_release_or_byproduct_risk_04"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "hydraulic_path_stage_labels",
+          "output_file": "hydraulic_path_stage_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "stage_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "stage_id"
+          ],
+          "hidden_states": [
+            "hydraulic_delay"
+          ],
+          "source_response_row_ids": [
+            "candidate_hydraulic_delay_05"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "node_modality_sensor_timeseries",
+          "output_file": "node_modality_sensor_timeseries.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "hidden_states": [
+            "catalyst_activity"
+          ],
+          "source_response_row_ids": [
+            "candidate_catalyst_activity_01",
+            "candidate_catalyst_activity_02",
+            "candidate_catalyst_activity_03"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "offline_lab_results",
+          "output_file": "offline_lab_results.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "offline_method_id",
+            "detection_limit",
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_01",
+            "candidate_reaction_completion_01",
+            "candidate_catalyst_activity_04",
+            "candidate_matrix_interference_02",
+            "candidate_release_or_byproduct_risk_01"
+          ],
+          "source_response_row_count": 5,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "sensor_timeseries",
+          "output_file": "sensor_timeseries.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs",
+            "influent:ORP_mV",
+            "influent:conductivity_uScm",
+            "influent:turbidity_NTU"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs",
+            "influent:ORP_mV",
+            "influent:conductivity_uScm",
+            "influent:turbidity_NTU"
+          ],
+          "hidden_states": [
+            "matrix_interference",
+            "pollutant_residual"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_03",
+            "candidate_pollutant_residual_04",
+            "candidate_matrix_interference_03",
+            "candidate_matrix_interference_04",
+            "candidate_matrix_interference_05"
+          ],
+          "source_response_row_count": 5,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "site_topology_or_bed_geometry",
+          "output_file": "site_topology_or_bed_geometry.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion"
+          ],
+          "source_response_row_ids": [
+            "candidate_reaction_completion_06",
+            "candidate_catalyst_activity_06",
+            "candidate_hydraulic_delay_04"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        }
+      ],
+      "validation_command_preview": "REAL_FIELD_REPLAY_PACKAGE_DIR=<package_dir> .venv/bin/python experiments/run_external_activation_router.py",
+      "operator_action": "use_R7_REAL_FIELD_PACKAGE_as_requirement_reference_until_rows_are_selected_for_this_channel",
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "channel_id": "R8U66_PATH_ENDPOINT_LABEL_PACKAGE",
+      "package_pointer": "FIELD_PATH_ENDPOINT_LABEL_PACKAGE_DIR",
+      "plan_basis": "matrix_required_channels_not_filled_response_choice",
+      "package_directory_placeholder": "TODO_CREATE_NO_WRITE_PACKAGE_DIR_FOR_R8U66_PATH_ENDPOINT_LABEL_PACKAGE",
+      "can_materialize_from_selected_response": false,
+      "source_response_row_count": 28,
+      "table_manifest_count": 10,
+      "table_manifests": [
+        {
+          "table_name": "campaign_operation_log",
+          "output_file": "campaign_operation_log.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_reaction_completion_03",
+            "candidate_reaction_completion_04",
+            "candidate_reaction_completion_05",
+            "candidate_catalyst_activity_05",
+            "candidate_hydraulic_delay_01",
+            "candidate_hydraulic_delay_02",
+            "candidate_hydraulic_delay_03",
+            "candidate_release_or_byproduct_risk_05"
+          ],
+          "source_response_row_count": 8,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "context_or_manual_review",
+          "output_file": "context_or_manual_review.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_02",
+            "candidate_reaction_completion_02",
+            "candidate_release_or_byproduct_risk_02"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "field_holdout_release_labels",
+          "output_file": "field_holdout_release_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "pollutant_residual"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_06"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "final_effluent_endpoint_labels",
+          "output_file": "final_effluent_endpoint_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "release_label"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "release_label"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_05",
+            "candidate_release_or_byproduct_risk_03"
+          ],
+          "source_response_row_count": 2,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "human_reviewed_release_gate_labels",
+          "output_file": "human_reviewed_release_gate_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_release_or_byproduct_risk_04"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "hydraulic_path_stage_labels",
+          "output_file": "hydraulic_path_stage_labels.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "stage_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "stage_id"
+          ],
+          "hidden_states": [
+            "hydraulic_delay"
+          ],
+          "source_response_row_ids": [
+            "candidate_hydraulic_delay_05"
+          ],
+          "source_response_row_count": 1,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "node_modality_sensor_timeseries",
+          "output_file": "node_modality_sensor_timeseries.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "hidden_states": [
+            "catalyst_activity"
+          ],
+          "source_response_row_ids": [
+            "candidate_catalyst_activity_01",
+            "candidate_catalyst_activity_02",
+            "candidate_catalyst_activity_03"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "offline_lab_results",
+          "output_file": "offline_lab_results.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "offline_method_id",
+            "detection_limit",
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_01",
+            "candidate_reaction_completion_01",
+            "candidate_catalyst_activity_04",
+            "candidate_release_or_byproduct_risk_01"
+          ],
+          "source_response_row_count": 4,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "sensor_timeseries",
+          "output_file": "sensor_timeseries.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs"
+          ],
+          "hidden_states": [
+            "pollutant_residual"
+          ],
+          "source_response_row_ids": [
+            "candidate_pollutant_residual_03",
+            "candidate_pollutant_residual_04"
+          ],
+          "source_response_row_count": 2,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        },
+        {
+          "table_name": "site_topology_or_bed_geometry",
+          "output_file": "site_topology_or_bed_geometry.csv",
+          "required_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ],
+          "field_names": [
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion"
+          ],
+          "source_response_row_ids": [
+            "candidate_reaction_completion_06",
+            "candidate_catalyst_activity_06",
+            "candidate_hydraulic_delay_04"
+          ],
+          "source_response_row_count": 3,
+          "value_payload_mapping_status": "value_payload_mapping_deferred_until_response_ready",
+          "value_payload_mapping_count": 0,
+          "value_payload_mappings": [],
+          "row_blueprint_count": 0,
+          "row_blueprints": [],
+          "no_write_boundary": "These row blueprints only map operator-supplied response values into package CSV columns for preflight. They do not create or prove field evidence and cannot write actuator policy or release gate."
+        }
+      ],
+      "validation_command_preview": "FIELD_PATH_ENDPOINT_LABEL_PACKAGE_DIR=<package_dir> .venv/bin/python experiments/run_external_activation_router.py",
+      "operator_action": "use_R8U66_PATH_ENDPOINT_LABEL_PACKAGE_as_requirement_reference_until_rows_are_selected_for_this_channel",
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    }
+  ],
+  "router_validation_command": ".venv/bin/python experiments/run_external_activation_router.py",
+  "next_operator_action": "complete_response_preflight_and_package_assembly_before_staging",
+  "no_write_boundary": "This staging manifest only tells an operator how to materialize filled field-activation response rows into external package directories for downstream preflight. It does not create field evidence, does not run replay/holdout, and cannot write actuator policy, release gate, legal conclusions or field-supported claims."
+}

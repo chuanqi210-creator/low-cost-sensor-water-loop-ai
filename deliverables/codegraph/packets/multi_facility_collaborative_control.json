@@ -1,0 +1,131 @@
+{
+  "handle": "agent-3b8a09a411",
+  "agent_id": "agent:49:multi_facility_collaborative_control",
+  "agent_number": 49,
+  "slug": "multi_facility_collaborative_control",
+  "runner": "experiments/run_agent49_multi_facility_collaborative_control.py",
+  "source": "src/water_ai/agents/multi_facility_collaborative_control_agent.py",
+  "deliverable": "deliverables/multi_facility_collaborative_control.md",
+  "test": "tests/test_multi_facility_collaborative_control_agent.py",
+  "output_dir": "outputs/agent49_multi_facility_collaborative_control",
+  "related_nodes": [
+    {
+      "handle": "agent-3b8a09a411",
+      "node_id": "agent:49:multi_facility_collaborative_control",
+      "kind": "agent_workflow",
+      "label": "Agent49 multi_facility_collaborative_control",
+      "path": "experiments/run_agent49_multi_facility_collaborative_control.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 49
+      }
+    },
+    {
+      "handle": "dir-0e25b7487c",
+      "node_id": "dir:outputs/agent49_multi_facility_collaborative_control",
+      "kind": "output_dir",
+      "label": "agent49_multi_facility_collaborative_control",
+      "path": "outputs/agent49_multi_facility_collaborative_control",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-4e16611f5a",
+      "node_id": "file:deliverables/multi_facility_collaborative_control.md",
+      "kind": "referenced_path",
+      "label": "multi_facility_collaborative_control.md",
+      "path": "deliverables/multi_facility_collaborative_control.md",
+      "layer": "deliverable",
+      "summary": "多设施协同控制与策略蒸馏设计",
+      "metrics": {
+        "lines": 70,
+        "size_bytes": 7286
+      }
+    },
+    {
+      "handle": "file-dbb10a8dcf",
+      "node_id": "file:experiments/run_agent49_multi_facility_collaborative_control.py",
+      "kind": "file",
+      "label": "run_agent49_multi_facility_collaborative_control.py",
+      "path": "experiments/run_agent49_multi_facility_collaborative_control.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 238,
+        "size_bytes": 12282
+      }
+    },
+    {
+      "handle": "file-a6327ce6dd",
+      "node_id": "file:src/water_ai/agents/multi_facility_collaborative_control_agent.py",
+      "kind": "referenced_path",
+      "label": "multi_facility_collaborative_control_agent.py",
+      "path": "src/water_ai/agents/multi_facility_collaborative_control_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 1255,
+        "size_bytes": 74527
+      }
+    },
+    {
+      "handle": "file-ba3997b20f",
+      "node_id": "file:tests/test_multi_facility_collaborative_control_agent.py",
+      "kind": "file",
+      "label": "test_multi_facility_collaborative_control_agent.py",
+      "path": "tests/test_multi_facility_collaborative_control_agent.py",
+      "layer": "verification",
+      "summary": "from water_ai.agents.multi_facility_collaborative_control_agent import (",
+      "metrics": {
+        "lines": 511,
+        "size_bytes": 24845
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:49:multi_facility_collaborative_control",
+      "target": "file:deliverables/multi_facility_collaborative_control.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:49:multi_facility_collaborative_control",
+      "target": "file:src/water_ai/agents/multi_facility_collaborative_control_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:49:multi_facility_collaborative_control",
+      "target": "file:experiments/run_agent49_multi_facility_collaborative_control.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:49:multi_facility_collaborative_control",
+      "target": "file:tests/test_multi_facility_collaborative_control_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:49:multi_facility_collaborative_control",
+      "target": "dir:outputs/agent49_multi_facility_collaborative_control",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

@@ -1,0 +1,342 @@
+{
+  "model_version": "rf_multioutput_v5_path_layout_holdout",
+  "rows": 51840,
+  "rows_by_source": {
+    "process_dynamics": 34560,
+    "legacy_scenario": 17280
+  },
+  "rows_by_window_min": {
+    "24": 5760,
+    "48": 11520,
+    "72": 34560
+  },
+  "rows_by_layout_id": {
+    "classification_sspoc_proxy:5x10": 7416,
+    "cost_only_baseline:4x10": 7416,
+    "deterministic_random_baseline:5x10": 7368,
+    "greedy_marginal:4x10": 7464,
+    "greedy_marginal:6x10": 7344,
+    "greedy_marginal:8x10": 7464,
+    "topology_robust_cost_proxy:4x10": 7368
+  },
+  "rows_by_layout_holdout_role": {
+    "holdout": 14880,
+    "train": 36960
+  },
+  "features": [
+    "timestamp_min",
+    "cycle_id",
+    "pH",
+    "ORP_mV",
+    "EC_uScm",
+    "turbidity_NTU",
+    "temp_C",
+    "flow_Lmin",
+    "UV254_abs",
+    "uv254_removal",
+    "orp_norm",
+    "ec_norm",
+    "turbidity_norm",
+    "ph_penalty",
+    "flow_penalty",
+    "hydraulic_path_coverage_rate",
+    "direct_hydraulic_path_coverage_rate",
+    "proxy_hydraulic_path_coverage_rate",
+    "recirculation_loop_observed_flag",
+    "low_frequency_time_buffer_observed_flag",
+    "release_boundary_proxy_flag",
+    "final_effluent_direct_observed_flag",
+    "release_endpoint_label_missing_flag"
+  ],
+  "hydraulic_path_features": [
+    "hydraulic_path_coverage_rate",
+    "direct_hydraulic_path_coverage_rate",
+    "proxy_hydraulic_path_coverage_rate",
+    "recirculation_loop_observed_flag",
+    "low_frequency_time_buffer_observed_flag",
+    "release_boundary_proxy_flag",
+    "final_effluent_direct_observed_flag",
+    "release_endpoint_label_missing_flag"
+  ],
+  "targets": [
+    "pollutant_residual_risk",
+    "reaction_completion",
+    "oxidant_remaining",
+    "catalyst_activity",
+    "matrix_interference"
+  ],
+  "feature_ranges": {
+    "timestamp_min": {
+      "min": 0.0,
+      "max": 71.0
+    },
+    "cycle_id": {
+      "min": 0.0,
+      "max": 5.0
+    },
+    "pH": {
+      "min": 6.861,
+      "max": 10.95
+    },
+    "ORP_mV": {
+      "min": 204.53,
+      "max": 698.87
+    },
+    "EC_uScm": {
+      "min": 905.24,
+      "max": 5017.62
+    },
+    "turbidity_NTU": {
+      "min": 0.0,
+      "max": 52.368
+    },
+    "temp_C": {
+      "min": 24.387,
+      "max": 27.139
+    },
+    "flow_Lmin": {
+      "min": 0.196,
+      "max": 1.384
+    },
+    "UV254_abs": {
+      "min": 0.0976,
+      "max": 1.2203
+    },
+    "uv254_removal": {
+      "min": 0.0,
+      "max": 0.887336
+    },
+    "orp_norm": {
+      "min": 0.010067,
+      "max": 1.0
+    },
+    "ec_norm": {
+      "min": 0.20262,
+      "max": 1.0
+    },
+    "turbidity_norm": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "ph_penalty": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "flow_penalty": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "hydraulic_path_coverage_rate": {
+      "min": 0.666667,
+      "max": 1.0
+    },
+    "direct_hydraulic_path_coverage_rate": {
+      "min": 0.5,
+      "max": 1.0
+    },
+    "proxy_hydraulic_path_coverage_rate": {
+      "min": 0.0,
+      "max": 0.333333
+    },
+    "recirculation_loop_observed_flag": {
+      "min": 1.0,
+      "max": 1.0
+    },
+    "low_frequency_time_buffer_observed_flag": {
+      "min": 1.0,
+      "max": 1.0
+    },
+    "release_boundary_proxy_flag": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "final_effluent_direct_observed_flag": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "release_endpoint_label_missing_flag": {
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "hydraulic_path_feature_unique_counts": {
+    "hydraulic_path_coverage_rate": 3,
+    "direct_hydraulic_path_coverage_rate": 4,
+    "proxy_hydraulic_path_coverage_rate": 3,
+    "recirculation_loop_observed_flag": 1,
+    "low_frequency_time_buffer_observed_flag": 1,
+    "release_boundary_proxy_flag": 2,
+    "final_effluent_direct_observed_flag": 2,
+    "release_endpoint_label_missing_flag": 2
+  },
+  "hydraulic_path_feature_variation_status": "synthetic_path_feature_variation_ready_for_layout_holdout",
+  "layout_variants": [
+    {
+      "layout_id": "classification_sspoc_proxy:5x10",
+      "layout_variant_id": "classification_proxy_release_gap",
+      "layout_holdout_role": "holdout",
+      "selected_sensor_count": 5,
+      "path_stage_count": 6,
+      "covered_stage_count": 5,
+      "hydraulic_path_coverage_rate": 0.833333,
+      "direct_hydraulic_path_coverage_rate": 0.666667,
+      "proxy_hydraulic_path_coverage_rate": 0.166667,
+      "recirculation_loop_observed_flag": 1.0,
+      "low_frequency_time_buffer_observed_flag": 1.0,
+      "release_boundary_proxy_flag": 1.0,
+      "final_effluent_direct_observed_flag": 0.0,
+      "release_endpoint_label_missing_flag": 1.0,
+      "row_count": 7416
+    },
+    {
+      "layout_id": "greedy_marginal:8x10",
+      "layout_variant_id": "direct_effluent_full_budget",
+      "layout_holdout_role": "holdout",
+      "selected_sensor_count": 8,
+      "path_stage_count": 6,
+      "covered_stage_count": 6,
+      "hydraulic_path_coverage_rate": 1.0,
+      "direct_hydraulic_path_coverage_rate": 1.0,
+      "proxy_hydraulic_path_coverage_rate": 0.0,
+      "recirculation_loop_observed_flag": 1.0,
+      "low_frequency_time_buffer_observed_flag": 1.0,
+      "release_boundary_proxy_flag": 0.0,
+      "final_effluent_direct_observed_flag": 1.0,
+      "release_endpoint_label_missing_flag": 0.0,
+      "row_count": 7464
+    },
+    {
+      "layout_id": "cost_only_baseline:4x10",
+      "layout_variant_id": "cost_only_effluent",
+      "layout_holdout_role": "train",
+      "selected_sensor_count": 4,
+      "path_stage_count": 6,
+      "covered_stage_count": 4,
+      "hydraulic_path_coverage_rate": 0.666667,
+      "direct_hydraulic_path_coverage_rate": 0.5,
+      "proxy_hydraulic_path_coverage_rate": 0.166667,
+      "recirculation_loop_observed_flag": 1.0,
+      "low_frequency_time_buffer_observed_flag": 1.0,
+      "release_boundary_proxy_flag": 0.0,
+      "final_effluent_direct_observed_flag": 1.0,
+      "release_endpoint_label_missing_flag": 0.0,
+      "row_count": 7416
+    },
+    {
+      "layout_id": "deterministic_random_baseline:5x10",
+      "layout_variant_id": "random_direct_release",
+      "layout_holdout_role": "train",
+      "selected_sensor_count": 5,
+      "path_stage_count": 6,
+      "covered_stage_count": 6,
+      "hydraulic_path_coverage_rate": 1.0,
+      "direct_hydraulic_path_coverage_rate": 0.666667,
+      "proxy_hydraulic_path_coverage_rate": 0.333333,
+      "recirculation_loop_observed_flag": 1.0,
+      "low_frequency_time_buffer_observed_flag": 1.0,
+      "release_boundary_proxy_flag": 0.0,
+      "final_effluent_direct_observed_flag": 1.0,
+      "release_endpoint_label_missing_flag": 0.0,
+      "row_count": 7368
+    },
+    {
+      "layout_id": "greedy_marginal:4x10",
+      "layout_variant_id": "low_cost_stage_gap",
+      "layout_holdout_role": "train",
+      "selected_sensor_count": 4,
+      "path_stage_count": 6,
+      "covered_stage_count": 5,
+      "hydraulic_path_coverage_rate": 0.833333,
+      "direct_hydraulic_path_coverage_rate": 0.666667,
+      "proxy_hydraulic_path_coverage_rate": 0.166667,
+      "recirculation_loop_observed_flag": 1.0,
+      "low_frequency_time_buffer_observed_flag": 1.0,
+      "release_boundary_proxy_flag": 1.0,
+      "final_effluent_direct_observed_flag": 0.0,
+      "release_endpoint_label_missing_flag": 1.0,
+      "row_count": 7464
+    },
+    {
+      "layout_id": "greedy_marginal:6x10",
+      "layout_variant_id": "default_proxy_release",
+      "layout_holdout_role": "train",
+      "selected_sensor_count": 6,
+      "path_stage_count": 6,
+      "covered_stage_count": 6,
+      "hydraulic_path_coverage_rate": 1.0,
+      "direct_hydraulic_path_coverage_rate": 0.833333,
+      "proxy_hydraulic_path_coverage_rate": 0.166667,
+      "recirculation_loop_observed_flag": 1.0,
+      "low_frequency_time_buffer_observed_flag": 1.0,
+      "release_boundary_proxy_flag": 1.0,
+      "final_effluent_direct_observed_flag": 0.0,
+      "release_endpoint_label_missing_flag": 1.0,
+      "row_count": 7344
+    },
+    {
+      "layout_id": "topology_robust_cost_proxy:4x10",
+      "layout_variant_id": "topology_robust_release_direct",
+      "layout_holdout_role": "train",
+      "selected_sensor_count": 4,
+      "path_stage_count": 6,
+      "covered_stage_count": 6,
+      "hydraulic_path_coverage_rate": 1.0,
+      "direct_hydraulic_path_coverage_rate": 0.666667,
+      "proxy_hydraulic_path_coverage_rate": 0.333333,
+      "recirculation_loop_observed_flag": 1.0,
+      "low_frequency_time_buffer_observed_flag": 1.0,
+      "release_boundary_proxy_flag": 0.0,
+      "final_effluent_direct_observed_flag": 1.0,
+      "release_endpoint_label_missing_flag": 0.0,
+      "row_count": 7368
+    }
+  ],
+  "layout_holdout": {
+    "status": "synthetic_layout_holdout_ready_needs_field_path_labels",
+    "train_layout_ids": [
+      "cost_only_baseline:4x10",
+      "deterministic_random_baseline:5x10",
+      "greedy_marginal:4x10",
+      "greedy_marginal:6x10",
+      "topology_robust_cost_proxy:4x10"
+    ],
+    "holdout_layout_ids": [
+      "classification_sspoc_proxy:5x10",
+      "greedy_marginal:8x10"
+    ],
+    "train_rows": 36960,
+    "holdout_rows": 14880,
+    "mae_by_target": {
+      "pollutant_residual_risk": 0.00824,
+      "reaction_completion": 0.0117,
+      "oxidant_remaining": 0.0065,
+      "catalyst_activity": 0.02711,
+      "matrix_interference": 0.02267
+    },
+    "r2_by_target": {
+      "pollutant_residual_risk": 0.99391,
+      "reaction_completion": 0.98586,
+      "oxidant_remaining": 0.99815,
+      "catalyst_activity": 0.91639,
+      "matrix_interference": 0.89192
+    },
+    "mean_mae": 0.01524,
+    "estimator": "random_forest_multioutput_80_tree_layout_holdout_evaluator",
+    "field_boundary": "synthetic layout holdout checks path-feature schema generalization only; it cannot prove field performance without path labels, node-specific values and endpoint lab labels"
+  },
+  "mae_by_target": {
+    "pollutant_residual_risk": 0.00769,
+    "reaction_completion": 0.01088,
+    "oxidant_remaining": 0.00553,
+    "catalyst_activity": 0.02421,
+    "matrix_interference": 0.02067
+  },
+  "r2_by_target": {
+    "pollutant_residual_risk": 0.99489,
+    "reaction_completion": 0.98566,
+    "oxidant_remaining": 0.99862,
+    "catalyst_activity": 0.91345,
+    "matrix_interference": 0.89805
+  },
+  "mean_mae": 0.0138
+}

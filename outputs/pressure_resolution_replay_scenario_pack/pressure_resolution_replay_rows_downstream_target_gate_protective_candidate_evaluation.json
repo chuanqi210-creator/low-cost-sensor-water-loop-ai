@@ -1,0 +1,73 @@
+{
+  "downstream_target_gate_protective_candidate_evaluation_id": "R8u56_downstream_target_gate_protective_candidate_evaluation",
+  "protective_candidate_evaluation_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_protective_candidate_evaluation.json",
+  "linked_post_review_gate_status": "downstream_target_gate_post_review_gate_blocked_by_operator_review_preflight",
+  "expected_target_count": 0,
+  "expected_target_ids": [],
+  "candidate_target_count": 0,
+  "candidate_target_ids": [],
+  "target_contributions": [],
+  "candidate_action_bundle": {
+    "candidate_bundle_id": "R8U56_PROTECTIVE_CONTROL_CANDIDATE_BUNDLE",
+    "candidate_scope": "protective_control_candidate_only_no_actuator_no_release_write",
+    "candidate_actions": [
+      "temporarily_hold_batch",
+      "extend_retention_time",
+      "increase_recycle_or_return_flow_for_review",
+      "adjust_dose_as_candidate_not_command",
+      "trigger_catalyst_regeneration_or_replacement_review",
+      "switch_or_bypass_unit_as_candidate_not_command",
+      "keep_release_gate_blocked"
+    ],
+    "candidate_inputs": [
+      "operator_approved_target_gate_results",
+      "Agent51 catalyst proxy holdout boundary",
+      "Agent49 guardrail context",
+      "Agent52 replay clearance",
+      "R7 field evidence chain"
+    ],
+    "required_final_gates_before_execution": [
+      "protective_control_policy_gate",
+      "actuator_safety_interlock_gate",
+      "operator_final_execution_review",
+      "actuator_feedback_replay_gate",
+      "release_gate_separate_validation_remains_required"
+    ],
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "field_claim_upgrade_allowed": false
+  },
+  "model_core_layers": [
+    "diagnostic_decision_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "controllability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "Even post-review target approval only proves evidence readiness; it does not define a bounded, non-executing protective control candidate that can be reviewed before field actuation.",
+    "technical_means": "A protective candidate evaluation gate converts the four approved downstream target contributions into a candidate action bundle, preserves target-specific evidence paths, and requires final policy, interlock, operator, actuator-feedback, and release-gate validations before execution.",
+    "technical_effect": "The grey-box loop can present actionable protective options under delayed low-cost sensing while preventing automatic pump, valve, dose, or release writes.",
+    "prior_art_distinction_candidate": "Unlike generic multi-agent action selection, this candidate gate separates evidence approval, protective candidate generation, final execution review, and release validation in a field replay-governed water-treatment loop."
+  },
+  "evidence_boundaries": [
+    "Protective candidate evaluation is not online control execution.",
+    "It cannot write actuator, pump, valve, dosing, bypass, or release-gate commands.",
+    "It cannot upgrade synthetic/template/sample evidence to field-supported claims.",
+    "Final execution still needs policy gate, safety interlock, operator final review, and actuator feedback."
+  ],
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false,
+  "downstream_target_gate_protective_candidate_evaluation_status": "protective_candidate_evaluation_blocked_by_post_review_gate",
+  "blocking_reasons": [
+    "post_review_gate_status=downstream_target_gate_post_review_gate_blocked_by_operator_review_preflight"
+  ],
+  "next_operator_action": "R8p_fix_field_rows_source_preflight",
+  "can_emit_protective_control_candidate": false,
+  "can_route_to_final_execution_review": false
+}

@@ -1,0 +1,131 @@
+{
+  "handle": "agent-c9071fa6df",
+  "agent_id": "agent:60:agent_architecture_consolidation",
+  "agent_number": 60,
+  "slug": "agent_architecture_consolidation",
+  "runner": "experiments/run_agent60_agent_architecture_consolidation.py",
+  "source": "src/water_ai/agents/agent_architecture_consolidation_agent.py",
+  "deliverable": "deliverables/model_core_optimization/agent_architecture_consolidation.md",
+  "test": "tests/test_agent_architecture_consolidation_agent.py",
+  "output_dir": "outputs/agent60_agent_architecture_consolidation",
+  "related_nodes": [
+    {
+      "handle": "agent-c9071fa6df",
+      "node_id": "agent:60:agent_architecture_consolidation",
+      "kind": "agent_workflow",
+      "label": "Agent60 agent_architecture_consolidation",
+      "path": "experiments/run_agent60_agent_architecture_consolidation.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 60
+      }
+    },
+    {
+      "handle": "dir-fc147b4287",
+      "node_id": "dir:outputs/agent60_agent_architecture_consolidation",
+      "kind": "output_dir",
+      "label": "agent60_agent_architecture_consolidation",
+      "path": "outputs/agent60_agent_architecture_consolidation",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-ecf29dda17",
+      "node_id": "file:deliverables/model_core_optimization/agent_architecture_consolidation.md",
+      "kind": "file",
+      "label": "agent_architecture_consolidation.md",
+      "path": "deliverables/model_core_optimization/agent_architecture_consolidation.md",
+      "layer": "governance_deliverable",
+      "summary": "模型架构复盘与减冗治理",
+      "metrics": {
+        "lines": 419,
+        "size_bytes": 56264
+      }
+    },
+    {
+      "handle": "file-483a63e82f",
+      "node_id": "file:experiments/run_agent60_agent_architecture_consolidation.py",
+      "kind": "referenced_path",
+      "label": "run_agent60_agent_architecture_consolidation.py",
+      "path": "experiments/run_agent60_agent_architecture_consolidation.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 2713,
+        "size_bytes": 141279
+      }
+    },
+    {
+      "handle": "file-e56ac9e5c7",
+      "node_id": "file:src/water_ai/agents/agent_architecture_consolidation_agent.py",
+      "kind": "referenced_path",
+      "label": "agent_architecture_consolidation_agent.py",
+      "path": "src/water_ai/agents/agent_architecture_consolidation_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 11051,
+        "size_bytes": 720433
+      }
+    },
+    {
+      "handle": "file-641e0d4601",
+      "node_id": "file:tests/test_agent_architecture_consolidation_agent.py",
+      "kind": "referenced_path",
+      "label": "test_agent_architecture_consolidation_agent.py",
+      "path": "tests/test_agent_architecture_consolidation_agent.py",
+      "layer": "verification",
+      "summary": "import json",
+      "metrics": {
+        "lines": 3933,
+        "size_bytes": 197656
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:60:agent_architecture_consolidation",
+      "target": "file:deliverables/model_core_optimization/agent_architecture_consolidation.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:60:agent_architecture_consolidation",
+      "target": "file:src/water_ai/agents/agent_architecture_consolidation_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:60:agent_architecture_consolidation",
+      "target": "file:experiments/run_agent60_agent_architecture_consolidation.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:60:agent_architecture_consolidation",
+      "target": "file:tests/test_agent_architecture_consolidation_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:60:agent_architecture_consolidation",
+      "target": "dir:outputs/agent60_agent_architecture_consolidation",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

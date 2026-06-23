@@ -1,0 +1,38 @@
+{
+  "summary_id": "R8u149_grey_box_field_calibration_summary",
+  "summary_type": "grey_box_field_calibration_summary_for_agent53",
+  "summary_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+  "source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+  "source_path": "",
+  "package_preflight_status": "grey_box_calibration_package_waiting_for_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+  "package_preflight_pass": false,
+  "matched_batch_count": 0,
+  "computable_batch_count": 0,
+  "matched_batch_ids": [],
+  "agent53_thresholds": {
+    "max_field_residual": 0.18,
+    "max_mass_balance_residual": 0.16,
+    "minimum_field_physics_coverage": 0.85
+  },
+  "field_calibration_for_agent53": {
+    "field_physics_coverage": 0.0,
+    "max_field_residual": 1.0,
+    "max_mass_balance_residual": 1.0,
+    "mean_observed_k_per_min": 0.0,
+    "mean_observed_removal_fraction": 0.0,
+    "max_byproduct_load_fraction_proxy": 1.0
+  },
+  "batch_calibration_rows": [],
+  "blocking_reasons": [
+    "missing_external_package_dir"
+  ],
+  "can_run_agent53_field_calibration": false,
+  "agent53_field_candidate_ready": false,
+  "can_generate_field_evidence": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "next_operator_action": "complete_grey_box_calibration_package_preflight_before_building_field_calibration_summary",
+  "field_boundary": "This summary converts a structurally accepted external field package into Agent53-compatible calibration inputs. It can support a downstream field calibration run, but it does not by itself prove a mechanism, authorize control actions or upgrade release decisions.",
+  "no_write_boundary": "This package is only a grey-box calibration preflight input. It cannot write actuator policy, release-gate policy, field-supported mechanism claims or deployment clearance."
+}

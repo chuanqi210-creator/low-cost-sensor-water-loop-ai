@@ -1,0 +1,201 @@
+{
+  "completion_route_contracts_id": "R8u24_r7_to_r8p_completion_route_execution_contracts",
+  "completion_route_contracts_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json",
+  "completion_route_contracts_status": "completion_route_contracts_ready_waiting_for_r7_package",
+  "source_completion_plan_status": "r7_to_r8p_completion_plan_waiting_for_r7_package",
+  "route_contract_count": 4,
+  "open_route_count": 4,
+  "open_route_ids": [
+    "r7_source_package",
+    "operator_supplement",
+    "agent52_replay_export",
+    "r8p_validation_gates"
+  ],
+  "route_contracts": [
+    {
+      "route_id": "r7_source_package",
+      "route_status": "route_blocked_waiting_for_r7_source_package",
+      "producer": "R7/Agent44 field package importer",
+      "input_contract": "REAL_FIELD_REPLAY_PACKAGE_DIR points to a field-origin R7 metadata.json + CSV directory.",
+      "output_contract": "R7-to-R8p staged draft rows for the five shared field tables.",
+      "required_completion_item_ids": [
+        "R8U22_R7_SOURCE_PACKAGE_R7_TO_R8P_STAGING_PREFLIGHT_NO_R7_PACKAGE_SUPPLIED"
+      ],
+      "required_tables": [
+        "campaign_operation_log",
+        "fast_proxy_event_log",
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "pressure_headloss_event_log"
+      ],
+      "required_fields_by_table": {
+        "R7_Agent44_package": []
+      },
+      "validation_gates": [
+        "Agent44/R7 import preflight",
+        "Agent61 R7 staging preflight",
+        "metadata data_origin field provenance gate"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "downstream_consumers": [
+        "R8p staged draft",
+        "operator supplement merge",
+        "Agent61 schema preflight"
+      ],
+      "failure_boundary": "Do not infer missing field rows from template CSVs or non-field metadata.",
+      "can_generate_field_evidence_by_route_only": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "route_id": "operator_supplement",
+      "route_status": "route_waiting_for_operator_supplement_records",
+      "producer": "field operator review and calibration workflow",
+      "input_contract": "Reviewed operator/calibration records for pressure source resolution and R8p-only supplement fields.",
+      "output_contract": "Supplemented R8p target-table fields with reviewed values and reviewer/calibration provenance.",
+      "required_completion_item_ids": [
+        "R8U22_OPERATOR_SUPPLEMENT_CAMPAIGN_OPERATION_LOG",
+        "R8U22_OPERATOR_SUPPLEMENT_FAST_PROXY_EVENT_LOG",
+        "R8U22_OPERATOR_SUPPLEMENT_NODE_MODALITY_SENSOR_TIMESERIES",
+        "R8U22_OPERATOR_SUPPLEMENT_PRESSURE_HEADLOSS_EVENT_LOG"
+      ],
+      "required_tables": [
+        "campaign_operation_log",
+        "fast_proxy_event_log",
+        "node_modality_sensor_timeseries",
+        "pressure_headloss_event_log"
+      ],
+      "required_fields_by_table": {
+        "campaign_operation_log": [
+          "operator_review_required",
+          "pressure_source_resolution",
+          "authoritative_pressure_source",
+          "reviewer_id",
+          "review_time",
+          "calibration_action_id",
+          "calibration_note"
+        ],
+        "fast_proxy_event_log": [
+          "proxy_event_type"
+        ],
+        "node_modality_sensor_timeseries": [
+          "unit"
+        ],
+        "pressure_headloss_event_log": [
+          "instrument_id"
+        ]
+      },
+      "validation_gates": [
+        "Agent61 schema required-field gate",
+        "field provenance gate",
+        "scenario semantic operator-review gate"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "downstream_consumers": [
+        "R8p scenario semantic preflight",
+        "R8v R7 evidence chain"
+      ],
+      "failure_boundary": "Do not replace operator review fields with model guesses, TODO markers, or default false values.",
+      "can_generate_field_evidence_by_route_only": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "route_id": "agent52_replay_export",
+      "route_status": "route_waiting_for_agent52_replay_export",
+      "producer": "Agent49/Agent52 replay evaluation chain",
+      "input_contract": "Agent49/52 replay outputs after pressure-source conflict evaluation and expert/policy action comparison.",
+      "output_contract": "agent52_replay_table rows with policy/expert actions and pressure-source conflict counters.",
+      "required_completion_item_ids": [
+        "R8U22_AGENT52_REPLAY_EXPORT_AGENT52_REPLAY_TABLE"
+      ],
+      "required_tables": [
+        "agent52_replay_table"
+      ],
+      "required_fields_by_table": {
+        "agent52_replay_table": [
+          "batch_id",
+          "scenario",
+          "policy_action_id",
+          "expert_action_id",
+          "pressure_source_conflict_count",
+          "resolved_pressure_source_conflict_count",
+          "unresolved_pressure_source_conflict_count",
+          "pressure_source_resolution_record_count",
+          "pressure_source_conflict_requires_operator_review",
+          "pressure_source_conflict_control_block",
+          "data_origin"
+        ]
+      },
+      "validation_gates": [
+        "Agent52 replay clearance",
+        "Agent61 schema/provenance gate",
+        "R8v downstream routing preflight"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent52_multi_facility_replay_evaluation.py",
+      "downstream_consumers": [
+        "Agent61 R8p schema preflight",
+        "Agent49 guardrail context",
+        "R8v routing"
+      ],
+      "failure_boundary": "Do not fabricate policy_action_id, expert_action_id, or conflict counters from R7 field CSVs.",
+      "can_generate_field_evidence_by_route_only": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "route_id": "r8p_validation_gates",
+      "route_status": "route_waiting_for_upstream_evidence_routes",
+      "producer": "Agent61 pressure resolution replay scenario pack",
+      "input_contract": "Completed R8p row package assembled from R7 field rows, operator supplement records, and Agent52 replay export.",
+      "output_contract": "R8p schema/provenance/template/bundle/temporal/semantic/downstream routing gate results.",
+      "required_completion_item_ids": [],
+      "required_tables": [
+        "agent52_replay_table",
+        "campaign_operation_log",
+        "fast_proxy_event_log",
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "pressure_headloss_event_log"
+      ],
+      "required_fields_by_table": {},
+      "validation_gates": [
+        "schema validation",
+        "field provenance gate",
+        "template marker gate",
+        "same-batch six-table bundle gate",
+        "temporal-window gate",
+        "scenario-semantic gate",
+        "downstream-routing gate"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "downstream_consumers": [
+        "Agent51 holdout",
+        "Agent49 guardrail context",
+        "Agent52 replay clearance",
+        "R7 evidence chain"
+      ],
+      "failure_boundary": "R8p validation gates can route accepted rows forward, but cannot write actuator or release gates.",
+      "can_generate_field_evidence_by_route_only": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    }
+  ],
+  "execution_order": [
+    "R7 source package and metadata provenance",
+    "R7-to-R8p staging draft",
+    "operator supplement records",
+    "Agent49/52 replay export",
+    "Agent61 R8p schema/provenance/template/bundle/temporal/semantic/routing gates",
+    "R8v route to Agent51/49/52/R7 evidence chain"
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "Completion items identify missing evidence, but an executable grey-box control pipeline needs route-level input/output contracts and validation gates before field/replay evidence can be assembled.",
+    "technical_means": "The route contract layer groups completion items by evidence producer and defines source package, operator supplement, replay export, and R8p validation interfaces with explicit gates and failure boundaries.",
+    "technical_effect": "Field observations, human review, and replay-derived control evidence remain separable while becoming machine-routable into the pressure-resolution replay package.",
+    "prior_art_distinction_candidate": "Unlike an importer or a generic checklist, the contract layer preserves low-cost sensing, delayed review, and offline replay as gated evidence routes before closed-loop control claims."
+  },
+  "can_generate_field_evidence_from_contracts": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false
+}

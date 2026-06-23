@@ -1,0 +1,795 @@
+{
+  "field_validation_queue_alignment": {
+    "agent_name": "field_validation_queue_alignment_agent",
+    "confidence": 0.642,
+    "summary": "现场验证队列对齐：field_validation_alignment_ready_needs_real_field_package；table_coverage=1.000，gate_coverage=1.000。",
+    "recommendations": [
+      "按 validation_mapping_table 生成现场采集优先级：先保证 sensor_timeseries、offline_lab_results 与 metadata provenance，再进入 replay gate。",
+      "optional_fields_promoted_for_claim 中的字段在通用 schema 里虽是可选，但对对应 claim 必须作为必采字段处理。",
+      "Agent58 只负责把验证需求落到表、字段、gate 和指标；没有真实 field 包时不允许升级现场结论、执行器策略或 release gate。",
+      "R5 已覆盖 R4 guardrail 必采字段；下一步应转向真实 field package 导入、source_basis 细节和 replay 证据链。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "P9_field_validation_queue_alignment",
+        "borrowed_from": [
+          "evidence-before-claims workflow",
+          "model validation provenance gates",
+          "timestamped campaign replay and G6/P6 field gate",
+          "claim-specific data dictionary governance"
+        ],
+        "reality_mapping": "把 KG 提出的 field_validation_need 从笼统阻塞项变成 Agent30 数据表、Agent42 时间戳 replay、Agent44 metadata provenance、Agent43/45 证据链 gate 和验收指标。",
+        "data_needs": [
+          "field_validation_queue",
+          "field_data_schema_contract",
+          "timestamped_replay_schema_contract",
+          "field_replay_import_metadata",
+          "field_replay_evidence_chain_status"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/field_validation_queue_alignment_agent.py",
+          "experiments/run_agent58_field_validation_queue_alignment.py",
+          "outputs/field_validation_queue_alignment/field_validation_queue_alignment_metrics.json"
+        ],
+        "evaluation_metrics": [
+          "field_need_to_table_coverage",
+          "field_need_to_gate_coverage",
+          "unmapped_validation_need_count",
+          "schema_extension_required_count",
+          "claim_upgrade_blocker_count"
+        ],
+        "failure_boundary": "验证队列对齐只能说明需要采哪些字段、通过哪些 gate；没有真实 field 包和证据链通过时，不能证明现场有效或授权执行器/release gate。"
+      },
+      "validation_mapping_table": [
+        {
+          "need_id": "FVQ01",
+          "field_validation_need": "真实传感漂移记录",
+          "need_type": "sensor_drift_and_low_cost_signal_validity",
+          "supporting_entries": [
+            "kb_sensor_limited_release_evidence"
+          ],
+          "required_before": "actuator_or_release_gate_claim",
+          "agent30_tables": [
+            "sensor_timeseries"
+          ],
+          "required_table_fields": {
+            "sensor_timeseries": [
+              "batch_id",
+              "timestamp_min",
+              "cycle_id",
+              "pH",
+              "ORP_mV",
+              "EC_uScm",
+              "turbidity_NTU",
+              "temp_C",
+              "flow_Lmin",
+              "UV254_abs"
+            ]
+          },
+          "optional_fields_promoted_for_claim": {
+            "sensor_timeseries": [
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ]
+          },
+          "field_contract_check": {
+            "missing_tables": [],
+            "missing_required_fields": {},
+            "optional_fields_promoted_for_claim": {
+              "sensor_timeseries": [
+                "acquisition_time_min",
+                "ingest_time_min",
+                "instrument_id",
+                "sensor_status"
+              ]
+            },
+            "all_required_fields_available": true
+          },
+          "agent42_replay_tables": [
+            "sensor_timeseries"
+          ],
+          "agent42_timestamp_fields": {
+            "sensor_timeseries": [
+              "timestamp_min"
+            ]
+          },
+          "replay_contract_check": {
+            "missing_replay_tables": [],
+            "missing_timestamp_fields": {},
+            "all_replay_fields_available": true
+          },
+          "agent44_metadata_fields": [
+            "data_origin",
+            "site_id",
+            "instrument_snapshot_id",
+            "chain_of_custody_id"
+          ],
+          "metadata_contract_check": {
+            "metadata_fields_available": true,
+            "missing_metadata_fields": []
+          },
+          "agent43_gate_ids": [
+            "G6_1_field_origin",
+            "G6_2_timestamp_schema_ready",
+            "G6_3_batch_linkage_complete"
+          ],
+          "agent45_chain_stages": [
+            "FieldReplayImportAgent",
+            "TimestampedCampaignReplayAgent",
+            "FieldReplayCalibrationGateAgent",
+            "FieldReplayEvidenceChainAgent"
+          ],
+          "validation_metrics": [
+            "sensor_drift_rate",
+            "timestamp_coverage",
+            "sensor_status_coverage",
+            "batch_linkage_status"
+          ],
+          "schema_extension_required": true,
+          "mapped_to_field_tables": true,
+          "mapped_to_replay_or_gate": true,
+          "claim_upgrade_blocked": true,
+          "writeback_boundary": "field_validation_mapping_only_no_actuator_or_release_gate",
+          "failure_boundary": "真实漂移记录只能校准 sensor_confidence 和软传感不确定性；不能单独授权 release gate。"
+        },
+        {
+          "need_id": "FVQ02",
+          "field_validation_need": "离线放行标签",
+          "need_type": "offline_release_label_for_soft_sensor_and_claim_gate",
+          "supporting_entries": [
+            "kb_sensor_limited_release_evidence"
+          ],
+          "required_before": "actuator_or_release_gate_claim",
+          "agent30_tables": [
+            "offline_lab_results"
+          ],
+          "required_table_fields": {
+            "offline_lab_results": [
+              "batch_id",
+              "sample_time_min",
+              "analyte",
+              "value",
+              "unit",
+              "method",
+              "qa_flag"
+            ]
+          },
+          "optional_fields_promoted_for_claim": {
+            "offline_lab_results": [
+              "result_time_min",
+              "detection_limit",
+              "sample_source"
+            ]
+          },
+          "field_contract_check": {
+            "missing_tables": [],
+            "missing_required_fields": {},
+            "optional_fields_promoted_for_claim": {
+              "offline_lab_results": [
+                "detection_limit",
+                "result_time_min",
+                "sample_source"
+              ]
+            },
+            "all_required_fields_available": true
+          },
+          "agent42_replay_tables": [
+            "offline_lab_results"
+          ],
+          "agent42_timestamp_fields": {
+            "offline_lab_results": [
+              "sample_time_min",
+              "result_time_min"
+            ]
+          },
+          "replay_contract_check": {
+            "missing_replay_tables": [],
+            "missing_timestamp_fields": {},
+            "all_replay_fields_available": true
+          },
+          "agent44_metadata_fields": [
+            "data_origin",
+            "site_id",
+            "campaign_id",
+            "chain_of_custody_id"
+          ],
+          "metadata_contract_check": {
+            "metadata_fields_available": true,
+            "missing_metadata_fields": []
+          },
+          "agent43_gate_ids": [
+            "G6_1_field_origin",
+            "G6_2_timestamp_schema_ready",
+            "G6_3_batch_linkage_complete"
+          ],
+          "agent45_chain_stages": [
+            "FieldReplayImportAgent",
+            "TimestampedCampaignReplayAgent",
+            "FieldReplayCalibrationGateAgent",
+            "FieldReplayEvidenceChainAgent"
+          ],
+          "validation_metrics": [
+            "field_holdout_label_count",
+            "soft_sensor_interval_coverage",
+            "release_label_precision",
+            "lab_turnaround_p90_min"
+          ],
+          "schema_extension_required": true,
+          "mapped_to_field_tables": true,
+          "mapped_to_replay_or_gate": true,
+          "claim_upgrade_blocked": true,
+          "writeback_boundary": "field_validation_mapping_only_no_actuator_or_release_gate",
+          "failure_boundary": "离线放行标签只能支持软传感校准和人工审核；release gate 仍需独立 conformal/field holdout 门控。"
+        },
+        {
+          "need_id": "FVQ03",
+          "field_validation_need": "低浓度目标物检测限",
+          "need_type": "low_concentration_detection_limit_for_target_pollutants",
+          "supporting_entries": [
+            "kb_sensor_limited_release_evidence"
+          ],
+          "required_before": "actuator_or_release_gate_claim",
+          "agent30_tables": [
+            "offline_lab_results"
+          ],
+          "required_table_fields": {
+            "offline_lab_results": [
+              "batch_id",
+              "sample_time_min",
+              "analyte",
+              "value",
+              "unit",
+              "method",
+              "qa_flag"
+            ]
+          },
+          "optional_fields_promoted_for_claim": {
+            "offline_lab_results": [
+              "detection_limit",
+              "result_time_min",
+              "sample_source",
+              "replicate_id"
+            ]
+          },
+          "field_contract_check": {
+            "missing_tables": [],
+            "missing_required_fields": {},
+            "optional_fields_promoted_for_claim": {
+              "offline_lab_results": [
+                "detection_limit",
+                "replicate_id",
+                "result_time_min",
+                "sample_source"
+              ]
+            },
+            "all_required_fields_available": true
+          },
+          "agent42_replay_tables": [
+            "offline_lab_results"
+          ],
+          "agent42_timestamp_fields": {
+            "offline_lab_results": [
+              "sample_time_min",
+              "result_time_min"
+            ]
+          },
+          "replay_contract_check": {
+            "missing_replay_tables": [],
+            "missing_timestamp_fields": {},
+            "all_replay_fields_available": true
+          },
+          "agent44_metadata_fields": [
+            "data_origin",
+            "site_id",
+            "campaign_id",
+            "chain_of_custody_id"
+          ],
+          "metadata_contract_check": {
+            "metadata_fields_available": true,
+            "missing_metadata_fields": []
+          },
+          "agent43_gate_ids": [
+            "G6_1_field_origin",
+            "G6_2_timestamp_schema_ready",
+            "G6_3_batch_linkage_complete"
+          ],
+          "agent45_chain_stages": [
+            "FieldReplayImportAgent",
+            "TimestampedCampaignReplayAgent",
+            "FieldReplayCalibrationGateAgent",
+            "FieldReplayEvidenceChainAgent"
+          ],
+          "validation_metrics": [
+            "detection_limit_coverage",
+            "qa_pass_rate",
+            "low_concentration_label_count",
+            "lab_turnaround_p90_min"
+          ],
+          "schema_extension_required": true,
+          "mapped_to_field_tables": true,
+          "mapped_to_replay_or_gate": true,
+          "claim_upgrade_blocked": true,
+          "writeback_boundary": "field_validation_mapping_only_no_actuator_or_release_gate",
+          "failure_boundary": "检测限缺失时不能把低浓度残留或达标放行升级为现场结论；只能作为待验证 claim。"
+        },
+        {
+          "need_id": "R4F04",
+          "field_validation_need": "R4 guardrail 催化剂代理不确定现场验证",
+          "need_type": "guardrail_catalyst_proxy_uncertainty_validation",
+          "supporting_entries": [
+            "R4_control_guardrail_failure_backpropagation"
+          ],
+          "required_before": "catalyst_control_claim_upgrade",
+          "agent30_tables": [
+            "catalyst_lifecycle",
+            "offline_lab_results",
+            "sensor_timeseries",
+            "campaign_operation_log"
+          ],
+          "required_table_fields": {
+            "catalyst_lifecycle": [
+              "catalyst_id",
+              "batch_id",
+              "cycle_count",
+              "regen_count",
+              "activity_assay",
+              "pressure_drop_kPa",
+              "lifetime_fraction"
+            ],
+            "offline_lab_results": [
+              "batch_id",
+              "sample_time_min",
+              "analyte",
+              "value",
+              "unit",
+              "method",
+              "qa_flag"
+            ],
+            "sensor_timeseries": [
+              "batch_id",
+              "timestamp_min",
+              "cycle_id",
+              "pH",
+              "ORP_mV",
+              "EC_uScm",
+              "turbidity_NTU",
+              "temp_C",
+              "flow_Lmin",
+              "UV254_abs"
+            ],
+            "campaign_operation_log": [
+              "campaign_id",
+              "batch_id",
+              "action_id",
+              "start_min",
+              "end_min",
+              "intake_fraction",
+              "success"
+            ]
+          },
+          "optional_fields_promoted_for_claim": {
+            "campaign_operation_log": [
+              "operator_override"
+            ],
+            "catalyst_lifecycle": [
+              "surface_pollution_index",
+              "replacement_flag",
+              "regen_method"
+            ]
+          },
+          "field_contract_check": {
+            "missing_tables": [],
+            "missing_required_fields": {},
+            "optional_fields_promoted_for_claim": {
+              "catalyst_lifecycle": [
+                "regen_method",
+                "replacement_flag",
+                "surface_pollution_index"
+              ],
+              "campaign_operation_log": [
+                "operator_override"
+              ]
+            },
+            "all_required_fields_available": true
+          },
+          "agent42_replay_tables": [
+            "sensor_timeseries",
+            "offline_lab_results",
+            "campaign_operation_log"
+          ],
+          "agent42_timestamp_fields": {
+            "sensor_timeseries": [
+              "timestamp_min"
+            ],
+            "offline_lab_results": [
+              "sample_time_min",
+              "result_time_min"
+            ],
+            "campaign_operation_log": [
+              "command_time_min",
+              "effect_time_min",
+              "start_min",
+              "end_min"
+            ]
+          },
+          "replay_contract_check": {
+            "missing_replay_tables": [],
+            "missing_timestamp_fields": {},
+            "all_replay_fields_available": true
+          },
+          "agent44_metadata_fields": [
+            "data_origin",
+            "site_id",
+            "campaign_id",
+            "operator_id",
+            "chain_of_custody_id"
+          ],
+          "metadata_contract_check": {
+            "metadata_fields_available": true,
+            "missing_metadata_fields": []
+          },
+          "agent43_gate_ids": [
+            "G6_1_field_origin",
+            "G6_2_timestamp_schema_ready",
+            "G6_3_batch_linkage_complete",
+            "G6_7_false_positive_cost"
+          ],
+          "agent45_chain_stages": [
+            "FieldReplayImportAgent",
+            "TimestampedCampaignReplayAgent",
+            "FieldReplayCalibrationGateAgent",
+            "FieldReplayEvidenceChainAgent"
+          ],
+          "validation_metrics": [
+            "proxy_holdout_label_coverage",
+            "pressure_drop_trend",
+            "regeneration_event_traceability",
+            "catalyst_action_override_rate"
+          ],
+          "schema_extension_required": true,
+          "mapped_to_field_tables": true,
+          "mapped_to_replay_or_gate": true,
+          "claim_upgrade_blocked": true,
+          "writeback_boundary": "field_validation_mapping_only_no_actuator_or_release_gate",
+          "failure_boundary": "synthetic guardrail resolved false-positive catalyst protection; field proxy labels are required before catalyst-control claim upgrade.",
+          "guardrail_patch_consumed": true,
+          "guardrail_source_scenario": "catalyst_uncertain_low_proxy",
+          "guardrail_required_fields": [
+            "proxy_holdout_label",
+            "pressure_drop_kPa",
+            "regeneration_event",
+            "operator_override",
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:turbidity_NTU"
+          ],
+          "guardrail_missing_schema_fields": [],
+          "guardrail_claim_boundary": "synthetic guardrail resolved false-positive catalyst protection; field proxy labels are required before catalyst-control claim upgrade."
+        },
+        {
+          "need_id": "R4F05",
+          "field_validation_need": "R4 guardrail 水力延迟与池容执行验证",
+          "need_type": "guardrail_hydraulic_latency_storage_validation",
+          "supporting_entries": [
+            "R4_control_guardrail_failure_backpropagation"
+          ],
+          "required_before": "recycle_control_claim_upgrade",
+          "agent30_tables": [
+            "campaign_operation_log",
+            "sensor_timeseries"
+          ],
+          "required_table_fields": {
+            "campaign_operation_log": [
+              "campaign_id",
+              "batch_id",
+              "action_id",
+              "start_min",
+              "end_min",
+              "intake_fraction",
+              "success"
+            ],
+            "sensor_timeseries": [
+              "batch_id",
+              "timestamp_min",
+              "cycle_id",
+              "pH",
+              "ORP_mV",
+              "EC_uScm",
+              "turbidity_NTU",
+              "temp_C",
+              "flow_Lmin",
+              "UV254_abs"
+            ]
+          },
+          "optional_fields_promoted_for_claim": {
+            "campaign_operation_log": [
+              "command_time_min",
+              "effect_time_min",
+              "recycle_ratio",
+              "validation_minutes",
+              "operator_override"
+            ]
+          },
+          "field_contract_check": {
+            "missing_tables": [],
+            "missing_required_fields": {},
+            "optional_fields_promoted_for_claim": {
+              "campaign_operation_log": [
+                "command_time_min",
+                "effect_time_min",
+                "operator_override",
+                "recycle_ratio",
+                "validation_minutes"
+              ]
+            },
+            "all_required_fields_available": true
+          },
+          "agent42_replay_tables": [
+            "campaign_operation_log",
+            "sensor_timeseries",
+            "fast_proxy_event_log"
+          ],
+          "agent42_timestamp_fields": {
+            "campaign_operation_log": [
+              "command_time_min",
+              "effect_time_min",
+              "start_min",
+              "end_min"
+            ],
+            "sensor_timeseries": [
+              "timestamp_min"
+            ],
+            "fast_proxy_event_log": [
+              "event_time_min",
+              "lab_label_time_min"
+            ]
+          },
+          "replay_contract_check": {
+            "missing_replay_tables": [],
+            "missing_timestamp_fields": {},
+            "all_replay_fields_available": true
+          },
+          "agent44_metadata_fields": [
+            "data_origin",
+            "site_id",
+            "campaign_id",
+            "operator_id",
+            "chain_of_custody_id"
+          ],
+          "metadata_contract_check": {
+            "metadata_fields_available": true,
+            "missing_metadata_fields": []
+          },
+          "agent43_gate_ids": [
+            "G6_1_field_origin",
+            "G6_2_timestamp_schema_ready",
+            "G6_3_batch_linkage_complete",
+            "G6_6_latency_action_margin"
+          ],
+          "agent45_chain_stages": [
+            "FieldReplayImportAgent",
+            "TimestampedCampaignReplayAgent",
+            "FieldReplayCalibrationGateAgent",
+            "FieldReplayEvidenceChainAgent"
+          ],
+          "validation_metrics": [
+            "tank_storage_margin_coverage",
+            "actuator_latency_p90_min",
+            "pump_valve_success_rate",
+            "recycle_ratio_traceability"
+          ],
+          "schema_extension_required": true,
+          "mapped_to_field_tables": true,
+          "mapped_to_replay_or_gate": true,
+          "claim_upgrade_blocked": true,
+          "writeback_boundary": "field_validation_mapping_only_no_actuator_or_release_gate",
+          "failure_boundary": "synthetic guardrail resolved high-regret recycle action; field hydraulic replay is required before recycle-control claim upgrade.",
+          "guardrail_patch_consumed": true,
+          "guardrail_source_scenario": "hydraulic_delay_violation",
+          "guardrail_required_fields": [
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "flow_Lmin",
+            "hold_time_min",
+            "recycle_ratio"
+          ],
+          "guardrail_missing_schema_fields": [],
+          "guardrail_claim_boundary": "synthetic guardrail resolved high-regret recycle action; field hydraulic replay is required before recycle-control claim upgrade."
+        }
+      ],
+      "field_package_status": {
+        "field_data_interface_status": "template_ready_not_field_validated",
+        "field_data_origin": "synthetic",
+        "timestamped_replay_status": "synthetic_timestamp_schema_ready_needs_field_replay",
+        "field_replay_import_status": "field_replay_import_blocked_non_field_origin",
+        "field_replay_import_ready": false,
+        "field_replay_evidence_chain_status": "field_replay_evidence_chain_blocked_at_import",
+        "field_replay_evidence_chain_ready": false,
+        "release_gate_boundary_preserved": true,
+        "guardrail_requirement_patch_count": 2
+      },
+      "coverage": {
+        "validation_need_count": 5,
+        "table_mapped_count": 5,
+        "gate_mapped_count": 5,
+        "field_contract_ok_count": 5,
+        "replay_contract_ok_count": 5,
+        "schema_extension_required_count": 5,
+        "unmapped_validation_need_count": 0,
+        "guardrail_requirement_patch_count": 2,
+        "guardrail_required_field_count": 12,
+        "guardrail_missing_schema_field_count": 0,
+        "guardrail_missing_schema_fields": [],
+        "field_requirement_patch_consumption_rate": 1.0,
+        "claim_upgrade_blocker_count": 5,
+        "field_need_to_table_coverage": 1.0,
+        "field_need_to_gate_coverage": 1.0,
+        "field_contract_coverage": 1.0,
+        "replay_contract_coverage": 1.0,
+        "unmapped_need_ids": [],
+        "schema_extension_need_ids": [
+          "FVQ01",
+          "FVQ02",
+          "FVQ03",
+          "R4F04",
+          "R4F05"
+        ]
+      },
+      "readiness": {
+        "field_validation_alignment_status": "field_validation_alignment_ready_needs_real_field_package",
+        "field_validation_alignment_score": 0.94,
+        "field_need_to_table_coverage": 1.0,
+        "field_need_to_gate_coverage": 1.0,
+        "field_contract_coverage": 1.0,
+        "replay_contract_coverage": 1.0,
+        "unmapped_validation_need_count": 0,
+        "schema_extension_required_count": 5,
+        "guardrail_requirement_patch_count": 2,
+        "guardrail_required_field_count": 12,
+        "guardrail_missing_schema_field_count": 0,
+        "field_requirement_patch_consumption_rate": 1.0,
+        "claim_upgrade_blocker_count": 5,
+        "can_update_agent50_priority": true,
+        "can_write_to_actuator": false,
+        "can_write_to_release_gate": false,
+        "next_recommended_core_action": "claim_specific_field_package_or_source_basis_completion"
+      },
+      "agent50_writeback": {
+        "allowed_writeback": [
+          "field_validation_mapping_table",
+          "claim_specific_required_field_patch",
+          "P9_completion_status_for_governance"
+        ],
+        "blocked_writeback": [
+          "actuator_policy",
+          "release_gate_policy",
+          "field_mechanism_claim",
+          "field_control_effectiveness_claim"
+        ],
+        "can_advance_governance_priority": true,
+        "policy_effect": "move_to_claim_specific_field_package_or_source_basis_completion"
+      }
+    },
+    "issues": [
+      {
+        "sensor": "FVQ01",
+        "issue_type": "claim_specific_optional_fields_promoted",
+        "severity": "info",
+        "message": "该 claim 需要把当前 optional 字段提升为本验证任务的必采字段。",
+        "evidence": {
+          "field_validation_need": "真实传感漂移记录",
+          "optional_fields_promoted_for_claim": {
+            "sensor_timeseries": [
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ]
+          }
+        }
+      },
+      {
+        "sensor": "FVQ02",
+        "issue_type": "claim_specific_optional_fields_promoted",
+        "severity": "info",
+        "message": "该 claim 需要把当前 optional 字段提升为本验证任务的必采字段。",
+        "evidence": {
+          "field_validation_need": "离线放行标签",
+          "optional_fields_promoted_for_claim": {
+            "offline_lab_results": [
+              "result_time_min",
+              "detection_limit",
+              "sample_source"
+            ]
+          }
+        }
+      },
+      {
+        "sensor": "FVQ03",
+        "issue_type": "claim_specific_optional_fields_promoted",
+        "severity": "info",
+        "message": "该 claim 需要把当前 optional 字段提升为本验证任务的必采字段。",
+        "evidence": {
+          "field_validation_need": "低浓度目标物检测限",
+          "optional_fields_promoted_for_claim": {
+            "offline_lab_results": [
+              "detection_limit",
+              "result_time_min",
+              "sample_source",
+              "replicate_id"
+            ]
+          }
+        }
+      },
+      {
+        "sensor": "R4F04",
+        "issue_type": "claim_specific_optional_fields_promoted",
+        "severity": "info",
+        "message": "该 claim 需要把当前 optional 字段提升为本验证任务的必采字段。",
+        "evidence": {
+          "field_validation_need": "R4 guardrail 催化剂代理不确定现场验证",
+          "optional_fields_promoted_for_claim": {
+            "campaign_operation_log": [
+              "operator_override"
+            ],
+            "catalyst_lifecycle": [
+              "surface_pollution_index",
+              "replacement_flag",
+              "regen_method"
+            ]
+          }
+        }
+      },
+      {
+        "sensor": "R4F05",
+        "issue_type": "claim_specific_optional_fields_promoted",
+        "severity": "info",
+        "message": "该 claim 需要把当前 optional 字段提升为本验证任务的必采字段。",
+        "evidence": {
+          "field_validation_need": "R4 guardrail 水力延迟与池容执行验证",
+          "optional_fields_promoted_for_claim": {
+            "campaign_operation_log": [
+              "command_time_min",
+              "effect_time_min",
+              "recycle_ratio",
+              "validation_minutes",
+              "operator_override"
+            ]
+          }
+        }
+      },
+      {
+        "sensor": "field_validation_alignment",
+        "issue_type": "field_package_required_before_claim_upgrade",
+        "severity": "info",
+        "message": "验证需求已映射到接口，但没有真实 field 包和证据链前仍不能升级为现场结论。",
+        "evidence": {
+          "field_validation_alignment_status": "field_validation_alignment_ready_needs_real_field_package",
+          "field_validation_alignment_score": 0.94,
+          "field_need_to_table_coverage": 1.0,
+          "field_need_to_gate_coverage": 1.0,
+          "field_contract_coverage": 1.0,
+          "replay_contract_coverage": 1.0,
+          "unmapped_validation_need_count": 0,
+          "schema_extension_required_count": 5,
+          "guardrail_requirement_patch_count": 2,
+          "guardrail_required_field_count": 12,
+          "guardrail_missing_schema_field_count": 0,
+          "field_requirement_patch_consumption_rate": 1.0,
+          "claim_upgrade_blocker_count": 5,
+          "can_update_agent50_priority": true,
+          "can_write_to_actuator": false,
+          "can_write_to_release_gate": false,
+          "next_recommended_core_action": "claim_specific_field_package_or_source_basis_completion"
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "field_validation_queue_alignment": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_validation_queue_alignment.md",
+    "agent58_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent58_field_validation_queue_alignment/agent58_report.md",
+    "field_validation_queue_alignment_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_validation_queue_alignment/field_validation_queue_alignment_metrics.json"
+  }
+}

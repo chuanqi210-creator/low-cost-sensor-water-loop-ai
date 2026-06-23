@@ -1,0 +1,267 @@
+{
+  "method_contract": {
+    "upgrade_id": "R3_agent49_replay_counterfactual_stress",
+    "borrowed_from": [
+      "offline policy evaluation stress cases",
+      "counterfactual action replay before online deployment",
+      "protective-control false-positive cost audit",
+      "decision-tree policy guardrail review"
+    ],
+    "reality_mapping": "把 Agent52 的 replay-ready schema 升级为反事实压力测试：比较 base policy、R2 observation-contract-aware policy 和 R3 reward-guardrail candidate。",
+    "data_needs": [
+      "Agent49 joint_action_matrix and reward contract",
+      "Agent52 replay_table and reward_by_action",
+      "R2 observation contract with weak-state improvement",
+      "field multi-node state-action-reward replay before any actuator promotion"
+    ],
+    "evaluation_metrics": [
+      "baseline_joint_action_accuracy",
+      "observation_contract_accuracy",
+      "guardrail_candidate_accuracy",
+      "p95_reward_regret_delta",
+      "protective_false_positive_cost_delta",
+      "unsafe_action_block_correction_rate"
+    ],
+    "failure_boundary": "counterfactual stress can update reward priors and replay case suites, but synthetic corrections are not proof of field control safety."
+  },
+  "stress_table": [
+    {
+      "case_id": "R0",
+      "scenario": "matrix_shock_visible",
+      "expert_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "baseline_policy_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "observation_contract_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "guardrail_candidate_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "baseline_reward_regret": 0.0,
+      "observation_contract_reward_regret": 0.0,
+      "guardrail_reward_regret": 0.0,
+      "baseline_false_positive_cost": 0.0,
+      "observation_contract_false_positive_cost": 0.0,
+      "guardrail_false_positive_cost": 0.0,
+      "unsafe_action_blocked": false,
+      "stress_resolution": "baseline_already_matches_expert",
+      "residual_boundary": "synthetic replay case; field replay required before policy promotion"
+    },
+    {
+      "case_id": "R1",
+      "scenario": "reaction_completion_lag",
+      "expert_action_id": "J1_reaction_completion_recovery",
+      "baseline_policy_action_id": "J1_reaction_completion_recovery",
+      "observation_contract_action_id": "J1_reaction_completion_recovery",
+      "guardrail_candidate_action_id": "J1_reaction_completion_recovery",
+      "baseline_reward_regret": 0.0,
+      "observation_contract_reward_regret": 0.0,
+      "guardrail_reward_regret": 0.0,
+      "baseline_false_positive_cost": 0.0,
+      "observation_contract_false_positive_cost": 0.0,
+      "guardrail_false_positive_cost": 0.0,
+      "unsafe_action_blocked": false,
+      "stress_resolution": "baseline_already_matches_expert",
+      "residual_boundary": "synthetic replay case; field replay required before policy promotion"
+    },
+    {
+      "case_id": "R2",
+      "scenario": "catalyst_uncertain_low_proxy",
+      "expert_action_id": "J4_safe_low_cost_standby",
+      "baseline_policy_action_id": "J2_catalyst_protection_before_regeneration",
+      "observation_contract_action_id": "J4_safe_low_cost_standby",
+      "guardrail_candidate_action_id": "J4_safe_low_cost_standby",
+      "baseline_reward_regret": 0.177,
+      "observation_contract_reward_regret": 0.0,
+      "guardrail_reward_regret": 0.0,
+      "baseline_false_positive_cost": 0.18,
+      "observation_contract_false_positive_cost": 0.0,
+      "guardrail_false_positive_cost": 0.0,
+      "unsafe_action_blocked": false,
+      "stress_resolution": "resolved_by_R3_guardrail_candidate",
+      "residual_boundary": "needs field proxy labels before relaxing catalyst uncertainty block"
+    },
+    {
+      "case_id": "R3",
+      "scenario": "polishing_release_risk",
+      "expert_action_id": "J3_polishing_and_release_gate",
+      "baseline_policy_action_id": "J3_polishing_and_release_gate",
+      "observation_contract_action_id": "J3_polishing_and_release_gate",
+      "guardrail_candidate_action_id": "J3_polishing_and_release_gate",
+      "baseline_reward_regret": 0.0,
+      "observation_contract_reward_regret": 0.0,
+      "guardrail_reward_regret": 0.0,
+      "baseline_false_positive_cost": 0.0,
+      "observation_contract_false_positive_cost": 0.0,
+      "guardrail_false_positive_cost": 0.0,
+      "unsafe_action_blocked": false,
+      "stress_resolution": "baseline_already_matches_expert",
+      "residual_boundary": "needs lab label and release gate evidence before any release action"
+    },
+    {
+      "case_id": "R4",
+      "scenario": "clean_but_low_field_evidence",
+      "expert_action_id": "J4_safe_low_cost_standby",
+      "baseline_policy_action_id": "J4_safe_low_cost_standby",
+      "observation_contract_action_id": "J4_safe_low_cost_standby",
+      "guardrail_candidate_action_id": "J4_safe_low_cost_standby",
+      "baseline_reward_regret": 0.0,
+      "observation_contract_reward_regret": 0.0,
+      "guardrail_reward_regret": 0.0,
+      "baseline_false_positive_cost": 0.0,
+      "observation_contract_false_positive_cost": 0.0,
+      "guardrail_false_positive_cost": 0.0,
+      "unsafe_action_blocked": false,
+      "stress_resolution": "baseline_already_matches_expert",
+      "residual_boundary": "synthetic replay case; field replay required before policy promotion"
+    },
+    {
+      "case_id": "R5",
+      "scenario": "hydraulic_delay_violation",
+      "expert_action_id": "J3_polishing_and_release_gate",
+      "baseline_policy_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "observation_contract_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "guardrail_candidate_action_id": "J3_polishing_and_release_gate",
+      "baseline_reward_regret": 0.153,
+      "observation_contract_reward_regret": 0.153,
+      "guardrail_reward_regret": 0.0,
+      "baseline_false_positive_cost": 0.0,
+      "observation_contract_false_positive_cost": 0.0,
+      "guardrail_false_positive_cost": 0.0,
+      "unsafe_action_blocked": true,
+      "stress_resolution": "resolved_by_R3_guardrail_candidate",
+      "residual_boundary": "needs tank storage, actuator latency and operation replay before recycle promotion"
+    }
+  ],
+  "counterfactual_metrics": {
+    "stress_case_count": 6,
+    "baseline": {
+      "joint_action_accuracy": 0.667,
+      "mean_reward_regret": 0.055,
+      "p95_reward_regret": 0.177,
+      "protective_false_positive_rate": 0.167,
+      "mean_false_positive_cost": 0.18
+    },
+    "observation_contract": {
+      "joint_action_accuracy": 0.833,
+      "mean_reward_regret": 0.025,
+      "p95_reward_regret": 0.153,
+      "protective_false_positive_rate": 0.0,
+      "mean_false_positive_cost": 0.0
+    },
+    "guardrail_candidate": {
+      "joint_action_accuracy": 1.0,
+      "mean_reward_regret": 0.0,
+      "p95_reward_regret": 0.0,
+      "protective_false_positive_rate": 0.0,
+      "mean_false_positive_cost": 0.0
+    },
+    "accuracy_gain_observation_contract": 0.166,
+    "accuracy_gain_guardrail": 0.333,
+    "p95_reward_regret_delta_guardrail": 0.177,
+    "protective_false_positive_cost_delta_guardrail": 0.18,
+    "unsafe_action_block_correction_rate": 1.0,
+    "field_replay_coverage": 0.0,
+    "data_origin": "synthetic_counterfactual_replay"
+  },
+  "reward_prior_patch": {
+    "patch_id": "R3_counterfactual_guardrail_reward_prior",
+    "target_agent": "multi_facility_collaborative_control_agent",
+    "triggered_by_cases": [
+      {
+        "case_id": "R2",
+        "scenario": "catalyst_uncertain_low_proxy",
+        "baseline_action": "J2_catalyst_protection_before_regeneration",
+        "guardrail_action": "J4_safe_low_cost_standby",
+        "stress_resolution": "resolved_by_R3_guardrail_candidate"
+      },
+      {
+        "case_id": "R5",
+        "scenario": "hydraulic_delay_violation",
+        "baseline_action": "J0_matrix_shock_equalize_and_recycle",
+        "guardrail_action": "J3_polishing_and_release_gate",
+        "stress_resolution": "resolved_by_R3_guardrail_candidate"
+      }
+    ],
+    "candidate_rules": [
+      {
+        "rule_id": "R3G1_catalyst_uncertain_requires_standby_or_human_review",
+        "if": "catalyst proxy is not field validated and catalyst action would be protective/regeneration",
+        "then": "prefer J4_safe_low_cost_standby or human-reviewed catalyst protection",
+        "expected_effect": "reduce protective false-positive cost from baseline replay cases"
+      },
+      {
+        "rule_id": "R3G2_hydraulic_delay_unknown_blocks_recycle",
+        "if": "tank storage margin or actuator latency evidence is missing",
+        "then": "prefer J3_polishing_and_release_gate over recycle escalation",
+        "expected_effect": "reduce high-regret unsafe recycle actions under delayed evidence"
+      }
+    ],
+    "metric_delta": {
+      "accuracy_gain_guardrail": 0.333,
+      "p95_reward_regret_delta_guardrail": 0.177,
+      "protective_false_positive_cost_delta_guardrail": 0.18
+    },
+    "field_boundary": "reward prior patch is synthetic until field replay reproduces these stress improvements."
+  },
+  "field_replay_requirements": [
+    {
+      "requirement_id": "R3_FV1_state_action_reward_replay",
+      "needed_for": "control stress validation",
+      "required_fields": [
+        "facility_state_vector",
+        "policy_action_id",
+        "operator_or_expert_action_id",
+        "reward_by_action",
+        "next_state_summary"
+      ]
+    },
+    {
+      "requirement_id": "R3_FV2_hydraulic_execution_replay",
+      "needed_for": "recycle and hold action safety",
+      "required_fields": [
+        "tank_storage_margin",
+        "actuator_latency_p90",
+        "pump_valve_result"
+      ]
+    },
+    {
+      "requirement_id": "R3_FV3_catalyst_action_replay",
+      "needed_for": "catalyst protection false-positive cost",
+      "required_fields": [
+        "proxy_holdout_label",
+        "pressure_drop_kPa",
+        "regeneration_event",
+        "operator_override"
+      ]
+    }
+  ],
+  "readiness": {
+    "control_replay_stress_status": "synthetic_counterfactual_stress_ready_needs_field_replay",
+    "control_replay_stress_score": 0.82,
+    "stress_ready": true,
+    "field_ready": false,
+    "can_update_agent49_reward_prior": true,
+    "can_update_agent52_stress_suite": true,
+    "can_train_offline_rl": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false
+  },
+  "writeback_policy": {
+    "allowed_writeback": [
+      "agent49_reward_prior_guardrail_candidate",
+      "agent52_counterfactual_stress_suite",
+      "architecture_consolidation_R3_status"
+    ],
+    "blocked_writeback": [
+      "actuator_policy",
+      "release_gate_policy",
+      "online_MARL_training",
+      "field_control_effectiveness_claim"
+    ],
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "policy_effect": "R3 can patch reward priors and stress suites only; field replay remains required."
+  },
+  "next_refactor_action": {
+    "action_id": "R3b_agent49_reward_prior_patch_from_counterfactual_stress",
+    "title": "把 R3 反事实压力结果写成 Agent49 reward prior guardrails",
+    "reason": "R3 stress 已暴露并修复 synthetic 高 regret/误保护场景；下一步应把规则补丁接入 Agent49 reward prior，但仍不写执行器。",
+    "must_not_do": "不能把 synthetic stress improvement 当作现场控制有效性。"
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "board_metadata": {
+    "board_id": "R8u154_external_package_readiness_board",
+    "board_role": "new_core_external_package_readiness_queue",
+    "created_at": "2026-06-22T09:33:04Z",
+    "source_gate_id": "R8u147_new_core_interface_candidate_gate",
+    "source_gate_status": "new_core_interface_candidate_gate_ready_with_ranked_contracts"
+  },
+  "package_summary": {
+    "package_count": 5,
+    "ready_package_count": 0,
+    "waiting_package_count": 5,
+    "blocked_package_count": 0,
+    "unimplemented_package_count": 0,
+    "all_candidate_interfaces_have_preflight": true,
+    "highest_priority_candidate_id": "NCI1_GREY_BOX_CALIBRATION_PACKAGE",
+    "highest_priority_source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+    "highest_priority_package_preflight_status": "grey_box_calibration_package_waiting_for_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+    "next_operator_candidate_id": "NCI1_GREY_BOX_CALIBRATION_PACKAGE",
+    "next_operator_source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+    "next_operator_action": "complete_grey_box_calibration_package_preflight_before_building_field_calibration_summary",
+    "can_resume_model_chain": false,
+    "can_generate_field_evidence": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false
+  },
+  "package_rows": [
+    {
+      "priority_order": 1,
+      "candidate_id": "NCI1_GREY_BOX_CALIBRATION_PACKAGE",
+      "task_id": "P4_minimal_grey_box_physics",
+      "title": "灰箱物理机制最小增强",
+      "source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "system_layer": "state_estimation_and_grey_box_physics",
+      "core_ability": "verifiability_and_explainability",
+      "package_preflight_status": "grey_box_calibration_package_waiting_for_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "package_preflight_pass": false,
+      "interface_candidate_status": "admissible_contract_candidate_waiting_for_interface_preflight",
+      "can_route_to_downstream_interface": false,
+      "downstream_interface_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+      "validation_command": ".venv/bin/python experiments/run_grey_box_calibration_package_preflight.py",
+      "next_operator_action": "complete_grey_box_calibration_package_preflight_before_building_field_calibration_summary",
+      "matched_counts": {
+        "batch": 0,
+        "edge": 0,
+        "node": 0,
+        "transition": 0,
+        "sample": 0
+      },
+      "matched_unit_summary": "none",
+      "minimum_row_count": 3,
+      "input_contract": [
+        "influent_effluent_lab_pairs",
+        "unit_hydraulic_retention_or_rtd_rows",
+        "oxidant_or_energy_dose_rows",
+        "catalyst_age_or_activity_labels",
+        "matrix_inhibition_indicators"
+      ],
+      "output_contract": [
+        "calibrated_grey_box_parameter_ranges",
+        "mass_balance_residual_summary",
+        "residence_time_error_summary",
+        "parameter_validity_boundary"
+      ],
+      "failure_boundary": "This interface can calibrate or reject grey-box priors only after real or literature-bounded calibration rows pass preflight; it cannot create field evidence, actuator readiness or release readiness.",
+      "preflight_json": "outputs/grey_box_calibration_package/grey_box_calibration_package_preflight.json",
+      "template_dir": "outputs/grey_box_calibration_package/grey_box_calibration_package_template",
+      "report_md": "deliverables/model_core_optimization/grey_box_calibration_package_preflight.md",
+      "can_generate_field_evidence": false,
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "submission_gap_type": "missing_external_package",
+      "submission_highest_priority_gap_table": "all_required_tables",
+      "missing_table_count": 5,
+      "missing_tables": [
+        "batch_inlet_outlet_lab",
+        "hydraulic_rtd_or_tracer",
+        "oxidant_dose_residual_log",
+        "catalyst_age_regeneration_log",
+        "byproduct_panel"
+      ],
+      "submission_source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR"
+    },
+    {
+      "priority_order": 4,
+      "candidate_id": "NCI5_FIELD_SUPPORTED_KG_EDGE_PACKAGE",
+      "task_id": "P6_reasonable_knowledge_graph_upgrade",
+      "title": "知识库升级为可推理 KG",
+      "source_env_var": "FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR",
+      "system_layer": "mechanism_evidence_and_knowledge_graph",
+      "core_ability": "explainability_and_verifiability",
+      "package_preflight_status": "field_supported_kg_edge_package_waiting_for_FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR",
+      "package_preflight_pass": false,
+      "interface_candidate_status": "admissible_contract_candidate_waiting_for_interface_preflight",
+      "can_route_to_downstream_interface": false,
+      "downstream_interface_status": "field_supported_kg_edge_package_waiting_for_FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR",
+      "validation_command": ".venv/bin/python experiments/run_field_supported_kg_edge_preflight.py",
+      "next_operator_action": "fill_field_supported_kg_edge_package_template_and_set_FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR",
+      "matched_counts": {
+        "batch": 0,
+        "edge": 0,
+        "node": 0,
+        "transition": 0,
+        "sample": 0
+      },
+      "matched_unit_summary": "none",
+      "minimum_row_count": 3,
+      "input_contract": [
+        "pollutant_material_condition_edges",
+        "source_basis_rows",
+        "field_supported_edge_rows",
+        "failure_boundary_annotations",
+        "claim_or_action_constraint_links"
+      ],
+      "output_contract": [
+        "field_supported_edge_ratio",
+        "evidence_path_traceability",
+        "constraint_hit_rate",
+        "unsupported_edge_boundary"
+      ],
+      "failure_boundary": "Literature KG edges can guide priors and explanations; only field-supported edges can upgrade site-specific claims or control boundaries.",
+      "preflight_json": "outputs/field_supported_kg_edge_package/field_supported_kg_edge_package_preflight.json",
+      "template_dir": "outputs/field_supported_kg_edge_package/field_supported_kg_edge_package_template",
+      "report_md": "deliverables/model_core_optimization/field_supported_kg_edge_package_preflight.md",
+      "can_generate_field_evidence": false,
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "priority_order": 7,
+      "candidate_id": "NCI3_FIELD_CONTROL_REPLAY_PACKAGE",
+      "task_id": "P3_agent49_replay_ready_offline_evaluation",
+      "title": "Agent49 多设施协同控制升级到 replay-ready 离线评估",
+      "source_env_var": "FIELD_CONTROL_REPLAY_PACKAGE_DIR",
+      "system_layer": "diagnosis_decision_and_closed_loop_execution",
+      "core_ability": "controllability_and_engineering_feasibility",
+      "package_preflight_status": "field_control_replay_package_waiting_for_FIELD_CONTROL_REPLAY_PACKAGE_DIR",
+      "package_preflight_pass": false,
+      "interface_candidate_status": "admissible_contract_candidate_waiting_for_interface_preflight",
+      "can_route_to_downstream_interface": false,
+      "downstream_interface_status": "field_control_replay_package_waiting_for_FIELD_CONTROL_REPLAY_PACKAGE_DIR",
+      "validation_command": ".venv/bin/python experiments/run_field_control_replay_preflight.py",
+      "next_operator_action": "fill_field_control_replay_package_template_and_set_FIELD_CONTROL_REPLAY_PACKAGE_DIR",
+      "matched_counts": {
+        "batch": 0,
+        "edge": 0,
+        "node": 0,
+        "transition": 0,
+        "sample": 0
+      },
+      "matched_unit_summary": "none",
+      "minimum_row_count": 3,
+      "input_contract": [
+        "state_action_next_state_rows",
+        "reward_component_rows",
+        "operator_or_expert_action_labels",
+        "actuator_latency_and_result_rows",
+        "unsafe_action_or_override_events"
+      ],
+      "output_contract": [
+        "joint_action_accuracy",
+        "reward_regret",
+        "unsafe_action_block_rate",
+        "field_replay_boundary"
+      ],
+      "failure_boundary": "Offline replay can only evaluate candidate policies; it cannot authorize actuator writes without operator review, execution constraints and release gates.",
+      "preflight_json": "outputs/field_control_replay_package/field_control_replay_package_preflight.json",
+      "template_dir": "outputs/field_control_replay_package/field_control_replay_package_template",
+      "report_md": "deliverables/model_core_optimization/field_control_replay_package_preflight.md",
+      "can_generate_field_evidence": false,
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "priority_order": 9,
+      "candidate_id": "NCI4_SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE",
+      "task_id": "P1_agent48_comparable_sparse_sensor_placement",
+      "title": "Agent48 稀疏感知从启发式升级为可比较布点优化",
+      "source_env_var": "SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR",
+      "system_layer": "observation_sparse_sensing_and_topology",
+      "core_ability": "observability_and_engineering_feasibility",
+      "package_preflight_status": "sparse_topology_installability_package_waiting_for_SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR",
+      "package_preflight_pass": false,
+      "interface_candidate_status": "admissible_contract_candidate_waiting_for_interface_preflight",
+      "can_route_to_downstream_interface": false,
+      "downstream_interface_status": "sparse_topology_installability_package_waiting_for_SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR",
+      "validation_command": ".venv/bin/python experiments/run_sparse_topology_installability_preflight.py",
+      "next_operator_action": "fill_sparse_topology_installability_package_template_and_set_SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR",
+      "matched_counts": {
+        "batch": 0,
+        "edge": 0,
+        "node": 0,
+        "transition": 0,
+        "sample": 0
+      },
+      "matched_unit_summary": "none",
+      "minimum_row_count": 3,
+      "input_contract": [
+        "site_topology_graph",
+        "candidate_node_modality_costs",
+        "installability_and_maintenance_constraints",
+        "node_specific_hydraulic_delay",
+        "historical_or_labeled_state_matrix"
+      ],
+      "output_contract": [
+        "sparse_layout_feasibility_score",
+        "reconstruction_gain_by_strategy",
+        "weak_state_coverage_delta",
+        "installability_boundary"
+      ],
+      "failure_boundary": "Without real topology, installability and node-specific labels, sparse placement remains a design prior and cannot be presented as a deployable sensor layout.",
+      "preflight_json": "outputs/sparse_topology_installability_package/sparse_topology_installability_package_preflight.json",
+      "template_dir": "outputs/sparse_topology_installability_package/sparse_topology_installability_package_template",
+      "report_md": "deliverables/model_core_optimization/sparse_topology_installability_package_preflight.md",
+      "can_generate_field_evidence": false,
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "priority_order": 10,
+      "candidate_id": "NCI2_FIELD_MISSINGNESS_REPLAY_PACKAGE",
+      "task_id": "P5_soft_sensor_node_modality_missingness",
+      "title": "软传感与 node-modality/missingness 矩阵耦合",
+      "source_env_var": "FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR",
+      "system_layer": "observation_and_soft_sensor_state_estimation",
+      "core_ability": "observability_and_verifiability",
+      "package_preflight_status": "field_missingness_replay_package_waiting_for_FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR",
+      "package_preflight_pass": false,
+      "interface_candidate_status": "admissible_contract_candidate_waiting_for_interface_preflight",
+      "can_route_to_downstream_interface": false,
+      "downstream_interface_status": "field_missingness_replay_package_waiting_for_FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR",
+      "validation_command": ".venv/bin/python experiments/run_field_missingness_replay_preflight.py",
+      "next_operator_action": "fill_field_missingness_replay_package_template_and_set_FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR",
+      "matched_counts": {
+        "batch": 0,
+        "edge": 0,
+        "node": 0,
+        "transition": 0,
+        "sample": 0
+      },
+      "matched_unit_summary": "none",
+      "minimum_row_count": 3,
+      "input_contract": [
+        "node_modality_time_series",
+        "availability_mask",
+        "time_since_last_observed_min",
+        "sensor_quality_status",
+        "offline_hidden_state_labels"
+      ],
+      "output_contract": [
+        "missingness_replay_coverage",
+        "masked_mae_by_hidden_state",
+        "interval_coverage_under_missingness",
+        "field_missingness_boundary"
+      ],
+      "failure_boundary": "Synthetic dropout cannot represent real sensor fouling, low-frequency sampling or communication loss; this interface only becomes evidence after field missingness rows pass.",
+      "preflight_json": "outputs/field_missingness_replay_package/field_missingness_replay_package_preflight.json",
+      "template_dir": "outputs/field_missingness_replay_package/field_missingness_replay_package_template",
+      "report_md": "deliverables/model_core_optimization/field_missingness_replay_package_preflight.md",
+      "can_generate_field_evidence": false,
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    }
+  ],
+  "collection_groups": [
+    {
+      "group_id": "state_estimation_and_grey_box",
+      "purpose": "calibrate grey-box priors before claiming process mechanism validity",
+      "candidate_ids": [
+        "NCI1_GREY_BOX_CALIBRATION_PACKAGE"
+      ],
+      "source_env_vars": [
+        "GREY_BOX_CALIBRATION_PACKAGE_DIR"
+      ],
+      "ready_count": 0,
+      "waiting_count": 1,
+      "blocked_count": 0,
+      "readiness_status": "waiting_for_external_package",
+      "next_operator_actions": [
+        "complete_grey_box_calibration_package_preflight_before_building_field_calibration_summary"
+      ]
+    },
+    {
+      "group_id": "mechanism_evidence_kg",
+      "purpose": "connect pollutant-material-condition edges to field-supported source basis",
+      "candidate_ids": [
+        "NCI5_FIELD_SUPPORTED_KG_EDGE_PACKAGE"
+      ],
+      "source_env_vars": [
+        "FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR"
+      ],
+      "ready_count": 0,
+      "waiting_count": 1,
+      "blocked_count": 0,
+      "readiness_status": "waiting_for_external_package",
+      "next_operator_actions": [
+        "fill_field_supported_kg_edge_package_template_and_set_FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR"
+      ]
+    },
+    {
+      "group_id": "control_replay_execution",
+      "purpose": "evaluate multi-facility control candidates offline before any actuator promotion",
+      "candidate_ids": [
+        "NCI3_FIELD_CONTROL_REPLAY_PACKAGE"
+      ],
+      "source_env_vars": [
+        "FIELD_CONTROL_REPLAY_PACKAGE_DIR"
+      ],
+      "ready_count": 0,
+      "waiting_count": 1,
+      "blocked_count": 0,
+      "readiness_status": "waiting_for_external_package",
+      "next_operator_actions": [
+        "fill_field_control_replay_package_template_and_set_FIELD_CONTROL_REPLAY_PACKAGE_DIR"
+      ]
+    },
+    {
+      "group_id": "sparse_observation_layout",
+      "purpose": "ground sparse sensing layout in real topology, installability and labels",
+      "candidate_ids": [
+        "NCI4_SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE"
+      ],
+      "source_env_vars": [
+        "SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR"
+      ],
+      "ready_count": 0,
+      "waiting_count": 1,
+      "blocked_count": 0,
+      "readiness_status": "waiting_for_external_package",
+      "next_operator_actions": [
+        "fill_sparse_topology_installability_package_template_and_set_SPARSE_TOPOLOGY_INSTALLABILITY_PACKAGE_DIR"
+      ]
+    },
+    {
+      "group_id": "soft_sensor_missingness",
+      "purpose": "test soft-sensor robustness under real missingness and sensor-quality events",
+      "candidate_ids": [
+        "NCI2_FIELD_MISSINGNESS_REPLAY_PACKAGE"
+      ],
+      "source_env_vars": [
+        "FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR"
+      ],
+      "ready_count": 0,
+      "waiting_count": 1,
+      "blocked_count": 0,
+      "readiness_status": "waiting_for_external_package",
+      "next_operator_actions": [
+        "fill_field_missingness_replay_package_template_and_set_FIELD_MISSINGNESS_REPLAY_PACKAGE_DIR"
+      ]
+    }
+  ],
+  "selection_rules": {
+    "purpose": "collect real external packages before reopening model-chain claims",
+    "ready_requires": [
+      "external package directory supplied through its source env var",
+      "required CSV tables and columns present",
+      "rows use data_origin=field and pass QA",
+      "minimum aligned ids across package tables",
+      "package-specific safety or evidence boundary checks"
+    ],
+    "do_not_use_when": [
+      "template rows remain",
+      "source rows are synthetic/literature-only",
+      "downstream replay, holdout, calibration or claim gates have not run"
+    ]
+  },
+  "boundary": {
+    "readiness_board_only": true,
+    "can_generate_field_evidence": false,
+    "can_resume_model_chain": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "boundary_statement": "This board aggregates external package readiness. It does not validate field performance, does not run downstream replay/holdout/calibration, and does not authorize actuator or release-gate actions."
+  }
+}

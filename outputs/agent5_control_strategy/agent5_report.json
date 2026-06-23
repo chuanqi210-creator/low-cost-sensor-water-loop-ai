@@ -1,0 +1,335 @@
+{
+  "agent_name": "control_strategy_agent",
+  "confidence": 0.89,
+  "summary": "首要控制动作：暂存并旁路验证，评分 0.976。",
+  "metrics": {
+    "ranked_actions": [
+      {
+        "action_id": "hold_for_validation",
+        "action_name": "暂存并旁路验证",
+        "score": 0.976,
+        "parameters": {
+          "hold_min": 18,
+          "validation_delay_min": 9,
+          "validation": "COD/TOC、目标污染物、余氧化剂或副产物快检"
+        },
+        "requires_human_review": false,
+        "evidence": {
+          "release_readiness": 0.755,
+          "compliance_probability": 0.943,
+          "byproduct_risk": 0.459,
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ],
+          "knowledge_action_bias": 0.22
+        }
+      },
+      {
+        "action_id": "calibrate_sensors",
+        "action_name": "校准或降权异常传感器",
+        "score": 0.914,
+        "parameters": {
+          "channels": "use Agent 1 low-score channels",
+          "apply_to_soft_sensor": true
+        },
+        "requires_human_review": true,
+        "evidence": {
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ],
+          "knowledge_action_bias": 0.194
+        }
+      },
+      {
+        "action_id": "inspect_hydraulics",
+        "action_name": "核查泵阀与回流管路",
+        "score": 0.78,
+        "parameters": {
+          "check_items": [
+            "pump",
+            "valve",
+            "recycle_line",
+            "actual_flow"
+          ],
+          "pause_release": true
+        },
+        "requires_human_review": true,
+        "evidence": {
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ]
+        }
+      },
+      {
+        "action_id": "switch_or_pretreat",
+        "action_name": "预处理或切换处理单元",
+        "score": 0.31,
+        "parameters": {
+          "candidate_units": [
+            "coagulation",
+            "adsorption",
+            "membrane",
+            "deep_oxidation"
+          ]
+        },
+        "requires_human_review": true,
+        "evidence": {
+          "matrix_interference": 0.414,
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ]
+        }
+      },
+      {
+        "action_id": "recirculate",
+        "action_name": "继续回流处理",
+        "score": 0.219,
+        "parameters": {
+          "recycle_ratio": 0.32,
+          "extra_retention_min": 14
+        },
+        "requires_human_review": false,
+        "evidence": {
+          "recycle_gain": 0.066,
+          "pollutant_residual_risk": 0.156,
+          "cycle_id": 5,
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ],
+          "knowledge_action_bias": 0.082
+        }
+      },
+      {
+        "action_id": "regenerate_catalyst",
+        "action_name": "再生或更换催化剂",
+        "score": 0.002,
+        "parameters": {
+          "regen_intensity": 0.34,
+          "downtime_min": 40,
+          "confirm_with": "催化剂活性、表面污染或压降快检"
+        },
+        "requires_human_review": true,
+        "evidence": {
+          "catalyst_activity": 0.761,
+          "reaction_completion": 0.822,
+          "pollutant_residual_risk": 0.156,
+          "oxidant_remaining": 0.775,
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ]
+        }
+      },
+      {
+        "action_id": "dose_oxidant",
+        "action_name": "补加氧化剂",
+        "score": 0.0,
+        "parameters": {
+          "dose_factor": 0.1,
+          "confirm_with": "余氧化剂快检"
+        },
+        "requires_human_review": false,
+        "evidence": {
+          "oxidant_remaining": 0.775,
+          "byproduct_risk": 0.459,
+          "dose_factor": 0.1,
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ]
+        }
+      },
+      {
+        "action_id": "release",
+        "action_name": "达标放行",
+        "score": 0.0,
+        "parameters": {
+          "release_gate": "release_readiness >= 0.82 and residual <= 0.35 and hydraulic_confidence >= 0.7 and byproduct_risk <= 0.65"
+        },
+        "requires_human_review": false,
+        "evidence": {
+          "release_readiness": 0.755,
+          "compliance_probability": 0.943,
+          "pollutant_residual_risk": 0.156,
+          "hydraulic_confidence": 0.997,
+          "byproduct_risk": 0.459,
+          "knowledge_action_bias": -0.22
+        }
+      }
+    ],
+    "executable_plan": [
+      {
+        "action_id": "hold_for_validation",
+        "action_name": "暂存并旁路验证",
+        "score": 0.976,
+        "parameters": {
+          "hold_min": 18,
+          "validation_delay_min": 9,
+          "validation": "COD/TOC、目标污染物、余氧化剂或副产物快检"
+        },
+        "requires_human_review": false,
+        "evidence": {
+          "release_readiness": 0.755,
+          "compliance_probability": 0.943,
+          "byproduct_risk": 0.459,
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ],
+          "knowledge_action_bias": 0.22
+        }
+      },
+      {
+        "action_id": "calibrate_sensors",
+        "action_name": "校准或降权异常传感器",
+        "score": 0.914,
+        "parameters": {
+          "channels": "use Agent 1 low-score channels",
+          "apply_to_soft_sensor": true
+        },
+        "requires_human_review": true,
+        "evidence": {
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ],
+          "knowledge_action_bias": 0.194
+        }
+      },
+      {
+        "action_id": "inspect_hydraulics",
+        "action_name": "核查泵阀与回流管路",
+        "score": 0.78,
+        "parameters": {
+          "check_items": [
+            "pump",
+            "valve",
+            "recycle_line",
+            "actual_flow"
+          ],
+          "pause_release": true
+        },
+        "requires_human_review": true,
+        "evidence": {
+          "fault_ids": [
+            "hydraulic_retention_anomaly",
+            "matrix_interference",
+            "release_evidence_insufficient",
+            "sensor_data_unreliable"
+          ]
+        }
+      }
+    ],
+    "state_used": {
+      "pollutant_residual_risk": 0.156,
+      "reaction_completion": 0.822,
+      "oxidant_remaining": 0.775,
+      "catalyst_activity": 0.761,
+      "matrix_interference": 0.414,
+      "byproduct_risk": 0.459,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 0.997,
+      "sensor_confidence": 0.755,
+      "compliance_probability": 0.943,
+      "recycle_gain": 0.066,
+      "release_readiness": 0.755,
+      "cycle_id": 5.0
+    },
+    "fault_ids": [
+      "release_evidence_insufficient",
+      "hydraulic_retention_anomaly",
+      "sensor_data_unreliable",
+      "matrix_interference",
+      "byproduct_or_overoxidation_risk",
+      "cycle_window_insufficient",
+      "reaction_time_insufficient",
+      "oxidant_limitation",
+      "catalyst_deactivation"
+    ],
+    "knowledge_action_biases": {
+      "calibrate_sensors": 0.194,
+      "hold_for_validation": 0.22,
+      "release": -0.22,
+      "recirculate": 0.082
+    }
+  },
+  "recommendations": [
+    "暂存并旁路验证：参数 {'hold_min': 18, 'validation_delay_min': 9, 'validation': 'COD/TOC、目标污染物、余氧化剂或副产物快检'}；依据 {'release_readiness': 0.755, 'compliance_probability': 0.943, 'byproduct_risk': 0.459, 'fault_ids': ['hydraulic_retention_anomaly', 'matrix_interference', 'release_evidence_insufficient', 'sensor_data_unreliable'], 'knowledge_action_bias': 0.22}。",
+    "校准或降权异常传感器：参数 {'channels': 'use Agent 1 low-score channels', 'apply_to_soft_sensor': True}；依据 {'fault_ids': ['hydraulic_retention_anomaly', 'matrix_interference', 'release_evidence_insufficient', 'sensor_data_unreliable'], 'knowledge_action_bias': 0.194}。",
+    "核查泵阀与回流管路：参数 {'check_items': ['pump', 'valve', 'recycle_line', 'actual_flow'], 'pause_release': True}；依据 {'fault_ids': ['hydraulic_retention_anomaly', 'matrix_interference', 'release_evidence_insufficient', 'sensor_data_unreliable']}。"
+  ],
+  "issues": [
+    {
+      "sensor": "control",
+      "issue_type": "hold_for_validation",
+      "severity": "info",
+      "message": "暂存并旁路验证",
+      "evidence": {
+        "release_readiness": 0.755,
+        "compliance_probability": 0.943,
+        "byproduct_risk": 0.459,
+        "fault_ids": [
+          "hydraulic_retention_anomaly",
+          "matrix_interference",
+          "release_evidence_insufficient",
+          "sensor_data_unreliable"
+        ],
+        "knowledge_action_bias": 0.22
+      }
+    },
+    {
+      "sensor": "control",
+      "issue_type": "calibrate_sensors",
+      "severity": "warning",
+      "message": "校准或降权异常传感器",
+      "evidence": {
+        "fault_ids": [
+          "hydraulic_retention_anomaly",
+          "matrix_interference",
+          "release_evidence_insufficient",
+          "sensor_data_unreliable"
+        ],
+        "knowledge_action_bias": 0.194
+      }
+    },
+    {
+      "sensor": "control",
+      "issue_type": "inspect_hydraulics",
+      "severity": "warning",
+      "message": "核查泵阀与回流管路",
+      "evidence": {
+        "fault_ids": [
+          "hydraulic_retention_anomaly",
+          "matrix_interference",
+          "release_evidence_insufficient",
+          "sensor_data_unreliable"
+        ]
+      }
+    }
+  ]
+}

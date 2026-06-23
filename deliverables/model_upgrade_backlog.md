@@ -1,0 +1,11 @@
+# 模型优化 Backlog
+
+| 优先级 | 工作项 | 为什么重要 | 主要阻塞/需求 | 目标文件 |
+| --- | --- | --- | --- | --- |
+| `P0` | `field_data_acceptance_before_retraining` 先通过真实数据 G0-G2，再允许任何参数写回 | 当前最大现实性风险是 synthetic/sample 被误当成现场校准。 | ['G0_data_origin'] | ['outputs/agent30_field_data_interface/', 'deliverables/field_data_acceptance_gates.md'] |
+| `P1` | `soft_sensor_uncertainty_field_calibration` 用 field holdout 和保形校准验证软传感不确定性 | 当前已有 synthetic 不确定性层，但还不能替代真实现场 holdout 与释放概率校准。 | ['field holdout MAE/R2', 'calibration curve for release probability', 'prediction interval coverage', 'out-of-distribution / extrapolation flag', 'target-specific uncertainty for catalyst and matrix estimates'] | ['src/water_ai/agents/soft_sensor_agent.py', 'src/water_ai/agents/soft_sensor_uncertainty_validation_agent.py', 'experiments/train_soft_sensor_model.py'] |
+| `P1` | `knowledge_graph_evidence_matrix` 把知识库扩展为污染物-材料-机制-信号-动作-证据等级矩阵 | 知识库已有 seed，但仍需要系统文献综述式扩展和证据等级管理。 | [] | ['src/water_ai/knowledge.py', 'deliverables/model_realism_audit.md'] |
+| `P2` | `mechanistic_kinetics_parameterization` 引入污染物类别、催化剂、pH、基质和停留时间的参数化速率范围。 | 过程动力学使用可解释启发式速率，尚未由真实反应动力学或现场参数校准。 | ['批内浓度时间序列', '剂量/停留时间记录', '目标物和副产物标签'] | ['src/water_ai/process_dynamics.py', 'outputs/agent35_model_realism_audit/'] |
+| `P2` | `uncertainty_and_extrapolation` 用真实离线标签做 prediction interval coverage、release probability calibration 和 conformal calibration。 | 软传感器已有 synthetic 不确定性、预测区间和 OOD 风险门，但尚未用真实 field holdout 校准。 | ['field holdout set', '离线标签', '传感器漂移与缺失日志'] | ['src/water_ai/process_dynamics.py', 'outputs/agent35_model_realism_audit/'] |
+| `P2` | `target_specific_byproduct_speciation` 按污染物类别建立副产物风险子节点，并绑定必须检测的离线指标。 | 副产物风险是综合指标，尚未区分卤代副产物、过氧化残留或目标物中间体。 | ['副产物检测', '余氧化剂', '目标物中间体'] | ['src/water_ai/process_dynamics.py', 'outputs/agent35_model_realism_audit/'] |
+| `P2` | `field_control_latency` 把控制动作拆为可执行时序、人工/仪器资源和失败重试。 | 循环和延迟已建模，但 PLC/SCADA 接口、人工复核和检测排队时间仍偏简化。 | ['操作日志', '采样/检测排队', '人工覆盖记录'] | ['src/water_ai/process_dynamics.py', 'outputs/agent35_model_realism_audit/'] |

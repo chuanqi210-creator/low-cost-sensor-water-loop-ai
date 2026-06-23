@@ -1,0 +1,3020 @@
+{
+  "observation_axes": [
+    "pollutant_residual_observability",
+    "reaction_completion_observability",
+    "oxidant_observability",
+    "catalyst_activity_observability",
+    "matrix_interference_observability",
+    "hydraulic_observability",
+    "fault_classification_observability",
+    "control_latency_gain",
+    "soft_sensor_reconstruction_gain",
+    "cost_efficiency"
+  ],
+  "topology_graph": {
+    "nodes": [
+      "N0_influent",
+      "N1_equalization_tank",
+      "N2_reactor_mid",
+      "N3_catalyst_bed_outlet",
+      "N4_recirculation_loop",
+      "N5_polishing_inlet",
+      "N6_effluent"
+    ],
+    "edges": [
+      {
+        "from": "N0_influent",
+        "to": "N1_equalization_tank"
+      },
+      {
+        "from": "N1_equalization_tank",
+        "to": "N2_reactor_mid"
+      },
+      {
+        "from": "N2_reactor_mid",
+        "to": "N3_catalyst_bed_outlet"
+      },
+      {
+        "from": "N3_catalyst_bed_outlet",
+        "to": "N5_polishing_inlet"
+      },
+      {
+        "from": "N5_polishing_inlet",
+        "to": "N6_effluent"
+      },
+      {
+        "from": "N3_catalyst_bed_outlet",
+        "to": "N4_recirculation_loop"
+      },
+      {
+        "from": "N4_recirculation_loop",
+        "to": "N1_equalization_tank"
+      },
+      {
+        "from": "N4_recirculation_loop",
+        "to": "N2_reactor_mid"
+      }
+    ],
+    "adjacency": {
+      "N0_influent": [
+        "N1_equalization_tank"
+      ],
+      "N1_equalization_tank": [
+        "N0_influent",
+        "N2_reactor_mid",
+        "N4_recirculation_loop"
+      ],
+      "N2_reactor_mid": [
+        "N1_equalization_tank",
+        "N3_catalyst_bed_outlet",
+        "N4_recirculation_loop"
+      ],
+      "N3_catalyst_bed_outlet": [
+        "N2_reactor_mid",
+        "N4_recirculation_loop",
+        "N5_polishing_inlet"
+      ],
+      "N4_recirculation_loop": [
+        "N1_equalization_tank",
+        "N2_reactor_mid",
+        "N3_catalyst_bed_outlet"
+      ],
+      "N5_polishing_inlet": [
+        "N3_catalyst_bed_outlet",
+        "N6_effluent"
+      ],
+      "N6_effluent": [
+        "N5_polishing_inlet"
+      ]
+    },
+    "topology_type": "process_unit_graph_with_recirculation_loop"
+  },
+  "selected_sensor_plan": [
+    {
+      "candidate_id": "N4_recirculation_loop:UV254_abs",
+      "node_id": "N4_recirculation_loop",
+      "zone": "loop",
+      "modality": "UV254_abs",
+      "vector": {
+        "pollutant_residual_observability": 0.814,
+        "reaction_completion_observability": 0.712,
+        "oxidant_observability": 0.18,
+        "catalyst_activity_observability": 0.3,
+        "matrix_interference_observability": 0.459,
+        "hydraulic_observability": 0.076,
+        "fault_classification_observability": 0.587,
+        "control_latency_gain": 0.595,
+        "soft_sensor_reconstruction_gain": 0.827,
+        "cost_efficiency": 0.827
+      },
+      "cost_index": 1.012,
+      "maintenance_score": 0.414,
+      "admissible": true,
+      "basis_proxy_score": 0.506,
+      "selection_order": 1,
+      "marginal_score": 0.59,
+      "selection_strategy": "greedy_marginal",
+      "why_selected": [
+        "soft_sensor_reconstruction_gain",
+        "cost_efficiency",
+        "pollutant_residual_observability"
+      ]
+    },
+    {
+      "candidate_id": "N3_catalyst_bed_outlet:turbidity_NTU",
+      "node_id": "N3_catalyst_bed_outlet",
+      "zone": "catalyst_bed",
+      "modality": "turbidity_NTU",
+      "vector": {
+        "pollutant_residual_observability": 0.327,
+        "reaction_completion_observability": 0.256,
+        "oxidant_observability": 0.087,
+        "catalyst_activity_observability": 0.231,
+        "matrix_interference_observability": 0.562,
+        "hydraulic_observability": 0.248,
+        "fault_classification_observability": 0.568,
+        "control_latency_gain": 0.579,
+        "soft_sensor_reconstruction_gain": 0.541,
+        "cost_efficiency": 0.801
+      },
+      "cost_index": 0.826,
+      "maintenance_score": 0.383,
+      "admissible": true,
+      "basis_proxy_score": 0.378,
+      "selection_order": 2,
+      "marginal_score": 0.348,
+      "selection_strategy": "greedy_marginal",
+      "why_selected": [
+        "cost_efficiency",
+        "control_latency_gain",
+        "fault_classification_observability"
+      ]
+    },
+    {
+      "candidate_id": "N2_reactor_mid:ORP_mV",
+      "node_id": "N2_reactor_mid",
+      "zone": "reaction_core",
+      "modality": "ORP_mV",
+      "vector": {
+        "pollutant_residual_observability": 0.406,
+        "reaction_completion_observability": 0.65,
+        "oxidant_observability": 0.775,
+        "catalyst_activity_observability": 0.252,
+        "matrix_interference_observability": 0.229,
+        "hydraulic_observability": 0.089,
+        "fault_classification_observability": 0.453,
+        "control_latency_gain": 0.631,
+        "soft_sensor_reconstruction_gain": 0.559,
+        "cost_efficiency": 0.866
+      },
+      "cost_index": 0.756,
+      "maintenance_score": 0.434,
+      "admissible": true,
+      "basis_proxy_score": 0.449,
+      "selection_order": 3,
+      "marginal_score": 0.321,
+      "selection_strategy": "greedy_marginal",
+      "why_selected": [
+        "cost_efficiency",
+        "oxidant_observability",
+        "reaction_completion_observability"
+      ]
+    },
+    {
+      "candidate_id": "N0_influent:EC_uScm",
+      "node_id": "N0_influent",
+      "zone": "influent",
+      "modality": "EC_uScm",
+      "vector": {
+        "pollutant_residual_observability": 0.185,
+        "reaction_completion_observability": 0.146,
+        "oxidant_observability": 0.093,
+        "catalyst_activity_observability": 0.065,
+        "matrix_interference_observability": 0.851,
+        "hydraulic_observability": 0.116,
+        "fault_classification_observability": 0.553,
+        "control_latency_gain": 0.837,
+        "soft_sensor_reconstruction_gain": 0.482,
+        "cost_efficiency": 1.0
+      },
+      "cost_index": 0.434,
+      "maintenance_score": 0.736,
+      "admissible": true,
+      "basis_proxy_score": 0.37,
+      "selection_order": 4,
+      "marginal_score": 0.307,
+      "selection_strategy": "greedy_marginal",
+      "why_selected": [
+        "cost_efficiency",
+        "matrix_interference_observability",
+        "control_latency_gain"
+      ]
+    },
+    {
+      "candidate_id": "N1_equalization_tank:flow_Lmin",
+      "node_id": "N1_equalization_tank",
+      "zone": "buffer",
+      "modality": "flow_Lmin",
+      "vector": {
+        "pollutant_residual_observability": 0.085,
+        "reaction_completion_observability": 0.234,
+        "oxidant_observability": 0.051,
+        "catalyst_activity_observability": 0.065,
+        "matrix_interference_observability": 0.15,
+        "hydraulic_observability": 0.76,
+        "fault_classification_observability": 0.4,
+        "control_latency_gain": 0.791,
+        "soft_sensor_reconstruction_gain": 0.39,
+        "cost_efficiency": 1.0
+      },
+      "cost_index": 0.476,
+      "maintenance_score": 0.705,
+      "admissible": true,
+      "basis_proxy_score": 0.325,
+      "selection_order": 5,
+      "marginal_score": 0.245,
+      "selection_strategy": "greedy_marginal",
+      "why_selected": [
+        "cost_efficiency",
+        "control_latency_gain",
+        "hydraulic_observability"
+      ]
+    },
+    {
+      "candidate_id": "N5_polishing_inlet:turbidity_NTU",
+      "node_id": "N5_polishing_inlet",
+      "zone": "polishing",
+      "modality": "turbidity_NTU",
+      "vector": {
+        "pollutant_residual_observability": 0.294,
+        "reaction_completion_observability": 0.233,
+        "oxidant_observability": 0.083,
+        "catalyst_activity_observability": 0.136,
+        "matrix_interference_observability": 0.488,
+        "hydraulic_observability": 0.238,
+        "fault_classification_observability": 0.449,
+        "control_latency_gain": 0.51,
+        "soft_sensor_reconstruction_gain": 0.487,
+        "cost_efficiency": 1.0
+      },
+      "cost_index": 0.672,
+      "maintenance_score": 0.502,
+      "admissible": true,
+      "basis_proxy_score": 0.324,
+      "selection_order": 6,
+      "marginal_score": 0.214,
+      "selection_strategy": "greedy_marginal",
+      "why_selected": [
+        "cost_efficiency",
+        "control_latency_gain",
+        "matrix_interference_observability"
+      ]
+    }
+  ],
+  "algorithm_comparison": [
+    {
+      "strategy_id": "greedy_marginal",
+      "method_family": "current weighted marginal coverage baseline",
+      "benchmark_role": "project_candidate_strategy",
+      "prior_art_family": "weighted hidden-state coverage heuristic",
+      "selected_sensor_plan": [
+        {
+          "candidate_id": "N4_recirculation_loop:UV254_abs",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "UV254_abs",
+          "vector": {
+            "pollutant_residual_observability": 0.814,
+            "reaction_completion_observability": 0.712,
+            "oxidant_observability": 0.18,
+            "catalyst_activity_observability": 0.3,
+            "matrix_interference_observability": 0.459,
+            "hydraulic_observability": 0.076,
+            "fault_classification_observability": 0.587,
+            "control_latency_gain": 0.595,
+            "soft_sensor_reconstruction_gain": 0.827,
+            "cost_efficiency": 0.827
+          },
+          "cost_index": 1.012,
+          "maintenance_score": 0.414,
+          "admissible": true,
+          "basis_proxy_score": 0.506,
+          "selection_order": 1,
+          "marginal_score": 0.59,
+          "selection_strategy": "greedy_marginal",
+          "why_selected": [
+            "soft_sensor_reconstruction_gain",
+            "cost_efficiency",
+            "pollutant_residual_observability"
+          ]
+        },
+        {
+          "candidate_id": "N3_catalyst_bed_outlet:turbidity_NTU",
+          "node_id": "N3_catalyst_bed_outlet",
+          "zone": "catalyst_bed",
+          "modality": "turbidity_NTU",
+          "vector": {
+            "pollutant_residual_observability": 0.327,
+            "reaction_completion_observability": 0.256,
+            "oxidant_observability": 0.087,
+            "catalyst_activity_observability": 0.231,
+            "matrix_interference_observability": 0.562,
+            "hydraulic_observability": 0.248,
+            "fault_classification_observability": 0.568,
+            "control_latency_gain": 0.579,
+            "soft_sensor_reconstruction_gain": 0.541,
+            "cost_efficiency": 0.801
+          },
+          "cost_index": 0.826,
+          "maintenance_score": 0.383,
+          "admissible": true,
+          "basis_proxy_score": 0.378,
+          "selection_order": 2,
+          "marginal_score": 0.348,
+          "selection_strategy": "greedy_marginal",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "fault_classification_observability"
+          ]
+        },
+        {
+          "candidate_id": "N2_reactor_mid:ORP_mV",
+          "node_id": "N2_reactor_mid",
+          "zone": "reaction_core",
+          "modality": "ORP_mV",
+          "vector": {
+            "pollutant_residual_observability": 0.406,
+            "reaction_completion_observability": 0.65,
+            "oxidant_observability": 0.775,
+            "catalyst_activity_observability": 0.252,
+            "matrix_interference_observability": 0.229,
+            "hydraulic_observability": 0.089,
+            "fault_classification_observability": 0.453,
+            "control_latency_gain": 0.631,
+            "soft_sensor_reconstruction_gain": 0.559,
+            "cost_efficiency": 0.866
+          },
+          "cost_index": 0.756,
+          "maintenance_score": 0.434,
+          "admissible": true,
+          "basis_proxy_score": 0.449,
+          "selection_order": 3,
+          "marginal_score": 0.321,
+          "selection_strategy": "greedy_marginal",
+          "why_selected": [
+            "cost_efficiency",
+            "oxidant_observability",
+            "reaction_completion_observability"
+          ]
+        },
+        {
+          "candidate_id": "N0_influent:EC_uScm",
+          "node_id": "N0_influent",
+          "zone": "influent",
+          "modality": "EC_uScm",
+          "vector": {
+            "pollutant_residual_observability": 0.185,
+            "reaction_completion_observability": 0.146,
+            "oxidant_observability": 0.093,
+            "catalyst_activity_observability": 0.065,
+            "matrix_interference_observability": 0.851,
+            "hydraulic_observability": 0.116,
+            "fault_classification_observability": 0.553,
+            "control_latency_gain": 0.837,
+            "soft_sensor_reconstruction_gain": 0.482,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.434,
+          "maintenance_score": 0.736,
+          "admissible": true,
+          "basis_proxy_score": 0.37,
+          "selection_order": 4,
+          "marginal_score": 0.307,
+          "selection_strategy": "greedy_marginal",
+          "why_selected": [
+            "cost_efficiency",
+            "matrix_interference_observability",
+            "control_latency_gain"
+          ]
+        },
+        {
+          "candidate_id": "N1_equalization_tank:flow_Lmin",
+          "node_id": "N1_equalization_tank",
+          "zone": "buffer",
+          "modality": "flow_Lmin",
+          "vector": {
+            "pollutant_residual_observability": 0.085,
+            "reaction_completion_observability": 0.234,
+            "oxidant_observability": 0.051,
+            "catalyst_activity_observability": 0.065,
+            "matrix_interference_observability": 0.15,
+            "hydraulic_observability": 0.76,
+            "fault_classification_observability": 0.4,
+            "control_latency_gain": 0.791,
+            "soft_sensor_reconstruction_gain": 0.39,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.476,
+          "maintenance_score": 0.705,
+          "admissible": true,
+          "basis_proxy_score": 0.325,
+          "selection_order": 5,
+          "marginal_score": 0.245,
+          "selection_strategy": "greedy_marginal",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "hydraulic_observability"
+          ]
+        },
+        {
+          "candidate_id": "N5_polishing_inlet:turbidity_NTU",
+          "node_id": "N5_polishing_inlet",
+          "zone": "polishing",
+          "modality": "turbidity_NTU",
+          "vector": {
+            "pollutant_residual_observability": 0.294,
+            "reaction_completion_observability": 0.233,
+            "oxidant_observability": 0.083,
+            "catalyst_activity_observability": 0.136,
+            "matrix_interference_observability": 0.488,
+            "hydraulic_observability": 0.238,
+            "fault_classification_observability": 0.449,
+            "control_latency_gain": 0.51,
+            "soft_sensor_reconstruction_gain": 0.487,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.672,
+          "maintenance_score": 0.502,
+          "admissible": true,
+          "basis_proxy_score": 0.324,
+          "selection_order": 6,
+          "marginal_score": 0.214,
+          "selection_strategy": "greedy_marginal",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "matrix_interference_observability"
+          ]
+        }
+      ],
+      "selected_sensor_ids": [
+        "N4_recirculation_loop:UV254_abs",
+        "N3_catalyst_bed_outlet:turbidity_NTU",
+        "N2_reactor_mid:ORP_mV",
+        "N0_influent:EC_uScm",
+        "N1_equalization_tank:flow_Lmin",
+        "N5_polishing_inlet:turbidity_NTU"
+      ],
+      "selected_sensor_count": 6,
+      "coverage": {
+        "pollutant_residual_observability": 0.814,
+        "reaction_completion_observability": 0.712,
+        "oxidant_observability": 0.775,
+        "catalyst_activity_observability": 0.3,
+        "matrix_interference_observability": 0.851,
+        "hydraulic_observability": 0.76,
+        "fault_classification_observability": 0.587,
+        "control_latency_gain": 0.837,
+        "soft_sensor_reconstruction_gain": 0.827,
+        "cost_efficiency": 1.0,
+        "weak_state_coverage": 0.3,
+        "total_cost_index": 4.176,
+        "node_diversity_count": 6.0,
+        "modality_diversity_count": 5.0
+      },
+      "topology_coverage_score": 0.768,
+      "reconstruction_objective": 0.682,
+      "classification_objective": 0.628,
+      "robustness_objective": 0.672,
+      "cost_objective": 1.0,
+      "comparable_score": 0.726,
+      "axis_span_rank_ratio": 0.667,
+      "condition_number_proxy": 61.726,
+      "weak_axis_gap_count": 2,
+      "single_point_dependency_count": 4,
+      "layout_redundancy_score": 0.825,
+      "field_validation_boundary": "algorithm comparison is computed on synthetic topology prior unless data_origin=field_topology",
+      "prior_art_comparison_boundary": "baseline supports nonlegal distinction analysis only; it is not a patentability opinion and cannot prove field deployment performance without field topology and labels",
+      "rank": 1
+    },
+    {
+      "strategy_id": "classification_sspoc_proxy",
+      "method_family": "SSPOC-style fault classification proxy",
+      "benchmark_role": "fault_classification_prior_art_baseline",
+      "prior_art_family": "SSPOC-style sparse fault classification",
+      "selected_sensor_plan": [
+        {
+          "candidate_id": "N4_recirculation_loop:EC_uScm",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "EC_uScm",
+          "vector": {
+            "pollutant_residual_observability": 0.274,
+            "reaction_completion_observability": 0.208,
+            "oxidant_observability": 0.147,
+            "catalyst_activity_observability": 0.143,
+            "matrix_interference_observability": 0.782,
+            "hydraulic_observability": 0.171,
+            "fault_classification_observability": 0.687,
+            "control_latency_gain": 0.812,
+            "soft_sensor_reconstruction_gain": 0.627,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.57,
+          "maintenance_score": 0.592,
+          "admissible": true,
+          "basis_proxy_score": 0.428,
+          "selection_order": 1,
+          "marginal_score": 0.6,
+          "selection_strategy": "classification_sspoc_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "matrix_interference_observability"
+          ]
+        },
+        {
+          "candidate_id": "N0_influent:turbidity_NTU",
+          "node_id": "N0_influent",
+          "zone": "influent",
+          "modality": "turbidity_NTU",
+          "vector": {
+            "pollutant_residual_observability": 0.208,
+            "reaction_completion_observability": 0.171,
+            "oxidant_observability": 0.052,
+            "catalyst_activity_observability": 0.078,
+            "matrix_interference_observability": 0.758,
+            "hydraulic_observability": 0.231,
+            "fault_classification_observability": 0.513,
+            "control_latency_gain": 0.763,
+            "soft_sensor_reconstruction_gain": 0.456,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.49,
+          "maintenance_score": 0.607,
+          "admissible": true,
+          "basis_proxy_score": 0.359,
+          "selection_order": 2,
+          "marginal_score": 0.254,
+          "selection_strategy": "classification_sspoc_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "matrix_interference_observability"
+          ]
+        },
+        {
+          "candidate_id": "N4_recirculation_loop:flow_Lmin",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "flow_Lmin",
+          "vector": {
+            "pollutant_residual_observability": 0.103,
+            "reaction_completion_observability": 0.278,
+            "oxidant_observability": 0.065,
+            "catalyst_activity_observability": 0.129,
+            "matrix_interference_observability": 0.153,
+            "hydraulic_observability": 0.91,
+            "fault_classification_observability": 0.486,
+            "control_latency_gain": 0.83,
+            "soft_sensor_reconstruction_gain": 0.453,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.534,
+          "maintenance_score": 0.607,
+          "admissible": true,
+          "basis_proxy_score": 0.379,
+          "selection_order": 3,
+          "marginal_score": 0.245,
+          "selection_strategy": "classification_sspoc_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "hydraulic_observability",
+            "control_latency_gain"
+          ]
+        },
+        {
+          "candidate_id": "N3_catalyst_bed_outlet:UV254_abs",
+          "node_id": "N3_catalyst_bed_outlet",
+          "zone": "catalyst_bed",
+          "modality": "UV254_abs",
+          "vector": {
+            "pollutant_residual_observability": 0.864,
+            "reaction_completion_observability": 0.751,
+            "oxidant_observability": 0.191,
+            "catalyst_activity_observability": 0.404,
+            "matrix_interference_observability": 0.37,
+            "hydraulic_observability": 0.055,
+            "fault_classification_observability": 0.523,
+            "control_latency_gain": 0.466,
+            "soft_sensor_reconstruction_gain": 0.755,
+            "cost_efficiency": 0.647
+          },
+          "cost_index": 1.298,
+          "maintenance_score": 0.325,
+          "admissible": true,
+          "basis_proxy_score": 0.487,
+          "selection_order": 4,
+          "marginal_score": 0.223,
+          "selection_strategy": "classification_sspoc_proxy",
+          "why_selected": [
+            "pollutant_residual_observability",
+            "soft_sensor_reconstruction_gain",
+            "reaction_completion_observability"
+          ]
+        },
+        {
+          "candidate_id": "N1_equalization_tank:EC_uScm",
+          "node_id": "N1_equalization_tank",
+          "zone": "buffer",
+          "modality": "EC_uScm",
+          "vector": {
+            "pollutant_residual_observability": 0.226,
+            "reaction_completion_observability": 0.175,
+            "oxidant_observability": 0.115,
+            "catalyst_activity_observability": 0.072,
+            "matrix_interference_observability": 0.768,
+            "hydraulic_observability": 0.143,
+            "fault_classification_observability": 0.565,
+            "control_latency_gain": 0.774,
+            "soft_sensor_reconstruction_gain": 0.54,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.508,
+          "maintenance_score": 0.688,
+          "admissible": true,
+          "basis_proxy_score": 0.375,
+          "selection_order": 5,
+          "marginal_score": 0.195,
+          "selection_strategy": "classification_sspoc_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "matrix_interference_observability"
+          ]
+        },
+        {
+          "candidate_id": "N4_recirculation_loop:turbidity_NTU",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "turbidity_NTU",
+          "vector": {
+            "pollutant_residual_observability": 0.309,
+            "reaction_completion_observability": 0.243,
+            "oxidant_observability": 0.082,
+            "catalyst_activity_observability": 0.172,
+            "matrix_interference_observability": 0.697,
+            "hydraulic_observability": 0.341,
+            "fault_classification_observability": 0.637,
+            "control_latency_gain": 0.74,
+            "soft_sensor_reconstruction_gain": 0.592,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.644,
+          "maintenance_score": 0.488,
+          "admissible": true,
+          "basis_proxy_score": 0.424,
+          "selection_order": 6,
+          "marginal_score": 0.192,
+          "selection_strategy": "classification_sspoc_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "matrix_interference_observability"
+          ]
+        }
+      ],
+      "selected_sensor_ids": [
+        "N4_recirculation_loop:EC_uScm",
+        "N0_influent:turbidity_NTU",
+        "N4_recirculation_loop:flow_Lmin",
+        "N3_catalyst_bed_outlet:UV254_abs",
+        "N1_equalization_tank:EC_uScm",
+        "N4_recirculation_loop:turbidity_NTU"
+      ],
+      "selected_sensor_count": 6,
+      "coverage": {
+        "pollutant_residual_observability": 0.864,
+        "reaction_completion_observability": 0.751,
+        "oxidant_observability": 0.191,
+        "catalyst_activity_observability": 0.404,
+        "matrix_interference_observability": 0.782,
+        "hydraulic_observability": 0.91,
+        "fault_classification_observability": 0.687,
+        "control_latency_gain": 0.83,
+        "soft_sensor_reconstruction_gain": 0.755,
+        "cost_efficiency": 1.0,
+        "weak_state_coverage": 0.404,
+        "total_cost_index": 4.044,
+        "node_diversity_count": 4.0,
+        "modality_diversity_count": 4.0
+      },
+      "topology_coverage_score": 0.429,
+      "reconstruction_objective": 0.668,
+      "classification_objective": 0.698,
+      "robustness_objective": 0.721,
+      "cost_objective": 1.0,
+      "comparable_score": 0.694,
+      "axis_span_rank_ratio": 0.667,
+      "condition_number_proxy": 148.826,
+      "weak_axis_gap_count": 2,
+      "single_point_dependency_count": 2,
+      "layout_redundancy_score": 0.851,
+      "field_validation_boundary": "algorithm comparison is computed on synthetic topology prior unless data_origin=field_topology",
+      "prior_art_comparison_boundary": "baseline supports nonlegal distinction analysis only; it is not a patentability opinion and cannot prove field deployment performance without field topology and labels",
+      "rank": 2
+    },
+    {
+      "strategy_id": "reconstruction_qr_proxy",
+      "method_family": "SSPOR/QR-style reconstruction proxy",
+      "benchmark_role": "sparse_reconstruction_prior_art_baseline",
+      "prior_art_family": "SSPOR/QR/D-optimal sparse reconstruction",
+      "selected_sensor_plan": [
+        {
+          "candidate_id": "N4_recirculation_loop:UV254_abs",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "UV254_abs",
+          "vector": {
+            "pollutant_residual_observability": 0.814,
+            "reaction_completion_observability": 0.712,
+            "oxidant_observability": 0.18,
+            "catalyst_activity_observability": 0.3,
+            "matrix_interference_observability": 0.459,
+            "hydraulic_observability": 0.076,
+            "fault_classification_observability": 0.587,
+            "control_latency_gain": 0.595,
+            "soft_sensor_reconstruction_gain": 0.827,
+            "cost_efficiency": 0.827
+          },
+          "cost_index": 1.012,
+          "maintenance_score": 0.414,
+          "admissible": true,
+          "basis_proxy_score": 0.506,
+          "selection_order": 1,
+          "marginal_score": 1.28,
+          "selection_strategy": "reconstruction_qr_proxy",
+          "why_selected": [
+            "soft_sensor_reconstruction_gain",
+            "cost_efficiency",
+            "pollutant_residual_observability"
+          ]
+        },
+        {
+          "candidate_id": "N4_recirculation_loop:flow_Lmin",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "flow_Lmin",
+          "vector": {
+            "pollutant_residual_observability": 0.103,
+            "reaction_completion_observability": 0.278,
+            "oxidant_observability": 0.065,
+            "catalyst_activity_observability": 0.129,
+            "matrix_interference_observability": 0.153,
+            "hydraulic_observability": 0.91,
+            "fault_classification_observability": 0.486,
+            "control_latency_gain": 0.83,
+            "soft_sensor_reconstruction_gain": 0.453,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.534,
+          "maintenance_score": 0.607,
+          "admissible": true,
+          "basis_proxy_score": 0.379,
+          "selection_order": 2,
+          "marginal_score": -0.434,
+          "selection_strategy": "reconstruction_qr_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "hydraulic_observability",
+            "control_latency_gain"
+          ]
+        },
+        {
+          "candidate_id": "N6_effluent:ORP_mV",
+          "node_id": "N6_effluent",
+          "zone": "effluent",
+          "modality": "ORP_mV",
+          "vector": {
+            "pollutant_residual_observability": 0.417,
+            "reaction_completion_observability": 0.666,
+            "oxidant_observability": 0.88,
+            "catalyst_activity_observability": 0.18,
+            "matrix_interference_observability": 0.164,
+            "hydraulic_observability": 0.075,
+            "fault_classification_observability": 0.336,
+            "control_latency_gain": 0.451,
+            "soft_sensor_reconstruction_gain": 0.513,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.547,
+          "maintenance_score": 0.616,
+          "admissible": true,
+          "basis_proxy_score": 0.409,
+          "selection_order": 3,
+          "marginal_score": -0.244,
+          "selection_strategy": "reconstruction_qr_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "oxidant_observability",
+            "reaction_completion_observability"
+          ]
+        },
+        {
+          "candidate_id": "N0_influent:EC_uScm",
+          "node_id": "N0_influent",
+          "zone": "influent",
+          "modality": "EC_uScm",
+          "vector": {
+            "pollutant_residual_observability": 0.185,
+            "reaction_completion_observability": 0.146,
+            "oxidant_observability": 0.093,
+            "catalyst_activity_observability": 0.065,
+            "matrix_interference_observability": 0.851,
+            "hydraulic_observability": 0.116,
+            "fault_classification_observability": 0.553,
+            "control_latency_gain": 0.837,
+            "soft_sensor_reconstruction_gain": 0.482,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.434,
+          "maintenance_score": 0.736,
+          "admissible": true,
+          "basis_proxy_score": 0.37,
+          "selection_order": 4,
+          "marginal_score": -0.121,
+          "selection_strategy": "reconstruction_qr_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "matrix_interference_observability",
+            "control_latency_gain"
+          ]
+        },
+        {
+          "candidate_id": "N0_influent:temp_C",
+          "node_id": "N0_influent",
+          "zone": "influent",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.104,
+            "reaction_completion_observability": 0.22,
+            "oxidant_observability": 0.083,
+            "catalyst_activity_observability": 0.098,
+            "matrix_interference_observability": 0.148,
+            "hydraulic_observability": 0.051,
+            "fault_classification_observability": 0.202,
+            "control_latency_gain": 0.781,
+            "soft_sensor_reconstruction_gain": 0.241,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.266,
+          "maintenance_score": 0.81,
+          "admissible": true,
+          "basis_proxy_score": 0.214,
+          "selection_order": 5,
+          "marginal_score": -0.396,
+          "selection_strategy": "reconstruction_qr_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "soft_sensor_reconstruction_gain"
+          ]
+        },
+        {
+          "candidate_id": "N3_catalyst_bed_outlet:ORP_mV",
+          "node_id": "N3_catalyst_bed_outlet",
+          "zone": "catalyst_bed",
+          "modality": "ORP_mV",
+          "vector": {
+            "pollutant_residual_observability": 0.4,
+            "reaction_completion_observability": 0.641,
+            "oxidant_observability": 0.799,
+            "catalyst_activity_observability": 0.366,
+            "matrix_interference_observability": 0.219,
+            "hydraulic_observability": 0.083,
+            "fault_classification_observability": 0.486,
+            "control_latency_gain": 0.607,
+            "soft_sensor_reconstruction_gain": 0.541,
+            "cost_efficiency": 0.789
+          },
+          "cost_index": 0.85,
+          "maintenance_score": 0.406,
+          "admissible": true,
+          "basis_proxy_score": 0.46,
+          "selection_order": 6,
+          "marginal_score": -0.439,
+          "selection_strategy": "reconstruction_qr_proxy",
+          "why_selected": [
+            "oxidant_observability",
+            "cost_efficiency",
+            "reaction_completion_observability"
+          ]
+        }
+      ],
+      "selected_sensor_ids": [
+        "N4_recirculation_loop:UV254_abs",
+        "N4_recirculation_loop:flow_Lmin",
+        "N6_effluent:ORP_mV",
+        "N0_influent:EC_uScm",
+        "N0_influent:temp_C",
+        "N3_catalyst_bed_outlet:ORP_mV"
+      ],
+      "selected_sensor_count": 6,
+      "coverage": {
+        "pollutant_residual_observability": 0.814,
+        "reaction_completion_observability": 0.712,
+        "oxidant_observability": 0.88,
+        "catalyst_activity_observability": 0.366,
+        "matrix_interference_observability": 0.851,
+        "hydraulic_observability": 0.91,
+        "fault_classification_observability": 0.587,
+        "control_latency_gain": 0.837,
+        "soft_sensor_reconstruction_gain": 0.827,
+        "cost_efficiency": 1.0,
+        "weak_state_coverage": 0.366,
+        "total_cost_index": 3.643,
+        "node_diversity_count": 4.0,
+        "modality_diversity_count": 5.0
+      },
+      "topology_coverage_score": 0.429,
+      "reconstruction_objective": 0.682,
+      "classification_objective": 0.671,
+      "robustness_objective": 0.723,
+      "cost_objective": 1.0,
+      "comparable_score": 0.692,
+      "axis_span_rank_ratio": 0.667,
+      "condition_number_proxy": 20.762,
+      "weak_axis_gap_count": 2,
+      "single_point_dependency_count": 3,
+      "layout_redundancy_score": 0.742,
+      "field_validation_boundary": "algorithm comparison is computed on synthetic topology prior unless data_origin=field_topology",
+      "prior_art_comparison_boundary": "baseline supports nonlegal distinction analysis only; it is not a patentability opinion and cannot prove field deployment performance without field topology and labels",
+      "rank": 3
+    },
+    {
+      "strategy_id": "deterministic_random_baseline",
+      "method_family": "stable pseudo-random baseline for ablation",
+      "benchmark_role": "random_ablation_baseline",
+      "prior_art_family": "random sensor placement ablation",
+      "selected_sensor_plan": [
+        {
+          "candidate_id": "N1_equalization_tank:flow_Lmin",
+          "node_id": "N1_equalization_tank",
+          "zone": "buffer",
+          "modality": "flow_Lmin",
+          "vector": {
+            "pollutant_residual_observability": 0.085,
+            "reaction_completion_observability": 0.234,
+            "oxidant_observability": 0.051,
+            "catalyst_activity_observability": 0.065,
+            "matrix_interference_observability": 0.15,
+            "hydraulic_observability": 0.76,
+            "fault_classification_observability": 0.4,
+            "control_latency_gain": 0.791,
+            "soft_sensor_reconstruction_gain": 0.39,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.476,
+          "maintenance_score": 0.705,
+          "admissible": true,
+          "basis_proxy_score": 0.325,
+          "selection_order": 1,
+          "marginal_score": 1.045,
+          "selection_strategy": "deterministic_random_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "hydraulic_observability"
+          ]
+        },
+        {
+          "candidate_id": "N0_influent:temp_C",
+          "node_id": "N0_influent",
+          "zone": "influent",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.104,
+            "reaction_completion_observability": 0.22,
+            "oxidant_observability": 0.083,
+            "catalyst_activity_observability": 0.098,
+            "matrix_interference_observability": 0.148,
+            "hydraulic_observability": 0.051,
+            "fault_classification_observability": 0.202,
+            "control_latency_gain": 0.781,
+            "soft_sensor_reconstruction_gain": 0.241,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.266,
+          "maintenance_score": 0.81,
+          "admissible": true,
+          "basis_proxy_score": 0.214,
+          "selection_order": 2,
+          "marginal_score": 1.002,
+          "selection_strategy": "deterministic_random_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "soft_sensor_reconstruction_gain"
+          ]
+        },
+        {
+          "candidate_id": "N1_equalization_tank:UV254_abs",
+          "node_id": "N1_equalization_tank",
+          "zone": "buffer",
+          "modality": "UV254_abs",
+          "vector": {
+            "pollutant_residual_observability": 0.672,
+            "reaction_completion_observability": 0.599,
+            "oxidant_observability": 0.14,
+            "catalyst_activity_observability": 0.152,
+            "matrix_interference_observability": 0.451,
+            "hydraulic_observability": 0.063,
+            "fault_classification_observability": 0.482,
+            "control_latency_gain": 0.568,
+            "soft_sensor_reconstruction_gain": 0.713,
+            "cost_efficiency": 0.947
+          },
+          "cost_index": 0.902,
+          "maintenance_score": 0.482,
+          "admissible": true,
+          "basis_proxy_score": 0.427,
+          "selection_order": 3,
+          "marginal_score": 0.992,
+          "selection_strategy": "deterministic_random_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "soft_sensor_reconstruction_gain",
+            "pollutant_residual_observability"
+          ]
+        },
+        {
+          "candidate_id": "N4_recirculation_loop:EC_uScm",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "EC_uScm",
+          "vector": {
+            "pollutant_residual_observability": 0.274,
+            "reaction_completion_observability": 0.208,
+            "oxidant_observability": 0.147,
+            "catalyst_activity_observability": 0.143,
+            "matrix_interference_observability": 0.782,
+            "hydraulic_observability": 0.171,
+            "fault_classification_observability": 0.687,
+            "control_latency_gain": 0.812,
+            "soft_sensor_reconstruction_gain": 0.627,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.57,
+          "maintenance_score": 0.592,
+          "admissible": true,
+          "basis_proxy_score": 0.428,
+          "selection_order": 4,
+          "marginal_score": 0.974,
+          "selection_strategy": "deterministic_random_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "matrix_interference_observability"
+          ]
+        },
+        {
+          "candidate_id": "N6_effluent:temp_C",
+          "node_id": "N6_effluent",
+          "zone": "effluent",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.171,
+            "reaction_completion_observability": 0.343,
+            "oxidant_observability": 0.153,
+            "catalyst_activity_observability": 0.142,
+            "matrix_interference_observability": 0.082,
+            "hydraulic_observability": 0.05,
+            "fault_classification_observability": 0.155,
+            "control_latency_gain": 0.44,
+            "soft_sensor_reconstruction_gain": 0.272,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.289,
+          "maintenance_score": 0.774,
+          "admissible": true,
+          "basis_proxy_score": 0.201,
+          "selection_order": 5,
+          "marginal_score": 0.957,
+          "selection_strategy": "deterministic_random_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "reaction_completion_observability"
+          ]
+        },
+        {
+          "candidate_id": "N3_catalyst_bed_outlet:pH",
+          "node_id": "N3_catalyst_bed_outlet",
+          "zone": "catalyst_bed",
+          "modality": "pH",
+          "vector": {
+            "pollutant_residual_observability": 0.218,
+            "reaction_completion_observability": 0.366,
+            "oxidant_observability": 0.365,
+            "catalyst_activity_observability": 0.327,
+            "matrix_interference_observability": 0.192,
+            "hydraulic_observability": 0.069,
+            "fault_classification_observability": 0.314,
+            "control_latency_gain": 0.579,
+            "soft_sensor_reconstruction_gain": 0.334,
+            "cost_efficiency": 0.916
+          },
+          "cost_index": 0.649,
+          "maintenance_score": 0.452,
+          "admissible": true,
+          "basis_proxy_score": 0.307,
+          "selection_order": 6,
+          "marginal_score": 0.951,
+          "selection_strategy": "deterministic_random_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "reaction_completion_observability"
+          ]
+        }
+      ],
+      "selected_sensor_ids": [
+        "N1_equalization_tank:flow_Lmin",
+        "N0_influent:temp_C",
+        "N1_equalization_tank:UV254_abs",
+        "N4_recirculation_loop:EC_uScm",
+        "N6_effluent:temp_C",
+        "N3_catalyst_bed_outlet:pH"
+      ],
+      "selected_sensor_count": 6,
+      "coverage": {
+        "pollutant_residual_observability": 0.672,
+        "reaction_completion_observability": 0.599,
+        "oxidant_observability": 0.365,
+        "catalyst_activity_observability": 0.327,
+        "matrix_interference_observability": 0.782,
+        "hydraulic_observability": 0.76,
+        "fault_classification_observability": 0.687,
+        "control_latency_gain": 0.812,
+        "soft_sensor_reconstruction_gain": 0.713,
+        "cost_efficiency": 1.0,
+        "weak_state_coverage": 0.327,
+        "total_cost_index": 3.152,
+        "node_diversity_count": 5.0,
+        "modality_diversity_count": 5.0
+      },
+      "topology_coverage_score": 0.536,
+      "reconstruction_objective": 0.579,
+      "classification_objective": 0.652,
+      "robustness_objective": 0.664,
+      "cost_objective": 1.0,
+      "comparable_score": 0.664,
+      "axis_span_rank_ratio": 0.667,
+      "condition_number_proxy": 46.154,
+      "weak_axis_gap_count": 3,
+      "single_point_dependency_count": 4,
+      "layout_redundancy_score": 0.829,
+      "field_validation_boundary": "algorithm comparison is computed on synthetic topology prior unless data_origin=field_topology",
+      "prior_art_comparison_boundary": "baseline supports nonlegal distinction analysis only; it is not a patentability opinion and cannot prove field deployment performance without field topology and labels",
+      "rank": 4
+    },
+    {
+      "strategy_id": "topology_robust_cost_proxy",
+      "method_family": "graph/topology and robust cost constrained proxy",
+      "benchmark_role": "project_candidate_topology_aware_strategy",
+      "prior_art_family": "topology-aware robust monitoring placement",
+      "selected_sensor_plan": [
+        {
+          "candidate_id": "N0_influent:EC_uScm",
+          "node_id": "N0_influent",
+          "zone": "influent",
+          "modality": "EC_uScm",
+          "vector": {
+            "pollutant_residual_observability": 0.185,
+            "reaction_completion_observability": 0.146,
+            "oxidant_observability": 0.093,
+            "catalyst_activity_observability": 0.065,
+            "matrix_interference_observability": 0.851,
+            "hydraulic_observability": 0.116,
+            "fault_classification_observability": 0.553,
+            "control_latency_gain": 0.837,
+            "soft_sensor_reconstruction_gain": 0.482,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.434,
+          "maintenance_score": 0.736,
+          "admissible": true,
+          "basis_proxy_score": 0.37,
+          "selection_order": 1,
+          "marginal_score": 0.739,
+          "selection_strategy": "topology_robust_cost_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "matrix_interference_observability",
+            "control_latency_gain"
+          ]
+        },
+        {
+          "candidate_id": "N6_effluent:flow_Lmin",
+          "node_id": "N6_effluent",
+          "zone": "effluent",
+          "modality": "flow_Lmin",
+          "vector": {
+            "pollutant_residual_observability": 0.114,
+            "reaction_completion_observability": 0.305,
+            "oxidant_observability": 0.076,
+            "catalyst_activity_observability": 0.085,
+            "matrix_interference_observability": 0.092,
+            "hydraulic_observability": 0.598,
+            "fault_classification_observability": 0.3,
+            "control_latency_gain": 0.482,
+            "soft_sensor_reconstruction_gain": 0.393,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.441,
+          "maintenance_score": 0.722,
+          "admissible": true,
+          "basis_proxy_score": 0.272,
+          "selection_order": 2,
+          "marginal_score": 0.56,
+          "selection_strategy": "topology_robust_cost_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "hydraulic_observability",
+            "control_latency_gain"
+          ]
+        },
+        {
+          "candidate_id": "N4_recirculation_loop:flow_Lmin",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "flow_Lmin",
+          "vector": {
+            "pollutant_residual_observability": 0.103,
+            "reaction_completion_observability": 0.278,
+            "oxidant_observability": 0.065,
+            "catalyst_activity_observability": 0.129,
+            "matrix_interference_observability": 0.153,
+            "hydraulic_observability": 0.91,
+            "fault_classification_observability": 0.486,
+            "control_latency_gain": 0.83,
+            "soft_sensor_reconstruction_gain": 0.453,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.534,
+          "maintenance_score": 0.607,
+          "admissible": true,
+          "basis_proxy_score": 0.379,
+          "selection_order": 3,
+          "marginal_score": 0.431,
+          "selection_strategy": "topology_robust_cost_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "hydraulic_observability",
+            "control_latency_gain"
+          ]
+        },
+        {
+          "candidate_id": "N1_equalization_tank:temp_C",
+          "node_id": "N1_equalization_tank",
+          "zone": "buffer",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.127,
+            "reaction_completion_observability": 0.263,
+            "oxidant_observability": 0.102,
+            "catalyst_activity_observability": 0.109,
+            "matrix_interference_observability": 0.134,
+            "hydraulic_observability": 0.063,
+            "fault_classification_observability": 0.207,
+            "control_latency_gain": 0.722,
+            "soft_sensor_reconstruction_gain": 0.27,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.312,
+          "maintenance_score": 0.757,
+          "admissible": true,
+          "basis_proxy_score": 0.222,
+          "selection_order": 4,
+          "marginal_score": 0.339,
+          "selection_strategy": "topology_robust_cost_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "soft_sensor_reconstruction_gain"
+          ]
+        },
+        {
+          "candidate_id": "N5_polishing_inlet:temp_C",
+          "node_id": "N5_polishing_inlet",
+          "zone": "polishing",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.147,
+            "reaction_completion_observability": 0.3,
+            "oxidant_observability": 0.133,
+            "catalyst_activity_observability": 0.169,
+            "matrix_interference_observability": 0.095,
+            "hydraulic_observability": 0.053,
+            "fault_classification_observability": 0.177,
+            "control_latency_gain": 0.522,
+            "soft_sensor_reconstruction_gain": 0.258,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.365,
+          "maintenance_score": 0.669,
+          "admissible": true,
+          "basis_proxy_score": 0.206,
+          "selection_order": 5,
+          "marginal_score": 0.324,
+          "selection_strategy": "topology_robust_cost_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "reaction_completion_observability"
+          ]
+        },
+        {
+          "candidate_id": "N2_reactor_mid:temp_C",
+          "node_id": "N2_reactor_mid",
+          "zone": "reaction_core",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.166,
+            "reaction_completion_observability": 0.334,
+            "oxidant_observability": 0.135,
+            "catalyst_activity_observability": 0.199,
+            "matrix_interference_observability": 0.114,
+            "hydraulic_observability": 0.059,
+            "fault_classification_observability": 0.209,
+            "control_latency_gain": 0.617,
+            "soft_sensor_reconstruction_gain": 0.296,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.399,
+          "maintenance_score": 0.546,
+          "admissible": true,
+          "basis_proxy_score": 0.237,
+          "selection_order": 6,
+          "marginal_score": 0.307,
+          "selection_strategy": "topology_robust_cost_proxy",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "reaction_completion_observability"
+          ]
+        }
+      ],
+      "selected_sensor_ids": [
+        "N0_influent:EC_uScm",
+        "N6_effluent:flow_Lmin",
+        "N4_recirculation_loop:flow_Lmin",
+        "N1_equalization_tank:temp_C",
+        "N5_polishing_inlet:temp_C",
+        "N2_reactor_mid:temp_C"
+      ],
+      "selected_sensor_count": 6,
+      "coverage": {
+        "pollutant_residual_observability": 0.185,
+        "reaction_completion_observability": 0.334,
+        "oxidant_observability": 0.135,
+        "catalyst_activity_observability": 0.199,
+        "matrix_interference_observability": 0.851,
+        "hydraulic_observability": 0.91,
+        "fault_classification_observability": 0.553,
+        "control_latency_gain": 0.837,
+        "soft_sensor_reconstruction_gain": 0.482,
+        "cost_efficiency": 1.0,
+        "weak_state_coverage": 0.199,
+        "total_cost_index": 2.485,
+        "node_diversity_count": 6.0,
+        "modality_diversity_count": 3.0
+      },
+      "topology_coverage_score": 0.768,
+      "reconstruction_objective": 0.313,
+      "classification_objective": 0.625,
+      "robustness_objective": 0.67,
+      "cost_objective": 1.0,
+      "comparable_score": 0.622,
+      "axis_span_rank_ratio": 0.667,
+      "condition_number_proxy": 220.765,
+      "weak_axis_gap_count": 6,
+      "single_point_dependency_count": 2,
+      "layout_redundancy_score": 0.838,
+      "field_validation_boundary": "algorithm comparison is computed on synthetic topology prior unless data_origin=field_topology",
+      "prior_art_comparison_boundary": "baseline supports nonlegal distinction analysis only; it is not a patentability opinion and cannot prove field deployment performance without field topology and labels",
+      "rank": 5
+    },
+    {
+      "strategy_id": "cost_only_baseline",
+      "method_family": "low-cost rule baseline for prior-art comparison",
+      "benchmark_role": "naive_low_cost_prior_art_baseline",
+      "prior_art_family": "lowest-cost sensor placement rule",
+      "selected_sensor_plan": [
+        {
+          "candidate_id": "N0_influent:temp_C",
+          "node_id": "N0_influent",
+          "zone": "influent",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.104,
+            "reaction_completion_observability": 0.22,
+            "oxidant_observability": 0.083,
+            "catalyst_activity_observability": 0.098,
+            "matrix_interference_observability": 0.148,
+            "hydraulic_observability": 0.051,
+            "fault_classification_observability": 0.202,
+            "control_latency_gain": 0.781,
+            "soft_sensor_reconstruction_gain": 0.241,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.266,
+          "maintenance_score": 0.81,
+          "admissible": true,
+          "basis_proxy_score": 0.214,
+          "selection_order": 1,
+          "marginal_score": 0.864,
+          "selection_strategy": "cost_only_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "soft_sensor_reconstruction_gain"
+          ]
+        },
+        {
+          "candidate_id": "N6_effluent:temp_C",
+          "node_id": "N6_effluent",
+          "zone": "effluent",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.171,
+            "reaction_completion_observability": 0.343,
+            "oxidant_observability": 0.153,
+            "catalyst_activity_observability": 0.142,
+            "matrix_interference_observability": 0.082,
+            "hydraulic_observability": 0.05,
+            "fault_classification_observability": 0.155,
+            "control_latency_gain": 0.44,
+            "soft_sensor_reconstruction_gain": 0.272,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.289,
+          "maintenance_score": 0.774,
+          "admissible": true,
+          "basis_proxy_score": 0.201,
+          "selection_order": 2,
+          "marginal_score": 0.835,
+          "selection_strategy": "cost_only_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "reaction_completion_observability"
+          ]
+        },
+        {
+          "candidate_id": "N1_equalization_tank:temp_C",
+          "node_id": "N1_equalization_tank",
+          "zone": "buffer",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.127,
+            "reaction_completion_observability": 0.263,
+            "oxidant_observability": 0.102,
+            "catalyst_activity_observability": 0.109,
+            "matrix_interference_observability": 0.134,
+            "hydraulic_observability": 0.063,
+            "fault_classification_observability": 0.207,
+            "control_latency_gain": 0.722,
+            "soft_sensor_reconstruction_gain": 0.27,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.312,
+          "maintenance_score": 0.757,
+          "admissible": true,
+          "basis_proxy_score": 0.222,
+          "selection_order": 3,
+          "marginal_score": 0.829,
+          "selection_strategy": "cost_only_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "soft_sensor_reconstruction_gain"
+          ]
+        },
+        {
+          "candidate_id": "N0_influent:flow_Lmin",
+          "node_id": "N0_influent",
+          "zone": "influent",
+          "modality": "flow_Lmin",
+          "vector": {
+            "pollutant_residual_observability": 0.069,
+            "reaction_completion_observability": 0.195,
+            "oxidant_observability": 0.041,
+            "catalyst_activity_observability": 0.058,
+            "matrix_interference_observability": 0.167,
+            "hydraulic_observability": 0.617,
+            "fault_classification_observability": 0.391,
+            "control_latency_gain": 0.856,
+            "soft_sensor_reconstruction_gain": 0.348,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.406,
+          "maintenance_score": 0.754,
+          "admissible": true,
+          "basis_proxy_score": 0.305,
+          "selection_order": 4,
+          "marginal_score": 0.807,
+          "selection_strategy": "cost_only_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "hydraulic_observability"
+          ]
+        },
+        {
+          "candidate_id": "N5_polishing_inlet:temp_C",
+          "node_id": "N5_polishing_inlet",
+          "zone": "polishing",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.147,
+            "reaction_completion_observability": 0.3,
+            "oxidant_observability": 0.133,
+            "catalyst_activity_observability": 0.169,
+            "matrix_interference_observability": 0.095,
+            "hydraulic_observability": 0.053,
+            "fault_classification_observability": 0.177,
+            "control_latency_gain": 0.522,
+            "soft_sensor_reconstruction_gain": 0.258,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.365,
+          "maintenance_score": 0.669,
+          "admissible": true,
+          "basis_proxy_score": 0.206,
+          "selection_order": 5,
+          "marginal_score": 0.807,
+          "selection_strategy": "cost_only_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "reaction_completion_observability"
+          ]
+        },
+        {
+          "candidate_id": "N4_recirculation_loop:temp_C",
+          "node_id": "N4_recirculation_loop",
+          "zone": "loop",
+          "modality": "temp_C",
+          "vector": {
+            "pollutant_residual_observability": 0.154,
+            "reaction_completion_observability": 0.312,
+            "oxidant_observability": 0.131,
+            "catalyst_activity_observability": 0.214,
+            "matrix_interference_observability": 0.136,
+            "hydraulic_observability": 0.076,
+            "fault_classification_observability": 0.251,
+            "control_latency_gain": 0.758,
+            "soft_sensor_reconstruction_gain": 0.314,
+            "cost_efficiency": 1.0
+          },
+          "cost_index": 0.35,
+          "maintenance_score": 0.651,
+          "admissible": true,
+          "basis_proxy_score": 0.261,
+          "selection_order": 6,
+          "marginal_score": 0.805,
+          "selection_strategy": "cost_only_baseline",
+          "why_selected": [
+            "cost_efficiency",
+            "control_latency_gain",
+            "soft_sensor_reconstruction_gain"
+          ]
+        }
+      ],
+      "selected_sensor_ids": [
+        "N0_influent:temp_C",
+        "N6_effluent:temp_C",
+        "N1_equalization_tank:temp_C",
+        "N0_influent:flow_Lmin",
+        "N5_polishing_inlet:temp_C",
+        "N4_recirculation_loop:temp_C"
+      ],
+      "selected_sensor_count": 6,
+      "coverage": {
+        "pollutant_residual_observability": 0.171,
+        "reaction_completion_observability": 0.343,
+        "oxidant_observability": 0.153,
+        "catalyst_activity_observability": 0.214,
+        "matrix_interference_observability": 0.167,
+        "hydraulic_observability": 0.617,
+        "fault_classification_observability": 0.391,
+        "control_latency_gain": 0.856,
+        "soft_sensor_reconstruction_gain": 0.348,
+        "cost_efficiency": 1.0,
+        "weak_state_coverage": 0.167,
+        "total_cost_index": 1.988,
+        "node_diversity_count": 5.0,
+        "modality_diversity_count": 2.0
+      },
+      "topology_coverage_score": 0.536,
+      "reconstruction_objective": 0.251,
+      "classification_objective": 0.347,
+      "robustness_objective": 0.481,
+      "cost_objective": 1.0,
+      "comparable_score": 0.468,
+      "axis_span_rank_ratio": 0.667,
+      "condition_number_proxy": 1464.383,
+      "weak_axis_gap_count": 7,
+      "single_point_dependency_count": 1,
+      "layout_redundancy_score": 0.929,
+      "field_validation_boundary": "algorithm comparison is computed on synthetic topology prior unless data_origin=field_topology",
+      "prior_art_comparison_boundary": "baseline supports nonlegal distinction analysis only; it is not a patentability opinion and cannot prove field deployment performance without field topology and labels",
+      "rank": 6
+    }
+  ],
+  "baseline_comparison_contract": {
+    "comparison_status": "sparse_baseline_comparison_ready_needs_field_topology_and_labels",
+    "required_baseline_strategy_ids": [
+      "deterministic_random_baseline",
+      "cost_only_baseline",
+      "reconstruction_qr_proxy",
+      "classification_sspoc_proxy",
+      "topology_robust_cost_proxy"
+    ],
+    "observed_strategy_ids": [
+      "greedy_marginal",
+      "classification_sspoc_proxy",
+      "reconstruction_qr_proxy",
+      "deterministic_random_baseline",
+      "topology_robust_cost_proxy",
+      "cost_only_baseline"
+    ],
+    "missing_baseline_strategy_ids": [],
+    "selected_strategy_id": "greedy_marginal",
+    "selected_strategy_score": 0.726,
+    "best_vs_random_delta": 0.062,
+    "best_vs_cost_only_delta": 0.258,
+    "best_vs_sparse_reconstruction_delta": 0.034,
+    "best_vs_fault_classification_delta": 0.032,
+    "field_benchmark_required": true,
+    "claim_scope_use": "use these baselines to distinguish node-modality hidden-state placement from generic sparse placement, cost-only rules and random ablations",
+    "cannot_do": [
+      "cannot prove patentability",
+      "cannot prove field deployment performance",
+      "cannot replace field topology, node-specific time series or offline hidden-state labels"
+    ]
+  },
+  "selected_strategy": {
+    "strategy_id": "greedy_marginal",
+    "method_family": "current weighted marginal coverage baseline",
+    "benchmark_role": "project_candidate_strategy",
+    "prior_art_family": "weighted hidden-state coverage heuristic",
+    "selected_sensor_ids": [
+      "N4_recirculation_loop:UV254_abs",
+      "N3_catalyst_bed_outlet:turbidity_NTU",
+      "N2_reactor_mid:ORP_mV",
+      "N0_influent:EC_uScm",
+      "N1_equalization_tank:flow_Lmin",
+      "N5_polishing_inlet:turbidity_NTU"
+    ],
+    "selected_sensor_count": 6,
+    "coverage": {
+      "pollutant_residual_observability": 0.814,
+      "reaction_completion_observability": 0.712,
+      "oxidant_observability": 0.775,
+      "catalyst_activity_observability": 0.3,
+      "matrix_interference_observability": 0.851,
+      "hydraulic_observability": 0.76,
+      "fault_classification_observability": 0.587,
+      "control_latency_gain": 0.837,
+      "soft_sensor_reconstruction_gain": 0.827,
+      "cost_efficiency": 1.0,
+      "weak_state_coverage": 0.3,
+      "total_cost_index": 4.176,
+      "node_diversity_count": 6.0,
+      "modality_diversity_count": 5.0
+    },
+    "topology_coverage_score": 0.768,
+    "reconstruction_objective": 0.682,
+    "classification_objective": 0.628,
+    "robustness_objective": 0.672,
+    "cost_objective": 1.0,
+    "comparable_score": 0.726,
+    "axis_span_rank_ratio": 0.667,
+    "condition_number_proxy": 61.726,
+    "weak_axis_gap_count": 2,
+    "single_point_dependency_count": 4,
+    "layout_redundancy_score": 0.825,
+    "field_validation_boundary": "algorithm comparison is computed on synthetic topology prior unless data_origin=field_topology",
+    "prior_art_comparison_boundary": "baseline supports nonlegal distinction analysis only; it is not a patentability opinion and cannot prove field deployment performance without field topology and labels",
+    "rank": 1,
+    "selected_sensor_plan": [
+      {
+        "candidate_id": "N4_recirculation_loop:UV254_abs",
+        "node_id": "N4_recirculation_loop",
+        "zone": "loop",
+        "modality": "UV254_abs",
+        "vector": {
+          "pollutant_residual_observability": 0.814,
+          "reaction_completion_observability": 0.712,
+          "oxidant_observability": 0.18,
+          "catalyst_activity_observability": 0.3,
+          "matrix_interference_observability": 0.459,
+          "hydraulic_observability": 0.076,
+          "fault_classification_observability": 0.587,
+          "control_latency_gain": 0.595,
+          "soft_sensor_reconstruction_gain": 0.827,
+          "cost_efficiency": 0.827
+        },
+        "cost_index": 1.012,
+        "maintenance_score": 0.414,
+        "admissible": true,
+        "basis_proxy_score": 0.506,
+        "selection_order": 1,
+        "marginal_score": 0.59,
+        "selection_strategy": "greedy_marginal",
+        "why_selected": [
+          "soft_sensor_reconstruction_gain",
+          "cost_efficiency",
+          "pollutant_residual_observability"
+        ]
+      },
+      {
+        "candidate_id": "N3_catalyst_bed_outlet:turbidity_NTU",
+        "node_id": "N3_catalyst_bed_outlet",
+        "zone": "catalyst_bed",
+        "modality": "turbidity_NTU",
+        "vector": {
+          "pollutant_residual_observability": 0.327,
+          "reaction_completion_observability": 0.256,
+          "oxidant_observability": 0.087,
+          "catalyst_activity_observability": 0.231,
+          "matrix_interference_observability": 0.562,
+          "hydraulic_observability": 0.248,
+          "fault_classification_observability": 0.568,
+          "control_latency_gain": 0.579,
+          "soft_sensor_reconstruction_gain": 0.541,
+          "cost_efficiency": 0.801
+        },
+        "cost_index": 0.826,
+        "maintenance_score": 0.383,
+        "admissible": true,
+        "basis_proxy_score": 0.378,
+        "selection_order": 2,
+        "marginal_score": 0.348,
+        "selection_strategy": "greedy_marginal",
+        "why_selected": [
+          "cost_efficiency",
+          "control_latency_gain",
+          "fault_classification_observability"
+        ]
+      },
+      {
+        "candidate_id": "N2_reactor_mid:ORP_mV",
+        "node_id": "N2_reactor_mid",
+        "zone": "reaction_core",
+        "modality": "ORP_mV",
+        "vector": {
+          "pollutant_residual_observability": 0.406,
+          "reaction_completion_observability": 0.65,
+          "oxidant_observability": 0.775,
+          "catalyst_activity_observability": 0.252,
+          "matrix_interference_observability": 0.229,
+          "hydraulic_observability": 0.089,
+          "fault_classification_observability": 0.453,
+          "control_latency_gain": 0.631,
+          "soft_sensor_reconstruction_gain": 0.559,
+          "cost_efficiency": 0.866
+        },
+        "cost_index": 0.756,
+        "maintenance_score": 0.434,
+        "admissible": true,
+        "basis_proxy_score": 0.449,
+        "selection_order": 3,
+        "marginal_score": 0.321,
+        "selection_strategy": "greedy_marginal",
+        "why_selected": [
+          "cost_efficiency",
+          "oxidant_observability",
+          "reaction_completion_observability"
+        ]
+      },
+      {
+        "candidate_id": "N0_influent:EC_uScm",
+        "node_id": "N0_influent",
+        "zone": "influent",
+        "modality": "EC_uScm",
+        "vector": {
+          "pollutant_residual_observability": 0.185,
+          "reaction_completion_observability": 0.146,
+          "oxidant_observability": 0.093,
+          "catalyst_activity_observability": 0.065,
+          "matrix_interference_observability": 0.851,
+          "hydraulic_observability": 0.116,
+          "fault_classification_observability": 0.553,
+          "control_latency_gain": 0.837,
+          "soft_sensor_reconstruction_gain": 0.482,
+          "cost_efficiency": 1.0
+        },
+        "cost_index": 0.434,
+        "maintenance_score": 0.736,
+        "admissible": true,
+        "basis_proxy_score": 0.37,
+        "selection_order": 4,
+        "marginal_score": 0.307,
+        "selection_strategy": "greedy_marginal",
+        "why_selected": [
+          "cost_efficiency",
+          "matrix_interference_observability",
+          "control_latency_gain"
+        ]
+      },
+      {
+        "candidate_id": "N1_equalization_tank:flow_Lmin",
+        "node_id": "N1_equalization_tank",
+        "zone": "buffer",
+        "modality": "flow_Lmin",
+        "vector": {
+          "pollutant_residual_observability": 0.085,
+          "reaction_completion_observability": 0.234,
+          "oxidant_observability": 0.051,
+          "catalyst_activity_observability": 0.065,
+          "matrix_interference_observability": 0.15,
+          "hydraulic_observability": 0.76,
+          "fault_classification_observability": 0.4,
+          "control_latency_gain": 0.791,
+          "soft_sensor_reconstruction_gain": 0.39,
+          "cost_efficiency": 1.0
+        },
+        "cost_index": 0.476,
+        "maintenance_score": 0.705,
+        "admissible": true,
+        "basis_proxy_score": 0.325,
+        "selection_order": 5,
+        "marginal_score": 0.245,
+        "selection_strategy": "greedy_marginal",
+        "why_selected": [
+          "cost_efficiency",
+          "control_latency_gain",
+          "hydraulic_observability"
+        ]
+      },
+      {
+        "candidate_id": "N5_polishing_inlet:turbidity_NTU",
+        "node_id": "N5_polishing_inlet",
+        "zone": "polishing",
+        "modality": "turbidity_NTU",
+        "vector": {
+          "pollutant_residual_observability": 0.294,
+          "reaction_completion_observability": 0.233,
+          "oxidant_observability": 0.083,
+          "catalyst_activity_observability": 0.136,
+          "matrix_interference_observability": 0.488,
+          "hydraulic_observability": 0.238,
+          "fault_classification_observability": 0.449,
+          "control_latency_gain": 0.51,
+          "soft_sensor_reconstruction_gain": 0.487,
+          "cost_efficiency": 1.0
+        },
+        "cost_index": 0.672,
+        "maintenance_score": 0.502,
+        "admissible": true,
+        "basis_proxy_score": 0.324,
+        "selection_order": 6,
+        "marginal_score": 0.214,
+        "selection_strategy": "greedy_marginal",
+        "why_selected": [
+          "cost_efficiency",
+          "control_latency_gain",
+          "matrix_interference_observability"
+        ]
+      }
+    ]
+  },
+  "coverage": {
+    "pollutant_residual_observability": 0.814,
+    "reaction_completion_observability": 0.712,
+    "oxidant_observability": 0.775,
+    "catalyst_activity_observability": 0.3,
+    "matrix_interference_observability": 0.851,
+    "hydraulic_observability": 0.76,
+    "fault_classification_observability": 0.587,
+    "control_latency_gain": 0.837,
+    "soft_sensor_reconstruction_gain": 0.827,
+    "cost_efficiency": 1.0,
+    "weak_state_coverage": 0.3,
+    "total_cost_index": 4.176,
+    "node_diversity_count": 6.0,
+    "modality_diversity_count": 5.0
+  },
+  "placement_diagnostics": {
+    "diagnostic_status": "placement_diagnostics_need_axis_patch_or_field_benchmark",
+    "selected_matrix_shape": [
+      6,
+      9
+    ],
+    "candidate_matrix_shape": [
+      49,
+      9
+    ],
+    "selected_matrix_rank": 6,
+    "axis_span_rank_ratio": 0.667,
+    "singular_values": [
+      3.1262,
+      0.9444,
+      0.7247,
+      0.5212,
+      0.1642,
+      0.0506
+    ],
+    "condition_number_proxy": 61.726,
+    "inverse_condition_score": 0.358,
+    "reconstruction_stability_score": 0.401,
+    "layout_redundancy_score": 0.825,
+    "weak_axis_gap_count": 2,
+    "weak_axis_gaps": [
+      {
+        "axis": "catalyst_activity_observability",
+        "current_coverage": 0.3,
+        "target": 0.55,
+        "gap": 0.25,
+        "best_available_candidate": "N3_catalyst_bed_outlet:UV254_abs",
+        "best_available_value": 0.404,
+        "recoverable_by_current_candidate_pool": false
+      },
+      {
+        "axis": "fault_classification_observability",
+        "current_coverage": 0.587,
+        "target": 0.6,
+        "gap": 0.013,
+        "best_available_candidate": "N4_recirculation_loop:EC_uScm",
+        "best_available_value": 0.687,
+        "recoverable_by_current_candidate_pool": true
+      }
+    ],
+    "single_point_dependency_count": 4,
+    "critical_sensor_dependencies": [
+      {
+        "candidate_id": "N2_reactor_mid:ORP_mV",
+        "max_axis_drop": 0.595,
+        "weak_state_drop": 0.0,
+        "logdet_drop": 0.138,
+        "most_affected_axes": [
+          "oxidant_observability"
+        ]
+      },
+      {
+        "candidate_id": "N1_equalization_tank:flow_Lmin",
+        "max_axis_drop": 0.512,
+        "weak_state_drop": 0.0,
+        "logdet_drop": 0.031,
+        "most_affected_axes": [
+          "hydraulic_observability"
+        ]
+      },
+      {
+        "candidate_id": "N4_recirculation_loop:UV254_abs",
+        "max_axis_drop": 0.408,
+        "weak_state_drop": 0.048,
+        "logdet_drop": 0.0,
+        "most_affected_axes": [
+          "pollutant_residual_observability",
+          "soft_sensor_reconstruction_gain",
+          "reaction_completion_observability"
+        ]
+      },
+      {
+        "candidate_id": "N0_influent:EC_uScm",
+        "max_axis_drop": 0.289,
+        "weak_state_drop": 0.0,
+        "logdet_drop": 0.0,
+        "most_affected_axes": [
+          "matrix_interference_observability",
+          "control_latency_gain"
+        ]
+      }
+    ],
+    "candidate_matrix_summary": {
+      "candidate_count": 49,
+      "admissible_candidate_count": 49,
+      "budget_feasible_candidate_count": 49,
+      "axis_count": 9
+    },
+    "field_benchmark_required": true,
+    "why_it_matters": "coverage 只能说明某些 hidden-state axis 被看见；rank、condition number 和 single-point dependency 用于判断这些低成本观测是否足以支撑软传感重建和多设施控制 replay。"
+  },
+  "hidden_state_requirement_ledger": {
+    "ledger_status": "hidden_state_requirement_ledger_ready_with_gaps",
+    "hidden_state_count": 6,
+    "ready_hidden_state_count": 4,
+    "control_ready_hidden_state_count": 0,
+    "unresolved_hidden_state_count": 6,
+    "remaining_budget": 1.624,
+    "state_rows": [
+      {
+        "hidden_state": "pollutant_residual",
+        "core_question": "末端残留污染物是否足以支撑暂存、回流或放行判断",
+        "primary_axes": [
+          "pollutant_residual_observability",
+          "soft_sensor_reconstruction_gain"
+        ],
+        "secondary_axes": [
+          "reaction_completion_observability",
+          "oxidant_observability"
+        ],
+        "target": 0.6,
+        "axis_scores": {
+          "pollutant_residual_observability": 0.814,
+          "soft_sensor_reconstruction_gain": 0.827
+        },
+        "secondary_axis_scores": {
+          "reaction_completion_observability": 0.712,
+          "oxidant_observability": 0.775
+        },
+        "min_primary_axis_score": 0.814,
+        "ready_for_soft_sensor_estimation": true,
+        "ready_for_control_use": false,
+        "support_sensor_count": 6,
+        "support_sensor_ids": [
+          "N4_recirculation_loop:UV254_abs",
+          "N2_reactor_mid:ORP_mV",
+          "N3_catalyst_bed_outlet:turbidity_NTU",
+          "N5_polishing_inlet:turbidity_NTU",
+          "N0_influent:EC_uScm"
+        ],
+        "zone_support_count": 6,
+        "modality_support_count": 5,
+        "missing_required_zones": [
+          "effluent"
+        ],
+        "missing_required_modalities": [],
+        "candidate_patch": {
+          "patch_status": "state_target_already_met",
+          "candidate_pool_recoverable": true,
+          "recommended_candidate_ids": [],
+          "estimated_added_cost": 0.0,
+          "remaining_budget_after_patch": 1.624,
+          "projected_primary_axis_scores": {
+            "pollutant_residual_observability": 0.814,
+            "soft_sensor_reconstruction_gain": 0.827
+          },
+          "unresolved_primary_axes": [],
+          "boundary": "current selected layout already satisfies this hidden-state design target"
+        },
+        "unresolved_requirements": [
+          "field_topology_and_labels_required",
+          "missing_required_zone:effluent"
+        ],
+        "field_evidence_needed": [
+          "offline_lab_results.pollutant_residual",
+          "field_holdout_release_labels"
+        ],
+        "evidence_boundary": "soft-sensor design prior only"
+      },
+      {
+        "hidden_state": "reaction_completion",
+        "core_question": "反应是否完成，是否需要延长停留时间或回流",
+        "primary_axes": [
+          "reaction_completion_observability",
+          "oxidant_observability"
+        ],
+        "secondary_axes": [
+          "soft_sensor_reconstruction_gain",
+          "control_latency_gain"
+        ],
+        "target": 0.6,
+        "axis_scores": {
+          "reaction_completion_observability": 0.712,
+          "oxidant_observability": 0.775
+        },
+        "secondary_axis_scores": {
+          "soft_sensor_reconstruction_gain": 0.827,
+          "control_latency_gain": 0.837
+        },
+        "min_primary_axis_score": 0.712,
+        "ready_for_soft_sensor_estimation": true,
+        "ready_for_control_use": false,
+        "support_sensor_count": 6,
+        "support_sensor_ids": [
+          "N0_influent:EC_uScm",
+          "N4_recirculation_loop:UV254_abs",
+          "N1_equalization_tank:flow_Lmin",
+          "N2_reactor_mid:ORP_mV",
+          "N3_catalyst_bed_outlet:turbidity_NTU"
+        ],
+        "zone_support_count": 6,
+        "modality_support_count": 5,
+        "missing_required_zones": [],
+        "missing_required_modalities": [
+          "pH"
+        ],
+        "candidate_patch": {
+          "patch_status": "state_target_already_met",
+          "candidate_pool_recoverable": true,
+          "recommended_candidate_ids": [],
+          "estimated_added_cost": 0.0,
+          "remaining_budget_after_patch": 1.624,
+          "projected_primary_axis_scores": {
+            "reaction_completion_observability": 0.712,
+            "oxidant_observability": 0.775
+          },
+          "unresolved_primary_axes": [],
+          "boundary": "current selected layout already satisfies this hidden-state design target"
+        },
+        "unresolved_requirements": [
+          "field_topology_and_labels_required",
+          "missing_required_modality:pH"
+        ],
+        "field_evidence_needed": [
+          "offline_lab_results.reaction_completion_proxy",
+          "known_HRT_or_contact_time"
+        ],
+        "evidence_boundary": "soft-sensor design prior only"
+      },
+      {
+        "hidden_state": "catalyst_activity",
+        "core_question": "催化剂是否衰减、堵塞或需要再生，能否阻止错误催化剂动作",
+        "primary_axes": [
+          "catalyst_activity_observability",
+          "hydraulic_observability"
+        ],
+        "secondary_axes": [
+          "reaction_completion_observability",
+          "soft_sensor_reconstruction_gain"
+        ],
+        "target": 0.55,
+        "axis_scores": {
+          "catalyst_activity_observability": 0.3,
+          "hydraulic_observability": 0.76
+        },
+        "secondary_axis_scores": {
+          "reaction_completion_observability": 0.712,
+          "soft_sensor_reconstruction_gain": 0.827
+        },
+        "min_primary_axis_score": 0.3,
+        "ready_for_soft_sensor_estimation": false,
+        "ready_for_control_use": false,
+        "support_sensor_count": 6,
+        "support_sensor_ids": [
+          "N4_recirculation_loop:UV254_abs",
+          "N1_equalization_tank:flow_Lmin",
+          "N2_reactor_mid:ORP_mV",
+          "N3_catalyst_bed_outlet:turbidity_NTU",
+          "N5_polishing_inlet:turbidity_NTU"
+        ],
+        "zone_support_count": 6,
+        "modality_support_count": 5,
+        "missing_required_zones": [],
+        "missing_required_modalities": [
+          "pressure_drop_kPa"
+        ],
+        "candidate_patch": {
+          "patch_status": "candidate_pool_patch_incomplete",
+          "candidate_pool_recoverable": false,
+          "recommended_candidate_ids": [
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N4_recirculation_loop:ORP_mV"
+          ],
+          "estimated_added_cost": 1.512,
+          "remaining_budget_after_patch": 0.112,
+          "projected_primary_axis_scores": {
+            "catalyst_activity_observability": 0.366,
+            "hydraulic_observability": 0.76
+          },
+          "unresolved_primary_axes": [
+            "catalyst_activity_observability"
+          ],
+          "boundary": "current candidate pool or remaining budget cannot satisfy this hidden-state design target"
+        },
+        "unresolved_requirements": [
+          "candidate_pool_cannot_reach_primary_axis_target",
+          "field_topology_and_labels_required",
+          "missing_required_modality:pressure_drop_kPa",
+          "pressure_drop_or_headloss_proxy_not_in_selected_layout"
+        ],
+        "field_evidence_needed": [
+          "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:UV254_abs",
+          "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:ORP_mV",
+          "node_modality_sensor_timeseries.N3_catalyst_bed:pressure_drop_kPa",
+          "offline_lab_results.catalyst_activity",
+          "campaign_operation_log.regeneration_event",
+          "site_topology_or_bed_geometry.nominal_HRT_min"
+        ],
+        "evidence_boundary": "soft-sensor design prior only"
+      },
+      {
+        "hidden_state": "matrix_interference",
+        "core_question": "进水基质冲击是否正在抑制处理效率，是否需要预处理/暂存",
+        "primary_axes": [
+          "matrix_interference_observability",
+          "fault_classification_observability"
+        ],
+        "secondary_axes": [
+          "control_latency_gain",
+          "soft_sensor_reconstruction_gain"
+        ],
+        "target": 0.62,
+        "axis_scores": {
+          "matrix_interference_observability": 0.851,
+          "fault_classification_observability": 0.587
+        },
+        "secondary_axis_scores": {
+          "control_latency_gain": 0.837,
+          "soft_sensor_reconstruction_gain": 0.827
+        },
+        "min_primary_axis_score": 0.587,
+        "ready_for_soft_sensor_estimation": false,
+        "ready_for_control_use": false,
+        "support_sensor_count": 6,
+        "support_sensor_ids": [
+          "N0_influent:EC_uScm",
+          "N4_recirculation_loop:UV254_abs",
+          "N1_equalization_tank:flow_Lmin",
+          "N2_reactor_mid:ORP_mV",
+          "N3_catalyst_bed_outlet:turbidity_NTU"
+        ],
+        "zone_support_count": 6,
+        "modality_support_count": 5,
+        "missing_required_zones": [],
+        "missing_required_modalities": [],
+        "candidate_patch": {
+          "patch_status": "candidate_pool_patch_available",
+          "candidate_pool_recoverable": true,
+          "recommended_candidate_ids": [
+            "N0_influent:temp_C",
+            "N4_recirculation_loop:EC_uScm"
+          ],
+          "estimated_added_cost": 0.836,
+          "remaining_budget_after_patch": 0.788,
+          "projected_primary_axis_scores": {
+            "matrix_interference_observability": 0.851,
+            "fault_classification_observability": 0.687
+          },
+          "unresolved_primary_axes": [],
+          "boundary": "current candidate pool can satisfy this hidden-state design target within remaining budget"
+        },
+        "unresolved_requirements": [
+          "field_topology_and_labels_required"
+        ],
+        "field_evidence_needed": [
+          "field_labeled_fast_proxy_event_log.matrix_shock",
+          "offline_lab_results.matrix_interference"
+        ],
+        "evidence_boundary": "soft-sensor design prior only"
+      },
+      {
+        "hidden_state": "hydraulic_delay",
+        "core_question": "循环、回流、暂存和执行器延迟是否给诊断争取了足够时间",
+        "primary_axes": [
+          "hydraulic_observability",
+          "control_latency_gain"
+        ],
+        "secondary_axes": [
+          "soft_sensor_reconstruction_gain",
+          "matrix_interference_observability"
+        ],
+        "target": 0.55,
+        "axis_scores": {
+          "hydraulic_observability": 0.76,
+          "control_latency_gain": 0.837
+        },
+        "secondary_axis_scores": {
+          "soft_sensor_reconstruction_gain": 0.827,
+          "matrix_interference_observability": 0.851
+        },
+        "min_primary_axis_score": 0.76,
+        "ready_for_soft_sensor_estimation": true,
+        "ready_for_control_use": false,
+        "support_sensor_count": 6,
+        "support_sensor_ids": [
+          "N0_influent:EC_uScm",
+          "N4_recirculation_loop:UV254_abs",
+          "N1_equalization_tank:flow_Lmin",
+          "N2_reactor_mid:ORP_mV",
+          "N3_catalyst_bed_outlet:turbidity_NTU"
+        ],
+        "zone_support_count": 6,
+        "modality_support_count": 5,
+        "missing_required_zones": [],
+        "missing_required_modalities": [
+          "pressure_drop_kPa"
+        ],
+        "candidate_patch": {
+          "patch_status": "state_target_already_met",
+          "candidate_pool_recoverable": true,
+          "recommended_candidate_ids": [],
+          "estimated_added_cost": 0.0,
+          "remaining_budget_after_patch": 1.624,
+          "projected_primary_axis_scores": {
+            "hydraulic_observability": 0.76,
+            "control_latency_gain": 0.837
+          },
+          "unresolved_primary_axes": [],
+          "boundary": "current selected layout already satisfies this hidden-state design target"
+        },
+        "unresolved_requirements": [
+          "field_topology_and_labels_required",
+          "missing_required_modality:pressure_drop_kPa",
+          "pressure_drop_or_headloss_proxy_not_in_selected_layout"
+        ],
+        "field_evidence_needed": [
+          "campaign_operation_log.effect_time_min",
+          "campaign_operation_log.hold_time_min",
+          "campaign_operation_log.recycle_ratio",
+          "site_topology_or_bed_geometry.flow_Lmin"
+        ],
+        "evidence_boundary": "soft-sensor design prior only"
+      },
+      {
+        "hidden_state": "release_or_byproduct_risk",
+        "core_question": "末端放行或副产物风险是否需要暂存验证或末端精处理",
+        "primary_axes": [
+          "pollutant_residual_observability",
+          "reaction_completion_observability",
+          "oxidant_observability"
+        ],
+        "secondary_axes": [
+          "fault_classification_observability"
+        ],
+        "target": 0.58,
+        "axis_scores": {
+          "pollutant_residual_observability": 0.814,
+          "reaction_completion_observability": 0.712,
+          "oxidant_observability": 0.775
+        },
+        "secondary_axis_scores": {
+          "fault_classification_observability": 0.587
+        },
+        "min_primary_axis_score": 0.712,
+        "ready_for_soft_sensor_estimation": true,
+        "ready_for_control_use": false,
+        "support_sensor_count": 6,
+        "support_sensor_ids": [
+          "N4_recirculation_loop:UV254_abs",
+          "N2_reactor_mid:ORP_mV",
+          "N3_catalyst_bed_outlet:turbidity_NTU",
+          "N0_influent:EC_uScm",
+          "N5_polishing_inlet:turbidity_NTU"
+        ],
+        "zone_support_count": 6,
+        "modality_support_count": 5,
+        "missing_required_zones": [
+          "effluent"
+        ],
+        "missing_required_modalities": [
+          "pH"
+        ],
+        "candidate_patch": {
+          "patch_status": "state_target_already_met",
+          "candidate_pool_recoverable": true,
+          "recommended_candidate_ids": [],
+          "estimated_added_cost": 0.0,
+          "remaining_budget_after_patch": 1.624,
+          "projected_primary_axis_scores": {
+            "pollutant_residual_observability": 0.814,
+            "reaction_completion_observability": 0.712,
+            "oxidant_observability": 0.775
+          },
+          "unresolved_primary_axes": [],
+          "boundary": "current selected layout already satisfies this hidden-state design target"
+        },
+        "unresolved_requirements": [
+          "field_topology_and_labels_required",
+          "missing_required_modality:pH",
+          "missing_required_zone:effluent"
+        ],
+        "field_evidence_needed": [
+          "offline_lab_results.byproduct_or_release_risk",
+          "human_reviewed_release_gate_labels"
+        ],
+        "evidence_boundary": "soft-sensor design prior only"
+      }
+    ],
+    "pressure_headloss_candidate_pool": {
+      "pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+      "candidate_count": 3,
+      "target_hidden_states": [
+        "catalyst_activity",
+        "hydraulic_delay"
+      ],
+      "candidate_ids": [
+        "N3_catalyst_bed:pressure_drop_kPa",
+        "N3_catalyst_bed:headloss_kPa_per_m",
+        "N3_catalyst_bed:flow_normalized_pressure_residual"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "N3_catalyst_bed:pressure_drop_kPa",
+          "candidate_type": "direct_low_cost_differential_pressure_sensor",
+          "node_id": "N3_catalyst_bed",
+          "zone": "catalyst_bed",
+          "modality": "pressure_drop_kPa",
+          "estimated_cost_index": 0.68,
+          "primary_supported_states": [
+            "catalyst_activity",
+            "hydraulic_delay"
+          ],
+          "supports_axes": {
+            "catalyst_activity_observability": 0.72,
+            "hydraulic_observability": 0.74,
+            "fault_classification_observability": 0.66
+          },
+          "why_needed": "压降能区分催化剂活性衰减、床层堵塞和水力短路，是催化剂灰箱状态的最低成本补充观测。",
+          "required_table": "node_modality_sensor_timeseries",
+          "required_fields": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "modality",
+            "value",
+            "unit",
+            "sensor_status",
+            "instrument_id"
+          ],
+          "target_hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay"
+          ],
+          "field_labels_required": [
+            "offline_lab_results.catalyst_activity",
+            "campaign_operation_log.regeneration_event",
+            "field_proxy_holdout_label"
+          ],
+          "evidence_stage_required": "field_proxy_holdout_before_control_relaxation",
+          "can_resolve_without_field_package": false,
+          "design_boundary": "supplemental pressure/headloss candidate only; not part of selected installed layout until field topology and installability are reviewed"
+        },
+        {
+          "candidate_id": "N3_catalyst_bed:headloss_kPa_per_m",
+          "candidate_type": "derived_headloss_proxy_from_pressure_and_bed_geometry",
+          "node_id": "N3_catalyst_bed",
+          "zone": "catalyst_bed",
+          "modality": "headloss_kPa_per_m",
+          "estimated_cost_index": 0.18,
+          "primary_supported_states": [
+            "catalyst_activity",
+            "hydraulic_delay"
+          ],
+          "supports_axes": {
+            "catalyst_activity_observability": 0.64,
+            "hydraulic_observability": 0.7,
+            "soft_sensor_reconstruction_gain": 0.52
+          },
+          "why_needed": "把压降按床层长度或床体几何归一化，可减少不同装填/流量条件下的外推风险。",
+          "required_table": "site_topology_or_bed_geometry",
+          "required_fields": [
+            "node_id",
+            "bed_length_m",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin"
+          ],
+          "target_hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay"
+          ],
+          "field_labels_required": [
+            "offline_lab_results.catalyst_activity",
+            "campaign_operation_log.regeneration_event",
+            "field_proxy_holdout_label"
+          ],
+          "evidence_stage_required": "field_proxy_holdout_before_control_relaxation",
+          "can_resolve_without_field_package": false,
+          "design_boundary": "supplemental pressure/headloss candidate only; not part of selected installed layout until field topology and installability are reviewed"
+        },
+        {
+          "candidate_id": "N3_catalyst_bed:flow_normalized_pressure_residual",
+          "candidate_type": "grey_box_residual_proxy",
+          "node_id": "N3_catalyst_bed",
+          "zone": "catalyst_bed",
+          "modality": "flow_normalized_pressure_residual",
+          "estimated_cost_index": 0.0,
+          "primary_supported_states": [
+            "catalyst_activity",
+            "hydraulic_delay"
+          ],
+          "supports_axes": {
+            "catalyst_activity_observability": 0.6,
+            "hydraulic_observability": 0.76,
+            "control_latency_gain": 0.56
+          },
+          "why_needed": "用 pressure_drop、flow 和 HRT 构造残差，帮助区分真实催化剂衰减与流量波动导致的表观性能下降。",
+          "required_table": "node_modality_sensor_timeseries + site_topology_or_bed_geometry",
+          "required_fields": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "flow_Lmin",
+            "nominal_HRT_min",
+            "bed_volume"
+          ],
+          "target_hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay"
+          ],
+          "field_labels_required": [
+            "offline_lab_results.catalyst_activity",
+            "campaign_operation_log.regeneration_event",
+            "field_proxy_holdout_label"
+          ],
+          "evidence_stage_required": "field_proxy_holdout_before_control_relaxation",
+          "can_resolve_without_field_package": false,
+          "design_boundary": "supplemental pressure/headloss candidate only; not part of selected installed layout until field topology and installability are reviewed"
+        }
+      ],
+      "field_package_contract": {
+        "required_tables": [
+          "node_modality_sensor_timeseries",
+          "offline_lab_results",
+          "campaign_operation_log",
+          "site_topology_or_bed_geometry"
+        ],
+        "minimum_matched_batch_count": 3,
+        "required_batch_alignment": "pressure/headloss candidate rows, catalyst_activity labels, regeneration events and HRT/flow geometry must share batch_id before Agent51 field proxy holdout can score them",
+        "cannot_do": [
+          "cannot relax Agent49 catalyst uncertainty block",
+          "cannot write actuator policy",
+          "cannot convert synthetic design prior to field-supported claim"
+        ]
+      },
+      "field_validation_boundary": "R8b candidate pool only turns hard-unresolved sensing needs into concrete field package requirements; it does not validate catalyst activity.",
+      "data_origin": "synthetic_topology_prior"
+    },
+    "minimum_cost_requirement_patch": {
+      "patch_status": "minimum_cost_patch_requires_new_modality_or_field_label",
+      "recommended_candidate_ids": [
+        "N3_catalyst_bed_outlet:ORP_mV",
+        "N4_recirculation_loop:ORP_mV",
+        "N0_influent:temp_C",
+        "N4_recirculation_loop:EC_uScm"
+      ],
+      "estimated_added_cost_upper_bound": 2.348,
+      "unresolved_hidden_states": [
+        "catalyst_activity",
+        "matrix_interference"
+      ],
+      "hard_unresolved_hidden_states": [
+        "catalyst_activity"
+      ],
+      "pressure_headloss_candidate_pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+      "pressure_headloss_candidate_count": 3,
+      "pressure_headloss_candidate_ids": [
+        "N3_catalyst_bed:pressure_drop_kPa",
+        "N3_catalyst_bed:headloss_kPa_per_m",
+        "N3_catalyst_bed:flow_normalized_pressure_residual"
+      ],
+      "why_it_matters": "This patch translates hidden-state estimation needs into node-modality additions; it is still a design-prior recommendation until field topology and holdout labels exist."
+    },
+    "field_validation_boundary": "hidden-state requirement coverage is a synthetic/design-prior contract until field topology, node-level timeseries and offline labels are imported"
+  },
+  "hydraulic_path_coverage_contract": {
+    "path_id": "low_cost_circular_treatment_path_v1",
+    "contract_status": "hydraulic_path_contract_ready_needs_field_topology_and_release_endpoint",
+    "data_origin": "synthetic_topology_prior",
+    "path_stage_count": 6,
+    "covered_stage_count": 6,
+    "directly_covered_stage_count": 5,
+    "proxy_covered_stage_count": 1,
+    "path_stage_rows": [
+      {
+        "stage_id": "S0_influent_matrix",
+        "stage_label": "进水/基质冲击入口",
+        "process_role": "识别进水基质、盐度、浊度或有机负荷冲击，决定是否预处理或暂存。",
+        "required_zones": [
+          "influent"
+        ],
+        "proxy_zones": [
+          "buffer"
+        ],
+        "required_modalities": [
+          "EC_uScm",
+          "turbidity_NTU",
+          "UV254_abs"
+        ],
+        "selected_sensor_ids": [
+          "N0_influent:EC_uScm"
+        ],
+        "observed_modalities": [
+          "EC_uScm",
+          "flow_Lmin"
+        ],
+        "direct_zone_covered": true,
+        "proxy_zone_covered": false,
+        "stage_covered": true,
+        "missing_required_zones": [],
+        "missing_required_modalities": [
+          "turbidity_NTU",
+          "UV254_abs"
+        ],
+        "field_evidence_needed": [
+          "field_labeled_fast_proxy_event_log.matrix_shock",
+          "offline_lab_results.COD_or_matrix_proxy"
+        ],
+        "control_relevance": "pre_treat_or_hold_before_reactor"
+      },
+      {
+        "stage_id": "S1_equalization_buffer",
+        "stage_label": "均质/暂存缓冲段",
+        "process_role": "为低频采样、离线检测和人工复核争取时间，避免进水冲击直接进入放行判断。",
+        "required_zones": [
+          "buffer"
+        ],
+        "proxy_zones": [
+          "influent",
+          "loop"
+        ],
+        "required_modalities": [
+          "flow_Lmin"
+        ],
+        "selected_sensor_ids": [
+          "N1_equalization_tank:flow_Lmin"
+        ],
+        "observed_modalities": [
+          "EC_uScm",
+          "UV254_abs",
+          "flow_Lmin"
+        ],
+        "direct_zone_covered": true,
+        "proxy_zone_covered": false,
+        "stage_covered": true,
+        "missing_required_zones": [],
+        "missing_required_modalities": [],
+        "field_evidence_needed": [
+          "campaign_operation_log.hold_time_min",
+          "site_topology_or_bed_geometry.buffer_volume"
+        ],
+        "control_relevance": "hold_or_extend_retention_time"
+      },
+      {
+        "stage_id": "S2_reaction_core",
+        "stage_label": "反应核心段",
+        "process_role": "估计氧化/吸附/催化反应完成度，决定是否延长停留时间或调整药剂候选。",
+        "required_zones": [
+          "reaction_core"
+        ],
+        "proxy_zones": [
+          "catalyst_bed",
+          "loop"
+        ],
+        "required_modalities": [
+          "ORP_mV",
+          "UV254_abs",
+          "pH"
+        ],
+        "selected_sensor_ids": [
+          "N2_reactor_mid:ORP_mV"
+        ],
+        "observed_modalities": [
+          "ORP_mV",
+          "UV254_abs",
+          "turbidity_NTU"
+        ],
+        "direct_zone_covered": true,
+        "proxy_zone_covered": false,
+        "stage_covered": true,
+        "missing_required_zones": [],
+        "missing_required_modalities": [
+          "pH"
+        ],
+        "field_evidence_needed": [
+          "offline_lab_results.reaction_completion_proxy",
+          "campaign_operation_log.dose_or_contact_time"
+        ],
+        "control_relevance": "dose_adjust_or_recycle_candidate"
+      },
+      {
+        "stage_id": "S3_catalyst_bed",
+        "stage_label": "催化剂/材料床段",
+        "process_role": "估计材料活性、床层堵塞和水力短路风险，决定是否保护、再生或更换候选。",
+        "required_zones": [
+          "catalyst_bed"
+        ],
+        "proxy_zones": [
+          "reaction_core",
+          "loop"
+        ],
+        "required_modalities": [
+          "UV254_abs",
+          "ORP_mV",
+          "pressure_drop_kPa"
+        ],
+        "selected_sensor_ids": [
+          "N3_catalyst_bed_outlet:turbidity_NTU"
+        ],
+        "observed_modalities": [
+          "ORP_mV",
+          "UV254_abs",
+          "turbidity_NTU"
+        ],
+        "direct_zone_covered": true,
+        "proxy_zone_covered": false,
+        "stage_covered": true,
+        "missing_required_zones": [],
+        "missing_required_modalities": [
+          "pressure_drop_kPa"
+        ],
+        "field_evidence_needed": [
+          "offline_lab_results.catalyst_activity",
+          "node_modality_sensor_timeseries.pressure_drop_kPa",
+          "campaign_operation_log.regeneration_event"
+        ],
+        "control_relevance": "catalyst_guardrail_or_regeneration_candidate"
+      },
+      {
+        "stage_id": "S4_recirculation_loop",
+        "stage_label": "回流/循环段",
+        "process_role": "把一次处理改为可迭代处理，为软传感、诊断和延迟检测提供第二次观测窗口。",
+        "required_zones": [
+          "loop"
+        ],
+        "proxy_zones": [
+          "buffer",
+          "reaction_core"
+        ],
+        "required_modalities": [
+          "flow_Lmin",
+          "UV254_abs"
+        ],
+        "selected_sensor_ids": [
+          "N4_recirculation_loop:UV254_abs"
+        ],
+        "observed_modalities": [
+          "ORP_mV",
+          "UV254_abs",
+          "flow_Lmin"
+        ],
+        "direct_zone_covered": true,
+        "proxy_zone_covered": false,
+        "stage_covered": true,
+        "missing_required_zones": [],
+        "missing_required_modalities": [],
+        "field_evidence_needed": [
+          "campaign_operation_log.recycle_ratio",
+          "campaign_operation_log.effect_time_min"
+        ],
+        "control_relevance": "recycle_or_extend_loop_decision"
+      },
+      {
+        "stage_id": "S5_release_boundary",
+        "stage_label": "末端精处理/放行边界",
+        "process_role": "判断是否进入下一处理单元、暂存等待验证或允许人工复核后的放行候选。",
+        "required_zones": [
+          "effluent"
+        ],
+        "proxy_zones": [
+          "polishing"
+        ],
+        "required_modalities": [
+          "UV254_abs",
+          "ORP_mV",
+          "pH",
+          "turbidity_NTU"
+        ],
+        "selected_sensor_ids": [
+          "N5_polishing_inlet:turbidity_NTU"
+        ],
+        "observed_modalities": [
+          "turbidity_NTU"
+        ],
+        "direct_zone_covered": false,
+        "proxy_zone_covered": true,
+        "stage_covered": true,
+        "missing_required_zones": [
+          "effluent"
+        ],
+        "missing_required_modalities": [
+          "UV254_abs",
+          "ORP_mV",
+          "pH"
+        ],
+        "field_evidence_needed": [
+          "offline_lab_results.byproduct_or_release_risk",
+          "human_reviewed_release_gate_labels",
+          "agent52_replay_table.expert_action_id"
+        ],
+        "control_relevance": "release_gate_or_hold_for_validation"
+      }
+    ],
+    "selected_zone_count": 6,
+    "selected_zones": [
+      "buffer",
+      "catalyst_bed",
+      "influent",
+      "loop",
+      "polishing",
+      "reaction_core"
+    ],
+    "recirculation_loop_observed": true,
+    "low_frequency_time_buffer_observed": true,
+    "final_effluent_directly_observed": false,
+    "final_release_gate_needs_effluent_label": true,
+    "can_support_soft_sensor_path_prior": true,
+    "can_support_control_replay_design_prior": true,
+    "can_finalize_field_deployment": false,
+    "field_package_contract": {
+      "required_tables": [
+        "site_topology_or_bed_geometry",
+        "node_modality_sensor_timeseries",
+        "campaign_operation_log",
+        "offline_lab_results",
+        "agent52_replay_table"
+      ],
+      "required_path_fields": [
+        "node_id",
+        "zone",
+        "upstream_node_id",
+        "downstream_node_id",
+        "nominal_HRT_min",
+        "flow_Lmin",
+        "recycle_ratio",
+        "release_gate_label"
+      ],
+      "minimum_matched_batch_count": 3,
+      "required_boundary": "selected node-modality rows must be aligned to hydraulic path stages before Agent54 feature tensor, Agent49 control candidates or Agent52 replay rows can be treated as path-aware"
+    },
+    "unresolved_requirements": [
+      "field_topology_and_hydraulic_path_labels_required",
+      "final_effluent_release_endpoint_not_directly_observed",
+      "pressure_drop_or_headloss_proxy_not_installed_in_selected_layout"
+    ],
+    "cannot_do": [
+      "cannot prove installed sensor placement without field topology review",
+      "cannot write release gate when final effluent endpoint is not directly field-labeled",
+      "cannot write actuator policy from hydraulic path design prior"
+    ],
+    "why_it_matters": "topology coverage says whether selected nodes are diverse; hydraulic path coverage says whether the low-cost layout observes the actual influent-buffer-reaction-catalyst-loop-release chain that makes soft sensing, delayed diagnosis and recycle/hold/release decisions meaningful."
+  },
+  "readiness": {
+    "sparse_placement_status": "sparse_sensor_layout_ready_needs_field_topology",
+    "sparse_placement_score": 0.68,
+    "data_origin": "synthetic_topology_prior",
+    "field_topology_required": true,
+    "selected_sensor_count": 6,
+    "budget_limit": 5.8,
+    "can_update_soft_sensor_design_prior": true,
+    "can_finalize_field_deployment": false
+  },
+  "soft_sensor_interface": {
+    "matrix_shape": [
+      6,
+      10
+    ],
+    "selected_modalities": [
+      "EC_uScm",
+      "ORP_mV",
+      "UV254_abs",
+      "flow_Lmin",
+      "turbidity_NTU"
+    ],
+    "selected_nodes": [
+      "N0_influent",
+      "N1_equalization_tank",
+      "N2_reactor_mid",
+      "N3_catalyst_bed_outlet",
+      "N4_recirculation_loop",
+      "N5_polishing_inlet"
+    ],
+    "selected_strategy_id": "greedy_marginal",
+    "layout_id": "greedy_marginal:6x10",
+    "feature_view": "node_modality_by_hidden_state_observation_matrix",
+    "missingness_mask_contract": {
+      "mask_shape": [
+        6,
+        5
+      ],
+      "mask_value_1": "sensor value available for node-modality at timestamp",
+      "mask_value_0": "sensor missing, failed, delayed or not installed",
+      "requires_layout_id": true
+    },
+    "downstream_agents": [
+      "SoftSensorAgent",
+      "DataQualityAgent",
+      "SensitivityAnalysisAgent",
+      "WeakTargetStratifiedConformalAgent",
+      "MultiFacilityCollaborativeControlAgent"
+    ],
+    "recommended_soft_sensor_update": "add node_id, zone, modality, observation_axis vector and missingness mask to field holdout records",
+    "coverage_for_soft_sensor": {
+      "pollutant_residual_observability": 0.814,
+      "reaction_completion_observability": 0.712,
+      "oxidant_observability": 0.775,
+      "catalyst_activity_observability": 0.3,
+      "matrix_interference_observability": 0.851,
+      "hydraulic_observability": 0.76,
+      "fault_classification_observability": 0.587,
+      "control_latency_gain": 0.837,
+      "soft_sensor_reconstruction_gain": 0.827,
+      "cost_efficiency": 1.0,
+      "weak_state_coverage": 0.3,
+      "total_cost_index": 4.176,
+      "node_diversity_count": 6.0,
+      "modality_diversity_count": 5.0
+    },
+    "hidden_state_requirement_contract": {
+      "ledger_status": "hidden_state_requirement_ledger_ready_with_gaps",
+      "ready_hidden_state_count": 4,
+      "unresolved_hidden_state_count": 6,
+      "minimum_cost_patch_status": "minimum_cost_patch_requires_new_modality_or_field_label",
+      "state_readiness": {
+        "pollutant_residual": {
+          "ready_for_soft_sensor_estimation": true,
+          "ready_for_control_use": false,
+          "min_primary_axis_score": 0.814
+        },
+        "reaction_completion": {
+          "ready_for_soft_sensor_estimation": true,
+          "ready_for_control_use": false,
+          "min_primary_axis_score": 0.712
+        },
+        "catalyst_activity": {
+          "ready_for_soft_sensor_estimation": false,
+          "ready_for_control_use": false,
+          "min_primary_axis_score": 0.3
+        },
+        "matrix_interference": {
+          "ready_for_soft_sensor_estimation": false,
+          "ready_for_control_use": false,
+          "min_primary_axis_score": 0.587
+        },
+        "hydraulic_delay": {
+          "ready_for_soft_sensor_estimation": true,
+          "ready_for_control_use": false,
+          "min_primary_axis_score": 0.76
+        },
+        "release_or_byproduct_risk": {
+          "ready_for_soft_sensor_estimation": true,
+          "ready_for_control_use": false,
+          "min_primary_axis_score": 0.712
+        }
+      }
+    },
+    "hydraulic_path_contract": {
+      "path_id": "low_cost_circular_treatment_path_v1",
+      "contract_status": "hydraulic_path_contract_ready_needs_field_topology_and_release_endpoint",
+      "covered_stage_count": 6,
+      "path_stage_count": 6,
+      "recirculation_loop_observed": true,
+      "low_frequency_time_buffer_observed": true,
+      "final_release_gate_needs_effluent_label": true,
+      "can_support_soft_sensor_path_prior": true,
+      "can_support_control_replay_design_prior": true
+    },
+    "placement_diagnostics": {
+      "diagnostic_status": "placement_diagnostics_need_axis_patch_or_field_benchmark",
+      "axis_span_rank_ratio": 0.667,
+      "condition_number_proxy": 61.726,
+      "reconstruction_stability_score": 0.401,
+      "weak_axis_gap_count": 2
+    }
+  },
+  "method_contract": {
+    "upgrade_id": "sensor_network_sparse_sensing_placement",
+    "borrowed_from": [
+      "PySensors SSPOR sparse placement for reconstruction",
+      "PySensors SSPOC sparse placement for classification",
+      "QR/GQR/D-optimal style basis selection",
+      "water network topology aware monitoring placement",
+      "robust cost constrained sensor layout comparison"
+    ],
+    "reality_mapping": "把进水/出水单点传感扩展为管网或处理单元节点上的稀疏 node-modality 布点，用少量低成本传感器支撑软传感重构、故障分类和延迟感知控制。",
+    "data_needs": [
+      "field_network_or_process_unit_graph",
+      "candidate_node_hydraulic_residence_time",
+      "node_access_and_install_cost",
+      "historical_sensor_timeseries_by_node",
+      "offline_labels_for_hidden_states",
+      "contamination_or_matrix_shock_scenarios"
+    ],
+    "implementation_path": [
+      "src/water_ai/agents/sensor_network_sparse_placement_agent.py",
+      "experiments/run_agent48_sensor_network_sparse_placement.py",
+      "outputs/sensor_network_sparse_placement/sparse_placement_metrics.json"
+    ],
+    "evaluation_metrics": [
+      "algorithm_comparison.comparable_score",
+      "baseline_comparison_contract.best_vs_random_delta",
+      "baseline_comparison_contract.best_vs_cost_only_delta",
+      "topology_coverage_score",
+      "reconstruction_objective",
+      "classification_objective",
+      "robustness_objective",
+      "axis_span_rank_ratio",
+      "condition_number_proxy",
+      "reconstruction_stability_score",
+      "weak_axis_gap_count",
+      "single_point_dependency_count",
+      "hidden_state_requirement_ledger.ready_hidden_state_count",
+      "hidden_state_requirement_ledger.minimum_cost_requirement_patch.patch_status",
+      "hydraulic_path_coverage_contract.covered_stage_count",
+      "hydraulic_path_coverage_contract.recirculation_loop_observed",
+      "hydraulic_path_coverage_contract.final_release_gate_needs_effluent_label",
+      "sparse_placement_score",
+      "weak_state_coverage",
+      "soft_sensor_reconstruction_gain",
+      "fault_classification_observability",
+      "total_cost_index"
+    ],
+    "failure_boundary": "当前布点是 synthetic topology prior 上的模型设计候选，不能替代真实管网水力模型、现场安装可达性审查或 field holdout 验证。"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "formal_counsel_review_response_template_status": "formal_counsel_review_response_template_blocked_at_claim_scope_patch_draft",
+  "linked_claim_scope_patch_draft_status": "formal_search_claim_scope_patch_draft_blocked_at_nonlegal_review_response",
+  "expected_env_var": "FORMAL_COUNSEL_REVIEW_RESPONSE_PATH",
+  "recommended_output_path": "outputs/agent_architecture_consolidation/formal_counsel_review_response.json",
+  "required_root_keys": [
+    "review_metadata",
+    "review_rows"
+  ],
+  "review_metadata_required_fields": [
+    "response_package_id",
+    "formal_reviewer_id",
+    "review_time",
+    "boundary_acknowledgement",
+    "legal_status"
+  ],
+  "review_row_required_fields": [
+    "claim_scope_patch_id",
+    "review_packet_row_id",
+    "linked_work_package_id",
+    "hit_id",
+    "formal_reviewer_id",
+    "review_time",
+    "scope_review_disposition",
+    "approved_technical_revision_summary",
+    "required_disclosure_revision",
+    "preserved_field_validation_gate",
+    "required_followup_search_or_evidence",
+    "boundary_acknowledgement",
+    "formal_review_trace_id",
+    "legal_status"
+  ],
+  "expected_claim_scope_patch_ids": [],
+  "response_template_rows": [],
+  "formal_review_response_supplied": false,
+  "external_formal_review_completed": false,
+  "can_route_to_disclosure_revision_queue": false,
+  "can_emit_claim_text": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "template_marker_policy": "Template/TODO rows must be replaced by external formal counsel or qualified patent review records; the system may only route accepted records to a disclosure revision queue.",
+  "failure_boundary": "该 template 只定义外部正式审查结果如何回填；系统不生成权利要求文本，不判断新颖性、创造性或授权可能性，也不能把任何记录升级为现场成立。",
+  "template_blockers": [
+    "claim_scope_patch_draft:not_ready_for_formal_review"
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "version": "design_sensitivity_v6_validation_planning",
+  "records": [
+    {
+      "design_id": "core_48min_5min",
+      "description": "核心传感配置，取消 UV254 和温度，48 min 观测窗口，每 5 min 采样。",
+      "disabled_sensors": [
+        "UV254_abs",
+        "temp_C"
+      ],
+      "observation_window_min": 48,
+      "sampling_interval_min": 5,
+      "sensor_cost_index": 0.44,
+      "sensor_economics": {
+        "enabled_sensors": [
+          "pH",
+          "ORP_mV",
+          "EC_uScm",
+          "turbidity_NTU",
+          "flow_Lmin"
+        ],
+        "disabled_sensors": [
+          "UV254_abs",
+          "temp_C"
+        ],
+        "purchase_cost_cny": 5100,
+        "annual_maintenance_cny": 2760,
+        "calibration_hours_per_month": 5.41,
+        "samples_per_window": 50,
+        "capex_index": 0.432,
+        "maintenance_index": 0.548,
+        "sampling_load_index": 0.298,
+        "engineering_cost_index": 0.44,
+        "profile_table": {
+          "pH": {
+            "purchase_cost_cny": 800,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          },
+          "ORP_mV": {
+            "purchase_cost_cny": 900,
+            "monthly_maintenance_cny": 50,
+            "calibration_minutes_per_week": 15
+          },
+          "EC_uScm": {
+            "purchase_cost_cny": 700,
+            "monthly_maintenance_cny": 30,
+            "calibration_minutes_per_week": 10
+          },
+          "turbidity_NTU": {
+            "purchase_cost_cny": 1500,
+            "monthly_maintenance_cny": 60,
+            "calibration_minutes_per_week": 20
+          },
+          "flow_Lmin": {
+            "purchase_cost_cny": 1200,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          }
+        }
+      },
+      "sensor_noise_multiplier": 1.15,
+      "scenario": "sensor_faults",
+      "success_rate": 0.0,
+      "mean_steps": 6.0,
+      "mean_cost": 2.008,
+      "mean_energy": 0.251,
+      "mean_elapsed_min": 299.6,
+      "mean_total_elapsed_min": 587.6,
+      "failure_count": 10
+    },
+    {
+      "design_id": "core_48min_5min",
+      "description": "核心传感配置，取消 UV254 和温度，48 min 观测窗口，每 5 min 采样。",
+      "disabled_sensors": [
+        "UV254_abs",
+        "temp_C"
+      ],
+      "observation_window_min": 48,
+      "sampling_interval_min": 5,
+      "sensor_cost_index": 0.44,
+      "sensor_economics": {
+        "enabled_sensors": [
+          "pH",
+          "ORP_mV",
+          "EC_uScm",
+          "turbidity_NTU",
+          "flow_Lmin"
+        ],
+        "disabled_sensors": [
+          "UV254_abs",
+          "temp_C"
+        ],
+        "purchase_cost_cny": 5100,
+        "annual_maintenance_cny": 2760,
+        "calibration_hours_per_month": 5.41,
+        "samples_per_window": 50,
+        "capex_index": 0.432,
+        "maintenance_index": 0.548,
+        "sampling_load_index": 0.298,
+        "engineering_cost_index": 0.44,
+        "profile_table": {
+          "pH": {
+            "purchase_cost_cny": 800,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          },
+          "ORP_mV": {
+            "purchase_cost_cny": 900,
+            "monthly_maintenance_cny": 50,
+            "calibration_minutes_per_week": 15
+          },
+          "EC_uScm": {
+            "purchase_cost_cny": 700,
+            "monthly_maintenance_cny": 30,
+            "calibration_minutes_per_week": 10
+          },
+          "turbidity_NTU": {
+            "purchase_cost_cny": 1500,
+            "monthly_maintenance_cny": 60,
+            "calibration_minutes_per_week": 20
+          },
+          "flow_Lmin": {
+            "purchase_cost_cny": 1200,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          }
+        }
+      },
+      "sensor_noise_multiplier": 1.15,
+      "scenario": "oxidant_limitation",
+      "success_rate": 0.0,
+      "mean_steps": 6.0,
+      "mean_cost": 2.7,
+      "mean_energy": 1.461,
+      "mean_elapsed_min": 419.7,
+      "mean_total_elapsed_min": 707.7,
+      "failure_count": 10
+    },
+    {
+      "design_id": "core_48min_5min",
+      "description": "核心传感配置，取消 UV254 和温度，48 min 观测窗口，每 5 min 采样。",
+      "disabled_sensors": [
+        "UV254_abs",
+        "temp_C"
+      ],
+      "observation_window_min": 48,
+      "sampling_interval_min": 5,
+      "sensor_cost_index": 0.44,
+      "sensor_economics": {
+        "enabled_sensors": [
+          "pH",
+          "ORP_mV",
+          "EC_uScm",
+          "turbidity_NTU",
+          "flow_Lmin"
+        ],
+        "disabled_sensors": [
+          "UV254_abs",
+          "temp_C"
+        ],
+        "purchase_cost_cny": 5100,
+        "annual_maintenance_cny": 2760,
+        "calibration_hours_per_month": 5.41,
+        "samples_per_window": 50,
+        "capex_index": 0.432,
+        "maintenance_index": 0.548,
+        "sampling_load_index": 0.298,
+        "engineering_cost_index": 0.44,
+        "profile_table": {
+          "pH": {
+            "purchase_cost_cny": 800,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          },
+          "ORP_mV": {
+            "purchase_cost_cny": 900,
+            "monthly_maintenance_cny": 50,
+            "calibration_minutes_per_week": 15
+          },
+          "EC_uScm": {
+            "purchase_cost_cny": 700,
+            "monthly_maintenance_cny": 30,
+            "calibration_minutes_per_week": 10
+          },
+          "turbidity_NTU": {
+            "purchase_cost_cny": 1500,
+            "monthly_maintenance_cny": 60,
+            "calibration_minutes_per_week": 20
+          },
+          "flow_Lmin": {
+            "purchase_cost_cny": 1200,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          }
+        }
+      },
+      "sensor_noise_multiplier": 1.15,
+      "scenario": "reaction_time_insufficient",
+      "success_rate": 0.0,
+      "mean_steps": 6.0,
+      "mean_cost": 1.958,
+      "mean_energy": 0.402,
+      "mean_elapsed_min": 315.0,
+      "mean_total_elapsed_min": 603.0,
+      "failure_count": 10
+    },
+    {
+      "design_id": "core_48min_5min",
+      "description": "核心传感配置，取消 UV254 和温度，48 min 观测窗口，每 5 min 采样。",
+      "disabled_sensors": [
+        "UV254_abs",
+        "temp_C"
+      ],
+      "observation_window_min": 48,
+      "sampling_interval_min": 5,
+      "sensor_cost_index": 0.44,
+      "sensor_economics": {
+        "enabled_sensors": [
+          "pH",
+          "ORP_mV",
+          "EC_uScm",
+          "turbidity_NTU",
+          "flow_Lmin"
+        ],
+        "disabled_sensors": [
+          "UV254_abs",
+          "temp_C"
+        ],
+        "purchase_cost_cny": 5100,
+        "annual_maintenance_cny": 2760,
+        "calibration_hours_per_month": 5.41,
+        "samples_per_window": 50,
+        "capex_index": 0.432,
+        "maintenance_index": 0.548,
+        "sampling_load_index": 0.298,
+        "engineering_cost_index": 0.44,
+        "profile_table": {
+          "pH": {
+            "purchase_cost_cny": 800,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          },
+          "ORP_mV": {
+            "purchase_cost_cny": 900,
+            "monthly_maintenance_cny": 50,
+            "calibration_minutes_per_week": 15
+          },
+          "EC_uScm": {
+            "purchase_cost_cny": 700,
+            "monthly_maintenance_cny": 30,
+            "calibration_minutes_per_week": 10
+          },
+          "turbidity_NTU": {
+            "purchase_cost_cny": 1500,
+            "monthly_maintenance_cny": 60,
+            "calibration_minutes_per_week": 20
+          },
+          "flow_Lmin": {
+            "purchase_cost_cny": 1200,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          }
+        }
+      },
+      "sensor_noise_multiplier": 1.15,
+      "scenario": "catalyst_deactivation",
+      "success_rate": 0.0,
+      "mean_steps": 6.0,
+      "mean_cost": 2.895,
+      "mean_energy": 1.269,
+      "mean_elapsed_min": 559.1,
+      "mean_total_elapsed_min": 847.1,
+      "failure_count": 10
+    },
+    {
+      "design_id": "core_48min_5min",
+      "description": "核心传感配置，取消 UV254 和温度，48 min 观测窗口，每 5 min 采样。",
+      "disabled_sensors": [
+        "UV254_abs",
+        "temp_C"
+      ],
+      "observation_window_min": 48,
+      "sampling_interval_min": 5,
+      "sensor_cost_index": 0.44,
+      "sensor_economics": {
+        "enabled_sensors": [
+          "pH",
+          "ORP_mV",
+          "EC_uScm",
+          "turbidity_NTU",
+          "flow_Lmin"
+        ],
+        "disabled_sensors": [
+          "UV254_abs",
+          "temp_C"
+        ],
+        "purchase_cost_cny": 5100,
+        "annual_maintenance_cny": 2760,
+        "calibration_hours_per_month": 5.41,
+        "samples_per_window": 50,
+        "capex_index": 0.432,
+        "maintenance_index": 0.548,
+        "sampling_load_index": 0.298,
+        "engineering_cost_index": 0.44,
+        "profile_table": {
+          "pH": {
+            "purchase_cost_cny": 800,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          },
+          "ORP_mV": {
+            "purchase_cost_cny": 900,
+            "monthly_maintenance_cny": 50,
+            "calibration_minutes_per_week": 15
+          },
+          "EC_uScm": {
+            "purchase_cost_cny": 700,
+            "monthly_maintenance_cny": 30,
+            "calibration_minutes_per_week": 10
+          },
+          "turbidity_NTU": {
+            "purchase_cost_cny": 1500,
+            "monthly_maintenance_cny": 60,
+            "calibration_minutes_per_week": 20
+          },
+          "flow_Lmin": {
+            "purchase_cost_cny": 1200,
+            "monthly_maintenance_cny": 45,
+            "calibration_minutes_per_week": 15
+          }
+        }
+      },
+      "sensor_noise_multiplier": 1.15,
+      "scenario": "matrix_shock",
+      "success_rate": 0.0,
+      "mean_steps": 6.0,
+      "mean_cost": 2.525,
+      "mean_energy": 1.139,
+      "mean_elapsed_min": 412.5,
+      "mean_total_elapsed_min": 700.5,
+      "failure_count": 10
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "handle": "agent-6f004e515e",
+  "agent_id": "agent:48:sensor_network_sparse_placement",
+  "agent_number": 48,
+  "slug": "sensor_network_sparse_placement",
+  "runner": "experiments/run_agent48_sensor_network_sparse_placement.py",
+  "source": "src/water_ai/agents/sensor_network_sparse_placement_agent.py",
+  "deliverable": "deliverables/sensor_network_sparse_placement.md",
+  "test": "tests/test_sensor_network_sparse_placement_agent.py",
+  "output_dir": "outputs/agent48_sensor_network_sparse_placement",
+  "related_nodes": [
+    {
+      "handle": "agent-6f004e515e",
+      "node_id": "agent:48:sensor_network_sparse_placement",
+      "kind": "agent_workflow",
+      "label": "Agent48 sensor_network_sparse_placement",
+      "path": "experiments/run_agent48_sensor_network_sparse_placement.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 48
+      }
+    },
+    {
+      "handle": "dir-0620227519",
+      "node_id": "dir:outputs/agent48_sensor_network_sparse_placement",
+      "kind": "output_dir",
+      "label": "agent48_sensor_network_sparse_placement",
+      "path": "outputs/agent48_sensor_network_sparse_placement",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-60c7b61816",
+      "node_id": "file:deliverables/sensor_network_sparse_placement.md",
+      "kind": "referenced_path",
+      "label": "sensor_network_sparse_placement.md",
+      "path": "deliverables/sensor_network_sparse_placement.md",
+      "layer": "deliverable",
+      "summary": "管网布点与稀疏感知设计",
+      "metrics": {
+        "lines": 141,
+        "size_bytes": 10681
+      }
+    },
+    {
+      "handle": "file-bbca599fdf",
+      "node_id": "file:experiments/run_agent48_sensor_network_sparse_placement.py",
+      "kind": "file",
+      "label": "run_agent48_sensor_network_sparse_placement.py",
+      "path": "experiments/run_agent48_sensor_network_sparse_placement.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 328,
+        "size_bytes": 17329
+      }
+    },
+    {
+      "handle": "file-55e2132604",
+      "node_id": "file:src/water_ai/agents/sensor_network_sparse_placement_agent.py",
+      "kind": "referenced_path",
+      "label": "sensor_network_sparse_placement_agent.py",
+      "path": "src/water_ai/agents/sensor_network_sparse_placement_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 1984,
+        "size_bytes": 104512
+      }
+    },
+    {
+      "handle": "file-8b3893ed86",
+      "node_id": "file:tests/test_sensor_network_sparse_placement_agent.py",
+      "kind": "referenced_path",
+      "label": "test_sensor_network_sparse_placement_agent.py",
+      "path": "tests/test_sensor_network_sparse_placement_agent.py",
+      "layer": "verification",
+      "summary": "from water_ai.agents.sensor_network_sparse_placement_agent import (",
+      "metrics": {
+        "lines": 294,
+        "size_bytes": 14177
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:48:sensor_network_sparse_placement",
+      "target": "file:deliverables/sensor_network_sparse_placement.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:48:sensor_network_sparse_placement",
+      "target": "file:src/water_ai/agents/sensor_network_sparse_placement_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:48:sensor_network_sparse_placement",
+      "target": "file:experiments/run_agent48_sensor_network_sparse_placement.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:48:sensor_network_sparse_placement",
+      "target": "file:tests/test_sensor_network_sparse_placement_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:48:sensor_network_sparse_placement",
+      "target": "dir:outputs/agent48_sensor_network_sparse_placement",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

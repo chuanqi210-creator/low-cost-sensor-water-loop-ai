@@ -1,0 +1,4 @@
+sample_id,node_id,modality,time_since_last_observed_min,sampling_interval_min,expected_next_observed_min,qa_flag,data_origin
+TODO_sample_id_1,TODO_node_id,TODO_modality,TODO_numeric,TODO_numeric,TODO_numeric,TODO_pass,TODO_field
+TODO_sample_id_2,TODO_node_id,TODO_modality,TODO_numeric,TODO_numeric,TODO_numeric,TODO_pass,TODO_field
+TODO_sample_id_3,TODO_node_id,TODO_modality,TODO_numeric,TODO_numeric,TODO_numeric,TODO_pass,TODO_field

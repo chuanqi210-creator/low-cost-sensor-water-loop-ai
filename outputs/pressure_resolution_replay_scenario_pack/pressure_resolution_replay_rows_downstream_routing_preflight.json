@@ -1,0 +1,100 @@
+{
+  "field_rows_downstream_routing_preflight_status": "downstream_routing_preflight_blocked_at_source_preflight",
+  "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json",
+  "source_status": "field_rows_file_missing",
+  "schema_validation_status": "schema_validation_blocked_at_source_preflight",
+  "batch_bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight",
+  "temporal_window_preflight_status": "temporal_window_preflight_blocked_at_source_preflight",
+  "scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight",
+  "field_row_acceptance_status": "no_field_replay_rows_supplied",
+  "accepted_scenario_count": 0,
+  "accepted_batch_count": 0,
+  "accepted_batches_by_scenario": {},
+  "accepted_batches_for_routing": [],
+  "routing_target_count": 4,
+  "routing_ready_target_count": 0,
+  "routing_targets": [
+    {
+      "target_id": "agent51_catalyst_proxy_holdout",
+      "target_agent": "Agent51",
+      "routing_status": "blocked_by_upstream_preflight",
+      "accepted_batches": [],
+      "required_inputs": [
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "campaign_operation_log",
+        "pressure_headloss_event_log"
+      ],
+      "expected_gate_metrics": [
+        "field_proxy_holdout_summary_status",
+        "scoreable_batch_count",
+        "agent51_scoreable_batch_count_after_resolution"
+      ],
+      "technical_effect": "Resolved pressure-source rows can restore catalyst proxy scoreability only after field holdout checks."
+    },
+    {
+      "target_id": "agent49_guardrail_context",
+      "target_agent": "Agent49",
+      "routing_status": "blocked_by_upstream_preflight",
+      "accepted_batches": [],
+      "required_inputs": [
+        "pressure_headloss_event_log",
+        "campaign_operation_log",
+        "agent52_replay_table"
+      ],
+      "expected_gate_metrics": [
+        "agent49_pressure_conflict_guardrail_clear",
+        "pressure_source_conflict_control_block",
+        "can_write_to_actuator"
+      ],
+      "technical_effect": "Guardrail relaxation remains gated by reviewed pressure-source evidence and cannot bypass actuator safety."
+    },
+    {
+      "target_id": "agent52_replay_clearance",
+      "target_agent": "Agent52",
+      "routing_status": "blocked_by_upstream_preflight",
+      "accepted_batches": [],
+      "required_inputs": [
+        "agent52_replay_table",
+        "campaign_operation_log",
+        "field_rows_scenario_semantic_preflight"
+      ],
+      "expected_gate_metrics": [
+        "agent52_pressure_source_conflict_clear",
+        "joint_action_accuracy",
+        "human_review_gate_pass"
+      ],
+      "technical_effect": "Replay clearance must agree with scenario semantics before any strategy can be promoted."
+    },
+    {
+      "target_id": "r7_evidence_chain",
+      "target_agent": "R7 facade",
+      "routing_status": "blocked_by_upstream_preflight",
+      "accepted_batches": [],
+      "required_inputs": [
+        "all_six_r8p_required_tables",
+        "field_rows_temporal_window_preflight",
+        "field_rows_scenario_semantic_preflight",
+        "field_rows_operator_handoff"
+      ],
+      "expected_gate_metrics": [
+        "field_replay_evidence_chain_pass",
+        "claim_gate_status",
+        "operator_review_gate_pass",
+        "can_write_to_release_gate"
+      ],
+      "technical_effect": "Accepted rows remain field evidence candidates until replay, holdout, claim gate, and operator review pass."
+    }
+  ],
+  "downstream_gate_sequence": [
+    "Agent51 catalyst proxy holdout consumes accepted pressure-resolution rows as scoreability/recovery context.",
+    "Agent49 guardrail context consumes accepted rows before any control protection relaxation.",
+    "Agent52 replay clearance consumes accepted rows for policy/expert action agreement and conflict-clearance replay.",
+    "R7 evidence chain consumes accepted rows for field package, replay, holdout, claim gate, and operator review boundaries."
+  ],
+  "downstream_routing_boundary": "Routing only moves R8p-accepted field rows to downstream replay/holdout/evidence gates. It does not upgrade a field-supported claim and does not permit actuator or release-gate writes.",
+  "next_operator_action": "R8p_fix_field_rows_source_preflight",
+  "can_route_to_r8v": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false
+}

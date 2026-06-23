@@ -1,0 +1,207 @@
+{
+  "completion_plan_id": "R8u22_r7_to_r8p_pressure_resolution_rows_completion_plan",
+  "completion_plan_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_plan.json",
+  "completion_plan_status": "r7_to_r8p_completion_plan_waiting_for_r7_package",
+  "source_staging_status": "r7_to_r8p_staging_preflight_no_r7_package_supplied",
+  "model_core_layers": [
+    "observability_layer",
+    "verification_governance_layer"
+  ],
+  "source_package": "R7_Agent44_real_field_package",
+  "target_package": "R8p_pressure_resolution_replay_rows",
+  "item_count": 6,
+  "item_class_counts": {
+    "r7_source_package": 1,
+    "operator_supplement": 4,
+    "agent52_replay_export": 1
+  },
+  "field_gap_count_by_class": {
+    "r7_source_package": 0,
+    "operator_supplement": 10,
+    "agent52_replay_export": 11
+  },
+  "completion_items": [
+    {
+      "item_id": "R8U22_R7_SOURCE_PACKAGE_R7_TO_R8P_STAGING_PREFLIGHT_NO_R7_PACKAGE_SUPPLIED",
+      "priority": "P0",
+      "completion_class": "r7_source_package",
+      "target_table": "R7_Agent44_package",
+      "target_fields": [],
+      "operator_action": "Set REAL_FIELD_REPLAY_PACKAGE_DIR to a real R7 metadata+CSV package and rerun Agent61.",
+      "validation_gate": "Agent44/R7 import preflight and Agent61 R7 staging preflight",
+      "can_create_field_evidence_by_item_only": false
+    },
+    {
+      "item_id": "R8U22_OPERATOR_SUPPLEMENT_CAMPAIGN_OPERATION_LOG",
+      "priority": "P0",
+      "completion_class": "operator_supplement",
+      "target_table": "campaign_operation_log",
+      "target_fields": [
+        "operator_review_required",
+        "pressure_source_resolution",
+        "authoritative_pressure_source",
+        "reviewer_id",
+        "review_time",
+        "calibration_action_id",
+        "calibration_note"
+      ],
+      "field_sources": [
+        {
+          "target_field": "operator_review_required",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "pressure_headloss_review_required",
+          "transformation": "rename optional R7 guardrail review flag if present.",
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "pressure_source_resolution",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.pressure_source_resolution",
+          "transformation": "add operator review outcome.",
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "authoritative_pressure_source",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.authoritative_pressure_source",
+          "transformation": "add reviewed source selection.",
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "reviewer_id",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.reviewer_id",
+          "transformation": "add reviewer identity or approved role id.",
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "review_time",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.review_time",
+          "transformation": "add timestamp for review completion.",
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "calibration_action_id",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.calibration_action_id",
+          "transformation": "add calibration action id.",
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "calibration_note",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.calibration_note",
+          "transformation": "add calibration note.",
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        }
+      ],
+      "operator_action": "Add reviewed R8p supplement values for `campaign_operation_log` fields: `operator_review_required`, `pressure_source_resolution`, `authoritative_pressure_source`, `reviewer_id`, `review_time`, `calibration_action_id`, `calibration_note`.",
+      "validation_gate": "Agent61 R8p schema, provenance, scenario semantic, and operator review gates",
+      "can_create_field_evidence_by_item_only": false
+    },
+    {
+      "item_id": "R8U22_OPERATOR_SUPPLEMENT_FAST_PROXY_EVENT_LOG",
+      "priority": "P1",
+      "completion_class": "operator_supplement",
+      "target_table": "fast_proxy_event_log",
+      "target_fields": [
+        "proxy_event_type"
+      ],
+      "field_sources": [
+        {
+          "target_field": "proxy_event_type",
+          "source_table": "fast_proxy_event_log",
+          "source_field": "triggered_action_id/proxy_event_type",
+          "transformation": "add proxy_event_type or map from reviewed triggered_action_id taxonomy.",
+          "field_boundary": "Event type taxonomy must be stable before replay comparison."
+        }
+      ],
+      "operator_action": "Add reviewed R8p supplement values for `fast_proxy_event_log` fields: `proxy_event_type`.",
+      "validation_gate": "Agent61 R8p schema, provenance, scenario semantic, and operator review gates",
+      "can_create_field_evidence_by_item_only": false
+    },
+    {
+      "item_id": "R8U22_OPERATOR_SUPPLEMENT_NODE_MODALITY_SENSOR_TIMESERIES",
+      "priority": "P1",
+      "completion_class": "operator_supplement",
+      "target_table": "node_modality_sensor_timeseries",
+      "target_fields": [
+        "unit"
+      ],
+      "field_sources": [
+        {
+          "target_field": "unit",
+          "source_table": "node_modality_sensor_timeseries or modality dictionary",
+          "source_field": "unit",
+          "transformation": "add explicit unit column, or derive from a reviewed modality-unit dictionary.",
+          "field_boundary": "Unit inference must be reviewed; do not assume every modality is kPa."
+        }
+      ],
+      "operator_action": "Add reviewed R8p supplement values for `node_modality_sensor_timeseries` fields: `unit`.",
+      "validation_gate": "Agent61 R8p schema, provenance, scenario semantic, and operator review gates",
+      "can_create_field_evidence_by_item_only": false
+    },
+    {
+      "item_id": "R8U22_OPERATOR_SUPPLEMENT_PRESSURE_HEADLOSS_EVENT_LOG",
+      "priority": "P1",
+      "completion_class": "operator_supplement",
+      "target_table": "pressure_headloss_event_log",
+      "target_fields": [
+        "instrument_id"
+      ],
+      "field_sources": [
+        {
+          "target_field": "instrument_id",
+          "source_table": "metadata.json or pressure_headloss_event_log",
+          "source_field": "instrument_snapshot_id/instrument_id",
+          "transformation": "copy instrument snapshot into row-level instrument_id or add row-level instrument_id.",
+          "field_boundary": "Instrument provenance must remain traceable to calibration records."
+        }
+      ],
+      "operator_action": "Add reviewed R8p supplement values for `pressure_headloss_event_log` fields: `instrument_id`.",
+      "validation_gate": "Agent61 R8p schema, provenance, scenario semantic, and operator review gates",
+      "can_create_field_evidence_by_item_only": false
+    },
+    {
+      "item_id": "R8U22_AGENT52_REPLAY_EXPORT_AGENT52_REPLAY_TABLE",
+      "priority": "P0",
+      "completion_class": "agent52_replay_export",
+      "target_table": "agent52_replay_table",
+      "target_fields": [
+        "batch_id",
+        "scenario",
+        "policy_action_id",
+        "expert_action_id",
+        "pressure_source_conflict_count",
+        "resolved_pressure_source_conflict_count",
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "data_origin"
+      ],
+      "operator_action": "Export Agent49/52 replay rows after pressure-source conflict evaluation; do not fabricate `policy_action_id`, `expert_action_id`, or conflict counters from R7 field CSVs.",
+      "validation_gate": "Agent52 replay clearance, Agent61 R8p schema, and R8v downstream routing gates",
+      "can_create_field_evidence_by_item_only": false
+    }
+  ],
+  "required_execution_order": [
+    "R7 source package and metadata provenance",
+    "R7-to-R8p staging draft",
+    "operator supplement records",
+    "Agent49/52 replay export",
+    "Agent61 R8p schema/provenance/template/bundle/temporal/semantic/routing gates",
+    "R8v route to Agent51/49/52/R7 evidence chain"
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "R7 field observations, operator review records, and Agent52 replay outputs belong to different evidence classes, but pressure-resolution replay requires all of them in one row package.",
+    "technical_means": "A completion planner converts staging gaps into ordered evidence-class tasks: source package, operator supplement, replay export, and R8p validation gates.",
+    "technical_effect": "The field package can be completed with fewer duplicated entries while preserving proof boundaries between field observation, human review, and replay-derived control evidence.",
+    "prior_art_distinction_candidate": "Unlike a single CSV importer, the planner keeps low-cost sparse observation, delayed human review, and offline replay as separate gated evidence routes before any control/release claim."
+  },
+  "field_boundary": "The completion plan is an operator/replay work order. It does not make the staged draft field evidence, does not execute replay export, and cannot write actuator or release gates.",
+  "can_generate_field_evidence_from_plan": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false
+}

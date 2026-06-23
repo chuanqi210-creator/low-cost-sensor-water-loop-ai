@@ -1,0 +1,1 @@
+campaign_id,batch_id,event_time_min,proxy_score,specificity_guard_score,protective_triggered,triggered_action_id,field_label_matrix_shock,lab_label_time_min,false_positive_cost_index

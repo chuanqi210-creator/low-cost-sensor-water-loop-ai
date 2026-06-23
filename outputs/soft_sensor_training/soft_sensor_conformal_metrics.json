@@ -1,0 +1,108 @@
+{
+  "evidence_stage": "synthetic_holdout",
+  "alpha": 0.1,
+  "split": {
+    "record_count": 48,
+    "calibration_count": 32,
+    "evaluation_count": 16,
+    "calibration_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "evaluation_indices": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+    ]
+  },
+  "conformal": {
+    "target_coverage_level": 0.9,
+    "target_nonconformity_thresholds": {
+      "pollutant_residual_risk": 0.0818,
+      "reaction_completion": 0.1447,
+      "oxidant_remaining": 0.0624,
+      "catalyst_activity": 0.2075,
+      "matrix_interference": 0.086
+    },
+    "coverage_by_target": {
+      "pollutant_residual_risk": 1.0,
+      "reaction_completion": 1.0,
+      "oxidant_remaining": 1.0,
+      "catalyst_activity": 1.0,
+      "matrix_interference": 0.875
+    },
+    "width_by_target": {
+      "pollutant_residual_risk": 0.1636,
+      "reaction_completion": 0.2894,
+      "oxidant_remaining": 0.1248,
+      "catalyst_activity": 0.415,
+      "matrix_interference": 0.172
+    },
+    "misses_by_target": {
+      "matrix_interference": 2,
+      "pollutant_residual_risk": 0,
+      "reaction_completion": 0,
+      "oxidant_remaining": 0,
+      "catalyst_activity": 0
+    },
+    "scenario_full_coverage": {
+      "catalyst_deactivation": 0.75,
+      "matrix_shock": 1.0
+    },
+    "overall_conformal_coverage": 0.975,
+    "mean_conformal_interval_width": 0.233,
+    "coverage_error": 0.075,
+    "evaluation_pair_count": 80,
+    "release_abstention_rate": 0.125,
+    "ood_alert_rate": 0.0
+  },
+  "readiness": {
+    "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+    "conformal_score": 0.854,
+    "field_holdout_required": true,
+    "can_write_to_release_gate": false
+  }
+}

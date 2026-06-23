@@ -1,0 +1,22 @@
+{
+  "source_preflight_id": "R8u126_focused_catalyst_response_source_preflight",
+  "source_preflight_type": "focused_catalyst_response_source_preflight",
+  "source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+  "source_path": "",
+  "source_load_status": "focused_catalyst_response_source_not_supplied",
+  "source_preflight_status": "focused_catalyst_response_source_using_default_template",
+  "external_response_supplied": false,
+  "using_default_template": true,
+  "can_run_merge_preflight": true,
+  "provided_top_level_type": "object",
+  "provided_package_type": "focused_catalyst_activity_response",
+  "provided_row_count": 6,
+  "default_template_row_count": 6,
+  "next_operator_action": "fill_focused_catalyst_response_template_and_set_FOCUSED_CATALYST_RESPONSE_PATH",
+  "can_emit_merged_full_response_candidate": false,
+  "can_submit_candidate_as_FIELD_ACTIVATION_RESPONSE_PATH": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "no_write_boundary": "This source preflight only checks whether FOCUSED_CATALYST_RESPONSE_PATH can be loaded for focused catalyst merge preflight. It cannot create field evidence, emit a full response candidate, resume the model chain, write actuator policy or write a release gate."
+}

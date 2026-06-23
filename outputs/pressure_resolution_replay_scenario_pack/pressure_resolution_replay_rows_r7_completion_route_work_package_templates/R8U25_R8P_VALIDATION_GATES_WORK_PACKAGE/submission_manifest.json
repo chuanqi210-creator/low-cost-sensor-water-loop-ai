@@ -1,0 +1,10 @@
+{
+  "work_package_id": "R8U25_R8P_VALIDATION_GATES_WORK_PACKAGE",
+  "route_id": "r8p_validation_gates",
+  "producer": "Agent61 pressure resolution replay scenario pack",
+  "submission_contract": "Run Agent61 validation gates over the assembled R8p row package after R7 source, operator supplement, and Agent52 replay work packages are complete.",
+  "evidence_level_after_package": "validated_candidate_until_r8v_agent51_agent49_agent52_and_release_gates_clear",
+  "data_origin": "TODO_REPLACE_WITH_FIELD_OPERATOR_OR_REPLAY_ORIGIN",
+  "submission_status": "template_only_not_evidence",
+  "evidence_boundary": "Fill this package with real source/operator/replay values and rerun Agent61 preflight. This template is not field evidence."
+}

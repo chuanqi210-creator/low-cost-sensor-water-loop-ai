@@ -1,0 +1,10 @@
+{
+  "work_package_id": "R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE",
+  "route_id": "r7_source_package",
+  "producer": "R7/Agent44 field package importer",
+  "submission_contract": "Provide a field-origin R7 package directory through REAL_FIELD_REPLAY_PACKAGE_DIR with metadata.json and five shared-table CSV files; rows remain candidate field evidence until staging and provenance gates clear.",
+  "evidence_level_after_package": "field_candidate_until_r7_staging_and_r8p_schema_gates_clear",
+  "data_origin": "TODO_REPLACE_WITH_FIELD_OPERATOR_OR_REPLAY_ORIGIN",
+  "submission_status": "template_only_not_evidence",
+  "evidence_boundary": "Fill this package with real source/operator/replay values and rerun Agent61 preflight. This template is not field evidence."
+}

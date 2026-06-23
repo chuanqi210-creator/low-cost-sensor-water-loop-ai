@@ -1,0 +1,599 @@
+{
+  "campaign": {
+    "records": [
+      {
+        "batch_id": 0,
+        "scenario": "matrix_shock",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 126,
+        "cumulative_cost": 0.68,
+        "cumulative_energy": 0.524,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "switch_or_pretreat",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "safety_first"
+        ],
+        "validation_minutes": 53,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 5,
+        "catalyst_regen_count_end": 0,
+        "catalyst_lifetime_fraction_end": 0.799,
+        "catalyst_activity_end": 0.707,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 1,
+        "scenario": "catalyst_deactivation",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 88,
+        "cumulative_cost": 0.433,
+        "cumulative_energy": 0.374,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "regenerate_catalyst",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "safety_first"
+        ],
+        "validation_minutes": 0,
+        "regeneration_count": 1,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 7,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.706,
+        "catalyst_activity_end": 0.779,
+        "terminal_label": "reaction_time_insufficient"
+      },
+      {
+        "batch_id": 2,
+        "scenario": "matrix_shock",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 146,
+        "cumulative_cost": 0.76,
+        "cumulative_energy": 0.524,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "switch_or_pretreat",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 73,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 8,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.685,
+        "catalyst_activity_end": 0.766,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 3,
+        "scenario": "catalyst_deactivation",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 365,
+        "cumulative_cost": 2.169,
+        "cumulative_energy": 0.725,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "replace_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 146,
+        "regeneration_count": 1,
+        "replacement_count": 1,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 1,
+        "catalyst_regen_count_end": 0,
+        "catalyst_lifetime_fraction_end": 0.981,
+        "catalyst_activity_end": 0.909,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 4,
+        "scenario": "oxidant_limitation",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 42,
+        "cumulative_cost": 0.563,
+        "cumulative_energy": 0.324,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "dose_oxidant",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "replace_catalyst",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "emergency_response",
+          "safety_first"
+        ],
+        "validation_minutes": 0,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 1,
+        "catalyst_age_cycles_end": 2,
+        "catalyst_regen_count_end": 0,
+        "catalyst_lifetime_fraction_end": 0.961,
+        "catalyst_activity_end": 0.896,
+        "terminal_label": "reaction_time_insufficient"
+      },
+      {
+        "batch_id": 5,
+        "scenario": "oxidant_limitation",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 172,
+        "cumulative_cost": 1.142,
+        "cumulative_energy": 0.683,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "dose_oxidant",
+          "recirculate",
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "replace_catalyst",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "emergency_response",
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 46,
+        "regeneration_count": 1,
+        "replacement_count": 0,
+        "oxidant_dose_count": 1,
+        "catalyst_age_cycles_end": 5,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.847,
+        "catalyst_activity_end": 0.859,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 6,
+        "scenario": "sensor_faults",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 99,
+        "cumulative_cost": 0.6,
+        "cumulative_energy": 0.264,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "inspect_hydraulics",
+          "calibrate_sensors",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "cost_first"
+        ],
+        "validation_minutes": 73,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 6,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.827,
+        "catalyst_activity_end": 0.848,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 7,
+        "scenario": "reaction_time_insufficient",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 102,
+        "cumulative_cost": 0.397,
+        "cumulative_energy": 0.315,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "balanced",
+          "balanced"
+        ],
+        "validation_minutes": 73,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 7,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.807,
+        "catalyst_activity_end": 0.836,
+        "terminal_label": "reaction_time_insufficient"
+      }
+    ],
+    "catalyst_spares_remaining": 0,
+    "oxidant_stock_units_remaining": 1.5,
+    "total_elapsed_min": 1140,
+    "total_cost": 6.744,
+    "total_energy": 3.733
+  },
+  "resource_expansion": {
+    "agent_name": "resource_expansion_agent",
+    "confidence": 0.95,
+    "summary": "资源扩容：推荐 full_resource_recovery，评分 1.0。",
+    "recommendations": [
+      "full_resource_recovery：评分 1.0，解除瓶颈 2.45，验证占用 0.574，时间占用 0.864，剩余瓶颈 []。",
+      "validation_shift_plus_spare：评分 0.884，解除瓶颈 2.0，验证占用 0.737，时间占用 1.188，剩余瓶颈 ['campaign_time_budget']。",
+      "add_validation_shift：评分 0.501，解除瓶颈 1.0，验证占用 0.737，时间占用 1.188，剩余瓶颈 ['campaign_time_budget', 'catalyst_inventory']。",
+      "add_catalyst_spare：评分 0.441，解除瓶颈 1.0，验证占用 1.406，时间占用 1.188，剩余瓶颈 ['validation_capacity', 'campaign_time_budget']。"
+    ],
+    "metrics": {
+      "baseline": {
+        "campaign_metrics": {
+          "batch_count": 8,
+          "success_rate": 1.0,
+          "total_elapsed_min": 1140.0,
+          "mean_elapsed_min": 142.5,
+          "total_cost": 6.744,
+          "total_energy": 3.733,
+          "validation_hours": 7.733,
+          "validation_staff_usage": 1.406,
+          "time_budget_usage": 1.188,
+          "regeneration_count": 3,
+          "replacement_count": 1,
+          "oxidant_dose_count": 2,
+          "catalyst_lifetime_fraction_end": 0.807,
+          "catalyst_activity_end": 0.836,
+          "catalyst_spares_remaining": 0,
+          "oxidant_stock_units_remaining": 1.5,
+          "evidence_strength": 1.0
+        },
+        "bottlenecks": [
+          {
+            "bottleneck_id": "validation_capacity",
+            "severity": "critical",
+            "message": "旁路/离线验证工时接近或超过可用容量。",
+            "value": 1.406,
+            "threshold": 0.9
+          },
+          {
+            "bottleneck_id": "campaign_time_budget",
+            "severity": "warning",
+            "message": "循环、验证和维护占用的总时间接近运行窗口上限。",
+            "value": 1.188,
+            "threshold": 0.9
+          },
+          {
+            "bottleneck_id": "catalyst_inventory",
+            "severity": "critical",
+            "message": "催化剂备件已耗尽，禁止依赖更换动作作为默认兜底。",
+            "value": 0,
+            "threshold": 1
+          }
+        ],
+        "schedule": {
+          "operating_mode": "pause_or_limit_intake",
+          "action_queue": [
+            {
+              "action_id": "limit_intake",
+              "instruction": "限制新批次进水，优先消化待验证批次和维护风险。",
+              "priority": 1
+            },
+            {
+              "action_id": "reserve_validation_shift",
+              "instruction": "增加旁路快检班次或压缩低价值验证项，优先保障放行门和副产物验证。",
+              "priority": 2
+            },
+            {
+              "action_id": "reorder_catalyst_modules",
+              "instruction": "补充催化剂模块库存，并把寿命低于 0.45 的批次列入预防性维护。",
+              "priority": 2
+            }
+          ],
+          "next_campaign_review_after_batches": 3
+        }
+      },
+      "selected_intervention": {
+        "intervention_id": "full_resource_recovery",
+        "description": "验证班次、催化剂备件、运行窗口和验证项压缩组合干预。",
+        "intervention_score": 1.0,
+        "bottleneck_relief": 2.45,
+        "implementation_cost_index": 1.05,
+        "implementation_risk": 0.18,
+        "adjusted_operating_mode": "normal_intake",
+        "adjusted_validation_staff_usage": 0.574,
+        "adjusted_time_budget_usage": 0.864,
+        "adjusted_catalyst_spares_remaining": 1,
+        "adjusted_oxidant_stock_units_remaining": 1.5,
+        "residual_bottleneck_ids": [],
+        "action_queue": []
+      },
+      "ranked_interventions": [
+        {
+          "intervention_id": "full_resource_recovery",
+          "description": "验证班次、催化剂备件、运行窗口和验证项压缩组合干预。",
+          "intervention_score": 1.0,
+          "bottleneck_relief": 2.45,
+          "implementation_cost_index": 1.05,
+          "implementation_risk": 0.18,
+          "adjusted_operating_mode": "normal_intake",
+          "adjusted_validation_staff_usage": 0.574,
+          "adjusted_time_budget_usage": 0.864,
+          "adjusted_catalyst_spares_remaining": 1,
+          "adjusted_oxidant_stock_units_remaining": 1.5,
+          "residual_bottleneck_ids": [],
+          "action_queue": []
+        },
+        {
+          "intervention_id": "validation_shift_plus_spare",
+          "description": "同时增加验证班次和催化剂备件。",
+          "intervention_score": 0.884,
+          "bottleneck_relief": 2.0,
+          "implementation_cost_index": 0.86,
+          "implementation_risk": 0.1,
+          "adjusted_operating_mode": "staggered_intake",
+          "adjusted_validation_staff_usage": 0.737,
+          "adjusted_time_budget_usage": 1.188,
+          "adjusted_catalyst_spares_remaining": 1,
+          "adjusted_oxidant_stock_units_remaining": 1.5,
+          "residual_bottleneck_ids": [
+            "campaign_time_budget"
+          ],
+          "action_queue": [
+            {
+              "action_id": "stagger_batches",
+              "instruction": "错峰安排进水和旁路验证，避免慢证据排队压垮闭环节奏。",
+              "priority": 1
+            }
+          ]
+        },
+        {
+          "intervention_id": "add_validation_shift",
+          "description": "增加一个旁路快检/离线验证班次。",
+          "intervention_score": 0.501,
+          "bottleneck_relief": 1.0,
+          "implementation_cost_index": 0.42,
+          "implementation_risk": 0.08,
+          "adjusted_operating_mode": "pause_or_limit_intake",
+          "adjusted_validation_staff_usage": 0.737,
+          "adjusted_time_budget_usage": 1.188,
+          "adjusted_catalyst_spares_remaining": 0,
+          "adjusted_oxidant_stock_units_remaining": 1.5,
+          "residual_bottleneck_ids": [
+            "campaign_time_budget",
+            "catalyst_inventory"
+          ],
+          "action_queue": [
+            {
+              "action_id": "limit_intake",
+              "instruction": "限制新批次进水，优先消化待验证批次和维护风险。",
+              "priority": 1
+            },
+            {
+              "action_id": "reorder_catalyst_modules",
+              "instruction": "补充催化剂模块库存，并把寿命低于 0.45 的批次列入预防性维护。",
+              "priority": 2
+            }
+          ]
+        },
+        {
+          "intervention_id": "add_catalyst_spare",
+          "description": "新增一个催化剂模块备件。",
+          "intervention_score": 0.441,
+          "bottleneck_relief": 1.0,
+          "implementation_cost_index": 0.62,
+          "implementation_risk": 0.06,
+          "adjusted_operating_mode": "staggered_intake",
+          "adjusted_validation_staff_usage": 1.406,
+          "adjusted_time_budget_usage": 1.188,
+          "adjusted_catalyst_spares_remaining": 1,
+          "adjusted_oxidant_stock_units_remaining": 1.5,
+          "residual_bottleneck_ids": [
+            "validation_capacity",
+            "campaign_time_budget"
+          ],
+          "action_queue": [
+            {
+              "action_id": "stagger_batches",
+              "instruction": "错峰安排进水和旁路验证，避免慢证据排队压垮闭环节奏。",
+              "priority": 1
+            },
+            {
+              "action_id": "reserve_validation_shift",
+              "instruction": "增加旁路快检班次或压缩低价值验证项，优先保障放行门和副产物验证。",
+              "priority": 2
+            }
+          ]
+        },
+        {
+          "intervention_id": "compress_low_value_validation",
+          "description": "压缩低价值验证项，把慢证据集中到放行门、副产物和催化剂风险。",
+          "intervention_score": 0.31,
+          "bottleneck_relief": 0.55,
+          "implementation_cost_index": 0.18,
+          "implementation_risk": 0.16,
+          "adjusted_operating_mode": "pause_or_limit_intake",
+          "adjusted_validation_staff_usage": 1.013,
+          "adjusted_time_budget_usage": 1.188,
+          "adjusted_catalyst_spares_remaining": 0,
+          "adjusted_oxidant_stock_units_remaining": 1.5,
+          "residual_bottleneck_ids": [
+            "validation_capacity",
+            "campaign_time_budget",
+            "catalyst_inventory"
+          ],
+          "action_queue": [
+            {
+              "action_id": "limit_intake",
+              "instruction": "限制新批次进水，优先消化待验证批次和维护风险。",
+              "priority": 1
+            },
+            {
+              "action_id": "reserve_validation_shift",
+              "instruction": "增加旁路快检班次或压缩低价值验证项，优先保障放行门和副产物验证。",
+              "priority": 2
+            },
+            {
+              "action_id": "reorder_catalyst_modules",
+              "instruction": "补充催化剂模块库存，并把寿命低于 0.45 的批次列入预防性维护。",
+              "priority": 2
+            }
+          ]
+        },
+        {
+          "intervention_id": "extend_campaign_window",
+          "description": "延长当日运行窗口。",
+          "intervention_score": 0.254,
+          "bottleneck_relief": 0.45,
+          "implementation_cost_index": 0.32,
+          "implementation_risk": 0.1,
+          "adjusted_operating_mode": "pause_or_limit_intake",
+          "adjusted_validation_staff_usage": 1.406,
+          "adjusted_time_budget_usage": 0.864,
+          "adjusted_catalyst_spares_remaining": 0,
+          "adjusted_oxidant_stock_units_remaining": 1.5,
+          "residual_bottleneck_ids": [
+            "validation_capacity",
+            "catalyst_inventory"
+          ],
+          "action_queue": [
+            {
+              "action_id": "limit_intake",
+              "instruction": "限制新批次进水，优先消化待验证批次和维护风险。",
+              "priority": 1
+            },
+            {
+              "action_id": "reserve_validation_shift",
+              "instruction": "增加旁路快检班次或压缩低价值验证项，优先保障放行门和副产物验证。",
+              "priority": 2
+            },
+            {
+              "action_id": "reorder_catalyst_modules",
+              "instruction": "补充催化剂模块库存，并把寿命低于 0.45 的批次列入预防性维护。",
+              "priority": 2
+            }
+          ]
+        },
+        {
+          "intervention_id": "replenish_oxidant_stock",
+          "description": "补充氧化剂库存。",
+          "intervention_score": 0.051,
+          "bottleneck_relief": 0.0,
+          "implementation_cost_index": 0.22,
+          "implementation_risk": 0.04,
+          "adjusted_operating_mode": "pause_or_limit_intake",
+          "adjusted_validation_staff_usage": 1.406,
+          "adjusted_time_budget_usage": 1.188,
+          "adjusted_catalyst_spares_remaining": 0,
+          "adjusted_oxidant_stock_units_remaining": 3.0,
+          "residual_bottleneck_ids": [
+            "validation_capacity",
+            "campaign_time_budget",
+            "catalyst_inventory"
+          ],
+          "action_queue": [
+            {
+              "action_id": "limit_intake",
+              "instruction": "限制新批次进水，优先消化待验证批次和维护风险。",
+              "priority": 1
+            },
+            {
+              "action_id": "reserve_validation_shift",
+              "instruction": "增加旁路快检班次或压缩低价值验证项，优先保障放行门和副产物验证。",
+              "priority": 2
+            },
+            {
+              "action_id": "reorder_catalyst_modules",
+              "instruction": "补充催化剂模块库存，并把寿命低于 0.45 的批次列入预防性维护。",
+              "priority": 2
+            }
+          ]
+        }
+      ]
+    },
+    "issues": []
+  }
+}

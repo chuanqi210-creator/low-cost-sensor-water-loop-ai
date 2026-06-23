@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120">
+  <defs>
+    <style>
+      .bg { fill: #f7f8fb; }
+      .title { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 38px; font-weight: 800; fill: #16202a; }
+      .subtitle { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 20px; fill: #506070; }
+      .section-title { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 24px; font-weight: 800; fill: #17212b; }
+      .box-title { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 22px; font-weight: 800; fill: #17212b; }
+      .body { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 18px; fill: #314252; }
+      .small { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 16px; fill: #4d5f70; }
+      .tiny { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 14px; fill: #526575; }
+      .metric { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 18px; font-weight: 800; fill: #102a43; }
+      .label { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 15px; font-weight: 700; fill: #ffffff; }
+      .panel { fill: #ffffff; stroke-width: 2.2; rx: 20; }
+      .inner { fill: #ffffff; stroke-width: 1.6; rx: 14; }
+      .soft { fill: #f5fbff; }
+      .arrow { fill: none; stroke: #40556a; stroke-width: 3; marker-end: url(#arrow); }
+      .arrow-soft { fill: none; stroke: #6a7f93; stroke-width: 2.2; marker-end: url(#arrowSoft); }
+      .arrow-no { fill: none; stroke: #b54b4b; stroke-width: 3; marker-end: url(#arrowNo); stroke-dasharray: 9 7; }
+      .dash { stroke-dasharray: 8 7; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#40556a"/>
+    </marker>
+    <marker id="arrowSoft" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L8,5 L1,9 Z" fill="#6a7f93"/>
+    </marker>
+    <marker id="arrowNo" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#b54b4b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1800" height="1120"/>
+
+  <text class="title" x="70" y="70">低成本传感循环式水处理智能闭环：Agent48-52 核心逻辑图</text>
+  <text class="subtitle" x="72" y="108">目的：把黑箱过程逐步变成可观测、可解释、可回放、可审查的灰箱控制系统；synthetic 只做基线，不替代 field validation。</text>
+
+  <rect x="70" y="145" width="1660" height="78" rx="18" fill="#17212b"/>
+  <text class="label" x="105" y="178">第一性原则</text>
+  <text class="subtitle" x="105" y="205" fill="#e8eef5">所有工作必须提升观测、推理、控制、验证或工程可落地性；如果只是在美化展示材料，Agent50 应自我打断并回到模型核心。</text>
+
+  <rect class="panel" x="70" y="260" width="390" height="285" stroke="#2f80a6"/>
+  <rect x="70" y="260" width="390" height="54" rx="18" fill="#2f80a6"/>
+  <text class="label" x="95" y="295">1 观测补强入口</text>
+  <text class="box-title" x="95" y="350">Agent48 稀疏感知</text>
+  <text class="body" x="95" y="382">管网/处理单元节点</text>
+  <text class="body" x="95" y="410">× 低成本传感模态</text>
+  <text class="body" x="95" y="438">形成 node-modality 矩阵</text>
+  <rect class="inner soft" x="95" y="468" width="315" height="52" stroke="#9ac7de"/>
+  <text class="metric" x="115" y="500">weak_state_coverage = 0.300</text>
+
+  <rect class="panel" x="505" y="260" width="390" height="285" stroke="#7c62b2"/>
+  <rect x="505" y="260" width="390" height="54" rx="18" fill="#7c62b2"/>
+  <text class="label" x="530" y="295">2 弱状态代理化</text>
+  <text class="box-title" x="530" y="350">Agent51 催化剂活性代理</text>
+  <text class="body" x="530" y="382">UV254 去除率 / ORP 衰减</text>
+  <text class="body" x="530" y="410">浊度 + 压降污堵</text>
+  <text class="body" x="530" y="438">再生响应 + 速率残差</text>
+  <rect class="inner soft" x="530" y="468" width="320" height="52" stroke="#c3b2df"/>
+  <text class="metric" x="550" y="500">proxy observability 0.331 -> 0.720</text>
+
+  <rect class="panel" x="940" y="260" width="390" height="285" stroke="#368763"/>
+  <rect x="940" y="260" width="390" height="54" rx="18" fill="#368763"/>
+  <text class="label" x="965" y="295">3 多设施协同候选</text>
+  <text class="box-title" x="965" y="350">Agent49 协同控制</text>
+  <text class="body" x="965" y="382">均质池 / 反应核心</text>
+  <text class="body" x="965" y="410">催化剂床 / 回流环 / 末端</text>
+  <text class="body" x="965" y="438">联合奖励 + 决策树蒸馏</text>
+  <rect class="inner soft" x="965" y="468" width="320" height="52" stroke="#9fd4bc"/>
+  <text class="metric" x="985" y="500">distilled proxy accuracy = 0.794</text>
+
+  <rect class="panel" x="1375" y="260" width="355" height="285" stroke="#c5792a"/>
+  <rect x="1375" y="260" width="355" height="54" rx="18" fill="#c5792a"/>
+  <text class="label" x="1400" y="295">4 Replay 审查层</text>
+  <text class="box-title" x="1400" y="350">Agent52 离线评估</text>
+  <text class="body" x="1400" y="382">state-action-reward schema</text>
+  <text class="body" x="1400" y="410">policy replay / reward regret</text>
+  <text class="body" x="1400" y="438">误触发成本 + 写回边界</text>
+  <rect class="inner soft" x="1400" y="468" width="285" height="52" stroke="#e0b681"/>
+  <text class="metric" x="1420" y="500">accuracy 0.667 / regret 0.055</text>
+
+  <path class="arrow" d="M460 403 C480 403, 485 403, 505 403"/>
+  <path class="arrow" d="M895 403 C915 403, 920 403, 940 403"/>
+  <path class="arrow" d="M1330 403 C1350 403, 1355 403, 1375 403"/>
+
+  <rect x="70" y="610" width="810" height="245" rx="20" fill="#ffffff" stroke="#7a8da0" stroke-width="2"/>
+  <text class="section-title" x="100" y="650">Agent52 的评估逻辑</text>
+  <rect class="inner" x="100" y="680" width="230" height="120" stroke="#d1dae4"/>
+  <text class="box-title" x="122" y="715">Replay 数据合同</text>
+  <text class="small" x="122" y="746">传感 / lab / operation</text>
+  <text class="small" x="122" y="772">facility state / joint action</text>
+
+  <rect class="inner" x="370" y="680" width="210" height="120" stroke="#d1dae4"/>
+  <text class="box-title" x="392" y="715">离线评价</text>
+  <text class="small" x="392" y="746">动作准确率</text>
+  <text class="small" x="392" y="772">reward regret</text>
+
+  <rect class="inner" x="620" y="680" width="230" height="120" stroke="#d1dae4"/>
+  <text class="box-title" x="642" y="715">可解释蒸馏</text>
+  <text class="small" x="642" y="746">决策树回放准确率</text>
+  <text class="small" x="642" y="772">失败样例定位</text>
+
+  <path class="arrow-soft" d="M330 740 L370 740"/>
+  <path class="arrow-soft" d="M580 740 L620 740"/>
+
+  <rect x="920" y="610" width="810" height="245" rx="20" fill="#ffffff" stroke="#7a8da0" stroke-width="2"/>
+  <text class="section-title" x="950" y="650">写回门控：哪些能进入模型，哪些必须阻断</text>
+
+  <rect x="950" y="685" width="330" height="125" rx="16" fill="#edf9f2" stroke="#70b889" stroke-width="2"/>
+  <text class="box-title" x="975" y="722" fill="#1f6c45">允许写回</text>
+  <text class="small" x="975" y="754">reward prior</text>
+  <text class="small" x="975" y="780">replay schema</text>
+  <text class="small" x="1115" y="754">offline metric contract</text>
+
+  <rect x="1340" y="685" width="330" height="125" rx="16" fill="#fff2f2" stroke="#c46b6b" stroke-width="2"/>
+  <text class="box-title" x="1365" y="722" fill="#8e3030">必须阻断</text>
+  <text class="small" x="1365" y="754">actuator policy</text>
+  <text class="small" x="1365" y="780">release gate policy</text>
+  <text class="small" x="1505" y="754">online MARL training</text>
+
+  <path class="arrow" d="M880 735 C900 735, 900 735, 920 735"/>
+  <path class="arrow-no" d="M1505 685 C1505 625, 1415 585, 1550 545"/>
+
+  <rect x="70" y="910" width="520" height="150" rx="20" fill="#fffdf2" stroke="#d0a33d" stroke-width="2.3"/>
+  <text class="section-title" x="100" y="950">当前结论</text>
+  <text class="body" x="100" y="986">Agent52 已把 P3 从“协同控制候选”</text>
+  <text class="body" x="100" y="1016">推进到“可回放离线评估框架”。</text>
+  <text class="body" x="100" y="1046">但仍缺真实多节点 field replay。</text>
+
+  <rect x="640" y="910" width="520" height="150" rx="20" fill="#f2f8ff" stroke="#5b8fc1" stroke-width="2.3"/>
+  <text class="section-title" x="670" y="950">Agent50 自我打断评估</text>
+  <text class="body" x="670" y="986">verdict：continue_core_work</text>
+  <text class="body" x="670" y="1016">不继续在展示层或 P3 空转</text>
+  <text class="body" x="670" y="1046">下一步切入更高边际价值问题</text>
+
+  <rect x="1210" y="910" width="520" height="150" rx="20" fill="#f3f7f3" stroke="#6c9d72" stroke-width="2.3"/>
+  <text class="section-title" x="1240" y="950">下一轮 P4</text>
+  <text class="body" x="1240" y="986">最小灰箱物理机制增强</text>
+  <text class="body" x="1240" y="1016">反应动力学 / 传质限制 / 催化剂衰减</text>
+  <text class="body" x="1240" y="1046">基质抑制 / 副产物风险</text>
+
+  <path class="arrow" d="M590 985 C610 985, 620 985, 640 985"/>
+  <path class="arrow" d="M1160 985 C1180 985, 1190 985, 1210 985"/>
+  <path class="arrow-soft dash" d="M1470 910 C1460 865, 1500 840, 1500 810"/>
+
+  <text class="tiny" x="70" y="1090">图中所有数值均来自当前 synthetic baseline；它们用于模型结构设计和离线评估，不构成现场实证结论。</text>
+</svg>

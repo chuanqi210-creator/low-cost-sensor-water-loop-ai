@@ -1,0 +1,146 @@
+{
+  "preflight_status": "no_field_path_endpoint_label_package_supplied",
+  "required_tables": [
+    "site_topology_or_bed_geometry",
+    "node_modality_sensor_timeseries",
+    "hydraulic_path_stage_labels",
+    "final_effluent_endpoint_labels",
+    "campaign_operation_log",
+    "offline_lab_results"
+  ],
+  "missing_tables": [
+    "site_topology_or_bed_geometry",
+    "node_modality_sensor_timeseries",
+    "hydraulic_path_stage_labels",
+    "final_effluent_endpoint_labels",
+    "campaign_operation_log",
+    "offline_lab_results"
+  ],
+  "empty_tables": [],
+  "invalid_table_shapes": [],
+  "template_marker_count": 0,
+  "required_field_gap_count": 0,
+  "table_row_counts": {
+    "site_topology_or_bed_geometry": 0,
+    "node_modality_sensor_timeseries": 0,
+    "hydraulic_path_stage_labels": 0,
+    "final_effluent_endpoint_labels": 0,
+    "campaign_operation_log": 0,
+    "offline_lab_results": 0
+  },
+  "table_batch_counts": {
+    "site_topology_or_bed_geometry": 0,
+    "node_modality_sensor_timeseries": 0,
+    "hydraulic_path_stage_labels": 0,
+    "final_effluent_endpoint_labels": 0,
+    "campaign_operation_log": 0,
+    "offline_lab_results": 0
+  },
+  "batch_alignment_gap_count": 0,
+  "required_matched_batch_deficit": 5,
+  "missing_batch_ids_by_table": {},
+  "alignment_patch_plan": {
+    "patch_plan_id": "R8u76_field_path_endpoint_batch_alignment_patch_plan",
+    "patch_plan_status": "field_path_endpoint_alignment_blocked_by_preflight",
+    "required_tables": [
+      "site_topology_or_bed_geometry",
+      "node_modality_sensor_timeseries",
+      "hydraulic_path_stage_labels",
+      "final_effluent_endpoint_labels",
+      "campaign_operation_log",
+      "offline_lab_results"
+    ],
+    "batch_alignment_tables": [
+      "node_modality_sensor_timeseries",
+      "hydraulic_path_stage_labels",
+      "final_effluent_endpoint_labels",
+      "campaign_operation_log",
+      "offline_lab_results"
+    ],
+    "table_row_counts": {
+      "site_topology_or_bed_geometry": 0,
+      "node_modality_sensor_timeseries": 0,
+      "hydraulic_path_stage_labels": 0,
+      "final_effluent_endpoint_labels": 0,
+      "campaign_operation_log": 0,
+      "offline_lab_results": 0
+    },
+    "table_batch_counts": {
+      "site_topology_or_bed_geometry": 0,
+      "node_modality_sensor_timeseries": 0,
+      "hydraulic_path_stage_labels": 0,
+      "final_effluent_endpoint_labels": 0,
+      "campaign_operation_log": 0,
+      "offline_lab_results": 0
+    },
+    "matched_batch_count": 0,
+    "minimum_matched_batch_count": 5,
+    "required_matched_batch_deficit": 5,
+    "batch_alignment_gap_count": 0,
+    "item_count": 7,
+    "items": [
+      {
+        "item_id": "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED",
+        "priority": "P2",
+        "target_table": "site_topology_or_bed_geometry",
+        "action": "add_real_field_rows",
+        "minimum_rows_hint": 1,
+        "acceptance": "site_topology_or_bed_geometry has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+      },
+      {
+        "item_id": "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED",
+        "priority": "P1",
+        "target_table": "node_modality_sensor_timeseries",
+        "action": "add_real_field_rows",
+        "minimum_rows_hint": 5,
+        "acceptance": "node_modality_sensor_timeseries has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+      },
+      {
+        "item_id": "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED",
+        "priority": "P1",
+        "target_table": "hydraulic_path_stage_labels",
+        "action": "add_real_field_rows",
+        "minimum_rows_hint": 5,
+        "acceptance": "hydraulic_path_stage_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+      },
+      {
+        "item_id": "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED",
+        "priority": "P1",
+        "target_table": "final_effluent_endpoint_labels",
+        "action": "add_real_field_rows",
+        "minimum_rows_hint": 5,
+        "acceptance": "final_effluent_endpoint_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+      },
+      {
+        "item_id": "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED",
+        "priority": "P1",
+        "target_table": "campaign_operation_log",
+        "action": "add_real_field_rows",
+        "minimum_rows_hint": 5,
+        "acceptance": "campaign_operation_log has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+      },
+      {
+        "item_id": "R8U76_OFFLINE_LAB_RESULTS_ROWS_REQUIRED",
+        "priority": "P1",
+        "target_table": "offline_lab_results",
+        "action": "add_real_field_rows",
+        "minimum_rows_hint": 5,
+        "acceptance": "offline_lab_results has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+      },
+      {
+        "item_id": "R8U76_MINIMUM_MATCHED_BATCH_DEFICIT",
+        "priority": "P1",
+        "target_table": "cross_table_batch_alignment",
+        "action": "collect_same_batch_bundle_across_path_endpoint_tables",
+        "required_matched_batch_deficit": 5,
+        "acceptance": "matched_batch_count >= 5 across node_modality_sensor_timeseries, hydraulic_path_stage_labels, final_effluent_endpoint_labels, campaign_operation_log, offline_lab_results."
+      }
+    ],
+    "field_boundary": "This patch plan only describes how to collect or align field package rows. It does not create field evidence, does not validate control performance, and cannot authorize actuator or release gate writeback."
+  },
+  "matched_batch_count": 0,
+  "accepted_batch_ids": [],
+  "can_route_to_field_layout_holdout": false,
+  "next_operator_action": "submit_field_path_endpoint_label_package_rows",
+  "field_boundary": "contract only; no real path/endpoint package rows have been supplied"
+}

@@ -1,0 +1,1143 @@
+{
+  "multi_facility_collaborative_control": {
+    "agent_name": "multi_facility_collaborative_control_agent",
+    "confidence": 0.336,
+    "summary": "多设施协同控制：synthetic_collaborative_policy_needs_field_replay；设施 agent 5 个，候选联动动作 5 个，策略蒸馏准确度 0.790。",
+    "recommendations": [
+      "把单处理链闭环升级为“多设施 agent 协同”：均质池、反应核心、催化剂床、回流环和末端精处理分别提出局部动作，再由联合奖励函数仲裁。",
+      "把 Agent48 的 node-modality 稀疏观测矩阵作为协同控制的状态入口，缺节点或缺模态时用 missingness mask 显式进入策略。",
+      "用决策树蒸馏把多 agent 策略转成现场可审查规则，所有规则都必须保留人工复核和禁止自动放行边界。",
+      "下一步应采集真实多节点 sensor/lab/operation/action replay，形成共享经验池，再验证 joint_action_accuracy、reward_regret 和误动作成本。",
+      "Agent49 可消费 Agent51/R2 的催化剂弱轴修复先验更新状态向量，但 field proxy labels 前必须保留催化剂不确定性保护。",
+      "Agent49 已消费 pressure/headloss 候选合同；下一步需要用 site topology、bed geometry、压降时序、lab label 和操作日志做 field replay，否则只能作为解释先验和 guardrail 边界。",
+      "决策树代理当前只能解释策略，不能替代协同控制器；需要 field replay 上准确度达到 0.90 后再进入执行器候选。",
+      "R3b 已把反事实压力测试中的 R3G1/R3G2 接入 Agent49 reward prior；下一步需要 Agent52 用 guardrail-aware replay 复核 regret 和误保护成本。",
+      "Agent49 已接入 Agent51 field holdout summary；若 scoreable batch 不足或 MAE/相关性未过线，J2 催化剂保护/再生仍要转入暂存或人工复核。",
+      "P7 后续必须把工程执行约束补丁持续接入 reward，包括池容、泵阀延迟、药剂库存、维护窗口和人工复核排队。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "multi_facility_collaborative_control_from_sparse_sensing",
+        "borrowed_from": [
+          "multi_agent_reinforcement_learning_for_multi_facility_wastewater_control",
+          "LSTM_or_surrogate_environment_interaction_model",
+          "shared_experience_replay_pool",
+          "weighted_reward_for_energy_risk_operation_mode",
+          "ID3_decision_tree_policy_distillation_for_interpretable_execution"
+        ],
+        "reality_mapping": "把城市污水多泵站协同优化的思想迁移为处理单元/回流单元/末端单元协同控制，但只借鉴状态-动作-奖励-经验池-蒸馏结构，不强行套用泵站水位目标。",
+        "data_needs": [
+          "multi_node_sensor_timeseries",
+          "lab_labels_by_batch_and_node",
+          "operation_action_log",
+          "actuator_response_and_delay",
+          "energy_chemical_cost",
+          "engineering_constraint_patch",
+          "operator_override_and_failure_reason"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/multi_facility_collaborative_control_agent.py",
+          "experiments/run_agent49_multi_facility_collaborative_control.py",
+          "outputs/multi_facility_collaborative_control/collaborative_control_metrics.json"
+        ],
+        "evaluation_metrics": [
+          "joint_action_accuracy",
+          "reward_regret",
+          "field_replay_coverage",
+          "distilled_policy_accuracy",
+          "false_positive_action_cost",
+          "engineering_constraint_penalty",
+          "execution_feasibility",
+          "control_replay_guardrail_penalty",
+          "pressure_source_conflict_control_block",
+          "release_block_correctness"
+        ],
+        "failure_boundary": "当前只形成多设施协同控制候选和可解释规则树，不训练真实 MARL 控制器，也不允许 synthetic 策略写入执行器或放行门。"
+      },
+      "sparse_context": {
+        "coverage": {
+          "pollutant_residual_observability": 0.814,
+          "reaction_completion_observability": 0.712,
+          "oxidant_observability": 0.775,
+          "catalyst_activity_observability": 0.58,
+          "matrix_interference_observability": 0.851,
+          "hydraulic_observability": 0.76,
+          "fault_classification_observability": 0.587,
+          "control_latency_gain": 0.837,
+          "soft_sensor_reconstruction_gain": 0.827,
+          "cost_efficiency": 1.0,
+          "weak_state_coverage": 0.58
+        },
+        "selected_nodes": [
+          "N0_influent",
+          "N1_equalization_tank",
+          "N2_reactor_mid",
+          "N3_catalyst_bed_outlet",
+          "N4_recirculation_loop"
+        ],
+        "selected_modalities": [
+          "EC_uScm",
+          "ORP_mV",
+          "UV254_abs",
+          "flow_Lmin",
+          "turbidity_NTU"
+        ],
+        "selected_sensor_count": 7,
+        "sparse_placement_status": "sparse_sensor_layout_ready_needs_field_topology",
+        "observation_contract_context": {
+          "contract_ready": true,
+          "contract_id": "greedy_marginal:6x10::budget_rebalanced_proxy_contract",
+          "recommended_contract_id": "budget_rebalanced_proxy_contract",
+          "contract_pairs": [
+            "N0_influent:EC_uScm",
+            "N1_equalization_tank:flow_Lmin",
+            "N2_reactor_mid:ORP_mV",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:turbidity_NTU",
+            "N4_recirculation_loop:UV254_abs"
+          ],
+          "sensor_count": 7,
+          "proxy_enhanced_catalyst_activity_observability": 0.58,
+          "proxy_enhanced_weak_state_coverage": 0.58,
+          "budget_pass": true,
+          "field_topology_ready": false,
+          "field_proxy_labels_ready": false,
+          "field_missingness_ready": false,
+          "weak_axis_repair_status": "agent48_catalyst_axis_requires_proxy_patch_and_field_label",
+          "weak_axis_repair_score": 0.983,
+          "field_repair_evidence_requirement_count": 4,
+          "pressure_headloss_context": {
+            "contract_id": "R8c_pressure_headloss_control_boundary",
+            "pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+            "candidate_count": 3,
+            "candidate_ids": [
+              "N3_catalyst_bed:pressure_drop_kPa",
+              "N3_catalyst_bed:headloss_kPa_per_m",
+              "N3_catalyst_bed:flow_normalized_pressure_residual"
+            ],
+            "required_tables": [
+              "node_modality_sensor_timeseries",
+              "offline_lab_results",
+              "campaign_operation_log",
+              "site_topology_or_bed_geometry"
+            ],
+            "minimum_matched_batch_count": 3,
+            "consumed_by_agent49": true,
+            "can_update_state_vector_design_prior": true,
+            "can_relax_hydraulic_or_catalyst_guardrail": false,
+            "can_write_to_actuator": false,
+            "can_write_to_release_gate": false,
+            "control_boundary": "pressure/headloss may shape hydraulic and catalyst-state explanation priors, but cannot relax recycle/catalyst guardrails or promote actuator use without field topology, matched lab labels and missingness replay."
+          },
+          "pressure_headloss_candidate_pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+          "pressure_headloss_candidate_count": 3,
+          "pressure_headloss_candidate_ids": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed:headloss_kPa_per_m",
+            "N3_catalyst_bed:flow_normalized_pressure_residual"
+          ],
+          "pressure_headloss_consumed_by_agent49": true,
+          "pressure_headloss_control_boundary": "pressure/headloss may shape hydraulic and catalyst-state explanation priors, but cannot relax recycle/catalyst guardrails or promote actuator use without field topology, matched lab labels and missingness replay.",
+          "pressure_headloss_can_relax_control_guardrail": false,
+          "field_boundary": "observation contract can update design prior, but field topology/proxy labels/missingness are required before actuator use"
+        },
+        "pressure_headloss_control_boundary": "pressure/headloss may shape hydraulic and catalyst-state explanation priors, but cannot relax recycle/catalyst guardrails or promote actuator use without field topology, matched lab labels and missingness replay.",
+        "pressure_headloss_candidate_ids": [
+          "N3_catalyst_bed:pressure_drop_kPa",
+          "N3_catalyst_bed:headloss_kPa_per_m",
+          "N3_catalyst_bed:flow_normalized_pressure_residual"
+        ],
+        "catalyst_proxy_field_context": {
+          "summary_supplied": true,
+          "summary_status": "field_proxy_holdout_coverage_gaps",
+          "ready_for_agent51_validation": false,
+          "field_validation_pass": false,
+          "scoreable_batch_count": 0,
+          "matched_batch_count": 0,
+          "holdout_mae": 1.0,
+          "proxy_label_correlation": 0.0,
+          "missing_required_signals": [
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "accepted_pressure_evidence_sources": [],
+          "pressure_evidence_source_batch_counts": {
+            "node_modality_sensor_timeseries": 0,
+            "pressure_headloss_event_log": 0,
+            "source_conflict_requires_operator_review": 0
+          },
+          "pressure_headloss_event_source_batch_count": 0,
+          "pressure_source_conflict_count": 0,
+          "resolved_pressure_source_conflict_count": 0,
+          "unresolved_pressure_source_conflict_count": 0,
+          "pressure_source_resolution_record_count": 0,
+          "pressure_source_conflicts": [],
+          "unresolved_pressure_source_conflicts": [],
+          "pressure_source_resolutions": [],
+          "conflict_requires_operator_review": false,
+          "pressure_source_conflict_control_block": false,
+          "guardrail_mode": "agent51_holdout_coverage_gaps_keep_catalyst_guardrail",
+          "can_write_to_actuator": false,
+          "can_write_to_release_gate": false
+        },
+        "data_origin": "synthetic_coordination_prior"
+      },
+      "control_state_axes": [
+        "influent_disturbance_visibility",
+        "reaction_state_visibility",
+        "catalyst_state_visibility",
+        "hydraulic_state_visibility",
+        "release_risk_visibility",
+        "control_latency_buffer",
+        "soft_sensor_confidence",
+        "field_replay_evidence",
+        "action_interpretability",
+        "cost_energy_efficiency"
+      ],
+      "facility_agents": [
+        {
+          "facility_agent_id": "F0_equalization_buffer_agent",
+          "facility_role": "均质/暂存/进水扰动削峰",
+          "observed_nodes": [
+            "N0_influent",
+            "N1_equalization_tank"
+          ],
+          "candidate_actions": [
+            "hold_and_homogenize",
+            "divert_to_buffer",
+            "reduce_intake_fraction"
+          ],
+          "local_objective": "降低进水冲击和基质突变，给软传感与离线验证争取时间。"
+        },
+        {
+          "facility_agent_id": "F1_reaction_core_agent",
+          "facility_role": "反应核心与药剂/氧化剂调节",
+          "observed_nodes": [
+            "N2_reactor_mid"
+          ],
+          "candidate_actions": [
+            "extend_reaction_retention",
+            "adjust_oxidant_dose",
+            "pulse_mixing"
+          ],
+          "local_objective": "补足反应完成度与氧化剂余量，避免把末端不达标全部推给回流。"
+        },
+        {
+          "facility_agent_id": "F2_catalyst_bed_agent",
+          "facility_role": "催化剂床保护、再生与切换",
+          "observed_nodes": [
+            "N3_catalyst_bed_outlet"
+          ],
+          "candidate_actions": [
+            "protect_catalyst_bed",
+            "schedule_regeneration",
+            "switch_parallel_bed"
+          ],
+          "local_objective": "区分基质抑制、催化剂失活和寿命衰减，避免盲目再生或过早更换。"
+        },
+        {
+          "facility_agent_id": "F3_recirculation_loop_agent",
+          "facility_role": "回流、延长停留时间和低频观测缓冲",
+          "observed_nodes": [
+            "N4_recirculation_loop"
+          ],
+          "candidate_actions": [
+            "increase_recycle_ratio",
+            "extend_loop_retention",
+            "hold_for_slow_evidence"
+          ],
+          "local_objective": "用循环结构换取决策时间，让低成本传感和慢证据仍能参与控制。"
+        },
+        {
+          "facility_agent_id": "F4_polishing_release_agent",
+          "facility_role": "末端精处理、暂存验证与放行阻断",
+          "observed_nodes": [],
+          "candidate_actions": [
+            "route_to_polishing",
+            "block_release_until_lab",
+            "conditional_release_after_gate"
+          ],
+          "local_objective": "把达标放行从单次预测改成证据门控，优先防止误放行。"
+        }
+      ],
+      "facility_state_matrix": [
+        {
+          "facility_agent_id": "F0_equalization_buffer_agent",
+          "facility_role": "均质/暂存/进水扰动削峰",
+          "observed_nodes": [
+            "N0_influent",
+            "N1_equalization_tank"
+          ],
+          "state_vector": {
+            "influent_disturbance_visibility": 0.851,
+            "reaction_state_visibility": 0.249,
+            "catalyst_state_visibility": 0.116,
+            "hydraulic_state_visibility": 0.547,
+            "release_risk_visibility": 0.366,
+            "control_latency_buffer": 0.837,
+            "soft_sensor_confidence": 0.538,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.82,
+            "cost_energy_efficiency": 1.0
+          },
+          "candidate_actions": [
+            "hold_and_homogenize",
+            "divert_to_buffer",
+            "reduce_intake_fraction"
+          ]
+        },
+        {
+          "facility_agent_id": "F1_reaction_core_agent",
+          "facility_role": "反应核心与药剂/氧化剂调节",
+          "observed_nodes": [
+            "N2_reactor_mid"
+          ],
+          "state_vector": {
+            "influent_disturbance_visibility": 0.494,
+            "reaction_state_visibility": 0.712,
+            "catalyst_state_visibility": 0.302,
+            "hydraulic_state_visibility": 0.418,
+            "release_risk_visibility": 0.57,
+            "control_latency_buffer": 0.586,
+            "soft_sensor_confidence": 0.827,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.74,
+            "cost_energy_efficiency": 0.8
+          },
+          "candidate_actions": [
+            "extend_reaction_retention",
+            "adjust_oxidant_dose",
+            "pulse_mixing"
+          ]
+        },
+        {
+          "facility_agent_id": "F2_catalyst_bed_agent",
+          "facility_role": "催化剂床保护、再生与切换",
+          "observed_nodes": [
+            "N3_catalyst_bed_outlet"
+          ],
+          "state_vector": {
+            "influent_disturbance_visibility": 0.357,
+            "reaction_state_visibility": 0.498,
+            "catalyst_state_visibility": 0.58,
+            "hydraulic_state_visibility": 0.342,
+            "release_risk_visibility": 0.488,
+            "control_latency_buffer": 0.485,
+            "soft_sensor_confidence": 0.629,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.78,
+            "cost_energy_efficiency": 0.62
+          },
+          "candidate_actions": [
+            "protect_catalyst_bed",
+            "schedule_regeneration",
+            "switch_parallel_bed"
+          ]
+        },
+        {
+          "facility_agent_id": "F3_recirculation_loop_agent",
+          "facility_role": "回流、延长停留时间和低频观测缓冲",
+          "observed_nodes": [
+            "N4_recirculation_loop"
+          ],
+          "state_vector": {
+            "influent_disturbance_visibility": 0.664,
+            "reaction_state_visibility": 0.541,
+            "catalyst_state_visibility": 0.278,
+            "hydraulic_state_visibility": 0.76,
+            "release_risk_visibility": 0.586,
+            "control_latency_buffer": 0.837,
+            "soft_sensor_confidence": 0.827,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.84,
+            "cost_energy_efficiency": 0.74
+          },
+          "candidate_actions": [
+            "increase_recycle_ratio",
+            "extend_loop_retention",
+            "hold_for_slow_evidence"
+          ]
+        },
+        {
+          "facility_agent_id": "F4_polishing_release_agent",
+          "facility_role": "末端精处理、暂存验证与放行阻断",
+          "observed_nodes": [],
+          "state_vector": {
+            "influent_disturbance_visibility": 0.323,
+            "reaction_state_visibility": 0.513,
+            "catalyst_state_visibility": 0.244,
+            "hydraulic_state_visibility": 0.289,
+            "release_risk_visibility": 0.814,
+            "control_latency_buffer": 0.385,
+            "soft_sensor_confidence": 0.711,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.88,
+            "cost_energy_efficiency": 0.68
+          },
+          "candidate_actions": [
+            "route_to_polishing",
+            "block_release_until_lab",
+            "conditional_release_after_gate"
+          ]
+        }
+      ],
+      "joint_action_matrix": [
+        {
+          "joint_action_id": "J4_safe_low_cost_standby",
+          "facility_agents": [
+            "F0_equalization_buffer_agent",
+            "F4_polishing_release_agent"
+          ],
+          "actions": [
+            "hold_and_homogenize",
+            "block_release_until_lab"
+          ],
+          "control_intent": "观测不足或策略不确定时选择低成本暂存与放行阻断。",
+          "combined_state_vector": {
+            "influent_disturbance_visibility": 0.851,
+            "reaction_state_visibility": 0.513,
+            "catalyst_state_visibility": 0.244,
+            "hydraulic_state_visibility": 0.547,
+            "release_risk_visibility": 0.814,
+            "control_latency_buffer": 0.837,
+            "soft_sensor_confidence": 0.711,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.88,
+            "cost_energy_efficiency": 1.0
+          },
+          "reward_components": {
+            "quality_reward": 0.508,
+            "risk_reduction_reward": 0.359,
+            "latency_reward": 0.837,
+            "field_evidence_bonus": 0.0,
+            "interpretability_bonus": 0.88,
+            "cost_energy_efficiency": 1.0,
+            "chemical_cost_penalty": 0.1,
+            "energy_penalty": 0.08,
+            "weak_state_penalty": 0.0,
+            "engineering_constraint_penalty": 0.022,
+            "execution_feasibility": 0.975,
+            "weighted_reward": 0.616,
+            "control_replay_guardrail_penalty": 0.0,
+            "control_replay_guardrail_bonus": 0.045
+          },
+          "joint_policy_score": 0.616,
+          "engineering_constraint_evaluation": {
+            "joint_action_id": "J4_safe_low_cost_standby",
+            "engineering_constraint_penalty": 0.022,
+            "execution_feasibility": 0.975,
+            "hard_blocked_by_engineering": false,
+            "hard_block_reasons": [],
+            "arbitration_required_checks": [
+              "operator_sop_review",
+              "operation_log_replay_alignment",
+              "buffer_storage_capacity_check"
+            ]
+          },
+          "control_replay_guardrail_evaluation": {
+            "guardrail_patch_applied": true,
+            "source_patch_id": "R3_counterfactual_guardrail_reward_prior",
+            "rule_ids": [
+              "R3G1_catalyst_uncertain_requires_standby_or_human_review"
+            ],
+            "penalty": 0.0,
+            "bonus": 0.045,
+            "preferred_action_ids": [
+              "J4_safe_low_cost_standby"
+            ],
+            "requires_human_review": false,
+            "reasons": [
+              "safe standby is the R3 guardrail candidate under unvalidated catalyst proxy labels. Agent51 guardrail mode=agent51_holdout_coverage_gaps_keep_catalyst_guardrail."
+            ],
+            "field_boundary": "R3b reward prior guardrails can change synthetic reward ranking and explanation rules only; field replay is required before actuator or release-gate promotion."
+          },
+          "can_write_to_actuator": false,
+          "writeback_boundary": "synthetic 或未蒸馏验证阶段只能形成控制候选，不写入现场执行器。"
+        },
+        {
+          "joint_action_id": "J3_polishing_and_release_gate",
+          "facility_agents": [
+            "F3_recirculation_loop_agent",
+            "F4_polishing_release_agent"
+          ],
+          "actions": [
+            "hold_for_slow_evidence",
+            "route_to_polishing"
+          ],
+          "control_intent": "末端风险不清时进入精处理与慢证据门控，不允许仅凭 synthetic 软传感放行。",
+          "combined_state_vector": {
+            "influent_disturbance_visibility": 0.664,
+            "reaction_state_visibility": 0.541,
+            "catalyst_state_visibility": 0.278,
+            "hydraulic_state_visibility": 0.76,
+            "release_risk_visibility": 0.814,
+            "control_latency_buffer": 0.837,
+            "soft_sensor_confidence": 0.827,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.88,
+            "cost_energy_efficiency": 0.74
+          },
+          "reward_components": {
+            "quality_reward": 0.515,
+            "risk_reduction_reward": 0.302,
+            "latency_reward": 0.837,
+            "field_evidence_bonus": 0.0,
+            "interpretability_bonus": 0.88,
+            "cost_energy_efficiency": 0.74,
+            "chemical_cost_penalty": 0.1,
+            "energy_penalty": 0.08,
+            "weak_state_penalty": 0.0,
+            "engineering_constraint_penalty": 0.0,
+            "execution_feasibility": 1.0,
+            "weighted_reward": 0.582,
+            "control_replay_guardrail_penalty": 0.0,
+            "control_replay_guardrail_bonus": 0.04
+          },
+          "joint_policy_score": 0.582,
+          "engineering_constraint_evaluation": {
+            "joint_action_id": "J3_polishing_and_release_gate",
+            "engineering_constraint_penalty": 0.0,
+            "execution_feasibility": 1.0,
+            "hard_blocked_by_engineering": false,
+            "hard_block_reasons": [],
+            "arbitration_required_checks": [
+              "operator_sop_review",
+              "operation_log_replay_alignment"
+            ]
+          },
+          "control_replay_guardrail_evaluation": {
+            "guardrail_patch_applied": true,
+            "source_patch_id": "R3_counterfactual_guardrail_reward_prior",
+            "rule_ids": [
+              "R3G2_hydraulic_delay_unknown_blocks_recycle"
+            ],
+            "penalty": 0.0,
+            "bonus": 0.04,
+            "preferred_action_ids": [
+              "J3_polishing_and_release_gate"
+            ],
+            "requires_human_review": false,
+            "reasons": [
+              "polishing and slow-evidence gate is the R3 guardrail candidate under hydraulic delay uncertainty."
+            ],
+            "field_boundary": "R3b reward prior guardrails can change synthetic reward ranking and explanation rules only; field replay is required before actuator or release-gate promotion."
+          },
+          "can_write_to_actuator": false,
+          "writeback_boundary": "synthetic 或未蒸馏验证阶段只能形成控制候选，不写入现场执行器。"
+        },
+        {
+          "joint_action_id": "J1_reaction_completion_recovery",
+          "facility_agents": [
+            "F1_reaction_core_agent",
+            "F3_recirculation_loop_agent"
+          ],
+          "actions": [
+            "adjust_oxidant_dose",
+            "extend_loop_retention"
+          ],
+          "control_intent": "反应不足时同步调药和延长停留时间，而不是只提高单一药剂。",
+          "combined_state_vector": {
+            "influent_disturbance_visibility": 0.664,
+            "reaction_state_visibility": 0.712,
+            "catalyst_state_visibility": 0.302,
+            "hydraulic_state_visibility": 0.76,
+            "release_risk_visibility": 0.586,
+            "control_latency_buffer": 0.837,
+            "soft_sensor_confidence": 0.827,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.84,
+            "cost_energy_efficiency": 0.8
+          },
+          "reward_components": {
+            "quality_reward": 0.455,
+            "risk_reduction_reward": 0.308,
+            "latency_reward": 0.837,
+            "field_evidence_bonus": 0.0,
+            "interpretability_bonus": 0.84,
+            "cost_energy_efficiency": 0.8,
+            "chemical_cost_penalty": 0.1,
+            "energy_penalty": 0.18,
+            "weak_state_penalty": 0.0,
+            "engineering_constraint_penalty": 0.0,
+            "execution_feasibility": 1.0,
+            "weighted_reward": 0.52,
+            "control_replay_guardrail_penalty": 0.0,
+            "control_replay_guardrail_bonus": 0.0
+          },
+          "joint_policy_score": 0.52,
+          "engineering_constraint_evaluation": {
+            "joint_action_id": "J1_reaction_completion_recovery",
+            "engineering_constraint_penalty": 0.0,
+            "execution_feasibility": 1.0,
+            "hard_blocked_by_engineering": false,
+            "hard_block_reasons": [],
+            "arbitration_required_checks": [
+              "operator_sop_review",
+              "operation_log_replay_alignment"
+            ]
+          },
+          "control_replay_guardrail_evaluation": {
+            "guardrail_patch_applied": false,
+            "source_patch_id": "R3_counterfactual_guardrail_reward_prior",
+            "reason": "no R3 guardrail rule targets this joint action."
+          },
+          "can_write_to_actuator": false,
+          "writeback_boundary": "synthetic 或未蒸馏验证阶段只能形成控制候选，不写入现场执行器。"
+        },
+        {
+          "joint_action_id": "J0_matrix_shock_equalize_and_recycle",
+          "facility_agents": [
+            "F0_equalization_buffer_agent",
+            "F3_recirculation_loop_agent"
+          ],
+          "actions": [
+            "hold_and_homogenize",
+            "increase_recycle_ratio"
+          ],
+          "control_intent": "基质冲击先削峰再回流，避免反应核心被瞬时负荷推入不可解释区。",
+          "combined_state_vector": {
+            "influent_disturbance_visibility": 0.851,
+            "reaction_state_visibility": 0.541,
+            "catalyst_state_visibility": 0.278,
+            "hydraulic_state_visibility": 0.76,
+            "release_risk_visibility": 0.586,
+            "control_latency_buffer": 0.837,
+            "soft_sensor_confidence": 0.827,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.84,
+            "cost_energy_efficiency": 1.0
+          },
+          "reward_components": {
+            "quality_reward": 0.41,
+            "risk_reduction_reward": 0.367,
+            "latency_reward": 0.837,
+            "field_evidence_bonus": 0.0,
+            "interpretability_bonus": 0.84,
+            "cost_energy_efficiency": 1.0,
+            "chemical_cost_penalty": 0.1,
+            "energy_penalty": 0.18,
+            "weak_state_penalty": 0.0,
+            "engineering_constraint_penalty": 0.0,
+            "execution_feasibility": 1.0,
+            "weighted_reward": 0.401,
+            "control_replay_guardrail_penalty": 0.14,
+            "control_replay_guardrail_bonus": 0.0
+          },
+          "joint_policy_score": 0.401,
+          "engineering_constraint_evaluation": {
+            "joint_action_id": "J0_matrix_shock_equalize_and_recycle",
+            "engineering_constraint_penalty": 0.0,
+            "execution_feasibility": 1.0,
+            "hard_blocked_by_engineering": false,
+            "hard_block_reasons": [],
+            "arbitration_required_checks": [
+              "operator_sop_review",
+              "operation_log_replay_alignment"
+            ]
+          },
+          "control_replay_guardrail_evaluation": {
+            "guardrail_patch_applied": true,
+            "source_patch_id": "R3_counterfactual_guardrail_reward_prior",
+            "rule_ids": [
+              "R3G2_hydraulic_delay_unknown_blocks_recycle"
+            ],
+            "penalty": 0.14,
+            "bonus": 0.0,
+            "preferred_action_ids": [
+              "J3_polishing_and_release_gate"
+            ],
+            "requires_human_review": true,
+            "reasons": [
+              "tank storage margin and actuator latency evidence are missing; recycle escalation remains high regret."
+            ],
+            "field_boundary": "R3b reward prior guardrails can change synthetic reward ranking and explanation rules only; field replay is required before actuator or release-gate promotion."
+          },
+          "can_write_to_actuator": false,
+          "writeback_boundary": "synthetic 或未蒸馏验证阶段只能形成控制候选，不写入现场执行器。"
+        },
+        {
+          "joint_action_id": "J2_catalyst_protection_before_regeneration",
+          "facility_agents": [
+            "F0_equalization_buffer_agent",
+            "F2_catalyst_bed_agent"
+          ],
+          "actions": [
+            "reduce_intake_fraction",
+            "protect_catalyst_bed"
+          ],
+          "control_intent": "催化剂状态不清时先保护负荷，再决定再生、切换或更换。",
+          "combined_state_vector": {
+            "influent_disturbance_visibility": 0.851,
+            "reaction_state_visibility": 0.498,
+            "catalyst_state_visibility": 0.58,
+            "hydraulic_state_visibility": 0.547,
+            "release_risk_visibility": 0.488,
+            "control_latency_buffer": 0.837,
+            "soft_sensor_confidence": 0.629,
+            "field_replay_evidence": 0.0,
+            "action_interpretability": 0.82,
+            "cost_energy_efficiency": 1.0
+          },
+          "reward_components": {
+            "quality_reward": 0.354,
+            "risk_reduction_reward": 0.443,
+            "latency_reward": 0.837,
+            "field_evidence_bonus": 0.0,
+            "interpretability_bonus": 0.82,
+            "cost_energy_efficiency": 1.0,
+            "chemical_cost_penalty": 0.1,
+            "energy_penalty": 0.08,
+            "weak_state_penalty": 0.0,
+            "engineering_constraint_penalty": 0.068,
+            "execution_feasibility": 0.923,
+            "weighted_reward": 0.185,
+            "control_replay_guardrail_penalty": 0.16,
+            "control_replay_guardrail_bonus": 0.0
+          },
+          "joint_policy_score": 0.185,
+          "engineering_constraint_evaluation": {
+            "joint_action_id": "J2_catalyst_protection_before_regeneration",
+            "engineering_constraint_penalty": 0.068,
+            "execution_feasibility": 0.923,
+            "hard_blocked_by_engineering": true,
+            "hard_block_reasons": [
+              "maintenance_window_pressure"
+            ],
+            "arbitration_required_checks": [
+              "operator_sop_review",
+              "operation_log_replay_alignment",
+              "maintenance_window_check",
+              "actuator_latency_check",
+              "manual_override_required_before_execution"
+            ]
+          },
+          "control_replay_guardrail_evaluation": {
+            "guardrail_patch_applied": true,
+            "source_patch_id": "R3_counterfactual_guardrail_reward_prior",
+            "rule_ids": [
+              "R3G1_catalyst_uncertain_requires_standby_or_human_review"
+            ],
+            "penalty": 0.16,
+            "bonus": 0.0,
+            "preferred_action_ids": [
+              "J4_safe_low_cost_standby"
+            ],
+            "requires_human_review": true,
+            "reasons": [
+              "catalyst proxy labels are not field validated; avoid autonomous protective/regeneration action. Agent51 summary=field_proxy_holdout_coverage_gaps, scoreable_batches=0."
+            ],
+            "field_boundary": "R3b reward prior guardrails can change synthetic reward ranking and explanation rules only; field replay is required before actuator or release-gate promotion."
+          },
+          "can_write_to_actuator": false,
+          "writeback_boundary": "synthetic 或未蒸馏验证阶段只能形成控制候选，不写入现场执行器。"
+        }
+      ],
+      "reward_contract": {
+        "objective": "在低成本稀疏感知下同时优化水质安全、基质冲击削峰、反应完成度、催化剂保护、能耗药耗、延迟预算和可解释性。",
+        "reward_terms": {
+          "quality_reward": "残留污染物/末端风险可观测且动作能降低风险。",
+          "risk_reduction_reward": "基质冲击和催化剂压力被提前削峰或隔离。",
+          "latency_reward": "动作能利用循环/暂存结构争取控制和慢证据时间。",
+          "field_evidence_bonus": "真实 replay 覆盖、动作准确度和回报后悔度达标。",
+          "interpretability_bonus": "动作可被决策树规则解释并可人工复核。",
+          "cost_energy_efficiency": "动作不把低成本研究方向推成高能耗高药耗方案。",
+          "engineering_constraint_penalty": "池容、泵阀、库存、维护窗口、人工复核和误动作成本形成的执行约束惩罚。",
+          "execution_feasibility": "该联动动作在当前工程资源边界下的可执行程度。",
+          "control_replay_guardrail_penalty": "R3 反事实压力测试暴露的高 regret/误保护动作惩罚。",
+          "control_replay_guardrail_bonus": "R3 guardrail 推荐的低风险暂存、精处理或慢证据动作加成。"
+        },
+        "hard_constraints": [
+          "synthetic policy cannot write actuator",
+          "collaborative policy cannot write release gate",
+          "low catalyst observability blocks autonomous catalyst action",
+          "field replay and decision-tree distillation required before execution candidate",
+          "engineering hard blocks require manual review or action downgrade",
+          "R3 control replay guardrails cannot promote actuator or release gate without field replay",
+          "pressure/headloss candidates cannot relax hydraulic or catalyst guardrails without field topology and labels",
+          "conflicting pressure sources cannot relax hydraulic or catalyst guardrails before operator review"
+        ]
+      },
+      "engineering_constraints_context": {
+        "agent49_reward_patch_available": true,
+        "engineering_constraints_status": "synthetic_engineering_constraints_reward_patch_ready_needs_plc_scada_and_field_replay",
+        "field_ready": false,
+        "can_update_agent49_reward_contract": true,
+        "can_write_to_actuator": false
+      },
+      "control_replay_guardrail_context": {
+        "reward_prior_guardrail_available": true,
+        "patch_id": "R3_counterfactual_guardrail_reward_prior",
+        "control_replay_stress_status": "synthetic_counterfactual_stress_ready_needs_field_replay",
+        "candidate_rule_ids": [
+          "R3G1_catalyst_uncertain_requires_standby_or_human_review",
+          "R3G2_hydraulic_delay_unknown_blocks_recycle"
+        ],
+        "triggered_case_count": 2,
+        "guardrail_candidate_accuracy": 1.0,
+        "p95_reward_regret_delta_guardrail": 0.177,
+        "protective_false_positive_cost_delta_guardrail": 0.18,
+        "field_replay_coverage": 0.0,
+        "field_ready": false,
+        "field_proxy_labels_ready": false,
+        "catalyst_proxy_summary_status": "field_proxy_holdout_coverage_gaps",
+        "catalyst_proxy_ready_for_agent51_validation": false,
+        "catalyst_proxy_field_validation_pass": false,
+        "catalyst_proxy_scoreable_batch_count": 0,
+        "catalyst_proxy_matched_batch_count": 0,
+        "catalyst_proxy_holdout_mae": 1.0,
+        "catalyst_proxy_label_correlation": 0.0,
+        "catalyst_proxy_missing_required_signals": [
+          "N3_catalyst_bed_outlet:UV254_abs",
+          "N3_catalyst_bed_outlet:ORP_mV",
+          "N3_catalyst_bed:pressure_drop_kPa"
+        ],
+        "accepted_pressure_evidence_sources": [],
+        "pressure_evidence_source_batch_counts": {
+          "node_modality_sensor_timeseries": 0,
+          "pressure_headloss_event_log": 0,
+          "source_conflict_requires_operator_review": 0
+        },
+        "pressure_headloss_event_source_batch_count": 0,
+        "pressure_source_conflict_count": 0,
+        "resolved_pressure_source_conflict_count": 0,
+        "unresolved_pressure_source_conflict_count": 0,
+        "pressure_source_resolution_record_count": 0,
+        "pressure_source_conflicts": [],
+        "unresolved_pressure_source_conflicts": [],
+        "pressure_source_resolutions": [],
+        "conflict_requires_operator_review": false,
+        "pressure_source_conflict_control_block": false,
+        "catalyst_guardrail_mode": "agent51_holdout_coverage_gaps_keep_catalyst_guardrail",
+        "pressure_headloss_candidate_pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+        "pressure_headloss_candidate_count": 3,
+        "pressure_headloss_candidate_ids": [
+          "N3_catalyst_bed:pressure_drop_kPa",
+          "N3_catalyst_bed:headloss_kPa_per_m",
+          "N3_catalyst_bed:flow_normalized_pressure_residual"
+        ],
+        "pressure_headloss_consumed_by_agent49": true,
+        "pressure_headloss_control_boundary": "pressure/headloss may shape hydraulic and catalyst-state explanation priors, but cannot relax recycle/catalyst guardrails or promote actuator use without field topology, matched lab labels and missingness replay.",
+        "pressure_headloss_can_relax_control_guardrail": false,
+        "hydraulic_execution_field_ready": false,
+        "can_write_to_actuator": false,
+        "can_write_to_release_gate": false,
+        "field_boundary": "R3b reward prior guardrails can change synthetic reward ranking and explanation rules only; field replay is required before actuator or release-gate promotion."
+      },
+      "shared_experience_pool": {
+        "pool_id": "multi_facility_state_action_experience_pool",
+        "record_schema": [
+          "batch_id",
+          "timestamp_min",
+          "facility_agent_id",
+          "state_vector",
+          "joint_action_id",
+          "local_action",
+          "reward_components",
+          "downstream_lab_label",
+          "operator_override",
+          "actuator_result"
+        ],
+        "priority_replay_keys": [
+          "matrix_shock",
+          "catalyst_activity_low",
+          "false_positive_protective_action",
+          "release_block_correctness",
+          "hydraulic_delay_violation",
+          "R3_counterfactual_guardrail_case"
+        ],
+        "seed_actions": [
+          "J4_safe_low_cost_standby",
+          "J3_polishing_and_release_gate",
+          "J1_reaction_completion_recovery"
+        ],
+        "field_requirement": "需要真实多节点 sensor/lab/operation/action replay 后才能训练或更新协同控制策略。"
+      },
+      "decision_tree_distillation": {
+        "distillation_method": "ID3_style_decision_tree_surrogate",
+        "distilled_policy_accuracy_proxy": 0.79,
+        "minimum_required_accuracy": 0.9,
+        "tree_rules": [
+          {
+            "rule_id": "R1_matrix_shock_protective_loop",
+            "if": "matrix_interference_observability >= 0.70 and control_latency_gain >= 0.70",
+            "then": "J0_matrix_shock_equalize_and_recycle",
+            "engineering_meaning": "发现基质冲击时优先均质暂存和回流削峰。"
+          },
+          {
+            "rule_id": "R2_reaction_completion_recovery",
+            "if": "reaction_completion_observability >= 0.65 and oxidant_observability >= 0.65",
+            "then": "J1_reaction_completion_recovery",
+            "engineering_meaning": "反应不足且氧化剂状态可观测时联动调药和延长停留。"
+          },
+          {
+            "rule_id": "R3_catalyst_uncertainty_block",
+            "if": "catalyst_activity_observability < 0.55",
+            "then": "J2_catalyst_protection_before_regeneration with human_review",
+            "engineering_meaning": "催化剂状态不可观测时先保护负荷，不自动再生或切换。"
+          },
+          {
+            "rule_id": "R4_release_gate_block",
+            "if": "field_replay_evidence < 0.85 or soft_sensor field holdout not passed",
+            "then": "J3_polishing_and_release_gate",
+            "engineering_meaning": "放行必须等待现场证据门，不能由 synthetic 策略直接决定。"
+          },
+          {
+            "rule_id": "R3G1_catalyst_uncertain_requires_standby_or_human_review",
+            "if": "catalyst proxy labels are not field validated and catalyst action would protect/regenerate",
+            "then": "prefer J4_safe_low_cost_standby or require human-reviewed catalyst protection",
+            "engineering_meaning": "R3 反事实压力测试发现催化剂低代理证据会触发保护性误动作，先暂存和阻断放行。"
+          },
+          {
+            "rule_id": "R3G2_hydraulic_delay_unknown_blocks_recycle",
+            "if": "tank storage margin or actuator latency evidence is missing and recycle escalation is proposed",
+            "then": "prefer J3_polishing_and_release_gate",
+            "engineering_meaning": "水力延迟和执行证据不足时，不把回流升级当成默认安全动作。"
+          },
+          {
+            "rule_id": "R8C_pressure_headloss_candidate_boundary",
+            "if": "pressure/headloss candidate exists but field topology, matched lab labels or missingness replay are incomplete",
+            "then": "use as explanation prior only; do not relax hydraulic delay or catalyst guardrails",
+            "engineering_meaning": "压降/水头损失可帮助解释床层堵塞、催化剂衰减和水力异常，但现场证据前不能推动回流升级、再生或执行器动作。"
+          }
+        ],
+        "top_ranked_action": "J4_safe_low_cost_standby",
+        "can_replace_black_box_policy": false,
+        "distillation_boundary": "当前规则树是协同策略的白箱代理草案，未经过真实状态-动作标签验证前不能作为现场控制器。"
+      },
+      "readiness": {
+        "coordination_status": "synthetic_collaborative_policy_needs_field_replay",
+        "coordination_readiness_score": 0.36,
+        "field_ready": false,
+        "weak_state_ready": true,
+        "distilled_policy_ready": false,
+        "engineering_constraints_integrated": true,
+        "engineering_constraints_field_ready": false,
+        "control_replay_guardrails_integrated": true,
+        "control_replay_guardrails_field_ready": false,
+        "can_write_to_actuator": false,
+        "can_write_to_release_gate": false,
+        "field_validation": {}
+      }
+    },
+    "issues": [
+      {
+        "sensor": "multi_facility_collaborative_control",
+        "issue_type": "field_coordination_replay_required",
+        "severity": "warning",
+        "message": "当前多设施协同策略只是在稀疏观测矩阵上的候选策略，需要真实多节点状态-动作-结果 replay 验证。",
+        "evidence": {
+          "coordination_status": "synthetic_collaborative_policy_needs_field_replay",
+          "coordination_readiness_score": 0.36,
+          "field_ready": false,
+          "weak_state_ready": true,
+          "distilled_policy_ready": false,
+          "engineering_constraints_integrated": true,
+          "engineering_constraints_field_ready": false,
+          "control_replay_guardrails_integrated": true,
+          "control_replay_guardrails_field_ready": false,
+          "can_write_to_actuator": false,
+          "can_write_to_release_gate": false,
+          "field_validation": {}
+        }
+      },
+      {
+        "sensor": "multi_facility_collaborative_control",
+        "issue_type": "catalyst_axis_repair_prior_not_field_validated",
+        "severity": "info",
+        "message": "催化剂活性观测已通过 Agent51/R2 形成修复先验，但缺 field proxy labels，协同控制仍不能解除催化剂保护规则。",
+        "evidence": {
+          "contract_ready": true,
+          "contract_id": "greedy_marginal:6x10::budget_rebalanced_proxy_contract",
+          "recommended_contract_id": "budget_rebalanced_proxy_contract",
+          "contract_pairs": [
+            "N0_influent:EC_uScm",
+            "N1_equalization_tank:flow_Lmin",
+            "N2_reactor_mid:ORP_mV",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:turbidity_NTU",
+            "N4_recirculation_loop:UV254_abs"
+          ],
+          "sensor_count": 7,
+          "proxy_enhanced_catalyst_activity_observability": 0.58,
+          "proxy_enhanced_weak_state_coverage": 0.58,
+          "budget_pass": true,
+          "field_topology_ready": false,
+          "field_proxy_labels_ready": false,
+          "field_missingness_ready": false,
+          "weak_axis_repair_status": "agent48_catalyst_axis_requires_proxy_patch_and_field_label",
+          "weak_axis_repair_score": 0.983,
+          "field_repair_evidence_requirement_count": 4,
+          "pressure_headloss_context": {
+            "contract_id": "R8c_pressure_headloss_control_boundary",
+            "pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+            "candidate_count": 3,
+            "candidate_ids": [
+              "N3_catalyst_bed:pressure_drop_kPa",
+              "N3_catalyst_bed:headloss_kPa_per_m",
+              "N3_catalyst_bed:flow_normalized_pressure_residual"
+            ],
+            "required_tables": [
+              "node_modality_sensor_timeseries",
+              "offline_lab_results",
+              "campaign_operation_log",
+              "site_topology_or_bed_geometry"
+            ],
+            "minimum_matched_batch_count": 3,
+            "consumed_by_agent49": true,
+            "can_update_state_vector_design_prior": true,
+            "can_relax_hydraulic_or_catalyst_guardrail": false,
+            "can_write_to_actuator": false,
+            "can_write_to_release_gate": false,
+            "control_boundary": "pressure/headloss may shape hydraulic and catalyst-state explanation priors, but cannot relax recycle/catalyst guardrails or promote actuator use without field topology, matched lab labels and missingness replay."
+          },
+          "pressure_headloss_candidate_pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+          "pressure_headloss_candidate_count": 3,
+          "pressure_headloss_candidate_ids": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed:headloss_kPa_per_m",
+            "N3_catalyst_bed:flow_normalized_pressure_residual"
+          ],
+          "pressure_headloss_consumed_by_agent49": true,
+          "pressure_headloss_control_boundary": "pressure/headloss may shape hydraulic and catalyst-state explanation priors, but cannot relax recycle/catalyst guardrails or promote actuator use without field topology, matched lab labels and missingness replay.",
+          "pressure_headloss_can_relax_control_guardrail": false,
+          "field_boundary": "observation contract can update design prior, but field topology/proxy labels/missingness are required before actuator use"
+        }
+      },
+      {
+        "sensor": "multi_facility_collaborative_control",
+        "issue_type": "pressure_headloss_candidate_not_field_validated_for_control",
+        "severity": "info",
+        "message": "Agent49 已读取 pressure/headloss 候选合同，但它只能作为水力/催化剂状态解释先验，不能解除回流或催化剂动作保护边界。",
+        "evidence": {
+          "contract_id": "R8c_pressure_headloss_control_boundary",
+          "pool_status": "pressure_headloss_candidate_pool_ready_needs_field_topology_and_labels",
+          "candidate_count": 3,
+          "candidate_ids": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed:headloss_kPa_per_m",
+            "N3_catalyst_bed:flow_normalized_pressure_residual"
+          ],
+          "required_tables": [
+            "node_modality_sensor_timeseries",
+            "offline_lab_results",
+            "campaign_operation_log",
+            "site_topology_or_bed_geometry"
+          ],
+          "minimum_matched_batch_count": 3,
+          "consumed_by_agent49": true,
+          "can_update_state_vector_design_prior": true,
+          "can_relax_hydraulic_or_catalyst_guardrail": false,
+          "can_write_to_actuator": false,
+          "can_write_to_release_gate": false,
+          "control_boundary": "pressure/headloss may shape hydraulic and catalyst-state explanation priors, but cannot relax recycle/catalyst guardrails or promote actuator use without field topology, matched lab labels and missingness replay."
+        }
+      },
+      {
+        "sensor": "agent51_catalyst_proxy_holdout",
+        "issue_type": "agent51_catalyst_proxy_not_ready_for_control_relaxation",
+        "severity": "warning",
+        "message": "Agent49 已读取 Agent51 field holdout summary，但催化剂代理尚未通过现场验证，因此控制侧继续保留 R3G1 保护边界。",
+        "evidence": {
+          "summary_supplied": true,
+          "summary_status": "field_proxy_holdout_coverage_gaps",
+          "ready_for_agent51_validation": false,
+          "field_validation_pass": false,
+          "scoreable_batch_count": 0,
+          "matched_batch_count": 0,
+          "holdout_mae": 1.0,
+          "proxy_label_correlation": 0.0,
+          "missing_required_signals": [
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "accepted_pressure_evidence_sources": [],
+          "pressure_evidence_source_batch_counts": {
+            "node_modality_sensor_timeseries": 0,
+            "pressure_headloss_event_log": 0,
+            "source_conflict_requires_operator_review": 0
+          },
+          "pressure_headloss_event_source_batch_count": 0,
+          "pressure_source_conflict_count": 0,
+          "resolved_pressure_source_conflict_count": 0,
+          "unresolved_pressure_source_conflict_count": 0,
+          "pressure_source_resolution_record_count": 0,
+          "pressure_source_conflicts": [],
+          "unresolved_pressure_source_conflicts": [],
+          "pressure_source_resolutions": [],
+          "conflict_requires_operator_review": false,
+          "pressure_source_conflict_control_block": false,
+          "guardrail_mode": "agent51_holdout_coverage_gaps_keep_catalyst_guardrail",
+          "can_write_to_actuator": false,
+          "can_write_to_release_gate": false
+        }
+      },
+      {
+        "sensor": "multi_facility_collaborative_control",
+        "issue_type": "policy_distillation_accuracy_not_field_ready",
+        "severity": "info",
+        "message": "决策树蒸馏规则尚未达到现场控制所需准确度，只能作为解释草案。",
+        "evidence": {
+          "distillation_method": "ID3_style_decision_tree_surrogate",
+          "distilled_policy_accuracy_proxy": 0.79,
+          "minimum_required_accuracy": 0.9,
+          "tree_rules": [
+            {
+              "rule_id": "R1_matrix_shock_protective_loop",
+              "if": "matrix_interference_observability >= 0.70 and control_latency_gain >= 0.70",
+              "then": "J0_matrix_shock_equalize_and_recycle",
+              "engineering_meaning": "发现基质冲击时优先均质暂存和回流削峰。"
+            },
+            {
+              "rule_id": "R2_reaction_completion_recovery",
+              "if": "reaction_completion_observability >= 0.65 and oxidant_observability >= 0.65",
+              "then": "J1_reaction_completion_recovery",
+              "engineering_meaning": "反应不足且氧化剂状态可观测时联动调药和延长停留。"
+            },
+            {
+              "rule_id": "R3_catalyst_uncertainty_block",
+              "if": "catalyst_activity_observability < 0.55",
+              "then": "J2_catalyst_protection_before_regeneration with human_review",
+              "engineering_meaning": "催化剂状态不可观测时先保护负荷，不自动再生或切换。"
+            },
+            {
+              "rule_id": "R4_release_gate_block",
+              "if": "field_replay_evidence < 0.85 or soft_sensor field holdout not passed",
+              "then": "J3_polishing_and_release_gate",
+              "engineering_meaning": "放行必须等待现场证据门，不能由 synthetic 策略直接决定。"
+            },
+            {
+              "rule_id": "R3G1_catalyst_uncertain_requires_standby_or_human_review",
+              "if": "catalyst proxy labels are not field validated and catalyst action would protect/regenerate",
+              "then": "prefer J4_safe_low_cost_standby or require human-reviewed catalyst protection",
+              "engineering_meaning": "R3 反事实压力测试发现催化剂低代理证据会触发保护性误动作，先暂存和阻断放行。"
+            },
+            {
+              "rule_id": "R3G2_hydraulic_delay_unknown_blocks_recycle",
+              "if": "tank storage margin or actuator latency evidence is missing and recycle escalation is proposed",
+              "then": "prefer J3_polishing_and_release_gate",
+              "engineering_meaning": "水力延迟和执行证据不足时，不把回流升级当成默认安全动作。"
+            },
+            {
+              "rule_id": "R8C_pressure_headloss_candidate_boundary",
+              "if": "pressure/headloss candidate exists but field topology, matched lab labels or missingness replay are incomplete",
+              "then": "use as explanation prior only; do not relax hydraulic delay or catalyst guardrails",
+              "engineering_meaning": "压降/水头损失可帮助解释床层堵塞、催化剂衰减和水力异常，但现场证据前不能推动回流升级、再生或执行器动作。"
+            }
+          ],
+          "top_ranked_action": "J4_safe_low_cost_standby",
+          "can_replace_black_box_policy": false,
+          "distillation_boundary": "当前规则树是协同策略的白箱代理草案，未经过真实状态-动作标签验证前不能作为现场控制器。"
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "multi_facility_collaborative_control": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/multi_facility_collaborative_control.md",
+    "agent49_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent49_multi_facility_collaborative_control/agent49_report.md",
+    "collaborative_control_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/multi_facility_collaborative_control/collaborative_control_metrics.json"
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "source_reports": {
+    "agent23": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent23_post_replan_replay/agent23_report.json",
+    "agent25": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent25_time_budget_recovery/agent25_report.json",
+    "agent27": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent27_recovery_execution_replay/agent27_report.json",
+    "agent28": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent28_recovery_online_control/agent28_report.json"
+  },
+  "project_synthesis": {
+    "agent_name": "project_synthesis_agent",
+    "confidence": 0.78,
+    "summary": "项目综合总览：已综合 28 个执行 agent；当前成熟度为 research_platform_ready_for_field_calibration，下一轮应进入真实数据校准。",
+    "recommendations": [
+      "将当前 28-agent 执行链作为项目书和汇报的核心原型，明确其定位为“可校准研究平台”。",
+      "下一轮优先接入真实传感器时间序列和离线检测标签，校准软传感器、时间预算和 fallback triggers。",
+      "保留 0.75 条件恢复、0.60 回退线和 campaign 后复核，不把仿真稳定结果写成永久满负荷结论。"
+    ],
+    "metrics": {
+      "synthesized_agent_count": 28,
+      "module_groups": [
+        {
+          "group_id": "G1",
+          "agent_range": "1-2",
+          "title": "低成本感知与灰箱状态估计",
+          "agents": [
+            "DataQualityAgent",
+            "SoftSensorAgent"
+          ],
+          "research_role": "把低成本传感流转换为可用于控制的隐藏过程状态。",
+          "core_outputs": [
+            "sensor_confidence",
+            "soft_state",
+            "hydraulic_confidence",
+            "release_readiness"
+          ]
+        },
+        {
+          "group_id": "G2",
+          "agent_range": "3-4",
+          "title": "机理解释与故障诊断",
+          "agents": [
+            "MechanismAgent",
+            "FaultDiagnosisAgent"
+          ],
+          "research_role": "把软传感状态解释为污染物、材料和过程故障机制。",
+          "core_outputs": [
+            "mechanism_hypotheses",
+            "fault_modes",
+            "knowledge_matches"
+          ]
+        },
+        {
+          "group_id": "G3",
+          "agent_range": "5-10",
+          "title": "动作生成、成本安全与闭环仲裁",
+          "agents": [
+            "CatalystLifecycleAgent",
+            "ValidationPlanningAgent",
+            "ControlStrategyAgent",
+            "StrategyProfileAgent",
+            "CostSafetyAgent",
+            "ArbitrationAgent"
+          ],
+          "research_role": "把诊断结论转化为回流、暂存、加药、再生、更换、放行等可执行动作。",
+          "core_outputs": [
+            "control_actions",
+            "objective_score",
+            "final_action",
+            "safety_gates"
+          ]
+        },
+        {
+          "group_id": "G4",
+          "agent_range": "11-13",
+          "title": "传感配置、慢证据窗口与批次队列",
+          "agents": [
+            "SensitivityAnalysisAgent",
+            "OperationsSchedulingAgent",
+            "QueuePlanningAgent"
+          ],
+          "research_role": "检验低成本传感是否能靠循环窗口和队列组织变得可执行。",
+          "core_outputs": [
+            "sensor_design_rankings",
+            "campaign_bottlenecks",
+            "queue_policy"
+          ]
+        },
+        {
+          "group_id": "G5",
+          "agent_range": "14-18",
+          "title": "资源扩容、长期经济性与实施韧性",
+          "agents": [
+            "ResourceExpansionAgent",
+            "LongTermEconomicsAgent",
+            "PhasedImplementationAgent",
+            "ImplementationStressTestAgent",
+            "AdaptivePortfolioAgent"
+          ],
+          "research_role": "把运行瓶颈转成资源建设、预算释放和备用项目包。",
+          "core_outputs": [
+            "selected_intervention",
+            "selected_program",
+            "phase_plan",
+            "selected_portfolio"
+          ]
+        },
+        {
+          "group_id": "G6",
+          "agent_range": "19-23",
+          "title": "在线项目控制、遥测接入与自动重规划",
+          "agents": [
+            "OnlineProjectControlAgent",
+            "CampaignTelemetryAgent",
+            "ReplanningOrchestratorAgent",
+            "ControlBaselineUpdateAgent",
+            "PostReplanReplayAgent"
+          ],
+          "research_role": "把真实 campaign 遥测接回项目控制，并自动重跑规划链与写回基线。",
+          "core_outputs": [
+            "rolling_control_state",
+            "replan_trace",
+            "updated_baseline",
+            "post_replan_replay"
+          ]
+        },
+        {
+          "group_id": "G7",
+          "agent_range": "24-28",
+          "title": "恢复放量、时间预算修复与恢复在线控制",
+          "agents": [
+            "RecoveryRampAgent",
+            "TimeBudgetRecoveryAgent",
+            "RecoveryStrategyWritebackAgent",
+            "RecoveryExecutionReplayAgent",
+            "RecoveryOnlineControlAgent"
+          ],
+          "research_role": "把保护性限流后的恢复负荷做成带回退线的条件恢复闭环。",
+          "core_outputs": [
+            "safe_ramp_fraction",
+            "recovery_policy",
+            "execution_replay",
+            "fallback_rule"
+          ]
+        }
+      ],
+      "evidence_chain": [
+        {
+          "step": "problem_framing",
+          "claim": "低成本传感不是直接替代高端仪器，而是通过循环、暂存和慢证据窗口把黑箱过程变成可推断灰箱。",
+          "evidence": "Agent1-11 已形成传感质控、软传感估计、机理解释、动作仲裁和传感配置敏感性分析。"
+        },
+        {
+          "step": "campaign_bottleneck_discovery",
+          "claim": "单批次闭环可行不等于多批次运行可行，真实瓶颈会出现在验证工时、总时间窗口和催化剂库存。",
+          "evidence": "Agent12-13 识别验证容量、campaign 时间预算和催化剂库存瓶颈，仅靠队列排序不能完全解除。"
+        },
+        {
+          "step": "resource_replanning",
+          "claim": "系统需要能把瓶颈转化为资源、预算和实施阶段，而不是停留在控制动作层。",
+          "evidence": "Agent14-23 完成资源扩容、长期经济性、分阶段实施、压力测试、项目组合、在线重规划和基线写回。",
+          "metrics": {
+            "verdict": "validated",
+            "validation_usage_before": 1.406,
+            "validation_usage_after": 0.337,
+            "time_usage_before": 1.188,
+            "time_usage_after": 0.755,
+            "removed_bottlenecks": [
+              "campaign_time_budget",
+              "catalyst_inventory",
+              "validation_capacity"
+            ]
+          }
+        },
+        {
+          "step": "conditional_recovery",
+          "claim": "循环结构可以降低传感与反应速度要求，但恢复负荷必须被时间预算和回退线约束。",
+          "evidence": "Agent24 发现 0.75 会触发时间预算瓶颈，Agent25 通过验证错峰使 0.75 条件恢复可行。",
+          "metrics": {
+            "selected_candidate_id": "stagger_validation_overlap",
+            "target_intake_fraction": 0.75,
+            "time_budget_usage": 0.884,
+            "validation_staff_usage": 0.394,
+            "elapsed_reduction_min": 90.2
+          }
+        },
+        {
+          "step": "execution_validation",
+          "claim": "恢复策略需要执行回放验证，不能只写在报告或配置里。",
+          "evidence": "Agent27 显示无错峰 0.75 时间占用 0.978，执行错峰后降到 0.884，瓶颈为空。",
+          "metrics": {
+            "replay_verdict": "recovery_execution_validated",
+            "time_usage_without_strategy": 0.978,
+            "time_usage_with_strategy": 0.884,
+            "strategy_bottleneck_ids": [],
+            "recommended_next_intake_fraction": 0.75
+          }
+        },
+        {
+          "step": "online_control_state",
+          "claim": "最新状态可以维持条件恢复，但仍不是永久满负荷基线。",
+          "evidence": "Agent28 接回在线控制后维持 0.75，保留 0.60 回退线，当前无需重规划。",
+          "metrics": {
+            "recovery_control_mode": "maintain_conditional_recovery",
+            "next_intake_fraction": 0.75,
+            "fallback_intake_fraction": 0.6,
+            "replan_required": false,
+            "bottleneck_ids": []
+          }
+        }
+      ],
+      "readiness_assessment": {
+        "prototype_chain_complete": true,
+        "latest_control_stable": true,
+        "maturity_level": "research_platform_ready_for_field_calibration",
+        "can_be_used_for": [
+          "重大项目研究方案论证",
+          "低成本传感-软传感-多智能体闭环的原型展示",
+          "实验方案拆解、瓶颈诊断和资源配置推演",
+          "后续真实水样和中试数据接入前的仿真基线"
+        ],
+        "not_yet_validated_for": [
+          "真实污水连续运行条件下的外推性能",
+          "真实传感器漂移、污染结垢和维护周期",
+          "真实催化剂寿命、再生效率和副产物风险",
+          "现场 PLC/SCADA 通信和安全联锁"
+        ],
+        "go_no_go": "可以作为研究原型与项目书核心方案；不应直接宣称已具备现场自治运行能力。"
+      },
+      "calibration_roadmap": [
+        {
+          "phase": "P1",
+          "title": "真实传感器噪声与漂移标定",
+          "data_needed": [
+            "pH/ORP/EC/浊度/流量/UV254 原始时间序列",
+            "人工校准记录",
+            "传感器污染结垢/清洗记录"
+          ],
+          "model_update": "校准 DataQualityAgent 阈值、采样噪声模型和 sensor_confidence 计算。"
+        },
+        {
+          "phase": "P2",
+          "title": "软传感器真实水样重训",
+          "data_needed": [
+            "目标污染物/COD/TOC/UV254 离线检测",
+            "反应时间、加药量、回流比",
+            "达标/未达标标签"
+          ],
+          "model_update": "用真实标签更新 soft sensor calibrator，并加入不确定性输出。"
+        },
+        {
+          "phase": "P3",
+          "title": "催化剂生命周期与副产物风险校准",
+          "data_needed": [
+            "催化剂循环次数",
+            "再生前后活性",
+            "压降/表面污染",
+            "副产物或余氧化剂检测"
+          ],
+          "model_update": "校准再生收益衰减、replace trigger、副产物安全门和验证规划规则。"
+        },
+        {
+          "phase": "P4",
+          "title": "闭环控制与循环时间预算中试验证",
+          "data_needed": [
+            "批次运行记录",
+            "暂存/回流/验证并行时间",
+            "失败回退案例",
+            "人工干预记录"
+          ],
+          "model_update": "校准 Agent24-28 的时间预算、错峰收益、恢复爬坡和 fallback triggers。"
+        },
+        {
+          "phase": "P5",
+          "title": "经济性与部署接口验证",
+          "data_needed": [
+            "传感器报价",
+            "试剂/催化剂/人工成本",
+            "PLC/SCADA 点表",
+            "安全联锁要求"
+          ],
+          "model_update": "校准 sensor economics、资源扩容成本、预算释放顺序和现场执行接口。"
+        }
+      ],
+      "project_mermaid": "flowchart LR\n    A[\"低成本传感\"] --> B[\"数据质控\"]\n    B --> C[\"软传感灰箱状态\"]\n    C --> D[\"机理解释与故障诊断\"]\n    D --> E[\"控制动作生成\"]\n    E --> F[\"成本安全与仲裁\"]\n    F --> G[\"循环处理反馈\"]\n    G --> A\n    F --> H[\"传感配置与批次调度\"]\n    H --> I[\"队列规划与资源扩容\"]\n    I --> J[\"长期经济性与分阶段实施\"]\n    J --> K[\"压力测试与项目组合\"]\n    K --> L[\"在线项目控制\"]\n    L --> M[\"遥测接入与自动重规划\"]\n    M --> N[\"基线写回与回放验证\"]\n    N --> O[\"恢复爬坡与时间预算修复\"]\n    O --> P[\"恢复在线控制\"]\n    P --> L\n    P --> Q[\"项目综合总览与真实数据校准路线\"]",
+      "deliverables": [
+        {
+          "artifact": "research_plan_docx",
+          "path": "docs/研究方案_Word兼容版.docx"
+        },
+        {
+          "artifact": "agent_system_spec",
+          "path": "docs/agent_system_spec.md"
+        },
+        {
+          "artifact": "current_status",
+          "path": "notes/current_status.md"
+        },
+        {
+          "artifact": "iteration_log",
+          "path": "notes/iteration_log.md"
+        },
+        {
+          "artifact": "latest_agent28_report",
+          "path": "outputs/agent28_recovery_online_control/agent28_report.md"
+        },
+        {
+          "artifact": "agent29_report",
+          "path": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent29_project_synthesis/agent29_report.md"
+        },
+        {
+          "artifact": "project_overview",
+          "path": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/docs/project_overview_28_agent.md"
+        }
+      ],
+      "latest_control_state": {
+        "campaign_id": "recovery_execution_replay",
+        "project_mode": "steady_monitoring",
+        "rolling_risk": 0.0,
+        "dominant_signals": [
+          "stable"
+        ],
+        "stable_streak": 1,
+        "next_intake_fraction": 0.75,
+        "next_budget_item": "本轮无需新增预算项，保持滚动复核",
+        "released_budget_items": [
+          "催化剂备用供应商",
+          "催化剂库存批复",
+          "外包低价值验证",
+          "氧化剂库存批复",
+          "验证能力批复"
+        ],
+        "replan_required": false,
+        "replan_reasons": [],
+        "control_confidence": 0.58,
+        "base_online_state": {
+          "campaign_id": "recovery_execution_replay",
+          "project_mode": "steady_monitoring",
+          "rolling_risk": 0.0,
+          "dominant_signals": [
+            "stable"
+          ],
+          "stable_streak": 1,
+          "next_intake_fraction": 0.75,
+          "next_budget_item": "本轮无需新增预算项，保持滚动复核",
+          "released_budget_items": [
+            "催化剂备用供应商",
+            "催化剂库存批复",
+            "外包低价值验证",
+            "氧化剂库存批复",
+            "验证能力批复"
+          ],
+          "replan_required": false,
+          "replan_reasons": [],
+          "control_confidence": 0.58
+        },
+        "recovery_policy_id": "recovery_strategy_v1",
+        "recovery_replay_verdict": "recovery_execution_validated",
+        "target_intake_fraction": 0.75,
+        "fallback_intake_fraction": 0.6,
+        "fallback_required": false,
+        "strategy_stable": true,
+        "recovery_control_mode": "maintain_conditional_recovery",
+        "acceptance_passed": true,
+        "validation_staff_usage": 0.394,
+        "time_budget_usage": 0.884,
+        "bottleneck_ids": []
+      },
+      "latest_regression": "133 passed"
+    },
+    "issues": [
+      {
+        "sensor": "project_synthesis",
+        "issue_type": "field_validation_missing",
+        "severity": "warning",
+        "message": "当前链条已适合研究原型与项目论证，但尚未用真实连续运行数据完成现场校准。",
+        "evidence": {
+          "not_yet_validated_for": [
+            "真实污水连续运行条件下的外推性能",
+            "真实传感器漂移、污染结垢和维护周期",
+            "真实催化剂寿命、再生效率和副产物风险",
+            "现场 PLC/SCADA 通信和安全联锁"
+          ]
+        }
+      }
+    ]
+  }
+}

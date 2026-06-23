@@ -1,0 +1,131 @@
+{
+  "handle": "agent-218b4bc506",
+  "agent_id": "agent:61:pressure_resolution_replay_scenario_pack",
+  "agent_number": 61,
+  "slug": "pressure_resolution_replay_scenario_pack",
+  "runner": "experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+  "source": "src/water_ai/agents/pressure_resolution_replay_scenario_pack_agent.py",
+  "deliverable": "deliverables/model_core_optimization/pressure_resolution_replay_scenario_pack.md",
+  "test": "tests/test_pressure_resolution_replay_scenario_pack_agent.py",
+  "output_dir": "outputs/agent61_pressure_resolution_replay_scenario_pack",
+  "related_nodes": [
+    {
+      "handle": "agent-218b4bc506",
+      "node_id": "agent:61:pressure_resolution_replay_scenario_pack",
+      "kind": "agent_workflow",
+      "label": "Agent61 pressure_resolution_replay_scenario_pack",
+      "path": "experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 61
+      }
+    },
+    {
+      "handle": "dir-94c28223b4",
+      "node_id": "dir:outputs/agent61_pressure_resolution_replay_scenario_pack",
+      "kind": "output_dir",
+      "label": "agent61_pressure_resolution_replay_scenario_pack",
+      "path": "outputs/agent61_pressure_resolution_replay_scenario_pack",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-08aa85750e",
+      "node_id": "file:deliverables/model_core_optimization/pressure_resolution_replay_scenario_pack.md",
+      "kind": "file",
+      "label": "pressure_resolution_replay_scenario_pack.md",
+      "path": "deliverables/model_core_optimization/pressure_resolution_replay_scenario_pack.md",
+      "layer": "governance_deliverable",
+      "summary": "R8o Pressure Resolution Replay 场景采集包",
+      "metrics": {
+        "lines": 464,
+        "size_bytes": 47700
+      }
+    },
+    {
+      "handle": "file-24dcdf3690",
+      "node_id": "file:experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "kind": "file",
+      "label": "run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "path": "experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 9983,
+        "size_bytes": 529718
+      }
+    },
+    {
+      "handle": "file-7740ee1a13",
+      "node_id": "file:src/water_ai/agents/pressure_resolution_replay_scenario_pack_agent.py",
+      "kind": "referenced_path",
+      "label": "pressure_resolution_replay_scenario_pack_agent.py",
+      "path": "src/water_ai/agents/pressure_resolution_replay_scenario_pack_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 1069,
+        "size_bytes": 52028
+      }
+    },
+    {
+      "handle": "file-59bb24ea4a",
+      "node_id": "file:tests/test_pressure_resolution_replay_scenario_pack_agent.py",
+      "kind": "referenced_path",
+      "label": "test_pressure_resolution_replay_scenario_pack_agent.py",
+      "path": "tests/test_pressure_resolution_replay_scenario_pack_agent.py",
+      "layer": "verification",
+      "summary": "import csv",
+      "metrics": {
+        "lines": 2684,
+        "size_bytes": 131108
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:61:pressure_resolution_replay_scenario_pack",
+      "target": "file:deliverables/model_core_optimization/pressure_resolution_replay_scenario_pack.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:61:pressure_resolution_replay_scenario_pack",
+      "target": "file:src/water_ai/agents/pressure_resolution_replay_scenario_pack_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:61:pressure_resolution_replay_scenario_pack",
+      "target": "file:experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:61:pressure_resolution_replay_scenario_pack",
+      "target": "file:tests/test_pressure_resolution_replay_scenario_pack_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:61:pressure_resolution_replay_scenario_pack",
+      "target": "dir:outputs/agent61_pressure_resolution_replay_scenario_pack",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

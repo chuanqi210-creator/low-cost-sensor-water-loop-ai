@@ -1,0 +1,1199 @@
+[
+  {
+    "scenario": "clean_release",
+    "dq_summary": "未发现明显传感质量问题，可进入后续软测量。",
+    "state": {
+      "pollutant_residual_risk": 0.12,
+      "reaction_completion": 0.871,
+      "oxidant_remaining": 0.814,
+      "catalyst_activity": 0.654,
+      "matrix_interference": 0.225,
+      "byproduct_risk": 0.464,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 1.0,
+      "sensor_confidence": 1.0,
+      "compliance_probability": 1.0,
+      "recycle_gain": 0.059,
+      "release_readiness": 0.838,
+      "cycle_id": 5,
+      "catalyst_age_cycles": 1,
+      "catalyst_regen_count": 0,
+      "catalyst_lifetime_fraction": 0.96,
+      "catalyst_regeneration_potential": 0.717,
+      "catalyst_replacement_urgency": 0.124
+    },
+    "fault_top": {
+      "fault_id": "matrix_interference",
+      "fault_name": "基质干扰或新扰动进入系统",
+      "score": 0.274,
+      "risk_level": "medium",
+      "evidence": {
+        "matrix_interference": 0.225,
+        "drift_suspected": false,
+        "knowledge_support": []
+      },
+      "next_check": "检测盐度、COD/TOC、浊度来源；判断是否需要预处理或切换单元。"
+    },
+    "catalyst_lifecycle": {
+      "action_id": "monitor_catalyst",
+      "action_name": "维持监测",
+      "score": 0.733,
+      "rationale": "寿命风险尚可接受，暂不触发维护动作。"
+    },
+    "validation_plan": {
+      "plan_name": "routine_soft_sensor_audit",
+      "urgency": 0.18,
+      "hold_min": 18,
+      "validation_delay_min": 8,
+      "targets": [
+        "periodic_grab_sample_COD_or_TOC"
+      ],
+      "release_gate": "use validation evidence to update offline_residual_proxy before release"
+    },
+    "strategy_profile": "cost_first",
+    "final_plan": [
+      {
+        "action_id": "release",
+        "action_name": "达标放行",
+        "original_score": 0.603,
+        "net_score": 0.558,
+        "objective_score": 0.407,
+        "objective": {
+          "objective_score": 0.407,
+          "benefit_total": 0.475,
+          "penalty_total": 0.068,
+          "benefit_terms": {
+            "control_priority": 0.229,
+            "safety_gain": 0.216,
+            "knowledge_alignment": 0.03
+          },
+          "penalty_terms": {
+            "money_cost": 0.006,
+            "time_cost": 0.0,
+            "energy_cost": 0.0,
+            "risk_cost": 0.016,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.046,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.464,
+          "weights": {
+            "control_priority": 0.38,
+            "safety_gain": 0.3,
+            "money_cost": 0.28,
+            "time_cost": 0.14,
+            "energy_cost": 0.14,
+            "risk_cost": 0.2,
+            "false_release_risk": 0.28,
+            "byproduct_risk": 0.1,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.06
+          }
+        },
+        "safety_gain": 0.72,
+        "money_cost": 0.02,
+        "time_cost": 0.0,
+        "energy_cost": 0.0,
+        "risk_cost": 0.08,
+        "knowledge_action_bias": 0.0,
+        "knowledge_cost_adjustment": {},
+        "requires_human_review": false,
+        "parameters": {
+          "release_gate": "release_readiness >= 0.82 and residual <= 0.35 and hydraulic_confidence >= 0.7 and byproduct_risk <= 0.65"
+        }
+      }
+    ],
+    "blocked_actions": [
+      "dose_oxidant",
+      "recirculate",
+      "replace_catalyst"
+    ],
+    "summary": "最终仲裁：执行 达标放行 等 1 个动作；未通过安全门 []。"
+  },
+  {
+    "scenario": "sensor_faults",
+    "dq_summary": "发现 0 个严重问题、4 个警告；传感可信度评分 0.88。",
+    "state": {
+      "pollutant_residual_risk": 0.339,
+      "reaction_completion": 0.373,
+      "oxidant_remaining": 0.802,
+      "catalyst_activity": 0.491,
+      "matrix_interference": 0.361,
+      "byproduct_risk": 0.369,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 0.272,
+      "sensor_confidence": 0.888,
+      "compliance_probability": 0.794,
+      "recycle_gain": 0.204,
+      "release_readiness": 0.794,
+      "cycle_id": 1,
+      "catalyst_age_cycles": 2,
+      "catalyst_regen_count": 0,
+      "catalyst_lifetime_fraction": 0.9,
+      "catalyst_regeneration_potential": 0.709,
+      "catalyst_replacement_urgency": 0.296
+    },
+    "fault_top": {
+      "fault_id": "hydraulic_retention_anomaly",
+      "fault_name": "水力停留时间或回流执行异常",
+      "score": 0.836,
+      "risk_level": "medium",
+      "evidence": {
+        "sustained_shift": false,
+        "low_flow_absolute": true,
+        "hydraulic_confidence": 0.272,
+        "mechanism_ids": [
+          "hydraulic_anomaly",
+          "loop_buffer_needed",
+          "sensor_uncertainty"
+        ],
+        "recycle_gain": 0.204
+      },
+      "next_check": "核查泵、阀、回流管路和实际流量；必要时重新计算 HRT。"
+    },
+    "catalyst_lifecycle": {
+      "action_id": "monitor_catalyst",
+      "action_name": "维持监测",
+      "score": 0.627,
+      "rationale": "寿命风险尚可接受，暂不触发维护动作。"
+    },
+    "validation_plan": {
+      "plan_name": "sensor_reliability_cross_check",
+      "urgency": 0.487,
+      "hold_min": 28,
+      "validation_delay_min": 12,
+      "targets": [
+        "grab_sample_COD_or_TOC",
+        "sensor_calibration_check",
+        "target_pollutant_proxy"
+      ],
+      "release_gate": "use validation evidence to update offline_residual_proxy before release"
+    },
+    "strategy_profile": "safety_first",
+    "final_plan": [
+      {
+        "action_id": "inspect_hydraulics",
+        "action_name": "核查泵阀与回流管路",
+        "original_score": 0.78,
+        "net_score": 0.501,
+        "objective_score": 0.468,
+        "objective": {
+          "objective_score": 0.468,
+          "benefit_total": 0.589,
+          "penalty_total": 0.12,
+          "benefit_terms": {
+            "control_priority": 0.265,
+            "safety_gain": 0.274,
+            "knowledge_alignment": 0.05
+          },
+          "penalty_terms": {
+            "money_cost": 0.018,
+            "time_cost": 0.028,
+            "energy_cost": 0.002,
+            "risk_cost": 0.022,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.05
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 0.72,
+        "money_cost": 0.18,
+        "time_cost": 0.35,
+        "energy_cost": 0.03,
+        "risk_cost": 0.08,
+        "knowledge_action_bias": 0.0,
+        "knowledge_cost_adjustment": {},
+        "requires_human_review": true,
+        "parameters": {
+          "check_items": [
+            "pump",
+            "valve",
+            "recycle_line",
+            "actual_flow"
+          ],
+          "pause_release": true
+        }
+      },
+      {
+        "action_id": "calibrate_sensors",
+        "action_name": "校准或降权异常传感器",
+        "original_score": 0.84,
+        "net_score": 0.537,
+        "objective_score": 0.52,
+        "objective": {
+          "objective_score": 0.52,
+          "benefit_total": 0.631,
+          "penalty_total": 0.111,
+          "benefit_terms": {
+            "control_priority": 0.286,
+            "safety_gain": 0.268,
+            "knowledge_alignment": 0.077
+          },
+          "penalty_terms": {
+            "money_cost": 0.022,
+            "time_cost": 0.026,
+            "energy_cost": 0.001,
+            "risk_cost": 0.011,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.05
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 0.7064,
+        "money_cost": 0.22,
+        "time_cost": 0.3304,
+        "energy_cost": 0.02,
+        "risk_cost": 0.0392,
+        "knowledge_action_bias": 0.12,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.026,
+          "risk_cost_delta": -0.041,
+          "time_cost_delta": -0.01
+        },
+        "requires_human_review": true,
+        "parameters": {
+          "channels": "use Agent 1 low-score channels",
+          "apply_to_soft_sensor": true
+        }
+      },
+      {
+        "action_id": "hold_for_validation",
+        "action_name": "暂存并旁路验证",
+        "original_score": 0.472,
+        "net_score": 0.439,
+        "objective_score": 0.481,
+        "objective": {
+          "objective_score": 0.481,
+          "benefit_total": 0.575,
+          "penalty_total": 0.094,
+          "benefit_terms": {
+            "control_priority": 0.16,
+            "safety_gain": 0.315,
+            "knowledge_alignment": 0.1
+          },
+          "penalty_terms": {
+            "money_cost": 0.025,
+            "time_cost": 0.032,
+            "energy_cost": 0.004,
+            "risk_cost": 0.013,
+            "false_release_risk": 0.005,
+            "byproduct_risk": 0.016,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.013,
+          "byproduct_pressure": 0.1,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 0.8284,
+        "money_cost": 0.25,
+        "time_cost": 0.4024,
+        "energy_cost": 0.05,
+        "risk_cost": 0.04519999999999999,
+        "knowledge_action_bias": 0.22,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.048,
+          "risk_cost_delta": -0.075,
+          "time_cost_delta": -0.018
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "hold_min": 28,
+          "validation_delay_min": 12,
+          "validation": [
+            "grab_sample_COD_or_TOC",
+            "sensor_calibration_check",
+            "target_pollutant_proxy"
+          ],
+          "validation_plan": "sensor_reliability_cross_check"
+        }
+      },
+      {
+        "action_id": "recirculate",
+        "action_name": "继续回流处理",
+        "original_score": 0.855,
+        "net_score": 0.61,
+        "objective_score": 0.576,
+        "objective": {
+          "objective_score": 0.576,
+          "benefit_total": 0.662,
+          "penalty_total": 0.085,
+          "benefit_terms": {
+            "control_priority": 0.291,
+            "safety_gain": 0.286,
+            "knowledge_alignment": 0.085
+          },
+          "penalty_terms": {
+            "money_cost": 0.022,
+            "time_cost": 0.025,
+            "energy_cost": 0.02,
+            "risk_cost": 0.019,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 0.75344,
+        "money_cost": 0.22,
+        "time_cost": 0.30784,
+        "energy_cost": 0.28,
+        "risk_cost": 0.06831999999999999,
+        "knowledge_action_bias": 0.152,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.033,
+          "risk_cost_delta": -0.052,
+          "time_cost_delta": -0.012
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "recycle_ratio": 0.39,
+          "extra_retention_min": 26
+        }
+      }
+    ],
+    "blocked_actions": [
+      "release",
+      "dose_oxidant",
+      "replace_catalyst"
+    ],
+    "summary": "最终仲裁：执行 核查泵阀与回流管路 等 4 个动作；未通过安全门 ['release_readiness_gate', 'hydraulic_confidence_gate']。"
+  },
+  {
+    "scenario": "oxidant_limitation",
+    "dq_summary": "未发现明显传感质量问题，可进入后续软测量。",
+    "state": {
+      "pollutant_residual_risk": 0.586,
+      "reaction_completion": 0.261,
+      "oxidant_remaining": 0.151,
+      "catalyst_activity": 0.504,
+      "matrix_interference": 0.331,
+      "byproduct_risk": 0.125,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 1.0,
+      "sensor_confidence": 1.0,
+      "compliance_probability": 0.661,
+      "recycle_gain": 0.534,
+      "release_readiness": 0.653,
+      "cycle_id": 1,
+      "catalyst_age_cycles": 3,
+      "catalyst_regen_count": 0,
+      "catalyst_lifetime_fraction": 0.88,
+      "catalyst_regeneration_potential": 0.69,
+      "catalyst_replacement_urgency": 0.314
+    },
+    "fault_top": {
+      "fault_id": "cycle_window_insufficient",
+      "fault_name": "循环缓冲或验证窗口不足",
+      "score": 0.9,
+      "risk_level": "medium",
+      "evidence": {
+        "pollutant_residual_risk": 0.586,
+        "oxidant_remaining": 0.151,
+        "release_readiness": 0.653,
+        "recycle_gain": 0.534,
+        "mechanism_ids": [
+          "oxidant_limitation",
+          "loop_buffer_needed"
+        ],
+        "knowledge_support": [
+          {
+            "entry_id": "kb_oxidant_limited_refractory_organics",
+            "match_score": 0.82,
+            "pollutant_class": "高负荷还原性或难降解有机污染物",
+            "material_family": "氧化剂驱动体系"
+          },
+          {
+            "entry_id": "kb_loop_buffer_for_slow_sensing",
+            "match_score": 0.82,
+            "pollutant_class": "目标污染物需慢检测或低成本代理检测的废水",
+            "material_family": "循环式反应器/旁路快检系统"
+          }
+        ]
+      },
+      "next_check": "安排下一回流/停留窗口，并同步进行软传感复估与旁路快检，而不是立即放行。"
+    },
+    "catalyst_lifecycle": {
+      "action_id": "monitor_catalyst",
+      "action_name": "维持监测",
+      "score": 0.614,
+      "rationale": "寿命风险尚可接受，暂不触发维护动作。"
+    },
+    "validation_plan": {
+      "plan_name": "routine_soft_sensor_audit",
+      "urgency": 0.442,
+      "hold_min": 18,
+      "validation_delay_min": 8,
+      "targets": [
+        "residual_oxidant_quick_test"
+      ],
+      "release_gate": "use validation evidence to update offline_residual_proxy before release"
+    },
+    "strategy_profile": "emergency_response",
+    "final_plan": [
+      {
+        "action_id": "dose_oxidant",
+        "action_name": "补加氧化剂",
+        "original_score": 1.0,
+        "net_score": 0.457,
+        "objective_score": 0.464,
+        "objective": {
+          "objective_score": 0.464,
+          "benefit_total": 0.653,
+          "penalty_total": 0.189,
+          "benefit_terms": {
+            "control_priority": 0.46,
+            "safety_gain": 0.124,
+            "knowledge_alignment": 0.07
+          },
+          "penalty_terms": {
+            "money_cost": 0.038,
+            "time_cost": 0.007,
+            "energy_cost": 0.004,
+            "risk_cost": 0.126,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.013,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.11,
+          "weights": {
+            "control_priority": 0.46,
+            "safety_gain": 0.32,
+            "money_cost": 0.12,
+            "time_cost": 0.05,
+            "energy_cost": 0.07,
+            "risk_cost": 0.24,
+            "false_release_risk": 0.34,
+            "byproduct_risk": 0.12,
+            "human_review": 0.04,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.38608,
+        "money_cost": 0.32,
+        "time_cost": 0.14688,
+        "energy_cost": 0.06,
+        "risk_cost": 0.5242399999999999,
+        "knowledge_action_bias": 0.164,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.036,
+          "risk_cost_delta": -0.056,
+          "time_cost_delta": -0.013
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "dose_factor": 0.3,
+          "confirm_with": "余氧化剂快检"
+        }
+      },
+      {
+        "action_id": "recirculate",
+        "action_name": "继续回流处理",
+        "original_score": 1.0,
+        "net_score": 0.698,
+        "objective_score": 0.672,
+        "objective": {
+          "objective_score": 0.672,
+          "benefit_total": 0.78,
+          "penalty_total": 0.108,
+          "benefit_terms": {
+            "control_priority": 0.46,
+            "safety_gain": 0.244,
+            "knowledge_alignment": 0.076
+          },
+          "penalty_terms": {
+            "money_cost": 0.026,
+            "time_cost": 0.015,
+            "energy_cost": 0.02,
+            "risk_cost": 0.013,
+            "false_release_risk": 0.034,
+            "byproduct_risk": 0.0,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.099,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.46,
+            "safety_gain": 0.32,
+            "money_cost": 0.12,
+            "time_cost": 0.05,
+            "energy_cost": 0.07,
+            "risk_cost": 0.24,
+            "false_release_risk": 0.34,
+            "byproduct_risk": 0.12,
+            "human_review": 0.04,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.76334,
+        "money_cost": 0.22,
+        "time_cost": 0.30424,
+        "energy_cost": 0.28,
+        "risk_cost": 0.053019999999999984,
+        "knowledge_action_bias": 0.197,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.043,
+          "risk_cost_delta": -0.067,
+          "time_cost_delta": -0.016
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "recycle_ratio": 0.63,
+          "extra_retention_min": 43
+        }
+      }
+    ],
+    "blocked_actions": [
+      "release",
+      "replace_catalyst"
+    ],
+    "summary": "最终仲裁：执行 补加氧化剂 等 2 个动作；未通过安全门 ['release_readiness_gate', 'residual_risk_gate']。"
+  },
+  {
+    "scenario": "reaction_time_insufficient",
+    "dq_summary": "未发现明显传感质量问题，可进入后续软测量。",
+    "state": {
+      "pollutant_residual_risk": 0.414,
+      "reaction_completion": 0.484,
+      "oxidant_remaining": 0.752,
+      "catalyst_activity": 0.504,
+      "matrix_interference": 0.319,
+      "byproduct_risk": 0.318,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 0.733,
+      "sensor_confidence": 1.0,
+      "compliance_probability": 0.782,
+      "recycle_gain": 0.285,
+      "release_readiness": 0.782,
+      "cycle_id": 1,
+      "catalyst_age_cycles": 3,
+      "catalyst_regen_count": 0,
+      "catalyst_lifetime_fraction": 0.86,
+      "catalyst_regeneration_potential": 0.669,
+      "catalyst_replacement_urgency": 0.295
+    },
+    "fault_top": {
+      "fault_id": "cycle_window_insufficient",
+      "fault_name": "循环缓冲或验证窗口不足",
+      "score": 0.779,
+      "risk_level": "medium",
+      "evidence": {
+        "pollutant_residual_risk": 0.414,
+        "oxidant_remaining": 0.752,
+        "release_readiness": 0.782,
+        "recycle_gain": 0.285,
+        "mechanism_ids": [
+          "loop_buffer_needed"
+        ],
+        "knowledge_support": [
+          {
+            "entry_id": "kb_loop_buffer_for_slow_sensing",
+            "match_score": 0.82,
+            "pollutant_class": "目标污染物需慢检测或低成本代理检测的废水",
+            "material_family": "循环式反应器/旁路快检系统"
+          },
+          {
+            "entry_id": "kb_catalyst_site_fouling",
+            "match_score": 0.613,
+            "pollutant_class": "含络合物、天然有机质或颗粒物的复杂废水",
+            "material_family": "负载型催化剂/类芬顿/光催化材料"
+          }
+        ]
+      },
+      "next_check": "安排下一回流/停留窗口，并同步进行软传感复估与旁路快检，而不是立即放行。"
+    },
+    "catalyst_lifecycle": {
+      "action_id": "monitor_catalyst",
+      "action_name": "维持监测",
+      "score": 0.616,
+      "rationale": "寿命风险尚可接受，暂不触发维护动作。"
+    },
+    "validation_plan": {
+      "plan_name": "routine_soft_sensor_audit",
+      "urgency": 0.211,
+      "hold_min": 18,
+      "validation_delay_min": 8,
+      "targets": [
+        "periodic_grab_sample_COD_or_TOC"
+      ],
+      "release_gate": "use validation evidence to update offline_residual_proxy before release"
+    },
+    "strategy_profile": "balanced",
+    "final_plan": [
+      {
+        "action_id": "recirculate",
+        "action_name": "继续回流处理",
+        "original_score": 1.0,
+        "net_score": 0.69,
+        "objective_score": 0.606,
+        "objective": {
+          "objective_score": 0.606,
+          "benefit_total": 0.724,
+          "penalty_total": 0.117,
+          "benefit_terms": {
+            "control_priority": 0.4,
+            "safety_gain": 0.256,
+            "knowledge_alignment": 0.068
+          },
+          "penalty_terms": {
+            "money_cost": 0.035,
+            "time_cost": 0.034,
+            "energy_cost": 0.025,
+            "risk_cost": 0.015,
+            "false_release_risk": 0.008,
+            "byproduct_risk": 0.0,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.027,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.75344,
+        "money_cost": 0.22,
+        "time_cost": 0.30784,
+        "energy_cost": 0.28,
+        "risk_cost": 0.06831999999999999,
+        "knowledge_action_bias": 0.152,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.033,
+          "risk_cost_delta": -0.052,
+          "time_cost_delta": -0.012
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "recycle_ratio": 0.45,
+          "extra_retention_min": 30
+        }
+      }
+    ],
+    "blocked_actions": [
+      "release",
+      "dose_oxidant",
+      "replace_catalyst"
+    ],
+    "summary": "最终仲裁：执行 继续回流处理 等 1 个动作；未通过安全门 ['release_readiness_gate', 'residual_risk_gate']。"
+  },
+  {
+    "scenario": "catalyst_deactivation",
+    "dq_summary": "未发现明显传感质量问题，可进入后续软测量。",
+    "state": {
+      "pollutant_residual_risk": 0.478,
+      "reaction_completion": 0.417,
+      "oxidant_remaining": 0.726,
+      "catalyst_activity": 0.282,
+      "matrix_interference": 0.306,
+      "byproduct_risk": 0.28,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 0.991,
+      "sensor_confidence": 1.0,
+      "compliance_probability": 0.739,
+      "recycle_gain": 0.362,
+      "release_readiness": 0.739,
+      "cycle_id": 1,
+      "catalyst_age_cycles": 7,
+      "catalyst_regen_count": 1,
+      "catalyst_lifetime_fraction": 0.66,
+      "catalyst_regeneration_potential": 0.454,
+      "catalyst_replacement_urgency": 0.58
+    },
+    "fault_top": {
+      "fault_id": "cycle_window_insufficient",
+      "fault_name": "循环缓冲或验证窗口不足",
+      "score": 0.821,
+      "risk_level": "medium",
+      "evidence": {
+        "pollutant_residual_risk": 0.478,
+        "oxidant_remaining": 0.726,
+        "release_readiness": 0.739,
+        "recycle_gain": 0.362,
+        "mechanism_ids": [
+          "loop_buffer_needed",
+          "catalyst_deactivation"
+        ],
+        "knowledge_support": [
+          {
+            "entry_id": "kb_catalyst_site_fouling",
+            "match_score": 0.82,
+            "pollutant_class": "含络合物、天然有机质或颗粒物的复杂废水",
+            "material_family": "负载型催化剂/类芬顿/光催化材料"
+          },
+          {
+            "entry_id": "kb_loop_buffer_for_slow_sensing",
+            "match_score": 0.82,
+            "pollutant_class": "目标污染物需慢检测或低成本代理检测的废水",
+            "material_family": "循环式反应器/旁路快检系统"
+          }
+        ]
+      },
+      "next_check": "安排下一回流/停留窗口，并同步进行软传感复估与旁路快检，而不是立即放行。"
+    },
+    "catalyst_lifecycle": {
+      "action_id": "regenerate_catalyst",
+      "action_name": "优先再生催化剂",
+      "score": 0.779,
+      "rationale": "活性不足但仍有可恢复寿命，适合先再生再回流验证。"
+    },
+    "validation_plan": {
+      "plan_name": "catalyst_lifecycle_validation",
+      "urgency": 0.644,
+      "hold_min": 45,
+      "validation_delay_min": 28,
+      "targets": [
+        "catalyst_activity_assay",
+        "pressure_drop_check",
+        "residual_oxidant_quick_test",
+        "surface_fouling_inspection"
+      ],
+      "release_gate": "use validation evidence to update offline_residual_proxy before release"
+    },
+    "strategy_profile": "safety_first",
+    "final_plan": [
+      {
+        "action_id": "regenerate_catalyst",
+        "action_name": "再生或更换催化剂",
+        "original_score": 1.0,
+        "net_score": 0.674,
+        "objective_score": 0.651,
+        "objective": {
+          "objective_score": 0.651,
+          "benefit_total": 0.815,
+          "penalty_total": 0.164,
+          "benefit_terms": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "knowledge_alignment": 0.095
+          },
+          "penalty_terms": {
+            "money_cost": 0.042,
+            "time_cost": 0.036,
+            "energy_cost": 0.011,
+            "risk_cost": 0.001,
+            "false_release_risk": 0.022,
+            "byproduct_risk": 0.003,
+            "human_review": 0.05
+          },
+          "false_release_risk": 0.054,
+          "byproduct_pressure": 0.02,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 1.0,
+        "money_cost": 0.42,
+        "time_cost": 0.44424,
+        "energy_cost": 0.16,
+        "risk_cost": 0.003019999999999995,
+        "knowledge_action_bias": 0.197,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.043,
+          "risk_cost_delta": -0.067,
+          "time_cost_delta": -0.016
+        },
+        "requires_human_review": true,
+        "parameters": {
+          "regen_intensity": 0.74,
+          "downtime_min": 59,
+          "confirm_with": "催化剂活性、表面污染或压降快检"
+        }
+      },
+      {
+        "action_id": "recirculate",
+        "action_name": "继续回流处理",
+        "original_score": 1.0,
+        "net_score": 0.692,
+        "objective_score": 0.609,
+        "objective": {
+          "objective_score": 0.609,
+          "benefit_total": 0.715,
+          "penalty_total": 0.106,
+          "benefit_terms": {
+            "control_priority": 0.34,
+            "safety_gain": 0.287,
+            "knowledge_alignment": 0.087
+          },
+          "penalty_terms": {
+            "money_cost": 0.022,
+            "time_cost": 0.025,
+            "energy_cost": 0.02,
+            "risk_cost": 0.018,
+            "false_release_risk": 0.022,
+            "byproduct_risk": 0.0,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.054,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 0.75608,
+        "money_cost": 0.22,
+        "time_cost": 0.30688,
+        "energy_cost": 0.28,
+        "risk_cost": 0.06423999999999999,
+        "knowledge_action_bias": 0.164,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.036,
+          "risk_cost_delta": -0.056,
+          "time_cost_delta": -0.013
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "recycle_ratio": 0.51,
+          "extra_retention_min": 35
+        }
+      }
+    ],
+    "blocked_actions": [
+      "release",
+      "dose_oxidant"
+    ],
+    "summary": "最终仲裁：执行 再生或更换催化剂 等 2 个动作；未通过安全门 ['release_readiness_gate', 'residual_risk_gate']。"
+  },
+  {
+    "scenario": "matrix_shock",
+    "dq_summary": "未发现明显传感质量问题，可进入后续软测量。",
+    "state": {
+      "pollutant_residual_risk": 0.549,
+      "reaction_completion": 0.402,
+      "oxidant_remaining": 0.641,
+      "catalyst_activity": 0.5,
+      "matrix_interference": 0.88,
+      "byproduct_risk": 0.373,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 0.963,
+      "sensor_confidence": 1.0,
+      "compliance_probability": 0.58,
+      "recycle_gain": 0.405,
+      "release_readiness": 0.58,
+      "cycle_id": 1,
+      "catalyst_age_cycles": 4,
+      "catalyst_regen_count": 0,
+      "catalyst_lifetime_fraction": 0.82,
+      "catalyst_regeneration_potential": 0.597,
+      "catalyst_replacement_urgency": 0.356
+    },
+    "fault_top": {
+      "fault_id": "reaction_time_insufficient",
+      "fault_name": "反应时间不足",
+      "score": 0.887,
+      "risk_level": "medium",
+      "evidence": {
+        "pollutant_residual_risk": 0.549,
+        "oxidant_remaining": 0.641,
+        "catalyst_activity": 0.5,
+        "recycle_gain": 0.405,
+        "knowledge_support": [
+          {
+            "entry_id": "kb_matrix_aop_inhibition",
+            "match_score": 0.82,
+            "pollutant_class": "高盐/高 COD 难降解有机废水",
+            "material_family": "高级氧化或催化氧化材料"
+          }
+        ]
+      },
+      "next_check": "优先延长停留或增加回流窗口，而不是立即加药。"
+    },
+    "catalyst_lifecycle": {
+      "action_id": "monitor_catalyst",
+      "action_name": "维持监测",
+      "score": 0.572,
+      "rationale": "寿命风险尚可接受，暂不触发维护动作。"
+    },
+    "validation_plan": {
+      "plan_name": "matrix_shock_characterization",
+      "urgency": 0.671,
+      "hold_min": 35,
+      "validation_delay_min": 18,
+      "targets": [
+        "COD_or_TOC",
+        "residual_oxidant_quick_test",
+        "salinity_or_EC_reference",
+        "turbidity_reference"
+      ],
+      "release_gate": "use validation evidence to update offline_residual_proxy before release"
+    },
+    "strategy_profile": "safety_first",
+    "final_plan": [
+      {
+        "action_id": "switch_or_pretreat",
+        "action_name": "预处理或切换处理单元",
+        "original_score": 1.0,
+        "net_score": 0.667,
+        "objective_score": 0.657,
+        "objective": {
+          "objective_score": 0.657,
+          "benefit_total": 0.804,
+          "penalty_total": 0.146,
+          "benefit_terms": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "knowledge_alignment": 0.084
+          },
+          "penalty_terms": {
+            "money_cost": 0.042,
+            "time_cost": 0.028,
+            "energy_cost": 0.021,
+            "risk_cost": 0.006,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.05
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 1.0,
+        "money_cost": 0.42,
+        "time_cost": 0.34815999999999997,
+        "energy_cost": 0.3,
+        "risk_cost": 0.019680000000000003,
+        "knowledge_action_bias": 0.148,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.033,
+          "risk_cost_delta": -0.05,
+          "time_cost_delta": -0.012
+        },
+        "requires_human_review": true,
+        "parameters": {
+          "candidate_units": [
+            "coagulation",
+            "adsorption",
+            "membrane",
+            "deep_oxidation"
+          ]
+        }
+      },
+      {
+        "action_id": "hold_for_validation",
+        "action_name": "暂存并旁路验证",
+        "original_score": 0.37,
+        "net_score": 0.366,
+        "objective_score": 0.367,
+        "objective": {
+          "objective_score": 0.367,
+          "benefit_total": 0.513,
+          "penalty_total": 0.146,
+          "benefit_terms": {
+            "control_priority": 0.126,
+            "safety_gain": 0.307,
+            "knowledge_alignment": 0.08
+          },
+          "penalty_terms": {
+            "money_cost": 0.025,
+            "time_cost": 0.033,
+            "energy_cost": 0.004,
+            "risk_cost": 0.021,
+            "false_release_risk": 0.047,
+            "byproduct_risk": 0.016,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.118,
+          "byproduct_pressure": 0.101,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 0.80882,
+        "money_cost": 0.25,
+        "time_cost": 0.40952,
+        "energy_cost": 0.05,
+        "risk_cost": 0.07546,
+        "knowledge_action_bias": 0.131,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.029,
+          "risk_cost_delta": -0.045,
+          "time_cost_delta": -0.01
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "hold_min": 35,
+          "validation_delay_min": 18,
+          "validation": [
+            "COD_or_TOC",
+            "residual_oxidant_quick_test",
+            "salinity_or_EC_reference",
+            "turbidity_reference"
+          ],
+          "validation_plan": "matrix_shock_characterization"
+        }
+      },
+      {
+        "action_id": "recirculate",
+        "action_name": "继续回流处理",
+        "original_score": 1.0,
+        "net_score": 0.702,
+        "objective_score": 0.619,
+        "objective": {
+          "objective_score": 0.619,
+          "benefit_total": 0.731,
+          "penalty_total": 0.112,
+          "benefit_terms": {
+            "control_priority": 0.34,
+            "safety_gain": 0.292,
+            "knowledge_alignment": 0.099
+          },
+          "penalty_terms": {
+            "money_cost": 0.022,
+            "time_cost": 0.024,
+            "energy_cost": 0.02,
+            "risk_cost": 0.013,
+            "false_release_risk": 0.033,
+            "byproduct_risk": 0.0,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.084,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.34,
+            "safety_gain": 0.38,
+            "money_cost": 0.1,
+            "time_cost": 0.08,
+            "energy_cost": 0.07,
+            "risk_cost": 0.28,
+            "false_release_risk": 0.4,
+            "byproduct_risk": 0.16,
+            "human_review": 0.05,
+            "knowledge_alignment": 0.1
+          }
+        },
+        "safety_gain": 0.76774,
+        "money_cost": 0.22,
+        "time_cost": 0.30264,
+        "energy_cost": 0.28,
+        "risk_cost": 0.04622,
+        "knowledge_action_bias": 0.217,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.048,
+          "risk_cost_delta": -0.074,
+          "time_cost_delta": -0.017
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "recycle_ratio": 0.55,
+          "extra_retention_min": 38
+        }
+      }
+    ],
+    "blocked_actions": [
+      "release",
+      "dose_oxidant",
+      "replace_catalyst"
+    ],
+    "summary": "最终仲裁：执行 预处理或切换处理单元 等 3 个动作；未通过安全门 ['release_readiness_gate', 'residual_risk_gate']。"
+  }
+]

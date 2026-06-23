@@ -1,0 +1,63 @@
+{
+  "package_id": "R8u148_grey_box_calibration_package_preflight",
+  "package_type": "grey_box_calibration_package_preflight",
+  "source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+  "source_path": "",
+  "external_package_supplied": false,
+  "package_status": "grey_box_calibration_package_waiting_for_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+  "package_preflight_pass": false,
+  "required_table_count": 5,
+  "required_tables": [
+    "batch_inlet_outlet_lab",
+    "hydraulic_rtd_or_tracer",
+    "oxidant_dose_residual_log",
+    "catalyst_age_regeneration_log",
+    "byproduct_panel"
+  ],
+  "minimum_matched_batch_count": 3,
+  "matched_batch_count": 0,
+  "matched_batch_ids": [],
+  "field_physics_coverage_candidate": 0.0,
+  "table_audits": {},
+  "lab_pair_audit": {
+    "signal_family": "lab_pair",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_batch_ids": []
+  },
+  "hydraulic_audit": {
+    "signal_family": "hydraulic_rtd",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_batch_ids": []
+  },
+  "oxidant_audit": {
+    "signal_family": "oxidant_dose_residual",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_batch_ids": []
+  },
+  "catalyst_audit": {
+    "signal_family": "catalyst_history",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_batch_ids": []
+  },
+  "byproduct_audit": {
+    "signal_family": "byproduct_panel",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_batch_ids": []
+  },
+  "blocking_reasons": [
+    "missing_external_package_dir"
+  ],
+  "can_route_to_agent53_field_calibration": false,
+  "can_generate_field_evidence": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "next_operator_action": "fill_grey_box_calibration_package_template_and_set_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+  "field_boundary": "This preflight only checks whether a grey-box calibration package is structurally ready for Agent53 field calibration. Passing this gate does not prove mechanism validity, field-supported claims, actuator readiness or release readiness.",
+  "no_write_boundary": "This package is only a grey-box calibration preflight input. It cannot write actuator policy, release-gate policy, field-supported mechanism claims or deployment clearance."
+}

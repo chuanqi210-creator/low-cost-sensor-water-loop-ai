@@ -1,0 +1,365 @@
+{
+  "audit_metadata": {
+    "audit_id": "R8u172_governance_recovery_integrity_audit",
+    "audit_status": "recovery_integrity_pass_waiting_for_real_external_input",
+    "audit_role": "cross_artifact_recovery_integrity_audit",
+    "created_at": "2026-06-22T09:41:16Z",
+    "source_stage_decision": "stop_expansion_wait_for_real_field_package_or_new_core_interface"
+  },
+  "thresholds": {
+    "manifest_stage_board_route_alignment": 1.0,
+    "validation_command_exists": 1.0,
+    "manifest_pointer_freshness": 1.0,
+    "manual_action_contract_integrity": 1.0,
+    "basis_boundary_integrity": 1.0,
+    "resource_boundary_integrity": 1.0,
+    "subagent_orchestration_integrity": 1.0,
+    "no_write_boundary_integrity": 1.0
+  },
+  "checks": {
+    "manifest_stage_board_route_alignment": 1.0,
+    "validation_command_exists": 1.0,
+    "manifest_pointer_freshness": 1.0,
+    "manual_action_contract_integrity": 1.0,
+    "basis_boundary_integrity": 1.0,
+    "resource_boundary_integrity": 1.0,
+    "subagent_orchestration_integrity": 1.0,
+    "no_write_boundary_integrity": 1.0
+  },
+  "numeric_calculation_trace": {
+    "trace_id": "R8u173_recovery_integrity_numeric_calculation_trace",
+    "trace_status": "numeric_trace_pass_recovery_integrity_score_recomputed",
+    "score_formula": "mean(check_scores)",
+    "source_fields": [
+      "manifest_stage_board_route_alignment",
+      "validation_command_exists",
+      "manifest_pointer_freshness",
+      "manual_action_contract_integrity",
+      "basis_boundary_integrity",
+      "resource_boundary_integrity",
+      "subagent_orchestration_integrity",
+      "no_write_boundary_integrity"
+    ],
+    "component_scores": {
+      "manifest_stage_board_route_alignment": 1.0,
+      "validation_command_exists": 1.0,
+      "manifest_pointer_freshness": 1.0,
+      "manual_action_contract_integrity": 1.0,
+      "basis_boundary_integrity": 1.0,
+      "resource_boundary_integrity": 1.0,
+      "subagent_orchestration_integrity": 1.0,
+      "no_write_boundary_integrity": 1.0
+    },
+    "component_count": 8,
+    "thresholds": {
+      "manifest_stage_board_route_alignment": 1.0,
+      "validation_command_exists": 1.0,
+      "manifest_pointer_freshness": 1.0,
+      "manual_action_contract_integrity": 1.0,
+      "basis_boundary_integrity": 1.0,
+      "resource_boundary_integrity": 1.0,
+      "subagent_orchestration_integrity": 1.0,
+      "no_write_boundary_integrity": 1.0
+    },
+    "reported_score": 1.0,
+    "computed_score": 1.0,
+    "score_delta": 0.0,
+    "trace_pass": true,
+    "unit": "dimensionless_score_0_to_1",
+    "boundary_level": "governance_recovery_integrity_not_field_validation",
+    "evidence_level": "governance_audit_not_field_evidence",
+    "can_generate_field_evidence": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "field_claim_upgrade_allowed": false
+  },
+  "protocol_adaptation": {
+    "adaptation_id": "R8u173_complex_project_protocol_to_engineering_model_adapter",
+    "source_protocol": "复杂项目启动前置治理协议_v3_核心版.md",
+    "adaptation_status": "selected_protocol_rules_integrated_into_recovery_gate",
+    "selected_rules": [
+      {
+        "rule_id": "current_basis_contract",
+        "protocol_concept": "current_basis 与 not_current_basis 分离",
+        "project_mapping": "区分 stage gate、真实外部输入、synthetic/template/literature 边界",
+        "system_layer": "verification_governance",
+        "core_ability": "verifiability",
+        "implemented_as": "basis_boundary_integrity",
+        "failure_boundary": "若 current_basis 为空或 synthetic/template/literature 未显式排除，则不能继续恢复主链。"
+      },
+      {
+        "rule_id": "resource_boundary_contract",
+        "protocol_concept": "allowed_basis/forbidden_basis/gray_zone 资源边界",
+        "project_mapping": "阻断 template、synthetic、literature-only 进入 field evidence 或 release gate",
+        "system_layer": "verification_governance",
+        "core_ability": "protectability",
+        "implemented_as": "resource_boundary_integrity + no_write_boundary_integrity",
+        "failure_boundary": "资源边界缺失时只能修复治理链，不能升级现场结论。"
+      },
+      {
+        "rule_id": "numeric_calculation_trace",
+        "protocol_concept": "数字结论必须可复算、带单位和外推边界",
+        "project_mapping": "恢复完整性分数由七个检查项均值复算",
+        "system_layer": "verification_governance",
+        "core_ability": "verifiability",
+        "implemented_as": "numeric_calculation_trace",
+        "failure_boundary": "分数无法复算时即使检查项看似通过，也不能作为下一路由依据。"
+      },
+      {
+        "rule_id": "dynamic_stage_handoff",
+        "protocol_concept": "机器看版必须留下 route_event、next_route、route_reason",
+        "project_mapping": "恢复链从最新 stage boundary board 读取安全下一路由",
+        "system_layer": "verification_governance",
+        "core_ability": "evolvability",
+        "implemented_as": "safe_next_route + route_event",
+        "failure_boundary": "路由不一致时进入 repair_recovery_integrity_blockers_before_next_route。"
+      },
+      {
+        "rule_id": "micro_task_execution_check",
+        "protocol_concept": "声称完成的治理修复必须落到可运行小任务",
+        "project_mapping": "下一路由必须有存在的 validation command 和 change inventory",
+        "system_layer": "verification_governance",
+        "core_ability": "engineering_feasibility",
+        "implemented_as": "validation_command_exists + change_inventory",
+        "failure_boundary": "没有可运行验证命令时，不能只靠文字 handoff 继续。"
+      },
+      {
+        "rule_id": "subagent_orchestration_probe",
+        "protocol_concept": "子代理可用性要区分 environment_listed/tool_discovered/spawn_attempted",
+        "project_mapping": "只把子代理作为只读审计或明确边界 worker，不让其替代主链判断",
+        "system_layer": "verification_governance",
+        "core_ability": "evolvability",
+        "implemented_as": "subagent_orchestration_integrity",
+        "failure_boundary": "若无 tool_discovered 或 spawn_attempted 证据，只能写 inline_fallback。"
+      }
+    ],
+    "deferred_rules": [
+      {
+        "rule_id": "live_project_pool_scan",
+        "defer_reason": "当前项目是既有工程模型优化，不是新项目池发散。"
+      },
+      {
+        "rule_id": "full_traceability_matrix",
+        "defer_reason": "后续进入论文/专利/field package 成熟阶段再扩展，避免当前恢复链膨胀。"
+      },
+      {
+        "rule_id": "rendered_artifact_freshness",
+        "defer_reason": "本轮不更新 Word/PPT/PDF，不应把展示物 QA 放在模型主链之前。"
+      },
+      {
+        "rule_id": "real_project_pressure_test_gate",
+        "defer_reason": "当前最高价值是压实本项目恢复链，外部压力测试进入阶段边界 backlog。"
+      }
+    ],
+    "anti_protocol_bloat_gate": {
+      "gate_status": "pass_selective_adoption_not_full_protocol_copy",
+      "selected_rule_count": 6,
+      "deferred_rule_count": 4,
+      "adoption_rule": "Only protocol rules that improve recovery, evidence boundaries, numeric traceability or low-friction continuation enter this audit."
+    },
+    "engineering_model_effect": {
+      "system_layer": "verification_governance",
+      "core_abilities": [
+        "verifiability",
+        "engineering_feasibility",
+        "evolvability"
+      ],
+      "model_change_type": "recovery_gate_contract_upgrade"
+    }
+  },
+  "minimum_traceability_gate": {
+    "gate_id": "R8u177_minimum_recovery_traceability_gate",
+    "gate_status": "minimum_recovery_traceability_pass",
+    "decision_log_status": "decision_log_minimum_recovery_route_recorded",
+    "traceability_status": "traceability_minimum_recovery_route_recorded",
+    "traceability_score": 1.0,
+    "trace_rows": [
+      {
+        "trace_id": "basis_to_stage_route",
+        "source_fields": {
+          "current_basis_refs": [
+            "core_gate.stage_decision",
+            "core_gate.next_allowed_actions",
+            "external_activation_operator_action_packet",
+            "focused_catalyst_response_merge_metrics",
+            "formal_search_nonlegal_review_operator_packet",
+            "new_core_interface_candidate_gate",
+            "core_gate.external_package_acquisition_stage_gate"
+          ],
+          "stage_decision": "stop_expansion_wait_for_real_field_package_or_new_core_interface",
+          "route_event": "external_activation_wait",
+          "next_route": "submit_real_external_input_then_rerun_stage_preflight_and_agent50"
+        },
+        "link_status": "linked",
+        "missing_fields": []
+      },
+      {
+        "trace_id": "resource_boundary_to_no_write",
+        "source_fields": {
+          "forbidden_basis": [
+            "template_rows_as_field_evidence",
+            "synthetic_rows_as_field_evidence",
+            "sample_rows_as_field_evidence",
+            "literature_only_rows_as_field_evidence",
+            "self_declared_candidate_without_preflight",
+            "formal_search_handoff_as_legal_or_patent_opinion",
+            "actuator_or_release_write_before_downstream_gates"
+          ],
+          "resource_no_write_policy": {
+            "can_generate_field_evidence": false,
+            "can_resume_model_chain": false,
+            "can_write_to_actuator": false,
+            "can_write_to_release_gate": false,
+            "field_claim_upgrade_allowed": false
+          },
+          "board_can_generate_field_evidence": false,
+          "board_can_write_to_actuator": false,
+          "board_can_write_to_release_gate": false
+        },
+        "link_status": "linked",
+        "missing_fields": []
+      },
+      {
+        "trace_id": "manual_action_to_resume_evidence",
+        "source_fields": {
+          "required": true,
+          "source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+          "action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+          "validation_command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+          "resume_evidence": "preflight JSON showing pass=true, or blocker fields showing the next repair"
+        },
+        "link_status": "linked",
+        "missing_fields": []
+      },
+      {
+        "trace_id": "protocol_adaptation_to_anti_bloat",
+        "source_fields": {
+          "adaptation_status": "selected_protocol_rules_integrated_into_recovery_gate",
+          "selected_rules": [
+            {
+              "rule_id": "current_basis_contract",
+              "protocol_concept": "current_basis 与 not_current_basis 分离",
+              "project_mapping": "区分 stage gate、真实外部输入、synthetic/template/literature 边界",
+              "system_layer": "verification_governance",
+              "core_ability": "verifiability",
+              "implemented_as": "basis_boundary_integrity",
+              "failure_boundary": "若 current_basis 为空或 synthetic/template/literature 未显式排除，则不能继续恢复主链。"
+            },
+            {
+              "rule_id": "resource_boundary_contract",
+              "protocol_concept": "allowed_basis/forbidden_basis/gray_zone 资源边界",
+              "project_mapping": "阻断 template、synthetic、literature-only 进入 field evidence 或 release gate",
+              "system_layer": "verification_governance",
+              "core_ability": "protectability",
+              "implemented_as": "resource_boundary_integrity + no_write_boundary_integrity",
+              "failure_boundary": "资源边界缺失时只能修复治理链，不能升级现场结论。"
+            },
+            {
+              "rule_id": "numeric_calculation_trace",
+              "protocol_concept": "数字结论必须可复算、带单位和外推边界",
+              "project_mapping": "恢复完整性分数由七个检查项均值复算",
+              "system_layer": "verification_governance",
+              "core_ability": "verifiability",
+              "implemented_as": "numeric_calculation_trace",
+              "failure_boundary": "分数无法复算时即使检查项看似通过，也不能作为下一路由依据。"
+            },
+            {
+              "rule_id": "dynamic_stage_handoff",
+              "protocol_concept": "机器看版必须留下 route_event、next_route、route_reason",
+              "project_mapping": "恢复链从最新 stage boundary board 读取安全下一路由",
+              "system_layer": "verification_governance",
+              "core_ability": "evolvability",
+              "implemented_as": "safe_next_route + route_event",
+              "failure_boundary": "路由不一致时进入 repair_recovery_integrity_blockers_before_next_route。"
+            },
+            {
+              "rule_id": "micro_task_execution_check",
+              "protocol_concept": "声称完成的治理修复必须落到可运行小任务",
+              "project_mapping": "下一路由必须有存在的 validation command 和 change inventory",
+              "system_layer": "verification_governance",
+              "core_ability": "engineering_feasibility",
+              "implemented_as": "validation_command_exists + change_inventory",
+              "failure_boundary": "没有可运行验证命令时，不能只靠文字 handoff 继续。"
+            },
+            {
+              "rule_id": "subagent_orchestration_probe",
+              "protocol_concept": "子代理可用性要区分 environment_listed/tool_discovered/spawn_attempted",
+              "project_mapping": "只把子代理作为只读审计或明确边界 worker，不让其替代主链判断",
+              "system_layer": "verification_governance",
+              "core_ability": "evolvability",
+              "implemented_as": "subagent_orchestration_integrity",
+              "failure_boundary": "若无 tool_discovered 或 spawn_attempted 证据，只能写 inline_fallback。"
+            }
+          ],
+          "deferred_rules": [
+            {
+              "rule_id": "live_project_pool_scan",
+              "defer_reason": "当前项目是既有工程模型优化，不是新项目池发散。"
+            },
+            {
+              "rule_id": "full_traceability_matrix",
+              "defer_reason": "后续进入论文/专利/field package 成熟阶段再扩展，避免当前恢复链膨胀。"
+            },
+            {
+              "rule_id": "rendered_artifact_freshness",
+              "defer_reason": "本轮不更新 Word/PPT/PDF，不应把展示物 QA 放在模型主链之前。"
+            },
+            {
+              "rule_id": "real_project_pressure_test_gate",
+              "defer_reason": "当前最高价值是压实本项目恢复链，外部压力测试进入阶段边界 backlog。"
+            }
+          ],
+          "anti_protocol_bloat_gate_status": "pass_selective_adoption_not_full_protocol_copy"
+        },
+        "link_status": "linked",
+        "missing_fields": []
+      }
+    ],
+    "missing_link_count": 0,
+    "blockers": [],
+    "scope_boundary": "recovery_route_trace_only_not_full_project_traceability_matrix",
+    "can_replace_full_traceability_matrix": false,
+    "evidence_level": "governance_recovery_trace_not_field_evidence",
+    "can_generate_field_evidence": false,
+    "can_resume_model_chain": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "field_claim_upgrade_allowed": false
+  },
+  "recovery_integrity_score": 1.0,
+  "recovery_integrity_stage_pass": true,
+  "blockers": [],
+  "stale_or_mismatch_fields": [],
+  "safe_next_route": "submit_real_external_input_then_rerun_stage_preflight_and_agent50",
+  "route_event": "external_activation_wait",
+  "change_inventory": [
+    {
+      "path": "outputs/model_core_governance/stage_boundary_external_action_board.json",
+      "role": "stage_boundary_board",
+      "status": "exists"
+    },
+    {
+      "path": "deliverables/model_core_optimization/stage_boundary_external_action_board.md",
+      "role": "stage_boundary_report",
+      "status": "exists"
+    },
+    {
+      "path": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+      "role": "validation_command",
+      "status": "missing"
+    },
+    {
+      "path": "deliverables/manifest.json",
+      "role": "manifest",
+      "status": "exists"
+    }
+  ],
+  "boundary": {
+    "can_generate_field_evidence": false,
+    "can_resume_model_chain": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "field_claim_upgrade_allowed": false,
+    "boundary_note": "This audit checks recovery-chain consistency only. It does not create field evidence, field validation, actuator readiness, release readiness, legal opinions or patentability conclusions."
+  }
+}

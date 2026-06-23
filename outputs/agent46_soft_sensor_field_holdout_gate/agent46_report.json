@@ -1,0 +1,277 @@
+{
+  "soft_sensor_field_holdout_gate": {
+    "agent_name": "soft_sensor_field_holdout_gate_agent",
+    "confidence": 0.583,
+    "summary": "软传感 field holdout 放行门控：soft_sensor_release_gate_blocked_non_field_holdout；可写 release gate False，自动放行 False。",
+    "recommendations": [
+      "当前只能保留 synthetic holdout 作为接口验证，不要写入 release gate。",
+      "下一步采集真实 field holdout：传感时间序列、离线污染物标签、场景标签、软传感误差和 control outcome。",
+      "重新运行 Agent36、Agent39，再由本 agent 决定是否形成 release gate 校准候选。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "soft_sensor_field_holdout_release_gate",
+        "borrowed_from": [
+          "split_conformal_prediction_interval_release_gating",
+          "model_validation_and_uncertainty_calibration",
+          "academic_research_agent_evidence_before_claims",
+          "field_holdout_before_claim_verification"
+        ],
+        "reality_mapping": "把软传感器从 synthetic 可运行层推进到真实 field holdout 校准候选层，防止低成本传感闭环控制过度相信仿真区间。",
+        "data_needs": [
+          "field_holdout_sensor_timeseries",
+          "offline_lab_residual_pollutant_labels",
+          "target_abs_errors_by_hidden_state",
+          "prediction_interval_coverage_by_target",
+          "conformal_nonconformity_thresholds",
+          "scenario_labels_for_matrix_shock_catalyst_deactivation_and_clean_release",
+          "ood_and_abstention_records"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/soft_sensor_field_holdout_gate_agent.py",
+          "experiments/run_agent46_soft_sensor_field_holdout_gate.py",
+          "outputs/soft_sensor_field_holdout_gate/field_holdout_gate_metrics.json"
+        ],
+        "evaluation_metrics": [
+          "soft_sensor_field_holdout_gate_score",
+          "SFG0_field_holdout_origin",
+          "SFG2_interval_coverage",
+          "SFG5_weak_target_coverage",
+          "can_write_to_release_gate"
+        ],
+        "failure_boundary": "通过也只代表 soft sensor release gate calibration candidate ready，不能替代真实污染物达标检测、现场自动控制许可或长期材料寿命验证。"
+      },
+      "evidence": {
+        "uncertainty_evidence_stage": "synthetic_holdout",
+        "conformal_evidence_stage": "synthetic_holdout",
+        "field_holdout_required": true,
+        "uncertainty_status": "synthetic_uncertainty_layer_ready_needs_field_holdout",
+        "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+        "upstream_conformal_can_write": false
+      },
+      "calibration": {
+        "uncertainty_record_count": 48,
+        "conformal_record_count": 48,
+        "evaluation_pair_count": 80,
+        "field_scenario_count": 6,
+        "uncertainty_overall_interval_coverage": 1.0,
+        "conformal_overall_coverage": 0.975,
+        "uncertainty_mean_interval_width": 0.0174,
+        "conformal_mean_interval_width": 0.233,
+        "release_abstention_rate": 0.125,
+        "conformal_ood_alert_rate": 0.0,
+        "uncertainty_ood_alert_rate": 0.0,
+        "uncertainty_coverage_by_target": {
+          "pollutant_residual_risk": 1.0,
+          "reaction_completion": 1.0,
+          "oxidant_remaining": 1.0,
+          "catalyst_activity": 1.0,
+          "matrix_interference": 1.0
+        },
+        "conformal_coverage_by_target": {
+          "pollutant_residual_risk": 1.0,
+          "reaction_completion": 1.0,
+          "oxidant_remaining": 1.0,
+          "catalyst_activity": 1.0,
+          "matrix_interference": 0.875
+        },
+        "scenario_counts": {
+          "clean_release": 8,
+          "sensor_faults": 8,
+          "oxidant_limitation": 8,
+          "reaction_time_insufficient": 8,
+          "catalyst_deactivation": 8,
+          "matrix_shock": 8
+        },
+        "scenario_full_coverage": {
+          "catalyst_deactivation": 0.75,
+          "matrix_shock": 1.0
+        }
+      },
+      "gate_checks": [
+        {
+          "check_id": "SFG0_field_holdout_origin",
+          "passed": false,
+          "rationale": "软传感不确定性与 conformal 校准都必须来自真实 field holdout。",
+          "evidence": {
+            "uncertainty_evidence_stage": "synthetic_holdout",
+            "conformal_evidence_stage": "synthetic_holdout",
+            "field_holdout_required": true,
+            "uncertainty_status": "synthetic_uncertainty_layer_ready_needs_field_holdout",
+            "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+            "upstream_conformal_can_write": false
+          }
+        },
+        {
+          "check_id": "SFG1_record_volume",
+          "passed": true,
+          "rationale": "field holdout 记录数和评估 target-pair 数必须足以支撑 release gate。",
+          "evidence": {
+            "uncertainty_record_count": 48,
+            "conformal_record_count": 48,
+            "evaluation_pair_count": 80,
+            "min_uncertainty_records": 24,
+            "min_conformal_records": 36,
+            "min_evaluation_pairs": 40
+          }
+        },
+        {
+          "check_id": "SFG2_interval_coverage",
+          "passed": true,
+          "rationale": "预测区间和 conformal 区间覆盖率必须同时达标。",
+          "evidence": {
+            "uncertainty_overall_interval_coverage": 1.0,
+            "conformal_overall_coverage": 0.975,
+            "min_uncertainty_coverage": 0.82,
+            "min_conformal_coverage": 0.9
+          }
+        },
+        {
+          "check_id": "SFG3_interval_width",
+          "passed": true,
+          "rationale": "区间不能靠无限放宽来获得覆盖率。",
+          "evidence": {
+            "uncertainty_mean_interval_width": 0.0174,
+            "conformal_mean_interval_width": 0.233,
+            "max_uncertainty_interval_width": 0.35,
+            "max_conformal_interval_width": 0.3
+          }
+        },
+        {
+          "check_id": "SFG4_abstention_and_ood",
+          "passed": true,
+          "rationale": "abstention 和 OOD 不能过高，否则闭环控制会频繁进入人工/回退。",
+          "evidence": {
+            "release_abstention_rate": 0.125,
+            "conformal_ood_alert_rate": 0.0,
+            "uncertainty_ood_alert_rate": 0.0,
+            "max_abstention_rate": 0.2,
+            "max_ood_rate": 0.12
+          }
+        },
+        {
+          "check_id": "SFG5_weak_target_coverage",
+          "passed": false,
+          "rationale": "催化剂活性和基质抑制是弱观测目标，不能只看总体覆盖率。",
+          "evidence": {
+            "weak_targets": [
+              "catalyst_activity",
+              "matrix_interference"
+            ],
+            "uncertainty_min_weak_target_coverage": 1.0,
+            "conformal_min_weak_target_coverage": 0.875,
+            "min_weak_target_coverage": 0.88
+          }
+        },
+        {
+          "check_id": "SFG6_scenario_diversity",
+          "passed": true,
+          "rationale": "field holdout 必须覆盖多个真实工况，且不能只在单一轻松场景中过线。",
+          "evidence": {
+            "field_scenario_count": 6,
+            "min_field_scenarios": 3,
+            "min_scenario_full_coverage": 0.75,
+            "required_min_scenario_full_coverage": 0.75
+          }
+        }
+      ],
+      "readiness": {
+        "soft_sensor_field_holdout_gate_status": "soft_sensor_release_gate_blocked_non_field_holdout",
+        "soft_sensor_field_holdout_gate_score": 0.714,
+        "passed_check_count": 5,
+        "total_check_count": 7,
+        "failed_check_ids": [
+          "SFG0_field_holdout_origin",
+          "SFG5_weak_target_coverage"
+        ],
+        "can_write_to_release_gate": false
+      },
+      "release_policy": {
+        "target_agent": "SoftSensorAgent",
+        "target_gate": "soft_sensor_release_gate",
+        "write_scope": "no_release_gate_write",
+        "can_write_to_release_gate": false,
+        "can_auto_release_treated_water": false,
+        "requires_human_review_before_application": true,
+        "requires_offline_lab_confirmation_for_compliance": true,
+        "forbidden_uses": [
+          "direct_discharge_compliance_claim",
+          "synthetic_holdout_as_field_evidence",
+          "bypass_of_fault_diagnosis_or_cost_safety_agents"
+        ]
+      }
+    },
+    "issues": [
+      {
+        "sensor": "soft_sensor_field_holdout_gate",
+        "issue_type": "SFG0_field_holdout_origin_failed",
+        "severity": "critical",
+        "message": "软传感不确定性与 conformal 校准都必须来自真实 field holdout。",
+        "evidence": {
+          "check": {
+            "check_id": "SFG0_field_holdout_origin",
+            "passed": false,
+            "rationale": "软传感不确定性与 conformal 校准都必须来自真实 field holdout。",
+            "evidence": {
+              "uncertainty_evidence_stage": "synthetic_holdout",
+              "conformal_evidence_stage": "synthetic_holdout",
+              "field_holdout_required": true,
+              "uncertainty_status": "synthetic_uncertainty_layer_ready_needs_field_holdout",
+              "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+              "upstream_conformal_can_write": false
+            }
+          },
+          "readiness": {
+            "soft_sensor_field_holdout_gate_status": "soft_sensor_release_gate_blocked_non_field_holdout",
+            "soft_sensor_field_holdout_gate_score": 0.714,
+            "passed_check_count": 5,
+            "total_check_count": 7,
+            "failed_check_ids": [
+              "SFG0_field_holdout_origin",
+              "SFG5_weak_target_coverage"
+            ],
+            "can_write_to_release_gate": false
+          }
+        }
+      },
+      {
+        "sensor": "soft_sensor_field_holdout_gate",
+        "issue_type": "SFG5_weak_target_coverage_failed",
+        "severity": "warning",
+        "message": "催化剂活性和基质抑制是弱观测目标，不能只看总体覆盖率。",
+        "evidence": {
+          "check": {
+            "check_id": "SFG5_weak_target_coverage",
+            "passed": false,
+            "rationale": "催化剂活性和基质抑制是弱观测目标，不能只看总体覆盖率。",
+            "evidence": {
+              "weak_targets": [
+                "catalyst_activity",
+                "matrix_interference"
+              ],
+              "uncertainty_min_weak_target_coverage": 1.0,
+              "conformal_min_weak_target_coverage": 0.875,
+              "min_weak_target_coverage": 0.88
+            }
+          },
+          "readiness": {
+            "soft_sensor_field_holdout_gate_status": "soft_sensor_release_gate_blocked_non_field_holdout",
+            "soft_sensor_field_holdout_gate_score": 0.714,
+            "passed_check_count": 5,
+            "total_check_count": 7,
+            "failed_check_ids": [
+              "SFG0_field_holdout_origin",
+              "SFG5_weak_target_coverage"
+            ],
+            "can_write_to_release_gate": false
+          }
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "soft_sensor_field_holdout_gate": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/soft_sensor_field_holdout_gate.md",
+    "agent46_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent46_soft_sensor_field_holdout_gate/agent46_report.md",
+    "field_holdout_gate_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_field_holdout_gate/field_holdout_gate_metrics.json"
+  }
+}

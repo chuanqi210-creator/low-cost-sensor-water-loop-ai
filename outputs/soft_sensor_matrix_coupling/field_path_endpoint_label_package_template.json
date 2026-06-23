@@ -1,0 +1,106 @@
+{
+  "site_topology_or_bed_geometry": [
+    {
+      "site_id": "TODO_site_id",
+      "node_id": "TODO_node_id",
+      "zone": "TODO_zone",
+      "upstream_node_id": "TODO_upstream_node_id",
+      "downstream_node_id": "TODO_downstream_node_id",
+      "path_stage_id": "TODO_path_stage_id",
+      "hydraulic_path_role": "TODO_hydraulic_path_role",
+      "nominal_flow_Lmin": "TODO_nominal_flow_Lmin",
+      "nominal_HRT_min": "TODO_nominal_HRT_min",
+      "recycle_ratio": "TODO_recycle_ratio",
+      "release_boundary_flag": "TODO_release_boundary_flag",
+      "recirculation_loop_flag": "TODO_recirculation_loop_flag",
+      "template_only": true,
+      "evidence_status": "template_not_field_evidence",
+      "field_boundary": "replace every TODO/template value with real field rows before preflight"
+    }
+  ],
+  "node_modality_sensor_timeseries": [
+    {
+      "batch_id": "TODO_batch_id",
+      "timestamp_min": "TODO_timestamp_min",
+      "layout_id": "TODO_layout_id",
+      "node_id": "TODO_node_id",
+      "zone": "TODO_zone",
+      "modality": "TODO_modality",
+      "sensor_value": "TODO_sensor_value",
+      "availability_mask": "TODO_availability_mask",
+      "time_since_last_observed_min": "TODO_time_since_last_observed_min",
+      "data_origin": "TODO_data_origin",
+      "template_only": true,
+      "evidence_status": "template_not_field_evidence",
+      "field_boundary": "replace every TODO/template value with real field rows before preflight"
+    }
+  ],
+  "hydraulic_path_stage_labels": [
+    {
+      "batch_id": "TODO_batch_id",
+      "layout_id": "TODO_layout_id",
+      "node_id": "TODO_node_id",
+      "zone": "TODO_zone",
+      "path_stage_id": "TODO_path_stage_id",
+      "hydraulic_path_role": "TODO_hydraulic_path_role",
+      "stage_coverage_label": "TODO_stage_coverage_label",
+      "direct_path_stage_coverage_label": "TODO_direct_path_stage_coverage_label",
+      "proxy_path_stage_coverage_label": "TODO_proxy_path_stage_coverage_label",
+      "label_source": "TODO_label_source",
+      "reviewer_id": "TODO_reviewer_id",
+      "review_time_min": "TODO_review_time_min",
+      "template_only": true,
+      "evidence_status": "template_not_field_evidence",
+      "field_boundary": "replace every TODO/template value with real field rows before preflight"
+    }
+  ],
+  "final_effluent_endpoint_labels": [
+    {
+      "batch_id": "TODO_batch_id",
+      "endpoint_node_id": "TODO_endpoint_node_id",
+      "sample_time_min": "TODO_sample_time_min",
+      "final_effluent_direct_observed": "TODO_final_effluent_direct_observed",
+      "release_gate_label": "TODO_release_gate_label",
+      "release_risk_label": "TODO_release_risk_label",
+      "analyte": "TODO_analyte",
+      "value": "TODO_value",
+      "unit": "TODO_unit",
+      "qa_flag": "TODO_qa_flag",
+      "reviewer_id": "TODO_reviewer_id",
+      "template_only": true,
+      "evidence_status": "template_not_field_evidence",
+      "field_boundary": "replace every TODO/template value with real field rows before preflight"
+    }
+  ],
+  "campaign_operation_log": [
+    {
+      "campaign_id": "TODO_campaign_id",
+      "batch_id": "TODO_batch_id",
+      "action_id": "TODO_action_id",
+      "start_min": "TODO_start_min",
+      "end_min": "TODO_end_min",
+      "recycle_ratio": "TODO_recycle_ratio",
+      "hold_time_min": "TODO_hold_time_min",
+      "release_policy": "TODO_release_policy",
+      "operator_override": "TODO_operator_override",
+      "template_only": true,
+      "evidence_status": "template_not_field_evidence",
+      "field_boundary": "replace every TODO/template value with real field rows before preflight"
+    }
+  ],
+  "offline_lab_results": [
+    {
+      "batch_id": "TODO_batch_id",
+      "sample_time_min": "TODO_sample_time_min",
+      "sample_source": "TODO_sample_source",
+      "analyte": "TODO_analyte",
+      "value": "TODO_value",
+      "unit": "TODO_unit",
+      "method": "TODO_method",
+      "qa_flag": "TODO_qa_flag",
+      "template_only": true,
+      "evidence_status": "template_not_field_evidence",
+      "field_boundary": "replace every TODO/template value with real field rows before preflight"
+    }
+  ]
+}

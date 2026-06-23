@@ -1,0 +1,534 @@
+{
+  "method_contract": {
+    "upgrade_id": "P7_engineering_constraints_in_reward_and_arbitration",
+    "borrowed_from": [
+      "Pyomo-style explicit variables, objectives and constraints",
+      "WaterTAP-style unit costing and process-wide cost fields",
+      "QSDsan-style TEA/LCA/system simulation boundaries",
+      "EPANET/WNTR-style pump, valve, tank, hydraulic and water-quality operation constraints",
+      "offline replay safety gate before policy actuation"
+    ],
+    "reality_mapping": "把工程可执行性从文字边界转成 reward 和仲裁可消费的约束补丁，覆盖池容、泵阀、药剂、维护、人工复核和误动作成本。",
+    "data_needs": [
+      "PLC_SCADA_point_list",
+      "actuator_response_log",
+      "buffer_storage_volume_timeseries",
+      "chemical_inventory_log",
+      "maintenance_window_schedule",
+      "human_review_queue_log",
+      "operator_override_and_false_positive_cost",
+      "field_state_action_reward_replay"
+    ],
+    "implementation_path": [
+      "src/water_ai/agents/engineering_execution_constraint_agent.py",
+      "src/water_ai/agents/multi_facility_collaborative_control_agent.py",
+      "src/water_ai/agents/cost_safety_agent.py",
+      "src/water_ai/agents/arbitration_agent.py",
+      "experiments/run_agent55_engineering_execution_constraints.py"
+    ],
+    "evaluation_metrics": [
+      "constraint_contract_score",
+      "reward_patch_coverage",
+      "arbitration_patch_coverage",
+      "mean_execution_feasibility",
+      "storage_violation_rate",
+      "actuator_switch_pressure",
+      "inventory_risk_score",
+      "human_review_bottleneck_score"
+    ],
+    "failure_boundary": "无 PLC/SCADA 点表、SOP 和现场执行 replay 时，只能改变候选排序和人工复核边界，不能授权执行器或放行门。"
+  },
+  "engineering_constraint_contract": {
+    "contract_id": "P7_engineering_execution_constraints_v1",
+    "data_origin": "synthetic_engineering_constraint_design",
+    "constraints": {
+      "max_actuator_switch_count_per_batch": 4.0,
+      "max_actuator_p90_latency_min": 16.0,
+      "available_buffer_storage_m3": 18.0,
+      "chemical_inventory_fraction_available": 0.34,
+      "maintenance_window_available_min": 35.0,
+      "human_review_capacity_min": 28.0,
+      "max_energy_cost_index": 0.62,
+      "max_false_positive_cost_index": 0.16
+    },
+    "field_execution_gates": [
+      "plc_scada_point_list_verified",
+      "operator_sop_verified",
+      "field_execution_replay_coverage >= 0.85",
+      "actuator_success_rate >= 0.95",
+      "actuator_p90_latency_min <= configured maximum"
+    ],
+    "resource_profiles": [
+      {
+        "joint_action_id": "J4_safe_low_cost_standby",
+        "actuator_switch_count": 1.0,
+        "actuator_p90_latency_min": 8.0,
+        "storage_required_m3": 20.0,
+        "chemical_inventory_fraction_required": 0.0,
+        "maintenance_window_required_min": 0.0,
+        "human_review_required_min": 26.0,
+        "energy_cost_index": 0.1,
+        "false_positive_cost_index": 0.08
+      },
+      {
+        "joint_action_id": "J3_polishing_and_release_gate",
+        "actuator_switch_count": 3.0,
+        "actuator_p90_latency_min": 14.0,
+        "storage_required_m3": 18.0,
+        "chemical_inventory_fraction_required": 0.02,
+        "maintenance_window_required_min": 0.0,
+        "human_review_required_min": 22.0,
+        "energy_cost_index": 0.3,
+        "false_positive_cost_index": 0.11
+      },
+      {
+        "joint_action_id": "J0_matrix_shock_equalize_and_recycle",
+        "actuator_switch_count": 3.0,
+        "actuator_p90_latency_min": 12.0,
+        "storage_required_m3": 14.0,
+        "chemical_inventory_fraction_required": 0.0,
+        "maintenance_window_required_min": 0.0,
+        "human_review_required_min": 8.0,
+        "energy_cost_index": 0.32,
+        "false_positive_cost_index": 0.12
+      },
+      {
+        "joint_action_id": "J2_catalyst_protection_before_regeneration",
+        "actuator_switch_count": 2.0,
+        "actuator_p90_latency_min": 18.0,
+        "storage_required_m3": 10.0,
+        "chemical_inventory_fraction_required": 0.05,
+        "maintenance_window_required_min": 45.0,
+        "human_review_required_min": 18.0,
+        "energy_cost_index": 0.18,
+        "false_positive_cost_index": 0.2
+      },
+      {
+        "joint_action_id": "J1_reaction_completion_recovery",
+        "actuator_switch_count": 2.0,
+        "actuator_p90_latency_min": 10.0,
+        "storage_required_m3": 8.0,
+        "chemical_inventory_fraction_required": 0.28,
+        "maintenance_window_required_min": 0.0,
+        "human_review_required_min": 5.0,
+        "energy_cost_index": 0.36,
+        "false_positive_cost_index": 0.14
+      }
+    ],
+    "failure_boundary": "synthetic constraint patch can change reward ranking and arbitration candidates, but cannot authorize PLC/SCADA execution or release gate writes without field execution replay."
+  },
+  "joint_action_constraint_evaluation": [
+    {
+      "joint_action_id": "J4_safe_low_cost_standby",
+      "resource_profile": {
+        "actuator_switch_count": 1.0,
+        "actuator_p90_latency_min": 8.0,
+        "storage_required_m3": 20.0,
+        "chemical_inventory_fraction_required": 0.0,
+        "maintenance_window_required_min": 0.0,
+        "human_review_required_min": 26.0,
+        "energy_cost_index": 0.1,
+        "false_positive_cost_index": 0.08
+      },
+      "constraint_pressure": {
+        "switch_pressure": 0.0,
+        "latency_pressure": 0.0,
+        "storage_pressure": 0.111,
+        "chemical_inventory_pressure": 0.0,
+        "maintenance_window_pressure": 0.0,
+        "human_review_pressure": 0.0,
+        "energy_pressure": 0.0,
+        "false_positive_pressure": 0.0
+      },
+      "engineering_constraint_penalty": 0.022,
+      "execution_feasibility": 0.975,
+      "hard_blocked_by_engineering": false,
+      "hard_block_reasons": [],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment",
+        "buffer_storage_capacity_check"
+      ]
+    },
+    {
+      "joint_action_id": "J3_polishing_and_release_gate",
+      "resource_profile": {
+        "actuator_switch_count": 3.0,
+        "actuator_p90_latency_min": 14.0,
+        "storage_required_m3": 18.0,
+        "chemical_inventory_fraction_required": 0.02,
+        "maintenance_window_required_min": 0.0,
+        "human_review_required_min": 22.0,
+        "energy_cost_index": 0.3,
+        "false_positive_cost_index": 0.11
+      },
+      "constraint_pressure": {
+        "switch_pressure": 0.0,
+        "latency_pressure": 0.0,
+        "storage_pressure": 0.0,
+        "chemical_inventory_pressure": 0.0,
+        "maintenance_window_pressure": 0.0,
+        "human_review_pressure": 0.0,
+        "energy_pressure": 0.0,
+        "false_positive_pressure": 0.0
+      },
+      "engineering_constraint_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_blocked_by_engineering": false,
+      "hard_block_reasons": [],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment"
+      ]
+    },
+    {
+      "joint_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "resource_profile": {
+        "actuator_switch_count": 3.0,
+        "actuator_p90_latency_min": 12.0,
+        "storage_required_m3": 14.0,
+        "chemical_inventory_fraction_required": 0.0,
+        "maintenance_window_required_min": 0.0,
+        "human_review_required_min": 8.0,
+        "energy_cost_index": 0.32,
+        "false_positive_cost_index": 0.12
+      },
+      "constraint_pressure": {
+        "switch_pressure": 0.0,
+        "latency_pressure": 0.0,
+        "storage_pressure": 0.0,
+        "chemical_inventory_pressure": 0.0,
+        "maintenance_window_pressure": 0.0,
+        "human_review_pressure": 0.0,
+        "energy_pressure": 0.0,
+        "false_positive_pressure": 0.0
+      },
+      "engineering_constraint_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_blocked_by_engineering": false,
+      "hard_block_reasons": [],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment"
+      ]
+    },
+    {
+      "joint_action_id": "J2_catalyst_protection_before_regeneration",
+      "resource_profile": {
+        "actuator_switch_count": 2.0,
+        "actuator_p90_latency_min": 18.0,
+        "storage_required_m3": 10.0,
+        "chemical_inventory_fraction_required": 0.05,
+        "maintenance_window_required_min": 45.0,
+        "human_review_required_min": 18.0,
+        "energy_cost_index": 0.18,
+        "false_positive_cost_index": 0.2
+      },
+      "constraint_pressure": {
+        "switch_pressure": 0.0,
+        "latency_pressure": 0.125,
+        "storage_pressure": 0.0,
+        "chemical_inventory_pressure": 0.0,
+        "maintenance_window_pressure": 0.286,
+        "human_review_pressure": 0.0,
+        "energy_pressure": 0.0,
+        "false_positive_pressure": 0.25
+      },
+      "engineering_constraint_penalty": 0.068,
+      "execution_feasibility": 0.923,
+      "hard_blocked_by_engineering": true,
+      "hard_block_reasons": [
+        "maintenance_window_pressure"
+      ],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment",
+        "maintenance_window_check",
+        "actuator_latency_check",
+        "manual_override_required_before_execution"
+      ]
+    },
+    {
+      "joint_action_id": "J1_reaction_completion_recovery",
+      "resource_profile": {
+        "actuator_switch_count": 2.0,
+        "actuator_p90_latency_min": 10.0,
+        "storage_required_m3": 8.0,
+        "chemical_inventory_fraction_required": 0.28,
+        "maintenance_window_required_min": 0.0,
+        "human_review_required_min": 5.0,
+        "energy_cost_index": 0.36,
+        "false_positive_cost_index": 0.14
+      },
+      "constraint_pressure": {
+        "switch_pressure": 0.0,
+        "latency_pressure": 0.0,
+        "storage_pressure": 0.0,
+        "chemical_inventory_pressure": 0.0,
+        "maintenance_window_pressure": 0.0,
+        "human_review_pressure": 0.0,
+        "energy_pressure": 0.0,
+        "false_positive_pressure": 0.0
+      },
+      "engineering_constraint_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_blocked_by_engineering": false,
+      "hard_block_reasons": [],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment"
+      ]
+    }
+  ],
+  "agent49_reward_patch": [
+    {
+      "joint_action_id": "J4_safe_low_cost_standby",
+      "engineering_constraint_penalty": 0.022,
+      "execution_feasibility": 0.975,
+      "hard_blocked_by_engineering": false,
+      "hard_block_reasons": [],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment",
+        "buffer_storage_capacity_check"
+      ]
+    },
+    {
+      "joint_action_id": "J3_polishing_and_release_gate",
+      "engineering_constraint_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_blocked_by_engineering": false,
+      "hard_block_reasons": [],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment"
+      ]
+    },
+    {
+      "joint_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "engineering_constraint_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_blocked_by_engineering": false,
+      "hard_block_reasons": [],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment"
+      ]
+    },
+    {
+      "joint_action_id": "J2_catalyst_protection_before_regeneration",
+      "engineering_constraint_penalty": 0.068,
+      "execution_feasibility": 0.923,
+      "hard_blocked_by_engineering": true,
+      "hard_block_reasons": [
+        "maintenance_window_pressure"
+      ],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment",
+        "maintenance_window_check",
+        "actuator_latency_check",
+        "manual_override_required_before_execution"
+      ]
+    },
+    {
+      "joint_action_id": "J1_reaction_completion_recovery",
+      "engineering_constraint_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_blocked_by_engineering": false,
+      "hard_block_reasons": [],
+      "arbitration_required_checks": [
+        "operator_sop_review",
+        "operation_log_replay_alignment"
+      ]
+    }
+  ],
+  "action_constraint_patch": {
+    "hold_for_validation": {
+      "source_joint_actions": [
+        "J3_polishing_and_release_gate",
+        "J4_safe_low_cost_standby"
+      ],
+      "engineering_penalty": 0.022,
+      "execution_feasibility": 0.988,
+      "hard_block": false,
+      "block_reasons": []
+    },
+    "recirculate": {
+      "source_joint_actions": [
+        "J0_matrix_shock_equalize_and_recycle",
+        "J1_reaction_completion_recovery",
+        "J3_polishing_and_release_gate"
+      ],
+      "engineering_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_block": false,
+      "block_reasons": []
+    },
+    "dose_oxidant": {
+      "source_joint_actions": [
+        "J1_reaction_completion_recovery"
+      ],
+      "engineering_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_block": false,
+      "block_reasons": []
+    },
+    "regenerate_catalyst": {
+      "source_joint_actions": [
+        "J2_catalyst_protection_before_regeneration"
+      ],
+      "engineering_penalty": 0.068,
+      "execution_feasibility": 0.923,
+      "hard_block": true,
+      "block_reasons": [
+        "maintenance_window_pressure"
+      ]
+    },
+    "replace_catalyst": {
+      "source_joint_actions": [
+        "J2_catalyst_protection_before_regeneration"
+      ],
+      "engineering_penalty": 0.068,
+      "execution_feasibility": 0.923,
+      "hard_block": true,
+      "block_reasons": [
+        "maintenance_window_pressure"
+      ]
+    },
+    "switch_or_pretreat": {
+      "source_joint_actions": [
+        "J0_matrix_shock_equalize_and_recycle"
+      ],
+      "engineering_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_block": false,
+      "block_reasons": []
+    },
+    "release": {
+      "source_joint_actions": [
+        "J3_polishing_and_release_gate"
+      ],
+      "engineering_penalty": 0.0,
+      "execution_feasibility": 1.0,
+      "hard_block": false,
+      "block_reasons": []
+    }
+  },
+  "arbitration_patch": {
+    "blocked_action_ids": [
+      "regenerate_catalyst",
+      "replace_catalyst"
+    ],
+    "action_constraint_patch": {
+      "hold_for_validation": {
+        "source_joint_actions": [
+          "J3_polishing_and_release_gate",
+          "J4_safe_low_cost_standby"
+        ],
+        "engineering_penalty": 0.022,
+        "execution_feasibility": 0.988,
+        "hard_block": false,
+        "block_reasons": []
+      },
+      "recirculate": {
+        "source_joint_actions": [
+          "J0_matrix_shock_equalize_and_recycle",
+          "J1_reaction_completion_recovery",
+          "J3_polishing_and_release_gate"
+        ],
+        "engineering_penalty": 0.0,
+        "execution_feasibility": 1.0,
+        "hard_block": false,
+        "block_reasons": []
+      },
+      "dose_oxidant": {
+        "source_joint_actions": [
+          "J1_reaction_completion_recovery"
+        ],
+        "engineering_penalty": 0.0,
+        "execution_feasibility": 1.0,
+        "hard_block": false,
+        "block_reasons": []
+      },
+      "regenerate_catalyst": {
+        "source_joint_actions": [
+          "J2_catalyst_protection_before_regeneration"
+        ],
+        "engineering_penalty": 0.068,
+        "execution_feasibility": 0.923,
+        "hard_block": true,
+        "block_reasons": [
+          "maintenance_window_pressure"
+        ]
+      },
+      "replace_catalyst": {
+        "source_joint_actions": [
+          "J2_catalyst_protection_before_regeneration"
+        ],
+        "engineering_penalty": 0.068,
+        "execution_feasibility": 0.923,
+        "hard_block": true,
+        "block_reasons": [
+          "maintenance_window_pressure"
+        ]
+      },
+      "switch_or_pretreat": {
+        "source_joint_actions": [
+          "J0_matrix_shock_equalize_and_recycle"
+        ],
+        "engineering_penalty": 0.0,
+        "execution_feasibility": 1.0,
+        "hard_block": false,
+        "block_reasons": []
+      },
+      "release": {
+        "source_joint_actions": [
+          "J3_polishing_and_release_gate"
+        ],
+        "engineering_penalty": 0.0,
+        "execution_feasibility": 1.0,
+        "hard_block": false,
+        "block_reasons": []
+      }
+    },
+    "can_patch_final_arbitration": true,
+    "can_authorize_actuator_execution": false,
+    "release_gate_write_allowed": false,
+    "field_boundary": "engineering patch can block or downgrade actions; field execution replay is required before automatic actuation."
+  },
+  "readiness": {
+    "engineering_constraints_status": "synthetic_engineering_constraints_reward_patch_ready_needs_plc_scada_and_field_replay",
+    "engineering_constraints_score": 0.815,
+    "constraint_contract_score": 1.0,
+    "reward_patch_coverage": 1.0,
+    "arbitration_patch_coverage": 1.0,
+    "mean_execution_feasibility": 0.98,
+    "hard_blocked_joint_action_count": 1,
+    "storage_violation_rate": 0.2,
+    "actuator_switch_pressure": 0.125,
+    "inventory_risk_score": 0.0,
+    "human_review_bottleneck_score": 0.0,
+    "field_ready": false,
+    "can_update_agent49_reward_contract": true,
+    "can_patch_final_arbitration": true,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "next_recommended_core_action": "P6_reasonable_knowledge_graph_upgrade"
+  },
+  "agent50_writeback": {
+    "allowed_writeback": [
+      "agent49_reward_constraint_patch",
+      "cost_safety_engineering_penalty_patch",
+      "arbitration_engineering_block_patch",
+      "P7_completion_status_for_governance"
+    ],
+    "blocked_writeback": [
+      "actuator_policy",
+      "release_gate_policy",
+      "field_execution_claim"
+    ],
+    "can_advance_governance_priority": true,
+    "policy_effect": "move_to_P6_reasonable_knowledge_graph_upgrade"
+  }
+}

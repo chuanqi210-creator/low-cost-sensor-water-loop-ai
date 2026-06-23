@@ -1,0 +1,38 @@
+{
+  "work_order_id": "R8u127_focused_catalyst_response_repair_work_order",
+  "work_order_type": "focused_catalyst_response_operator_repair_contract",
+  "work_order_status": "focused_catalyst_response_repair_work_order_waiting_for_external_response",
+  "source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+  "source_path": "",
+  "source_preflight_status": "focused_catalyst_response_source_using_default_template",
+  "source_can_run_merge_preflight": true,
+  "merge_preflight_status": "focused_catalyst_response_merge_waiting_for_FOCUSED_CATALYST_RESPONSE_PATH",
+  "focused_row_count": 6,
+  "blocked_focused_response_row_count": 6,
+  "top_level_issue_count": 0,
+  "matched_batch_count": 0,
+  "minimum_matched_batch_count": 3,
+  "matched_batch_deficit": 3,
+  "repair_item_count": 1,
+  "highest_priority_repair_id": "FOCUSED_SOURCE_SUBMIT_RESPONSE",
+  "repair_items": [
+    {
+      "priority": "P0",
+      "repair_id": "FOCUSED_SOURCE_SUBMIT_RESPONSE",
+      "repair_scope": "source",
+      "issue": "FOCUSED_CATALYST_RESPONSE_PATH_not_supplied",
+      "next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+      "evidence_boundary": "Use only real field/lab/operator records and keep no_write_boundary_confirmed=true. Do not replace missing evidence with synthetic/sample/template values."
+    }
+  ],
+  "next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+  "can_emit_merged_full_response_candidate": false,
+  "can_submit_candidate_as_FIELD_ACTIVATION_RESPONSE_PATH": false,
+  "can_route_to_agent51_field_proxy_holdout": false,
+  "can_relax_agent49_catalyst_uncertainty_block": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "evidence_boundary": "The work order only describes how to repair the external focused catalyst response artifact. It cannot create field observations, cannot validate remaining non-catalyst rows, and cannot replace full response preflight, R7 package acceptance, Agent51 holdout or operator review.",
+  "no_write_boundary": "This repair work order is a no-write planning artifact. It cannot authorize actuator writes, release-gate writes, field-supported claims, Agent49 guardrail relaxation or model-chain resumption."
+}

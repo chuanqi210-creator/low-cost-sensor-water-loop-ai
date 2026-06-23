@@ -1,0 +1,141 @@
+{
+  "gate_id": "R8u110_catalyst_evidence_response_gate",
+  "gate_type": "focused_catalyst_activity_response_gate",
+  "gate_status": "catalyst_evidence_response_gate_waiting_for_FIELD_ACTIVATION_RESPONSE_PATH",
+  "target_hidden_state": "catalyst_activity",
+  "source_bridge_id": "R8u109_observation_response_bridge",
+  "source_bridge_status": "observation_response_bridge_ready_for_priority_field_response_fill",
+  "response_submission_packet_status": "field_activation_response_submission_packet_waiting_for_external_response",
+  "response_source_preflight_status": "field_activation_response_source_using_default_template",
+  "response_source_external_response_supplied": false,
+  "full_response_preflight_status": "field_activation_response_blocked_before_external_package_preflight",
+  "full_response_ready_for_external_package_preflight": false,
+  "target_response_row_count": 6,
+  "provided_target_response_row_count": 6,
+  "missing_target_response_row_count": 0,
+  "blocked_target_response_row_count": 6,
+  "row_level_preflight_pass": false,
+  "target_row_results": [
+    {
+      "response_row_id": "catalyst_activity_03",
+      "observation_role": "pressure_headloss_proxy",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed:pressure_drop_kPa",
+      "row_status": "focused_row_blocked",
+      "blocking_issue_count": 4,
+      "blocking_issues": [
+        "data_origin_not_field",
+        "template_marker_present",
+        "no_write_boundary_not_confirmed",
+        "missing_batch_ids"
+      ],
+      "batch_ids": [],
+      "evidence_value_reference": "TODO_table_column_or_file_reference",
+      "data_origin": "TODO_field"
+    },
+    {
+      "response_row_id": "catalyst_activity_04",
+      "observation_role": "catalyst_activity_label",
+      "required_evidence": "offline_lab_results.catalyst_activity",
+      "row_status": "focused_row_blocked",
+      "blocking_issue_count": 4,
+      "blocking_issues": [
+        "data_origin_not_field",
+        "template_marker_present",
+        "no_write_boundary_not_confirmed",
+        "missing_batch_ids"
+      ],
+      "batch_ids": [],
+      "evidence_value_reference": "TODO_table_column_or_file_reference",
+      "data_origin": "TODO_field"
+    },
+    {
+      "response_row_id": "catalyst_activity_05",
+      "observation_role": "regeneration_event",
+      "required_evidence": "campaign_operation_log.regeneration_event",
+      "row_status": "focused_row_blocked",
+      "blocking_issue_count": 4,
+      "blocking_issues": [
+        "data_origin_not_field",
+        "template_marker_present",
+        "no_write_boundary_not_confirmed",
+        "missing_batch_ids"
+      ],
+      "batch_ids": [],
+      "evidence_value_reference": "TODO_table_column_or_file_reference",
+      "data_origin": "TODO_field"
+    },
+    {
+      "response_row_id": "catalyst_activity_06",
+      "observation_role": "hydraulic_normalizer",
+      "required_evidence": "site_topology_or_bed_geometry.nominal_HRT_min",
+      "row_status": "focused_row_blocked",
+      "blocking_issue_count": 4,
+      "blocking_issues": [
+        "data_origin_not_field",
+        "template_marker_present",
+        "no_write_boundary_not_confirmed",
+        "missing_batch_ids"
+      ],
+      "batch_ids": [],
+      "evidence_value_reference": "TODO_table_column_or_file_reference",
+      "data_origin": "TODO_field"
+    },
+    {
+      "response_row_id": "catalyst_activity_01",
+      "observation_role": "bed_outlet_uv254_proxy",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:UV254_abs",
+      "row_status": "focused_row_blocked",
+      "blocking_issue_count": 4,
+      "blocking_issues": [
+        "data_origin_not_field",
+        "template_marker_present",
+        "no_write_boundary_not_confirmed",
+        "missing_batch_ids"
+      ],
+      "batch_ids": [],
+      "evidence_value_reference": "TODO_table_column_or_file_reference",
+      "data_origin": "TODO_field"
+    },
+    {
+      "response_row_id": "catalyst_activity_02",
+      "observation_role": "bed_outlet_orp_proxy",
+      "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:ORP_mV",
+      "row_status": "focused_row_blocked",
+      "blocking_issue_count": 4,
+      "blocking_issues": [
+        "data_origin_not_field",
+        "template_marker_present",
+        "no_write_boundary_not_confirmed",
+        "missing_batch_ids"
+      ],
+      "batch_ids": [],
+      "evidence_value_reference": "TODO_table_column_or_file_reference",
+      "data_origin": "TODO_field"
+    }
+  ],
+  "batch_alignment": {
+    "minimum_matched_batch_count": 3,
+    "role_to_batch_ids": {
+      "pressure_headloss_proxy": [],
+      "catalyst_activity_label": [],
+      "regeneration_event": [],
+      "hydraulic_normalizer": [],
+      "bed_outlet_uv254_proxy": [],
+      "bed_outlet_orp_proxy": []
+    },
+    "matched_batch_count": 0,
+    "matched_batch_ids_sample": [],
+    "matched_batch_requirement_pass": false,
+    "batch_boundary": "Focused response rows must share at least three real field batch_id values before they can become a candidate package for Agent51 field proxy holdout. Response-level batch IDs still do not prove field values; package CSV preflight and holdout scoring remain required."
+  },
+  "can_route_to_focused_materialized_package_preflight": false,
+  "can_route_to_full_external_activation_router": false,
+  "can_route_to_agent51_field_proxy_holdout": false,
+  "can_relax_agent49_catalyst_uncertainty_block": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "next_operator_action": "fill_response_template_and_set_FIELD_ACTIVATION_RESPONSE_PATH",
+  "field_boundary": "This focused gate checks only whether the six catalyst_activity response rows are complete enough to be materialized into a real package candidate. It does not inspect package CSV values, does not run Agent51 holdout scoring, does not validate catalyst activity, and does not relax Agent49.",
+  "no_write_boundary": "Even when the focused response rows pass, the result cannot write actuator policy or release gate. A real materialized field package, Agent51 holdout, replay gates and operator review remain required."
+}

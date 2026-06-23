@@ -1,0 +1,422 @@
+{
+  "matrix_shock_fast_proxy": {
+    "agent_name": "matrix_shock_fast_proxy_agent",
+    "confidence": 0.52,
+    "summary": "基质冲击快代理：synthetic_fast_proxy_ready_needs_field_timestamp_validation；proxy_score 0.559，保护动作余量 59.0 min。",
+    "recommendations": [
+      "用 EC、浊度、UV254、pH 和 ORP 组成 matrix_shock 快代理，先触发保护性预处理/切换，不等待慢实验结果才动作。",
+      "快代理只允许触发 protective control；放行仍必须等待离线证据、field holdout 保形校准和 release gate。",
+      "把 matrix_shock 暂存窗口至少增加 45.0 min，或用等价快检/预处理降低慢证据压力。",
+      "下一步用 timestamped campaign replay 评估快代理 precision、recall、提前量和误触发成本。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "matrix_shock_fast_proxy_latency_aware_control",
+        "borrowed_from": [
+          "parsa_2024_dynamic_control_review",
+          "water_2021_textile_dye_aop_review",
+          "nsr_2026_scientific_kg_survey"
+        ],
+        "reality_mapping": "用低成本原始信号先触发保护性控制，把慢离线证据从动作触发条件改为放行/校准条件。",
+        "data_needs": [
+          "EC_uScm_timeseries",
+          "turbidity_NTU_timeseries",
+          "UV254_abs_timeseries",
+          "pH_timeseries",
+          "ORP_mV_timeseries",
+          "offline_COD_TOC_or_target_label",
+          "actuator_command_timestamp",
+          "pretreatment_effect_timestamp",
+          "false_positive_cost"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/matrix_shock_fast_proxy_agent.py",
+          "src/water_ai/agents/control_strategy_agent.py",
+          "experiments/run_agent41_matrix_shock_fast_proxy.py"
+        ],
+        "evaluation_metrics": [
+          "field_proxy_precision",
+          "field_proxy_recall",
+          "protective_action_lead_time_min",
+          "matrix_shock_latency_violation_rate",
+          "false_positive_cost_index"
+        ],
+        "failure_boundary": "快代理能支持提前保护，不能证明污染物已经达标；field validation 前不得写入自动放行门。"
+      },
+      "proxy": {
+        "proxy_score": 0.559,
+        "specificity_guard_score": 0.633,
+        "protective_triggered": true,
+        "release_block_recommended": true,
+        "low_cost_signal_count": 5,
+        "feature_scores": {
+          "ec_level": 0.677,
+          "ec_surge": 0.024,
+          "turbidity_level": 0.685,
+          "turbidity_surge": 0.0,
+          "uv254_load": 0.661,
+          "ph_shift": 0.247,
+          "orp_suppression": 0.0
+        },
+        "raw_medians": {
+          "early_EC_uScm": 2967.04,
+          "late_EC_uScm": 2988.68,
+          "early_turbidity_NTU": 44.322,
+          "late_turbidity_NTU": 38.538,
+          "late_UV254_abs": 0.8468,
+          "late_ORP_mV": 513.31,
+          "late_pH": 7.694
+        }
+      },
+      "original_latency": {
+        "scenario": "matrix_shock",
+        "risk_mode": "pretreatment_or_switching",
+        "borrowed_from": "parsa_2024_dynamic_control_review",
+        "reality_mapping": "基质冲击需要快代理信号先触发预处理/切换，离线确认往往赶不上早期控制窗口。",
+        "data_needs": [
+          "sampling_timestamp",
+          "soft_sensor_prediction_timestamp",
+          "offline_sample_timestamp",
+          "offline_result_timestamp",
+          "actuator_command_timestamp",
+          "actuator_effect_timestamp",
+          "recycle_start_end_timestamp",
+          "hold_tank_release_timestamp",
+          "batch_id"
+        ],
+        "evaluation_metrics": [
+          "latency_budget_violation_rate",
+          "minimum_evidence_margin_min",
+          "minimum_action_margin_min",
+          "field_replay_success_rate",
+          "closed_loop_stability_under_delay"
+        ],
+        "failure_boundary": "synthetic replay 中的闭环稳定不等于 PLC/人工复核/检测排队/执行器滞后条件下可执行。",
+        "sampling_interval_min": 3.0,
+        "qc_window_min": 9.0,
+        "soft_sensor_compute_min": 1.0,
+        "human_review_min": 12.0,
+        "lab_turnaround_min": 90.0,
+        "actuator_delay_min": 5.0,
+        "mixing_delay_min": 8.0,
+        "hold_buffer_min": 45.0,
+        "recycle_retention_min": 24.0,
+        "validation_overlap_credit_min": 15.0,
+        "action_deadline_min": 85.0,
+        "observation_latency_min": 13.0,
+        "control_action_latency_min": 38.0,
+        "release_evidence_latency_min": 115.0,
+        "loop_time_credit_min": 84.0,
+        "action_latency_margin_min": 47.0,
+        "evidence_margin_min": -31.0,
+        "latency_pressure_min": 31.0,
+        "latency_status": "needs_longer_buffer_or_fast_proxy"
+      },
+      "mitigation_budget": {
+        "proxy_observation_latency_min": 10.0,
+        "operator_or_interlock_delay_min": 3.0,
+        "actuator_delay_min": 5.0,
+        "mixing_delay_min": 8.0,
+        "protective_action_latency_min": 26.0,
+        "protective_action_margin_min": 59.0,
+        "original_evidence_margin_min": -31.0,
+        "recommended_hold_extension_min": 45.0,
+        "projected_evidence_margin_after_extension_min": 14.0,
+        "latency_failure_resolved_for_control": true,
+        "release_still_waits_for_slow_evidence": true,
+        "unsafe_release_prevented": true
+      },
+      "control_adaptation": {
+        "action_id": "switch_or_pretreat",
+        "protective_mode": true,
+        "score_boost": 0.134,
+        "automatic_release_allowed": false,
+        "release_policy": "block_release_until_lab_and_field_conformal_calibration",
+        "recommended_hold_min": 90.0,
+        "validation_targets": [
+          "salinity_or_EC_reference",
+          "turbidity_reference",
+          "UV254_reference",
+          "COD_or_TOC",
+          "target_pollutant_or_proxy"
+        ],
+        "latency_basis": {
+          "protective_action_margin_min": 59.0,
+          "original_evidence_margin_min": -31.0,
+          "projected_evidence_margin_after_extension_min": 14.0
+        }
+      },
+      "readiness": {
+        "fast_proxy_status": "synthetic_fast_proxy_ready_needs_field_timestamp_validation",
+        "fast_proxy_readiness_score": 0.56,
+        "field_proxy_validation_required": true,
+        "can_write_to_protective_control": false,
+        "can_write_to_release_gate": false,
+        "release_gate_block_reason": "fast proxy can trigger protection, but release still requires lab evidence and field conformal calibration"
+      },
+      "evidence_stage": "synthetic_replay",
+      "field_proxy_validation": {},
+      "conformal_readiness": {
+        "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+        "conformal_score": 0.854,
+        "field_holdout_required": true,
+        "can_write_to_release_gate": false
+      }
+    },
+    "issues": [
+      {
+        "sensor": "matrix_shock_fast_proxy",
+        "issue_type": "field_timestamp_validation_required",
+        "severity": "warning",
+        "message": "快代理目前只在 synthetic replay 中验证，必须用现场时间戳和离线标签验证 precision/recall。",
+        "evidence": {
+          "fast_proxy_status": "synthetic_fast_proxy_ready_needs_field_timestamp_validation",
+          "fast_proxy_readiness_score": 0.56,
+          "field_proxy_validation_required": true,
+          "can_write_to_protective_control": false,
+          "can_write_to_release_gate": false,
+          "release_gate_block_reason": "fast proxy can trigger protection, but release still requires lab evidence and field conformal calibration"
+        }
+      },
+      {
+        "sensor": "matrix_shock_fast_proxy",
+        "issue_type": "release_blocked_by_matrix_fast_proxy",
+        "severity": "warning",
+        "message": "低成本快代理提示基质冲击风险，允许保护性动作，但禁止自动放行。",
+        "evidence": {
+          "proxy_score": 0.559,
+          "specificity_guard_score": 0.633,
+          "protective_triggered": true,
+          "release_block_recommended": true,
+          "low_cost_signal_count": 5,
+          "feature_scores": {
+            "ec_level": 0.677,
+            "ec_surge": 0.024,
+            "turbidity_level": 0.685,
+            "turbidity_surge": 0.0,
+            "uv254_load": 0.661,
+            "ph_shift": 0.247,
+            "orp_suppression": 0.0
+          },
+          "raw_medians": {
+            "early_EC_uScm": 2967.04,
+            "late_EC_uScm": 2988.68,
+            "early_turbidity_NTU": 44.322,
+            "late_turbidity_NTU": 38.538,
+            "late_UV254_abs": 0.8468,
+            "late_ORP_mV": 513.31,
+            "late_pH": 7.694
+          }
+        }
+      }
+    ]
+  },
+  "scenario_reports": {
+    "matrix_shock": {
+      "summary": "基质冲击快代理：synthetic_fast_proxy_ready_needs_field_timestamp_validation；proxy_score 0.559，保护动作余量 59.0 min。",
+      "proxy": {
+        "proxy_score": 0.559,
+        "specificity_guard_score": 0.633,
+        "protective_triggered": true,
+        "release_block_recommended": true,
+        "low_cost_signal_count": 5,
+        "feature_scores": {
+          "ec_level": 0.677,
+          "ec_surge": 0.024,
+          "turbidity_level": 0.685,
+          "turbidity_surge": 0.0,
+          "uv254_load": 0.661,
+          "ph_shift": 0.247,
+          "orp_suppression": 0.0
+        },
+        "raw_medians": {
+          "early_EC_uScm": 2967.04,
+          "late_EC_uScm": 2988.68,
+          "early_turbidity_NTU": 44.322,
+          "late_turbidity_NTU": 38.538,
+          "late_UV254_abs": 0.8468,
+          "late_ORP_mV": 513.31,
+          "late_pH": 7.694
+        }
+      },
+      "mitigation_budget": {
+        "proxy_observation_latency_min": 10.0,
+        "operator_or_interlock_delay_min": 3.0,
+        "actuator_delay_min": 5.0,
+        "mixing_delay_min": 8.0,
+        "protective_action_latency_min": 26.0,
+        "protective_action_margin_min": 59.0,
+        "original_evidence_margin_min": -31.0,
+        "recommended_hold_extension_min": 45.0,
+        "projected_evidence_margin_after_extension_min": 14.0,
+        "latency_failure_resolved_for_control": true,
+        "release_still_waits_for_slow_evidence": true,
+        "unsafe_release_prevented": true
+      },
+      "readiness": {
+        "fast_proxy_status": "synthetic_fast_proxy_ready_needs_field_timestamp_validation",
+        "fast_proxy_readiness_score": 0.56,
+        "field_proxy_validation_required": true,
+        "can_write_to_protective_control": false,
+        "can_write_to_release_gate": false,
+        "release_gate_block_reason": "fast proxy can trigger protection, but release still requires lab evidence and field conformal calibration"
+      }
+    },
+    "clean_release": {
+      "summary": "基质冲击快代理：fast_proxy_not_triggered_keep_standard_matrix_workup；proxy_score 0.008，保护动作余量 52.0 min。",
+      "proxy": {
+        "proxy_score": 0.008,
+        "specificity_guard_score": 0.009,
+        "protective_triggered": false,
+        "release_block_recommended": false,
+        "low_cost_signal_count": 5,
+        "feature_scores": {
+          "ec_level": 0.0,
+          "ec_surge": 0.024,
+          "turbidity_level": 0.0,
+          "turbidity_surge": 0.0,
+          "uv254_load": 0.0,
+          "ph_shift": 0.089,
+          "orp_suppression": 0.0
+        },
+        "raw_medians": {
+          "early_EC_uScm": 1085.04,
+          "late_EC_uScm": 1106.68,
+          "early_turbidity_NTU": 10.841,
+          "late_turbidity_NTU": 6.229,
+          "late_UV254_abs": 0.3041,
+          "late_ORP_mV": 636.535,
+          "late_pH": 7.021
+        }
+      },
+      "mitigation_budget": {
+        "proxy_observation_latency_min": 10.0,
+        "operator_or_interlock_delay_min": 10.0,
+        "actuator_delay_min": 5.0,
+        "mixing_delay_min": 8.0,
+        "protective_action_latency_min": 33.0,
+        "protective_action_margin_min": 52.0,
+        "original_evidence_margin_min": -31.0,
+        "recommended_hold_extension_min": 45.0,
+        "projected_evidence_margin_after_extension_min": 14.0,
+        "latency_failure_resolved_for_control": false,
+        "release_still_waits_for_slow_evidence": true,
+        "unsafe_release_prevented": false
+      },
+      "readiness": {
+        "fast_proxy_status": "fast_proxy_not_triggered_keep_standard_matrix_workup",
+        "fast_proxy_readiness_score": 0.108,
+        "field_proxy_validation_required": true,
+        "can_write_to_protective_control": false,
+        "can_write_to_release_gate": false,
+        "release_gate_block_reason": "fast proxy can trigger protection, but release still requires lab evidence and field conformal calibration"
+      }
+    },
+    "oxidant_limitation": {
+      "summary": "基质冲击快代理：fast_proxy_not_triggered_keep_standard_matrix_workup；proxy_score 0.149，保护动作余量 52.0 min。",
+      "proxy": {
+        "proxy_score": 0.149,
+        "specificity_guard_score": 0.035,
+        "protective_triggered": false,
+        "release_block_recommended": false,
+        "low_cost_signal_count": 5,
+        "feature_scores": {
+          "ec_level": 0.0,
+          "ec_surge": 0.024,
+          "turbidity_level": 0.031,
+          "turbidity_surge": 0.0,
+          "uv254_load": 0.622,
+          "ph_shift": 0.058,
+          "orp_suppression": 0.543
+        },
+        "raw_medians": {
+          "early_EC_uScm": 1255.04,
+          "late_EC_uScm": 1276.68,
+          "early_turbidity_NTU": 23.578,
+          "late_turbidity_NTU": 18.917,
+          "late_UV254_abs": 0.823,
+          "late_ORP_mV": 277.925,
+          "late_pH": 7.085
+        }
+      },
+      "mitigation_budget": {
+        "proxy_observation_latency_min": 10.0,
+        "operator_or_interlock_delay_min": 10.0,
+        "actuator_delay_min": 5.0,
+        "mixing_delay_min": 8.0,
+        "protective_action_latency_min": 33.0,
+        "protective_action_margin_min": 52.0,
+        "original_evidence_margin_min": -31.0,
+        "recommended_hold_extension_min": 45.0,
+        "projected_evidence_margin_after_extension_min": 14.0,
+        "latency_failure_resolved_for_control": false,
+        "release_still_waits_for_slow_evidence": true,
+        "unsafe_release_prevented": false
+      },
+      "readiness": {
+        "fast_proxy_status": "fast_proxy_not_triggered_keep_standard_matrix_workup",
+        "fast_proxy_readiness_score": 0.155,
+        "field_proxy_validation_required": true,
+        "can_write_to_protective_control": false,
+        "can_write_to_release_gate": false,
+        "release_gate_block_reason": "fast proxy can trigger protection, but release still requires lab evidence and field conformal calibration"
+      }
+    }
+  },
+  "control_snapshot": {
+    "scenario": "matrix_shock",
+    "baseline_top_actions": [
+      "recirculate",
+      "switch_or_pretreat",
+      "hold_for_validation",
+      "regenerate_catalyst"
+    ],
+    "adapted_top_actions": [
+      "switch_or_pretreat",
+      "recirculate",
+      "hold_for_validation",
+      "regenerate_catalyst"
+    ],
+    "baseline_hold_min": 35,
+    "adapted_hold_min": 90,
+    "adapted_switch_protective_mode": true,
+    "adapted_release_policy": "block_release_until_lab_and_field_conformal_calibration",
+    "adapted_final_plan": [
+      "switch_or_pretreat",
+      "hold_for_validation",
+      "recirculate"
+    ],
+    "blocked_actions": [
+      "release",
+      "dose_oxidant",
+      "replace_catalyst"
+    ],
+    "proxy_readiness": {
+      "fast_proxy_status": "synthetic_fast_proxy_ready_needs_field_timestamp_validation",
+      "fast_proxy_readiness_score": 0.56,
+      "field_proxy_validation_required": true,
+      "can_write_to_protective_control": false,
+      "can_write_to_release_gate": false,
+      "release_gate_block_reason": "fast proxy can trigger protection, but release still requires lab evidence and field conformal calibration"
+    },
+    "proxy_mitigation": {
+      "proxy_observation_latency_min": 10.0,
+      "operator_or_interlock_delay_min": 3.0,
+      "actuator_delay_min": 5.0,
+      "mixing_delay_min": 8.0,
+      "protective_action_latency_min": 26.0,
+      "protective_action_margin_min": 59.0,
+      "original_evidence_margin_min": -31.0,
+      "recommended_hold_extension_min": 45.0,
+      "projected_evidence_margin_after_extension_min": 14.0,
+      "latency_failure_resolved_for_control": true,
+      "release_still_waits_for_slow_evidence": true,
+      "unsafe_release_prevented": true
+    }
+  },
+  "generated_files": {
+    "matrix_shock_fast_proxy_control": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/matrix_shock_fast_proxy_control.md",
+    "agent41_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent41_matrix_shock_fast_proxy/agent41_report.md",
+    "fast_proxy_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/matrix_shock_fast_proxy/fast_proxy_metrics.json"
+  }
+}

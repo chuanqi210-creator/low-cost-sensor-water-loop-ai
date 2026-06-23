@@ -1,0 +1,36 @@
+{
+  "evidence_stage": "synthetic_holdout",
+  "uncertainty_metrics": {
+    "record_count": 48,
+    "scenario_counts": {
+      "clean_release": 8,
+      "sensor_faults": 8,
+      "oxidant_limitation": 8,
+      "reaction_time_insufficient": 8,
+      "catalyst_deactivation": 8,
+      "matrix_shock": 8
+    },
+    "coverage_by_target": {
+      "pollutant_residual_risk": 1.0,
+      "reaction_completion": 1.0,
+      "oxidant_remaining": 1.0,
+      "catalyst_activity": 1.0,
+      "matrix_interference": 1.0
+    },
+    "overall_interval_coverage": 1.0,
+    "mean_abs_error": 0.0613,
+    "mean_interval_width": 0.0174,
+    "mean_uncertainty_score": 0.0925,
+    "median_uncertainty_score": 0.095,
+    "high_uncertainty_mean_abs_error": 0.0761,
+    "low_uncertainty_mean_abs_error": 0.0466,
+    "uncertainty_tracks_error": true,
+    "ood_alert_count": 0,
+    "release_block_count": 8
+  },
+  "readiness": {
+    "uncertainty_validation_status": "synthetic_uncertainty_layer_ready_needs_field_holdout",
+    "uncertainty_validation_score": 0.9,
+    "field_holdout_required": true
+  }
+}

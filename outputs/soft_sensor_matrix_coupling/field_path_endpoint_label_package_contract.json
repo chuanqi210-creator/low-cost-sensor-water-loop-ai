@@ -1,0 +1,161 @@
+{
+  "contract_id": "R8u66_field_path_endpoint_label_package_contract",
+  "package_status": "field_path_endpoint_label_package_contract_ready_needs_real_rows",
+  "minimum_matched_batch_count": 5,
+  "required_tables": [
+    "site_topology_or_bed_geometry",
+    "node_modality_sensor_timeseries",
+    "hydraulic_path_stage_labels",
+    "final_effluent_endpoint_labels",
+    "campaign_operation_log",
+    "offline_lab_results"
+  ],
+  "table_contracts": {
+    "site_topology_or_bed_geometry": {
+      "required_fields": [
+        "site_id",
+        "node_id",
+        "zone",
+        "upstream_node_id",
+        "downstream_node_id",
+        "path_stage_id",
+        "hydraulic_path_role",
+        "nominal_flow_Lmin",
+        "nominal_HRT_min",
+        "recycle_ratio",
+        "release_boundary_flag",
+        "recirculation_loop_flag"
+      ],
+      "primary_key": [
+        "site_id",
+        "node_id"
+      ],
+      "purpose": "map installed nodes to hydraulic path stages before field layout holdout"
+    },
+    "node_modality_sensor_timeseries": {
+      "required_fields": [
+        "batch_id",
+        "timestamp_min",
+        "layout_id",
+        "node_id",
+        "zone",
+        "modality",
+        "sensor_value",
+        "availability_mask",
+        "time_since_last_observed_min",
+        "data_origin"
+      ],
+      "primary_key": [
+        "batch_id",
+        "timestamp_min",
+        "node_id",
+        "modality"
+      ],
+      "purpose": "replace global modality fallback with node-specific field observations"
+    },
+    "hydraulic_path_stage_labels": {
+      "required_fields": [
+        "batch_id",
+        "layout_id",
+        "node_id",
+        "zone",
+        "path_stage_id",
+        "hydraulic_path_role",
+        "stage_coverage_label",
+        "direct_path_stage_coverage_label",
+        "proxy_path_stage_coverage_label",
+        "label_source",
+        "reviewer_id",
+        "review_time_min"
+      ],
+      "primary_key": [
+        "batch_id",
+        "layout_id",
+        "node_id",
+        "path_stage_id"
+      ],
+      "purpose": "validate whether synthetic path-stage coverage features match field-reviewed path labels"
+    },
+    "final_effluent_endpoint_labels": {
+      "required_fields": [
+        "batch_id",
+        "endpoint_node_id",
+        "sample_time_min",
+        "final_effluent_direct_observed",
+        "release_gate_label",
+        "release_risk_label",
+        "analyte",
+        "value",
+        "unit",
+        "qa_flag",
+        "reviewer_id"
+      ],
+      "primary_key": [
+        "batch_id",
+        "endpoint_node_id",
+        "sample_time_min",
+        "analyte"
+      ],
+      "purpose": "prevent polishing proxy observations from being treated as final effluent release support"
+    },
+    "campaign_operation_log": {
+      "required_fields": [
+        "campaign_id",
+        "batch_id",
+        "action_id",
+        "start_min",
+        "end_min",
+        "recycle_ratio",
+        "hold_time_min",
+        "release_policy",
+        "operator_override"
+      ],
+      "primary_key": [
+        "campaign_id",
+        "batch_id",
+        "action_id",
+        "start_min"
+      ],
+      "purpose": "connect field labels to recycle, hold, dose, switch and release candidate actions"
+    },
+    "offline_lab_results": {
+      "required_fields": [
+        "batch_id",
+        "sample_time_min",
+        "sample_source",
+        "analyte",
+        "value",
+        "unit",
+        "method",
+        "qa_flag"
+      ],
+      "primary_key": [
+        "batch_id",
+        "sample_time_min",
+        "sample_source",
+        "analyte"
+      ],
+      "purpose": "provide field labels for residual, byproduct/release risk and soft-sensor holdout targets"
+    }
+  },
+  "template_marker_policy": {
+    "reject_template_only": true,
+    "reject_todo_values": true,
+    "reject_sample_only": true
+  },
+  "acceptance_gates": [
+    "all_required_tables_present",
+    "no_template_or_todo_rows",
+    "required_fields_nonempty",
+    "minimum_matched_batch_count_met",
+    "node_specific_values_present",
+    "final_effluent_endpoint_labels_present",
+    "operator_or_reviewer_fields_present"
+  ],
+  "can_route_to_field_layout_holdout_when": "all required tables contain non-template field rows and at least 5 batch_id values are matched across node sensor values, path stage labels, final endpoint labels, operation logs and lab labels",
+  "cannot_do": [
+    "cannot upgrade synthetic layout holdout to field performance without accepted package rows",
+    "cannot use final effluent release gate labels without direct endpoint lab/reviewer evidence",
+    "cannot write actuator or release gate from this package contract alone"
+  ]
+}

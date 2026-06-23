@@ -1,0 +1,4 @@
+batch_id,sample_time_min,analyte,value,unit,detection_limit,method,qa_flag,data_origin
+TODO_batch_id_1,TODO_sample_time_min,TODO_byproduct_analyte,TODO_value,TODO_unit,TODO_detection_limit,TODO_method,TODO_pass,TODO_field
+TODO_batch_id_2,TODO_sample_time_min,TODO_byproduct_analyte,TODO_value,TODO_unit,TODO_detection_limit,TODO_method,TODO_pass,TODO_field
+TODO_batch_id_3,TODO_sample_time_min,TODO_byproduct_analyte,TODO_value,TODO_unit,TODO_detection_limit,TODO_method,TODO_pass,TODO_field

@@ -1,0 +1,64 @@
+{
+  "package_id": "R8u150_field_supported_kg_edge_package_preflight",
+  "package_type": "field_supported_kg_edge_package_preflight",
+  "source_env_var": "FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR",
+  "source_path": "",
+  "external_package_supplied": false,
+  "package_status": "field_supported_kg_edge_package_waiting_for_FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR",
+  "package_preflight_pass": false,
+  "required_table_count": 5,
+  "required_tables": [
+    "pollutant_material_condition_edges",
+    "source_basis_rows",
+    "field_supported_edge_rows",
+    "failure_boundary_annotations",
+    "claim_action_constraint_links"
+  ],
+  "minimum_matched_edge_count": 3,
+  "matched_edge_count": 0,
+  "matched_edge_ids": [],
+  "field_supported_edge_coverage_candidate": 0.0,
+  "table_audits": {},
+  "edge_audit": {
+    "signal_family": "kg_edge",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_edge_ids": []
+  },
+  "source_basis_audit": {
+    "signal_family": "source_basis",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_edge_ids": []
+  },
+  "field_support_audit": {
+    "signal_family": "field_support",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_edge_ids": []
+  },
+  "failure_boundary_audit": {
+    "signal_family": "failure_boundary",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_edge_ids": []
+  },
+  "claim_action_audit": {
+    "signal_family": "claim_action_constraint",
+    "row_count": 0,
+    "valid_row_count": 0,
+    "valid_edge_ids": []
+  },
+  "blocking_reasons": [
+    "missing_external_package_dir"
+  ],
+  "can_route_to_kg_reasoning_field_edge_update": false,
+  "can_upgrade_site_specific_claims": false,
+  "can_generate_field_evidence": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "next_operator_action": "fill_field_supported_kg_edge_package_template_and_set_FIELD_SUPPORTED_KG_EDGE_PACKAGE_DIR",
+  "field_boundary": "This preflight only checks whether an external KG edge package is structurally ready for downstream KG reasoning. Passing this gate does not prove a site-specific mechanism claim, authorize control actions, or upgrade release decisions.",
+  "no_write_boundary": "This package is only a field-supported KG edge preflight input. It cannot write actuator policy, release-gate policy, field-supported mechanism claims, claim text or deployment clearance."
+}

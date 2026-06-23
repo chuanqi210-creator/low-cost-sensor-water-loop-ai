@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.DS_Store
+*.pkl
+*.egg-info/
+.worktrees
+.worktrees/
+worktrees
+worktrees/

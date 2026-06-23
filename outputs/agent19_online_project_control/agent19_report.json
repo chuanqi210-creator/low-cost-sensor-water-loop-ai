@@ -1,0 +1,666 @@
+{
+  "campaign": {
+    "records": [
+      {
+        "batch_id": 0,
+        "scenario": "matrix_shock",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 126,
+        "cumulative_cost": 0.68,
+        "cumulative_energy": 0.524,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "switch_or_pretreat",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "safety_first"
+        ],
+        "validation_minutes": 53,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 5,
+        "catalyst_regen_count_end": 0,
+        "catalyst_lifetime_fraction_end": 0.799,
+        "catalyst_activity_end": 0.707,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 1,
+        "scenario": "catalyst_deactivation",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 88,
+        "cumulative_cost": 0.433,
+        "cumulative_energy": 0.374,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "regenerate_catalyst",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "safety_first"
+        ],
+        "validation_minutes": 0,
+        "regeneration_count": 1,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 7,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.706,
+        "catalyst_activity_end": 0.779,
+        "terminal_label": "reaction_time_insufficient"
+      },
+      {
+        "batch_id": 2,
+        "scenario": "matrix_shock",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 146,
+        "cumulative_cost": 0.76,
+        "cumulative_energy": 0.524,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "switch_or_pretreat",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 73,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 8,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.685,
+        "catalyst_activity_end": 0.766,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 3,
+        "scenario": "catalyst_deactivation",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 365,
+        "cumulative_cost": 2.169,
+        "cumulative_energy": 0.725,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "replace_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 146,
+        "regeneration_count": 1,
+        "replacement_count": 1,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 1,
+        "catalyst_regen_count_end": 0,
+        "catalyst_lifetime_fraction_end": 0.981,
+        "catalyst_activity_end": 0.909,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 4,
+        "scenario": "oxidant_limitation",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 42,
+        "cumulative_cost": 0.563,
+        "cumulative_energy": 0.324,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "dose_oxidant",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "replace_catalyst",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "emergency_response",
+          "safety_first"
+        ],
+        "validation_minutes": 0,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 1,
+        "catalyst_age_cycles_end": 2,
+        "catalyst_regen_count_end": 0,
+        "catalyst_lifetime_fraction_end": 0.961,
+        "catalyst_activity_end": 0.896,
+        "terminal_label": "reaction_time_insufficient"
+      },
+      {
+        "batch_id": 5,
+        "scenario": "oxidant_limitation",
+        "success": true,
+        "steps": 3,
+        "elapsed_min": 172,
+        "cumulative_cost": 1.142,
+        "cumulative_energy": 0.683,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "dose_oxidant",
+          "recirculate",
+          "regenerate_catalyst",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "replace_catalyst",
+          "dose_oxidant"
+        ],
+        "strategy_profiles": [
+          "emergency_response",
+          "safety_first",
+          "balanced"
+        ],
+        "validation_minutes": 46,
+        "regeneration_count": 1,
+        "replacement_count": 0,
+        "oxidant_dose_count": 1,
+        "catalyst_age_cycles_end": 5,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.847,
+        "catalyst_activity_end": 0.859,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 6,
+        "scenario": "sensor_faults",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 99,
+        "cumulative_cost": 0.6,
+        "cumulative_energy": 0.264,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "inspect_hydraulics",
+          "calibrate_sensors",
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "safety_first",
+          "cost_first"
+        ],
+        "validation_minutes": 73,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 6,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.827,
+        "catalyst_activity_end": 0.848,
+        "terminal_label": "clean_release"
+      },
+      {
+        "batch_id": 7,
+        "scenario": "reaction_time_insufficient",
+        "success": true,
+        "steps": 2,
+        "elapsed_min": 102,
+        "cumulative_cost": 0.397,
+        "cumulative_energy": 0.315,
+        "final_actions": [
+          "release"
+        ],
+        "all_actions": [
+          "hold_for_validation",
+          "recirculate",
+          "release"
+        ],
+        "blocked_actions": [
+          "release",
+          "dose_oxidant",
+          "replace_catalyst"
+        ],
+        "strategy_profiles": [
+          "balanced",
+          "balanced"
+        ],
+        "validation_minutes": 73,
+        "regeneration_count": 0,
+        "replacement_count": 0,
+        "oxidant_dose_count": 0,
+        "catalyst_age_cycles_end": 7,
+        "catalyst_regen_count_end": 1,
+        "catalyst_lifetime_fraction_end": 0.807,
+        "catalyst_activity_end": 0.836,
+        "terminal_label": "reaction_time_insufficient"
+      }
+    ],
+    "catalyst_spares_remaining": 0,
+    "oxidant_stock_units_remaining": 1.5,
+    "total_elapsed_min": 1140,
+    "total_cost": 6.744,
+    "total_energy": 3.733
+  },
+  "adaptive_portfolio": {
+    "agent_name": "adaptive_portfolio_agent",
+    "confidence": 0.9,
+    "summary": "自适应项目组合：推荐 resilience_bridge_portfolio，评分 0.724，风险降低 0.32。",
+    "recommendations": [
+      "采用 resilience_bridge_portfolio 作为压力情景备用项目包，覆盖 ['acceptance_failure', 'budget_slow_release', 'catalyst_delay', 'high_intake_pressure', 'validation_ramp_delay']。",
+      "过渡期保护性进水比例设为 0.45，未通过两个连续 campaign 验收前不恢复满负荷。",
+      "预算释放顺序：外包低价值验证 -> 催化剂备用供应商 -> 验证能力批复 -> 催化剂库存批复 -> 氧化剂库存批复",
+      "复合压力情景下同时启动备用供应、预算拆分和外包验证。",
+      "scenario_risk >= 0.35 时自动进入保护性进水。",
+      "阶段验收失败时回退并重跑队列规划和资源扩容评分。"
+    ],
+    "metrics": {
+      "selected_portfolio": {
+        "package_id": "resilience_bridge_portfolio",
+        "description": "组合备用供应、外包验证、预算分拆和保护性进水，覆盖复合压力情景。",
+        "portfolio_score": 0.724,
+        "coverage_score": 1.0,
+        "expected_risk_reduction": 0.32,
+        "residual_risk": 0.036,
+        "incremental_budget_index": 1.05,
+        "budget_pressure": 0.875,
+        "implementation_complexity": 0.34,
+        "covered_signals": [
+          "acceptance_failure",
+          "budget_slow_release",
+          "catalyst_delay",
+          "high_intake_pressure",
+          "validation_ramp_delay"
+        ],
+        "missing_signals": [],
+        "budget_items": [
+          "外包低价值验证",
+          "催化剂备用供应商",
+          "验证能力批复",
+          "催化剂库存批复",
+          "氧化剂库存批复"
+        ],
+        "load_controls": [
+          "保护性进水上限 0.45",
+          "拒绝新增高风险进水",
+          "连续催化剂压力批次禁止排队"
+        ],
+        "fallback_actions": [
+          "复合压力情景下同时启动备用供应、预算拆分和外包验证。",
+          "scenario_risk >= 0.35 时自动进入保护性进水。",
+          "阶段验收失败时回退并重跑队列规划和资源扩容评分。"
+        ]
+      },
+      "ranked_portfolios": [
+        {
+          "package_id": "resilience_bridge_portfolio",
+          "description": "组合备用供应、外包验证、预算分拆和保护性进水，覆盖复合压力情景。",
+          "portfolio_score": 0.724,
+          "coverage_score": 1.0,
+          "expected_risk_reduction": 0.32,
+          "residual_risk": 0.036,
+          "incremental_budget_index": 1.05,
+          "budget_pressure": 0.875,
+          "implementation_complexity": 0.34,
+          "covered_signals": [
+            "acceptance_failure",
+            "budget_slow_release",
+            "catalyst_delay",
+            "high_intake_pressure",
+            "validation_ramp_delay"
+          ],
+          "missing_signals": [],
+          "budget_items": [
+            "外包低价值验证",
+            "催化剂备用供应商",
+            "验证能力批复",
+            "催化剂库存批复",
+            "氧化剂库存批复"
+          ],
+          "load_controls": [
+            "保护性进水上限 0.45",
+            "拒绝新增高风险进水",
+            "连续催化剂压力批次禁止排队"
+          ],
+          "fallback_actions": [
+            "复合压力情景下同时启动备用供应、预算拆分和外包验证。",
+            "scenario_risk >= 0.35 时自动进入保护性进水。",
+            "阶段验收失败时回退并重跑队列规划和资源扩容评分。"
+          ]
+        },
+        {
+          "package_id": "phased_budget_package",
+          "description": "预算慢批时把建设拆成高瓶颈贡献的三张批复单。",
+          "portfolio_score": 0.574,
+          "coverage_score": 0.4,
+          "expected_risk_reduction": 0.203,
+          "residual_risk": 0.153,
+          "incremental_budget_index": 0.24,
+          "budget_pressure": 0.2,
+          "implementation_complexity": 0.14,
+          "covered_signals": [
+            "acceptance_failure",
+            "budget_slow_release"
+          ],
+          "missing_signals": [
+            "catalyst_delay",
+            "high_intake_pressure",
+            "validation_ramp_delay"
+          ],
+          "budget_items": [
+            "验证能力批复",
+            "催化剂库存批复",
+            "氧化剂库存批复"
+          ],
+          "load_controls": [
+            "预算未批复项对应的高风险批次限流"
+          ],
+          "fallback_actions": [
+            "阶段验收失败时回退到上一阶段进水比例并重排队列。"
+          ]
+        },
+        {
+          "package_id": "validation_bridge_package",
+          "description": "用外包低价值验证和内部关键验证优先级缓解验证爬坡失败。",
+          "portfolio_score": 0.57,
+          "coverage_score": 0.4,
+          "expected_risk_reduction": 0.203,
+          "residual_risk": 0.153,
+          "incremental_budget_index": 0.38,
+          "budget_pressure": 0.317,
+          "implementation_complexity": 0.18,
+          "covered_signals": [
+            "high_intake_pressure",
+            "validation_ramp_delay"
+          ],
+          "missing_signals": [
+            "acceptance_failure",
+            "budget_slow_release",
+            "catalyst_delay"
+          ],
+          "budget_items": [
+            "外包低价值背景验证",
+            "内部关键验证班次加班池"
+          ],
+          "load_controls": [
+            "高验证压力批次错峰",
+            "保护性进水上限 0.45"
+          ],
+          "fallback_actions": [
+            "内部班次只保留放行门、副产物和催化剂寿命证据。"
+          ]
+        },
+        {
+          "package_id": "baseline_execution",
+          "description": "按原分阶段计划执行，不增加备用资源。",
+          "portfolio_score": 0.422,
+          "coverage_score": 0.0,
+          "expected_risk_reduction": 0.125,
+          "residual_risk": 0.231,
+          "incremental_budget_index": 0.05,
+          "budget_pressure": 0.042,
+          "implementation_complexity": 0.04,
+          "covered_signals": [],
+          "missing_signals": [
+            "acceptance_failure",
+            "budget_slow_release",
+            "catalyst_delay",
+            "high_intake_pressure",
+            "validation_ramp_delay"
+          ],
+          "budget_items": [
+            "campaign滚动复核"
+          ],
+          "load_controls": [
+            "维持基准保护性进水比例"
+          ],
+          "fallback_actions": [
+            "只在触发阈值越界时重跑实施压力测试。"
+          ]
+        },
+        {
+          "package_id": "supplier_resilience_package",
+          "description": "针对催化剂与氧化剂供应延迟建立双供应和应急调拨。",
+          "portfolio_score": 0.407,
+          "coverage_score": 0.2,
+          "expected_risk_reduction": 0.164,
+          "residual_risk": 0.192,
+          "incremental_budget_index": 0.72,
+          "budget_pressure": 0.6,
+          "implementation_complexity": 0.26,
+          "covered_signals": [
+            "catalyst_delay"
+          ],
+          "missing_signals": [
+            "acceptance_failure",
+            "budget_slow_release",
+            "high_intake_pressure",
+            "validation_ramp_delay"
+          ],
+          "budget_items": [
+            "催化剂备用供应商",
+            "催化剂应急调拨协议",
+            "氧化剂安全库存"
+          ],
+          "load_controls": [
+            "连续催化剂压力批次禁止排队"
+          ],
+          "fallback_actions": [
+            "催化剂晚到时启动外部调拨或备用供应商询价。"
+          ]
+        }
+      ],
+      "budget_sequence": [
+        {
+          "order": 1,
+          "budget_item": "外包低价值验证",
+          "release_rule": "先批复后进入下一项，失败则回退到保护性进水上限。"
+        },
+        {
+          "order": 2,
+          "budget_item": "催化剂备用供应商",
+          "release_rule": "先批复后进入下一项，失败则回退到保护性进水上限。"
+        },
+        {
+          "order": 3,
+          "budget_item": "验证能力批复",
+          "release_rule": "先批复后进入下一项，失败则回退到保护性进水上限。"
+        },
+        {
+          "order": 4,
+          "budget_item": "催化剂库存批复",
+          "release_rule": "先批复后进入下一项，失败则回退到保护性进水上限。"
+        },
+        {
+          "order": 5,
+          "budget_item": "氧化剂库存批复",
+          "release_rule": "先批复后进入下一项，失败则回退到保护性进水上限。"
+        }
+      ],
+      "load_control_policy": {
+        "protected_intake_fraction": 0.45,
+        "normalization_rule": "仅当两个连续 campaign 通过阶段验收，才从保护性进水比例逐步恢复。",
+        "load_controls": [
+          "保护性进水上限 0.45",
+          "拒绝新增高风险进水",
+          "连续催化剂压力批次禁止排队"
+        ]
+      },
+      "dominant_stress_signals": [
+        "acceptance_failure",
+        "budget_slow_release",
+        "catalyst_delay",
+        "high_intake_pressure",
+        "validation_ramp_delay"
+      ]
+    },
+    "issues": []
+  },
+  "online_project_control": {
+    "agent_name": "online_project_control_agent",
+    "confidence": 0.718,
+    "summary": "在线项目控制：当前模式 controlled_ramp_up，下一轮进水比例 0.68，下一预算项 本轮无需新增预算项，保持滚动复核。",
+    "recommendations": [
+      "下一 campaign 进水比例控制为 0.68，项目模式为 controlled_ramp_up。",
+      "下一预算项优先处理：本轮无需新增预算项，保持滚动复核。",
+      "已形成连续稳定验收，可按 0.15 梯度恢复进水，但继续保留最终放行门。"
+    ],
+    "metrics": {
+      "rolling_decisions": [
+        {
+          "campaign_id": 0,
+          "project_mode": "replan_and_protect",
+          "rolling_risk": 0.368,
+          "dominant_signals": [
+            "validation_overload",
+            "time_budget_pressure",
+            "catalyst_inventory",
+            "high_intake_pressure",
+            "budget_slow_release"
+          ],
+          "stable_streak": 0,
+          "next_intake_fraction": 0.45,
+          "next_budget_item": "验证能力批复",
+          "released_budget_items": [
+            "外包低价值验证"
+          ],
+          "replan_required": true,
+          "replan_reasons": [
+            "压力升高且未形成稳定验收 streak"
+          ],
+          "control_confidence": 0.439
+        },
+        {
+          "campaign_id": 1,
+          "project_mode": "steady_monitoring",
+          "rolling_risk": 0.0,
+          "dominant_signals": [
+            "stable"
+          ],
+          "stable_streak": 1,
+          "next_intake_fraction": 0.53,
+          "next_budget_item": "催化剂库存批复",
+          "released_budget_items": [
+            "催化剂备用供应商",
+            "外包低价值验证",
+            "验证能力批复"
+          ],
+          "replan_required": false,
+          "replan_reasons": [],
+          "control_confidence": 0.58
+        },
+        {
+          "campaign_id": 2,
+          "project_mode": "controlled_ramp_up",
+          "rolling_risk": 0.0,
+          "dominant_signals": [
+            "stable"
+          ],
+          "stable_streak": 2,
+          "next_intake_fraction": 0.68,
+          "next_budget_item": "本轮无需新增预算项，保持滚动复核",
+          "released_budget_items": [
+            "催化剂备用供应商",
+            "催化剂库存批复",
+            "外包低价值验证",
+            "氧化剂库存批复",
+            "验证能力批复"
+          ],
+          "replan_required": false,
+          "replan_reasons": [],
+          "control_confidence": 0.74
+        }
+      ],
+      "current_control_state": {
+        "campaign_id": 2,
+        "project_mode": "controlled_ramp_up",
+        "rolling_risk": 0.0,
+        "dominant_signals": [
+          "stable"
+        ],
+        "stable_streak": 2,
+        "next_intake_fraction": 0.68,
+        "next_budget_item": "本轮无需新增预算项，保持滚动复核",
+        "released_budget_items": [
+          "催化剂备用供应商",
+          "催化剂库存批复",
+          "外包低价值验证",
+          "氧化剂库存批复",
+          "验证能力批复"
+        ],
+        "replan_required": false,
+        "replan_reasons": [],
+        "control_confidence": 0.74
+      },
+      "selected_portfolio_id": "resilience_bridge_portfolio",
+      "base_load_control_policy": {
+        "protected_intake_fraction": 0.45,
+        "normalization_rule": "仅当两个连续 campaign 通过阶段验收，才从保护性进水比例逐步恢复。",
+        "load_controls": [
+          "保护性进水上限 0.45",
+          "拒绝新增高风险进水",
+          "连续催化剂压力批次禁止排队"
+        ]
+      }
+    },
+    "issues": []
+  }
+}

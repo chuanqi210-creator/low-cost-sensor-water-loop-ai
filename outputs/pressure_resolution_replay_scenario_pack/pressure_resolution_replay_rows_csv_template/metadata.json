@@ -1,0 +1,12 @@
+{
+  "data_origin": "TODO_FIELD_PROVENANCE_NOT_EVIDENCE_UNTIL_REPLACED",
+  "site_id": "TODO_REAL_SITE_ID",
+  "campaign_id": "TODO_REAL_CAMPAIGN_ID",
+  "sampling_start": "TODO_ISO8601_START_TIME",
+  "sampling_end": "TODO_ISO8601_END_TIME",
+  "operator_id": "TODO_REAL_OPERATOR_ID",
+  "instrument_snapshot_id": "TODO_SENSOR_AND_LAB_INSTRUMENT_SNAPSHOT_ID",
+  "chain_of_custody_id": "TODO_SIGNED_CHAIN_OF_CUSTODY_ID",
+  "package_role": "R8p_pressure_resolution_rows_csv_template",
+  "evidence_boundary": "This directory is a collection template, not field evidence. Replace every TODO/template marker and rerun Agent61 before any R8v/R7 routing."
+}

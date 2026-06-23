@@ -1,0 +1,133 @@
+{
+  "route_work_package_assembly_gate_id": "R8u28_r7_to_r8p_route_work_package_assembly_gate",
+  "route_work_package_assembly_gate_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_assembly_gate.json",
+  "route_work_package_assembly_gate_status": "route_work_package_assembly_gate_blocked_waiting_for_submission_dir",
+  "source_preflight_status": "route_work_package_preflight_waiting_for_submission_dir",
+  "source_patch_plan_status": "route_work_package_patch_plan_waiting_for_submission_dir",
+  "configured_submission_dir": "",
+  "assembly_step_count": 6,
+  "ready_assembly_step_count": 0,
+  "blocked_assembly_step_count": 6,
+  "highest_priority_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR",
+  "next_assembly_action": "Submit a complete R7_TO_R8P_WORK_PACKAGE_DIR and rerun Agent61 work-package preflight.",
+  "assembly_steps": [
+    {
+      "assembly_step_id": "R8U28_VALIDATE_WORK_PACKAGE_SUBMISSION",
+      "sequence": 1,
+      "required_work_package_ids": [
+        "R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE",
+        "R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE",
+        "R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE",
+        "R8U25_R8P_VALIDATION_GATES_WORK_PACKAGE"
+      ],
+      "required_input_artifacts": [
+        "R7_TO_R8P_WORK_PACKAGE_DIR"
+      ],
+      "output_artifact": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_preflight.json",
+      "operator_action": "Submit a complete R7_TO_R8P_WORK_PACKAGE_DIR and rerun Agent61 work-package preflight.",
+      "acceptance_check": "route_work_package_preflight_status must be route_work_package_preflight_passed_candidate_submission.",
+      "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
+      "blocking_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR"
+    },
+    {
+      "assembly_step_id": "R8U28_STAGE_R7_SOURCE_PACKAGE_ROWS",
+      "sequence": 2,
+      "required_work_package_ids": [
+        "R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE"
+      ],
+      "required_input_artifacts": [
+        "metadata.json",
+        "five shared R7 CSV files"
+      ],
+      "output_artifact": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json",
+      "operator_action": "Convert field-origin R7 shared tables into R8p staged draft rows and preserve provenance columns.",
+      "acceptance_check": "R7 staged draft exists with direct/alias/metadata-copy provenance and no template markers.",
+      "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
+      "blocking_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR"
+    },
+    {
+      "assembly_step_id": "R8U28_MERGE_OPERATOR_SUPPLEMENT_ROWS",
+      "sequence": 3,
+      "required_work_package_ids": [
+        "R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE"
+      ],
+      "required_input_artifacts": [
+        "operator_supplement_records.csv",
+        "calibration_review_log.csv"
+      ],
+      "output_artifact": "pressure_resolution_operator_supplement_rows.json",
+      "operator_action": "Merge reviewer, calibration, pressure-source resolution, and manual hold/release context into staged rows.",
+      "acceptance_check": "All operator supplement fields have reviewer/calibration provenance and join to scenario batch_id.",
+      "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
+      "blocking_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR"
+    },
+    {
+      "assembly_step_id": "R8U28_MERGE_AGENT52_REPLAY_EXPORT",
+      "sequence": 4,
+      "required_work_package_ids": [
+        "R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE"
+      ],
+      "required_input_artifacts": [
+        "agent52_replay_export_manifest.json",
+        "agent52_replay_table.csv"
+      ],
+      "output_artifact": "agent52_replay_table.rows.json",
+      "operator_action": "Merge replay episode, policy/expert action, conflict counter, and clearance evidence into R8p rows.",
+      "acceptance_check": "Agent52 replay rows link to the same batch/scenario windows and remain replay-origin evidence.",
+      "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
+      "blocking_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR"
+    },
+    {
+      "assembly_step_id": "R8U28_MATERIALIZE_R8P_ROWS_PACKAGE",
+      "sequence": 5,
+      "required_work_package_ids": [
+        "R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE",
+        "R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE",
+        "R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE"
+      ],
+      "required_input_artifacts": [
+        "staged draft rows",
+        "operator supplement rows",
+        "agent52 replay rows"
+      ],
+      "output_artifact": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+      "operator_action": "Materialize a candidate R8p rows JSON/table directory package and point PRESSURE_RESOLUTION_REPLAY_ROWS_PATH to it.",
+      "acceptance_check": "Candidate package contains six required tables plus agent52_replay_table with source/origin columns intact.",
+      "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
+      "blocking_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR"
+    },
+    {
+      "assembly_step_id": "R8U28_RERUN_R8P_AND_R8V_VALIDATION_GATES",
+      "sequence": 6,
+      "required_work_package_ids": [
+        "R8U25_R8P_VALIDATION_GATES_WORK_PACKAGE"
+      ],
+      "required_input_artifacts": [
+        "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
+        "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
+        "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
+        "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
+        "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json"
+      ],
+      "output_artifact": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_scenario_pack_metrics.json",
+      "operator_action": "Rerun Agent61 with the candidate rows package and review R8p/R8v gates before routing to field replay.",
+      "acceptance_check": "R8p schema/provenance/template/bundle/temporal/semantic gates and R8v routing preflight must pass.",
+      "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
+      "blocking_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR"
+    }
+  ],
+  "candidate_rows_package_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+  "candidate_rows_package_format": "json_table_mapping_or_metadata_plus_six_csv_directory",
+  "required_env_after_materialization": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH",
+  "technical_feature_mapping": {
+    "technical_problem": "Route-specific work packages can pass file preflight but still need a deterministic, auditable order for turning R7 field rows, operator review, and Agent52 replay export into a single R8p rows package.",
+    "technical_means": "The assembly gate defines the ordered route-to-rows merge sequence, required input packages, output artifacts, rerun commands, and non-bypassable evidence gates before any field replay/control claim.",
+    "technical_effect": "The system can accept low-cost delayed field submissions without manually guessing merge order, while keeping field, operator-reviewed, replay, and validation evidence boundaries explicit.",
+    "prior_art_distinction_candidate": "Unlike a generic ETL step, this gate ties sparse-sensing field packages, delayed operator review, offline replay export, and grey-box control validation into a staged evidence assembly mechanism."
+  },
+  "can_materialize_candidate_rows_package": false,
+  "can_generate_field_evidence_from_assembly_gate": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "assembly_gate_boundary": "This assembly gate only defines when candidate R8p rows can be materialized from submitted work packages. It does not prove field validity, does not replace R8p/R8v gates, and cannot authorize actuator or release decisions."
+}

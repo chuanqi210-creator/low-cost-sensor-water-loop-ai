@@ -1,0 +1,10 @@
+{
+  "work_package_id": "R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE",
+  "route_id": "operator_supplement",
+  "producer": "field operator review and calibration workflow",
+  "submission_contract": "Provide reviewed operator and calibration records for R8p-only pressure-source resolution fields, including reviewer identity, review time, pressure source resolution, and calibration basis.",
+  "evidence_level_after_package": "operator_reviewed_candidate_until_scenario_semantic_gate_clear",
+  "data_origin": "TODO_REPLACE_WITH_FIELD_OPERATOR_OR_REPLAY_ORIGIN",
+  "submission_status": "template_only_not_evidence",
+  "evidence_boundary": "Fill this package with real source/operator/replay values and rerun Agent61 preflight. This template is not field evidence."
+}

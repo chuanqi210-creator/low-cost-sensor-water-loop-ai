@@ -1,0 +1,193 @@
+{
+  "work_order_id": "R8u86_field_package_submission_repair_work_order",
+  "work_order_status": "field_package_submission_repair_work_order_blocked_at_import_preflight",
+  "submission_readiness_status": "field_package_submission_blocked_at_import_preflight",
+  "highest_priority_blocker": "R7A_IMPORT_PREFLIGHT",
+  "next_operator_action": "repair_metadata_headers_and_real_rows_before_agent42",
+  "blocking_stage_count": 5,
+  "repair_item_count": 13,
+  "repair_items": [
+    {
+      "work_item_id": "R7A_METADATA_PLACEHOLDERS",
+      "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+      "source_plan_name": "coverage_patch_plan",
+      "source_patch_stage": "preflight",
+      "priority": "P1",
+      "target": "metadata.json",
+      "action": "replace_placeholder_metadata_with_real_provenance",
+      "acceptance": "真实 site/campaign/time/operator/instrument/custody provenance。",
+      "why_required": "placeholder metadata cannot establish field origin or chain of custody.",
+      "fields_to_fill": [
+        "site_id",
+        "campaign_id",
+        "sampling_start",
+        "sampling_end",
+        "operator_id",
+        "instrument_snapshot_id",
+        "chain_of_custody_id"
+      ]
+    },
+    {
+      "work_item_id": "R7A_REAL_ROWS_campaign_operation_log",
+      "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+      "source_plan_name": "coverage_patch_plan",
+      "source_patch_stage": "preflight",
+      "priority": "P1",
+      "target": "campaign_operation_log",
+      "action": "add_real_timestamped_rows",
+      "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "minimum_rows": 1
+    },
+    {
+      "work_item_id": "R7A_REAL_ROWS_fast_proxy_event_log",
+      "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+      "source_plan_name": "coverage_patch_plan",
+      "source_patch_stage": "preflight",
+      "priority": "P1",
+      "target": "fast_proxy_event_log",
+      "action": "add_real_timestamped_rows",
+      "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "minimum_rows": 1
+    },
+    {
+      "work_item_id": "R7A_REAL_ROWS_offline_lab_results",
+      "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+      "source_plan_name": "coverage_patch_plan",
+      "source_patch_stage": "preflight",
+      "priority": "P1",
+      "target": "offline_lab_results",
+      "action": "add_real_timestamped_rows",
+      "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "minimum_rows": 1
+    },
+    {
+      "work_item_id": "R7A_REAL_ROWS_pressure_headloss_event_log",
+      "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+      "source_plan_name": "coverage_patch_plan",
+      "source_patch_stage": "preflight",
+      "priority": "P1",
+      "target": "pressure_headloss_event_log",
+      "action": "add_real_timestamped_rows",
+      "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "minimum_rows": 1
+    },
+    {
+      "work_item_id": "R7A_REAL_ROWS_sensor_timeseries",
+      "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+      "source_plan_name": "coverage_patch_plan",
+      "source_patch_stage": "preflight",
+      "priority": "P1",
+      "target": "sensor_timeseries",
+      "action": "add_real_timestamped_rows",
+      "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+      "minimum_rows": 1
+    },
+    {
+      "work_item_id": "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED",
+      "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+      "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+      "source_patch_stage": "-",
+      "priority": "P2",
+      "target": "site_topology_or_bed_geometry",
+      "action": "add_real_field_rows",
+      "acceptance": "site_topology_or_bed_geometry has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+      "why_required": "Required before this package can advance through R7.",
+      "minimum_rows_hint": 1
+    },
+    {
+      "work_item_id": "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED",
+      "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+      "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+      "source_patch_stage": "-",
+      "priority": "P1",
+      "target": "node_modality_sensor_timeseries",
+      "action": "add_real_field_rows",
+      "acceptance": "node_modality_sensor_timeseries has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+      "why_required": "Required before this package can advance through R7.",
+      "minimum_rows_hint": 5
+    },
+    {
+      "work_item_id": "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED",
+      "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+      "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+      "source_patch_stage": "-",
+      "priority": "P1",
+      "target": "hydraulic_path_stage_labels",
+      "action": "add_real_field_rows",
+      "acceptance": "hydraulic_path_stage_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+      "why_required": "Required before this package can advance through R7.",
+      "minimum_rows_hint": 5
+    },
+    {
+      "work_item_id": "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED",
+      "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+      "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+      "source_patch_stage": "-",
+      "priority": "P1",
+      "target": "final_effluent_endpoint_labels",
+      "action": "add_real_field_rows",
+      "acceptance": "final_effluent_endpoint_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+      "why_required": "Required before this package can advance through R7.",
+      "minimum_rows_hint": 5
+    },
+    {
+      "work_item_id": "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED",
+      "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+      "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+      "source_patch_stage": "-",
+      "priority": "P1",
+      "target": "campaign_operation_log",
+      "action": "add_real_field_rows",
+      "acceptance": "campaign_operation_log has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+      "why_required": "Required before this package can advance through R7.",
+      "minimum_rows_hint": 5
+    },
+    {
+      "work_item_id": "R8U76_OFFLINE_LAB_RESULTS_ROWS_REQUIRED",
+      "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+      "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+      "source_patch_stage": "-",
+      "priority": "P1",
+      "target": "offline_lab_results",
+      "action": "add_real_field_rows",
+      "acceptance": "offline_lab_results has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+      "why_required": "Required before this package can advance through R7.",
+      "minimum_rows_hint": 5
+    },
+    {
+      "work_item_id": "R8U76_MINIMUM_MATCHED_BATCH_DEFICIT",
+      "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+      "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+      "source_patch_stage": "-",
+      "priority": "P1",
+      "target": "cross_table_batch_alignment",
+      "action": "collect_same_batch_bundle_across_path_endpoint_tables",
+      "acceptance": "matched_batch_count >= 5 across node_modality_sensor_timeseries, hydraulic_path_stage_labels, final_effluent_endpoint_labels, campaign_operation_log, offline_lab_results.",
+      "why_required": "Required before this package can advance through R7.",
+      "required_matched_batch_deficit": 5
+    }
+  ],
+  "submission_requirements": {
+    "required_package_env_var": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+    "metadata_data_origin_must_equal": "field",
+    "reject_header_only_template": true,
+    "reject_synthetic_or_sample_rows_as_field_evidence": true,
+    "minimum_same_batch_replay_batch_count": 3,
+    "minimum_path_endpoint_matched_batch_count": 5,
+    "required_path_endpoint_matched_batch_deficit": 5
+  },
+  "routing_contract": {
+    "can_submit_to_agent42_smoke_replay": false,
+    "can_route_to_path_endpoint_layout_holdout": false,
+    "can_route_to_human_review_candidate": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "no_write_boundary_pass": true
+  },
+  "field_boundary": "This work order converts blocking preflight and patch-plan facts into operator repair tasks only. It does not synthesize field rows, does not validate field performance, and does not authorize actuator or release-gate writeback."
+}

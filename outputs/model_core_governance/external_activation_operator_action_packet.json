@@ -1,0 +1,157 @@
+{
+  "packet_id": "R8u130_external_activation_operator_action_packet",
+  "packet_type": "external_activation_operator_next_action_packet",
+  "architecture_layer": "verification_governance_to_external_execution_handoff",
+  "enhanced_abilities": [
+    "verifiability",
+    "engineering_feasibility",
+    "evolvability"
+  ],
+  "source_stage_decision": "stop_expansion_wait_for_real_field_package_or_new_core_interface",
+  "source_self_interrupt_verdict": "stage_boundary_wait_for_external_activation",
+  "source_router_status": "external_activation_router_has_handoff_ready_routes",
+  "source_router_highest_priority_blocker": "",
+  "packet_status": "operator_packet_waiting_for_focused_catalyst_response",
+  "target_hidden_state": "catalyst_activity",
+  "source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+  "target_full_response_env_var": "FIELD_ACTIVATION_RESPONSE_PATH",
+  "focused_template_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json",
+  "focused_schema_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_schema.json",
+  "focused_merge_plan_path": "outputs/catalyst_response_submission_kit/focused_to_full_response_merge_plan.json",
+  "focused_merge_runner": "experiments/run_focused_catalyst_response_merge.py",
+  "field_activation_runner": "experiments/run_field_activation_matrix.py",
+  "agent50_runner": "experiments/run_agent50_model_core_governance.py",
+  "merged_full_response_candidate_path": "outputs/focused_catalyst_response_merge/merged_full_field_activation_response_candidate.json",
+  "expected_focused_response_row_count": 6,
+  "template_evidence_row_count": 6,
+  "focused_template_ready": true,
+  "minimum_matched_batch_count": 3,
+  "required_row_fields": [
+    "response_row_id",
+    "hidden_state",
+    "required_evidence",
+    "evidence_channel",
+    "table_name",
+    "field_name",
+    "data_origin",
+    "batch_id",
+    "matched_batch_ids",
+    "timestamp",
+    "node_id",
+    "sensor_id",
+    "evidence_value_reference",
+    "offline_method_id",
+    "detection_limit",
+    "chain_of_custody_id",
+    "operator_id",
+    "no_write_boundary_confirmed",
+    "review_notes"
+  ],
+  "operator_instructions": [
+    "Fill only with real field provenance; do not leave TODO/template/sample markers.",
+    "Use at least 3 shared batch_id values across all six rows.",
+    "Confirm no_write_boundary_confirmed=true on every row.",
+    "For node_modality_sensor_timeseries rows, point evidence_value_reference to real node/modality/value/status records.",
+    "For offline_lab_results, point to QA-passed catalyst_activity labels and method metadata.",
+    "For campaign_operation_log, point to regeneration_event records aligned by batch_id.",
+    "For site_topology_or_bed_geometry, point to nominal_HRT_min or bed geometry/flow records."
+  ],
+  "source_preflight_status": "focused_catalyst_response_source_using_default_template",
+  "focused_merge_preflight_status": "focused_catalyst_response_merge_waiting_for_FOCUSED_CATALYST_RESPONSE_PATH",
+  "focused_merge_row_preflight_pass": false,
+  "focused_merge_can_submit_candidate_as_FIELD_ACTIVATION_RESPONSE_PATH": false,
+  "focused_candidate_availability_status": "candidate_not_submittable_waiting_for_FOCUSED_CATALYST_RESPONSE_PATH",
+  "focused_candidate_self_declared_submit_ready": false,
+  "focused_candidate_external_response_supplied": false,
+  "focused_candidate_operator_packet_submit_ready": false,
+  "focused_candidate_use_boundary": "Only use this file as FIELD_ACTIVATION_RESPONSE_PATH when can_submit_candidate_as_FIELD_ACTIVATION_RESPONSE_PATH is true and downstream full response, field package, replay, holdout, operator-review, actuator and release gates still pass. If false, this file is a diagnostic artifact and must not be routed as field evidence.",
+  "focused_repair_work_order_status": "focused_catalyst_response_repair_work_order_waiting_for_external_response",
+  "focused_repair_item_count": 1,
+  "focused_repair_highest_priority_repair_id": "FOCUSED_SOURCE_SUBMIT_RESPONSE",
+  "focused_repair_next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+  "handoff_next_operator_action": "run_preflight_or_pipeline_command",
+  "packet_next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+  "next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+  "operator_steps": [
+    {
+      "step_id": "OP1_FILL_FOCUSED_TEMPLATE",
+      "order": 1,
+      "action": "fill_focused_catalyst_response_template_with_real_field_values",
+      "input_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json",
+      "output_expectation": "a reviewer-filled JSON file with six catalyst_activity evidence rows",
+      "must_not_use": "synthetic/sample/template/TODO values"
+    },
+    {
+      "step_id": "OP2_SET_FOCUSED_ENV",
+      "order": 2,
+      "action": "set_FOCUSED_CATALYST_RESPONSE_PATH",
+      "command_template": "export FOCUSED_CATALYST_RESPONSE_PATH=/absolute/path/to/filled_focused_response.json",
+      "output_expectation": "focused source preflight can load the operator-supplied JSON"
+    },
+    {
+      "step_id": "OP3_RUN_FOCUSED_MERGE",
+      "order": 3,
+      "action": "run_focused_merge_preflight",
+      "command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+      "expected_ready_status": "focused_catalyst_response_merge_ready_for_FIELD_ACTIVATION_RESPONSE_PATH_candidate"
+    },
+    {
+      "step_id": "OP4_SET_FULL_RESPONSE_CANDIDATE",
+      "order": 4,
+      "action": "set_FIELD_ACTIVATION_RESPONSE_PATH_if_focused_merge_ready",
+      "command_template": "export FIELD_ACTIVATION_RESPONSE_PATH=outputs/focused_catalyst_response_merge/merged_full_field_activation_response_candidate.json",
+      "condition": "only after OP3 ready status passes"
+    },
+    {
+      "step_id": "OP5_RERUN_MAIN_GATES",
+      "order": 5,
+      "action": "rerun_field_activation_and_agent50",
+      "commands": [
+        ".venv/bin/python experiments/run_field_activation_matrix.py",
+        ".venv/bin/python experiments/run_agent50_model_core_governance.py"
+      ],
+      "condition": "only after FIELD_ACTIVATION_RESPONSE_PATH points to the merged candidate"
+    }
+  ],
+  "current_commands": [
+    "fill outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json with real field values",
+    "export FOCUSED_CATALYST_RESPONSE_PATH=/absolute/path/to/filled_focused_response.json",
+    ".venv/bin/python experiments/run_focused_catalyst_response_merge.py"
+  ],
+  "boundary_checks": [
+    {
+      "check_id": "template_has_rows",
+      "pass": true,
+      "detail": "template row count = 6"
+    },
+    {
+      "check_id": "minimum_batch_count_declared",
+      "pass": true,
+      "detail": "minimum shared batch count = 3"
+    },
+    {
+      "check_id": "no_write_confirmation_fields_present",
+      "pass": true,
+      "detail": "each template row must expose no_write_boundary_confirmed"
+    },
+    {
+      "check_id": "template_rows_are_not_field_evidence",
+      "pass": true,
+      "detail": "template TODO rows are collection instructions only, not field evidence"
+    }
+  ],
+  "operator_packet_boundary_pass": true,
+  "can_generate_field_evidence": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "can_emit_field_supported_claim": false,
+  "no_write_boundary": "This packet only tells an operator how to fill and validate the focused catalyst response. It cannot generate field evidence, resume the model chain, write actuator policy, write a release gate, relax Agent49 catalyst guardrails, pass Agent51 holdout or emit a field-supported claim.",
+  "rejection_boundaries": [
+    "Reject template/sample/synthetic rows as field evidence.",
+    "Reject rows with TODO/template markers in required evidence payloads.",
+    "Reject responses that do not use at least the minimum shared real batch_id count.",
+    "Reject responses whose no_write_boundary_confirmed is not true on every row.",
+    "Reject any shortcut that skips focused merge, full response preflight, materialized package preflight, replay/holdout or operator review."
+  ]
+}

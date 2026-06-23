@@ -1,0 +1,701 @@
+{
+  "method_contract": {
+    "upgrade_id": "P6_reasonable_knowledge_graph_reasoning",
+    "borrowed_from": [
+      "scientific knowledge graph typed nodes and evidence edges",
+      "W3C PROV-style provenance thinking",
+      "claim verification gates from academic research agent workflows",
+      "rule/action constraint propagation rather than unbounded prompt explanation"
+    ],
+    "reality_mapping": "把污染物、材料、机制、低成本信号、隐藏状态、控制动作和现场验证需求连接成可追溯图，使机理解释和动作排序能说明证据来源与禁止升级边界。",
+    "data_needs": [
+      "citation_key_and_source_basis_per_knowledge_edge",
+      "raw_sensor_trace",
+      "hidden_state_label_or_proxy",
+      "action_taken",
+      "post_action_lab_outcome",
+      "field_validation_need_by_edge"
+    ],
+    "implementation_path": [
+      "src/water_ai/knowledge.py",
+      "src/water_ai/agents/knowledge_graph_reasoning_agent.py",
+      "src/water_ai/agents/mechanism_agent.py",
+      "src/water_ai/agents/fault_diagnosis_agent.py",
+      "src/water_ai/agents/control_strategy_agent.py"
+    ],
+    "evaluation_metrics": [
+      "field_supported_edge_ratio",
+      "evidence_traceability",
+      "constraint_hit_rate",
+      "claim_verification_pass_rate",
+      "action_constraint_count"
+    ],
+    "failure_boundary": "KG reasoning constrains explanations and action priors only; without field-supported edges it cannot prove treatment effect or authorize actuator/release-gate writeback."
+  },
+  "kg_graph_summary": {
+    "node_count": 88,
+    "edge_count": 305,
+    "node_type_counts": {
+      "control_action": 7,
+      "field_validation_need": 12,
+      "knowledge_entry": 9,
+      "material_family": 9,
+      "mechanism_rule": 8,
+      "mechanism_tag": 25,
+      "observable_or_hidden_signal": 9,
+      "pollutant_class": 9
+    },
+    "edge_type_counts": {
+      "affected_by_mechanism": 25,
+      "biases_action": 64,
+      "claims_mechanism": 25,
+      "describes_pollutant": 9,
+      "has_mechanism": 25,
+      "needs_field_validation": 12,
+      "observes_condition": 83,
+      "supports_rule": 53,
+      "uses_material_family": 9
+    },
+    "evidence_stage_counts": {
+      "literature_informed_simulation": 305
+    },
+    "field_supported_edge_ratio": 0.0,
+    "graph_status": "typed_kg_seed_needs_field_supported_edges"
+  },
+  "kg_reasoning": {
+    "graph_summary": {
+      "node_count": 88,
+      "edge_count": 305,
+      "node_type_counts": {
+        "control_action": 7,
+        "field_validation_need": 12,
+        "knowledge_entry": 9,
+        "material_family": 9,
+        "mechanism_rule": 8,
+        "mechanism_tag": 25,
+        "observable_or_hidden_signal": 9,
+        "pollutant_class": 9
+      },
+      "edge_type_counts": {
+        "affected_by_mechanism": 25,
+        "biases_action": 64,
+        "claims_mechanism": 25,
+        "describes_pollutant": 9,
+        "has_mechanism": 25,
+        "needs_field_validation": 12,
+        "observes_condition": 83,
+        "supports_rule": 53,
+        "uses_material_family": 9
+      },
+      "evidence_stage_counts": {
+        "literature_informed_simulation": 305
+      },
+      "field_supported_edge_ratio": 0.0,
+      "graph_status": "typed_kg_seed_needs_field_supported_edges"
+    },
+    "matched_entries": [
+      {
+        "entry_id": "kb_sensor_limited_release_evidence",
+        "pollutant_class": "低浓度目标污染物或慢检测指标",
+        "material_family": "低成本传感 + 软传感系统",
+        "mechanism_tags": [
+          "sensor_uncertainty",
+          "release_evidence_gap"
+        ],
+        "supports_rules": [
+          "sensor_uncertainty",
+          "likely_treated_but_not_releasable"
+        ],
+        "action_biases": {
+          "calibrate_sensors": 0.2,
+          "hold_for_validation": 0.18,
+          "release": -0.25
+        },
+        "explanation": "低成本代理信号出现缺失、漂移或置信度不足时，软传感结果不能直接等同于放行证据。",
+        "action_hint": "进入校准、降权或旁路检测流程；模型估计只能作为排序依据，不能替代放行门槛。",
+        "evidence_stage": "literature_informed_simulation",
+        "field_validation_need": [
+          "真实传感漂移记录",
+          "离线放行标签",
+          "低浓度目标物检测限"
+        ],
+        "source_basis": [
+          "low_cost_proxy_sensing",
+          "soft_sensor_release_gate"
+        ],
+        "signal_hits": [
+          {
+            "signal": "sensor_confidence",
+            "op": "<",
+            "threshold": 0.82,
+            "value": 0.755
+          },
+          {
+            "signal": "release_readiness",
+            "op": "<",
+            "threshold": 0.82,
+            "value": 0.755
+          }
+        ],
+        "signal_misses": [],
+        "dq_issue_hits": [
+          "drift_suspected",
+          "flatline",
+          "missing",
+          "spike"
+        ],
+        "soft_issue_hits": [
+          "release_blocked_by_uncertainty"
+        ],
+        "match_score": 0.97
+      },
+      {
+        "entry_id": "kb_loop_buffer_for_slow_sensing",
+        "pollutant_class": "目标污染物需慢检测或低成本代理检测的废水",
+        "material_family": "循环式反应器/旁路快检系统",
+        "mechanism_tags": [
+          "loop_buffer_needed",
+          "soft_sensor_delay",
+          "grey_box_inference"
+        ],
+        "supports_rules": [
+          "loop_buffer_needed"
+        ],
+        "action_biases": {
+          "hold_for_validation": 0.16,
+          "recirculate": 0.14,
+          "release": -0.18
+        },
+        "explanation": "当软传感认为继续循环仍有收益，而放行证据不足时，循环结构可以为慢检测、模型复估和旁路验证争取时间。",
+        "action_hint": "不要强行实时控制；设置暂存/回流窗口，让慢证据进入下一轮状态估计。",
+        "evidence_stage": "literature_informed_simulation",
+        "field_validation_need": [],
+        "source_basis": [],
+        "signal_hits": [
+          {
+            "signal": "release_readiness",
+            "op": "<",
+            "threshold": 0.86,
+            "value": 0.755
+          }
+        ],
+        "signal_misses": [
+          {
+            "signal": "pollutant_residual_risk",
+            "op": ">",
+            "threshold": 0.32,
+            "value": 0.156
+          },
+          {
+            "signal": "recycle_gain",
+            "op": ">",
+            "threshold": 0.2,
+            "value": 0.066
+          }
+        ],
+        "dq_issue_hits": [],
+        "soft_issue_hits": [
+          "release_blocked_by_uncertainty"
+        ],
+        "match_score": 0.587
+      }
+    ],
+    "evidence_paths": [
+      {
+        "path_id": "kb_sensor_limited_release_evidence->sensor_uncertainty",
+        "entry_id": "kb_sensor_limited_release_evidence",
+        "rule_id": "sensor_uncertainty",
+        "path_nodes": [
+          "entry:kb_sensor_limited_release_evidence",
+          "pollutant:低浓度目标污染物或慢检测指标",
+          "mechanism:sensor_uncertainty",
+          "mechanism:release_evidence_gap",
+          "rule:sensor_uncertainty"
+        ],
+        "mechanism_tags": [
+          "sensor_uncertainty",
+          "release_evidence_gap"
+        ],
+        "matched_signal_count": 2,
+        "matched_issue_count": 5,
+        "match_score": 0.97,
+        "evidence_stage": "literature_informed_simulation",
+        "evidence_weight": 0.82,
+        "field_validation_need": [
+          "真实传感漂移记录",
+          "离线放行标签",
+          "低浓度目标物检测限"
+        ],
+        "source_basis": [
+          "low_cost_proxy_sensing",
+          "soft_sensor_release_gate"
+        ],
+        "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      },
+      {
+        "path_id": "kb_sensor_limited_release_evidence->likely_treated_but_not_releasable",
+        "entry_id": "kb_sensor_limited_release_evidence",
+        "rule_id": "likely_treated_but_not_releasable",
+        "path_nodes": [
+          "entry:kb_sensor_limited_release_evidence",
+          "pollutant:低浓度目标污染物或慢检测指标",
+          "mechanism:sensor_uncertainty",
+          "mechanism:release_evidence_gap",
+          "rule:likely_treated_but_not_releasable"
+        ],
+        "mechanism_tags": [
+          "sensor_uncertainty",
+          "release_evidence_gap"
+        ],
+        "matched_signal_count": 2,
+        "matched_issue_count": 5,
+        "match_score": 0.97,
+        "evidence_stage": "literature_informed_simulation",
+        "evidence_weight": 0.82,
+        "field_validation_need": [
+          "真实传感漂移记录",
+          "离线放行标签",
+          "低浓度目标物检测限"
+        ],
+        "source_basis": [
+          "low_cost_proxy_sensing",
+          "soft_sensor_release_gate"
+        ],
+        "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      },
+      {
+        "path_id": "kb_loop_buffer_for_slow_sensing->loop_buffer_needed",
+        "entry_id": "kb_loop_buffer_for_slow_sensing",
+        "rule_id": "loop_buffer_needed",
+        "path_nodes": [
+          "entry:kb_loop_buffer_for_slow_sensing",
+          "pollutant:目标污染物需慢检测或低成本代理检测的废水",
+          "mechanism:loop_buffer_needed",
+          "mechanism:soft_sensor_delay",
+          "mechanism:grey_box_inference",
+          "rule:loop_buffer_needed"
+        ],
+        "mechanism_tags": [
+          "loop_buffer_needed",
+          "soft_sensor_delay",
+          "grey_box_inference"
+        ],
+        "matched_signal_count": 1,
+        "matched_issue_count": 1,
+        "match_score": 0.587,
+        "evidence_stage": "literature_informed_simulation",
+        "evidence_weight": 0.82,
+        "field_validation_need": [],
+        "source_basis": [],
+        "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      }
+    ],
+    "action_constraint_patch": [
+      {
+        "action_id": "calibrate_sensors",
+        "bias_score": 0.159,
+        "direction": "support",
+        "supporting_entries": [
+          "kb_sensor_limited_release_evidence"
+        ],
+        "evidence_paths": [
+          "kb_sensor_limited_release_evidence->likely_treated_but_not_releasable",
+          "kb_sensor_limited_release_evidence->sensor_uncertainty"
+        ],
+        "claim_boundaries": [
+          "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+        ],
+        "writeback_boundary": "score_prior_only_until_field_validation"
+      },
+      {
+        "action_id": "hold_for_validation",
+        "bias_score": 0.22,
+        "direction": "support",
+        "supporting_entries": [
+          "kb_loop_buffer_for_slow_sensing",
+          "kb_sensor_limited_release_evidence"
+        ],
+        "evidence_paths": [
+          "kb_loop_buffer_for_slow_sensing->loop_buffer_needed",
+          "kb_sensor_limited_release_evidence->likely_treated_but_not_releasable",
+          "kb_sensor_limited_release_evidence->sensor_uncertainty"
+        ],
+        "claim_boundaries": [
+          "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+        ],
+        "writeback_boundary": "score_prior_only_until_field_validation"
+      },
+      {
+        "action_id": "recirculate",
+        "bias_score": 0.067,
+        "direction": "support",
+        "supporting_entries": [
+          "kb_loop_buffer_for_slow_sensing"
+        ],
+        "evidence_paths": [
+          "kb_loop_buffer_for_slow_sensing->loop_buffer_needed"
+        ],
+        "claim_boundaries": [
+          "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+        ],
+        "writeback_boundary": "score_prior_only_until_field_validation"
+      },
+      {
+        "action_id": "release",
+        "bias_score": -0.22,
+        "direction": "suppress",
+        "supporting_entries": [
+          "kb_loop_buffer_for_slow_sensing",
+          "kb_sensor_limited_release_evidence"
+        ],
+        "evidence_paths": [
+          "kb_loop_buffer_for_slow_sensing->loop_buffer_needed",
+          "kb_sensor_limited_release_evidence->likely_treated_but_not_releasable",
+          "kb_sensor_limited_release_evidence->sensor_uncertainty"
+        ],
+        "claim_boundaries": [
+          "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+        ],
+        "writeback_boundary": "score_prior_only_until_field_validation"
+      }
+    ],
+    "field_validation_queue": [
+      {
+        "field_validation_need": "真实传感漂移记录",
+        "supporting_entries": [
+          "kb_sensor_limited_release_evidence"
+        ],
+        "required_before": "actuator_or_release_gate_claim"
+      },
+      {
+        "field_validation_need": "离线放行标签",
+        "supporting_entries": [
+          "kb_sensor_limited_release_evidence"
+        ],
+        "required_before": "actuator_or_release_gate_claim"
+      },
+      {
+        "field_validation_need": "低浓度目标物检测限",
+        "supporting_entries": [
+          "kb_sensor_limited_release_evidence"
+        ],
+        "required_before": "actuator_or_release_gate_claim"
+      }
+    ],
+    "unsupported_claims": [
+      {
+        "entry_id": "kb_sensor_limited_release_evidence",
+        "reason": "not_field_supported",
+        "evidence_stage": "literature_informed_simulation",
+        "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      },
+      {
+        "entry_id": "kb_loop_buffer_for_slow_sensing",
+        "reason": "source_basis_missing",
+        "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      },
+      {
+        "entry_id": "kb_loop_buffer_for_slow_sensing",
+        "reason": "not_field_supported",
+        "evidence_stage": "literature_informed_simulation",
+        "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      }
+    ],
+    "readiness": {
+      "kg_reasoning_status": "kg_reasoning_patch_ready_needs_field_supported_edges",
+      "matched_entry_count": 2,
+      "evidence_path_count": 3,
+      "action_constraint_count": 4,
+      "field_supported_edge_ratio": 0.0,
+      "evidence_traceability": 1.0,
+      "constraint_hit_rate": 1.0,
+      "claim_verification_pass_rate": 0.25,
+      "can_update_mechanism_evidence": true,
+      "can_update_action_bias_prior": true,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    }
+  },
+  "agent_chain_retrospective": [
+    {
+      "rank": 1,
+      "gap_id": "G0_flat_knowledge_not_coupled_to_decisions",
+      "affected_agents": [
+        "Agent3_Mechanism",
+        "Agent4_FaultDiagnosis",
+        "Agent5_ControlStrategy"
+      ],
+      "global_view_problem": "知识库过去只是条目匹配和动作加分，缺少污染物-机制-规则-动作-验证需求的可追溯边。",
+      "why_foundational": "它决定后续机理解释、故障排序和控制动作能否说明证据来源与失败边界。",
+      "after_agent56_status": "patched_by_typed_kg_reasoning",
+      "next_carryover": "把同一 KG patch 继续接入灰箱物理残差、稀疏布点和工程仲裁。"
+    },
+    {
+      "rank": 2,
+      "gap_id": "G1_parallel_core_agents_not_fully_reconnected",
+      "affected_agents": [
+        "Agent48",
+        "Agent49",
+        "Agent53",
+        "Agent54",
+        "Agent55"
+      ],
+      "global_view_problem": "Agent48/49/53/54/55 已有核心能力，但部分结果仍通过实验报告并联存在，没有全部进入主闭环 Agent1-9。",
+      "why_foundational": "会导致模型看起来功能多，但实时状态估计和控制仲裁没有完整消费这些 prior。",
+      "after_agent56_status": "partially_open",
+      "next_carryover": "优先把 KG evidence path 作为共同接口，再逐步把 grey_box_prior、layout_mask 和 engineering_patch 接入主链。"
+    },
+    {
+      "rank": 3,
+      "gap_id": "G2_field_validation_queue_not_action_specific",
+      "affected_agents": [
+        "Agent37",
+        "Agent43",
+        "Agent46",
+        "Agent50"
+      ],
+      "global_view_problem": "现场验证需求存在，但过去更像全局阻塞项，未按每条知识边和每个动作精确绑定。",
+      "why_foundational": "真实工程中必须知道哪个动作因为缺哪类标签不能升级，而不是笼统说缺真实数据。",
+      "after_agent56_status": "patched_as_field_validation_queue",
+      "next_carryover": "把 field_validation_queue 与 Agent30/42/44/45 的数据接口逐项对齐。"
+    },
+    {
+      "rank": 4,
+      "gap_id": "G3_claim_boundary_missing_for_source_poor_entries",
+      "affected_agents": [
+        "Agent37",
+        "Agent38",
+        "Agent50"
+      ],
+      "global_view_problem": "部分早期知识条目有机理启发，但 source_basis 不够细，容易在后续文案或控制解释中显得证据过强。",
+      "why_foundational": "科研价值取决于可审查证据链，source_basis 缺失会降低 claim verification。",
+      "after_agent56_status": "exposed_by_unsupported_claims",
+      "next_carryover": "下一轮外部文献抽取优先补齐 source_basis、参数范围和适用边界。"
+    }
+  ],
+  "action_constraint_patch": [
+    {
+      "action_id": "calibrate_sensors",
+      "bias_score": 0.159,
+      "direction": "support",
+      "supporting_entries": [
+        "kb_sensor_limited_release_evidence"
+      ],
+      "evidence_paths": [
+        "kb_sensor_limited_release_evidence->likely_treated_but_not_releasable",
+        "kb_sensor_limited_release_evidence->sensor_uncertainty"
+      ],
+      "claim_boundaries": [
+        "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      ],
+      "writeback_boundary": "score_prior_only_until_field_validation"
+    },
+    {
+      "action_id": "hold_for_validation",
+      "bias_score": 0.22,
+      "direction": "support",
+      "supporting_entries": [
+        "kb_loop_buffer_for_slow_sensing",
+        "kb_sensor_limited_release_evidence"
+      ],
+      "evidence_paths": [
+        "kb_loop_buffer_for_slow_sensing->loop_buffer_needed",
+        "kb_sensor_limited_release_evidence->likely_treated_but_not_releasable",
+        "kb_sensor_limited_release_evidence->sensor_uncertainty"
+      ],
+      "claim_boundaries": [
+        "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      ],
+      "writeback_boundary": "score_prior_only_until_field_validation"
+    },
+    {
+      "action_id": "recirculate",
+      "bias_score": 0.067,
+      "direction": "support",
+      "supporting_entries": [
+        "kb_loop_buffer_for_slow_sensing"
+      ],
+      "evidence_paths": [
+        "kb_loop_buffer_for_slow_sensing->loop_buffer_needed"
+      ],
+      "claim_boundaries": [
+        "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      ],
+      "writeback_boundary": "score_prior_only_until_field_validation"
+    },
+    {
+      "action_id": "release",
+      "bias_score": -0.22,
+      "direction": "suppress",
+      "supporting_entries": [
+        "kb_loop_buffer_for_slow_sensing",
+        "kb_sensor_limited_release_evidence"
+      ],
+      "evidence_paths": [
+        "kb_loop_buffer_for_slow_sensing->loop_buffer_needed",
+        "kb_sensor_limited_release_evidence->likely_treated_but_not_releasable",
+        "kb_sensor_limited_release_evidence->sensor_uncertainty"
+      ],
+      "claim_boundaries": [
+        "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+      ],
+      "writeback_boundary": "score_prior_only_until_field_validation"
+    }
+  ],
+  "mechanism_evidence_paths": [
+    {
+      "path_id": "kb_sensor_limited_release_evidence->sensor_uncertainty",
+      "entry_id": "kb_sensor_limited_release_evidence",
+      "rule_id": "sensor_uncertainty",
+      "path_nodes": [
+        "entry:kb_sensor_limited_release_evidence",
+        "pollutant:低浓度目标污染物或慢检测指标",
+        "mechanism:sensor_uncertainty",
+        "mechanism:release_evidence_gap",
+        "rule:sensor_uncertainty"
+      ],
+      "mechanism_tags": [
+        "sensor_uncertainty",
+        "release_evidence_gap"
+      ],
+      "matched_signal_count": 2,
+      "matched_issue_count": 5,
+      "match_score": 0.97,
+      "evidence_stage": "literature_informed_simulation",
+      "evidence_weight": 0.82,
+      "field_validation_need": [
+        "真实传感漂移记录",
+        "离线放行标签",
+        "低浓度目标物检测限"
+      ],
+      "source_basis": [
+        "low_cost_proxy_sensing",
+        "soft_sensor_release_gate"
+      ],
+      "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+    },
+    {
+      "path_id": "kb_sensor_limited_release_evidence->likely_treated_but_not_releasable",
+      "entry_id": "kb_sensor_limited_release_evidence",
+      "rule_id": "likely_treated_but_not_releasable",
+      "path_nodes": [
+        "entry:kb_sensor_limited_release_evidence",
+        "pollutant:低浓度目标污染物或慢检测指标",
+        "mechanism:sensor_uncertainty",
+        "mechanism:release_evidence_gap",
+        "rule:likely_treated_but_not_releasable"
+      ],
+      "mechanism_tags": [
+        "sensor_uncertainty",
+        "release_evidence_gap"
+      ],
+      "matched_signal_count": 2,
+      "matched_issue_count": 5,
+      "match_score": 0.97,
+      "evidence_stage": "literature_informed_simulation",
+      "evidence_weight": 0.82,
+      "field_validation_need": [
+        "真实传感漂移记录",
+        "离线放行标签",
+        "低浓度目标物检测限"
+      ],
+      "source_basis": [
+        "low_cost_proxy_sensing",
+        "soft_sensor_release_gate"
+      ],
+      "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+    },
+    {
+      "path_id": "kb_loop_buffer_for_slow_sensing->loop_buffer_needed",
+      "entry_id": "kb_loop_buffer_for_slow_sensing",
+      "rule_id": "loop_buffer_needed",
+      "path_nodes": [
+        "entry:kb_loop_buffer_for_slow_sensing",
+        "pollutant:目标污染物需慢检测或低成本代理检测的废水",
+        "mechanism:loop_buffer_needed",
+        "mechanism:soft_sensor_delay",
+        "mechanism:grey_box_inference",
+        "rule:loop_buffer_needed"
+      ],
+      "mechanism_tags": [
+        "loop_buffer_needed",
+        "soft_sensor_delay",
+        "grey_box_inference"
+      ],
+      "matched_signal_count": 1,
+      "matched_issue_count": 1,
+      "match_score": 0.587,
+      "evidence_stage": "literature_informed_simulation",
+      "evidence_weight": 0.82,
+      "field_validation_need": [],
+      "source_basis": [],
+      "claim_boundary": "literature-informed simulation edge; may constrain reasoning but cannot prove field effect"
+    }
+  ],
+  "field_validation_queue": [
+    {
+      "field_validation_need": "真实传感漂移记录",
+      "supporting_entries": [
+        "kb_sensor_limited_release_evidence"
+      ],
+      "required_before": "actuator_or_release_gate_claim"
+    },
+    {
+      "field_validation_need": "离线放行标签",
+      "supporting_entries": [
+        "kb_sensor_limited_release_evidence"
+      ],
+      "required_before": "actuator_or_release_gate_claim"
+    },
+    {
+      "field_validation_need": "低浓度目标物检测限",
+      "supporting_entries": [
+        "kb_sensor_limited_release_evidence"
+      ],
+      "required_before": "actuator_or_release_gate_claim"
+    }
+  ],
+  "main_chain_coupling": {
+    "mechanism_consumes_kg_reasoning": true,
+    "fault_passes_kg_reasoning": true,
+    "control_uses_typed_kg_constraints": true,
+    "control_action_biases": {
+      "calibrate_sensors": 0.159,
+      "hold_for_validation": 0.22,
+      "recirculate": 0.067,
+      "release": -0.22
+    },
+    "top_control_action": "hold_for_validation"
+  },
+  "readiness": {
+    "kg_reasoning_status": "kg_reasoning_patch_ready_needs_field_supported_edges",
+    "kg_reasoning_score": 0.79,
+    "evidence_path_count": 3,
+    "action_constraint_count": 4,
+    "field_supported_edge_ratio": 0.0,
+    "evidence_traceability": 1.0,
+    "constraint_hit_rate": 1.0,
+    "claim_verification_pass_rate": 0.25,
+    "root_gap_resolved": true,
+    "can_update_mechanism_evidence": true,
+    "can_update_action_bias_prior": true,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "next_recommended_core_action": "reconnect_grey_box_and_layout_priors_to_live_soft_sensor_or_agent49"
+  },
+  "agent50_writeback": {
+    "allowed_writeback": [
+      "mechanism_evidence_paths",
+      "control_action_bias_prior",
+      "field_validation_queue",
+      "P6_completion_status_for_governance"
+    ],
+    "blocked_writeback": [
+      "actuator_policy",
+      "release_gate_policy",
+      "field_mechanism_claim"
+    ],
+    "can_advance_governance_priority": true,
+    "policy_effect": "move_to_cross_agent_reconnection"
+  }
+}

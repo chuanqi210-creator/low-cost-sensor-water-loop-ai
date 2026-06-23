@@ -1,0 +1,2281 @@
+{
+  "plan_id": "R8u99_field_activation_package_assembly_plan",
+  "source_interface_id": "R8u97_field_activation_matrix_interface",
+  "source_response_template_id": "R8u98_field_activation_evidence_response_template",
+  "response_preflight_status": "field_activation_response_blocked_before_external_package_preflight",
+  "response_coherence_audit_status": "field_activation_response_coherence_audit_waiting_for_response_preflight",
+  "response_coherence_hard_blocker_count": 0,
+  "assembly_status": "field_activation_package_assembly_plan_blocked_by_response_preflight",
+  "channel_plan_count": 1,
+  "table_plan_count": 11,
+  "candidate_channel_plan_count": 2,
+  "candidate_table_plan_count": 21,
+  "evidence_row_count": 33,
+  "channel_plans": [
+    {
+      "channel_id": "R7_REAL_FIELD_PACKAGE",
+      "package_pointer": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+      "assembly_status": "channel_package_assembly_blocked_by_response_preflight",
+      "required_contract_evidence": [
+        "metadata.json with data_origin=field and no placeholder/template markers",
+        "timestamped sensor_timeseries rows with batch_id, timestamp, node_id/sensor_id and sensor_status",
+        "campaign_operation_log rows with action/effect timing and operator context",
+        "offline_lab_results rows linked by batch_id and method/detection-limit metadata",
+        "fast_proxy_event_log or equivalent proxy labels when pressure/conflict replay is evaluated"
+      ],
+      "reject_if": [
+        "header-only template package",
+        "data_origin is synthetic/sample/template or missing",
+        "batch_id/timestamp alignment is absent",
+        "metadata contains TODO, placeholder or template markers"
+      ],
+      "resumes_to": [
+        "Agent44 field import preflight",
+        "Agent42 timestamped campaign replay",
+        "Agent43 G6/P6 calibration gate",
+        "Agent45 field replay evidence chain"
+      ],
+      "table_assemblies": [
+        {
+          "table_name": "campaign_operation_log",
+          "field_names": [
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "reaction_completion_03",
+            "reaction_completion_04",
+            "reaction_completion_05",
+            "catalyst_activity_05",
+            "hydraulic_delay_01",
+            "hydraulic_delay_02",
+            "hydraulic_delay_03",
+            "release_or_byproduct_risk_05"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "reaction_completion_03",
+              "hidden_state": "reaction_completion",
+              "required_evidence": "campaign_operation_log.hold_time_min",
+              "table_name": "campaign_operation_log",
+              "field_name": "hold_time_min",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "reaction_completion_04",
+              "hidden_state": "reaction_completion",
+              "required_evidence": "campaign_operation_log.effect_time_min",
+              "table_name": "campaign_operation_log",
+              "field_name": "effect_time_min",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "reaction_completion_05",
+              "hidden_state": "reaction_completion",
+              "required_evidence": "campaign_operation_log.recycle_ratio",
+              "table_name": "campaign_operation_log",
+              "field_name": "recycle_ratio",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "catalyst_activity_05",
+              "hidden_state": "catalyst_activity",
+              "required_evidence": "campaign_operation_log.regeneration_event",
+              "table_name": "campaign_operation_log",
+              "field_name": "regeneration_event",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "hydraulic_delay_01",
+              "hidden_state": "hydraulic_delay",
+              "required_evidence": "campaign_operation_log.effect_time_min",
+              "table_name": "campaign_operation_log",
+              "field_name": "effect_time_min",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "hydraulic_delay_02",
+              "hidden_state": "hydraulic_delay",
+              "required_evidence": "campaign_operation_log.hold_time_min",
+              "table_name": "campaign_operation_log",
+              "field_name": "hold_time_min",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "hydraulic_delay_03",
+              "hidden_state": "hydraulic_delay",
+              "required_evidence": "campaign_operation_log.recycle_ratio",
+              "table_name": "campaign_operation_log",
+              "field_name": "recycle_ratio",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "release_or_byproduct_risk_05",
+              "hidden_state": "release_or_byproduct_risk",
+              "required_evidence": "campaign_operation_log.operator_review_decision",
+              "table_name": "campaign_operation_log",
+              "field_name": "operator_review_decision",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 8,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "context_or_manual_review",
+          "field_names": [
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "pollutant_residual_02",
+            "reaction_completion_02",
+            "release_or_byproduct_risk_02"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "pollutant_residual_02",
+              "hidden_state": "pollutant_residual",
+              "required_evidence": "field_holdout_release_labels",
+              "table_name": "context_or_manual_review",
+              "field_name": "field_holdout_release_labels",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "reaction_completion_02",
+              "hidden_state": "reaction_completion",
+              "required_evidence": "known_HRT_or_contact_time",
+              "table_name": "context_or_manual_review",
+              "field_name": "known_HRT_or_contact_time",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "release_or_byproduct_risk_02",
+              "hidden_state": "release_or_byproduct_risk",
+              "required_evidence": "human_reviewed_release_gate_labels",
+              "table_name": "context_or_manual_review",
+              "field_name": "human_reviewed_release_gate_labels",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "field_holdout_release_labels",
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "pollutant_residual"
+          ],
+          "response_row_ids": [
+            "pollutant_residual_06"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "pollutant_residual_06",
+              "hidden_state": "pollutant_residual",
+              "required_evidence": "field_holdout_release_labels.batch_id",
+              "table_name": "field_holdout_release_labels",
+              "field_name": "batch_id",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "field_labeled_fast_proxy_event_log",
+          "field_names": [
+            "matrix_shock"
+          ],
+          "hidden_states": [
+            "matrix_interference"
+          ],
+          "response_row_ids": [
+            "matrix_interference_01"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "matrix_interference_01",
+              "hidden_state": "matrix_interference",
+              "required_evidence": "field_labeled_fast_proxy_event_log.matrix_shock",
+              "table_name": "field_labeled_fast_proxy_event_log",
+              "field_name": "matrix_shock",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "matrix_shock"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "final_effluent_endpoint_labels",
+          "field_names": [
+            "release_label"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "pollutant_residual_05",
+            "release_or_byproduct_risk_03"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "pollutant_residual_05",
+              "hidden_state": "pollutant_residual",
+              "required_evidence": "final_effluent_endpoint_labels.release_label",
+              "table_name": "final_effluent_endpoint_labels",
+              "field_name": "release_label",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "release_or_byproduct_risk_03",
+              "hidden_state": "release_or_byproduct_risk",
+              "required_evidence": "final_effluent_endpoint_labels.release_label",
+              "table_name": "final_effluent_endpoint_labels",
+              "field_name": "release_label",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 2,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "release_label"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "human_reviewed_release_gate_labels",
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "release_or_byproduct_risk_04"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "release_or_byproduct_risk_04",
+              "hidden_state": "release_or_byproduct_risk",
+              "required_evidence": "human_reviewed_release_gate_labels.batch_id",
+              "table_name": "human_reviewed_release_gate_labels",
+              "field_name": "batch_id",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "hydraulic_path_stage_labels",
+          "field_names": [
+            "stage_id"
+          ],
+          "hidden_states": [
+            "hydraulic_delay"
+          ],
+          "response_row_ids": [
+            "hydraulic_delay_05"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "hydraulic_delay_05",
+              "hidden_state": "hydraulic_delay",
+              "required_evidence": "hydraulic_path_stage_labels.stage_id",
+              "table_name": "hydraulic_path_stage_labels",
+              "field_name": "stage_id",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "stage_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "node_modality_sensor_timeseries",
+          "field_names": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "hidden_states": [
+            "catalyst_activity"
+          ],
+          "response_row_ids": [
+            "catalyst_activity_01",
+            "catalyst_activity_02",
+            "catalyst_activity_03"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "catalyst_activity_01",
+              "hidden_state": "catalyst_activity",
+              "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:UV254_abs",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed_outlet:UV254_abs",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "catalyst_activity_02",
+              "hidden_state": "catalyst_activity",
+              "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed_outlet:ORP_mV",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed_outlet:ORP_mV",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "catalyst_activity_03",
+              "hidden_state": "catalyst_activity",
+              "required_evidence": "node_modality_sensor_timeseries.N3_catalyst_bed:pressure_drop_kPa",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed:pressure_drop_kPa",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "offline_lab_results",
+          "field_names": [
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "pollutant_residual_01",
+            "reaction_completion_01",
+            "catalyst_activity_04",
+            "matrix_interference_02",
+            "release_or_byproduct_risk_01"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "pollutant_residual_01",
+              "hidden_state": "pollutant_residual",
+              "required_evidence": "offline_lab_results.pollutant_residual",
+              "table_name": "offline_lab_results",
+              "field_name": "pollutant_residual",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "reaction_completion_01",
+              "hidden_state": "reaction_completion",
+              "required_evidence": "offline_lab_results.reaction_completion_proxy",
+              "table_name": "offline_lab_results",
+              "field_name": "reaction_completion_proxy",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "catalyst_activity_04",
+              "hidden_state": "catalyst_activity",
+              "required_evidence": "offline_lab_results.catalyst_activity",
+              "table_name": "offline_lab_results",
+              "field_name": "catalyst_activity",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "matrix_interference_02",
+              "hidden_state": "matrix_interference",
+              "required_evidence": "offline_lab_results.matrix_interference",
+              "table_name": "offline_lab_results",
+              "field_name": "matrix_interference",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "release_or_byproduct_risk_01",
+              "hidden_state": "release_or_byproduct_risk",
+              "required_evidence": "offline_lab_results.byproduct_or_release_risk",
+              "table_name": "offline_lab_results",
+              "field_name": "byproduct_or_release_risk",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 5,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "offline_method_id",
+            "detection_limit",
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "sensor_timeseries",
+          "field_names": [
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs",
+            "influent:ORP_mV",
+            "influent:conductivity_uScm",
+            "influent:turbidity_NTU"
+          ],
+          "hidden_states": [
+            "matrix_interference",
+            "pollutant_residual"
+          ],
+          "response_row_ids": [
+            "pollutant_residual_03",
+            "pollutant_residual_04",
+            "matrix_interference_03",
+            "matrix_interference_04",
+            "matrix_interference_05"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "pollutant_residual_03",
+              "hidden_state": "pollutant_residual",
+              "required_evidence": "sensor_timeseries.final_effluent:UV254_abs",
+              "table_name": "sensor_timeseries",
+              "field_name": "final_effluent:UV254_abs",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "pollutant_residual_04",
+              "hidden_state": "pollutant_residual",
+              "required_evidence": "sensor_timeseries.final_effluent:ORP_mV",
+              "table_name": "sensor_timeseries",
+              "field_name": "final_effluent:ORP_mV",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "matrix_interference_03",
+              "hidden_state": "matrix_interference",
+              "required_evidence": "sensor_timeseries.influent:conductivity_uScm",
+              "table_name": "sensor_timeseries",
+              "field_name": "influent:conductivity_uScm",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "matrix_interference_04",
+              "hidden_state": "matrix_interference",
+              "required_evidence": "sensor_timeseries.influent:turbidity_NTU",
+              "table_name": "sensor_timeseries",
+              "field_name": "influent:turbidity_NTU",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "matrix_interference_05",
+              "hidden_state": "matrix_interference",
+              "required_evidence": "sensor_timeseries.influent:ORP_mV",
+              "table_name": "sensor_timeseries",
+              "field_name": "influent:ORP_mV",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 5,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs",
+            "influent:ORP_mV",
+            "influent:conductivity_uScm",
+            "influent:turbidity_NTU"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "site_topology_or_bed_geometry",
+          "field_names": [
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion"
+          ],
+          "response_row_ids": [
+            "reaction_completion_06",
+            "catalyst_activity_06",
+            "hydraulic_delay_04"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "reaction_completion_06",
+              "hidden_state": "reaction_completion",
+              "required_evidence": "site_topology_or_bed_geometry.nominal_HRT_min",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "nominal_HRT_min",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "catalyst_activity_06",
+              "hidden_state": "catalyst_activity",
+              "required_evidence": "site_topology_or_bed_geometry.nominal_HRT_min",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "nominal_HRT_min",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            },
+            {
+              "response_row_id": "hydraulic_delay_04",
+              "hidden_state": "hydraulic_delay",
+              "required_evidence": "site_topology_or_bed_geometry.flow_Lmin",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "flow_Lmin",
+              "data_origin": "TODO_field",
+              "batch_id": "TODO_batch_id",
+              "timestamp": "TODO_timestamp_or_not_applicable",
+              "node_id": "TODO_node_id_or_not_applicable",
+              "sensor_id": "TODO_sensor_id_or_not_applicable",
+              "offline_method_id": "TODO_method_id_or_not_applicable",
+              "detection_limit": "TODO_detection_limit_or_not_applicable",
+              "evidence_value_reference": "TODO_table_column_or_file_reference",
+              "evidence_value": "TODO_actual_field_value_or_json_payload",
+              "chain_of_custody_id": "TODO_chain_of_custody_id",
+              "operator_id": "TODO_operator_id"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        }
+      ],
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "next_operator_action": "complete_field_activation_response_preflight_before_package_staging"
+    }
+  ],
+  "candidate_channel_plans": [
+    {
+      "channel_id": "R7_REAL_FIELD_PACKAGE",
+      "package_pointer": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+      "assembly_status": "channel_package_assembly_blocked_by_response_preflight",
+      "required_contract_evidence": [
+        "metadata.json with data_origin=field and no placeholder/template markers",
+        "timestamped sensor_timeseries rows with batch_id, timestamp, node_id/sensor_id and sensor_status",
+        "campaign_operation_log rows with action/effect timing and operator context",
+        "offline_lab_results rows linked by batch_id and method/detection-limit metadata",
+        "fast_proxy_event_log or equivalent proxy labels when pressure/conflict replay is evaluated"
+      ],
+      "reject_if": [
+        "header-only template package",
+        "data_origin is synthetic/sample/template or missing",
+        "batch_id/timestamp alignment is absent",
+        "metadata contains TODO, placeholder or template markers"
+      ],
+      "resumes_to": [
+        "Agent44 field import preflight",
+        "Agent42 timestamped campaign replay",
+        "Agent43 G6/P6 calibration gate",
+        "Agent45 field replay evidence chain"
+      ],
+      "table_assemblies": [
+        {
+          "table_name": "campaign_operation_log",
+          "field_names": [
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_reaction_completion_03",
+            "candidate_reaction_completion_04",
+            "candidate_reaction_completion_05",
+            "candidate_catalyst_activity_05",
+            "candidate_hydraulic_delay_01",
+            "candidate_hydraulic_delay_02",
+            "candidate_hydraulic_delay_03",
+            "candidate_release_or_byproduct_risk_05"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_reaction_completion_03",
+              "hidden_state": "reaction_completion",
+              "table_name": "campaign_operation_log",
+              "field_name": "hold_time_min"
+            },
+            {
+              "response_row_id": "candidate_reaction_completion_04",
+              "hidden_state": "reaction_completion",
+              "table_name": "campaign_operation_log",
+              "field_name": "effect_time_min"
+            },
+            {
+              "response_row_id": "candidate_reaction_completion_05",
+              "hidden_state": "reaction_completion",
+              "table_name": "campaign_operation_log",
+              "field_name": "recycle_ratio"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_05",
+              "hidden_state": "catalyst_activity",
+              "table_name": "campaign_operation_log",
+              "field_name": "regeneration_event"
+            },
+            {
+              "response_row_id": "candidate_hydraulic_delay_01",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "campaign_operation_log",
+              "field_name": "effect_time_min"
+            },
+            {
+              "response_row_id": "candidate_hydraulic_delay_02",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "campaign_operation_log",
+              "field_name": "hold_time_min"
+            },
+            {
+              "response_row_id": "candidate_hydraulic_delay_03",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "campaign_operation_log",
+              "field_name": "recycle_ratio"
+            },
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_05",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "campaign_operation_log",
+              "field_name": "operator_review_decision"
+            }
+          ],
+          "source_response_row_count": 8,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "context_or_manual_review",
+          "field_names": [
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_02",
+            "candidate_reaction_completion_02",
+            "candidate_release_or_byproduct_risk_02"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_02",
+              "hidden_state": "pollutant_residual",
+              "table_name": "context_or_manual_review",
+              "field_name": "field_holdout_release_labels"
+            },
+            {
+              "response_row_id": "candidate_reaction_completion_02",
+              "hidden_state": "reaction_completion",
+              "table_name": "context_or_manual_review",
+              "field_name": "known_HRT_or_contact_time"
+            },
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_02",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "context_or_manual_review",
+              "field_name": "human_reviewed_release_gate_labels"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "field_holdout_release_labels",
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "pollutant_residual"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_06"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_06",
+              "hidden_state": "pollutant_residual",
+              "table_name": "field_holdout_release_labels",
+              "field_name": "batch_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "field_labeled_fast_proxy_event_log",
+          "field_names": [
+            "matrix_shock"
+          ],
+          "hidden_states": [
+            "matrix_interference"
+          ],
+          "response_row_ids": [
+            "candidate_matrix_interference_01"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_matrix_interference_01",
+              "hidden_state": "matrix_interference",
+              "table_name": "field_labeled_fast_proxy_event_log",
+              "field_name": "matrix_shock"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "matrix_shock"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "final_effluent_endpoint_labels",
+          "field_names": [
+            "release_label"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_05",
+            "candidate_release_or_byproduct_risk_03"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_05",
+              "hidden_state": "pollutant_residual",
+              "table_name": "final_effluent_endpoint_labels",
+              "field_name": "release_label"
+            },
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_03",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "final_effluent_endpoint_labels",
+              "field_name": "release_label"
+            }
+          ],
+          "source_response_row_count": 2,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "release_label"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "human_reviewed_release_gate_labels",
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_release_or_byproduct_risk_04"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_04",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "human_reviewed_release_gate_labels",
+              "field_name": "batch_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "hydraulic_path_stage_labels",
+          "field_names": [
+            "stage_id"
+          ],
+          "hidden_states": [
+            "hydraulic_delay"
+          ],
+          "response_row_ids": [
+            "candidate_hydraulic_delay_05"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_hydraulic_delay_05",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "hydraulic_path_stage_labels",
+              "field_name": "stage_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "stage_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "node_modality_sensor_timeseries",
+          "field_names": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "hidden_states": [
+            "catalyst_activity"
+          ],
+          "response_row_ids": [
+            "candidate_catalyst_activity_01",
+            "candidate_catalyst_activity_02",
+            "candidate_catalyst_activity_03"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_catalyst_activity_01",
+              "hidden_state": "catalyst_activity",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed_outlet:UV254_abs"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_02",
+              "hidden_state": "catalyst_activity",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed_outlet:ORP_mV"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_03",
+              "hidden_state": "catalyst_activity",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed:pressure_drop_kPa"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "offline_lab_results",
+          "field_names": [
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_01",
+            "candidate_reaction_completion_01",
+            "candidate_catalyst_activity_04",
+            "candidate_matrix_interference_02",
+            "candidate_release_or_byproduct_risk_01"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_01",
+              "hidden_state": "pollutant_residual",
+              "table_name": "offline_lab_results",
+              "field_name": "pollutant_residual"
+            },
+            {
+              "response_row_id": "candidate_reaction_completion_01",
+              "hidden_state": "reaction_completion",
+              "table_name": "offline_lab_results",
+              "field_name": "reaction_completion_proxy"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_04",
+              "hidden_state": "catalyst_activity",
+              "table_name": "offline_lab_results",
+              "field_name": "catalyst_activity"
+            },
+            {
+              "response_row_id": "candidate_matrix_interference_02",
+              "hidden_state": "matrix_interference",
+              "table_name": "offline_lab_results",
+              "field_name": "matrix_interference"
+            },
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_01",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "offline_lab_results",
+              "field_name": "byproduct_or_release_risk"
+            }
+          ],
+          "source_response_row_count": 5,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "offline_method_id",
+            "detection_limit",
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "matrix_interference",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "sensor_timeseries",
+          "field_names": [
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs",
+            "influent:ORP_mV",
+            "influent:conductivity_uScm",
+            "influent:turbidity_NTU"
+          ],
+          "hidden_states": [
+            "matrix_interference",
+            "pollutant_residual"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_03",
+            "candidate_pollutant_residual_04",
+            "candidate_matrix_interference_03",
+            "candidate_matrix_interference_04",
+            "candidate_matrix_interference_05"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_03",
+              "hidden_state": "pollutant_residual",
+              "table_name": "sensor_timeseries",
+              "field_name": "final_effluent:UV254_abs"
+            },
+            {
+              "response_row_id": "candidate_pollutant_residual_04",
+              "hidden_state": "pollutant_residual",
+              "table_name": "sensor_timeseries",
+              "field_name": "final_effluent:ORP_mV"
+            },
+            {
+              "response_row_id": "candidate_matrix_interference_03",
+              "hidden_state": "matrix_interference",
+              "table_name": "sensor_timeseries",
+              "field_name": "influent:conductivity_uScm"
+            },
+            {
+              "response_row_id": "candidate_matrix_interference_04",
+              "hidden_state": "matrix_interference",
+              "table_name": "sensor_timeseries",
+              "field_name": "influent:turbidity_NTU"
+            },
+            {
+              "response_row_id": "candidate_matrix_interference_05",
+              "hidden_state": "matrix_interference",
+              "table_name": "sensor_timeseries",
+              "field_name": "influent:ORP_mV"
+            }
+          ],
+          "source_response_row_count": 5,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs",
+            "influent:ORP_mV",
+            "influent:conductivity_uScm",
+            "influent:turbidity_NTU"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "site_topology_or_bed_geometry",
+          "field_names": [
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion"
+          ],
+          "response_row_ids": [
+            "candidate_reaction_completion_06",
+            "candidate_catalyst_activity_06",
+            "candidate_hydraulic_delay_04"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_reaction_completion_06",
+              "hidden_state": "reaction_completion",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "nominal_HRT_min"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_06",
+              "hidden_state": "catalyst_activity",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "nominal_HRT_min"
+            },
+            {
+              "response_row_id": "candidate_hydraulic_delay_04",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "flow_Lmin"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        }
+      ],
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "next_operator_action": "complete_field_activation_response_preflight_before_package_staging",
+      "plan_basis": "matrix_required_channels_not_filled_response_choice"
+    },
+    {
+      "channel_id": "R8U66_PATH_ENDPOINT_LABEL_PACKAGE",
+      "package_pointer": "FIELD_PATH_ENDPOINT_LABEL_PACKAGE_DIR",
+      "assembly_status": "channel_package_assembly_blocked_by_response_preflight",
+      "required_contract_evidence": [
+        "site_topology_or_bed_geometry",
+        "node_modality_sensor_timeseries",
+        "hydraulic_path_stage_labels",
+        "final_effluent_endpoint_labels",
+        "campaign_operation_log",
+        "offline_lab_results",
+        "at least 5 same-batch aligned path/endpoint/lab/operation rows"
+      ],
+      "reject_if": [
+        "any required table is missing or header-only",
+        "matched_batch_count is below 5",
+        "final_effluent_endpoint_labels are absent",
+        "template markers or non-field provenance are present"
+      ],
+      "resumes_to": [
+        "Agent54 field layout holdout",
+        "soft-sensor endpoint/path validation",
+        "release-gate candidate review after field holdout and human review"
+      ],
+      "table_assemblies": [
+        {
+          "table_name": "campaign_operation_log",
+          "field_names": [
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_reaction_completion_03",
+            "candidate_reaction_completion_04",
+            "candidate_reaction_completion_05",
+            "candidate_catalyst_activity_05",
+            "candidate_hydraulic_delay_01",
+            "candidate_hydraulic_delay_02",
+            "candidate_hydraulic_delay_03",
+            "candidate_release_or_byproduct_risk_05"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_reaction_completion_03",
+              "hidden_state": "reaction_completion",
+              "table_name": "campaign_operation_log",
+              "field_name": "hold_time_min"
+            },
+            {
+              "response_row_id": "candidate_reaction_completion_04",
+              "hidden_state": "reaction_completion",
+              "table_name": "campaign_operation_log",
+              "field_name": "effect_time_min"
+            },
+            {
+              "response_row_id": "candidate_reaction_completion_05",
+              "hidden_state": "reaction_completion",
+              "table_name": "campaign_operation_log",
+              "field_name": "recycle_ratio"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_05",
+              "hidden_state": "catalyst_activity",
+              "table_name": "campaign_operation_log",
+              "field_name": "regeneration_event"
+            },
+            {
+              "response_row_id": "candidate_hydraulic_delay_01",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "campaign_operation_log",
+              "field_name": "effect_time_min"
+            },
+            {
+              "response_row_id": "candidate_hydraulic_delay_02",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "campaign_operation_log",
+              "field_name": "hold_time_min"
+            },
+            {
+              "response_row_id": "candidate_hydraulic_delay_03",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "campaign_operation_log",
+              "field_name": "recycle_ratio"
+            },
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_05",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "campaign_operation_log",
+              "field_name": "operator_review_decision"
+            }
+          ],
+          "source_response_row_count": 8,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "effect_time_min",
+            "hold_time_min",
+            "operator_review_decision",
+            "recycle_ratio",
+            "regeneration_event"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "context_or_manual_review",
+          "field_names": [
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_02",
+            "candidate_reaction_completion_02",
+            "candidate_release_or_byproduct_risk_02"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_02",
+              "hidden_state": "pollutant_residual",
+              "table_name": "context_or_manual_review",
+              "field_name": "field_holdout_release_labels"
+            },
+            {
+              "response_row_id": "candidate_reaction_completion_02",
+              "hidden_state": "reaction_completion",
+              "table_name": "context_or_manual_review",
+              "field_name": "known_HRT_or_contact_time"
+            },
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_02",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "context_or_manual_review",
+              "field_name": "human_reviewed_release_gate_labels"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "field_holdout_release_labels",
+            "human_reviewed_release_gate_labels",
+            "known_HRT_or_contact_time"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "field_holdout_release_labels",
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "pollutant_residual"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_06"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_06",
+              "hidden_state": "pollutant_residual",
+              "table_name": "field_holdout_release_labels",
+              "field_name": "batch_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "final_effluent_endpoint_labels",
+          "field_names": [
+            "release_label"
+          ],
+          "hidden_states": [
+            "pollutant_residual",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_05",
+            "candidate_release_or_byproduct_risk_03"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_05",
+              "hidden_state": "pollutant_residual",
+              "table_name": "final_effluent_endpoint_labels",
+              "field_name": "release_label"
+            },
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_03",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "final_effluent_endpoint_labels",
+              "field_name": "release_label"
+            }
+          ],
+          "source_response_row_count": 2,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "release_label"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "human_reviewed_release_gate_labels",
+          "field_names": [
+            "batch_id"
+          ],
+          "hidden_states": [
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_release_or_byproduct_risk_04"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_04",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "human_reviewed_release_gate_labels",
+              "field_name": "batch_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "hydraulic_path_stage_labels",
+          "field_names": [
+            "stage_id"
+          ],
+          "hidden_states": [
+            "hydraulic_delay"
+          ],
+          "response_row_ids": [
+            "candidate_hydraulic_delay_05"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_hydraulic_delay_05",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "hydraulic_path_stage_labels",
+              "field_name": "stage_id"
+            }
+          ],
+          "source_response_row_count": 1,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "stage_id"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "node_modality_sensor_timeseries",
+          "field_names": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "hidden_states": [
+            "catalyst_activity"
+          ],
+          "response_row_ids": [
+            "candidate_catalyst_activity_01",
+            "candidate_catalyst_activity_02",
+            "candidate_catalyst_activity_03"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_catalyst_activity_01",
+              "hidden_state": "catalyst_activity",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed_outlet:UV254_abs"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_02",
+              "hidden_state": "catalyst_activity",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed_outlet:ORP_mV"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_03",
+              "hidden_state": "catalyst_activity",
+              "table_name": "node_modality_sensor_timeseries",
+              "field_name": "N3_catalyst_bed:pressure_drop_kPa"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "offline_lab_results",
+          "field_names": [
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "pollutant_residual",
+            "reaction_completion",
+            "release_or_byproduct_risk"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_01",
+            "candidate_reaction_completion_01",
+            "candidate_catalyst_activity_04",
+            "candidate_release_or_byproduct_risk_01"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_01",
+              "hidden_state": "pollutant_residual",
+              "table_name": "offline_lab_results",
+              "field_name": "pollutant_residual"
+            },
+            {
+              "response_row_id": "candidate_reaction_completion_01",
+              "hidden_state": "reaction_completion",
+              "table_name": "offline_lab_results",
+              "field_name": "reaction_completion_proxy"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_04",
+              "hidden_state": "catalyst_activity",
+              "table_name": "offline_lab_results",
+              "field_name": "catalyst_activity"
+            },
+            {
+              "response_row_id": "candidate_release_or_byproduct_risk_01",
+              "hidden_state": "release_or_byproduct_risk",
+              "table_name": "offline_lab_results",
+              "field_name": "byproduct_or_release_risk"
+            }
+          ],
+          "source_response_row_count": 4,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "offline_method_id",
+            "detection_limit",
+            "byproduct_or_release_risk",
+            "catalyst_activity",
+            "pollutant_residual",
+            "reaction_completion_proxy"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "sensor_timeseries",
+          "field_names": [
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs"
+          ],
+          "hidden_states": [
+            "pollutant_residual"
+          ],
+          "response_row_ids": [
+            "candidate_pollutant_residual_03",
+            "candidate_pollutant_residual_04"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_pollutant_residual_03",
+              "hidden_state": "pollutant_residual",
+              "table_name": "sensor_timeseries",
+              "field_name": "final_effluent:UV254_abs"
+            },
+            {
+              "response_row_id": "candidate_pollutant_residual_04",
+              "hidden_state": "pollutant_residual",
+              "table_name": "sensor_timeseries",
+              "field_name": "final_effluent:ORP_mV"
+            }
+          ],
+          "source_response_row_count": 2,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "final_effluent:ORP_mV",
+            "final_effluent:UV254_abs"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "table_name": "site_topology_or_bed_geometry",
+          "field_names": [
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "hidden_states": [
+            "catalyst_activity",
+            "hydraulic_delay",
+            "reaction_completion"
+          ],
+          "response_row_ids": [
+            "candidate_reaction_completion_06",
+            "candidate_catalyst_activity_06",
+            "candidate_hydraulic_delay_04"
+          ],
+          "source_response_rows": [
+            {
+              "response_row_id": "candidate_reaction_completion_06",
+              "hidden_state": "reaction_completion",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "nominal_HRT_min"
+            },
+            {
+              "response_row_id": "candidate_catalyst_activity_06",
+              "hidden_state": "catalyst_activity",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "nominal_HRT_min"
+            },
+            {
+              "response_row_id": "candidate_hydraulic_delay_04",
+              "hidden_state": "hydraulic_delay",
+              "table_name": "site_topology_or_bed_geometry",
+              "field_name": "flow_Lmin"
+            }
+          ],
+          "source_response_row_count": 3,
+          "required_output_columns": [
+            "batch_id",
+            "data_origin",
+            "chain_of_custody_id",
+            "operator_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "flow_Lmin",
+            "nominal_HRT_min"
+          ],
+          "row_alignment_keys": [
+            "batch_id",
+            "timestamp",
+            "node_id",
+            "sensor_id",
+            "chain_of_custody_id"
+          ]
+        }
+      ],
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "next_operator_action": "complete_field_activation_response_preflight_before_package_staging",
+      "plan_basis": "matrix_required_channels_not_filled_response_choice"
+    }
+  ],
+  "can_stage_external_package_candidates": false,
+  "can_route_to_external_activation_router": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "operator_sequence": [
+    "Fill field_activation_response_template.json with real field values.",
+    "Run field_activation_response_preflight until it is ready.",
+    "Only then assemble channel package candidates and run external activation router preflight."
+  ],
+  "no_write_boundary": "The assembly plan only groups filled state-level evidence into package tables. It never creates field evidence by itself, never runs replay/holdout, and never writes actuator policy, release gate, legal conclusions or field-supported claims."
+}

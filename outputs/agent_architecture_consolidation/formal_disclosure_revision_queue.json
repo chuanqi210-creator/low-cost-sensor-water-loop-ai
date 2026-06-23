@@ -1,0 +1,18 @@
+{
+  "formal_disclosure_revision_queue_status": "formal_disclosure_revision_queue_blocked_at_formal_counsel_review_response",
+  "linked_formal_counsel_review_response_status": "formal_counsel_review_response_preflight_blocked_at_template",
+  "source_formal_counsel_review_response_path": "",
+  "revision_item_count": 0,
+  "disclosure_revision_items": [],
+  "external_formal_review_completed": false,
+  "can_route_to_disclosure_editor": false,
+  "can_apply_disclosure_revision_automatically": false,
+  "can_emit_claim_text": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "failure_boundary": "该 queue 只把外部正式审查通过预检的技术修订要求转成技术交底修订任务；不能自动改写权利要求、不能生成法律意见、不能判断授权可能性，也不能绕过现场验证门。",
+  "queue_blockers": [
+    "formal_counsel_review_response_status:formal_counsel_review_response_preflight_blocked_at_template"
+  ]
+}

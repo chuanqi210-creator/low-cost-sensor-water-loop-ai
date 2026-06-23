@@ -1,0 +1,131 @@
+{
+  "handle": "agent-7d3dd34b33",
+  "agent_id": "agent:54:soft_sensor_matrix_coupling",
+  "agent_number": 54,
+  "slug": "soft_sensor_matrix_coupling",
+  "runner": "experiments/run_agent54_soft_sensor_matrix_coupling.py",
+  "source": "src/water_ai/agents/soft_sensor_matrix_coupling_agent.py",
+  "deliverable": "deliverables/soft_sensor_matrix_coupling.md",
+  "test": "tests/test_soft_sensor_matrix_coupling_agent.py",
+  "output_dir": "outputs/agent54_soft_sensor_matrix_coupling",
+  "related_nodes": [
+    {
+      "handle": "agent-7d3dd34b33",
+      "node_id": "agent:54:soft_sensor_matrix_coupling",
+      "kind": "agent_workflow",
+      "label": "Agent54 soft_sensor_matrix_coupling",
+      "path": "experiments/run_agent54_soft_sensor_matrix_coupling.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 54
+      }
+    },
+    {
+      "handle": "dir-dee2ec05fe",
+      "node_id": "dir:outputs/agent54_soft_sensor_matrix_coupling",
+      "kind": "output_dir",
+      "label": "agent54_soft_sensor_matrix_coupling",
+      "path": "outputs/agent54_soft_sensor_matrix_coupling",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-6eb569a6c1",
+      "node_id": "file:deliverables/soft_sensor_matrix_coupling.md",
+      "kind": "referenced_path",
+      "label": "soft_sensor_matrix_coupling.md",
+      "path": "deliverables/soft_sensor_matrix_coupling.md",
+      "layer": "deliverable",
+      "summary": "软传感 Node-Modality/Missingness 矩阵耦合",
+      "metrics": {
+        "lines": 86,
+        "size_bytes": 6022
+      }
+    },
+    {
+      "handle": "file-0b54e09ed5",
+      "node_id": "file:experiments/run_agent54_soft_sensor_matrix_coupling.py",
+      "kind": "file",
+      "label": "run_agent54_soft_sensor_matrix_coupling.py",
+      "path": "experiments/run_agent54_soft_sensor_matrix_coupling.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 332,
+        "size_bytes": 18414
+      }
+    },
+    {
+      "handle": "file-cbf682fff6",
+      "node_id": "file:src/water_ai/agents/soft_sensor_matrix_coupling_agent.py",
+      "kind": "referenced_path",
+      "label": "soft_sensor_matrix_coupling_agent.py",
+      "path": "src/water_ai/agents/soft_sensor_matrix_coupling_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 1153,
+        "size_bytes": 61948
+      }
+    },
+    {
+      "handle": "file-e62201d4ac",
+      "node_id": "file:tests/test_soft_sensor_matrix_coupling_agent.py",
+      "kind": "referenced_path",
+      "label": "test_soft_sensor_matrix_coupling_agent.py",
+      "path": "tests/test_soft_sensor_matrix_coupling_agent.py",
+      "layer": "verification",
+      "summary": "from water_ai.agents.data_quality_agent import DataQualityAgent",
+      "metrics": {
+        "lines": 319,
+        "size_bytes": 15536
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:54:soft_sensor_matrix_coupling",
+      "target": "file:deliverables/soft_sensor_matrix_coupling.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:54:soft_sensor_matrix_coupling",
+      "target": "file:src/water_ai/agents/soft_sensor_matrix_coupling_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:54:soft_sensor_matrix_coupling",
+      "target": "file:experiments/run_agent54_soft_sensor_matrix_coupling.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:54:soft_sensor_matrix_coupling",
+      "target": "file:tests/test_soft_sensor_matrix_coupling_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:54:soft_sensor_matrix_coupling",
+      "target": "dir:outputs/agent54_soft_sensor_matrix_coupling",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

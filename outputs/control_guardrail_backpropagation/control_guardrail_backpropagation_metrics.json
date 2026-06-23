@@ -1,0 +1,204 @@
+{
+  "method_contract": {
+    "upgrade_id": "R4_control_guardrail_failure_backpropagation",
+    "borrowed_from": [
+      "model-based diagnosis after counterfactual policy replay",
+      "grey-box residual boundary review",
+      "field requirement traceability matrix",
+      "failure mode and effects analysis for control guardrails"
+    ],
+    "reality_mapping": "把 R3c replay 中被 guardrail 修复的控制失败案例，反写为灰箱机制边界和现场 replay 必采字段，让控制层的经验修正回到可解释过程机制。",
+    "data_needs": [
+      "Agent52 guardrail_resolved_cases",
+      "Agent52 replay_table with missingness and rewards",
+      "Agent53 grey_box failure boundaries",
+      "Agent58/59 field requirement and claim-specific field package"
+    ],
+    "evaluation_metrics": [
+      "resolved_case_to_mechanism_coverage",
+      "resolved_case_to_field_requirement_coverage",
+      "grey_box_failure_boundary_count",
+      "field_replay_required_field_count"
+    ],
+    "failure_boundary": "R4 can update grey-box boundary candidates and field requirement patches, but cannot claim field validation or write actuators."
+  },
+  "resolved_case_backpropagation_table": [
+    {
+      "batch_id": "R2",
+      "scenario": "catalyst_uncertain_low_proxy",
+      "baseline_policy_action_id": "J2_catalyst_protection_before_regeneration",
+      "guardrail_aware_policy_action_id": "J4_safe_low_cost_standby",
+      "expert_action_id": "J4_safe_low_cost_standby",
+      "guardrail_source_rule_id": "R3G1_catalyst_uncertain_requires_standby_or_human_review",
+      "reward_regret_delta": 0.177,
+      "mechanism_family": "catalyst_activity_proxy_uncertainty",
+      "grey_box_boundary": [
+        "catalyst activity cannot be treated as observed without proxy holdout label",
+        "protective/regeneration actions require pressure-drop or lifecycle evidence",
+        "matrix inhibition and catalyst deactivation must remain separable hypotheses"
+      ],
+      "field_required_fields": [
+        "proxy_holdout_label",
+        "pressure_drop_kPa",
+        "regeneration_event",
+        "operator_override",
+        "N3_catalyst_bed_outlet:UV254_abs",
+        "N3_catalyst_bed_outlet:turbidity_NTU"
+      ],
+      "target_modules": [
+        "M1_sparse_observation_layout",
+        "M3_grey_box_mechanism",
+        "M6_field_evidence_chain"
+      ],
+      "control_implication": "keep J4_safe_low_cost_standby or human-reviewed catalyst protection until field proxy labels close the uncertainty.",
+      "claim_boundary": "synthetic guardrail resolved false-positive catalyst protection; field proxy labels are required before catalyst-control claim upgrade."
+    },
+    {
+      "batch_id": "R5",
+      "scenario": "hydraulic_delay_violation",
+      "baseline_policy_action_id": "J0_matrix_shock_equalize_and_recycle",
+      "guardrail_aware_policy_action_id": "J3_polishing_and_release_gate",
+      "expert_action_id": "J3_polishing_and_release_gate",
+      "guardrail_source_rule_id": "R3G2_hydraulic_delay_unknown_blocks_recycle",
+      "reward_regret_delta": 0.153,
+      "mechanism_family": "hydraulic_latency_and_storage_uncertainty",
+      "grey_box_boundary": [
+        "recycle escalation is unsafe when residence-time delay and storage margin are unobserved",
+        "latency budget must include actuator response, pump-valve result and tank capacity",
+        "loop retention benefit must be checked against polishing/release-gate alternative"
+      ],
+      "field_required_fields": [
+        "tank_storage_margin",
+        "actuator_latency_p90",
+        "pump_valve_result",
+        "flow_Lmin",
+        "hold_time_min",
+        "recycle_ratio"
+      ],
+      "target_modules": [
+        "M3_grey_box_mechanism",
+        "M4_collaborative_control",
+        "M6_field_evidence_chain"
+      ],
+      "control_implication": "prefer J3_polishing_and_release_gate over recycle escalation until hydraulic execution evidence exists.",
+      "claim_boundary": "synthetic guardrail resolved high-regret recycle action; field hydraulic replay is required before recycle-control claim upgrade."
+    }
+  ],
+  "coverage_metrics": {
+    "resolved_case_count": 2,
+    "resolved_case_to_mechanism_coverage": 1.0,
+    "resolved_case_to_field_requirement_coverage": 1.0,
+    "grey_box_failure_boundary_count": 6,
+    "field_replay_required_field_count": 12,
+    "unique_field_replay_required_fields": [
+      "N3_catalyst_bed_outlet:UV254_abs",
+      "N3_catalyst_bed_outlet:turbidity_NTU",
+      "actuator_latency_p90",
+      "flow_Lmin",
+      "hold_time_min",
+      "operator_override",
+      "pressure_drop_kPa",
+      "proxy_holdout_label",
+      "pump_valve_result",
+      "recycle_ratio",
+      "regeneration_event",
+      "tank_storage_margin"
+    ],
+    "field_replay_coverage": 0.0,
+    "data_origin": "synthetic_guardrail_backpropagation"
+  },
+  "grey_box_patch": [
+    {
+      "mechanism_family": "catalyst_activity_proxy_uncertainty",
+      "scenario": "catalyst_uncertain_low_proxy",
+      "grey_box_boundary": [
+        "catalyst activity cannot be treated as observed without proxy holdout label",
+        "protective/regeneration actions require pressure-drop or lifecycle evidence",
+        "matrix inhibition and catalyst deactivation must remain separable hypotheses"
+      ],
+      "control_implication": "keep J4_safe_low_cost_standby or human-reviewed catalyst protection until field proxy labels close the uncertainty.",
+      "target_agent": "minimal_grey_box_physics_agent",
+      "field_boundary": "synthetic guardrail resolved false-positive catalyst protection; field proxy labels are required before catalyst-control claim upgrade."
+    },
+    {
+      "mechanism_family": "hydraulic_latency_and_storage_uncertainty",
+      "scenario": "hydraulic_delay_violation",
+      "grey_box_boundary": [
+        "recycle escalation is unsafe when residence-time delay and storage margin are unobserved",
+        "latency budget must include actuator response, pump-valve result and tank capacity",
+        "loop retention benefit must be checked against polishing/release-gate alternative"
+      ],
+      "control_implication": "prefer J3_polishing_and_release_gate over recycle escalation until hydraulic execution evidence exists.",
+      "target_agent": "minimal_grey_box_physics_agent",
+      "field_boundary": "synthetic guardrail resolved high-regret recycle action; field hydraulic replay is required before recycle-control claim upgrade."
+    }
+  ],
+  "field_requirement_patch": [
+    {
+      "scenario": "catalyst_uncertain_low_proxy",
+      "required_fields": [
+        "proxy_holdout_label",
+        "pressure_drop_kPa",
+        "regeneration_event",
+        "operator_override",
+        "N3_catalyst_bed_outlet:UV254_abs",
+        "N3_catalyst_bed_outlet:turbidity_NTU"
+      ],
+      "target_agents": [
+        "field_validation_queue_alignment_agent",
+        "claim_specific_field_package_agent",
+        "field_replay_import_agent"
+      ],
+      "claim_boundary": "synthetic guardrail resolved false-positive catalyst protection; field proxy labels are required before catalyst-control claim upgrade."
+    },
+    {
+      "scenario": "hydraulic_delay_violation",
+      "required_fields": [
+        "tank_storage_margin",
+        "actuator_latency_p90",
+        "pump_valve_result",
+        "flow_Lmin",
+        "hold_time_min",
+        "recycle_ratio"
+      ],
+      "target_agents": [
+        "field_validation_queue_alignment_agent",
+        "claim_specific_field_package_agent",
+        "field_replay_import_agent"
+      ],
+      "claim_boundary": "synthetic guardrail resolved high-regret recycle action; field hydraulic replay is required before recycle-control claim upgrade."
+    }
+  ],
+  "readiness": {
+    "guardrail_backpropagation_status": "synthetic_guardrail_backpropagation_ready_needs_field_replay_and_grey_box_calibration",
+    "guardrail_backpropagation_score": 0.92,
+    "backpropagation_ready": true,
+    "field_ready": false,
+    "can_update_agent53_failure_boundaries": true,
+    "can_update_field_requirement_patch": true,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false
+  },
+  "writeback_policy": {
+    "allowed_writeback": [
+      "agent53_grey_box_failure_boundary_candidate",
+      "agent58_59_field_requirement_patch_candidate",
+      "architecture_consolidation_R4_status"
+    ],
+    "blocked_writeback": [
+      "actuator_policy",
+      "release_gate_policy",
+      "field_control_effectiveness_claim",
+      "grey_box_parameter_calibration_claim"
+    ],
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "policy_effect": "R4 can only backpropagate guardrail cases into mechanism and data requirements."
+  },
+  "next_refactor_action": {
+    "action_id": "R4b_patch_agent53_and_field_requirement_interfaces",
+    "title": "把 R4 grey-box/field patches 接入 Agent53、Agent58 和 Agent59",
+    "reason": "R4 已形成控制失败到机制边界和现场字段的映射；下一步应让灰箱和 field package 消费这些 patch。",
+    "must_not_do": "不能把 synthetic backpropagation 当作 field-supported mechanism calibration."
+  }
+}

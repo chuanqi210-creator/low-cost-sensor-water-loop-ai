@@ -1,0 +1,10 @@
+{
+  "work_package_id": "R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE",
+  "route_id": "agent52_replay_export",
+  "data_origin": "TODO_REPLACE_WITH_REAL_ORIGIN",
+  "submission_status": "template_only_not_evidence",
+  "evidence_boundary": "Template JSON must be replaced with real submission metadata before preflight can pass.",
+  "replay_run_id": "TODO_AGENT52_REPLAY_RUN_ID",
+  "source_policy_id": "TODO_AGENT49_POLICY_ID",
+  "expert_review_basis": "TODO_EXPERT_OR_RULE_BASIS"
+}

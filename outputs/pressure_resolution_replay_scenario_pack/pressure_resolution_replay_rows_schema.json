@@ -1,0 +1,500 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pressure_resolution_replay_rows.schema.json",
+  "title": "R8p pressure resolution replay real field rows package",
+  "description": "Machine-readable structure contract for the real pressure-resolution replay rows package. Passing this schema does not make rows field evidence; R8p acceptance still checks real values, same-batch scenario linkage, template rejection, field-origin provenance in every required table, and downstream R8v/R7 gates.",
+  "type": "object",
+  "required": [
+    "agent52_replay_table",
+    "campaign_operation_log",
+    "fast_proxy_event_log",
+    "node_modality_sensor_timeseries",
+    "offline_lab_results",
+    "pressure_headloss_event_log"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "agent52_replay_table": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "scenario",
+          "policy_action_id",
+          "expert_action_id",
+          "pressure_source_conflict_count",
+          "resolved_pressure_source_conflict_count",
+          "unresolved_pressure_source_conflict_count",
+          "pressure_source_resolution_record_count",
+          "pressure_source_conflict_requires_operator_review",
+          "pressure_source_conflict_control_block",
+          "data_origin"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "batch_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collection_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data_origin": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expert_action_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "policy_action_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pressure_source_conflict_control_block": {
+            "type": "boolean"
+          },
+          "pressure_source_conflict_count": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "pressure_source_conflict_requires_operator_review": {
+            "type": "boolean"
+          },
+          "pressure_source_resolution_record_count": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "resolved_pressure_source_conflict_count": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "scenario": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unresolved_pressure_source_conflict_count": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          }
+        }
+      },
+      "description": "Field-origin rows for `agent52_replay_table`. Extra metadata columns are allowed but do not bypass R8p acceptance."
+    },
+    "campaign_operation_log": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "action_id",
+          "operator_review_required",
+          "pressure_source_resolution",
+          "authoritative_pressure_source",
+          "reviewer_id",
+          "review_time",
+          "calibration_action_id",
+          "calibration_note",
+          "hold_time_min",
+          "recycle_ratio",
+          "data_origin"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "action_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authoritative_pressure_source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "batch_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "calibration_action_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "calibration_note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collection_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data_origin": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hold_time_min": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "operator_review_required": {
+            "type": "boolean"
+          },
+          "pressure_source_resolution": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recycle_ratio": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "review_time": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewer_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario_type": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "description": "Field-origin rows for `campaign_operation_log`. Extra metadata columns are allowed but do not bypass R8p acceptance."
+    },
+    "fast_proxy_event_log": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "proxy_label_time_min",
+          "proxy_event_type",
+          "protective_triggered",
+          "false_positive_cost_index",
+          "data_origin"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "batch_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collection_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data_origin": {
+            "type": "string",
+            "minLength": 1
+          },
+          "false_positive_cost_index": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "protective_triggered": {
+            "type": "boolean"
+          },
+          "proxy_event_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "proxy_label_time_min": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario_type": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "description": "Field-origin rows for `fast_proxy_event_log`. Extra metadata columns are allowed but do not bypass R8p acceptance."
+    },
+    "node_modality_sensor_timeseries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "node_id",
+          "modality",
+          "value",
+          "unit",
+          "sample_time_min",
+          "instrument_id",
+          "sensor_status",
+          "data_origin"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "batch_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collection_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data_origin": {
+            "type": "string",
+            "minLength": 1
+          },
+          "instrument_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "modality": {
+            "type": "string",
+            "minLength": 1
+          },
+          "node_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sample_time_min": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sensor_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          }
+        }
+      },
+      "description": "Field-origin rows for `node_modality_sensor_timeseries`. Extra metadata columns are allowed but do not bypass R8p acceptance."
+    },
+    "offline_lab_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "sample_time_min",
+          "lab_label_time_min",
+          "analyte",
+          "value",
+          "unit",
+          "method",
+          "qa_flag",
+          "data_origin"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "analyte": {
+            "type": "string",
+            "minLength": 1
+          },
+          "batch_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collection_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data_origin": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lab_label_time_min": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "qa_flag": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sample_time_min": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          }
+        }
+      },
+      "description": "Field-origin rows for `offline_lab_results`. Extra metadata columns are allowed but do not bypass R8p acceptance."
+    },
+    "pressure_headloss_event_log": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "bed_id",
+          "pressure_drop_kPa",
+          "headloss_kPa_per_m",
+          "flow_Lmin",
+          "event_time_min",
+          "matched_lab_sample_time_min",
+          "hydraulic_anomaly_label",
+          "instrument_id",
+          "data_origin"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "batch_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bed_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collection_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data_origin": {
+            "type": "string",
+            "minLength": 1
+          },
+          "event_time_min": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "flow_Lmin": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "headloss_kPa_per_m": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "hydraulic_anomaly_label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "instrument_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "matched_lab_sample_time_min": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "pressure_drop_kPa": {
+            "type": [
+              "number",
+              "integer"
+            ]
+          },
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario_type": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "description": "Field-origin rows for `pressure_headloss_event_log`. Extra metadata columns are allowed but do not bypass R8p acceptance."
+    }
+  },
+  "x_required_tables": [
+    "agent52_replay_table",
+    "campaign_operation_log",
+    "fast_proxy_event_log",
+    "node_modality_sensor_timeseries",
+    "offline_lab_results",
+    "pressure_headloss_event_log"
+  ],
+  "x_schema_boundary": "Schema validity is only source/table preflight. It cannot write actuator, release gate, or field-supported claims.",
+  "x_downstream_acceptance": [
+    "R8p field_row_acceptance",
+    "R8v pressure-resolution row routing",
+    "Agent51/49/52 field replay and holdout gates",
+    "R7 evidence chain and human review"
+  ]
+}

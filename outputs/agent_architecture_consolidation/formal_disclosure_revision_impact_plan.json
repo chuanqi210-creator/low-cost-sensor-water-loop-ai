@@ -1,0 +1,16 @@
+{
+  "formal_disclosure_revision_impact_plan_status": "formal_disclosure_revision_impact_plan_blocked_at_revision_queue",
+  "linked_formal_disclosure_revision_queue_status": "formal_disclosure_revision_queue_blocked_at_formal_counsel_review_response",
+  "revision_impact_item_count": 0,
+  "revision_impact_items": [],
+  "can_route_to_human_artifact_revision": false,
+  "can_apply_artifact_patch_automatically": false,
+  "can_emit_claim_text": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "failure_boundary": "该 impact plan 只把人工交底修订队列映射到核心技术交底工件；不能自动改写工件、不能输出权利要求文本、不能生成 prior-art 结论、不能替代正式法律意见，也不能把 template/synthetic 结果升级为 field claim。",
+  "impact_plan_blockers": [
+    "formal_disclosure_revision_queue_status:formal_disclosure_revision_queue_blocked_at_formal_counsel_review_response"
+  ]
+}

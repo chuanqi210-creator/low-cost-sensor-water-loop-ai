@@ -1,0 +1,11 @@
+{
+  "data_origin": "synthetic",
+  "site_id": "synthetic_site_for_interface_test",
+  "campaign_id": "synthetic_timestamped_campaign",
+  "sampling_start": "2026-05-31T08:00:00+08:00",
+  "sampling_end": "2026-05-31T12:00:00+08:00",
+  "operator_id": "codex_interface_test",
+  "instrument_snapshot_id": "synthetic_sensor_snapshot_v1",
+  "chain_of_custody_id": "synthetic_not_for_field_calibration",
+  "intended_use": "interface_test_only"
+}

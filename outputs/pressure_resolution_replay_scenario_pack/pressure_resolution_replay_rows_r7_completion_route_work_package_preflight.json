@@ -1,0 +1,22 @@
+{
+  "route_work_package_preflight_id": "R8u26_r7_to_r8p_route_work_package_submission_preflight",
+  "route_work_package_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_preflight.json",
+  "submission_env_var": "R7_TO_R8P_WORK_PACKAGE_DIR",
+  "configured_submission_dir": "",
+  "expected_work_package_count": 4,
+  "can_generate_field_evidence_from_preflight": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "route_work_package_preflight_status": "route_work_package_preflight_waiting_for_submission_dir",
+  "submitted_work_package_count": 0,
+  "passed_work_package_count": 0,
+  "blocked_work_package_count": 4,
+  "missing_work_package_ids": [
+    "R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE",
+    "R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE",
+    "R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE",
+    "R8U25_R8P_VALIDATION_GATES_WORK_PACKAGE"
+  ],
+  "package_preflights": [],
+  "preflight_boundary": "No R7_TO_R8P_WORK_PACKAGE_DIR was supplied. Generated templates are not evidence."
+}

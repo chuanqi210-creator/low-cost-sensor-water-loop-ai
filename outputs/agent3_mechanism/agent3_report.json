@@ -1,0 +1,316 @@
+{
+  "agent_name": "mechanism_agent",
+  "confidence": 0.76,
+  "summary": "首要机理假设：水质可能已处理完成但证据不足，评分 0.816。",
+  "metrics": {
+    "ranked_hypotheses": [
+      {
+        "rule_id": "likely_treated_but_not_releasable",
+        "mechanism": "水质可能已处理完成但证据不足",
+        "score": 0.816,
+        "explanation": "软测量显示达标概率较高，但传感可信度不足或存在漂移，不能把模型估计直接等同于安全放行。",
+        "action_hint": "保持暂存，进行旁路快检；若校准通过再放行。",
+        "evidence": {
+          "compliance_probability": 0.943,
+          "release_readiness": 0.755,
+          "soft_issue_types": [
+            "low_sensor_confidence",
+            "release_blocked_by_uncertainty"
+          ],
+          "knowledge_support": [
+            {
+              "entry_id": "kb_sensor_limited_release_evidence",
+              "match_score": 0.97,
+              "pollutant_class": "低浓度目标污染物或慢检测指标",
+              "material_family": "低成本传感 + 软传感系统",
+              "mechanism_tags": [
+                "sensor_uncertainty",
+                "release_evidence_gap"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "rule_id": "sensor_uncertainty",
+        "mechanism": "传感不确定性主导",
+        "score": 0.763,
+        "explanation": "低成本传感通道出现缺失、突变、卡死或漂移时，软测量虽然可以估计状态，但放行决策应受传感可信度约束。",
+        "action_hint": "进入旁路快检或离线校准，禁止直接自动放行。",
+        "evidence": {
+          "sensor_confidence": 0.755,
+          "dq_issue_types": [
+            "drift_suspected",
+            "flatline",
+            "missing",
+            "spike",
+            "sustained_shift"
+          ],
+          "knowledge_support": [
+            {
+              "entry_id": "kb_sensor_limited_release_evidence",
+              "match_score": 0.97,
+              "pollutant_class": "低浓度目标污染物或慢检测指标",
+              "material_family": "低成本传感 + 软传感系统",
+              "mechanism_tags": [
+                "sensor_uncertainty",
+                "release_evidence_gap"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "rule_id": "hydraulic_anomaly",
+        "mechanism": "水力停留时间异常",
+        "score": 0.7,
+        "explanation": "流量持续偏低、短窗口平均流量不足或水力置信度低，会改变实际停留时间和回流收益，使模型对反应进程的判断出现偏差。",
+        "action_hint": "核查泵阀、管路堵塞和实际回流比，再更新停留时间估计。",
+        "evidence": {
+          "dq_issue_types": [
+            "drift_suspected",
+            "flatline",
+            "missing",
+            "spike",
+            "sustained_shift"
+          ],
+          "hydraulic_confidence": 0.997,
+          "recycle_gain": 0.066
+        }
+      },
+      {
+        "rule_id": "matrix_interference",
+        "mechanism": "基质干扰增强",
+        "score": 0.628,
+        "explanation": "电导率、浊度或 pH 偏离提示高盐、高 COD、颗粒物或缓冲体系可能消耗氧化剂并抑制高级氧化反应。",
+        "action_hint": "评估预处理、提高氧化剂投加、调 pH 或切换到更适合高基质负荷的单元。",
+        "evidence": {
+          "matrix_interference": 0.414,
+          "dq_issue_types": [
+            "drift_suspected",
+            "flatline",
+            "missing",
+            "spike",
+            "sustained_shift"
+          ]
+        }
+      }
+    ],
+    "state_used": {
+      "pollutant_residual_risk": 0.156,
+      "reaction_completion": 0.822,
+      "oxidant_remaining": 0.775,
+      "catalyst_activity": 0.761,
+      "matrix_interference": 0.414,
+      "byproduct_risk": 0.459,
+      "offline_validation_confidence": 0.0,
+      "offline_residual_proxy": 0.0,
+      "offline_validation_age_min": 999.0,
+      "hydraulic_confidence": 0.997,
+      "sensor_confidence": 0.755,
+      "compliance_probability": 0.943,
+      "recycle_gain": 0.066,
+      "release_readiness": 0.755,
+      "cycle_id": 5.0
+    },
+    "dq_issue_types": [
+      "drift_suspected",
+      "flatline",
+      "missing",
+      "spike",
+      "sustained_shift"
+    ],
+    "soft_issue_types": [
+      "low_sensor_confidence",
+      "release_blocked_by_uncertainty"
+    ],
+    "knowledge_matches": [
+      {
+        "entry_id": "kb_sensor_limited_release_evidence",
+        "pollutant_class": "低浓度目标污染物或慢检测指标",
+        "material_family": "低成本传感 + 软传感系统",
+        "mechanism_tags": [
+          "sensor_uncertainty",
+          "release_evidence_gap"
+        ],
+        "supports_rules": [
+          "sensor_uncertainty",
+          "likely_treated_but_not_releasable"
+        ],
+        "action_biases": {
+          "calibrate_sensors": 0.2,
+          "hold_for_validation": 0.18,
+          "release": -0.25
+        },
+        "explanation": "低成本代理信号出现缺失、漂移或置信度不足时，软传感结果不能直接等同于放行证据。",
+        "action_hint": "进入校准、降权或旁路检测流程；模型估计只能作为排序依据，不能替代放行门槛。",
+        "signal_hits": [
+          {
+            "signal": "sensor_confidence",
+            "op": "<",
+            "threshold": 0.82,
+            "value": 0.755
+          },
+          {
+            "signal": "release_readiness",
+            "op": "<",
+            "threshold": 0.82,
+            "value": 0.755
+          }
+        ],
+        "signal_misses": [],
+        "dq_issue_hits": [
+          "drift_suspected",
+          "flatline",
+          "missing",
+          "spike"
+        ],
+        "soft_issue_hits": [
+          "release_blocked_by_uncertainty"
+        ],
+        "match_score": 0.97
+      },
+      {
+        "entry_id": "kb_loop_buffer_for_slow_sensing",
+        "pollutant_class": "目标污染物需慢检测或低成本代理检测的废水",
+        "material_family": "循环式反应器/旁路快检系统",
+        "mechanism_tags": [
+          "loop_buffer_needed",
+          "soft_sensor_delay",
+          "grey_box_inference"
+        ],
+        "supports_rules": [
+          "loop_buffer_needed"
+        ],
+        "action_biases": {
+          "hold_for_validation": 0.16,
+          "recirculate": 0.14,
+          "release": -0.18
+        },
+        "explanation": "当软传感认为继续循环仍有收益，而放行证据不足时，循环结构可以为慢检测、模型复估和旁路验证争取时间。",
+        "action_hint": "不要强行实时控制；设置暂存/回流窗口，让慢证据进入下一轮状态估计。",
+        "signal_hits": [
+          {
+            "signal": "release_readiness",
+            "op": "<",
+            "threshold": 0.86,
+            "value": 0.755
+          }
+        ],
+        "signal_misses": [
+          {
+            "signal": "pollutant_residual_risk",
+            "op": ">",
+            "threshold": 0.32,
+            "value": 0.156
+          },
+          {
+            "signal": "recycle_gain",
+            "op": ">",
+            "threshold": 0.2,
+            "value": 0.066
+          }
+        ],
+        "dq_issue_hits": [],
+        "soft_issue_hits": [
+          "release_blocked_by_uncertainty"
+        ],
+        "match_score": 0.587
+      }
+    ]
+  },
+  "recommendations": [
+    "保持暂存，进行旁路快检；若校准通过再放行。",
+    "进入旁路快检或离线校准，禁止直接自动放行。",
+    "核查泵阀、管路堵塞和实际回流比，再更新停留时间估计。"
+  ],
+  "issues": [
+    {
+      "sensor": "mechanism",
+      "issue_type": "likely_treated_but_not_releasable",
+      "severity": "warning",
+      "message": "水质可能已处理完成但证据不足",
+      "evidence": {
+        "compliance_probability": 0.943,
+        "release_readiness": 0.755,
+        "soft_issue_types": [
+          "low_sensor_confidence",
+          "release_blocked_by_uncertainty"
+        ],
+        "knowledge_support": [
+          {
+            "entry_id": "kb_sensor_limited_release_evidence",
+            "match_score": 0.97,
+            "pollutant_class": "低浓度目标污染物或慢检测指标",
+            "material_family": "低成本传感 + 软传感系统",
+            "mechanism_tags": [
+              "sensor_uncertainty",
+              "release_evidence_gap"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sensor": "mechanism",
+      "issue_type": "sensor_uncertainty",
+      "severity": "warning",
+      "message": "传感不确定性主导",
+      "evidence": {
+        "sensor_confidence": 0.755,
+        "dq_issue_types": [
+          "drift_suspected",
+          "flatline",
+          "missing",
+          "spike",
+          "sustained_shift"
+        ],
+        "knowledge_support": [
+          {
+            "entry_id": "kb_sensor_limited_release_evidence",
+            "match_score": 0.97,
+            "pollutant_class": "低浓度目标污染物或慢检测指标",
+            "material_family": "低成本传感 + 软传感系统",
+            "mechanism_tags": [
+              "sensor_uncertainty",
+              "release_evidence_gap"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sensor": "mechanism",
+      "issue_type": "hydraulic_anomaly",
+      "severity": "warning",
+      "message": "水力停留时间异常",
+      "evidence": {
+        "dq_issue_types": [
+          "drift_suspected",
+          "flatline",
+          "missing",
+          "spike",
+          "sustained_shift"
+        ],
+        "hydraulic_confidence": 0.997,
+        "recycle_gain": 0.066
+      }
+    },
+    {
+      "sensor": "mechanism",
+      "issue_type": "matrix_interference",
+      "severity": "warning",
+      "message": "基质干扰增强",
+      "evidence": {
+        "matrix_interference": 0.414,
+        "dq_issue_types": [
+          "drift_suspected",
+          "flatline",
+          "missing",
+          "spike",
+          "sustained_shift"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1581 @@
+{
+  "soft_sensor_conformal_calibration": {
+    "agent_name": "soft_sensor_conformal_calibration_agent",
+    "confidence": 0.687,
+    "summary": "软传感保形校准：synthetic_conformal_interface_ready_needs_field_holdout；验证覆盖率 0.975，平均区间宽度 0.233。",
+    "recommendations": [
+      "保留当前 split conformal 层作为 synthetic 接口验证，不要写入现场放行门。",
+      "下一步用真实 field holdout 重新计算 nonconformity thresholds，并按污染物/基质分层评估 coverage。",
+      "只有 field 覆盖率、区间宽度和 abstention rate 同时通过后，才允许把 conformal interval 写入 release gate。"
+    ],
+    "metrics": {
+      "split": {
+        "record_count": 48,
+        "calibration_count": 32,
+        "evaluation_count": 16,
+        "calibration_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "evaluation_indices": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ]
+      },
+      "conformal": {
+        "target_coverage_level": 0.9,
+        "target_nonconformity_thresholds": {
+          "pollutant_residual_risk": 0.0818,
+          "reaction_completion": 0.1447,
+          "oxidant_remaining": 0.0624,
+          "catalyst_activity": 0.2075,
+          "matrix_interference": 0.086
+        },
+        "coverage_by_target": {
+          "pollutant_residual_risk": 1.0,
+          "reaction_completion": 1.0,
+          "oxidant_remaining": 1.0,
+          "catalyst_activity": 1.0,
+          "matrix_interference": 0.875
+        },
+        "width_by_target": {
+          "pollutant_residual_risk": 0.1636,
+          "reaction_completion": 0.2894,
+          "oxidant_remaining": 0.1248,
+          "catalyst_activity": 0.415,
+          "matrix_interference": 0.172
+        },
+        "misses_by_target": {
+          "matrix_interference": 2,
+          "pollutant_residual_risk": 0,
+          "reaction_completion": 0,
+          "oxidant_remaining": 0,
+          "catalyst_activity": 0
+        },
+        "scenario_full_coverage": {
+          "catalyst_deactivation": 0.75,
+          "matrix_shock": 1.0
+        },
+        "overall_conformal_coverage": 0.975,
+        "mean_conformal_interval_width": 0.233,
+        "coverage_error": 0.075,
+        "evaluation_pair_count": 80,
+        "release_abstention_rate": 0.125,
+        "ood_alert_rate": 0.0
+      },
+      "readiness": {
+        "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+        "conformal_score": 0.854,
+        "field_holdout_required": true,
+        "can_write_to_release_gate": false
+      },
+      "evidence_stage": "synthetic_holdout",
+      "alpha": 0.1,
+      "validation_records": [
+        {
+          "scenario": "clean_release",
+          "seed": 0,
+          "uncertainty_score": 0.06,
+          "ood_risk": 0.0,
+          "release_readiness": 0.839,
+          "compliance_probability": 0.985,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0338,
+            "reaction_completion": 0.0053,
+            "oxidant_remaining": 0.0183,
+            "catalyst_activity": 0.0465,
+            "matrix_interference": 0.085
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0008,
+            "reaction_completion": 0.0093,
+            "oxidant_remaining": 0.0019,
+            "catalyst_activity": 0.0111,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "clean_release",
+          "seed": 1,
+          "uncertainty_score": 0.06,
+          "ood_risk": 0.0,
+          "release_readiness": 0.847,
+          "compliance_probability": 0.984,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0378,
+            "reaction_completion": 0.0007,
+            "oxidant_remaining": 0.0283,
+            "catalyst_activity": 0.0545,
+            "matrix_interference": 0.086
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0,
+            "oxidant_remaining": 0.0002,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "clean_release",
+          "seed": 2,
+          "uncertainty_score": 0.058,
+          "ood_risk": 0.0,
+          "release_readiness": 0.839,
+          "compliance_probability": 0.982,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0368,
+            "reaction_completion": 0.0023,
+            "oxidant_remaining": 0.0155,
+            "catalyst_activity": 0.0515,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0,
+            "oxidant_remaining": 0.004,
+            "catalyst_activity": 0.0099,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "clean_release",
+          "seed": 3,
+          "uncertainty_score": 0.059,
+          "ood_risk": 0.0,
+          "release_readiness": 0.845,
+          "compliance_probability": 0.982,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0388,
+            "reaction_completion": 0.0027,
+            "oxidant_remaining": 0.016,
+            "catalyst_activity": 0.0545,
+            "matrix_interference": 0.085
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0,
+            "oxidant_remaining": 0.0004,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "clean_release",
+          "seed": 4,
+          "uncertainty_score": 0.06,
+          "ood_risk": 0.0,
+          "release_readiness": 0.842,
+          "compliance_probability": 0.983,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0368,
+            "reaction_completion": 0.0023,
+            "oxidant_remaining": 0.018,
+            "catalyst_activity": 0.0485,
+            "matrix_interference": 0.084
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0003,
+            "oxidant_remaining": 0.0005,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "clean_release",
+          "seed": 5,
+          "uncertainty_score": 0.06,
+          "ood_risk": 0.0,
+          "release_readiness": 0.845,
+          "compliance_probability": 0.984,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0368,
+            "reaction_completion": 0.0023,
+            "oxidant_remaining": 0.0224,
+            "catalyst_activity": 0.0535,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0009,
+            "oxidant_remaining": 0.0003,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "clean_release",
+          "seed": 6,
+          "uncertainty_score": 0.058,
+          "ood_risk": 0.0,
+          "release_readiness": 0.843,
+          "compliance_probability": 0.981,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0398,
+            "reaction_completion": 0.0027,
+            "oxidant_remaining": 0.0165,
+            "catalyst_activity": 0.0465,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0,
+            "oxidant_remaining": 0.0017,
+            "catalyst_activity": 0.0065,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "clean_release",
+          "seed": 7,
+          "uncertainty_score": 0.057,
+          "ood_risk": 0.0,
+          "release_readiness": 0.843,
+          "compliance_probability": 0.985,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0348,
+            "reaction_completion": 0.0033,
+            "oxidant_remaining": 0.0158,
+            "catalyst_activity": 0.0435,
+            "matrix_interference": 0.085
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0,
+            "oxidant_remaining": 0.003,
+            "catalyst_activity": 0.0016,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "sensor_faults",
+          "seed": 0,
+          "uncertainty_score": 0.126,
+          "ood_risk": 0.0,
+          "release_readiness": 0.755,
+          "compliance_probability": 0.936,
+          "release_blocked_by_uncertainty": true,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0818,
+            "reaction_completion": 0.0027,
+            "oxidant_remaining": 0.0245,
+            "catalyst_activity": 0.0935,
+            "matrix_interference": 0.063
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0042,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0008,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "sensor_faults",
+          "seed": 1,
+          "uncertainty_score": 0.127,
+          "ood_risk": 0.0,
+          "release_readiness": 0.755,
+          "compliance_probability": 0.941,
+          "release_blocked_by_uncertainty": true,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0778,
+            "reaction_completion": 0.0023,
+            "oxidant_remaining": 0.036,
+            "catalyst_activity": 0.0945,
+            "matrix_interference": 0.064
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0034,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0005,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "sensor_faults",
+          "seed": 2,
+          "uncertainty_score": 0.129,
+          "ood_risk": 0.0,
+          "release_readiness": 0.755,
+          "compliance_probability": 0.937,
+          "release_blocked_by_uncertainty": true,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0818,
+            "reaction_completion": 0.0027,
+            "oxidant_remaining": 0.0353,
+            "catalyst_activity": 0.0965,
+            "matrix_interference": 0.064
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0036,
+            "reaction_completion": 0.0064,
+            "oxidant_remaining": 0.0002,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "sensor_faults",
+          "seed": 3,
+          "uncertainty_score": 0.126,
+          "ood_risk": 0.0,
+          "release_readiness": 0.755,
+          "compliance_probability": 0.935,
+          "release_blocked_by_uncertainty": true,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0838,
+            "reaction_completion": 0.0047,
+            "oxidant_remaining": 0.0158,
+            "catalyst_activity": 0.0985,
+            "matrix_interference": 0.066
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0034,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0007,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "sensor_faults",
+          "seed": 4,
+          "uncertainty_score": 0.128,
+          "ood_risk": 0.0,
+          "release_readiness": 0.755,
+          "compliance_probability": 0.934,
+          "release_blocked_by_uncertainty": true,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0848,
+            "reaction_completion": 0.0057,
+            "oxidant_remaining": 0.0269,
+            "catalyst_activity": 0.0995,
+            "matrix_interference": 0.06
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0093,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0013,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "sensor_faults",
+          "seed": 5,
+          "uncertainty_score": 0.126,
+          "ood_risk": 0.0,
+          "release_readiness": 0.755,
+          "compliance_probability": 0.939,
+          "release_blocked_by_uncertainty": true,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0778,
+            "reaction_completion": 0.0033,
+            "oxidant_remaining": 0.0255,
+            "catalyst_activity": 0.0945,
+            "matrix_interference": 0.063
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0034,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0022,
+            "catalyst_activity": 0.0065,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "sensor_faults",
+          "seed": 6,
+          "uncertainty_score": 0.125,
+          "ood_risk": 0.0,
+          "release_readiness": 0.755,
+          "compliance_probability": 0.939,
+          "release_blocked_by_uncertainty": true,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0778,
+            "reaction_completion": 0.0033,
+            "oxidant_remaining": 0.0282,
+            "catalyst_activity": 0.0875,
+            "matrix_interference": 0.061
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0034,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0003,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "sensor_faults",
+          "seed": 7,
+          "uncertainty_score": 0.125,
+          "ood_risk": 0.0,
+          "release_readiness": 0.755,
+          "compliance_probability": 0.943,
+          "release_blocked_by_uncertainty": true,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0728,
+            "reaction_completion": 0.0073,
+            "oxidant_remaining": 0.0206,
+            "catalyst_activity": 0.0885,
+            "matrix_interference": 0.068
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0034,
+            "reaction_completion": 0.0016,
+            "oxidant_remaining": 0.0015,
+            "catalyst_activity": 0.0065,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "seed": 0,
+          "uncertainty_score": 0.095,
+          "ood_risk": 0.0,
+          "release_readiness": 0.724,
+          "compliance_probability": 0.724,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.036,
+            "reaction_completion": 0.1437,
+            "oxidant_remaining": 0.0624,
+            "catalyst_activity": 0.1975,
+            "matrix_interference": 0.084
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0018,
+            "oxidant_remaining": 0.0005,
+            "catalyst_activity": 0.0012,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "seed": 1,
+          "uncertainty_score": 0.105,
+          "ood_risk": 0.0,
+          "release_readiness": 0.726,
+          "compliance_probability": 0.726,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.036,
+            "reaction_completion": 0.1447,
+            "oxidant_remaining": 0.052,
+            "catalyst_activity": 0.1985,
+            "matrix_interference": 0.092
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.001,
+            "oxidant_remaining": 0.0037,
+            "catalyst_activity": 0.0018,
+            "matrix_interference": 0.0862
+          }
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "seed": 2,
+          "uncertainty_score": 0.095,
+          "ood_risk": 0.0,
+          "release_readiness": 0.725,
+          "compliance_probability": 0.725,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.038,
+            "reaction_completion": 0.1427,
+            "oxidant_remaining": 0.0573,
+            "catalyst_activity": 0.1975,
+            "matrix_interference": 0.085
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.001,
+            "oxidant_remaining": 0.0009,
+            "catalyst_activity": 0.0,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "seed": 3,
+          "uncertainty_score": 0.094,
+          "ood_risk": 0.0,
+          "release_readiness": 0.725,
+          "compliance_probability": 0.725,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.037,
+            "reaction_completion": 0.1427,
+            "oxidant_remaining": 0.0565,
+            "catalyst_activity": 0.1965,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.001,
+            "oxidant_remaining": 0.0022,
+            "catalyst_activity": 0.0,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "seed": 4,
+          "uncertainty_score": 0.094,
+          "ood_risk": 0.0,
+          "release_readiness": 0.723,
+          "compliance_probability": 0.723,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.035,
+            "reaction_completion": 0.1457,
+            "oxidant_remaining": 0.0463,
+            "catalyst_activity": 0.1945,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.001,
+            "oxidant_remaining": 0.0121,
+            "catalyst_activity": 0.0,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "seed": 5,
+          "uncertainty_score": 0.096,
+          "ood_risk": 0.0,
+          "release_readiness": 0.727,
+          "compliance_probability": 0.727,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.04,
+            "reaction_completion": 0.1397,
+            "oxidant_remaining": 0.0625,
+            "catalyst_activity": 0.1885,
+            "matrix_interference": 0.084
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.001,
+            "oxidant_remaining": 0.0011,
+            "catalyst_activity": 0.0035,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "seed": 6,
+          "uncertainty_score": 0.095,
+          "ood_risk": 0.0,
+          "release_readiness": 0.726,
+          "compliance_probability": 0.726,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.038,
+            "reaction_completion": 0.1417,
+            "oxidant_remaining": 0.0613,
+            "catalyst_activity": 0.1975,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.001,
+            "oxidant_remaining": 0.0005,
+            "catalyst_activity": 0.0,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "seed": 7,
+          "uncertainty_score": 0.096,
+          "ood_risk": 0.0,
+          "release_readiness": 0.722,
+          "compliance_probability": 0.722,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.033,
+            "reaction_completion": 0.1477,
+            "oxidant_remaining": 0.0657,
+            "catalyst_activity": 0.1995,
+            "matrix_interference": 0.082
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0018,
+            "oxidant_remaining": 0.0051,
+            "catalyst_activity": 0.0,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "seed": 0,
+          "uncertainty_score": 0.101,
+          "ood_risk": 0.0,
+          "release_readiness": 0.74,
+          "compliance_probability": 0.74,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.027,
+            "reaction_completion": 0.1077,
+            "oxidant_remaining": 0.0004,
+            "catalyst_activity": 0.1995,
+            "matrix_interference": 0.084
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0001,
+            "reaction_completion": 0.0094,
+            "oxidant_remaining": 0.0019,
+            "catalyst_activity": 0.1661,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "seed": 1,
+          "uncertainty_score": 0.126,
+          "ood_risk": 0.0,
+          "release_readiness": 0.739,
+          "compliance_probability": 0.739,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.026,
+            "reaction_completion": 0.1107,
+            "oxidant_remaining": 0.0098,
+            "catalyst_activity": 0.2225,
+            "matrix_interference": 0.092
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0001,
+            "reaction_completion": 0.0074,
+            "oxidant_remaining": 0.0072,
+            "catalyst_activity": 0.2978,
+            "matrix_interference": 0.0862
+          }
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "seed": 2,
+          "uncertainty_score": 0.124,
+          "ood_risk": 0.0,
+          "release_readiness": 0.737,
+          "compliance_probability": 0.737,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.027,
+            "reaction_completion": 0.1157,
+            "oxidant_remaining": 0.0046,
+            "catalyst_activity": 0.2175,
+            "matrix_interference": 0.085
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0102,
+            "reaction_completion": 0.0515,
+            "oxidant_remaining": 0.0007,
+            "catalyst_activity": 0.3207,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "seed": 3,
+          "uncertainty_score": 0.126,
+          "ood_risk": 0.0,
+          "release_readiness": 0.736,
+          "compliance_probability": 0.736,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.027,
+            "reaction_completion": 0.1267,
+            "oxidant_remaining": 0.0053,
+            "catalyst_activity": 0.2075,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.01,
+            "reaction_completion": 0.2305,
+            "oxidant_remaining": 0.0014,
+            "catalyst_activity": 0.1601,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "seed": 4,
+          "uncertainty_score": 0.09,
+          "ood_risk": 0.0,
+          "release_readiness": 0.735,
+          "compliance_probability": 0.735,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.026,
+            "reaction_completion": 0.1127,
+            "oxidant_remaining": 0.0185,
+            "catalyst_activity": 0.1905,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0007,
+            "reaction_completion": 0.0017,
+            "oxidant_remaining": 0.0029,
+            "catalyst_activity": 0.0029,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "seed": 5,
+          "uncertainty_score": 0.11,
+          "ood_risk": 0.0,
+          "release_readiness": 0.742,
+          "compliance_probability": 0.742,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.03,
+            "reaction_completion": 0.1057,
+            "oxidant_remaining": 0.0007,
+            "catalyst_activity": 0.2035,
+            "matrix_interference": 0.084
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0001,
+            "reaction_completion": 0.0021,
+            "oxidant_remaining": 0.0025,
+            "catalyst_activity": 0.28,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "seed": 6,
+          "uncertainty_score": 0.096,
+          "ood_risk": 0.0,
+          "release_readiness": 0.741,
+          "compliance_probability": 0.741,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.029,
+            "reaction_completion": 0.1087,
+            "oxidant_remaining": 0.0006,
+            "catalyst_activity": 0.1975,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0001,
+            "reaction_completion": 0.0094,
+            "oxidant_remaining": 0.0008,
+            "catalyst_activity": 0.011,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "seed": 7,
+          "uncertainty_score": 0.105,
+          "ood_risk": 0.0,
+          "release_readiness": 0.739,
+          "compliance_probability": 0.739,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.023,
+            "reaction_completion": 0.1117,
+            "oxidant_remaining": 0.0039,
+            "catalyst_activity": 0.2025,
+            "matrix_interference": 0.082
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0001,
+            "reaction_completion": 0.0094,
+            "oxidant_remaining": 0.0007,
+            "catalyst_activity": 0.19,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "seed": 0,
+          "uncertainty_score": 0.155,
+          "ood_risk": 0.0,
+          "release_readiness": 0.708,
+          "compliance_probability": 0.708,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.057,
+            "reaction_completion": 0.1339,
+            "oxidant_remaining": 0.0017,
+            "catalyst_activity": 0.0614,
+            "matrix_interference": 0.084
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0258,
+            "reaction_completion": 0.3582,
+            "oxidant_remaining": 0.0071,
+            "catalyst_activity": 0.4952,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "seed": 1,
+          "uncertainty_score": 0.11,
+          "ood_risk": 0.0,
+          "release_readiness": 0.7,
+          "compliance_probability": 0.7,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.054,
+            "reaction_completion": 0.0879,
+            "oxidant_remaining": 0.0087,
+            "catalyst_activity": 0.0004,
+            "matrix_interference": 0.092
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0172,
+            "reaction_completion": 0.1599,
+            "oxidant_remaining": 0.0151,
+            "catalyst_activity": 0.1663,
+            "matrix_interference": 0.0862
+          }
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "seed": 2,
+          "uncertainty_score": 0.07,
+          "ood_risk": 0.0,
+          "release_readiness": 0.697,
+          "compliance_probability": 0.697,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.054,
+            "reaction_completion": 0.0799,
+            "oxidant_remaining": 0.0034,
+            "catalyst_activity": 0.0066,
+            "matrix_interference": 0.085
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0035,
+            "oxidant_remaining": 0.0107,
+            "catalyst_activity": 0.0045,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "seed": 3,
+          "uncertainty_score": 0.067,
+          "ood_risk": 0.0,
+          "release_readiness": 0.696,
+          "compliance_probability": 0.696,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.054,
+            "reaction_completion": 0.0789,
+            "oxidant_remaining": 0.0031,
+            "catalyst_activity": 0.0076,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0033,
+            "oxidant_remaining": 0.0087,
+            "catalyst_activity": 0.0128,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "seed": 4,
+          "uncertainty_score": 0.078,
+          "ood_risk": 0.0,
+          "release_readiness": 0.695,
+          "compliance_probability": 0.695,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.052,
+            "reaction_completion": 0.0779,
+            "oxidant_remaining": 0.0184,
+            "catalyst_activity": 0.0036,
+            "matrix_interference": 0.088
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0033,
+            "oxidant_remaining": 0.0154,
+            "catalyst_activity": 0.0042,
+            "matrix_interference": 0.0676
+          }
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "seed": 5,
+          "uncertainty_score": 0.082,
+          "ood_risk": 0.0,
+          "release_readiness": 0.701,
+          "compliance_probability": 0.701,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.057,
+            "reaction_completion": 0.0879,
+            "oxidant_remaining": 0.0028,
+            "catalyst_activity": 0.0084,
+            "matrix_interference": 0.084
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0102,
+            "reaction_completion": 0.0022,
+            "oxidant_remaining": 0.006,
+            "catalyst_activity": 0.0249,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "seed": 6,
+          "uncertainty_score": 0.062,
+          "ood_risk": 0.0,
+          "release_readiness": 0.699,
+          "compliance_probability": 0.699,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.055,
+            "reaction_completion": 0.0799,
+            "oxidant_remaining": 0.0016,
+            "catalyst_activity": 0.0096,
+            "matrix_interference": 0.083
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0006,
+            "reaction_completion": 0.0033,
+            "oxidant_remaining": 0.0009,
+            "catalyst_activity": 0.0018,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "seed": 7,
+          "uncertainty_score": 0.105,
+          "ood_risk": 0.0,
+          "release_readiness": 0.698,
+          "compliance_probability": 0.698,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.05,
+            "reaction_completion": 0.0749,
+            "oxidant_remaining": 0.002,
+            "catalyst_activity": 0.0154,
+            "matrix_interference": 0.082
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0154,
+            "reaction_completion": 0.0071,
+            "oxidant_remaining": 0.0807,
+            "catalyst_activity": 0.2905,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "matrix_shock",
+          "seed": 0,
+          "uncertainty_score": 0.077,
+          "ood_risk": 0.0,
+          "release_readiness": 0.676,
+          "compliance_probability": 0.676,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.006,
+            "reaction_completion": 0.0427,
+            "oxidant_remaining": 0.0027,
+            "catalyst_activity": 0.1265,
+            "matrix_interference": 0.003
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0013,
+            "oxidant_remaining": 0.001,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "matrix_shock",
+          "seed": 1,
+          "uncertainty_score": 0.066,
+          "ood_risk": 0.0,
+          "release_readiness": 0.672,
+          "compliance_probability": 0.672,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.007,
+            "reaction_completion": 0.0457,
+            "oxidant_remaining": 0.0063,
+            "catalyst_activity": 0.1105,
+            "matrix_interference": 0.002
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0002,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "matrix_shock",
+          "seed": 2,
+          "uncertainty_score": 0.066,
+          "ood_risk": 0.0,
+          "release_readiness": 0.671,
+          "compliance_probability": 0.671,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.005,
+            "reaction_completion": 0.0427,
+            "oxidant_remaining": 0.0075,
+            "catalyst_activity": 0.1065,
+            "matrix_interference": 0.004
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0011,
+            "oxidant_remaining": 0.0019,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "matrix_shock",
+          "seed": 3,
+          "uncertainty_score": 0.077,
+          "ood_risk": 0.0,
+          "release_readiness": 0.672,
+          "compliance_probability": 0.672,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0517,
+            "oxidant_remaining": 0.005,
+            "catalyst_activity": 0.1365,
+            "matrix_interference": 0.003
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0011,
+            "oxidant_remaining": 0.0004,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "matrix_shock",
+          "seed": 4,
+          "uncertainty_score": 0.065,
+          "ood_risk": 0.0,
+          "release_readiness": 0.672,
+          "compliance_probability": 0.672,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.006,
+            "reaction_completion": 0.0447,
+            "oxidant_remaining": 0.005,
+            "catalyst_activity": 0.1025,
+            "matrix_interference": 0.002
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0005,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "matrix_shock",
+          "seed": 5,
+          "uncertainty_score": 0.076,
+          "ood_risk": 0.0,
+          "release_readiness": 0.675,
+          "compliance_probability": 0.675,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.003,
+            "reaction_completion": 0.0467,
+            "oxidant_remaining": 0.0024,
+            "catalyst_activity": 0.1335,
+            "matrix_interference": 0.004
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0003,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "matrix_shock",
+          "seed": 6,
+          "uncertainty_score": 0.076,
+          "ood_risk": 0.0,
+          "release_readiness": 0.672,
+          "compliance_probability": 0.672,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0517,
+            "oxidant_remaining": 0.0035,
+            "catalyst_activity": 0.1275,
+            "matrix_interference": 0.003
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0011,
+            "oxidant_remaining": 0.0006,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        },
+        {
+          "scenario": "matrix_shock",
+          "seed": 7,
+          "uncertainty_score": 0.075,
+          "ood_risk": 0.0,
+          "release_readiness": 0.676,
+          "compliance_probability": 0.676,
+          "release_blocked_by_uncertainty": false,
+          "target_abs_errors": {
+            "pollutant_residual_risk": 0.005,
+            "reaction_completion": 0.0437,
+            "oxidant_remaining": 0.0052,
+            "catalyst_activity": 0.1235,
+            "matrix_interference": 0.003
+          },
+          "target_interval_coverage": {
+            "pollutant_residual_risk": true,
+            "reaction_completion": true,
+            "oxidant_remaining": true,
+            "catalyst_activity": true,
+            "matrix_interference": true
+          },
+          "target_interval_widths": {
+            "pollutant_residual_risk": 0.0,
+            "reaction_completion": 0.0015,
+            "oxidant_remaining": 0.0008,
+            "catalyst_activity": 0.007,
+            "matrix_interference": 0.0
+          }
+        }
+      ]
+    },
+    "issues": [
+      {
+        "sensor": "soft_sensor_conformal_calibration",
+        "issue_type": "field_holdout_required_for_conformal_calibration",
+        "severity": "warning",
+        "message": "当前保形校准只在 synthetic split 上验证，不能写入现场 release gate。",
+        "evidence": {
+          "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+          "conformal_score": 0.854,
+          "field_holdout_required": true,
+          "can_write_to_release_gate": false
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "soft_sensor_conformal_calibration": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/soft_sensor_conformal_calibration.md",
+    "agent39_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent39_soft_sensor_conformal_calibration/agent39_report.md",
+    "conformal_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_training/soft_sensor_conformal_metrics.json"
+  }
+}

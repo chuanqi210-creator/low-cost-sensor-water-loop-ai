@@ -1,0 +1,139 @@
+# Agent 50 模型核心优化治理运行报告
+
+- summary: 模型核心治理：最高边际价值任务为 `FIELD_ACTIVATION_RESPONSE_FOCUS_HANDOFF_NEXT_ACTION`，自我打断结论 `stage_boundary_wait_for_external_activation`，量化阶段判定 `stop_expansion_wait_for_real_field_package_or_new_core_interface`。
+- self_interrupt_verdict: `stage_boundary_wait_for_external_activation`
+- self_interrupt_reason: 当前不是硬中断，也不是继续内部扩张；量化阶段门已进入外部激活等待，只允许提交真实外部证据包或定义新的可测试核心接口。
+- governance_review_gate: `continue_current_micro_loop`
+- governance_rerun_recommended: `False`
+- core_score: `0.96`
+- iteration_validity_status: `valid_stage_boundary_external_field_wait`
+- stage_decision: `stop_expansion_wait_for_real_field_package_or_new_core_interface`
+- recommended_next_core_action: `FIELD_ACTIVATION_RESPONSE_FOCUS_HANDOFF_NEXT_ACTION`
+- external_activation_contract_status: `waiting_for_external_evidence_packages`
+- external_activation_ready: `False`
+- external_activation_channels: `0 ready / 3 blocked`
+- external_activation_boundary_preserved: `True`
+- external_activation_router_status: `external_activation_router_waiting_for_external_paths`
+- external_activation_router_routes: `0 ready / 3 blocked`
+- external_activation_router_model_chain_ready_routes: `0`
+- external_activation_router_handoff_ready_routes: `0`
+- external_activation_router_highest_priority_blocker: `R7_REAL_FIELD_PACKAGE:field_activation_upstream_not_ready:R8U106_SUBMIT_FIELD_ACTIVATION_RESPONSE:field_activation_external_readiness_waiting_for_external_response`
+- external_activation_router_next_operator_action: `fill_focused_catalyst_response_template_then_set_FOCUSED_CATALYST_RESPONSE_PATH_and_merge_to_FIELD_ACTIVATION_RESPONSE_PATH`
+- external_activation_operator_action_packet_status: `operator_packet_waiting_for_focused_catalyst_response`
+- external_activation_operator_action_packet_next_operator_action: `fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH`
+- external_activation_operator_action_packet_focused_candidate_availability_status: `candidate_not_submittable_waiting_for_FOCUSED_CATALYST_RESPONSE_PATH`
+- external_activation_operator_action_packet_boundary_pass: `True`
+- external_activation_router_catalyst_patch_candidate_status: `catalyst_slice_r7_patch_waiting_for_valid_catalyst_slice`
+- external_activation_router_catalyst_patch_candidate_can_submit_as_REAL_FIELD_REPLAY_PACKAGE_DIR: `False`
+- formal_search_ai_nonlegal_review_brief_status: `formal_search_ai_nonlegal_review_brief_ready_for_human_review`
+- formal_search_ai_nonlegal_review_brief_can_help_human_review: `True`
+- formal_search_ai_nonlegal_review_brief_can_route_to_claim_scope_patch_draft: `False`
+- formal_search_nonlegal_review_operator_packet_status: `formal_search_nonlegal_review_operator_packet_ready_waiting_for_human_response`
+- formal_search_nonlegal_review_operator_packet_expected_rows: `7`
+- formal_search_nonlegal_review_operator_packet_source_env_var: `FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH`
+- formal_search_nonlegal_review_operator_packet_can_route_to_claim_scope_patch_draft: `False`
+- external_activation_router_catalyst_patch_candidate_remaining_gap_count: `0`
+- external_activation_router_field_activation_upstream_status: `field_activation_external_readiness_waiting_for_external_response`
+- external_activation_router_field_activation_upstream_next_operator_action: `fill_focused_catalyst_response_template_then_set_FOCUSED_CATALYST_RESPONSE_PATH_and_merge_to_FIELD_ACTIVATION_RESPONSE_PATH`
+- external_activation_router_field_activation_upstream_can_submit_to_external_activation_router: `False`
+- field_activation_response_completion_ledger_status: `field_activation_response_completion_waiting_for_external_response`
+- field_activation_response_completion_ratio: `0.0`
+- field_activation_response_next_hidden_state_focus: `catalyst_activity`
+- field_activation_response_focus_handoff_status: `field_activation_response_focus_handoff_ready_for_catalyst_activity`
+- field_activation_response_focus_handoff_target_hidden_state: `catalyst_activity`
+- field_activation_response_focus_handoff_next_operator_action: `fill_focused_catalyst_response_template_then_set_FOCUSED_CATALYST_RESPONSE_PATH_and_merge_to_FIELD_ACTIVATION_RESPONSE_PATH`
+- external_package_readiness_board_packages: `5` total / `0` ready / `5` waiting / `0` blocked
+- external_package_readiness_board_next_operator_source_env_var: `GREY_BOX_CALIBRATION_PACKAGE_DIR`
+- external_package_readiness_board_next_operator_action: `complete_grey_box_calibration_package_preflight_before_building_field_calibration_summary`
+- external_package_readiness_board_boundary: field_evidence=`False`, actuator=`False`, release_gate=`False`
+- external_package_operator_action_packet_status: `external_package_operator_packet_waiting_for_field_packages`
+- external_package_operator_action_packet_next_operator_source_env_var: `GREY_BOX_CALIBRATION_PACKAGE_DIR`
+- external_package_operator_action_packet_next_operator_validation_command: `.venv/bin/python experiments/run_grey_box_calibration_package_preflight.py`
+- external_package_acquisition_maturity_gate_status: `external_package_acquisition_interfaces_ready_waiting_for_field_packages`
+- external_package_acquisition_maturity_score: `0.85`
+- external_package_acquisition_field_package_ready_rate: `0.0`
+- external_package_acquisition_interface_preflight_coverage: `1.0`
+- external_package_acquisition_operator_action_contract_coverage: `1.0`
+- external_package_acquisition_no_write_boundary_integrity: `1.0`
+- external_package_acquisition_contract_termination_status: `external_package_contracts_complete_but_waiting_for_field_packages`
+- external_package_acquisition_module_stage_termination_pass: `False`
+- external_package_acquisition_termination_blockers: `['downstream_reconnection_rate_below_0.80', 'field_package_ready_rate_below_1.00']`
+- external_package_acquisition_next_stage_decision: `collect_external_field_packages_before_downstream_gates`
+- external_package_acquisition_next_operator_source_env_var: `GREY_BOX_CALIBRATION_PACKAGE_DIR`
+- external_package_acquisition_boundary: field_evidence=`False`, model_chain=`False`, actuator=`False`, release_gate=`False`
+- core_interface_consolidation_id: `R8u158_core_interface_consolidation_facade`
+- core_interface_consolidation_consumed_by_agent50: `True`
+- core_interface_consolidation_refresh_status: `agent50_runner_refreshed_current_facade`
+- core_interface_consolidation_refreshed_by_runner: `experiments/run_agent50_model_core_governance.py`
+- core_interface_consolidation_top_external_action_env_var: `GREY_BOX_CALIBRATION_PACKAGE_DIR`
+- core_interface_consolidation_new_agent_recommendation: `do_not_add_linear_agent`
+- core_interface_external_lifecycle_status: `external_package_lifecycle_waiting_for_field_packages`
+- core_interface_sparse_benchmark_status: `synthetic_layout_coupling_benchmark_ready_needs_field_topology_missingness_labels`
+- core_interface_control_crosswalk_status: `field_control_replay_crosswalk_ready_waiting_for_FIELD_CONTROL_REPLAY_PACKAGE_DIR`
+- grey_box_submission_readiness_gate_status: `grey_box_submission_readiness_waiting_for_external_package`
+- grey_box_submission_readiness_score: `0.143`
+- grey_box_submission_readiness_highest_priority_gap: `missing_external_package` / `all_required_tables`
+
+## Hidden State Coverage Ledger
+
+- state_variable_contract_coverage: `1.0`
+- sparse_estimation_ready_coverage: `0.667`
+- design_or_patch_ready_coverage: `1.0`
+- field_validated_state_coverage: `0.0`
+- control_ready_state_coverage: `0.0`
+- boundary: state_variable_contract_coverage may close the architecture contract gate, but field_validated_state_coverage and control_ready_state_coverage remain separate no-write gates.
+
+## 生成文件
+
+- model_core_goal: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/model_core_goal.md`
+- goal_iteration_trace: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/goal_iteration_trace.md`
+- user_interrupt_lessons: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/user_interrupt_lessons.md`
+- external_evidence_matrix: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/external_evidence_matrix.md`
+- issue_priority_ranking: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/issue_priority_ranking.md`
+- execution_prompt: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/execution_prompt.md`
+- self_interrupt_checklist: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/self_interrupt_checklist.md`
+- governance_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/governance_report.md`
+- agent50_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent50_model_core_governance/agent50_report.md`
+- priority_ranking: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/priority_ranking.json`
+- core_score_termination_gate: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/core_score_termination_gate.json`
+- external_activation_contract: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/external_activation_contract.json`
+- external_activation_router: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/external_activation_router.json`
+- external_activation_operator_action_packet: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/external_activation_operator_action_packet.json`
+- field_activation_matrix: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/field_activation_matrix.json`
+- stage_boundary_external_action_board: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/stage_boundary_external_action_board.json`
+- stage_boundary_external_action_board_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/stage_boundary_external_action_board.md`
+- new_core_interface_candidate_gate: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/new_core_interface_candidate_gate.json`
+- new_core_interface_candidate_gate_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/new_core_interface_candidate_gate.md`
+- external_package_readiness_board: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/external_package_readiness_board.json`
+- external_package_readiness_board_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/external_package_readiness_board.md`
+- external_package_operator_action_packet: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/external_package_operator_action_packet.json`
+- external_package_operator_action_packet_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/external_package_operator_action_packet.md`
+- external_package_acquisition_maturity_gate: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/external_package_acquisition_maturity_gate.json`
+- external_package_acquisition_maturity_gate_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/external_package_acquisition_maturity_gate.md`
+- core_interface_consolidation: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/model_core_governance/core_interface_consolidation.json`
+- core_interface_consolidation_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/core_interface_consolidation.md`
+- grey_box_calibration_package_preflight: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/grey_box_calibration_package/grey_box_calibration_package_preflight.json`
+- grey_box_field_calibration_summary: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/grey_box_calibration_package/grey_box_field_calibration_summary.json`
+- grey_box_calibration_collection_work_order: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/grey_box_calibration_package/grey_box_calibration_collection_work_order.json`
+- grey_box_calibration_collection_work_order_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/grey_box_calibration_collection_work_order.md`
+- grey_box_submission_readiness_gate: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/grey_box_calibration_package/grey_box_submission_readiness_gate.json`
+- grey_box_submission_readiness_gate_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/grey_box_submission_readiness_gate.md`
+- field_supported_kg_edge_package_preflight: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_supported_kg_edge_package/field_supported_kg_edge_package_preflight.json`
+- sparse_topology_installability_package_preflight: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/sparse_topology_installability_package/sparse_topology_installability_package_preflight.json`
+- field_control_replay_package_preflight: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_control_replay_package/field_control_replay_package_preflight.json`
+- field_missingness_replay_package_preflight: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_missingness_replay_package/field_missingness_replay_package_preflight.json`
+- observation_response_bridge: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/observation_response_bridge/observation_response_bridge_metrics.json`
+- catalyst_evidence_response_gate: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_evidence_response_gate/catalyst_evidence_response_gate_metrics.json`
+- catalyst_response_submission_kit: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_response_submission_kit/catalyst_response_submission_kit_metrics.json`
+- focused_catalyst_response_merge: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/focused_catalyst_response_merge/focused_catalyst_response_merge_preflight.json`
+- focused_catalyst_response_repair_work_order: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/focused_catalyst_response_merge/focused_catalyst_response_repair_work_order.json`
+- catalyst_field_package_slice: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_field_package_slice/catalyst_field_package_slice_metrics.json`
+- catalyst_slice_r7_patch_candidate: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_slice_r7_patch_candidate/catalyst_slice_r7_patch_candidate_metrics.json`
+
+## Top Priority
+
+- Rank 1 `P4_minimal_grey_box_physics` score=0.78：Agent53 的 synthetic grey-box physics prior 已形成；无 field 物理校准时，下一轮优先转向 P5 软传感 node-modality/missingness 耦合。
+- Rank 2 `P10_claim_specific_field_package_and_source_basis` score=0.756：P10 的采集包矩阵已形成；下一轮优先补 source_basis 细节或导入真实 field package。
+- Rank 3 `P8_cross_agent_core_reconnection` score=0.747：Agent57 已完成 synthetic 主链回接审计；下一轮优先把 field_validation_queue 对齐到真实数据接口。
+- Rank 4 `P6_reasonable_knowledge_graph_upgrade` score=0.743：Agent56 的 KG reasoning baseline 已形成；下一轮优先处理跨 agent 主链回接，同时等待 field-supported KG edges。
+- Rank 5 `P9_field_validation_queue_alignment` score=0.741：P9 的接口对齐基线已形成；下一轮优先把 claim-specific 字段提升为最小现场采集包和 source_basis 补全任务。

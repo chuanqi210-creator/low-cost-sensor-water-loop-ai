@@ -1,0 +1,861 @@
+{
+  "board_metadata": {
+    "board_id": "R8u139_stage_boundary_external_action_board",
+    "board_status": "stage_boundary_external_action_board_waiting_for_external_inputs",
+    "board_role": "stage_boundary_external_action_queue",
+    "created_at": "2026-06-22T09:41:16Z",
+    "source_core_gate_stage_decision": "stop_expansion_wait_for_real_field_package_or_new_core_interface",
+    "source_core_gate_self_interrupt_verdict": "stage_boundary_wait_for_external_activation"
+  },
+  "stage_boundary": {
+    "internal_expansion_allowed": false,
+    "core_score": 0.96,
+    "previous_core_score": 0.96,
+    "iteration_delta": 0.0,
+    "iteration_validity_status": "valid_stage_boundary_external_field_wait",
+    "stage_decision": "stop_expansion_wait_for_real_field_package_or_new_core_interface",
+    "next_gate_action": "continue_only_on_interfaces_or_packages_that_do_not_fabricate_field_evidence"
+  },
+  "action_summary": {
+    "action_count": 4,
+    "external_wait_count": 3,
+    "model_chain_resume_ready_count": 0,
+    "handoff_ready_count": 0,
+    "highest_priority_action_id": "R8u139_R7_REAL_FIELD_PACKAGE",
+    "highest_priority_source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+    "highest_priority_next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+    "highest_priority_focused_candidate_availability_status": "candidate_not_submittable_waiting_for_FOCUSED_CATALYST_RESPONSE_PATH",
+    "highest_priority_focused_candidate_submit_ready": false,
+    "highest_priority_focused_candidate_operator_packet_submit_ready": false,
+    "new_core_interface_candidate_gate_status": "new_core_interface_candidate_gate_ready_with_ranked_contracts",
+    "new_core_interface_highest_priority_candidate_id": "NCI1_GREY_BOX_CALIBRATION_PACKAGE",
+    "new_core_interface_highest_priority_source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+    "new_core_interface_highest_priority_preflight_status": "grey_box_calibration_package_waiting_for_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+    "new_core_interface_highest_priority_preflight_pass": false,
+    "new_core_interface_highest_priority_downstream_calibration_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+    "new_core_interface_highest_priority_can_route_to_downstream_interface": false,
+    "new_core_interface_highest_priority_downstream_interface_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+    "new_core_interface_highest_priority_can_run_agent53_field_calibration": false,
+    "new_core_interface_highest_priority_agent53_field_candidate_ready": false,
+    "new_core_interface_acquisition_contract_termination_status": "external_package_contracts_complete_but_waiting_for_field_packages",
+    "new_core_interface_acquisition_module_stage_termination_pass": false,
+    "new_core_interface_acquisition_downstream_reconnection_rate": 0.0,
+    "new_core_interface_acquisition_field_package_ready_rate": 0.0,
+    "new_core_interface_acquisition_termination_blockers": [
+      "downstream_reconnection_rate_below_0.80",
+      "field_package_ready_rate_below_1.00"
+    ]
+  },
+  "action_rows": [
+    {
+      "action_id": "R8u139_R7_REAL_FIELD_PACKAGE",
+      "channel_id": "R7_REAL_FIELD_PACKAGE",
+      "priority_order": 1,
+      "activation_route_class": "model_chain_external_package",
+      "model_chain_resume_candidate": true,
+      "handoff_only": false,
+      "requires_tested_interface": false,
+      "requires_external_input": true,
+      "current_route_ready": false,
+      "current_handoff_ready": false,
+      "current_model_chain_resume_ready": false,
+      "source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+      "expected_input_row_count": 6,
+      "target_hidden_state": "catalyst_activity",
+      "linked_operator_packet_status": "operator_packet_waiting_for_focused_catalyst_response",
+      "next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+      "validation_command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+      "input_template_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json",
+      "schema_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_schema.json",
+      "merge_plan_path": "outputs/catalyst_response_submission_kit/focused_to_full_response_merge_plan.json",
+      "command_sequence": [
+        "fill outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json with real field values",
+        "export FOCUSED_CATALYST_RESPONSE_PATH=/absolute/path/to/filled_focused_response.json",
+        ".venv/bin/python experiments/run_focused_catalyst_response_merge.py"
+      ],
+      "rejection_boundaries": [
+        "Reject template/sample/synthetic rows as field evidence.",
+        "Reject rows with TODO/template markers in required evidence payloads.",
+        "Reject responses that do not use at least the minimum shared real batch_id count.",
+        "Reject responses whose no_write_boundary_confirmed is not true on every row.",
+        "Reject any shortcut that skips focused merge, full response preflight, materialized package preflight, replay/holdout or operator review."
+      ],
+      "boundary_checks": [
+        {
+          "check_id": "template_has_rows",
+          "pass": true,
+          "detail": "template row count = 6"
+        },
+        {
+          "check_id": "minimum_batch_count_declared",
+          "pass": true,
+          "detail": "minimum shared batch count = 3"
+        },
+        {
+          "check_id": "no_write_confirmation_fields_present",
+          "pass": true,
+          "detail": "each template row must expose no_write_boundary_confirmed"
+        },
+        {
+          "check_id": "template_rows_are_not_field_evidence",
+          "pass": true,
+          "detail": "template TODO rows are collection instructions only, not field evidence"
+        }
+      ],
+      "action_no_write_boundary": "This packet only tells an operator how to fill and validate the focused catalyst response. It cannot generate field evidence, resume the model chain, write actuator policy, write a release gate, relax Agent49 catalyst guardrails, pass Agent51 holdout or emit a field-supported claim.",
+      "can_resume_model_chain": false,
+      "can_route_to_claim_scope_patch_draft": false,
+      "can_emit_claim_text": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "boundary": "This action may resume field import, timestamped replay and field evidence review only after Agent44/42/43/45 gates pass; it cannot write actuator policy, release gate, field-supported claims, patent/legal conclusions, or final deployment clearance by itself.",
+      "focused_merge_preflight_status": "focused_catalyst_response_merge_waiting_for_FOCUSED_CATALYST_RESPONSE_PATH",
+      "focused_candidate_availability_status": "candidate_not_submittable_waiting_for_FOCUSED_CATALYST_RESPONSE_PATH",
+      "focused_candidate_self_declared_submit_ready": false,
+      "focused_candidate_external_response_supplied": false,
+      "focused_candidate_can_submit_as_FIELD_ACTIVATION_RESPONSE_PATH": false,
+      "focused_candidate_operator_packet_submit_ready": false,
+      "focused_candidate_submit_ready": false,
+      "focused_merge_row_preflight_pass": false,
+      "focused_merge_matched_batch_count": 0,
+      "focused_merge_minimum_matched_batch_count": 3,
+      "focused_candidate_use_boundary": "Only use this file as FIELD_ACTIVATION_RESPONSE_PATH when can_submit_candidate_as_FIELD_ACTIVATION_RESPONSE_PATH is true and downstream full response, field package, replay, holdout, operator-review, actuator and release gates still pass. If false, this file is a diagnostic artifact and must not be routed as field evidence."
+    },
+    {
+      "action_id": "R8u139_R8U66_PATH_ENDPOINT_LABEL_PACKAGE",
+      "channel_id": "R8U66_PATH_ENDPOINT_LABEL_PACKAGE",
+      "priority_order": 2,
+      "activation_route_class": "model_chain_external_package",
+      "model_chain_resume_candidate": true,
+      "handoff_only": false,
+      "requires_tested_interface": false,
+      "requires_external_input": true,
+      "current_route_ready": false,
+      "current_handoff_ready": false,
+      "current_model_chain_resume_ready": false,
+      "source_env_var": "FIELD_PATH_ENDPOINT_LABEL_PACKAGE_DIR",
+      "expected_input_row_count": 0,
+      "target_hidden_state": "",
+      "linked_operator_packet_status": "",
+      "next_operator_action": "fix_field_path_endpoint_label_package_preflight_blockers",
+      "validation_command": ".venv/bin/python experiments/run_external_activation_router.py",
+      "input_template_path": "",
+      "schema_path": "",
+      "merge_plan_path": "",
+      "command_sequence": [],
+      "rejection_boundaries": [],
+      "boundary_checks": [],
+      "action_no_write_boundary": "",
+      "can_resume_model_chain": false,
+      "can_route_to_claim_scope_patch_draft": false,
+      "can_emit_claim_text": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "boundary": "This action may resume field layout holdout, path-stage validation and endpoint evidence review only after path/endpoint package preflight passes; it cannot write actuator policy, release gate, field-supported claims, patent/legal conclusions, or final release clearance by itself."
+    },
+    {
+      "action_id": "R8u139_R8U79_FORMAL_SEARCH_RESULT_PACKAGE",
+      "channel_id": "R8U79_FORMAL_SEARCH_RESULT_PACKAGE",
+      "priority_order": 3,
+      "activation_route_class": "formal_search_handoff_only",
+      "model_chain_resume_candidate": false,
+      "handoff_only": true,
+      "requires_tested_interface": false,
+      "requires_external_input": true,
+      "current_route_ready": false,
+      "current_handoff_ready": false,
+      "current_model_chain_resume_ready": false,
+      "source_env_var": "FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH",
+      "expected_input_row_count": 7,
+      "target_hidden_state": "",
+      "linked_operator_packet_status": "formal_search_nonlegal_review_operator_packet_ready_waiting_for_human_response",
+      "next_operator_action": "execute_external_or_human_search_and_submit_FORMAL_SEARCH_RESULT_PACKAGE_PATH",
+      "validation_command": "experiments/run_agent60_agent_architecture_consolidation.py",
+      "input_template_path": "",
+      "schema_path": "",
+      "merge_plan_path": "",
+      "command_sequence": [],
+      "rejection_boundaries": [],
+      "boundary_checks": [],
+      "action_no_write_boundary": "",
+      "can_resume_model_chain": false,
+      "can_route_to_claim_scope_patch_draft": false,
+      "can_emit_claim_text": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "boundary": "This action is a formal-search handoff only: after Agent60 source/row preflight it may enter nonlegal comparison, formal counsel review handoff, or disclosure revision queues; it cannot resume field replay or control, write actuator policy, write release gate, emit patent/legal conclusions, or create field-supported claims."
+    },
+    {
+      "action_id": "R8u139_NEW_CORE_INTERFACE",
+      "channel_id": "NEW_CORE_INTERFACE",
+      "priority_order": 4,
+      "activation_route_class": "new_testable_core_interface",
+      "model_chain_resume_candidate": false,
+      "handoff_only": false,
+      "requires_tested_interface": true,
+      "requires_external_input": false,
+      "current_route_ready": false,
+      "current_handoff_ready": false,
+      "current_model_chain_resume_ready": false,
+      "source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "expected_input_row_count": 0,
+      "target_hidden_state": "",
+      "linked_operator_packet_status": "",
+      "next_operator_action": "Use field_activation_matrix to prepare state-level external evidence packages.",
+      "validation_command": ".venv/bin/python experiments/run_grey_box_calibration_package_preflight.py",
+      "input_template_path": "",
+      "schema_path": "",
+      "merge_plan_path": "",
+      "command_sequence": [],
+      "rejection_boundaries": [],
+      "boundary_checks": [],
+      "action_no_write_boundary": "",
+      "can_resume_model_chain": false,
+      "can_route_to_claim_scope_patch_draft": false,
+      "can_emit_claim_text": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "boundary": "The new interface must preserve synthetic/template/literature/field boundaries and must include tests or a verification gate.",
+      "new_core_interface_candidate_gate_status": "new_core_interface_candidate_gate_ready_with_ranked_contracts",
+      "new_core_interface_candidate_count": 5,
+      "new_core_interface_admissible_candidate_count": 5,
+      "new_core_interface_highest_priority_candidate_id": "NCI1_GREY_BOX_CALIBRATION_PACKAGE",
+      "new_core_interface_highest_priority_source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "new_core_interface_highest_priority_system_layer": "state_estimation_and_grey_box_physics",
+      "new_core_interface_highest_priority_core_ability": "verifiability_and_explainability",
+      "new_core_interface_highest_priority_validation_command": ".venv/bin/python experiments/run_grey_box_calibration_package_preflight.py",
+      "new_core_interface_highest_priority_preflight_status": "grey_box_calibration_package_waiting_for_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "new_core_interface_highest_priority_preflight_pass": false,
+      "new_core_interface_highest_priority_can_route_to_downstream_calibration": false,
+      "new_core_interface_highest_priority_downstream_calibration_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+      "new_core_interface_highest_priority_can_route_to_downstream_interface": false,
+      "new_core_interface_highest_priority_downstream_interface_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+      "new_core_interface_highest_priority_can_run_agent53_field_calibration": false,
+      "new_core_interface_highest_priority_agent53_field_candidate_ready": false,
+      "new_core_interface_highest_priority_next_interface_action": "complete_grey_box_calibration_package_preflight_before_building_field_calibration_summary",
+      "new_core_interface_highest_priority_minimum_row_count": 3,
+      "new_core_interface_highest_priority_input_contract": [
+        "influent_effluent_lab_pairs",
+        "unit_hydraulic_retention_or_rtd_rows",
+        "oxidant_or_energy_dose_rows",
+        "catalyst_age_or_activity_labels",
+        "matrix_inhibition_indicators"
+      ],
+      "new_core_interface_highest_priority_output_contract": [
+        "calibrated_grey_box_parameter_ranges",
+        "mass_balance_residual_summary",
+        "residence_time_error_summary",
+        "parameter_validity_boundary"
+      ],
+      "new_core_interface_highest_priority_failure_boundary": "This interface can calibrate or reject grey-box priors only after real or literature-bounded calibration rows pass preflight; it cannot create field evidence, actuator readiness or release readiness.",
+      "new_core_interface_can_generate_field_evidence": false,
+      "new_core_interface_can_resume_model_chain": false,
+      "new_core_interface_can_write_to_actuator": false,
+      "new_core_interface_can_write_to_release_gate": false,
+      "new_core_interface_acquisition_contract_termination_status": "external_package_contracts_complete_but_waiting_for_field_packages",
+      "new_core_interface_acquisition_module_stage_termination_pass": false,
+      "new_core_interface_acquisition_downstream_reconnection_rate": 0.0,
+      "new_core_interface_acquisition_field_package_ready_rate": 0.0,
+      "new_core_interface_acquisition_termination_blockers": [
+        "downstream_reconnection_rate_below_0.80",
+        "field_package_ready_rate_below_1.00"
+      ],
+      "new_core_interface_acquisition_next_stage_decision": "collect_external_field_packages_before_downstream_gates",
+      "new_core_interface_acquisition_next_operator_source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "new_core_interface_acquisition_next_operator_validation_command": ".venv/bin/python experiments/run_grey_box_calibration_package_preflight.py"
+    }
+  ],
+  "operator_runbook": [
+    {
+      "step_id": "RUN_1_R7_REAL_FIELD_PACKAGE",
+      "order": 1,
+      "channel_id": "R7_REAL_FIELD_PACKAGE",
+      "source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+      "expected_input_row_count": 6,
+      "focused_candidate_availability_status": "candidate_not_submittable_waiting_for_FOCUSED_CATALYST_RESPONSE_PATH",
+      "focused_candidate_self_declared_submit_ready": false,
+      "focused_candidate_operator_packet_submit_ready": false,
+      "focused_candidate_submit_ready": false,
+      "next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+      "validation_command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+      "input_template_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json",
+      "schema_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_schema.json",
+      "command_sequence": [
+        "fill outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json with real field values",
+        "export FOCUSED_CATALYST_RESPONSE_PATH=/absolute/path/to/filled_focused_response.json",
+        ".venv/bin/python experiments/run_focused_catalyst_response_merge.py"
+      ],
+      "rejection_boundaries": [
+        "Reject template/sample/synthetic rows as field evidence.",
+        "Reject rows with TODO/template markers in required evidence payloads.",
+        "Reject responses that do not use at least the minimum shared real batch_id count.",
+        "Reject responses whose no_write_boundary_confirmed is not true on every row.",
+        "Reject any shortcut that skips focused merge, full response preflight, materialized package preflight, replay/holdout or operator review."
+      ],
+      "boundary_checks": [
+        {
+          "check_id": "template_has_rows",
+          "pass": true,
+          "detail": "template row count = 6"
+        },
+        {
+          "check_id": "minimum_batch_count_declared",
+          "pass": true,
+          "detail": "minimum shared batch count = 3"
+        },
+        {
+          "check_id": "no_write_confirmation_fields_present",
+          "pass": true,
+          "detail": "each template row must expose no_write_boundary_confirmed"
+        },
+        {
+          "check_id": "template_rows_are_not_field_evidence",
+          "pass": true,
+          "detail": "template TODO rows are collection instructions only, not field evidence"
+        }
+      ],
+      "action_no_write_boundary": "This packet only tells an operator how to fill and validate the focused catalyst response. It cannot generate field evidence, resume the model chain, write actuator policy, write a release gate, relax Agent49 catalyst guardrails, pass Agent51 holdout or emit a field-supported claim.",
+      "new_core_interface_highest_priority_candidate_id": "",
+      "new_core_interface_highest_priority_source_env_var": "",
+      "new_core_interface_highest_priority_downstream_calibration_status": "",
+      "new_core_interface_highest_priority_can_route_to_downstream_interface": false,
+      "new_core_interface_highest_priority_downstream_interface_status": "",
+      "new_core_interface_highest_priority_can_run_agent53_field_calibration": false,
+      "new_core_interface_highest_priority_agent53_field_candidate_ready": false,
+      "new_core_interface_acquisition_contract_termination_status": "",
+      "new_core_interface_acquisition_module_stage_termination_pass": false,
+      "new_core_interface_acquisition_downstream_reconnection_rate": 0.0,
+      "new_core_interface_acquisition_field_package_ready_rate": 0.0,
+      "new_core_interface_acquisition_termination_blockers": [],
+      "new_core_interface_acquisition_next_stage_decision": "",
+      "new_core_interface_acquisition_next_operator_source_env_var": "",
+      "must_not": [
+        "do_not_use_synthetic_template_rows_as_field_evidence",
+        "do_not_skip_preflight_replay_holdout_or_operator_review",
+        "do_not_write_actuator_or_release_gate_from_this_board"
+      ]
+    },
+    {
+      "step_id": "RUN_2_R8U66_PATH_ENDPOINT_LABEL_PACKAGE",
+      "order": 2,
+      "channel_id": "R8U66_PATH_ENDPOINT_LABEL_PACKAGE",
+      "source_env_var": "FIELD_PATH_ENDPOINT_LABEL_PACKAGE_DIR",
+      "expected_input_row_count": 0,
+      "focused_candidate_availability_status": "",
+      "focused_candidate_self_declared_submit_ready": false,
+      "focused_candidate_operator_packet_submit_ready": false,
+      "focused_candidate_submit_ready": false,
+      "next_operator_action": "fix_field_path_endpoint_label_package_preflight_blockers",
+      "validation_command": ".venv/bin/python experiments/run_external_activation_router.py",
+      "input_template_path": "",
+      "schema_path": "",
+      "command_sequence": [],
+      "rejection_boundaries": [],
+      "boundary_checks": [],
+      "action_no_write_boundary": "",
+      "new_core_interface_highest_priority_candidate_id": "",
+      "new_core_interface_highest_priority_source_env_var": "",
+      "new_core_interface_highest_priority_downstream_calibration_status": "",
+      "new_core_interface_highest_priority_can_route_to_downstream_interface": false,
+      "new_core_interface_highest_priority_downstream_interface_status": "",
+      "new_core_interface_highest_priority_can_run_agent53_field_calibration": false,
+      "new_core_interface_highest_priority_agent53_field_candidate_ready": false,
+      "new_core_interface_acquisition_contract_termination_status": "",
+      "new_core_interface_acquisition_module_stage_termination_pass": false,
+      "new_core_interface_acquisition_downstream_reconnection_rate": 0.0,
+      "new_core_interface_acquisition_field_package_ready_rate": 0.0,
+      "new_core_interface_acquisition_termination_blockers": [],
+      "new_core_interface_acquisition_next_stage_decision": "",
+      "new_core_interface_acquisition_next_operator_source_env_var": "",
+      "must_not": [
+        "do_not_use_synthetic_template_rows_as_field_evidence",
+        "do_not_skip_preflight_replay_holdout_or_operator_review",
+        "do_not_write_actuator_or_release_gate_from_this_board"
+      ]
+    },
+    {
+      "step_id": "RUN_3_R8U79_FORMAL_SEARCH_RESULT_PACKAGE",
+      "order": 3,
+      "channel_id": "R8U79_FORMAL_SEARCH_RESULT_PACKAGE",
+      "source_env_var": "FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH",
+      "expected_input_row_count": 7,
+      "focused_candidate_availability_status": "",
+      "focused_candidate_self_declared_submit_ready": false,
+      "focused_candidate_operator_packet_submit_ready": false,
+      "focused_candidate_submit_ready": false,
+      "next_operator_action": "execute_external_or_human_search_and_submit_FORMAL_SEARCH_RESULT_PACKAGE_PATH",
+      "validation_command": "experiments/run_agent60_agent_architecture_consolidation.py",
+      "input_template_path": "",
+      "schema_path": "",
+      "command_sequence": [],
+      "rejection_boundaries": [],
+      "boundary_checks": [],
+      "action_no_write_boundary": "",
+      "new_core_interface_highest_priority_candidate_id": "",
+      "new_core_interface_highest_priority_source_env_var": "",
+      "new_core_interface_highest_priority_downstream_calibration_status": "",
+      "new_core_interface_highest_priority_can_route_to_downstream_interface": false,
+      "new_core_interface_highest_priority_downstream_interface_status": "",
+      "new_core_interface_highest_priority_can_run_agent53_field_calibration": false,
+      "new_core_interface_highest_priority_agent53_field_candidate_ready": false,
+      "new_core_interface_acquisition_contract_termination_status": "",
+      "new_core_interface_acquisition_module_stage_termination_pass": false,
+      "new_core_interface_acquisition_downstream_reconnection_rate": 0.0,
+      "new_core_interface_acquisition_field_package_ready_rate": 0.0,
+      "new_core_interface_acquisition_termination_blockers": [],
+      "new_core_interface_acquisition_next_stage_decision": "",
+      "new_core_interface_acquisition_next_operator_source_env_var": "",
+      "must_not": [
+        "do_not_use_synthetic_template_rows_as_field_evidence",
+        "do_not_skip_preflight_replay_holdout_or_operator_review",
+        "do_not_write_actuator_or_release_gate_from_this_board"
+      ]
+    },
+    {
+      "step_id": "RUN_4_NEW_CORE_INTERFACE",
+      "order": 4,
+      "channel_id": "NEW_CORE_INTERFACE",
+      "source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "expected_input_row_count": 0,
+      "focused_candidate_availability_status": "",
+      "focused_candidate_self_declared_submit_ready": false,
+      "focused_candidate_operator_packet_submit_ready": false,
+      "focused_candidate_submit_ready": false,
+      "next_operator_action": "Use field_activation_matrix to prepare state-level external evidence packages.",
+      "validation_command": ".venv/bin/python experiments/run_grey_box_calibration_package_preflight.py",
+      "input_template_path": "",
+      "schema_path": "",
+      "command_sequence": [],
+      "rejection_boundaries": [],
+      "boundary_checks": [],
+      "action_no_write_boundary": "",
+      "new_core_interface_highest_priority_candidate_id": "NCI1_GREY_BOX_CALIBRATION_PACKAGE",
+      "new_core_interface_highest_priority_source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "new_core_interface_highest_priority_downstream_calibration_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+      "new_core_interface_highest_priority_can_route_to_downstream_interface": false,
+      "new_core_interface_highest_priority_downstream_interface_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+      "new_core_interface_highest_priority_can_run_agent53_field_calibration": false,
+      "new_core_interface_highest_priority_agent53_field_candidate_ready": false,
+      "new_core_interface_acquisition_contract_termination_status": "external_package_contracts_complete_but_waiting_for_field_packages",
+      "new_core_interface_acquisition_module_stage_termination_pass": false,
+      "new_core_interface_acquisition_downstream_reconnection_rate": 0.0,
+      "new_core_interface_acquisition_field_package_ready_rate": 0.0,
+      "new_core_interface_acquisition_termination_blockers": [
+        "downstream_reconnection_rate_below_0.80",
+        "field_package_ready_rate_below_1.00"
+      ],
+      "new_core_interface_acquisition_next_stage_decision": "collect_external_field_packages_before_downstream_gates",
+      "new_core_interface_acquisition_next_operator_source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+      "must_not": [
+        "do_not_use_synthetic_template_rows_as_field_evidence",
+        "do_not_skip_preflight_replay_holdout_or_operator_review",
+        "do_not_write_actuator_or_release_gate_from_this_board"
+      ]
+    }
+  ],
+  "machine_handoff": {
+    "handoff_id": "R8u169_stage_boundary_external_action_machine_handoff",
+    "current_stage": "stage_boundary_external_activation",
+    "stage_status": "stage_boundary_external_action_board_waiting_for_external_inputs",
+    "route_event": "external_activation_wait",
+    "route_reason": "waiting_for_real_external_input_before_downstream_replay_holdout_calibration",
+    "next_route": "submit_real_external_input_then_rerun_stage_preflight_and_agent50",
+    "next_route_source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+    "next_route_validation_command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+    "manual_action_required": {
+      "required": true,
+      "actor": "field_operator_or_user",
+      "source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+      "action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+      "validation_command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+      "input_template_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json",
+      "schema_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_schema.json",
+      "merge_plan_path": "outputs/catalyst_response_submission_kit/focused_to_full_response_merge_plan.json",
+      "command_sequence": [
+        "fill outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json with real field values",
+        "export FOCUSED_CATALYST_RESPONSE_PATH=/absolute/path/to/filled_focused_response.json",
+        ".venv/bin/python experiments/run_focused_catalyst_response_merge.py"
+      ],
+      "rejection_boundaries": [
+        "Reject template/sample/synthetic rows as field evidence.",
+        "Reject rows with TODO/template markers in required evidence payloads.",
+        "Reject responses that do not use at least the minimum shared real batch_id count.",
+        "Reject responses whose no_write_boundary_confirmed is not true on every row.",
+        "Reject any shortcut that skips focused merge, full response preflight, materialized package preflight, replay/holdout or operator review."
+      ],
+      "boundary_checks": [
+        {
+          "check_id": "template_has_rows",
+          "pass": true,
+          "detail": "template row count = 6"
+        },
+        {
+          "check_id": "minimum_batch_count_declared",
+          "pass": true,
+          "detail": "minimum shared batch count = 3"
+        },
+        {
+          "check_id": "no_write_confirmation_fields_present",
+          "pass": true,
+          "detail": "each template row must expose no_write_boundary_confirmed"
+        },
+        {
+          "check_id": "template_rows_are_not_field_evidence",
+          "pass": true,
+          "detail": "template TODO rows are collection instructions only, not field evidence"
+        }
+      ],
+      "no_write_boundary": "This packet only tells an operator how to fill and validate the focused catalyst response. It cannot generate field evidence, resume the model chain, write actuator policy, write a release gate, relax Agent49 catalyst guardrails, pass Agent51 holdout or emit a field-supported claim.",
+      "resume_evidence": "preflight JSON showing pass=true, or blocker fields showing the next repair"
+    },
+    "current_basis_refs": [
+      "core_gate.stage_decision",
+      "core_gate.next_allowed_actions",
+      "external_activation_operator_action_packet",
+      "focused_catalyst_response_merge_metrics",
+      "formal_search_nonlegal_review_operator_packet",
+      "new_core_interface_candidate_gate",
+      "core_gate.external_package_acquisition_stage_gate"
+    ],
+    "not_current_basis_refs": [
+      "synthetic_rows",
+      "template_rows",
+      "sample_rows",
+      "literature_only_rows",
+      "formal_search_handoff_as_field_evidence",
+      "downstream_replay_holdout_calibration_not_run",
+      "merged_candidate_when_submit_ready_false"
+    ],
+    "can_prove": [
+      "which external action is currently highest priority",
+      "which source env var and validation command to use next",
+      "why internal expansion remains stopped at the stage boundary",
+      "which no-write boundaries are preserved before downstream gates"
+    ],
+    "cannot_prove": [
+      "field treatment performance",
+      "field-supported mechanism validity",
+      "model-chain resume readiness",
+      "actuator or release-gate readiness",
+      "legal or patentability conclusions"
+    ],
+    "can_generate_field_evidence": false,
+    "can_resume_model_chain": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "no_write_boundary_preserved": true
+  },
+  "machine_handoff_contract_gate": {
+    "gate_id": "R8u170_stage_boundary_machine_handoff_contract_gate",
+    "gate_status": "machine_handoff_contract_complete_waiting_for_external_input",
+    "thresholds": {
+      "route_contract_completeness": 1.0,
+      "manual_action_contract_completeness": 1.0,
+      "basis_boundary_completeness": 1.0,
+      "proof_boundary_completeness": 1.0,
+      "no_write_boundary_completeness": 1.0,
+      "recovery_linkage_completeness": 1.0
+    },
+    "route_contract_completeness": 1.0,
+    "manual_action_contract_completeness": 1.0,
+    "basis_boundary_completeness": 1.0,
+    "proof_boundary_completeness": 1.0,
+    "no_write_boundary_completeness": 1.0,
+    "recovery_linkage_completeness": 1.0,
+    "contract_score": 1.0,
+    "contract_stage_pass": true,
+    "contract_blockers": [],
+    "external_wait_blockers": [
+      "real_external_input_required"
+    ],
+    "can_generate_field_evidence": false,
+    "can_resume_model_chain": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "boundary_note": "This gate scores whether the stage-boundary machine handoff is complete enough for low-friction recovery. It does not score field evidence, model-chain resume readiness, actuator readiness or release readiness."
+  },
+  "resource_boundary": {
+    "boundary_id": "R8u171_stage_boundary_resource_boundary",
+    "allowed_basis": [
+      "verified_stage_boundary_gates",
+      "machine_handoff_contract_gate",
+      "operator_packets_after_schema_preflight",
+      "real_external_packages_after_preflight_pass",
+      "human_nonlegal_review_after_response_preflight"
+    ],
+    "forbidden_basis": [
+      "template_rows_as_field_evidence",
+      "synthetic_rows_as_field_evidence",
+      "sample_rows_as_field_evidence",
+      "literature_only_rows_as_field_evidence",
+      "self_declared_candidate_without_preflight",
+      "formal_search_handoff_as_legal_or_patent_opinion",
+      "actuator_or_release_write_before_downstream_gates"
+    ],
+    "official_supplementary_basis": [
+      "protocol_as_governance_pattern_not_domain_evidence",
+      "template_directories_as_schema_guides_only",
+      "literature_and_open_source_methods_as_method_priors_only"
+    ],
+    "gray_zone": [
+      "external_package_supplied_but_not_preflighted",
+      "human_review_response_supplied_but_not_schema_checked",
+      "candidate_interface_ranked_but_not_downstream_reconnected"
+    ],
+    "boundary_reason": "Preserve evidence provenance while waiting for real external field inputs; separate governance inspiration, schema templates and method priors from field evidence.",
+    "distribution_warning": "Any external package may differ by site, matrix, sensor cadence, operator action and batch alignment until replay/holdout/calibration gates pass.",
+    "approved_access_or_permission": {
+      "required_source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+      "validation_command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+      "resume_evidence": "preflight JSON showing pass=true, or blocker fields showing the next repair"
+    },
+    "external_model_or_tool_policy": {
+      "can_use_for_governance": true,
+      "can_use_for_code_search": true,
+      "can_use_for_method_prior": true,
+      "can_emit_legal_or_patent_conclusion": false,
+      "can_replace_field_validation": false,
+      "policy_note": "External tools and skills may organize evidence or suggest methods, but cannot upgrade synthetic/template/literature artifacts into field-supported claims."
+    },
+    "manual_annotation_or_human_labeling_policy": {
+      "manual_action_required": true,
+      "accepted_after_preflight": true,
+      "cannot_substitute_field_labels": true,
+      "required_evidence_after_action": "preflight JSON showing pass=true, or blocker fields showing the next repair"
+    },
+    "no_write_policy": {
+      "can_generate_field_evidence": false,
+      "can_resume_model_chain": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_claim_upgrade_allowed": false
+    }
+  },
+  "resource_boundary_gate": {
+    "gate_id": "R8u171_stage_boundary_resource_boundary_gate",
+    "gate_status": "resource_boundary_complete_waiting_for_real_external_input",
+    "thresholds": {
+      "allowed_basis_completeness": 1.0,
+      "forbidden_basis_completeness": 1.0,
+      "supplementary_basis_completeness": 1.0,
+      "gray_zone_completeness": 1.0,
+      "tool_policy_completeness": 1.0,
+      "manual_annotation_policy_completeness": 1.0,
+      "no_write_policy_completeness": 1.0
+    },
+    "allowed_basis_completeness": 1.0,
+    "forbidden_basis_completeness": 1.0,
+    "supplementary_basis_completeness": 1.0,
+    "gray_zone_completeness": 1.0,
+    "tool_policy_completeness": 1.0,
+    "manual_annotation_policy_completeness": 1.0,
+    "no_write_policy_completeness": 1.0,
+    "resource_boundary_score": 1.0,
+    "resource_boundary_stage_pass": true,
+    "resource_boundary_blockers": [],
+    "external_wait_blockers": [
+      "real_external_input_required"
+    ],
+    "can_generate_field_evidence": false,
+    "can_resume_model_chain": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "boundary_note": "This gate scores whether allowed, forbidden, supplementary and gray-zone resources are explicit enough to prevent evidence leakage. It does not score field validation or downstream control readiness."
+  },
+  "low_friction_round_gate": {
+    "gate_id": "R8u177_low_friction_round_gate",
+    "gate_status": "low_friction_single_action_waiting_for_external_input",
+    "evidence_level": "governance_contract_not_field_evidence",
+    "thresholds": {
+      "single_selected_action_score": 1.0,
+      "manual_action_specificity_score": 1.0,
+      "machine_writeback_score": 1.0,
+      "termination_contract_score": 1.0,
+      "no_write_boundary_score": 1.0
+    },
+    "single_selected_action_score": 1.0,
+    "manual_action_specificity_score": 1.0,
+    "machine_writeback_score": 1.0,
+    "termination_contract_score": 1.0,
+    "no_write_boundary_score": 1.0,
+    "round_score": 1.0,
+    "selected_action_count": 1,
+    "selected_action_id": "R8u139_R7_REAL_FIELD_PACKAGE",
+    "selected_underlying_action_id": "R8u139_R7_REAL_FIELD_PACKAGE",
+    "selected_canonical_action_id": "FIELD_ACTIVATION_RESPONSE_FOCUS_HANDOFF_NEXT_ACTION",
+    "selected_source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+    "selected_next_operator_action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+    "manual_action_required": {
+      "required": true,
+      "actor": "field_operator_or_user",
+      "source_env_var": "FOCUSED_CATALYST_RESPONSE_PATH",
+      "action": "fill_outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json_with_real_field_values_then_set_FOCUSED_CATALYST_RESPONSE_PATH",
+      "validation_command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+      "input_template_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json",
+      "schema_path": "outputs/catalyst_response_submission_kit/focused_catalyst_response_schema.json",
+      "merge_plan_path": "outputs/catalyst_response_submission_kit/focused_to_full_response_merge_plan.json",
+      "command_sequence": [
+        "fill outputs/catalyst_response_submission_kit/focused_catalyst_response_template.json with real field values",
+        "export FOCUSED_CATALYST_RESPONSE_PATH=/absolute/path/to/filled_focused_response.json",
+        ".venv/bin/python experiments/run_focused_catalyst_response_merge.py"
+      ],
+      "rejection_boundaries": [
+        "Reject template/sample/synthetic rows as field evidence.",
+        "Reject rows with TODO/template markers in required evidence payloads.",
+        "Reject responses that do not use at least the minimum shared real batch_id count.",
+        "Reject responses whose no_write_boundary_confirmed is not true on every row.",
+        "Reject any shortcut that skips focused merge, full response preflight, materialized package preflight, replay/holdout or operator review."
+      ],
+      "boundary_checks": [
+        {
+          "check_id": "template_has_rows",
+          "pass": true,
+          "detail": "template row count = 6"
+        },
+        {
+          "check_id": "minimum_batch_count_declared",
+          "pass": true,
+          "detail": "minimum shared batch count = 3"
+        },
+        {
+          "check_id": "no_write_confirmation_fields_present",
+          "pass": true,
+          "detail": "each template row must expose no_write_boundary_confirmed"
+        },
+        {
+          "check_id": "template_rows_are_not_field_evidence",
+          "pass": true,
+          "detail": "template TODO rows are collection instructions only, not field evidence"
+        }
+      ],
+      "no_write_boundary": "This packet only tells an operator how to fill and validate the focused catalyst response. It cannot generate field evidence, resume the model chain, write actuator policy, write a release gate, relax Agent49 catalyst guardrails, pass Agent51 holdout or emit a field-supported claim.",
+      "resume_evidence": "preflight JSON showing pass=true, or blocker fields showing the next repair"
+    },
+    "user_burden_shifted": false,
+    "machine_writeback_required": true,
+    "termination_contract": {
+      "continue_expansion_allowed": false,
+      "stage_decision": "stop_expansion_wait_for_real_field_package_or_new_core_interface",
+      "route_event": "external_activation_wait",
+      "next_route": "submit_real_external_input_then_rerun_stage_preflight_and_agent50",
+      "handoff_contract_stage_pass": true,
+      "resource_boundary_stage_pass": true
+    },
+    "blockers": [],
+    "can_generate_field_evidence": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "field_claim_upgrade_allowed": false,
+    "boundary_note": "This gate only verifies that one highest-leverage next action is recoverable with a concrete manual-action contract and machine writeback. It is not field evidence, control readiness or release authorization."
+  },
+  "internal_expansion_saturation_gate": {
+    "gate_id": "R8u186_stage_boundary_internal_expansion_saturation_gate",
+    "gate_status": "internal_expansion_saturated_waiting_for_external_input",
+    "source_protocol": "complex_project_startup_governance_protocol_v3_core_selected_rules",
+    "adopted_protocol_principles": [
+      "anti_protocol_bloat_gate",
+      "continuous_cycle_no_idle_expansion",
+      "claim_readiness_ladder",
+      "stage_handoff_route_back",
+      "micro_task_execution_check"
+    ],
+    "model_core_boundary_layer": "verification_governance",
+    "decision": "stop_internal_micro_expansion_wait_for_real_external_input",
+    "internal_expansion_allowed": false,
+    "micro_tweak_expansion_allowed": false,
+    "current_external_blocker": "FOCUSED_CATALYST_RESPONSE_PATH",
+    "required_next_external_input": "FOCUSED_CATALYST_RESPONSE_PATH",
+    "required_validation_command": ".venv/bin/python experiments/run_focused_catalyst_response_merge.py",
+    "iteration_delta": 0.0,
+    "delta_threshold": 0.05,
+    "gate_score": 1.0,
+    "stop_reasons": [
+      "core_score_iteration_delta_below_0.05",
+      "stage_decision_waits_for_external_activation",
+      "low_friction_gate_has_single_action",
+      "focused_candidate_not_submittable_without_real_external_input",
+      "machine_handoff_contract_complete",
+      "resource_boundary_complete",
+      "claim_basis_promotion_blocked_until_field_validation"
+    ],
+    "resume_conditions": [
+      "FOCUSED_CATALYST_RESPONSE_PATH_supplied_and_focused_merge_preflight_passed",
+      "hard_boundary_contradiction_detected",
+      "new_P1_or_P2_model_interface_blocker_identified"
+    ],
+    "allowed_internal_work": [
+      "consume_real_external_input",
+      "repair_hard_boundary_contradiction",
+      "refresh_artifacts_after_external_input",
+      "run_verification_without_expanding_model_logic"
+    ],
+    "disallowed_internal_work": [
+      "add_more_operator_convenience_fields_without_new_boundary_gap",
+      "create_additional_synthetic_template_outputs_as_progress",
+      "spawn_subagents_for_external_wait_without_parallel_internal_domain",
+      "promote_claims_or_control_without_field_package"
+    ],
+    "claim_readiness_ceiling": "governance_contract_only_until_real_field_validation",
+    "can_generate_field_evidence": false,
+    "can_resume_model_chain": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "boundary_note": "This protocol-adapted gate stops low-value internal expansion when the stage boundary is already recoverable and the remaining blocker is real external field input. It does not create evidence, claims, actuator commands or release authorization."
+  },
+  "subagent_orchestration_probe": {
+    "probe_id": "R8u175_stage_boundary_subagent_orchestration_probe",
+    "probe_status": "subagent_orchestration_not_needed_for_external_wait",
+    "capability": "not_needed",
+    "strategy": "not_needed",
+    "no_spawn_reason": "current_stage_is_external_activation_wait_and_no_parallel_internal_task_is_required",
+    "capability_probe": {
+      "environment_listed": false,
+      "tool_discovered": false,
+      "discovery_method": "not_invoked_for_external_wait",
+      "callable_tool": "",
+      "spawn_attempted": false,
+      "agent_ids": [],
+      "wait_status": "not_started",
+      "integration_decision": "not_needed",
+      "integration_reason": "external activation wait has no independent internal subagent task",
+      "route_event": "external_activation_wait"
+    },
+    "lifecycle_cleanup": {
+      "close_attempted": false,
+      "closed_agent_ids": [],
+      "close_status": "not_needed",
+      "previous_status_summary": "",
+      "repeated_close_result": "",
+      "cleanup_decision": "no_subagents_opened_by_this_recovery_artifact",
+      "open_agent_cleanup_required": false
+    },
+    "roles": [],
+    "manual_proxy_needed": false,
+    "can_delegate_goal_completion": false,
+    "can_generate_field_evidence": false
+  },
+  "claim_basis_promotion_snapshot": {
+    "snapshot_id": "R8u179_stage_boundary_claim_basis_promotion_snapshot",
+    "snapshot_status": "claim_basis_promotion_blocked_until_field_validation",
+    "evidence_level": "stage_boundary_snapshot_not_field_evidence",
+    "promotion_decision_count": 5,
+    "ready_promotion_count": 0,
+    "blocked_promotion_count": 5,
+    "can_emit_field_claim_upgrade": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "stage_boundary_effect": "keep_external_wait_until_real_field_validation_and_human_review",
+    "failure_boundary": "该 gate 只判断统一证据记录是否可升级为 field-supported claim candidate；即使通过，也不能写 actuator、release gate、专利/法律结论或现场自动放行。"
+  },
+  "boundary": {
+    "can_generate_field_evidence": false,
+    "can_resume_model_chain_without_external_gate": false,
+    "can_generate_prior_art_result": false,
+    "legal_opinion_allowed": false,
+    "field_claim_upgrade_allowed": false,
+    "can_emit_claim_text": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "boundary_statement": "This board only orders already-defined external actions at a stage boundary. It does not create evidence, legal conclusions, claim text, field validation, actuator commands or release authorization."
+  }
+}

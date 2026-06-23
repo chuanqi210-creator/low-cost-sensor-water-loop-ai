@@ -1,0 +1,94 @@
+{
+  "packet_id": "R8u108_field_activation_response_submission_packet",
+  "packet_type": "field_activation_response_submission_packet",
+  "packet_status": "field_activation_response_submission_packet_waiting_for_external_response",
+  "source_env_var": "FIELD_ACTIVATION_RESPONSE_PATH",
+  "response_template_path": "outputs/model_core_governance/field_activation_response_template.json",
+  "required_response_row_count": 33,
+  "source_preflight_status": "field_activation_response_source_using_default_template",
+  "response_preflight_status": "field_activation_response_blocked_before_external_package_preflight",
+  "response_coherence_audit_status": "field_activation_response_coherence_audit_waiting_for_response_preflight",
+  "response_coherence_hard_blocker_count": 0,
+  "response_coherence_warning_count": 0,
+  "repair_work_order_status": "field_activation_response_repair_work_order_waiting_for_external_response",
+  "external_readiness_gate_status": "field_activation_external_readiness_waiting_for_external_response",
+  "first_blocked_step": "response_source",
+  "highest_priority_blocker": "R8U106_SUBMIT_FIELD_ACTIVATION_RESPONSE",
+  "repair_item_count": 7,
+  "highest_priority_repair_id": "R8U102_SUBMIT_FIELD_ACTIVATION_RESPONSE",
+  "top_repair_items": [
+    {
+      "repair_id": "R8U102_SUBMIT_FIELD_ACTIVATION_RESPONSE",
+      "priority": 5,
+      "scope": "response_source",
+      "required_action": "Fill outputs/model_core_governance/field_activation_response_template.json with real field provenance, save it as an external response JSON, then set FIELD_ACTIVATION_RESPONSE_PATH."
+    },
+    {
+      "repair_id": "R8U102_CONFIRM_NO_WRITE_BOUNDARY",
+      "priority": 10,
+      "scope": "protective_boundary",
+      "required_action": "Set no_write_boundary_confirmed=true only after confirming the response cannot authorize actuator or release-gate writes."
+    },
+    {
+      "repair_id": "R8U102_REPLACE_VALUE_PAYLOAD_TEMPLATE",
+      "priority": 12,
+      "scope": "field_value_payload",
+      "required_action": "Replace evidence_value template markers with actual operator-supplied field values before package assembly."
+    },
+    {
+      "repair_id": "R8U102_FILL_ALIGNMENT_KEYS",
+      "priority": 15,
+      "scope": "batch_alignment",
+      "required_action": "Fill batch_id and evidence_value_reference with real, traceable field/lab/table references."
+    },
+    {
+      "repair_id": "R8U102_REPLACE_TEMPLATE_MARKERS",
+      "priority": 15,
+      "scope": "field_provenance",
+      "required_action": "Replace every template marker with real field provenance, values, methods or alignment references."
+    }
+  ],
+  "required_top_level_fields": [
+    "template_id",
+    "package_type",
+    "source_interface_id",
+    "required_response_row_count",
+    "evidence_rows",
+    "no_write_boundary"
+  ],
+  "required_evidence_row_fields": [
+    "response_row_id",
+    "hidden_state",
+    "required_evidence",
+    "evidence_channel",
+    "table_name",
+    "field_name",
+    "data_origin",
+    "batch_id",
+    "evidence_value_reference",
+    "evidence_value",
+    "chain_of_custody_id",
+    "operator_id",
+    "no_write_boundary_confirmed"
+  ],
+  "operator_submission_steps": [
+    "Open outputs/model_core_governance/field_activation_response_template.json and copy it to an external response JSON before editing.",
+    "Replace every TODO/template marker with real field provenance, batch, timestamp, node, sensor, lab and operation evidence.",
+    "Set FIELD_ACTIVATION_RESPONSE_PATH=/path/to/filled_response.json.",
+    "Run FIELD_ACTIVATION_RESPONSE_PATH=/path/to/filled_response.json .venv/bin/python experiments/run_field_activation_matrix.py.",
+    "Inspect field_activation_response_source_preflight, field_activation_response_preflight and field_activation_response_repair_work_order.",
+    "Only after response, repair, assembly, staging and materialized package preflights pass, run the external activation router."
+  ],
+  "validation_commands": [
+    "FIELD_ACTIVATION_RESPONSE_PATH=/path/to/filled_response.json .venv/bin/python experiments/run_field_activation_matrix.py",
+    ".venv/bin/python experiments/run_agent50_model_core_governance.py",
+    ".venv/bin/python experiments/run_external_activation_router.py"
+  ],
+  "next_operator_action": "fill_response_template_and_set_FIELD_ACTIVATION_RESPONSE_PATH",
+  "can_submit_to_response_preflight": true,
+  "can_route_to_external_activation_router": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "no_write_boundary": "This submission packet only tells an operator how to submit and validate a filled field-activation response JSON. It does not generate field evidence, does not run replay/holdout, does not materialize a package directory, and cannot write actuator policy, release gate, legal conclusions or field-supported claims."
+}

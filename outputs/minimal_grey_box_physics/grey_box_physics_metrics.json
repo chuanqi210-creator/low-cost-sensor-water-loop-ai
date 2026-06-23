@@ -1,0 +1,299 @@
+{
+  "method_contract": {
+    "upgrade_id": "P4_minimal_grey_box_physics",
+    "borrowed_from": [
+      "WaterTAP-style unit model contracts and constraints",
+      "QSDsan-style process/system simulation boundary",
+      "Pseudo-first-order and Langmuir-Hinshelwood-inspired degradation kinetics",
+      "Residence-time distribution and hydraulic retention concepts"
+    ],
+    "reality_mapping": "用最小参数层表达停留时间、反应速率、基质抑制、催化剂衰减、副产物风险和守恒残差。",
+    "data_needs": [
+      "inlet/outlet target pollutant labels",
+      "hydraulic residence time distribution",
+      "oxidant dose and residual measurements",
+      "catalyst age/regeneration history",
+      "byproduct lab panel",
+      "batch-level flow and volume"
+    ],
+    "implementation_path": [
+      "src/water_ai/agents/minimal_grey_box_physics_agent.py",
+      "experiments/run_agent53_minimal_grey_box_physics.py",
+      "deliverables/minimal_grey_box_physics.md",
+      "outputs/minimal_grey_box_physics/grey_box_physics_metrics.json"
+    ],
+    "evaluation_metrics": [
+      "grey_box_residual",
+      "mass_balance_residual",
+      "bypass_load_fraction",
+      "oxidant_balance_residual",
+      "byproduct_risk",
+      "catalyst_decay_delta",
+      "rtd_short_circuit_risk"
+    ],
+    "failure_boundary": "未经过 field calibration 前，只能作为 synthetic grey-box prior；不能证明现场机理或授权放行。"
+  },
+  "scenario_physics_table": [
+    {
+      "scenario": "clean_release",
+      "inlet_pollutant_load": 0.22,
+      "observed_synthetic_residual": 0.08,
+      "effective_retention_min": 34.704,
+      "rtd_short_circuit_risk": 0.08,
+      "pseudo_first_order_k_per_min": 0.02248,
+      "matrix_inhibition_factor": 0.755,
+      "catalyst_effective_activity": 0.805,
+      "bypass_load_fraction": 0.101,
+      "converted_load_proxy": 0.107,
+      "predicted_removal_fraction": 0.542,
+      "predicted_outlet_load": 0.113,
+      "grey_box_residual": 0.033,
+      "residual_sign": "over_predicts_residual",
+      "mass_balance_residual": 0.0,
+      "oxidant_consumption_proxy": 0.039,
+      "oxidant_balance_residual": 0.0,
+      "catalyst_decay_delta": 0.029,
+      "byproduct_risk": 0.401,
+      "failure_modes": [],
+      "data_needs": [
+        "inlet_target_pollutant",
+        "outlet_target_pollutant",
+        "hydraulic_residence_time_distribution",
+        "oxidant_dose_and_residual",
+        "catalyst_age_regen_history",
+        "byproduct_lab_panel"
+      ],
+      "failure_boundary": "参数未由文献范围或 field calibration 校准前，只能作为 synthetic grey-box prior。"
+    },
+    {
+      "scenario": "oxidant_limitation",
+      "inlet_pollutant_load": 0.72,
+      "observed_synthetic_residual": 0.453,
+      "effective_retention_min": 33.732,
+      "rtd_short_circuit_risk": 0.14,
+      "pseudo_first_order_k_per_min": 0.00919,
+      "matrix_inhibition_factor": 0.712,
+      "catalyst_effective_activity": 0.681,
+      "bypass_load_fraction": 0.125,
+      "converted_load_proxy": 0.168,
+      "predicted_removal_fraction": 0.267,
+      "predicted_outlet_load": 0.552,
+      "grey_box_residual": 0.099,
+      "residual_sign": "over_predicts_residual",
+      "mass_balance_residual": 0.0,
+      "oxidant_consumption_proxy": 0.063,
+      "oxidant_balance_residual": 0.0,
+      "catalyst_decay_delta": 0.024,
+      "byproduct_risk": 0.313,
+      "failure_modes": [],
+      "data_needs": [
+        "inlet_target_pollutant",
+        "outlet_target_pollutant",
+        "hydraulic_residence_time_distribution",
+        "oxidant_dose_and_residual",
+        "catalyst_age_regen_history",
+        "byproduct_lab_panel"
+      ],
+      "failure_boundary": "参数未由文献范围或 field calibration 校准前，只能作为 synthetic grey-box prior。"
+    },
+    {
+      "scenario": "reaction_time_insufficient",
+      "inlet_pollutant_load": 0.68,
+      "observed_synthetic_residual": 0.283,
+      "effective_retention_min": 30.168,
+      "rtd_short_circuit_risk": 0.36,
+      "pseudo_first_order_k_per_min": 0.01427,
+      "matrix_inhibition_factor": 0.712,
+      "catalyst_effective_activity": 0.675,
+      "bypass_load_fraction": 0.187,
+      "converted_load_proxy": 0.193,
+      "predicted_removal_fraction": 0.35,
+      "predicted_outlet_load": 0.487,
+      "grey_box_residual": 0.204,
+      "residual_sign": "over_predicts_residual",
+      "mass_balance_residual": 0.0,
+      "oxidant_consumption_proxy": 0.072,
+      "oxidant_balance_residual": 0.0,
+      "catalyst_decay_delta": 0.026,
+      "byproduct_risk": 0.455,
+      "failure_modes": [
+        "grey_box_residual_high"
+      ],
+      "data_needs": [
+        "inlet_target_pollutant",
+        "outlet_target_pollutant",
+        "hydraulic_residence_time_distribution",
+        "oxidant_dose_and_residual",
+        "catalyst_age_regen_history",
+        "byproduct_lab_panel"
+      ],
+      "failure_boundary": "参数未由文献范围或 field calibration 校准前，只能作为 synthetic grey-box prior。"
+    },
+    {
+      "scenario": "catalyst_deactivation",
+      "inlet_pollutant_load": 0.7,
+      "observed_synthetic_residual": 0.361,
+      "effective_retention_min": 33.084,
+      "rtd_short_circuit_risk": 0.18,
+      "pseudo_first_order_k_per_min": 0.00746,
+      "matrix_inhibition_factor": 0.726,
+      "catalyst_effective_activity": 0.305,
+      "bypass_load_fraction": 0.134,
+      "converted_load_proxy": 0.133,
+      "predicted_removal_fraction": 0.219,
+      "predicted_outlet_load": 0.567,
+      "grey_box_residual": 0.206,
+      "residual_sign": "over_predicts_residual",
+      "mass_balance_residual": 0.0,
+      "oxidant_consumption_proxy": 0.049,
+      "oxidant_balance_residual": 0.0,
+      "catalyst_decay_delta": 0.024,
+      "byproduct_risk": 0.42,
+      "failure_modes": [
+        "grey_box_residual_high",
+        "catalyst_decay_risk_high"
+      ],
+      "data_needs": [
+        "inlet_target_pollutant",
+        "outlet_target_pollutant",
+        "hydraulic_residence_time_distribution",
+        "oxidant_dose_and_residual",
+        "catalyst_age_regen_history",
+        "byproduct_lab_panel"
+      ],
+      "failure_boundary": "参数未由文献范围或 field calibration 校准前，只能作为 synthetic grey-box prior。"
+    },
+    {
+      "scenario": "matrix_shock",
+      "inlet_pollutant_load": 0.62,
+      "observed_synthetic_residual": 0.378,
+      "effective_retention_min": 32.76,
+      "rtd_short_circuit_risk": 0.282,
+      "pseudo_first_order_k_per_min": 0.00988,
+      "matrix_inhibition_factor": 0.457,
+      "catalyst_effective_activity": 0.662,
+      "bypass_load_fraction": 0.235,
+      "converted_load_proxy": 0.131,
+      "predicted_removal_fraction": 0.276,
+      "predicted_outlet_load": 0.489,
+      "grey_box_residual": 0.111,
+      "residual_sign": "over_predicts_residual",
+      "mass_balance_residual": 0.0,
+      "oxidant_consumption_proxy": 0.063,
+      "oxidant_balance_residual": 0.0,
+      "catalyst_decay_delta": 0.046,
+      "byproduct_risk": 0.597,
+      "failure_modes": [
+        "matrix_inhibition_strong"
+      ],
+      "data_needs": [
+        "inlet_target_pollutant",
+        "outlet_target_pollutant",
+        "hydraulic_residence_time_distribution",
+        "oxidant_dose_and_residual",
+        "catalyst_age_regen_history",
+        "byproduct_lab_panel"
+      ],
+      "failure_boundary": "参数未由文献范围或 field calibration 校准前，只能作为 synthetic grey-box prior。"
+    }
+  ],
+  "guardrail_failure_boundary_patch": [
+    {
+      "mechanism_family": "catalyst_activity_proxy_uncertainty",
+      "scenario": "catalyst_uncertain_low_proxy",
+      "grey_box_boundary": [
+        "catalyst activity cannot be treated as observed without proxy holdout label",
+        "protective/regeneration actions require pressure-drop or lifecycle evidence",
+        "matrix inhibition and catalyst deactivation must remain separable hypotheses"
+      ],
+      "control_implication": "keep J4_safe_low_cost_standby or human-reviewed catalyst protection until field proxy labels close the uncertainty.",
+      "target_agent": "minimal_grey_box_physics_agent",
+      "field_boundary": "synthetic guardrail resolved false-positive catalyst protection; field proxy labels are required before catalyst-control claim upgrade.",
+      "consumed_by_agent53": true,
+      "patch_source": "R4_control_guardrail_failure_backpropagation"
+    },
+    {
+      "mechanism_family": "hydraulic_latency_and_storage_uncertainty",
+      "scenario": "hydraulic_delay_violation",
+      "grey_box_boundary": [
+        "recycle escalation is unsafe when residence-time delay and storage margin are unobserved",
+        "latency budget must include actuator response, pump-valve result and tank capacity",
+        "loop retention benefit must be checked against polishing/release-gate alternative"
+      ],
+      "control_implication": "prefer J3_polishing_and_release_gate over recycle escalation until hydraulic execution evidence exists.",
+      "target_agent": "minimal_grey_box_physics_agent",
+      "field_boundary": "synthetic guardrail resolved high-regret recycle action; field hydraulic replay is required before recycle-control claim upgrade.",
+      "consumed_by_agent53": true,
+      "patch_source": "R4_control_guardrail_failure_backpropagation"
+    }
+  ],
+  "control_guardrail_backpropagation_context": {
+    "guardrail_backpropagation_status": "synthetic_guardrail_backpropagation_ready_needs_field_replay_and_grey_box_calibration",
+    "backpropagation_ready": true,
+    "resolved_case_count": 2,
+    "guardrail_patch_count": 2,
+    "agent53_guardrail_boundary_consumption_rate": 1.0,
+    "field_ready": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "field_boundary": "R4b consumes synthetic guardrail boundaries as grey-box candidates only."
+  },
+  "readiness": {
+    "grey_box_physics_status": "synthetic_grey_box_physics_prior_ready_needs_field_calibration",
+    "grey_box_physics_score": 0.426,
+    "scenario_count": 5,
+    "mean_grey_box_residual": 0.131,
+    "max_grey_box_residual": 0.206,
+    "max_mass_balance_residual": 0.0,
+    "max_byproduct_risk": 0.597,
+    "physics_violation_rate": 0.6,
+    "violation_scenarios": [
+      "reaction_time_insufficient",
+      "catalyst_deactivation",
+      "matrix_shock"
+    ],
+    "guardrail_failure_boundary_count": 6,
+    "guardrail_patch_consumed_count": 2,
+    "guardrail_patch_count": 2,
+    "agent53_guardrail_boundary_consumption_rate": 1.0,
+    "synthetic_prior_ready": true,
+    "field_ready": false,
+    "can_update_soft_sensor_physics_prior": true,
+    "can_update_guardrail_failure_boundaries": true,
+    "can_update_agent50_priority": true,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "next_recommended_core_action": "P5_soft_sensor_node_modality_missingness"
+  },
+  "calibration_contract": {
+    "minimum_field_tables": [
+      "batch_inlet_outlet_lab",
+      "hydraulic_rtd_or_tracer",
+      "oxidant_dose_residual_log",
+      "catalyst_age_regeneration_log",
+      "byproduct_panel"
+    ],
+    "field_acceptance_gates": [
+      "field_physics_coverage >= 0.85",
+      "max_field_residual <= configured threshold",
+      "max_mass_balance_residual <= configured threshold",
+      "byproduct panel available for high oxidant/matrix scenarios"
+    ]
+  },
+  "agent50_writeback": {
+    "allowed_writeback": [
+      "soft_sensor_physics_prior",
+      "agent49_reward_residual_candidate",
+      "guardrail_failure_boundary_candidate",
+      "P4_completion_status_for_governance"
+    ],
+    "blocked_writeback": [
+      "actuator_policy",
+      "release_gate_policy",
+      "field_mechanism_claim"
+    ],
+    "can_advance_governance_priority": true,
+    "guardrail_boundary_consumption_rate": 1.0,
+    "policy_effect": "move_to_P5_soft_sensor_node_modality_missingness"
+  }
+}

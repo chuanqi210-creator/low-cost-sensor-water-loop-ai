@@ -1,0 +1,159 @@
+{
+  "source_report": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent27_recovery_execution_replay/agent27_report.json",
+  "baseline_report": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent26_recovery_strategy_writeback/agent26_report.json",
+  "recovery_online_control": {
+    "agent_name": "recovery_online_control_agent",
+    "confidence": 0.7,
+    "summary": "恢复在线控制：maintain_conditional_recovery；下一轮进水 0.75，重规划 False。",
+    "recommendations": [
+      "维持条件恢复进水 0.75，但继续保留 fallback_intake_fraction 0.6。",
+      "下一 campaign 后继续运行遥测桥接、恢复执行回放和在线控制复核。"
+    ],
+    "metrics": {
+      "recovery_campaign_update": {
+        "campaign_id": "recovery_execution_replay",
+        "cut_point_batch_count": 6,
+        "acceptance_passed": true,
+        "success_rate": 1.0,
+        "validation_staff_usage": 0.394,
+        "time_budget_usage": 0.884,
+        "catalyst_spares_remaining": 3,
+        "oxidant_stock_units_remaining": 3.5,
+        "intake_pressure_multiplier": 1.0,
+        "budget_release_fraction": 1.0,
+        "budget_released_items": [
+          "外包低价值验证",
+          "催化剂备用供应商",
+          "验证能力批复",
+          "催化剂库存批复",
+          "氧化剂库存批复"
+        ],
+        "ready_campaign_slip": 0,
+        "bottleneck_ids": [],
+        "operating_mode": "normal_intake",
+        "source_scenarios": [
+          "matrix_shock",
+          "catalyst_deactivation",
+          "matrix_shock",
+          "catalyst_deactivation",
+          "oxidant_limitation",
+          "oxidant_limitation"
+        ],
+        "recovery_policy_applied": true,
+        "recovery_replay_verdict": "recovery_execution_validated",
+        "fallback_required": false,
+        "target_intake_fraction": 0.75,
+        "fallback_intake_fraction": 0.6
+      },
+      "online_project_control": {
+        "rolling_decisions": [
+          {
+            "campaign_id": "recovery_execution_replay",
+            "project_mode": "steady_monitoring",
+            "rolling_risk": 0.0,
+            "dominant_signals": [
+              "stable"
+            ],
+            "stable_streak": 1,
+            "next_intake_fraction": 0.75,
+            "next_budget_item": "本轮无需新增预算项，保持滚动复核",
+            "released_budget_items": [
+              "催化剂备用供应商",
+              "催化剂库存批复",
+              "外包低价值验证",
+              "氧化剂库存批复",
+              "验证能力批复"
+            ],
+            "replan_required": false,
+            "replan_reasons": [],
+            "control_confidence": 0.58
+          }
+        ],
+        "current_control_state": {
+          "campaign_id": "recovery_execution_replay",
+          "project_mode": "steady_monitoring",
+          "rolling_risk": 0.0,
+          "dominant_signals": [
+            "stable"
+          ],
+          "stable_streak": 1,
+          "next_intake_fraction": 0.75,
+          "next_budget_item": "本轮无需新增预算项，保持滚动复核",
+          "released_budget_items": [
+            "催化剂备用供应商",
+            "催化剂库存批复",
+            "外包低价值验证",
+            "氧化剂库存批复",
+            "验证能力批复"
+          ],
+          "replan_required": false,
+          "replan_reasons": [],
+          "control_confidence": 0.58
+        },
+        "selected_portfolio_id": "resilience_bridge_portfolio",
+        "base_load_control_policy": {
+          "protected_intake_fraction": 0.75,
+          "normalization_rule": "在执行恢复控制策略且 campaign 后遥测未触发瓶颈时，允许按目标进水比例运行；若验收失败或时间预算超限，立即回退到 fallback_intake_fraction。",
+          "load_controls": [
+            "保护性进水上限 0.45",
+            "拒绝新增高风险进水",
+            "连续催化剂压力批次禁止排队"
+          ],
+          "fallback_intake_fraction": 0.6,
+          "conditional_recovery_enabled": true,
+          "conditional_recovery_strategy": "stagger_validation_overlap"
+        }
+      },
+      "adjusted_control_state": {
+        "campaign_id": "recovery_execution_replay",
+        "project_mode": "steady_monitoring",
+        "rolling_risk": 0.0,
+        "dominant_signals": [
+          "stable"
+        ],
+        "stable_streak": 1,
+        "next_intake_fraction": 0.75,
+        "next_budget_item": "本轮无需新增预算项，保持滚动复核",
+        "released_budget_items": [
+          "催化剂备用供应商",
+          "催化剂库存批复",
+          "外包低价值验证",
+          "氧化剂库存批复",
+          "验证能力批复"
+        ],
+        "replan_required": false,
+        "replan_reasons": [],
+        "control_confidence": 0.58,
+        "base_online_state": {
+          "campaign_id": "recovery_execution_replay",
+          "project_mode": "steady_monitoring",
+          "rolling_risk": 0.0,
+          "dominant_signals": [
+            "stable"
+          ],
+          "stable_streak": 1,
+          "next_intake_fraction": 0.75,
+          "next_budget_item": "本轮无需新增预算项，保持滚动复核",
+          "released_budget_items": [
+            "催化剂备用供应商",
+            "催化剂库存批复",
+            "外包低价值验证",
+            "氧化剂库存批复",
+            "验证能力批复"
+          ],
+          "replan_required": false,
+          "replan_reasons": [],
+          "control_confidence": 0.58
+        },
+        "recovery_policy_id": "recovery_strategy_v1",
+        "recovery_replay_verdict": "recovery_execution_validated",
+        "target_intake_fraction": 0.75,
+        "fallback_intake_fraction": 0.6,
+        "fallback_required": false,
+        "strategy_stable": true,
+        "recovery_control_mode": "maintain_conditional_recovery"
+      }
+    },
+    "issues": []
+  }
+}

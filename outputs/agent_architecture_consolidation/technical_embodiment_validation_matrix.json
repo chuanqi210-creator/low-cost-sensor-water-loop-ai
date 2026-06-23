@@ -1,0 +1,456 @@
+{
+  "coverage": {
+    "technical_embodiment_validation_status": "technical_embodiment_matrix_ready_not_field_evidence",
+    "embodiment_count": 6,
+    "complete_embodiment_count": 6,
+    "technical_embodiment_validation_coverage_rate": 1.0,
+    "incomplete_embodiments": [],
+    "covered_claim_ids": [
+      "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+      "TCS2_independent_system_architecture",
+      "TCS3_dependent_catalyst_activity_regeneration_control",
+      "TCS4_dependent_node_modality_sparse_hidden_state_estimation",
+      "TCS5_dependent_field_replay_protective_writeback",
+      "TCS6_dependent_low_frequency_cycle_window_control",
+      "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+    ],
+    "missing_claim_coverage": [],
+    "covered_feature_ids": [
+      "PTF1_node_modality_sparse_sensing",
+      "PTF2_soft_sensor_grey_state_estimation",
+      "PTF3_grey_box_mechanism_boundary",
+      "PTF4_cyclic_low_frequency_control",
+      "PTF5_mechanism_kg_evidence_constraint",
+      "PTF6_field_replay_release_gate",
+      "PTF7_engineering_execution_constraints",
+      "PTF8_stage_gated_model_governance"
+    ],
+    "missing_feature_coverage": [],
+    "field_claim_upgrade_allowed": false,
+    "can_generate_field_evidence": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "evidence_boundary": "该矩阵只定义实施例与验证门；没有真实 field package、replay、holdout 和 operator review 时，不能生成 field evidence、不能写执行器、不能写 release gate。"
+  },
+  "embodiments": [
+    {
+      "embodiment_id": "TE1_end_to_end_low_cost_cyclic_greybox_control",
+      "embodiment_title": "端到端低成本稀疏传感循环式灰箱闭环控制实施例",
+      "linked_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "linked_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF6_field_replay_release_gate"
+      ],
+      "scenario": "某污染批次进入均质池、反应核心、催化剂床、回流环和末端精处理单元，现场只允许少量低成本传感和离线验证。",
+      "source_package_requirements": [
+        "field metadata with data_origin=field",
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "campaign_operation_log",
+        "fast_proxy_event_log",
+        "agent52_replay_table"
+      ],
+      "required_tables_or_artifacts": [
+        "R7 field package",
+        "R8p accepted pressure-resolution rows",
+        "R8v routing outputs",
+        "field holdout split",
+        "operator review log"
+      ],
+      "step_sequence": [
+        "构建现场对象和循环拓扑。",
+        "形成低成本 node-modality 观测矩阵。",
+        "估计隐藏过程状态和不确定性。",
+        "由灰箱/KG 证据生成控制候选和失败边界。",
+        "执行回流、暂存、投药、切换或保护性阻断候选。",
+        "通过 field replay、holdout、operator review 和 release gate 审查。"
+      ],
+      "validation_gates": [
+        "R7 field package",
+        "R8p",
+        "R8v",
+        "field holdout",
+        "operator review",
+        "release gate"
+      ],
+      "acceptance_metrics": [
+        "field_import_pass",
+        "field_scenario_coverage",
+        "joint_action_accuracy",
+        "evidence_chain_pass",
+        "can_write_to_release_gate"
+      ],
+      "technical_effect_to_measure": "验证低成本稀疏传感与循环窗口是否能在不误放行的前提下提升隐藏状态可估计性和控制可执行性。",
+      "current_evidence_status": "scaffold_only_waiting_for_field_package",
+      "failure_boundary": "任一 field/replay/holdout/release gate 阻断时，不得生成 field-supported claim 或执行器写回。",
+      "field_claim_upgrade_allowed": false,
+      "linked_claim_statuses": {
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control": "technical_claim_scaffold_complete_not_legal_claim_not_field_claim",
+        "TCS2_independent_system_architecture": "technical_claim_scaffold_complete_not_legal_claim_not_field_claim"
+      },
+      "linked_feature_statuses": {
+        "PTF1_node_modality_sparse_sensing": "technical_feature_candidate_complete_not_field_claim",
+        "PTF2_soft_sensor_grey_state_estimation": "technical_feature_candidate_complete_not_field_claim",
+        "PTF3_grey_box_mechanism_boundary": "technical_feature_candidate_complete_not_field_claim",
+        "PTF4_cyclic_low_frequency_control": "technical_feature_candidate_complete_not_field_claim",
+        "PTF5_mechanism_kg_evidence_constraint": "technical_feature_candidate_complete_not_field_claim",
+        "PTF6_field_replay_release_gate": "technical_feature_candidate_complete_not_field_claim"
+      },
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "embodiment_status": "technical_embodiment_scaffold_not_field_evidence",
+      "missing_embodiment_fields": [],
+      "validation_ready_status": "embodiment_validation_scaffold_complete_waiting_for_field_evidence"
+    },
+    {
+      "embodiment_id": "TE2_pressure_resolution_route_package_validation",
+      "embodiment_title": "压力源冲突解除与 R7-to-R8p route work package 验收实施例",
+      "linked_claim_ids": [
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS6_dependent_low_frequency_cycle_window_control"
+      ],
+      "linked_feature_ids": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "scenario": "node_modality_sensor_timeseries 与 pressure_headloss_event_log 对同一 batch 的压降证据冲突，需要 operator review 和 route work package 后才能进入 R8p/R8v。",
+      "source_package_requirements": [
+        "R7_TO_R8P_WORK_PACKAGE_DIR",
+        "R7 source package work package",
+        "operator supplement work package",
+        "Agent52 replay export work package",
+        "R8p validation gate work package"
+      ],
+      "required_tables_or_artifacts": [
+        "pressure_resolution_replay_rows_r7_completion_route_work_package_preflight.json",
+        "pressure_resolution_replay_rows_r7_completion_route_work_package_patch_plan.json",
+        "pressure_resolution_replay_rows_r7_completion_route_work_package_assembly_gate.json",
+        "pressure_source_resolution"
+      ],
+      "step_sequence": [
+        "提交 R7_TO_R8P_WORK_PACKAGE_DIR。",
+        "运行 work package preflight 并按 patch plan 修补缺口。",
+        "验证四类 work package 均通过候选提交检查。",
+        "按 assembly gate 装配 R8p candidate rows package。",
+        "重跑 R8p/R8v validation gates 和 pressure conflict replay。"
+      ],
+      "validation_gates": [
+        "work package preflight",
+        "R8u-27 patch plan",
+        "R8u-28 assembly gate",
+        "R8p",
+        "R8v",
+        "operator review"
+      ],
+      "acceptance_metrics": [
+        "submitted_work_package_count",
+        "passed_work_package_count",
+        "blocked_assembly_step_count",
+        "field_scenario_coverage",
+        "pressure_source_conflict_requires_operator_review"
+      ],
+      "technical_effect_to_measure": "验证压力源冲突不会被静默平均或越过人工复核，并能被转化为可修补、可装配、可回放的现场行包路径。",
+      "current_evidence_status": "blocked_waiting_for_R7_TO_R8P_WORK_PACKAGE_DIR",
+      "failure_boundary": "未设置或未通过 R7_TO_R8P_WORK_PACKAGE_DIR 时，只能保留 candidate workflow，不能生成 field evidence。",
+      "field_claim_upgrade_allowed": false,
+      "linked_claim_statuses": {
+        "TCS5_dependent_field_replay_protective_writeback": "technical_claim_scaffold_complete_not_legal_claim_not_field_claim",
+        "TCS6_dependent_low_frequency_cycle_window_control": "technical_claim_scaffold_complete_not_legal_claim_not_field_claim"
+      },
+      "linked_feature_statuses": {
+        "PTF4_cyclic_low_frequency_control": "technical_feature_candidate_complete_not_field_claim",
+        "PTF6_field_replay_release_gate": "technical_feature_candidate_complete_not_field_claim",
+        "PTF8_stage_gated_model_governance": "technical_feature_candidate_complete_not_field_claim"
+      },
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "embodiment_status": "technical_embodiment_scaffold_not_field_evidence",
+      "missing_embodiment_fields": [],
+      "validation_ready_status": "embodiment_validation_scaffold_complete_waiting_for_field_evidence"
+    },
+    {
+      "embodiment_id": "TE3_catalyst_activity_proxy_regeneration",
+      "embodiment_title": "催化剂活性代理观测与再生/更换闭环实施例",
+      "linked_claim_ids": [
+        "TCS3_dependent_catalyst_activity_regeneration_control"
+      ],
+      "linked_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "scenario": "催化剂床活性不可直接低成本测量，需要通过 UV254、ORP、压降、再生事件和离线标签形成代理证据。",
+      "source_package_requirements": [
+        "N3 catalyst bed inlet/outlet UV254 and ORP",
+        "pressure_drop_kPa or pressure_headloss_event_log",
+        "regeneration_event",
+        "offline catalyst_activity labels",
+        "bed geometry and HRT"
+      ],
+      "required_tables_or_artifacts": [
+        "node_modality_sensor_timeseries",
+        "pressure_headloss_event_log",
+        "offline_lab_results",
+        "campaign_operation_log",
+        "Agent51 field proxy holdout summary"
+      ],
+      "step_sequence": [
+        "对齐催化剂床代理信号与离线标签。",
+        "计算 catalyst_activity 软传感估计与不确定性。",
+        "检查 pressure source conflict 和 operator review 状态。",
+        "在 holdout 通过前保持催化剂保护。",
+        "gate 通过后再生成催化剂再生或更换候选。"
+      ],
+      "validation_gates": [
+        "Agent51 field proxy holdout",
+        "pressure_source_resolution",
+        "R8p/R8v",
+        "operator review"
+      ],
+      "acceptance_metrics": [
+        "scoreable_batch_count",
+        "proxy_label_correlation",
+        "holdout_mae",
+        "pressure_source_conflict_count",
+        "catalyst_guardrail_mode"
+      ],
+      "technical_effect_to_measure": "验证低成本代理能否提高催化剂活性可观测性，并避免未验证代理解除保护。",
+      "current_evidence_status": "design_prior_and_schema_ready_waiting_for_field_proxy_holdout",
+      "failure_boundary": "field proxy holdout 未通过或压力冲突未解除时，不能触发自动再生/更换执行器。",
+      "field_claim_upgrade_allowed": false,
+      "linked_claim_statuses": {
+        "TCS3_dependent_catalyst_activity_regeneration_control": "technical_claim_scaffold_complete_not_legal_claim_not_field_claim"
+      },
+      "linked_feature_statuses": {
+        "PTF1_node_modality_sparse_sensing": "technical_feature_candidate_complete_not_field_claim",
+        "PTF2_soft_sensor_grey_state_estimation": "technical_feature_candidate_complete_not_field_claim",
+        "PTF3_grey_box_mechanism_boundary": "technical_feature_candidate_complete_not_field_claim",
+        "PTF4_cyclic_low_frequency_control": "technical_feature_candidate_complete_not_field_claim",
+        "PTF6_field_replay_release_gate": "technical_feature_candidate_complete_not_field_claim"
+      },
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "embodiment_status": "technical_embodiment_scaffold_not_field_evidence",
+      "missing_embodiment_fields": [],
+      "validation_ready_status": "embodiment_validation_scaffold_complete_waiting_for_field_evidence"
+    },
+    {
+      "embodiment_id": "TE4_node_modality_sparse_hidden_state_layout",
+      "embodiment_title": "node-modality 稀疏布点与隐藏状态估计实施例",
+      "linked_claim_ids": [
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation"
+      ],
+      "linked_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation"
+      ],
+      "scenario": "在预算受限的处理单元和管网节点上选择传感器组合，使 pollutant_residual、reaction_completion、catalyst_activity 等隐藏状态具备最低可估计性。",
+      "source_package_requirements": [
+        "site topology",
+        "sensor candidate catalog",
+        "installation and maintenance cost catalog",
+        "node-specific time series",
+        "offline weak-state labels"
+      ],
+      "required_tables_or_artifacts": [
+        "sparse_placement_metrics.json",
+        "observation_contract_metrics.json",
+        "soft_sensor_matrix_metrics.json",
+        "field topology package"
+      ],
+      "step_sequence": [
+        "建立节点、模态和成本矩阵。",
+        "计算 rank、弱状态覆盖和单点依赖。",
+        "选择候选布点并标记硬缺口。",
+        "把 layout_id、availability mask 和 time-since-last-observed 传入软传感器。",
+        "通过 field topology 和 missingness replay 复核。"
+      ],
+      "validation_gates": [
+        "field topology",
+        "field missingness replay",
+        "offline labels",
+        "soft sensor holdout"
+      ],
+      "acceptance_metrics": [
+        "weak_state_coverage",
+        "selected_matrix_rank",
+        "condition_number_proxy",
+        "missingness_robustness_score"
+      ],
+      "technical_effect_to_measure": "验证传感布点是否真正提升隐藏状态可估计性，而不是只增加传感器数量。",
+      "current_evidence_status": "synthetic_design_prior_waiting_for_field_topology_and_labels",
+      "failure_boundary": "无真实拓扑和标签时不能声称现场最优布点或现场可观测性达标。",
+      "field_claim_upgrade_allowed": false,
+      "linked_claim_statuses": {
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation": "technical_claim_scaffold_complete_not_legal_claim_not_field_claim"
+      },
+      "linked_feature_statuses": {
+        "PTF1_node_modality_sparse_sensing": "technical_feature_candidate_complete_not_field_claim",
+        "PTF2_soft_sensor_grey_state_estimation": "technical_feature_candidate_complete_not_field_claim"
+      },
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "embodiment_status": "technical_embodiment_scaffold_not_field_evidence",
+      "missing_embodiment_fields": [],
+      "validation_ready_status": "embodiment_validation_scaffold_complete_waiting_for_field_evidence"
+    },
+    {
+      "embodiment_id": "TE5_low_frequency_cycle_window_control",
+      "embodiment_title": "低频传感-循环窗口协同控制实施例",
+      "linked_claim_ids": [
+        "TCS6_dependent_low_frequency_cycle_window_control"
+      ],
+      "linked_feature_ids": [
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF7_engineering_execution_constraints"
+      ],
+      "scenario": "低成本传感和离线检测慢于反应/放行决策，需要用回流、暂存和延长停留时间换取验证窗口。",
+      "source_package_requirements": [
+        "timestamped sensor readings",
+        "lab result timestamps",
+        "operation action timestamps",
+        "tank storage margin",
+        "actuator latency and pump/valve feedback"
+      ],
+      "required_tables_or_artifacts": [
+        "timestamped_campaign_replay",
+        "grey_box_dynamic_latency metrics",
+        "campaign_operation_log",
+        "fast_proxy_event_log"
+      ],
+      "step_sequence": [
+        "计算采样、检测、软传感、人工复核和执行器延迟。",
+        "判断暂存/循环窗口能否覆盖慢证据返回。",
+        "若窗口不足，选择回流、暂存或阻断放行。",
+        "若窗口足够且 gate 通过，允许进入下一处理单元候选。"
+      ],
+      "validation_gates": [
+        "timestamped replay",
+        "latency budget replay",
+        "operator review",
+        "actuator feedback"
+      ],
+      "acceptance_metrics": [
+        "latency_violation_rate",
+        "hold_time_min",
+        "storage_margin",
+        "false_positive_cost",
+        "release_block_correctness"
+      ],
+      "technical_effect_to_measure": "验证循环结构是否能降低对高频昂贵传感器的依赖，并降低误放行风险。",
+      "current_evidence_status": "synthetic_latency_replay_waiting_for_timestamped_field_campaign",
+      "failure_boundary": "暂存容量或执行延迟不足时，不能选择依赖循环窗口的控制动作。",
+      "field_claim_upgrade_allowed": false,
+      "linked_claim_statuses": {
+        "TCS6_dependent_low_frequency_cycle_window_control": "technical_claim_scaffold_complete_not_legal_claim_not_field_claim"
+      },
+      "linked_feature_statuses": {
+        "PTF2_soft_sensor_grey_state_estimation": "technical_feature_candidate_complete_not_field_claim",
+        "PTF4_cyclic_low_frequency_control": "technical_feature_candidate_complete_not_field_claim",
+        "PTF7_engineering_execution_constraints": "technical_feature_candidate_complete_not_field_claim"
+      },
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "embodiment_status": "technical_embodiment_scaffold_not_field_evidence",
+      "missing_embodiment_fields": [],
+      "validation_ready_status": "embodiment_validation_scaffold_complete_waiting_for_field_evidence"
+    },
+    {
+      "embodiment_id": "TE6_greybox_multi_agent_safety_arbitration",
+      "embodiment_title": "灰箱机理约束下的多智能体诊断与安全仲裁实施例",
+      "linked_claim_ids": [
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "linked_feature_ids": [
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF7_engineering_execution_constraints",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "scenario": "多个 agent 对同一污染批次提出回流、投药、切换、催化剂保护或放行候选，需要以机理证据、工程约束和证据等级仲裁。",
+      "source_package_requirements": [
+        "soft sensor state estimates",
+        "grey-box residuals",
+        "KG evidence paths",
+        "engineering constraint patches",
+        "state-action-reward replay",
+        "operator review log"
+      ],
+      "required_tables_or_artifacts": [
+        "control_replay_stress_metrics.json",
+        "multi_facility_replay_evaluation metrics",
+        "knowledge_graph_reasoning outputs",
+        "engineering_execution_constraint metrics",
+        "field state-action-reward replay"
+      ],
+      "step_sequence": [
+        "收集状态估计、机理残差、KG 约束和工程约束。",
+        "生成多个控制候选及失败边界。",
+        "按安全收益、误放行风险、执行可行性和证据等级排序。",
+        "对冲突或证据不足动作触发 operator review 和保护性阻断。"
+      ],
+      "validation_gates": [
+        "counterfactual replay",
+        "field state-action-reward replay",
+        "operator review",
+        "governance stage gate"
+      ],
+      "acceptance_metrics": [
+        "joint_action_accuracy",
+        "reward_regret",
+        "constraint_hit_rate",
+        "false_positive_cost",
+        "operator_review_required"
+      ],
+      "technical_effect_to_measure": "验证多智能体输出是否能被灰箱机理和工程安全边界约束，而不是靠黑箱投票或 MARL 直接执行。",
+      "current_evidence_status": "synthetic_counterfactual_replay_waiting_for_field_state_action_reward_replay",
+      "failure_boundary": "机制冲突、证据缺口或执行约束不满足时必须保持阻断。",
+      "field_claim_upgrade_allowed": false,
+      "linked_claim_statuses": {
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration": "technical_claim_scaffold_complete_not_legal_claim_not_field_claim"
+      },
+      "linked_feature_statuses": {
+        "PTF3_grey_box_mechanism_boundary": "technical_feature_candidate_complete_not_field_claim",
+        "PTF4_cyclic_low_frequency_control": "technical_feature_candidate_complete_not_field_claim",
+        "PTF5_mechanism_kg_evidence_constraint": "technical_feature_candidate_complete_not_field_claim",
+        "PTF7_engineering_execution_constraints": "technical_feature_candidate_complete_not_field_claim",
+        "PTF8_stage_gated_model_governance": "technical_feature_candidate_complete_not_field_claim"
+      },
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "embodiment_status": "technical_embodiment_scaffold_not_field_evidence",
+      "missing_embodiment_fields": [],
+      "validation_ready_status": "embodiment_validation_scaffold_complete_waiting_for_field_evidence"
+    }
+  ]
+}

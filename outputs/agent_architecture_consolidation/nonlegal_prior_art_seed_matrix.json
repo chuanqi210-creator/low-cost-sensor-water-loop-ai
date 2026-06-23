@@ -1,0 +1,212 @@
+{
+  "artifact_id": "R8u58_nonlegal_prior_art_seed_matrix",
+  "generated_at": "2026-06-04",
+  "status": "nonlegal_prior_art_seed_matrix_ready_not_formal_search_result",
+  "purpose": "Collect public-source prior-art seeds for later formal search result packages, nonlegal comparison review and patent-counsel review. This artifact is not a legal opinion and does not establish novelty, inventiveness, patentability or field evidence.",
+  "boundary": {
+    "is_formal_search_result": false,
+    "is_legal_opinion": false,
+    "can_generate_prior_art_result": false,
+    "can_emit_claim_text": false,
+    "field_claim_upgrade_allowed": false,
+    "evidence_boundary": "These rows are external source-basis seeds and risk hypotheses only. They must not be copied into formal_search_result_package as accepted hits without actual reviewer-filled hit tables and claim element comparison rows."
+  },
+  "patentability_reference_seeds": [
+    {
+      "source_id": "PATENTABILITY_WIPO",
+      "label": "WIPO patent protection FAQ",
+      "url": "https://www.wipo.int/en/web/patents/protection",
+      "rule_summary": "Patent examination commonly considers patentable subject matter, novelty, inventive step/non-obviousness, industrial applicability and sufficient disclosure.",
+      "project_constraint": "Claims should be written as implementable water-treatment system structure, state variables, control actions and validation gates, not as abstract AI functions."
+    },
+    {
+      "source_id": "PATENTABILITY_CNIPA",
+      "label": "Patent Law of the People's Republic of China translation",
+      "url": "https://english.cnipa.gov.cn/art/2022/10/13/art_3068_179273.html",
+      "rule_summary": "Chinese invention and utility model patentability turns on novelty, inventiveness and practical applicability.",
+      "project_constraint": "The disclosure must distinguish the proposed chain from known soft-sensor, MARL, flowsheet-modeling and water-plant diagnosis systems."
+    }
+  ],
+  "prior_art_seed_rows": [
+    {
+      "seed_id": "PA1",
+      "source_label": "EP2414901B1 water purification soft sensor/control system",
+      "url": "https://patents.google.com/patent/EP2414901B1/en",
+      "known_prior_capability": "Water purification system using real-time sensors, COD soft sensor, state estimator, event predictor and controller.",
+      "project_risk": "Soft sensor plus state estimation plus control cannot be claimed as a standalone invention.",
+      "distinguishing_combination": "Low-cost sparse node-modality sensing, cyclic low-frequency evidence window, field replay/operator/release gate and protective no-write candidate boundary.",
+      "needed_next_evidence": "Claim element chart comparing COD soft sensor, estimator and predictor with the seven-layer gated chain.",
+      "mapped_project_features": [
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ]
+    },
+    {
+      "seed_id": "PA2",
+      "source_label": "WO2019071384A1 intelligent diagnosis/control in water or wastewater plants",
+      "url": "https://patents.google.com/patent/WO2019071384A1/en",
+      "known_prior_capability": "Data acquisition, diagnosis, anomaly detection and control for water or wastewater treatment plants.",
+      "project_risk": "Broad intelligent diagnosis and dynamic control language may be anticipated or obvious.",
+      "distinguishing_combination": "Constrain claims to low-cost limited observations, cyclic/holding windows, same-batch field replay evidence bundles, operator review and protective candidate evaluation.",
+      "needed_next_evidence": "Compare the patent's control claims with R8p/R8v/R8u-56 gate sequence.",
+      "mapped_project_features": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ]
+    },
+    {
+      "seed_id": "PA3",
+      "source_label": "Advances in soft sensors for WWTPs systematic review",
+      "url": "https://doi.org/10.1016/j.jwpe.2021.102367",
+      "known_prior_capability": "Soft sensors for WWTP monitoring have evolved from mechanism models to machine-learning approaches.",
+      "project_risk": "Predicting difficult-to-measure water-quality variables is not novel by itself.",
+      "distinguishing_combination": "Soft sensor outputs are bounded by uncertainty, grey-box residuals, field holdout and release-gate abstention.",
+      "needed_next_evidence": "Field holdout interval coverage, OOD or abstention rate and release-gate no-write proof.",
+      "mapped_project_features": [
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary"
+      ]
+    },
+    {
+      "seed_id": "PA4",
+      "source_label": "Soft sensor enabled real-time chemical dosing control",
+      "url": "https://doi.org/10.1016/j.jwpe.2024.105431",
+      "known_prior_capability": "Soft sensor used for full-scale real-time chemical dosing control.",
+      "project_risk": "Soft sensor plus dosing control is a strong adjacent prior-art family.",
+      "distinguishing_combination": "Multiple protective candidate actions: hold, recycle, retention extension, dose candidate, catalyst regeneration/replacement review, unit switch and release blocking.",
+      "needed_next_evidence": "Compare single-variable dosing control against multi-facility protective candidate action bundle and gates.",
+      "mapped_project_features": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF7_engineering_execution_constraints"
+      ]
+    },
+    {
+      "seed_id": "PA5",
+      "source_label": "PySensors sparse sensor placement toolkit",
+      "url": "https://github.com/dynamicslab/pysensors",
+      "known_prior_capability": "Sparse sensor placement for reconstruction/classification using basis and greedy/QR-style methods.",
+      "project_risk": "Sparse sensor placement optimization is not novel in isolation.",
+      "distinguishing_combination": "Sensor placement is tied to pollutant-process hidden states, cost/maintenance constraints, soft-sensor uncertainty and downstream control promotion gates.",
+      "needed_next_evidence": "Agent48 baseline comparison: random, cost-only, greedy, SSPOR-like and topology-aware with real topology/labels.",
+      "mapped_project_features": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation"
+      ]
+    },
+    {
+      "seed_id": "PA6",
+      "source_label": "Multi-agent reinforcement learning for sustainable WWTP optimal control",
+      "url": "https://doi.org/10.1016/j.chemosphere.2021.130498",
+      "known_prior_capability": "MADDPG/MARL applied to WWTP aeration/chemical control with sustainability reward signals.",
+      "project_risk": "Multi-agent reinforcement learning for WWTP optimization is already public.",
+      "distinguishing_combination": "Agents generate only protected candidates constrained by grey-box, KG, field replay, operator review and release/actuator gates.",
+      "needed_next_evidence": "Agent49/52 comparisons against unguarded MARL, rules and guardrail-aware replay with false-action costs.",
+      "mapped_project_features": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate",
+        "PTF7_engineering_execution_constraints"
+      ]
+    },
+    {
+      "seed_id": "PA7",
+      "source_label": "Multi-agent AI reinforcement full-scale WWTP digital multi-solution",
+      "url": "https://doi.org/10.1016/j.jwpe.2023.103533",
+      "known_prior_capability": "Multi-agent reinforcement operation optimization across influent conditions in full-scale WWTP context.",
+      "project_risk": "Full-scale multi-agent WWTP optimal operation has prior art.",
+      "distinguishing_combination": "Focus on low-cost sensor insufficiency, cyclic evidence windows, evidence stratification and template/synthetic no-write gates.",
+      "needed_next_evidence": "Compare full-scale optimal operation claims with field package and release-gate requirements.",
+      "mapped_project_features": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ]
+    },
+    {
+      "seed_id": "PA8",
+      "source_label": "MARL integrated real-time control for urban drainage systems",
+      "url": "https://www.nature.com/articles/s41545-025-00512-z",
+      "known_prior_capability": "Multi-agent reinforcement learning for coordinated sewer, WWTP and receiving-water control.",
+      "project_risk": "Multi-facility collaborative control for water systems is public prior art.",
+      "distinguishing_combination": "The project should claim treatment-unit internal cyclic grey-box protective control under limited observation, not generic urban drainage MARL.",
+      "needed_next_evidence": "System-boundary, action-granularity, evidence-gate and low-cost-sensing comparison.",
+      "mapped_project_features": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF8_stage_gated_model_governance"
+      ]
+    },
+    {
+      "seed_id": "PA9",
+      "source_label": "WNTR water network modeling documentation",
+      "url": "https://usepa.github.io/WNTR/overview.html",
+      "known_prior_capability": "EPANET-style water network simulation with pipes, pumps, valves, tanks, hydraulics, quality and resilience actions.",
+      "project_risk": "Network topology and hydraulic simulation are mature external methods.",
+      "distinguishing_combination": "Use graph/topology ideas only as priors for reactor/treatment-unit recirculation and pollutant-state estimation.",
+      "needed_next_evidence": "site_topology_or_bed_geometry, flow/HRT/RTD and pressure/headloss field rows.",
+      "mapped_project_features": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF3_grey_box_mechanism_boundary"
+      ]
+    },
+    {
+      "seed_id": "PA10",
+      "source_label": "WaterTAP process and network modeling documentation",
+      "url": "https://watertap.readthedocs.io/en/latest/index.html",
+      "known_prior_capability": "Water treatment process, unit and network modeling for design, optimization, costing and energy analysis.",
+      "project_risk": "Flowsheet/process optimization and costing are not novel alone.",
+      "distinguishing_combination": "Use process priors inside a low-cost observation, evidence-gated control system rather than claiming high-fidelity flowsheet modeling.",
+      "needed_next_evidence": "Unit model parameters, inlet/outlet pollutants, reagent/energy values and field calibration ranges.",
+      "mapped_project_features": [
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF7_engineering_execution_constraints"
+      ]
+    },
+    {
+      "seed_id": "PA11",
+      "source_label": "QSDsan process modeling/system simulation/TEA/LCA",
+      "url": "https://qsdsan.readthedocs.io/",
+      "known_prior_capability": "Process modeling, system simulation, techno-economic analysis and life-cycle assessment for sanitation/resource recovery.",
+      "project_risk": "System simulation and TEA/LCA are known frameworks.",
+      "distinguishing_combination": "Treat TEA/LCA as reward and engineering constraint fields, not as the core invention.",
+      "needed_next_evidence": "CAPEX/OPEX, reagent, energy, maintenance, regeneration and byproduct-risk tables.",
+      "mapped_project_features": [
+        "PTF7_engineering_execution_constraints"
+      ]
+    },
+    {
+      "seed_id": "PA12",
+      "source_label": "Conservative Q-Learning and D4RL offline RL benchmark",
+      "url": "https://arxiv.org/abs/2006.04779",
+      "known_prior_capability": "Offline RL and fixed benchmark datasets for conservative policy evaluation.",
+      "project_risk": "Replay/offline policy evaluation is not novel alone.",
+      "distinguishing_combination": "Replay is used as a safety/evidence gate before actuator or release promotion, not as automatic online policy training.",
+      "needed_next_evidence": "Field state-action-reward replay, operator labels, action outcomes and unsafe-action blockers.",
+      "mapped_project_features": [
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ]
+    }
+  ],
+  "recommended_claim_scope": {
+    "avoid_as_primary_claims": [
+      "using AI for wastewater treatment control",
+      "using multi-agent systems for water-treatment optimization",
+      "using soft sensors to predict water quality",
+      "using knowledge graphs to explain pollutant-material relations",
+      "using sparse sensor placement to reduce cost"
+    ],
+    "recommended_independent_chain": [
+      "construct node-modality observation matrix for treatment units, topology and cyclic/holding structures",
+      "estimate hidden process states from low-cost sensors, missingness/delay/noise, offline labels and grey-box priors",
+      "constrain diagnosis through KG/source-basis and grey-box mechanism boundaries",
+      "generate protective control candidates rather than actuator commands",
+      "promote candidates only through field package, same-batch replay, operator review, release gate and actuator safety interlock",
+      "choose recycle, retention extension, hold, dosing candidate, catalyst regeneration/replacement candidate, unit switch candidate or release blocking based on gate status"
+    ]
+  },
+  "next_actions": [
+    "If real data is available, run R7/R8p field package import and validation.",
+    "If no real data is available, upgrade Agent48/49/52 to comparable placement/replay baselines rather than adding agents.",
+    "Prepare a true FORMAL_SEARCH_RESULT_PACKAGE_PATH only with actual search hits and reviewer-filled comparison rows; do not treat this seed matrix as accepted prior-art evidence."
+  ]
+}

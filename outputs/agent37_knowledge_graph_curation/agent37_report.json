@@ -1,0 +1,940 @@
+{
+  "knowledge_graph_curation": {
+    "agent_name": "knowledge_graph_curation_agent",
+    "confidence": 0.546,
+    "summary": "知识图谱策展：scientific_kg_seed_needs_literature_and_field_evidence；轴覆盖 0.700，field-supported edges 0 条。",
+    "recommendations": [
+      "P0 为每条高风险知识边补真实 field 或离线标签验证",
+      "P1 按系统综述格式抽取污染物、基质、材料、机制、参数范围和限制",
+      "P1 补低成本原始信号到隐藏状态的证据边",
+      "P2 补齐污染物轴：染料, 抗生素, 农药",
+      "P2 补齐过程条件轴：pH 调节, 温度, 流量/水力"
+    ],
+    "metrics": {
+      "graph_records": [
+        {
+          "entry_id": "kb_matrix_aop_inhibition",
+          "pollutant_class": "高盐/高 COD 难降解有机废水",
+          "material_family": "高级氧化或催化氧化材料",
+          "pollutant_axes": [],
+          "water_matrix_axes": [
+            "COD/有机负荷",
+            "共存离子/络合物",
+            "浊度/颗粒物",
+            "盐度/电导"
+          ],
+          "material_axes": [
+            "AOP/强氧化",
+            "催化剂",
+            "吸附/离子交换",
+            "膜分离"
+          ],
+          "process_axes": [
+            "停留时间/回流",
+            "剂量/氧化剂"
+          ],
+          "observable_signal_axes": [
+            "ORP",
+            "浊度",
+            "电导"
+          ],
+          "hidden_state_axes": [
+            "基质抑制",
+            "残留污染物风险"
+          ],
+          "mechanism_tags": [
+            "matrix_interference",
+            "radical_scavenging",
+            "mass_transfer_limitation"
+          ],
+          "condition_signals": [
+            "matrix_interference",
+            "pollutant_residual_risk"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "matrix_interference",
+            "reaction_time_insufficient",
+            "loop_buffer_needed"
+          ],
+          "action_biases": {
+            "switch_or_pretreat": 0.18,
+            "recirculate": 0.08,
+            "dose_oxidant": -0.06
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [],
+          "source_basis": [],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        },
+        {
+          "entry_id": "kb_oxidant_limited_refractory_organics",
+          "pollutant_class": "高负荷还原性或难降解有机污染物",
+          "material_family": "氧化剂驱动体系",
+          "pollutant_axes": [],
+          "water_matrix_axes": [
+            "COD/有机负荷"
+          ],
+          "material_axes": [
+            "AOP/强氧化"
+          ],
+          "process_axes": [
+            "停留时间/回流",
+            "光照/电流",
+            "剂量/氧化剂"
+          ],
+          "observable_signal_axes": [
+            "ORP"
+          ],
+          "hidden_state_axes": [
+            "残留污染物风险"
+          ],
+          "mechanism_tags": [
+            "oxidant_limitation",
+            "electron_demand_excess"
+          ],
+          "condition_signals": [
+            "pollutant_residual_risk",
+            "oxidant_remaining"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "oxidant_limitation",
+            "loop_buffer_needed"
+          ],
+          "action_biases": {
+            "dose_oxidant": 0.2,
+            "recirculate": 0.1,
+            "release": -0.2
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [],
+          "source_basis": [],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        },
+        {
+          "entry_id": "kb_catalyst_site_fouling",
+          "pollutant_class": "含络合物、天然有机质或颗粒物的复杂废水",
+          "material_family": "负载型催化剂/类芬顿/光催化材料",
+          "pollutant_axes": [],
+          "water_matrix_axes": [
+            "共存离子/络合物",
+            "天然有机质",
+            "浊度/颗粒物"
+          ],
+          "material_axes": [
+            "AOP/强氧化",
+            "催化剂",
+            "光催化"
+          ],
+          "process_axes": [
+            "停留时间/回流",
+            "光照/电流",
+            "再生周期",
+            "剂量/氧化剂"
+          ],
+          "observable_signal_axes": [
+            "ORP",
+            "UV254",
+            "浊度"
+          ],
+          "hidden_state_axes": [
+            "催化剂活性",
+            "反应完成度"
+          ],
+          "mechanism_tags": [
+            "catalyst_deactivation",
+            "active_site_blocking",
+            "surface_fouling"
+          ],
+          "condition_signals": [
+            "catalyst_activity",
+            "reaction_completion",
+            "oxidant_remaining"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "catalyst_deactivation",
+            "loop_buffer_needed"
+          ],
+          "action_biases": {
+            "regenerate_catalyst": 0.24,
+            "recirculate": 0.06,
+            "dose_oxidant": -0.08
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [],
+          "source_basis": [],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        },
+        {
+          "entry_id": "kb_loop_buffer_for_slow_sensing",
+          "pollutant_class": "目标污染物需慢检测或低成本代理检测的废水",
+          "material_family": "循环式反应器/旁路快检系统",
+          "pollutant_axes": [
+            "PPCPs/微污染物"
+          ],
+          "water_matrix_axes": [],
+          "material_axes": [],
+          "process_axes": [
+            "停留时间/回流"
+          ],
+          "observable_signal_axes": [],
+          "hidden_state_axes": [
+            "残留污染物风险"
+          ],
+          "mechanism_tags": [
+            "loop_buffer_needed",
+            "soft_sensor_delay",
+            "grey_box_inference"
+          ],
+          "condition_signals": [
+            "pollutant_residual_risk",
+            "recycle_gain",
+            "release_readiness"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "loop_buffer_needed"
+          ],
+          "action_biases": {
+            "hold_for_validation": 0.16,
+            "recirculate": 0.14,
+            "release": -0.18
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [],
+          "source_basis": [],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        },
+        {
+          "entry_id": "kb_overoxidation_byproduct_precursor",
+          "pollutant_class": "含芳香族、卤代前体或天然有机质的废水",
+          "material_family": "强氧化体系",
+          "pollutant_axes": [
+            "有机氯/卤代有机物"
+          ],
+          "water_matrix_axes": [
+            "天然有机质"
+          ],
+          "material_axes": [
+            "AOP/强氧化",
+            "吸附/离子交换"
+          ],
+          "process_axes": [
+            "光照/电流",
+            "剂量/氧化剂"
+          ],
+          "observable_signal_axes": [
+            "ORP",
+            "UV254"
+          ],
+          "hidden_state_axes": [
+            "副产物风险",
+            "残留污染物风险"
+          ],
+          "mechanism_tags": [
+            "byproduct_risk",
+            "overoxidation",
+            "precursor_control"
+          ],
+          "condition_signals": [
+            "byproduct_risk",
+            "oxidant_remaining"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "byproduct_risk",
+            "likely_treated_but_not_releasable"
+          ],
+          "action_biases": {
+            "dose_oxidant": -0.24,
+            "hold_for_validation": 0.2,
+            "switch_or_pretreat": 0.1
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [],
+          "source_basis": [],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        },
+        {
+          "entry_id": "kb_sensor_limited_release_evidence",
+          "pollutant_class": "低浓度目标污染物或慢检测指标",
+          "material_family": "低成本传感 + 软传感系统",
+          "pollutant_axes": [
+            "PPCPs/微污染物"
+          ],
+          "water_matrix_axes": [],
+          "material_axes": [],
+          "process_axes": [],
+          "observable_signal_axes": [],
+          "hidden_state_axes": [],
+          "mechanism_tags": [
+            "sensor_uncertainty",
+            "release_evidence_gap"
+          ],
+          "condition_signals": [
+            "sensor_confidence",
+            "release_readiness"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "sensor_uncertainty",
+            "likely_treated_but_not_releasable"
+          ],
+          "action_biases": {
+            "calibrate_sensors": 0.2,
+            "hold_for_validation": 0.18,
+            "release": -0.25
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [
+            "真实传感漂移记录",
+            "离线放行标签",
+            "低浓度目标物检测限"
+          ],
+          "source_basis": [
+            "low_cost_proxy_sensing",
+            "soft_sensor_release_gate"
+          ],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        },
+        {
+          "entry_id": "kb_pfas_adsorption_or_membrane_needed",
+          "pollutant_class": "PFAS 或高度持久性氟代有机物",
+          "material_family": "吸附/离子交换/膜分离/抛光单元",
+          "pollutant_axes": [
+            "PFAS"
+          ],
+          "water_matrix_axes": [
+            "盐度/电导"
+          ],
+          "material_axes": [
+            "吸附/离子交换",
+            "膜分离"
+          ],
+          "process_axes": [
+            "光照/电流",
+            "剂量/氧化剂"
+          ],
+          "observable_signal_axes": [],
+          "hidden_state_axes": [
+            "反应完成度",
+            "基质抑制",
+            "残留污染物风险"
+          ],
+          "mechanism_tags": [
+            "persistent_micropollutant",
+            "low_aop_destructibility",
+            "polishing_unit_needed"
+          ],
+          "condition_signals": [
+            "pollutant_residual_risk",
+            "reaction_completion",
+            "oxidant_remaining",
+            "matrix_interference",
+            "release_readiness"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "reaction_time_insufficient",
+            "loop_buffer_needed"
+          ],
+          "action_biases": {
+            "switch_or_pretreat": 0.22,
+            "hold_for_validation": 0.18,
+            "dose_oxidant": -0.16,
+            "release": -0.24
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [
+            "目标物 LC-MS/LC-MS-MS 标签",
+            "处理前后 PFAS 或难降解微污染物浓度",
+            "吸附/膜抛光前后对照"
+          ],
+          "source_basis": [
+            "persistent_micropollutant_treatment",
+            "adsorption_membrane_polishing"
+          ],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        },
+        {
+          "entry_id": "kb_heavy_metal_not_destroyed_by_oxidation",
+          "pollutant_class": "重金属或金属络合物废水",
+          "material_family": "沉淀/吸附/离子交换/膜分离材料",
+          "pollutant_axes": [
+            "重金属"
+          ],
+          "water_matrix_axes": [
+            "共存离子/络合物",
+            "盐度/电导"
+          ],
+          "material_axes": [
+            "吸附/离子交换",
+            "膜分离"
+          ],
+          "process_axes": [
+            "停留时间/回流",
+            "剂量/氧化剂"
+          ],
+          "observable_signal_axes": [],
+          "hidden_state_axes": [
+            "催化剂活性",
+            "反应完成度",
+            "基质抑制",
+            "残留污染物风险"
+          ],
+          "mechanism_tags": [
+            "non_degradable_species",
+            "speciation_control",
+            "separation_required"
+          ],
+          "condition_signals": [
+            "pollutant_residual_risk",
+            "oxidant_remaining",
+            "matrix_interference",
+            "reaction_completion",
+            "catalyst_activity"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "matrix_interference",
+            "reaction_time_insufficient"
+          ],
+          "action_biases": {
+            "switch_or_pretreat": 0.26,
+            "hold_for_validation": 0.12,
+            "dose_oxidant": -0.18,
+            "recirculate": -0.04
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [
+            "ICP/金属离子标签",
+            "价态/络合形态",
+            "沉淀或吸附出水对照"
+          ],
+          "source_basis": [
+            "heavy_metal_speciation",
+            "separation_process_required"
+          ],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        },
+        {
+          "entry_id": "kb_biological_effluent_low_orp_load",
+          "pollutant_class": "生化尾水或含营养盐/可生化有机物废水",
+          "material_family": "生物处理耦合/曝气/后氧化抛光",
+          "pollutant_axes": [
+            "PPCPs/微污染物"
+          ],
+          "water_matrix_axes": [
+            "COD/有机负荷",
+            "盐度/电导"
+          ],
+          "material_axes": [
+            "AOP/强氧化",
+            "生物处理耦合"
+          ],
+          "process_axes": [
+            "光照/电流",
+            "剂量/氧化剂"
+          ],
+          "observable_signal_axes": [
+            "ORP",
+            "电导"
+          ],
+          "hidden_state_axes": [
+            "副产物风险",
+            "基质抑制",
+            "残留污染物风险"
+          ],
+          "mechanism_tags": [
+            "biological_residual_load",
+            "oxygen_demand",
+            "hybrid_treatment_needed"
+          ],
+          "condition_signals": [
+            "pollutant_residual_risk",
+            "oxidant_remaining",
+            "matrix_interference",
+            "sensor_confidence",
+            "byproduct_risk"
+          ],
+          "raw_sensor_condition_signals": [],
+          "supports_rules": [
+            "oxidant_limitation",
+            "matrix_interference",
+            "loop_buffer_needed"
+          ],
+          "action_biases": {
+            "dose_oxidant": 0.1,
+            "switch_or_pretreat": 0.14,
+            "recirculate": 0.08,
+            "release": -0.18
+          },
+          "evidence_stage": "literature_informed_simulation",
+          "evidence_axes": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "field_validation_need": [
+            "COD/BOD/氨氮/总氮标签",
+            "ORP 与曝气记录",
+            "生物单元前后对照"
+          ],
+          "source_basis": [
+            "biological_effluent_polishing",
+            "hybrid_treatment"
+          ],
+          "claim_boundary": "可作为 literature-informed simulation edge，不能写成现场实证。"
+        }
+      ],
+      "axis_coverage": {
+        "pollutant_axes": {
+          "required": [
+            "PPCPs/微污染物",
+            "染料",
+            "PFAS",
+            "抗生素",
+            "农药",
+            "重金属",
+            "有机氯/卤代有机物"
+          ],
+          "covered": [
+            "PFAS",
+            "PPCPs/微污染物",
+            "有机氯/卤代有机物",
+            "重金属"
+          ],
+          "missing": [
+            "染料",
+            "抗生素",
+            "农药"
+          ],
+          "coverage": 0.571
+        },
+        "water_matrix_axes": {
+          "required": [
+            "COD/有机负荷",
+            "盐度/电导",
+            "pH",
+            "浊度/颗粒物",
+            "天然有机质",
+            "共存离子/络合物"
+          ],
+          "covered": [
+            "COD/有机负荷",
+            "共存离子/络合物",
+            "天然有机质",
+            "浊度/颗粒物",
+            "盐度/电导"
+          ],
+          "missing": [
+            "pH"
+          ],
+          "coverage": 0.833
+        },
+        "material_axes": {
+          "required": [
+            "催化剂",
+            "吸附/离子交换",
+            "膜分离",
+            "AOP/强氧化",
+            "光催化",
+            "电催化",
+            "生物处理耦合"
+          ],
+          "covered": [
+            "AOP/强氧化",
+            "催化剂",
+            "光催化",
+            "吸附/离子交换",
+            "生物处理耦合",
+            "膜分离"
+          ],
+          "missing": [
+            "电催化"
+          ],
+          "coverage": 0.857
+        },
+        "process_axes": {
+          "required": [
+            "停留时间/回流",
+            "剂量/氧化剂",
+            "光照/电流",
+            "pH 调节",
+            "温度",
+            "流量/水力",
+            "再生周期"
+          ],
+          "covered": [
+            "停留时间/回流",
+            "光照/电流",
+            "再生周期",
+            "剂量/氧化剂"
+          ],
+          "missing": [
+            "pH 调节",
+            "温度",
+            "流量/水力"
+          ],
+          "coverage": 0.571
+        },
+        "observable_signal_axes": {
+          "required": [
+            "pH",
+            "ORP",
+            "电导",
+            "浊度",
+            "UV254",
+            "流量",
+            "温度"
+          ],
+          "covered": [
+            "ORP",
+            "UV254",
+            "浊度",
+            "电导"
+          ],
+          "missing": [
+            "pH",
+            "流量",
+            "温度"
+          ],
+          "coverage": 0.571
+        },
+        "hidden_state_axes": {
+          "required": [
+            "残留污染物风险",
+            "反应完成度",
+            "副产物风险",
+            "催化剂活性",
+            "基质抑制"
+          ],
+          "covered": [
+            "催化剂活性",
+            "副产物风险",
+            "反应完成度",
+            "基质抑制",
+            "残留污染物风险"
+          ],
+          "missing": [],
+          "coverage": 1.0
+        },
+        "evidence_axes": {
+          "required": [
+            "文献支持",
+            "仿真支持",
+            "真实数据支持",
+            "仅假设"
+          ],
+          "covered": [
+            "仿真支持",
+            "文献支持"
+          ],
+          "missing": [
+            "真实数据支持",
+            "仅假设"
+          ],
+          "coverage": 0.5
+        }
+      },
+      "evidence_audit": {
+        "entry_count": 9,
+        "evidence_counts": {
+          "文献支持": 9,
+          "仿真支持": 9,
+          "真实数据支持": 0,
+          "仅假设": 0
+        },
+        "field_supported_entry_count": 0,
+        "literature_supported_entry_count": 9,
+        "simulation_supported_entry_count": 9,
+        "source_basis_counts": {
+          "low_cost_proxy_sensing": 1,
+          "soft_sensor_release_gate": 1,
+          "persistent_micropollutant_treatment": 1,
+          "adsorption_membrane_polishing": 1,
+          "heavy_metal_speciation": 1,
+          "separation_process_required": 1,
+          "biological_effluent_polishing": 1,
+          "hybrid_treatment": 1
+        },
+        "field_validation_need_counts": {
+          "真实传感漂移记录": 1,
+          "离线放行标签": 1,
+          "低浓度目标物检测限": 1,
+          "目标物 LC-MS/LC-MS-MS 标签": 1,
+          "处理前后 PFAS 或难降解微污染物浓度": 1,
+          "吸附/膜抛光前后对照": 1,
+          "ICP/金属离子标签": 1,
+          "价态/络合形态": 1,
+          "沉淀或吸附出水对照": 1,
+          "COD/BOD/氨氮/总氮标签": 1,
+          "ORP 与曝气记录": 1,
+          "生物单元前后对照": 1
+        }
+      },
+      "scientific_review_chain": [
+        {
+          "agent": "LiteratureEvidenceAgent",
+          "role": "系统检索和抽取水处理、环境材料、软传感、灰箱控制文献。",
+          "borrowed_skill_pattern": "systematic_literature_review",
+          "output_contract": [
+            "claim",
+            "method",
+            "parameter_range",
+            "limitation",
+            "evidence_stage",
+            "citation_key"
+          ]
+        },
+        {
+          "agent": "KnowledgeGraphCurationAgent",
+          "role": "把文献和仿真证据转成污染物-基质-材料-过程-信号-状态-动作图谱。",
+          "borrowed_skill_pattern": "scientific_knowledge_graph",
+          "output_contract": [
+            "typed_edge",
+            "mechanism_tag",
+            "action_constraint",
+            "field_validation_need"
+          ]
+        },
+        {
+          "agent": "MechanismBorrowingAgent",
+          "role": "从已有研究迁移动力学、传质、催化衰减、软传感和控制约束。",
+          "borrowed_skill_pattern": "academic_research_agent",
+          "output_contract": [
+            "borrowed_mechanism",
+            "mapped_project_state",
+            "assumption",
+            "failure_boundary"
+          ]
+        },
+        {
+          "agent": "UncertaintyValidationAgent",
+          "role": "审查预测区间、校准曲线、bootstrap/conformal uncertainty 和 OOD 风险。",
+          "borrowed_skill_pattern": "model_validation_and_uncertainty",
+          "output_contract": [
+            "coverage",
+            "calibration_error",
+            "ood_flag",
+            "release_gate_adjustment"
+          ]
+        },
+        {
+          "agent": "FieldRealismAgent",
+          "role": "检查现场采样频率、低成本传感漂移、PLC/SCADA 延迟、人工复核和成本边界。",
+          "borrowed_skill_pattern": "claim_verification_and_human_gates",
+          "output_contract": [
+            "field_gate",
+            "operator_action",
+            "latency_budget",
+            "cannot_claim_until"
+          ]
+        }
+      ],
+      "kg_upgrade_backlog": [
+        {
+          "priority": "P0",
+          "work_id": "field_supported_kg_edges",
+          "title": "为每条高风险知识边补真实 field 或离线标签验证",
+          "why": "当前知识图谱没有真实数据支持边，不能把文献/仿真边当现场结论。",
+          "needed_fields": [
+            "batch_id",
+            "offline_target_concentration",
+            "raw_sensor_trace",
+            "action_taken",
+            "post_action_outcome"
+          ]
+        },
+        {
+          "priority": "P1",
+          "work_id": "literature_evidence_extraction_schema",
+          "title": "按系统综述格式抽取污染物、基质、材料、机制、参数范围和限制",
+          "why": "知识库应成为可追溯证据矩阵，而不是不可审计的经验条目。",
+          "needed_fields": [
+            "citation_key",
+            "study_type",
+            "water_matrix",
+            "material_system",
+            "rate_or_capacity_range",
+            "reported_limitation"
+          ]
+        },
+        {
+          "priority": "P1",
+          "work_id": "raw_signal_to_hidden_state_edges",
+          "title": "补低成本原始信号到隐藏状态的证据边",
+          "why": "当前多数字段从隐藏状态触发知识条目，仍需要 pH/ORP/EC/UV254 等原始信号到机制的可审查映射。",
+          "needed_fields": [
+            "sensor_name",
+            "feature_window",
+            "transformation",
+            "target_hidden_state",
+            "calibration_dataset"
+          ]
+        },
+        {
+          "priority": "P2",
+          "work_id": "pollutant_axis_expansion",
+          "title": "补齐污染物轴：染料, 抗生素, 农药",
+          "why": "真实污染场景需要覆盖 PPCPs、染料、抗生素、农药和有机氯等不同处理机制。",
+          "needed_fields": [
+            "pollutant_axis",
+            "representative_compound",
+            "treatability_assumption",
+            "required_lab_label"
+          ]
+        },
+        {
+          "priority": "P2",
+          "work_id": "process_condition_axis_expansion",
+          "title": "补齐过程条件轴：pH 调节, 温度, 流量/水力",
+          "why": "动力学和控制不能只靠笼统回流，需要剂量、pH、温度、光照/电流、再生周期等可校准参数。",
+          "needed_fields": [
+            "condition_axis",
+            "parameter_name",
+            "literature_range",
+            "field_calibration_method"
+          ]
+        },
+        {
+          "priority": "P2",
+          "work_id": "observable_signal_axis_expansion",
+          "title": "补齐低成本信号轴：pH, 流量, 温度",
+          "why": "软传感灰箱必须说明每个低成本信号怎样约束隐藏状态和控制动作。",
+          "needed_fields": [
+            "signal_axis",
+            "sensor_cost",
+            "noise_model",
+            "sampling_interval",
+            "failure_mode"
+          ]
+        },
+        {
+          "priority": "P0",
+          "work_id": "claim_boundary_enforcement",
+          "title": "所有图谱结论强制标注 simulation/literature/field 边界",
+          "why": "防止 synthetic/sample 数据被误说成实证结论。",
+          "needed_fields": [
+            "evidence_stage",
+            "claim_allowed",
+            "claim_blocked_until"
+          ]
+        }
+      ],
+      "readiness": {
+        "kg_curation_status": "scientific_kg_seed_needs_literature_and_field_evidence",
+        "kg_curation_score": 0.622,
+        "axis_coverage_score": 0.7,
+        "evidence_score": 0.8,
+        "raw_signal_grounding_score": 0.0,
+        "entry_count": 9
+      }
+    },
+    "issues": [
+      {
+        "sensor": "knowledge_graph",
+        "issue_type": "no_field_supported_knowledge_edges",
+        "severity": "warning",
+        "message": "当前知识图谱没有真实数据支持边，只能作为文献/仿真 seed，不能宣称现场验证成立。",
+        "evidence": {
+          "entry_count": 9,
+          "evidence_counts": {
+            "文献支持": 9,
+            "仿真支持": 9,
+            "真实数据支持": 0,
+            "仅假设": 0
+          },
+          "field_supported_entry_count": 0,
+          "literature_supported_entry_count": 9,
+          "simulation_supported_entry_count": 9,
+          "source_basis_counts": {
+            "low_cost_proxy_sensing": 1,
+            "soft_sensor_release_gate": 1,
+            "persistent_micropollutant_treatment": 1,
+            "adsorption_membrane_polishing": 1,
+            "heavy_metal_speciation": 1,
+            "separation_process_required": 1,
+            "biological_effluent_polishing": 1,
+            "hybrid_treatment": 1
+          },
+          "field_validation_need_counts": {
+            "真实传感漂移记录": 1,
+            "离线放行标签": 1,
+            "低浓度目标物检测限": 1,
+            "目标物 LC-MS/LC-MS-MS 标签": 1,
+            "处理前后 PFAS 或难降解微污染物浓度": 1,
+            "吸附/膜抛光前后对照": 1,
+            "ICP/金属离子标签": 1,
+            "价态/络合形态": 1,
+            "沉淀或吸附出水对照": 1,
+            "COD/BOD/氨氮/总氮标签": 1,
+            "ORP 与曝气记录": 1,
+            "生物单元前后对照": 1
+          }
+        }
+      },
+      {
+        "sensor": "knowledge_graph",
+        "issue_type": "pollutant_axis_undercoverage",
+        "severity": "info",
+        "message": "污染物轴仍缺：染料, 抗生素, 农药。",
+        "evidence": {
+          "missing": [
+            "染料",
+            "抗生素",
+            "农药"
+          ]
+        }
+      },
+      {
+        "sensor": "knowledge_graph",
+        "issue_type": "raw_signal_grounding_weak",
+        "severity": "warning",
+        "message": "知识条目主要由隐藏状态触发，低成本原始信号到机制/状态的证据边仍偏弱。",
+        "evidence": {
+          "raw_signal_condition_edge_count": 0
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "knowledge_graph_curation": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/knowledge_graph_curation.md",
+    "knowledge_graph_schema": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/knowledge_graph_schema.md",
+    "agent37_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent37_knowledge_graph_curation/agent37_report.md",
+    "knowledge_graph_records": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent37_knowledge_graph_curation/knowledge_graph_records.json"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "submission_readiness_review_id": "R8u47_pressure_resolution_submission_readiness_review",
+  "submission_readiness_review_status": "submission_readiness_review_blocked_at_source_package",
+  "review_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_submission_readiness_review.json",
+  "model_core_layers": [
+    "observability_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "observability",
+    "controllability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "next_operator_action": "R8p_fix_field_rows_source_preflight",
+  "direct_r8p_patch_plan_status": "field_rows_patch_plan_blocked_at_source_preflight",
+  "direct_r8p_highest_priority_patch_id": "R8P_SOURCE_MISSING_FIELD_ROWS_FILE",
+  "direct_r8p_highest_priority_operator_action": "Create a real field rows JSON file or a six-table CSV directory at this path, or set PRESSURE_RESOLUTION_REPLAY_ROWS_PATH to either source format. Use templates only as a form, then replace every TODO/template marker with field-origin rows.",
+  "r7_to_r8p_completion_plan_status": "r7_to_r8p_completion_plan_waiting_for_r7_package",
+  "r7_to_r8p_route_patch_plan_status": "route_work_package_patch_plan_waiting_for_submission_dir",
+  "r7_to_r8p_highest_priority_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR",
+  "r7_to_r8p_highest_priority_operator_action": "Copy the generated work-package templates to a real submission directory, replace all TODO/header-only content with field/operator/replay values, set R7_TO_R8P_WORK_PACKAGE_DIR to that directory, and rerun Agent61.",
+  "operator_handoff_status": "field_rows_operator_handoff_ready_needs_source_package",
+  "collection_checklist_status": "field_rows_collection_checklist_ready_needs_source_package",
+  "scenario_pack_status": "pressure_resolution_scenario_pack_ready_needs_real_replay_rows",
+  "field_row_acceptance_status": "no_field_replay_rows_supplied",
+  "row_collection_plan_status": "row_collection_plan_ready_needs_real_rows",
+  "missing_scenario_count": 5,
+  "accepted_scenario_count": 0,
+  "accepted_batch_count": 0,
+  "gate_sequence": [
+    {
+      "gate_id": "source_package",
+      "status": "field_rows_file_missing",
+      "gate_passed": false,
+      "blockers_or_summary": [
+        "field_rows_file_missing"
+      ],
+      "operator_action": "load JSON table mapping or metadata.json plus required CSV directory",
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "gate_id": "schema_provenance_template",
+      "status": "schema_validation_blocked_at_source_preflight",
+      "gate_passed": false,
+      "blockers_or_summary": [
+        "required_field_gap_count=0",
+        "invalid_type_count=0",
+        "template_marker_gap_count=0",
+        "field_origin_gap_count=0"
+      ],
+      "operator_action": "clear required fields, coarse types, TODO/template markers, and row-level field origin",
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "gate_id": "same_batch_bundle",
+      "status": "batch_bundle_preflight_blocked_at_source_preflight",
+      "gate_passed": false,
+      "blockers_or_summary": [
+        "complete_bundle_count=0",
+        "partial_bundle_count=0",
+        "missing_bundle_table_count=0"
+      ],
+      "operator_action": "one shared batch_id must connect sensor, pressure/headloss, operation, lab, proxy, and Agent52 replay rows",
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "gate_id": "temporal_window",
+      "status": "temporal_window_preflight_blocked_at_source_preflight",
+      "gate_passed": false,
+      "blockers_or_summary": [
+        "temporal_valid_batch_count=0",
+        "temporal_violation_count=0",
+        "hold_time_violation_count=0"
+      ],
+      "operator_action": "slow labels and operator review must arrive inside hold/recycle time before release",
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "gate_id": "scenario_semantics",
+      "status": "scenario_semantic_preflight_blocked_at_source_preflight",
+      "gate_passed": false,
+      "blockers_or_summary": [
+        "semantic_valid_batch_count=0",
+        "semantic_violation_count=0"
+      ],
+      "operator_action": "unresolved conflicts stay blocked; resolved conflicts carry authoritative source and resolution record",
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "gate_id": "downstream_routing",
+      "status": "downstream_routing_preflight_blocked_at_source_preflight",
+      "gate_passed": false,
+      "blockers_or_summary": [
+        "routing_ready_target_count=0",
+        "routing_target_count=4",
+        "can_route_to_r8v=False"
+      ],
+      "operator_action": "route accepted rows to Agent51 holdout, Agent49 guardrail context, Agent52 replay, and R7 evidence chain",
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    },
+    {
+      "gate_id": "r7_to_r8p_work_package_assembly",
+      "status": "route_work_package_assembly_gate_blocked_waiting_for_submission_dir",
+      "gate_passed": false,
+      "blockers_or_summary": [
+        "patch_plan_status=route_work_package_patch_plan_waiting_for_submission_dir",
+        "patch_item_count=1",
+        "blocked_assembly_step_count=6"
+      ],
+      "operator_action": "optional route for assembling R8p rows from R7 source package, operator supplement, and Agent52 export",
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false
+    }
+  ],
+  "operator_decision_policy": [
+    "If a real R8p rows package exists, fix direct_r8p_highest_priority_patch_id first.",
+    "If no real R8p package exists but an R7 field package can be produced, use the R7-to-R8p route work package templates.",
+    "Do not generate Agent52 replay rows from R7 field CSV values; export them from Agent49/52 replay.",
+    "Do not treat route work package templates or CSV headers as field evidence.",
+    "Route to R8v only after downstream_routing_preflight passes."
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "Field operators face many validation gates when converting low-cost sparse pressure observations, operator review, and offline replay into usable grey-box control evidence.",
+    "technical_means": "A submission readiness review aggregates source, schema, provenance, bundle, temporal, semantic, downstream routing, and optional R7-to-R8p assembly gates into one ordered operator action.",
+    "technical_effect": "The field package can be completed with fewer repair loops while keeping unresolved conflicts blocked and preserving delayed evidence, hold/recycle windows, and replay/holdout gates.",
+    "prior_art_distinction_candidate": "Unlike a single importer or black-box prediction score, the review exposes where sparse sensing, human pressure-source resolution, and offline replay each enter the closed-loop control evidence chain."
+  },
+  "evidence_boundaries": [
+    "This review is an aggregation of gate outputs, not field evidence.",
+    "A ready review can route data to R8v, but cannot write actuator or release gate.",
+    "Template, TODO, sample, and synthetic rows remain rejected before field acceptance.",
+    "Agent52 replay rows must come from replay export, not be inferred from field CSVs.",
+    "Field-supported claims still require R8v/R7 evidence chain, holdout gates, and human review."
+  ],
+  "can_route_to_r8v": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false
+}

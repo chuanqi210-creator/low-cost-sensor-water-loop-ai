@@ -1,0 +1,666 @@
+{
+  "submission_template_status": "formal_search_result_package_submission_template_ready",
+  "expected_env_var": "FORMAL_SEARCH_RESULT_PACKAGE_PATH",
+  "recommended_output_path": "outputs/agent_architecture_consolidation/formal_search_result_package_submission.json",
+  "package_metadata": {
+    "package_id": "TODO_FORMAL_SEARCH_RESULT_PACKAGE_ID",
+    "package_type": "formal_search_result_package_submission_template",
+    "search_executor": "TODO_SEARCH_EXECUTOR",
+    "search_date": "TODO_SEARCH_DATE",
+    "reviewer_id": "TODO_REVIEWER_ID",
+    "review_time": "TODO_REVIEW_TIME",
+    "review_boundary_statement": "No legal opinion, no novelty/inventiveness conclusion, no field-supported claim.",
+    "template_only": true,
+    "evidence_status": "template_not_prior_art_evidence",
+    "legal_status": "template_not_legal_opinion"
+  },
+  "work_package_results": {
+    "FSWP1_cyclic_greybox_soft_sensor_release_gate_search": {
+      "package_manifest": {
+        "package_id": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_package_id",
+        "linked_work_package_id": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+        "search_executor": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_search_executor",
+        "search_date": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_search_date",
+        "databases_searched": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_databases_searched",
+        "query_log": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_query_log",
+        "reviewer_id": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_reviewer_id",
+        "review_time": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_review_time",
+        "review_boundary_statement": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_review_boundary_statement",
+        "legal_status": "template_not_legal_opinion",
+        "allowed_source_databases": [
+          "CNIPA",
+          "Google Patents",
+          "Espacenet",
+          "WIPO Patentscope",
+          "Google Scholar"
+        ],
+        "allowed_query_sources": [
+          "\"wastewater\" \"soft sensor\" \"recycle\" \"release gate\"",
+          "\"low cost sensor\" \"grey-box\" \"wastewater\" \"closed-loop control\"",
+          "\"soft sensing\" \"hydraulic retention\" \"recycle\" \"effluent release\"",
+          "\"sensor-limited\" \"water treatment\" \"hold tank\" \"control\"",
+          "污水处理 软传感 回流 放行 门控",
+          "低成本传感 灰箱 水处理 闭环控制",
+          "低频传感 暂存 回流 水处理 控制",
+          "软测量 出水放行 证据门控",
+          "reviewer_approved_query_expansion_with_rationale"
+        ],
+        "template_only": true,
+        "evidence_status": "template_not_prior_art_evidence"
+      },
+      "prior_art_hit_table": [
+        {
+          "hit_id": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_hit_id",
+          "linked_work_package_id": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+          "source_database": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_source_database",
+          "publication_or_patent_id": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_publication_or_patent_id",
+          "title": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_title",
+          "assignee_or_authors": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_assignee_or_authors",
+          "publication_date": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_publication_date",
+          "url_or_reference": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_url_or_reference",
+          "matched_query": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_matched_query",
+          "matched_claim_elements": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_matched_claim_elements",
+          "disclosed_capabilities": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_disclosed_capabilities",
+          "missing_project_elements": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_missing_project_elements",
+          "overlap_level": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_overlap_level",
+          "novelty_risk_signal": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_novelty_risk_signal",
+          "combination_risk_signal": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_combination_risk_signal",
+          "reviewer_id": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_reviewer_id",
+          "review_status": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_review_status",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "claim_element_comparison_chart": [
+        {
+          "comparison_id": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_comparison_id",
+          "linked_hit_id": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_linked_hit_id",
+          "linked_work_package_id": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+          "claim_or_feature_element": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_claim_or_feature_element",
+          "project_element_text": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_project_element_text",
+          "prior_art_disclosure_text": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_prior_art_disclosure_text",
+          "match_level": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_match_level",
+          "missing_or_distinguishing_detail": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_missing_or_distinguishing_detail",
+          "fallback_claim_scope_impact": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_fallback_claim_scope_impact",
+          "field_validation_gate_to_preserve": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_field_validation_gate_to_preserve",
+          "reviewer_decision": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_reviewer_decision",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "fallback_claim_scope_recommendation": [
+        {
+          "linked_work_package_id": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+          "claim_scope_decision_option": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_claim_scope_decision_option",
+          "decision_rationale": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_decision_rationale",
+          "triggering_hit_ids": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_triggering_hit_ids",
+          "preserved_field_validation_gate": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_preserved_field_validation_gate",
+          "reviewer_id": "TODO_FSWP1_cyclic_greybox_soft_sensor_release_gate_search_reviewer_id",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ]
+    },
+    "FSWP2_node_modality_sparse_hidden_state_search": {
+      "package_manifest": {
+        "package_id": "TODO_FSWP2_node_modality_sparse_hidden_state_search_package_id",
+        "linked_work_package_id": "FSWP2_node_modality_sparse_hidden_state_search",
+        "search_executor": "TODO_FSWP2_node_modality_sparse_hidden_state_search_search_executor",
+        "search_date": "TODO_FSWP2_node_modality_sparse_hidden_state_search_search_date",
+        "databases_searched": "TODO_FSWP2_node_modality_sparse_hidden_state_search_databases_searched",
+        "query_log": "TODO_FSWP2_node_modality_sparse_hidden_state_search_query_log",
+        "reviewer_id": "TODO_FSWP2_node_modality_sparse_hidden_state_search_reviewer_id",
+        "review_time": "TODO_FSWP2_node_modality_sparse_hidden_state_search_review_time",
+        "review_boundary_statement": "TODO_FSWP2_node_modality_sparse_hidden_state_search_review_boundary_statement",
+        "legal_status": "template_not_legal_opinion",
+        "allowed_source_databases": [
+          "Google Patents",
+          "Espacenet",
+          "CNIPA",
+          "IEEE Xplore",
+          "Google Scholar",
+          "GitHub"
+        ],
+        "allowed_query_sources": [
+          "\"sparse sensor placement\" \"wastewater\" \"hidden state\"",
+          "\"node modality\" \"sensor placement\" \"water treatment\"",
+          "\"SSPOR\" OR \"SSPOC\" \"water quality\" \"sensor placement\"",
+          "\"catalyst activity\" \"sensor placement\" \"soft sensor\"",
+          "稀疏传感 布点 污水处理 隐藏状态",
+          "节点 模态 传感器布设 水处理",
+          "催化剂活性 软传感 布点",
+          "低成本传感 布点 水质 状态估计",
+          "reviewer_approved_query_expansion_with_rationale"
+        ],
+        "template_only": true,
+        "evidence_status": "template_not_prior_art_evidence"
+      },
+      "prior_art_hit_table": [
+        {
+          "hit_id": "TODO_FSWP2_node_modality_sparse_hidden_state_search_hit_id",
+          "linked_work_package_id": "FSWP2_node_modality_sparse_hidden_state_search",
+          "source_database": "TODO_FSWP2_node_modality_sparse_hidden_state_search_source_database",
+          "publication_or_patent_id": "TODO_FSWP2_node_modality_sparse_hidden_state_search_publication_or_patent_id",
+          "title": "TODO_FSWP2_node_modality_sparse_hidden_state_search_title",
+          "assignee_or_authors": "TODO_FSWP2_node_modality_sparse_hidden_state_search_assignee_or_authors",
+          "publication_date": "TODO_FSWP2_node_modality_sparse_hidden_state_search_publication_date",
+          "url_or_reference": "TODO_FSWP2_node_modality_sparse_hidden_state_search_url_or_reference",
+          "matched_query": "TODO_FSWP2_node_modality_sparse_hidden_state_search_matched_query",
+          "matched_claim_elements": "TODO_FSWP2_node_modality_sparse_hidden_state_search_matched_claim_elements",
+          "disclosed_capabilities": "TODO_FSWP2_node_modality_sparse_hidden_state_search_disclosed_capabilities",
+          "missing_project_elements": "TODO_FSWP2_node_modality_sparse_hidden_state_search_missing_project_elements",
+          "overlap_level": "TODO_FSWP2_node_modality_sparse_hidden_state_search_overlap_level",
+          "novelty_risk_signal": "TODO_FSWP2_node_modality_sparse_hidden_state_search_novelty_risk_signal",
+          "combination_risk_signal": "TODO_FSWP2_node_modality_sparse_hidden_state_search_combination_risk_signal",
+          "reviewer_id": "TODO_FSWP2_node_modality_sparse_hidden_state_search_reviewer_id",
+          "review_status": "TODO_FSWP2_node_modality_sparse_hidden_state_search_review_status",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "claim_element_comparison_chart": [
+        {
+          "comparison_id": "TODO_FSWP2_node_modality_sparse_hidden_state_search_comparison_id",
+          "linked_hit_id": "TODO_FSWP2_node_modality_sparse_hidden_state_search_linked_hit_id",
+          "linked_work_package_id": "FSWP2_node_modality_sparse_hidden_state_search",
+          "claim_or_feature_element": "TODO_FSWP2_node_modality_sparse_hidden_state_search_claim_or_feature_element",
+          "project_element_text": "TODO_FSWP2_node_modality_sparse_hidden_state_search_project_element_text",
+          "prior_art_disclosure_text": "TODO_FSWP2_node_modality_sparse_hidden_state_search_prior_art_disclosure_text",
+          "match_level": "TODO_FSWP2_node_modality_sparse_hidden_state_search_match_level",
+          "missing_or_distinguishing_detail": "TODO_FSWP2_node_modality_sparse_hidden_state_search_missing_or_distinguishing_detail",
+          "fallback_claim_scope_impact": "TODO_FSWP2_node_modality_sparse_hidden_state_search_fallback_claim_scope_impact",
+          "field_validation_gate_to_preserve": "TODO_FSWP2_node_modality_sparse_hidden_state_search_field_validation_gate_to_preserve",
+          "reviewer_decision": "TODO_FSWP2_node_modality_sparse_hidden_state_search_reviewer_decision",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "fallback_claim_scope_recommendation": [
+        {
+          "linked_work_package_id": "FSWP2_node_modality_sparse_hidden_state_search",
+          "claim_scope_decision_option": "TODO_FSWP2_node_modality_sparse_hidden_state_search_claim_scope_decision_option",
+          "decision_rationale": "TODO_FSWP2_node_modality_sparse_hidden_state_search_decision_rationale",
+          "triggering_hit_ids": "TODO_FSWP2_node_modality_sparse_hidden_state_search_triggering_hit_ids",
+          "preserved_field_validation_gate": "TODO_FSWP2_node_modality_sparse_hidden_state_search_preserved_field_validation_gate",
+          "reviewer_id": "TODO_FSWP2_node_modality_sparse_hidden_state_search_reviewer_id",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ]
+    },
+    "FSWP3_greybox_multi_agent_safety_arbitration_search": {
+      "package_manifest": {
+        "package_id": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_package_id",
+        "linked_work_package_id": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+        "search_executor": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_search_executor",
+        "search_date": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_search_date",
+        "databases_searched": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_databases_searched",
+        "query_log": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_query_log",
+        "reviewer_id": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_reviewer_id",
+        "review_time": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_review_time",
+        "review_boundary_statement": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_review_boundary_statement",
+        "legal_status": "template_not_legal_opinion",
+        "allowed_source_databases": [
+          "CNIPA",
+          "Google Patents",
+          "Espacenet",
+          "IEEE Xplore",
+          "ACM Digital Library",
+          "Google Scholar"
+        ],
+        "allowed_query_sources": [
+          "\"multi-agent\" \"wastewater\" \"grey-box\" \"safety arbitration\"",
+          "\"multi-agent reinforcement learning\" \"pump station\" \"policy distillation\"",
+          "\"offline reinforcement learning\" \"water treatment\" \"operator review\"",
+          "\"grey-box\" \"multi-agent\" \"control\" \"release gate\"",
+          "多智能体 污水处理 灰箱 安全仲裁",
+          "多智能体强化学习 泵站 协同控制 策略蒸馏",
+          "离线强化学习 水处理 人工复核",
+          "灰箱 多智能体 控制 放行门控",
+          "reviewer_approved_query_expansion_with_rationale"
+        ],
+        "template_only": true,
+        "evidence_status": "template_not_prior_art_evidence"
+      },
+      "prior_art_hit_table": [
+        {
+          "hit_id": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_hit_id",
+          "linked_work_package_id": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+          "source_database": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_source_database",
+          "publication_or_patent_id": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_publication_or_patent_id",
+          "title": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_title",
+          "assignee_or_authors": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_assignee_or_authors",
+          "publication_date": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_publication_date",
+          "url_or_reference": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_url_or_reference",
+          "matched_query": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_matched_query",
+          "matched_claim_elements": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_matched_claim_elements",
+          "disclosed_capabilities": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_disclosed_capabilities",
+          "missing_project_elements": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_missing_project_elements",
+          "overlap_level": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_overlap_level",
+          "novelty_risk_signal": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_novelty_risk_signal",
+          "combination_risk_signal": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_combination_risk_signal",
+          "reviewer_id": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_reviewer_id",
+          "review_status": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_review_status",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "claim_element_comparison_chart": [
+        {
+          "comparison_id": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_comparison_id",
+          "linked_hit_id": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_linked_hit_id",
+          "linked_work_package_id": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+          "claim_or_feature_element": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_claim_or_feature_element",
+          "project_element_text": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_project_element_text",
+          "prior_art_disclosure_text": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_prior_art_disclosure_text",
+          "match_level": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_match_level",
+          "missing_or_distinguishing_detail": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_missing_or_distinguishing_detail",
+          "fallback_claim_scope_impact": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_fallback_claim_scope_impact",
+          "field_validation_gate_to_preserve": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_field_validation_gate_to_preserve",
+          "reviewer_decision": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_reviewer_decision",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "fallback_claim_scope_recommendation": [
+        {
+          "linked_work_package_id": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+          "claim_scope_decision_option": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_claim_scope_decision_option",
+          "decision_rationale": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_decision_rationale",
+          "triggering_hit_ids": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_triggering_hit_ids",
+          "preserved_field_validation_gate": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_preserved_field_validation_gate",
+          "reviewer_id": "TODO_FSWP3_greybox_multi_agent_safety_arbitration_search_reviewer_id",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ]
+    },
+    "FSWP4_low_cost_observation_gated_flowsheet_search": {
+      "package_manifest": {
+        "package_id": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_package_id",
+        "linked_work_package_id": "FSWP4_low_cost_observation_gated_flowsheet_search",
+        "search_executor": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_search_executor",
+        "search_date": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_search_date",
+        "databases_searched": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_databases_searched",
+        "query_log": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_query_log",
+        "reviewer_id": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_reviewer_id",
+        "review_time": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_review_time",
+        "review_boundary_statement": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_review_boundary_statement",
+        "legal_status": "template_not_legal_opinion",
+        "allowed_source_databases": [
+          "Google Patents",
+          "CNIPA",
+          "Espacenet",
+          "Google Scholar",
+          "WaterTAP/QSDsan/Pyomo documentation"
+        ],
+        "allowed_query_sources": [
+          "\"water treatment\" \"flowsheet\" \"low-cost sensors\" \"control\"",
+          "\"grey-box\" \"water treatment\" \"optimization\" \"sensor limited\"",
+          "\"hydraulic retention\" \"soft sensor\" \"process optimization\"",
+          "\"unit model\" \"release gate\" \"water treatment\"",
+          "水处理 流程模拟 低成本传感 控制",
+          "灰箱 水处理 优化 传感受限",
+          "水力停留时间 软传感 工艺优化",
+          "单元模型 放行门控 水处理",
+          "reviewer_approved_query_expansion_with_rationale"
+        ],
+        "template_only": true,
+        "evidence_status": "template_not_prior_art_evidence"
+      },
+      "prior_art_hit_table": [
+        {
+          "hit_id": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_hit_id",
+          "linked_work_package_id": "FSWP4_low_cost_observation_gated_flowsheet_search",
+          "source_database": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_source_database",
+          "publication_or_patent_id": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_publication_or_patent_id",
+          "title": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_title",
+          "assignee_or_authors": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_assignee_or_authors",
+          "publication_date": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_publication_date",
+          "url_or_reference": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_url_or_reference",
+          "matched_query": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_matched_query",
+          "matched_claim_elements": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_matched_claim_elements",
+          "disclosed_capabilities": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_disclosed_capabilities",
+          "missing_project_elements": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_missing_project_elements",
+          "overlap_level": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_overlap_level",
+          "novelty_risk_signal": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_novelty_risk_signal",
+          "combination_risk_signal": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_combination_risk_signal",
+          "reviewer_id": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_reviewer_id",
+          "review_status": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_review_status",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "claim_element_comparison_chart": [
+        {
+          "comparison_id": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_comparison_id",
+          "linked_hit_id": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_linked_hit_id",
+          "linked_work_package_id": "FSWP4_low_cost_observation_gated_flowsheet_search",
+          "claim_or_feature_element": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_claim_or_feature_element",
+          "project_element_text": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_project_element_text",
+          "prior_art_disclosure_text": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_prior_art_disclosure_text",
+          "match_level": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_match_level",
+          "missing_or_distinguishing_detail": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_missing_or_distinguishing_detail",
+          "fallback_claim_scope_impact": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_fallback_claim_scope_impact",
+          "field_validation_gate_to_preserve": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_field_validation_gate_to_preserve",
+          "reviewer_decision": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_reviewer_decision",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "fallback_claim_scope_recommendation": [
+        {
+          "linked_work_package_id": "FSWP4_low_cost_observation_gated_flowsheet_search",
+          "claim_scope_decision_option": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_claim_scope_decision_option",
+          "decision_rationale": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_decision_rationale",
+          "triggering_hit_ids": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_triggering_hit_ids",
+          "preserved_field_validation_gate": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_preserved_field_validation_gate",
+          "reviewer_id": "TODO_FSWP4_low_cost_observation_gated_flowsheet_search_reviewer_id",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ]
+    },
+    "FSWP5_scientific_kg_action_constraint_claim_gate_search": {
+      "package_manifest": {
+        "package_id": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_package_id",
+        "linked_work_package_id": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+        "search_executor": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_search_executor",
+        "search_date": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_search_date",
+        "databases_searched": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_databases_searched",
+        "query_log": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_query_log",
+        "reviewer_id": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_reviewer_id",
+        "review_time": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_review_time",
+        "review_boundary_statement": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_review_boundary_statement",
+        "legal_status": "template_not_legal_opinion",
+        "allowed_source_databases": [
+          "Google Scholar",
+          "Google Patents",
+          "CNIPA",
+          "WIPO Patentscope",
+          "Semantic Scholar"
+        ],
+        "allowed_query_sources": [
+          "\"scientific knowledge graph\" \"water treatment\" \"control constraint\"",
+          "\"knowledge graph\" \"wastewater\" \"claim verification\"",
+          "\"literature evidence\" \"release gate\" \"water treatment\"",
+          "\"knowledge graph\" \"multi-agent\" \"action constraint\"",
+          "科学知识图谱 水处理 控制约束",
+          "知识图谱 污水处理 证据链",
+          "文献证据 放行门控 水处理",
+          "知识图谱 多智能体 动作约束",
+          "reviewer_approved_query_expansion_with_rationale"
+        ],
+        "template_only": true,
+        "evidence_status": "template_not_prior_art_evidence"
+      },
+      "prior_art_hit_table": [
+        {
+          "hit_id": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_hit_id",
+          "linked_work_package_id": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+          "source_database": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_source_database",
+          "publication_or_patent_id": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_publication_or_patent_id",
+          "title": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_title",
+          "assignee_or_authors": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_assignee_or_authors",
+          "publication_date": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_publication_date",
+          "url_or_reference": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_url_or_reference",
+          "matched_query": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_matched_query",
+          "matched_claim_elements": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_matched_claim_elements",
+          "disclosed_capabilities": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_disclosed_capabilities",
+          "missing_project_elements": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_missing_project_elements",
+          "overlap_level": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_overlap_level",
+          "novelty_risk_signal": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_novelty_risk_signal",
+          "combination_risk_signal": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_combination_risk_signal",
+          "reviewer_id": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_reviewer_id",
+          "review_status": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_review_status",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "claim_element_comparison_chart": [
+        {
+          "comparison_id": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_comparison_id",
+          "linked_hit_id": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_linked_hit_id",
+          "linked_work_package_id": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+          "claim_or_feature_element": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_claim_or_feature_element",
+          "project_element_text": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_project_element_text",
+          "prior_art_disclosure_text": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_prior_art_disclosure_text",
+          "match_level": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_match_level",
+          "missing_or_distinguishing_detail": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_missing_or_distinguishing_detail",
+          "fallback_claim_scope_impact": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_fallback_claim_scope_impact",
+          "field_validation_gate_to_preserve": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_field_validation_gate_to_preserve",
+          "reviewer_decision": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_reviewer_decision",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "fallback_claim_scope_recommendation": [
+        {
+          "linked_work_package_id": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+          "claim_scope_decision_option": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_claim_scope_decision_option",
+          "decision_rationale": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_decision_rationale",
+          "triggering_hit_ids": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_triggering_hit_ids",
+          "preserved_field_validation_gate": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_preserved_field_validation_gate",
+          "reviewer_id": "TODO_FSWP5_scientific_kg_action_constraint_claim_gate_search_reviewer_id",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ]
+    },
+    "FSWP6_operational_catalyst_activity_guardrail_search": {
+      "package_manifest": {
+        "package_id": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_package_id",
+        "linked_work_package_id": "FSWP6_operational_catalyst_activity_guardrail_search",
+        "search_executor": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_search_executor",
+        "search_date": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_search_date",
+        "databases_searched": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_databases_searched",
+        "query_log": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_query_log",
+        "reviewer_id": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_reviewer_id",
+        "review_time": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_review_time",
+        "review_boundary_statement": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_review_boundary_statement",
+        "legal_status": "template_not_legal_opinion",
+        "allowed_source_databases": [
+          "Google Scholar",
+          "Google Patents",
+          "CNIPA",
+          "Espacenet",
+          "WIPO Patentscope"
+        ],
+        "allowed_query_sources": [
+          "\"catalyst activity\" \"soft sensor\" \"water treatment\"",
+          "\"photocatalyst\" \"regeneration\" \"ORP\" \"UV254\"",
+          "\"AI\" \"catalyst discovery\" \"wastewater\" \"closed-loop control\"",
+          "\"pressure drop\" \"catalyst bed\" \"activity\" \"water purification\"",
+          "催化剂活性 软传感 水处理",
+          "光催化剂 再生 ORP UV254",
+          "AI 催化剂发现 污水处理 闭环控制",
+          "压降 催化剂床 活性 水净化",
+          "reviewer_approved_query_expansion_with_rationale"
+        ],
+        "template_only": true,
+        "evidence_status": "template_not_prior_art_evidence"
+      },
+      "prior_art_hit_table": [
+        {
+          "hit_id": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_hit_id",
+          "linked_work_package_id": "FSWP6_operational_catalyst_activity_guardrail_search",
+          "source_database": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_source_database",
+          "publication_or_patent_id": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_publication_or_patent_id",
+          "title": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_title",
+          "assignee_or_authors": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_assignee_or_authors",
+          "publication_date": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_publication_date",
+          "url_or_reference": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_url_or_reference",
+          "matched_query": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_matched_query",
+          "matched_claim_elements": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_matched_claim_elements",
+          "disclosed_capabilities": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_disclosed_capabilities",
+          "missing_project_elements": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_missing_project_elements",
+          "overlap_level": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_overlap_level",
+          "novelty_risk_signal": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_novelty_risk_signal",
+          "combination_risk_signal": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_combination_risk_signal",
+          "reviewer_id": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_reviewer_id",
+          "review_status": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_review_status",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "claim_element_comparison_chart": [
+        {
+          "comparison_id": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_comparison_id",
+          "linked_hit_id": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_linked_hit_id",
+          "linked_work_package_id": "FSWP6_operational_catalyst_activity_guardrail_search",
+          "claim_or_feature_element": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_claim_or_feature_element",
+          "project_element_text": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_project_element_text",
+          "prior_art_disclosure_text": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_prior_art_disclosure_text",
+          "match_level": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_match_level",
+          "missing_or_distinguishing_detail": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_missing_or_distinguishing_detail",
+          "fallback_claim_scope_impact": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_fallback_claim_scope_impact",
+          "field_validation_gate_to_preserve": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_field_validation_gate_to_preserve",
+          "reviewer_decision": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_reviewer_decision",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "fallback_claim_scope_recommendation": [
+        {
+          "linked_work_package_id": "FSWP6_operational_catalyst_activity_guardrail_search",
+          "claim_scope_decision_option": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_claim_scope_decision_option",
+          "decision_rationale": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_decision_rationale",
+          "triggering_hit_ids": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_triggering_hit_ids",
+          "preserved_field_validation_gate": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_preserved_field_validation_gate",
+          "reviewer_id": "TODO_FSWP6_operational_catalyst_activity_guardrail_search_reviewer_id",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ]
+    },
+    "FSWP7_pressure_resolution_protective_release_gate_search": {
+      "package_manifest": {
+        "package_id": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_package_id",
+        "linked_work_package_id": "FSWP7_pressure_resolution_protective_release_gate_search",
+        "search_executor": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_search_executor",
+        "search_date": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_search_date",
+        "databases_searched": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_databases_searched",
+        "query_log": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_query_log",
+        "reviewer_id": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_reviewer_id",
+        "review_time": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_review_time",
+        "review_boundary_statement": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_review_boundary_statement",
+        "legal_status": "template_not_legal_opinion",
+        "allowed_source_databases": [
+          "CNIPA",
+          "Google Patents",
+          "Espacenet",
+          "WIPO Patentscope",
+          "Google Scholar"
+        ],
+        "allowed_query_sources": [
+          "\"pressure source conflict\" \"water treatment\" \"operator review\"",
+          "\"field replay\" \"release gate\" \"wastewater\"",
+          "\"data provenance\" \"water treatment\" \"protective control\"",
+          "\"pressure drop\" \"replay\" \"catalyst bed\" \"release\"",
+          "压力源 冲突 水处理 人工复核",
+          "现场回放 放行门控 污水处理",
+          "数据溯源 水处理 保护性控制",
+          "压降 回放 催化剂床 放行",
+          "reviewer_approved_query_expansion_with_rationale"
+        ],
+        "template_only": true,
+        "evidence_status": "template_not_prior_art_evidence"
+      },
+      "prior_art_hit_table": [
+        {
+          "hit_id": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_hit_id",
+          "linked_work_package_id": "FSWP7_pressure_resolution_protective_release_gate_search",
+          "source_database": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_source_database",
+          "publication_or_patent_id": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_publication_or_patent_id",
+          "title": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_title",
+          "assignee_or_authors": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_assignee_or_authors",
+          "publication_date": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_publication_date",
+          "url_or_reference": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_url_or_reference",
+          "matched_query": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_matched_query",
+          "matched_claim_elements": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_matched_claim_elements",
+          "disclosed_capabilities": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_disclosed_capabilities",
+          "missing_project_elements": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_missing_project_elements",
+          "overlap_level": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_overlap_level",
+          "novelty_risk_signal": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_novelty_risk_signal",
+          "combination_risk_signal": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_combination_risk_signal",
+          "reviewer_id": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_reviewer_id",
+          "review_status": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_review_status",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "claim_element_comparison_chart": [
+        {
+          "comparison_id": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_comparison_id",
+          "linked_hit_id": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_linked_hit_id",
+          "linked_work_package_id": "FSWP7_pressure_resolution_protective_release_gate_search",
+          "claim_or_feature_element": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_claim_or_feature_element",
+          "project_element_text": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_project_element_text",
+          "prior_art_disclosure_text": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_prior_art_disclosure_text",
+          "match_level": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_match_level",
+          "missing_or_distinguishing_detail": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_missing_or_distinguishing_detail",
+          "fallback_claim_scope_impact": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_fallback_claim_scope_impact",
+          "field_validation_gate_to_preserve": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_field_validation_gate_to_preserve",
+          "reviewer_decision": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_reviewer_decision",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ],
+      "fallback_claim_scope_recommendation": [
+        {
+          "linked_work_package_id": "FSWP7_pressure_resolution_protective_release_gate_search",
+          "claim_scope_decision_option": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_claim_scope_decision_option",
+          "decision_rationale": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_decision_rationale",
+          "triggering_hit_ids": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_triggering_hit_ids",
+          "preserved_field_validation_gate": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_preserved_field_validation_gate",
+          "reviewer_id": "TODO_FSWP7_pressure_resolution_protective_release_gate_search_reviewer_id",
+          "legal_status": "template_not_legal_opinion",
+          "template_only": true,
+          "evidence_status": "template_not_prior_art_evidence"
+        }
+      ]
+    }
+  },
+  "expected_work_package_ids": [
+    "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+    "FSWP2_node_modality_sparse_hidden_state_search",
+    "FSWP3_greybox_multi_agent_safety_arbitration_search",
+    "FSWP4_low_cost_observation_gated_flowsheet_search",
+    "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+    "FSWP6_operational_catalyst_activity_guardrail_search",
+    "FSWP7_pressure_resolution_protective_release_gate_search"
+  ],
+  "required_result_tables": [
+    "prior_art_hit_table",
+    "claim_element_comparison_chart",
+    "fallback_claim_scope_recommendation"
+  ],
+  "template_marker_policy": "Replace every TODO_ value, template_only=true flag and template_not_prior_art_evidence marker before setting FORMAL_SEARCH_RESULT_PACKAGE_PATH. The preflight rejects this skeleton as evidence.",
+  "can_route_to_validation_gate": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "failure_boundary": "该 skeleton 是可填报提交骨架，不是 prior-art hit，不是正式检索结果，不是法律意见；原样提交会被 template-marker preflight 阻断。",
+  "missing_submission_template_fields": [],
+  "submission_template_ready_status": "formal_search_result_package_submission_template_complete"
+}

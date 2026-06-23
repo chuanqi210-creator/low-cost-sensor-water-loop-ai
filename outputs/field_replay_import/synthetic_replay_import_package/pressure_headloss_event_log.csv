@@ -1,0 +1,13 @@
+campaign_id,batch_id,event_time_min,bed_id,pressure_drop_kPa,headloss_kPa_per_m,flow_Lmin,matched_lab_sample_time_min,regeneration_event,hydraulic_anomaly_label,flow_normalized_pressure_residual,expected_clean_bed_pressure_drop_kPa,operator_review_required
+synthetic_timestamped_campaign,TS001,15,BED_A,6.7,8.375,1.1,19,False,True,3.182,3.2,True
+synthetic_timestamped_campaign,TS002,16,BED_A,6.7,8.375,1.1,20,False,True,3.182,3.2,True
+synthetic_timestamped_campaign,TS003,17,BED_A,6.7,8.375,1.1,18,False,True,3.182,3.2,True
+synthetic_timestamped_campaign,TS004,14,BED_A,6.7,8.375,1.1,19,False,True,3.182,3.2,True
+synthetic_timestamped_campaign,TS005,15,BED_A,6.7,8.375,1.1,20,False,True,3.182,3.2,True
+synthetic_timestamped_campaign,TS006,16,BED_A,6.7,8.375,1.1,18,False,True,3.182,3.2,True
+synthetic_timestamped_campaign,TS007,17,BED_A,3.7,4.625,1.1,19,False,False,0.455,3.2,False
+synthetic_timestamped_campaign,TS008,14,BED_A,3.7,4.625,1.1,20,False,False,0.455,3.2,False
+synthetic_timestamped_campaign,TS009,15,BED_A,4.4,5.5,1.1,18,False,False,1.091,3.2,False
+synthetic_timestamped_campaign,TS010,16,BED_A,4.4,5.5,1.1,19,False,False,1.091,3.2,False
+synthetic_timestamped_campaign,TS011,17,BED_A,6.7,8.375,1.1,20,False,True,3.182,3.2,True
+synthetic_timestamped_campaign,TS012,14,BED_A,3.7,4.625,1.1,18,False,False,0.455,3.2,False

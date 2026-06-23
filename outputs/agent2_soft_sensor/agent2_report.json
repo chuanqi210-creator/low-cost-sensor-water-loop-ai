@@ -1,0 +1,512 @@
+{
+  "agent_name": "soft_sensor_agent",
+  "confidence": 0.755,
+  "summary": "估计污染物残留风险 0.16，达标概率 0.94，副产物风险 0.46，回流边际收益 0.07。",
+  "metrics": {
+    "state_estimate": {
+      "pollutant_residual_risk": 0.156,
+      "reaction_completion": 0.822,
+      "oxidant_remaining": 0.775,
+      "catalyst_activity": 0.761,
+      "matrix_interference": 0.414,
+      "byproduct_risk": 0.459,
+      "hydraulic_confidence": 0.997,
+      "sensor_confidence": 0.755,
+      "compliance_probability": 0.943,
+      "recycle_gain": 0.066,
+      "release_readiness": 0.755,
+      "cycle_id": 5
+    },
+    "sensor_scores_used": {
+      "pH": 0.72,
+      "ORP_mV": 0.82,
+      "EC_uScm": 0.65,
+      "turbidity_NTU": 0.68,
+      "temp_C": 1.0,
+      "flow_Lmin": 0.44,
+      "UV254_abs": 1.0
+    },
+    "heuristic_state": {
+      "pollutant_residual_risk": 0.226,
+      "reaction_completion": 0.828,
+      "oxidant_remaining": 0.795,
+      "catalyst_activity": 0.675,
+      "matrix_interference": 0.349
+    },
+    "model_info": {
+      "model_used": true,
+      "model_version": "rf_multioutput_v2_dynamic",
+      "model_path": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/models/soft_sensor_calibrator.pkl",
+      "blend_alpha": 0.491,
+      "model_prediction": {
+        "pollutant_residual_risk": 0.084,
+        "reaction_completion": 0.815,
+        "oxidant_remaining": 0.754,
+        "catalyst_activity": 0.85,
+        "matrix_interference": 0.482
+      }
+    },
+    "timeseries": [
+      {
+        "timestamp_min": 0.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.7791,
+        "reaction_completion": 0.1096
+      },
+      {
+        "timestamp_min": 1.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.7735,
+        "reaction_completion": 0.1195
+      },
+      {
+        "timestamp_min": 2.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.7628,
+        "reaction_completion": 0.123
+      },
+      {
+        "timestamp_min": 3.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.7625,
+        "reaction_completion": 0.1294
+      },
+      {
+        "timestamp_min": 4.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.7411,
+        "reaction_completion": 0.1535
+      },
+      {
+        "timestamp_min": 5.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.7221,
+        "reaction_completion": 0.1722
+      },
+      {
+        "timestamp_min": 6.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.7072,
+        "reaction_completion": 0.193
+      },
+      {
+        "timestamp_min": 7.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.6915,
+        "reaction_completion": 0.2085
+      },
+      {
+        "timestamp_min": 8.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.6572,
+        "reaction_completion": 0.2498
+      },
+      {
+        "timestamp_min": 9.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.6587,
+        "reaction_completion": 0.2507
+      },
+      {
+        "timestamp_min": 10.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.6126,
+        "reaction_completion": 0.2968
+      },
+      {
+        "timestamp_min": 11.0,
+        "cycle_id": 0.0,
+        "pollutant_residual_risk": 0.6245,
+        "reaction_completion": 0.2937
+      },
+      {
+        "timestamp_min": 12.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.5785,
+        "reaction_completion": 0.3492
+      },
+      {
+        "timestamp_min": 13.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.6059,
+        "reaction_completion": 0.3117
+      },
+      {
+        "timestamp_min": 14.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.5679,
+        "reaction_completion": 0.3586
+      },
+      {
+        "timestamp_min": 15.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.5499,
+        "reaction_completion": 0.3782
+      },
+      {
+        "timestamp_min": 16.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.5628,
+        "reaction_completion": 0.3605
+      },
+      {
+        "timestamp_min": 17.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.5406,
+        "reaction_completion": 0.3897
+      },
+      {
+        "timestamp_min": 18.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.5286,
+        "reaction_completion": 0.4026
+      },
+      {
+        "timestamp_min": 19.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.5131,
+        "reaction_completion": 0.4227
+      },
+      {
+        "timestamp_min": 20.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.4944,
+        "reaction_completion": 0.4358
+      },
+      {
+        "timestamp_min": 21.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.49,
+        "reaction_completion": 0.4455
+      },
+      {
+        "timestamp_min": 22.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.4847,
+        "reaction_completion": 0.4504
+      },
+      {
+        "timestamp_min": 23.0,
+        "cycle_id": 1.0,
+        "pollutant_residual_risk": 0.4586,
+        "reaction_completion": 0.4849
+      },
+      {
+        "timestamp_min": 24.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.4511,
+        "reaction_completion": 0.485
+      },
+      {
+        "timestamp_min": 25.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.4406,
+        "reaction_completion": 0.5031
+      },
+      {
+        "timestamp_min": 26.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.4363,
+        "reaction_completion": 0.5105
+      },
+      {
+        "timestamp_min": 27.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.3994,
+        "reaction_completion": 0.5522
+      },
+      {
+        "timestamp_min": 28.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.4261,
+        "reaction_completion": 0.5101
+      },
+      {
+        "timestamp_min": 29.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.4202,
+        "reaction_completion": 0.5251
+      },
+      {
+        "timestamp_min": 30.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.3973,
+        "reaction_completion": 0.5529
+      },
+      {
+        "timestamp_min": 31.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.3763,
+        "reaction_completion": 0.5818
+      },
+      {
+        "timestamp_min": 32.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.3423,
+        "reaction_completion": 0.6224
+      },
+      {
+        "timestamp_min": 33.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.3825,
+        "reaction_completion": 0.5664
+      },
+      {
+        "timestamp_min": 34.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.3481,
+        "reaction_completion": 0.6176
+      },
+      {
+        "timestamp_min": 35.0,
+        "cycle_id": 2.0,
+        "pollutant_residual_risk": 0.3501,
+        "reaction_completion": 0.5981
+      },
+      {
+        "timestamp_min": 36.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.3497,
+        "reaction_completion": 0.609
+      },
+      {
+        "timestamp_min": 37.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.3261,
+        "reaction_completion": 0.6344
+      },
+      {
+        "timestamp_min": 38.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.3069,
+        "reaction_completion": 0.6636
+      },
+      {
+        "timestamp_min": 39.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.3141,
+        "reaction_completion": 0.6498
+      },
+      {
+        "timestamp_min": 40.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.3166,
+        "reaction_completion": 0.6413
+      },
+      {
+        "timestamp_min": 41.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.3176,
+        "reaction_completion": 0.6339
+      },
+      {
+        "timestamp_min": 42.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.3083,
+        "reaction_completion": 0.6536
+      },
+      {
+        "timestamp_min": 43.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.3251,
+        "reaction_completion": 0.6333
+      },
+      {
+        "timestamp_min": 44.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.2696,
+        "reaction_completion": 0.6984
+      },
+      {
+        "timestamp_min": 45.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.271,
+        "reaction_completion": 0.6945
+      },
+      {
+        "timestamp_min": 46.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.2776,
+        "reaction_completion": 0.6844
+      },
+      {
+        "timestamp_min": 47.0,
+        "cycle_id": 3.0,
+        "pollutant_residual_risk": 0.2777,
+        "reaction_completion": 0.6957
+      },
+      {
+        "timestamp_min": 48.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2424,
+        "reaction_completion": 0.7347
+      },
+      {
+        "timestamp_min": 49.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2732,
+        "reaction_completion": 0.6982
+      },
+      {
+        "timestamp_min": 50.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2536,
+        "reaction_completion": 0.725
+      },
+      {
+        "timestamp_min": 51.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2583,
+        "reaction_completion": 0.7145
+      },
+      {
+        "timestamp_min": 52.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2524,
+        "reaction_completion": 0.7319
+      },
+      {
+        "timestamp_min": 53.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2528,
+        "reaction_completion": 0.7297
+      },
+      {
+        "timestamp_min": 54.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2583,
+        "reaction_completion": 0.7272
+      },
+      {
+        "timestamp_min": 55.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2127,
+        "reaction_completion": 0.7773
+      },
+      {
+        "timestamp_min": 56.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2404,
+        "reaction_completion": 0.7529
+      },
+      {
+        "timestamp_min": 57.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2484,
+        "reaction_completion": 0.7499
+      },
+      {
+        "timestamp_min": 58.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2494,
+        "reaction_completion": 0.746
+      },
+      {
+        "timestamp_min": 59.0,
+        "cycle_id": 4.0,
+        "pollutant_residual_risk": 0.2244,
+        "reaction_completion": 0.7862
+      },
+      {
+        "timestamp_min": 60.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2432,
+        "reaction_completion": 0.7586
+      },
+      {
+        "timestamp_min": 61.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2168,
+        "reaction_completion": 0.795
+      },
+      {
+        "timestamp_min": 62.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2362,
+        "reaction_completion": 0.7624
+      },
+      {
+        "timestamp_min": 63.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2322,
+        "reaction_completion": 0.7788
+      },
+      {
+        "timestamp_min": 64.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.1996,
+        "reaction_completion": 0.8221
+      },
+      {
+        "timestamp_min": 65.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2358,
+        "reaction_completion": 0.7774
+      },
+      {
+        "timestamp_min": 66.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2186,
+        "reaction_completion": 0.8038
+      },
+      {
+        "timestamp_min": 67.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2144,
+        "reaction_completion": 0.8074
+      },
+      {
+        "timestamp_min": 68.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2237,
+        "reaction_completion": 0.8018
+      },
+      {
+        "timestamp_min": 69.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2031,
+        "reaction_completion": 0.8231
+      },
+      {
+        "timestamp_min": 70.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2217,
+        "reaction_completion": 0.811
+      },
+      {
+        "timestamp_min": 71.0,
+        "cycle_id": 5.0,
+        "pollutant_residual_risk": 0.2073,
+        "reaction_completion": 0.8297
+      }
+    ],
+    "synthetic_truth_validation": {
+      "pollutant_residual_risk_abs_error": 0.0728,
+      "reaction_completion_abs_error": 0.0073,
+      "oxidant_remaining_abs_error": 0.0206,
+      "catalyst_activity_abs_error": 0.0885,
+      "matrix_interference_abs_error": 0.068
+    }
+  },
+  "recommendations": [
+    "水质估计达标概率较高，但释放准备度不足，应先进入机理诊断或旁路校准。"
+  ],
+  "issues": [
+    {
+      "sensor": "all",
+      "issue_type": "low_sensor_confidence",
+      "severity": "warning",
+      "message": "软测量输入可信度偏低，状态估计需要旁路检测或离线真值校准。",
+      "timestamp_min": null,
+      "evidence": {}
+    },
+    {
+      "sensor": "soft_state",
+      "issue_type": "release_blocked_by_uncertainty",
+      "severity": "warning",
+      "message": "水质估计可能达标，但受传感可信度或回流收益约束，不建议自动放行。",
+      "timestamp_min": null,
+      "evidence": {}
+    }
+  ]
+}

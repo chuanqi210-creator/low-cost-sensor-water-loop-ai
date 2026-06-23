@@ -1,0 +1,663 @@
+{
+  "agent_name": "cost_safety_agent",
+  "confidence": 0.544,
+  "summary": "成本安全最优动作：暂存并旁路验证，策略目标评分 0.631，净收益评分 0.716。",
+  "metrics": {
+    "evaluated_actions": [
+      {
+        "action_id": "hold_for_validation",
+        "action_name": "暂存并旁路验证",
+        "original_score": 0.976,
+        "net_score": 0.716,
+        "objective_score": 0.631,
+        "objective": {
+          "objective_score": 0.631,
+          "benefit_total": 0.752,
+          "penalty_total": 0.121,
+          "benefit_terms": {
+            "control_priority": 0.39,
+            "safety_gain": 0.282,
+            "knowledge_alignment": 0.08
+          },
+          "penalty_terms": {
+            "money_cost": 0.04,
+            "time_cost": 0.044,
+            "energy_cost": 0.004,
+            "risk_cost": 0.01,
+            "false_release_risk": 0.01,
+            "byproduct_risk": 0.012,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.032,
+          "byproduct_pressure": 0.124,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.8284,
+        "money_cost": 0.25,
+        "time_cost": 0.4024,
+        "energy_cost": 0.05,
+        "risk_cost": 0.04519999999999999,
+        "knowledge_action_bias": 0.22,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.048,
+          "risk_cost_delta": -0.075,
+          "time_cost_delta": -0.018
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "hold_min": 18,
+          "validation_delay_min": 9,
+          "validation": "COD/TOC、目标污染物、余氧化剂或副产物快检"
+        }
+      },
+      {
+        "action_id": "calibrate_sensors",
+        "action_name": "校准或降权异常传感器",
+        "original_score": 0.914,
+        "net_score": 0.591,
+        "objective_score": 0.551,
+        "objective": {
+          "objective_score": 0.551,
+          "benefit_total": 0.687,
+          "penalty_total": 0.136,
+          "benefit_terms": {
+            "control_priority": 0.366,
+            "safety_gain": 0.246,
+            "knowledge_alignment": 0.075
+          },
+          "penalty_terms": {
+            "money_cost": 0.035,
+            "time_cost": 0.036,
+            "energy_cost": 0.002,
+            "risk_cost": 0.003,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.06
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.7226800000000001,
+        "money_cost": 0.22,
+        "time_cost": 0.32448000000000005,
+        "energy_cost": 0.02,
+        "risk_cost": 0.014039999999999997,
+        "knowledge_action_bias": 0.194,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.043,
+          "risk_cost_delta": -0.066,
+          "time_cost_delta": -0.016
+        },
+        "requires_human_review": true,
+        "parameters": {
+          "channels": "use Agent 1 low-score channels",
+          "apply_to_soft_sensor": true
+        }
+      },
+      {
+        "action_id": "inspect_hydraulics",
+        "action_name": "核查泵阀与回流管路",
+        "original_score": 0.78,
+        "net_score": 0.501,
+        "objective_score": 0.449,
+        "objective": {
+          "objective_score": 0.449,
+          "benefit_total": 0.597,
+          "penalty_total": 0.148,
+          "benefit_terms": {
+            "control_priority": 0.312,
+            "safety_gain": 0.245,
+            "knowledge_alignment": 0.04
+          },
+          "penalty_terms": {
+            "money_cost": 0.029,
+            "time_cost": 0.038,
+            "energy_cost": 0.003,
+            "risk_cost": 0.018,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.06
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.72,
+        "money_cost": 0.18,
+        "time_cost": 0.35,
+        "energy_cost": 0.03,
+        "risk_cost": 0.08,
+        "knowledge_action_bias": 0.0,
+        "knowledge_cost_adjustment": {},
+        "requires_human_review": true,
+        "parameters": {
+          "check_items": [
+            "pump",
+            "valve",
+            "recycle_line",
+            "actual_flow"
+          ],
+          "pause_release": true
+        }
+      },
+      {
+        "action_id": "recirculate",
+        "action_name": "继续回流处理",
+        "original_score": 0.219,
+        "net_score": 0.248,
+        "objective_score": 0.278,
+        "objective": {
+          "objective_score": 0.278,
+          "benefit_total": 0.393,
+          "penalty_total": 0.115,
+          "benefit_terms": {
+            "control_priority": 0.088,
+            "safety_gain": 0.251,
+            "knowledge_alignment": 0.055
+          },
+          "penalty_terms": {
+            "money_cost": 0.035,
+            "time_cost": 0.034,
+            "energy_cost": 0.025,
+            "risk_cost": 0.02,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.73804,
+        "money_cost": 0.22,
+        "time_cost": 0.31344,
+        "energy_cost": 0.28,
+        "risk_cost": 0.09212,
+        "knowledge_action_bias": 0.082,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.018,
+          "risk_cost_delta": -0.028,
+          "time_cost_delta": -0.007
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "recycle_ratio": 0.32,
+          "extra_retention_min": 14
+        }
+      },
+      {
+        "action_id": "switch_or_pretreat",
+        "action_name": "预处理或切换处理单元",
+        "original_score": 0.31,
+        "net_score": 0.0,
+        "objective_score": 0.0,
+        "objective": {
+          "objective_score": 0.0,
+          "benefit_total": 0.3,
+          "penalty_total": 0.346,
+          "benefit_terms": {
+            "control_priority": 0.124,
+            "safety_gain": 0.136,
+            "knowledge_alignment": 0.04
+          },
+          "penalty_terms": {
+            "money_cost": 0.109,
+            "time_cost": 0.068,
+            "energy_cost": 0.032,
+            "risk_cost": 0.077,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.06
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.4,
+        "money_cost": 0.68,
+        "time_cost": 0.62,
+        "energy_cost": 0.35,
+        "risk_cost": 0.35,
+        "knowledge_action_bias": 0.0,
+        "knowledge_cost_adjustment": {},
+        "requires_human_review": true,
+        "parameters": {
+          "candidate_units": [
+            "coagulation",
+            "adsorption",
+            "membrane",
+            "deep_oxidation"
+          ]
+        }
+      },
+      {
+        "action_id": "regenerate_catalyst",
+        "action_name": "再生或更换催化剂",
+        "original_score": 0.002,
+        "net_score": 0.0,
+        "objective_score": 0.0,
+        "objective": {
+          "objective_score": 0.0,
+          "benefit_total": 0.122,
+          "penalty_total": 0.351,
+          "benefit_terms": {
+            "control_priority": 0.001,
+            "safety_gain": 0.082,
+            "knowledge_alignment": 0.04
+          },
+          "penalty_terms": {
+            "money_cost": 0.102,
+            "time_cost": 0.079,
+            "energy_cost": 0.014,
+            "risk_cost": 0.092,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.003,
+            "human_review": 0.06
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.025,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.24,
+        "money_cost": 0.64,
+        "time_cost": 0.72,
+        "energy_cost": 0.16,
+        "risk_cost": 0.42,
+        "knowledge_action_bias": 0.0,
+        "knowledge_cost_adjustment": {},
+        "requires_human_review": true,
+        "parameters": {
+          "regen_intensity": 0.34,
+          "downtime_min": 40,
+          "confirm_with": "催化剂活性、表面污染或压降快检"
+        }
+      },
+      {
+        "action_id": "dose_oxidant",
+        "action_name": "补加氧化剂",
+        "original_score": 0.0,
+        "net_score": 0.0,
+        "objective_score": 0.0,
+        "objective": {
+          "objective_score": 0.0,
+          "benefit_total": 0.091,
+          "penalty_total": 0.244,
+          "benefit_terms": {
+            "control_priority": 0.0,
+            "safety_gain": 0.051,
+            "knowledge_alignment": 0.04
+          },
+          "penalty_terms": {
+            "money_cost": 0.051,
+            "time_cost": 0.018,
+            "energy_cost": 0.005,
+            "risk_cost": 0.136,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.033,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.332,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.15,
+        "money_cost": 0.32,
+        "time_cost": 0.16,
+        "energy_cost": 0.06,
+        "risk_cost": 0.62,
+        "knowledge_action_bias": 0.0,
+        "knowledge_cost_adjustment": {},
+        "requires_human_review": false,
+        "parameters": {
+          "dose_factor": 0.1,
+          "confirm_with": "余氧化剂快检"
+        }
+      },
+      {
+        "action_id": "release",
+        "action_name": "达标放行",
+        "original_score": 0.0,
+        "net_score": 0.0,
+        "objective_score": 0.0,
+        "objective": {
+          "objective_score": 0.0,
+          "benefit_total": 0.018,
+          "penalty_total": 0.292,
+          "benefit_terms": {
+            "control_priority": 0.0,
+            "safety_gain": 0.018,
+            "knowledge_alignment": 0.0
+          },
+          "penalty_terms": {
+            "money_cost": 0.003,
+            "time_cost": 0.001,
+            "energy_cost": 0.0,
+            "risk_cost": 0.214,
+            "false_release_risk": 0.027,
+            "byproduct_risk": 0.046,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.091,
+          "byproduct_pressure": 0.459,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.05160000000000001,
+        "money_cost": 0.02,
+        "time_cost": 0.0132,
+        "energy_cost": 0.0,
+        "risk_cost": 0.9748,
+        "knowledge_action_bias": -0.22,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": -0.048,
+          "risk_cost_delta": 0.075,
+          "time_cost_delta": 0.013
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "release_gate": "release_readiness >= 0.82 and residual <= 0.35 and hydraulic_confidence >= 0.7 and byproduct_risk <= 0.65"
+        }
+      }
+    ],
+    "recommended_action_ids": [
+      "hold_for_validation",
+      "calibrate_sensors",
+      "inspect_hydraulics"
+    ],
+    "strategy_objective_weights": {
+      "control_priority": 0.4,
+      "safety_gain": 0.34,
+      "money_cost": 0.16,
+      "time_cost": 0.11,
+      "energy_cost": 0.09,
+      "risk_cost": 0.22,
+      "false_release_risk": 0.3,
+      "byproduct_risk": 0.1,
+      "human_review": 0.06,
+      "knowledge_alignment": 0.08
+    }
+  },
+  "recommendations": [
+    "暂存并旁路验证：策略目标评分 0.631，净收益评分 0.716；安全收益 0.8284，成本 0.25，时间 0.4024，风险 0.04519999999999999。",
+    "校准或降权异常传感器：策略目标评分 0.551，净收益评分 0.591；安全收益 0.7226800000000001，成本 0.22，时间 0.32448000000000005，风险 0.014039999999999997。",
+    "核查泵阀与回流管路：策略目标评分 0.449，净收益评分 0.501；安全收益 0.72，成本 0.18，时间 0.35，风险 0.08。"
+  ],
+  "issues": [
+    {
+      "sensor": "cost_safety",
+      "issue_type": "hold_for_validation",
+      "severity": "info",
+      "message": "暂存并旁路验证",
+      "evidence": {
+        "action_id": "hold_for_validation",
+        "action_name": "暂存并旁路验证",
+        "original_score": 0.976,
+        "net_score": 0.716,
+        "objective_score": 0.631,
+        "objective": {
+          "objective_score": 0.631,
+          "benefit_total": 0.752,
+          "penalty_total": 0.121,
+          "benefit_terms": {
+            "control_priority": 0.39,
+            "safety_gain": 0.282,
+            "knowledge_alignment": 0.08
+          },
+          "penalty_terms": {
+            "money_cost": 0.04,
+            "time_cost": 0.044,
+            "energy_cost": 0.004,
+            "risk_cost": 0.01,
+            "false_release_risk": 0.01,
+            "byproduct_risk": 0.012,
+            "human_review": 0.0
+          },
+          "false_release_risk": 0.032,
+          "byproduct_pressure": 0.124,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.8284,
+        "money_cost": 0.25,
+        "time_cost": 0.4024,
+        "energy_cost": 0.05,
+        "risk_cost": 0.04519999999999999,
+        "knowledge_action_bias": 0.22,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.048,
+          "risk_cost_delta": -0.075,
+          "time_cost_delta": -0.018
+        },
+        "requires_human_review": false,
+        "parameters": {
+          "hold_min": 18,
+          "validation_delay_min": 9,
+          "validation": "COD/TOC、目标污染物、余氧化剂或副产物快检"
+        }
+      }
+    },
+    {
+      "sensor": "cost_safety",
+      "issue_type": "calibrate_sensors",
+      "severity": "info",
+      "message": "校准或降权异常传感器",
+      "evidence": {
+        "action_id": "calibrate_sensors",
+        "action_name": "校准或降权异常传感器",
+        "original_score": 0.914,
+        "net_score": 0.591,
+        "objective_score": 0.551,
+        "objective": {
+          "objective_score": 0.551,
+          "benefit_total": 0.687,
+          "penalty_total": 0.136,
+          "benefit_terms": {
+            "control_priority": 0.366,
+            "safety_gain": 0.246,
+            "knowledge_alignment": 0.075
+          },
+          "penalty_terms": {
+            "money_cost": 0.035,
+            "time_cost": 0.036,
+            "energy_cost": 0.002,
+            "risk_cost": 0.003,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.06
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.7226800000000001,
+        "money_cost": 0.22,
+        "time_cost": 0.32448000000000005,
+        "energy_cost": 0.02,
+        "risk_cost": 0.014039999999999997,
+        "knowledge_action_bias": 0.194,
+        "knowledge_cost_adjustment": {
+          "safety_gain_delta": 0.043,
+          "risk_cost_delta": -0.066,
+          "time_cost_delta": -0.016
+        },
+        "requires_human_review": true,
+        "parameters": {
+          "channels": "use Agent 1 low-score channels",
+          "apply_to_soft_sensor": true
+        }
+      }
+    },
+    {
+      "sensor": "cost_safety",
+      "issue_type": "inspect_hydraulics",
+      "severity": "info",
+      "message": "核查泵阀与回流管路",
+      "evidence": {
+        "action_id": "inspect_hydraulics",
+        "action_name": "核查泵阀与回流管路",
+        "original_score": 0.78,
+        "net_score": 0.501,
+        "objective_score": 0.449,
+        "objective": {
+          "objective_score": 0.449,
+          "benefit_total": 0.597,
+          "penalty_total": 0.148,
+          "benefit_terms": {
+            "control_priority": 0.312,
+            "safety_gain": 0.245,
+            "knowledge_alignment": 0.04
+          },
+          "penalty_terms": {
+            "money_cost": 0.029,
+            "time_cost": 0.038,
+            "energy_cost": 0.003,
+            "risk_cost": 0.018,
+            "false_release_risk": 0.0,
+            "byproduct_risk": 0.0,
+            "human_review": 0.06
+          },
+          "false_release_risk": 0.0,
+          "byproduct_pressure": 0.0,
+          "weights": {
+            "control_priority": 0.4,
+            "safety_gain": 0.34,
+            "money_cost": 0.16,
+            "time_cost": 0.11,
+            "energy_cost": 0.09,
+            "risk_cost": 0.22,
+            "false_release_risk": 0.3,
+            "byproduct_risk": 0.1,
+            "human_review": 0.06,
+            "knowledge_alignment": 0.08
+          }
+        },
+        "safety_gain": 0.72,
+        "money_cost": 0.18,
+        "time_cost": 0.35,
+        "energy_cost": 0.03,
+        "risk_cost": 0.08,
+        "knowledge_action_bias": 0.0,
+        "knowledge_cost_adjustment": {},
+        "requires_human_review": true,
+        "parameters": {
+          "check_items": [
+            "pump",
+            "valve",
+            "recycle_line",
+            "actual_flow"
+          ],
+          "pause_release": true
+        }
+      }
+    }
+  ]
+}

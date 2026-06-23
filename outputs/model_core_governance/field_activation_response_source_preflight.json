@@ -1,0 +1,21 @@
+{
+  "source_preflight_id": "R8u101_field_activation_response_source_preflight",
+  "source_preflight_status": "field_activation_response_source_using_default_template",
+  "source_path": "",
+  "source_env_var": "FIELD_ACTIVATION_RESPONSE_PATH",
+  "load_status": "field_activation_response_source_not_supplied",
+  "external_response_supplied": false,
+  "using_default_template": true,
+  "root_object_ok": true,
+  "selected_response_id": "R8u98_field_activation_evidence_response_template",
+  "source_interface_match": true,
+  "template_response_row_count": 33,
+  "selected_response_row_count": 33,
+  "can_run_response_preflight": true,
+  "can_route_to_external_activation_router": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "next_operator_action": "set_FIELD_ACTIVATION_RESPONSE_PATH_to_filled_external_response_json",
+  "no_write_boundary": "The response source preflight only selects and shape-checks the response JSON. It does not prove field evidence, does not run replay/holdout, and cannot write actuator policy, release gate, legal conclusions or field-supported claims."
+}

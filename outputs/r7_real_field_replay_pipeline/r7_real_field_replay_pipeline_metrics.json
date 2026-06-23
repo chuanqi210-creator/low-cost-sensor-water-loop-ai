@@ -1,0 +1,4477 @@
+{
+  "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+  "preflight": {
+    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "status": "field_package_template_ready_needs_real_values_and_rows",
+    "required_files": [
+      "metadata.json",
+      "sensor_timeseries.csv",
+      "offline_lab_results.csv",
+      "campaign_operation_log.csv",
+      "pressure_headloss_event_log.csv",
+      "fast_proxy_event_log.csv"
+    ],
+    "file_audit": {
+      "metadata_exists": true,
+      "csv_files": {
+        "sensor_timeseries": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV"
+          ],
+          "expected_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "offline_lab_results": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag"
+          ],
+          "expected_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag",
+            "proxy_holdout_label",
+            "catalyst_activity_label",
+            "pressure_headloss_proxy_label",
+            "lab_label_time_min",
+            "detection_limit",
+            "method",
+            "unit",
+            "sample_source"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag",
+            "proxy_holdout_label",
+            "catalyst_activity_label",
+            "pressure_headloss_proxy_label",
+            "lab_label_time_min",
+            "detection_limit",
+            "method",
+            "unit",
+            "sample_source"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "campaign_operation_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "hold_time_min",
+            "regeneration_event",
+            "bed_id",
+            "pressure_headloss_review_required",
+            "operator_override"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "hold_time_min",
+            "regeneration_event",
+            "bed_id",
+            "pressure_headloss_review_required",
+            "operator_override"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "pressure_headloss_event_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa",
+            "operator_review_required"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa",
+            "operator_review_required"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "fast_proxy_event_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        }
+      },
+      "r7j_supplement_csv_files": {
+        "node_modality_sensor_timeseries": {
+          "exists": true,
+          "status": "supplement_header_ready",
+          "expected_headers": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "zone",
+            "modality",
+            "value",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min",
+            "layout_id",
+            "availability_mask",
+            "time_since_last_observed_min",
+            "data_origin",
+            "sensor_value"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "zone",
+            "modality",
+            "value",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min",
+            "layout_id",
+            "availability_mask",
+            "time_since_last_observed_min",
+            "data_origin",
+            "sensor_value"
+          ],
+          "missing_headers": [],
+          "row_count": 0,
+          "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+        },
+        "site_topology_or_bed_geometry": {
+          "exists": true,
+          "status": "supplement_header_ready",
+          "expected_headers": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin",
+            "site_id",
+            "zone",
+            "upstream_node_id",
+            "downstream_node_id",
+            "path_stage_id",
+            "hydraulic_path_role",
+            "nominal_flow_Lmin",
+            "recycle_ratio",
+            "release_boundary_flag",
+            "recirculation_loop_flag"
+          ],
+          "actual_headers": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin",
+            "site_id",
+            "zone",
+            "upstream_node_id",
+            "downstream_node_id",
+            "path_stage_id",
+            "hydraulic_path_role",
+            "nominal_flow_Lmin",
+            "recycle_ratio",
+            "release_boundary_flag",
+            "recirculation_loop_flag"
+          ],
+          "missing_headers": [],
+          "row_count": 0,
+          "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+        },
+        "hydraulic_path_stage_labels": {
+          "exists": true,
+          "status": "supplement_header_ready",
+          "expected_headers": [
+            "batch_id",
+            "layout_id",
+            "node_id",
+            "zone",
+            "path_stage_id",
+            "hydraulic_path_role",
+            "stage_coverage_label",
+            "direct_path_stage_coverage_label",
+            "proxy_path_stage_coverage_label",
+            "label_source",
+            "reviewer_id",
+            "review_time_min"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "layout_id",
+            "node_id",
+            "zone",
+            "path_stage_id",
+            "hydraulic_path_role",
+            "stage_coverage_label",
+            "direct_path_stage_coverage_label",
+            "proxy_path_stage_coverage_label",
+            "label_source",
+            "reviewer_id",
+            "review_time_min"
+          ],
+          "missing_headers": [],
+          "row_count": 0,
+          "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+        },
+        "final_effluent_endpoint_labels": {
+          "exists": true,
+          "status": "supplement_header_ready",
+          "expected_headers": [
+            "batch_id",
+            "endpoint_node_id",
+            "sample_time_min",
+            "final_effluent_direct_observed",
+            "release_gate_label",
+            "release_risk_label",
+            "analyte",
+            "value",
+            "unit",
+            "qa_flag",
+            "reviewer_id"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "endpoint_node_id",
+            "sample_time_min",
+            "final_effluent_direct_observed",
+            "release_gate_label",
+            "release_risk_label",
+            "analyte",
+            "value",
+            "unit",
+            "qa_flag",
+            "reviewer_id"
+          ],
+          "missing_headers": [],
+          "row_count": 0,
+          "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+        }
+      }
+    },
+    "r7j_supplement_audit": {
+      "node_modality_sensor_timeseries": {
+        "exists": true,
+        "status": "supplement_header_ready",
+        "expected_headers": [
+          "batch_id",
+          "timestamp_min",
+          "node_id",
+          "zone",
+          "modality",
+          "value",
+          "sensor_status",
+          "instrument_id",
+          "acquisition_time_min",
+          "ingest_time_min",
+          "layout_id",
+          "availability_mask",
+          "time_since_last_observed_min",
+          "data_origin",
+          "sensor_value"
+        ],
+        "actual_headers": [
+          "batch_id",
+          "timestamp_min",
+          "node_id",
+          "zone",
+          "modality",
+          "value",
+          "sensor_status",
+          "instrument_id",
+          "acquisition_time_min",
+          "ingest_time_min",
+          "layout_id",
+          "availability_mask",
+          "time_since_last_observed_min",
+          "data_origin",
+          "sensor_value"
+        ],
+        "missing_headers": [],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      },
+      "site_topology_or_bed_geometry": {
+        "exists": true,
+        "status": "supplement_header_ready",
+        "expected_headers": [
+          "node_id",
+          "bed_volume",
+          "nominal_HRT_min",
+          "flow_Lmin",
+          "site_id",
+          "zone",
+          "upstream_node_id",
+          "downstream_node_id",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "nominal_flow_Lmin",
+          "recycle_ratio",
+          "release_boundary_flag",
+          "recirculation_loop_flag"
+        ],
+        "actual_headers": [
+          "node_id",
+          "bed_volume",
+          "nominal_HRT_min",
+          "flow_Lmin",
+          "site_id",
+          "zone",
+          "upstream_node_id",
+          "downstream_node_id",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "nominal_flow_Lmin",
+          "recycle_ratio",
+          "release_boundary_flag",
+          "recirculation_loop_flag"
+        ],
+        "missing_headers": [],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      },
+      "hydraulic_path_stage_labels": {
+        "exists": true,
+        "status": "supplement_header_ready",
+        "expected_headers": [
+          "batch_id",
+          "layout_id",
+          "node_id",
+          "zone",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "stage_coverage_label",
+          "direct_path_stage_coverage_label",
+          "proxy_path_stage_coverage_label",
+          "label_source",
+          "reviewer_id",
+          "review_time_min"
+        ],
+        "actual_headers": [
+          "batch_id",
+          "layout_id",
+          "node_id",
+          "zone",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "stage_coverage_label",
+          "direct_path_stage_coverage_label",
+          "proxy_path_stage_coverage_label",
+          "label_source",
+          "reviewer_id",
+          "review_time_min"
+        ],
+        "missing_headers": [],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      },
+      "final_effluent_endpoint_labels": {
+        "exists": true,
+        "status": "supplement_header_ready",
+        "expected_headers": [
+          "batch_id",
+          "endpoint_node_id",
+          "sample_time_min",
+          "final_effluent_direct_observed",
+          "release_gate_label",
+          "release_risk_label",
+          "analyte",
+          "value",
+          "unit",
+          "qa_flag",
+          "reviewer_id"
+        ],
+        "actual_headers": [
+          "batch_id",
+          "endpoint_node_id",
+          "sample_time_min",
+          "final_effluent_direct_observed",
+          "release_gate_label",
+          "release_risk_label",
+          "analyte",
+          "value",
+          "unit",
+          "qa_flag",
+          "reviewer_id"
+        ],
+        "missing_headers": [],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      }
+    },
+    "placeholder_metadata_fields": [
+      "site_id",
+      "campaign_id",
+      "sampling_start",
+      "sampling_end",
+      "operator_id",
+      "instrument_snapshot_id",
+      "chain_of_custody_id"
+    ],
+    "row_counts": {
+      "campaign_operation_log": 0,
+      "fast_proxy_event_log": 0,
+      "offline_lab_results": 0,
+      "pressure_headloss_event_log": 0,
+      "sensor_timeseries": 0
+    },
+    "files_ready": true,
+    "real_rows_ready": false,
+    "agent44_import_status": "field_replay_import_metadata_blocked",
+    "agent44_import_score": 0.54,
+    "agent44_blocking_table_statuses": {
+      "campaign_operation_log": "missing_table",
+      "fast_proxy_event_log": "missing_table",
+      "offline_lab_results": "missing_table",
+      "pressure_headloss_event_log": "missing_table",
+      "sensor_timeseries": "missing_table"
+    },
+    "agent44_type_error_count": 0,
+    "agent44_type_error_tables": {},
+    "agent44_required_field_blockers": {
+      "campaign_operation_log": [
+        "action_id",
+        "batch_id",
+        "campaign_id",
+        "command_time_min",
+        "effect_time_min",
+        "end_min",
+        "release_policy",
+        "start_min"
+      ],
+      "fast_proxy_event_log": [
+        "batch_id",
+        "campaign_id",
+        "event_time_min",
+        "false_positive_cost_index",
+        "field_label_matrix_shock",
+        "lab_label_time_min",
+        "protective_triggered",
+        "proxy_score",
+        "specificity_guard_score",
+        "triggered_action_id"
+      ],
+      "offline_lab_results": [
+        "analyte",
+        "batch_id",
+        "qa_flag",
+        "result_time_min",
+        "sample_time_min",
+        "value"
+      ],
+      "pressure_headloss_event_log": [
+        "batch_id",
+        "bed_id",
+        "campaign_id",
+        "event_time_min",
+        "flow_Lmin",
+        "headloss_kPa_per_m",
+        "hydraulic_anomaly_label",
+        "matched_lab_sample_time_min",
+        "pressure_drop_kPa",
+        "regeneration_event"
+      ],
+      "sensor_timeseries": [
+        "EC_uScm",
+        "ORP_mV",
+        "UV254_abs",
+        "batch_id",
+        "pH",
+        "timestamp_min",
+        "turbidity_NTU"
+      ]
+    },
+    "agent44_linkage_blockers": {},
+    "can_pass_to_timestamped_replay": false,
+    "next_actions": [
+      "Replace placeholder metadata fields: site_id, campaign_id, sampling_start, sampling_end, operator_id, instrument_snapshot_id, chain_of_custody_id.",
+      "Add real timestamped field rows to every CSV; header-only templates cannot enter field replay.",
+      "Fill Agent44 required fields in: campaign_operation_log, fast_proxy_event_log, offline_lab_results, pressure_headloss_event_log, sensor_timeseries.",
+      "Do not label this package field-supported until Agent44/42/43/45/46/59/R7 gates pass."
+    ],
+    "field_boundary": "This template is not evidence. It is only a collection scaffold until metadata placeholders are replaced and all CSVs contain real timestamped field rows."
+  },
+  "field_path_endpoint_label_package_preflight": {
+    "preflight_status": "field_path_endpoint_label_package_blocked_by_preflight",
+    "required_tables": [
+      "site_topology_or_bed_geometry",
+      "node_modality_sensor_timeseries",
+      "hydraulic_path_stage_labels",
+      "final_effluent_endpoint_labels",
+      "campaign_operation_log",
+      "offline_lab_results"
+    ],
+    "missing_tables": [],
+    "empty_tables": [
+      "site_topology_or_bed_geometry",
+      "node_modality_sensor_timeseries",
+      "hydraulic_path_stage_labels",
+      "final_effluent_endpoint_labels",
+      "campaign_operation_log",
+      "offline_lab_results"
+    ],
+    "invalid_table_shapes": [],
+    "required_field_gaps": [],
+    "required_field_gap_count": 0,
+    "template_marker_count": 0,
+    "table_row_counts": {
+      "site_topology_or_bed_geometry": 0,
+      "node_modality_sensor_timeseries": 0,
+      "hydraulic_path_stage_labels": 0,
+      "final_effluent_endpoint_labels": 0,
+      "campaign_operation_log": 0,
+      "offline_lab_results": 0
+    },
+    "table_batch_counts": {
+      "site_topology_or_bed_geometry": 0,
+      "node_modality_sensor_timeseries": 0,
+      "hydraulic_path_stage_labels": 0,
+      "final_effluent_endpoint_labels": 0,
+      "campaign_operation_log": 0,
+      "offline_lab_results": 0
+    },
+    "batch_alignment_gap_count": 0,
+    "required_matched_batch_deficit": 5,
+    "missing_batch_ids_by_table": {},
+    "alignment_patch_plan": {
+      "patch_plan_id": "R8u76_field_path_endpoint_batch_alignment_patch_plan",
+      "patch_plan_status": "field_path_endpoint_alignment_blocked_by_preflight",
+      "required_tables": [
+        "site_topology_or_bed_geometry",
+        "node_modality_sensor_timeseries",
+        "hydraulic_path_stage_labels",
+        "final_effluent_endpoint_labels",
+        "campaign_operation_log",
+        "offline_lab_results"
+      ],
+      "batch_alignment_tables": [
+        "node_modality_sensor_timeseries",
+        "hydraulic_path_stage_labels",
+        "final_effluent_endpoint_labels",
+        "campaign_operation_log",
+        "offline_lab_results"
+      ],
+      "table_row_counts": {
+        "site_topology_or_bed_geometry": 0,
+        "node_modality_sensor_timeseries": 0,
+        "hydraulic_path_stage_labels": 0,
+        "final_effluent_endpoint_labels": 0,
+        "campaign_operation_log": 0,
+        "offline_lab_results": 0
+      },
+      "table_batch_counts": {
+        "site_topology_or_bed_geometry": 0,
+        "node_modality_sensor_timeseries": 0,
+        "hydraulic_path_stage_labels": 0,
+        "final_effluent_endpoint_labels": 0,
+        "campaign_operation_log": 0,
+        "offline_lab_results": 0
+      },
+      "matched_batch_count": 0,
+      "minimum_matched_batch_count": 5,
+      "required_matched_batch_deficit": 5,
+      "batch_alignment_gap_count": 0,
+      "item_count": 7,
+      "items": [
+        {
+          "item_id": "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED",
+          "priority": "P2",
+          "target_table": "site_topology_or_bed_geometry",
+          "action": "add_real_field_rows",
+          "minimum_rows_hint": 1,
+          "acceptance": "site_topology_or_bed_geometry has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+        },
+        {
+          "item_id": "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED",
+          "priority": "P1",
+          "target_table": "node_modality_sensor_timeseries",
+          "action": "add_real_field_rows",
+          "minimum_rows_hint": 5,
+          "acceptance": "node_modality_sensor_timeseries has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+        },
+        {
+          "item_id": "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED",
+          "priority": "P1",
+          "target_table": "hydraulic_path_stage_labels",
+          "action": "add_real_field_rows",
+          "minimum_rows_hint": 5,
+          "acceptance": "hydraulic_path_stage_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+        },
+        {
+          "item_id": "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED",
+          "priority": "P1",
+          "target_table": "final_effluent_endpoint_labels",
+          "action": "add_real_field_rows",
+          "minimum_rows_hint": 5,
+          "acceptance": "final_effluent_endpoint_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+        },
+        {
+          "item_id": "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED",
+          "priority": "P1",
+          "target_table": "campaign_operation_log",
+          "action": "add_real_field_rows",
+          "minimum_rows_hint": 5,
+          "acceptance": "campaign_operation_log has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+        },
+        {
+          "item_id": "R8U76_OFFLINE_LAB_RESULTS_ROWS_REQUIRED",
+          "priority": "P1",
+          "target_table": "offline_lab_results",
+          "action": "add_real_field_rows",
+          "minimum_rows_hint": 5,
+          "acceptance": "offline_lab_results has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence."
+        },
+        {
+          "item_id": "R8U76_MINIMUM_MATCHED_BATCH_DEFICIT",
+          "priority": "P1",
+          "target_table": "cross_table_batch_alignment",
+          "action": "collect_same_batch_bundle_across_path_endpoint_tables",
+          "required_matched_batch_deficit": 5,
+          "acceptance": "matched_batch_count >= 5 across node_modality_sensor_timeseries, hydraulic_path_stage_labels, final_effluent_endpoint_labels, campaign_operation_log, offline_lab_results."
+        }
+      ],
+      "field_boundary": "This patch plan only describes how to collect or align field package rows. It does not create field evidence, does not validate control performance, and cannot authorize actuator or release gate writeback."
+    },
+    "matched_batch_count": 0,
+    "minimum_matched_batch_count": 5,
+    "accepted_batch_ids": [],
+    "blockers": [
+      "site_topology_or_bed_geometry:empty_table",
+      "node_modality_sensor_timeseries:empty_table",
+      "hydraulic_path_stage_labels:empty_table",
+      "final_effluent_endpoint_labels:empty_table",
+      "campaign_operation_log:empty_table",
+      "offline_lab_results:empty_table",
+      "minimum_matched_batch_count_not_met"
+    ],
+    "can_route_to_field_layout_holdout": false,
+    "next_operator_action": "fix_field_path_endpoint_label_package_preflight_blockers",
+    "field_boundary": "blocked package rows cannot be treated as field path or endpoint evidence"
+  },
+  "field_package_submission_readiness": {
+    "gate_id": "R8u77_field_package_submission_readiness_gate",
+    "submission_readiness_status": "field_package_submission_blocked_at_import_preflight",
+    "highest_priority_blocker": "R7A_IMPORT_PREFLIGHT",
+    "blocking_stage_count": 5,
+    "stage_checks": [
+      {
+        "stage_id": "R7A_IMPORT_PREFLIGHT",
+        "stage_type": "import_preflight",
+        "status": "field_package_template_ready_needs_real_values_and_rows",
+        "pass": false,
+        "next_actions": [
+          "Replace placeholder metadata fields: site_id, campaign_id, sampling_start, sampling_end, operator_id, instrument_snapshot_id, chain_of_custody_id.",
+          "Add real timestamped field rows to every CSV; header-only templates cannot enter field replay.",
+          "Fill Agent44 required fields in: campaign_operation_log, fast_proxy_event_log, offline_lab_results, pressure_headloss_event_log, sensor_timeseries.",
+          "Do not label this package field-supported until Agent44/42/43/45/46/59/R7 gates pass."
+        ],
+        "boundary": "Required before any timestamped replay. Header-only or non-field packages stop here."
+      },
+      {
+        "stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+        "stage_type": "minimum_replay_contract",
+        "status": "minimum_replay_contract_blocked_missing_rows",
+        "pass": false,
+        "next_actions": [
+          "R7A_METADATA_PLACEHOLDERS: replace_placeholder_metadata_with_real_provenance -> metadata.json",
+          "R7A_REAL_ROWS_campaign_operation_log: add_real_timestamped_rows -> campaign_operation_log",
+          "R7A_REAL_ROWS_fast_proxy_event_log: add_real_timestamped_rows -> fast_proxy_event_log",
+          "R7A_REAL_ROWS_offline_lab_results: add_real_timestamped_rows -> offline_lab_results",
+          "R7A_REAL_ROWS_pressure_headloss_event_log: add_real_timestamped_rows -> pressure_headloss_event_log"
+        ],
+        "boundary": "Required before Agent42 smoke replay and fast-proxy replay evidence."
+      },
+      {
+        "stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "stage_type": "path_endpoint_alignment",
+        "status": "field_path_endpoint_label_package_blocked_by_preflight",
+        "pass": false,
+        "next_actions": [
+          "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED: add_real_field_rows -> site_topology_or_bed_geometry",
+          "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED: add_real_field_rows -> node_modality_sensor_timeseries",
+          "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED: add_real_field_rows -> hydraulic_path_stage_labels",
+          "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED: add_real_field_rows -> final_effluent_endpoint_labels",
+          "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED: add_real_field_rows -> campaign_operation_log"
+        ],
+        "boundary": "Required before field layout holdout and final-effluent endpoint release evidence review."
+      },
+      {
+        "stage_id": "R7_FIELD_EVIDENCE_SUFFICIENCY",
+        "stage_type": "field_evidence_sufficiency",
+        "status": "field_evidence_sufficiency_blocked_before_import",
+        "pass": false,
+        "next_actions": [
+          "Fix preflight/import blockers before interpreting claim or soft-holdout coverage."
+        ],
+        "boundary": "Separates smoke replay readiness from calibration volume and human-review readiness."
+      },
+      {
+        "stage_id": "R7_ACCEPTANCE",
+        "stage_type": "r7_acceptance",
+        "status": "real_field_package_acceptance_blocked_at_import",
+        "pass": false,
+        "next_actions": [
+          "R7a_import_real_field_package_with_metadata_and_csv"
+        ],
+        "boundary": "Field-supported claims remain blocked until all R7 acceptance stages pass."
+      },
+      {
+        "stage_id": "NO_WRITE_BOUNDARY",
+        "stage_type": "no_write_boundary",
+        "status": "no_write_boundary_pass",
+        "pass": true,
+        "next_actions": [
+          "Keep actuator and release-gate writeback disabled until replay, review and release validation pass."
+        ],
+        "boundary": "This pipeline is a validation gate and never authorizes actuator or release-gate writes."
+      }
+    ],
+    "can_submit_to_agent42_smoke_replay": false,
+    "can_route_to_path_endpoint_layout_holdout": false,
+    "can_route_to_human_review_candidate": false,
+    "can_emit_field_supported_claim_candidate": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "no_write_boundary_pass": true,
+    "path_endpoint_required_matched_batch_deficit": 5,
+    "path_endpoint_alignment_patch_plan_status": "field_path_endpoint_alignment_blocked_by_preflight",
+    "coverage_patch_plan_status": "patch_plan_blocked_at_import_preflight",
+    "next_operator_action": "repair_metadata_headers_and_real_rows_before_agent42",
+    "operator_action_queue": [
+      {
+        "rank": 1,
+        "stage_id": "R7A_IMPORT_PREFLIGHT",
+        "status": "field_package_template_ready_needs_real_values_and_rows",
+        "primary_action": "Replace placeholder metadata fields: site_id, campaign_id, sampling_start, sampling_end, operator_id, instrument_snapshot_id, chain_of_custody_id.",
+        "boundary": "Required before any timestamped replay. Header-only or non-field packages stop here."
+      },
+      {
+        "rank": 2,
+        "stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+        "status": "minimum_replay_contract_blocked_missing_rows",
+        "primary_action": "R7A_METADATA_PLACEHOLDERS: replace_placeholder_metadata_with_real_provenance -> metadata.json",
+        "boundary": "Required before Agent42 smoke replay and fast-proxy replay evidence."
+      },
+      {
+        "rank": 3,
+        "stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "status": "field_path_endpoint_label_package_blocked_by_preflight",
+        "primary_action": "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED: add_real_field_rows -> site_topology_or_bed_geometry",
+        "boundary": "Required before field layout holdout and final-effluent endpoint release evidence review."
+      },
+      {
+        "rank": 4,
+        "stage_id": "R7_FIELD_EVIDENCE_SUFFICIENCY",
+        "status": "field_evidence_sufficiency_blocked_before_import",
+        "primary_action": "Fix preflight/import blockers before interpreting claim or soft-holdout coverage.",
+        "boundary": "Separates smoke replay readiness from calibration volume and human-review readiness."
+      },
+      {
+        "rank": 5,
+        "stage_id": "R7_ACCEPTANCE",
+        "status": "real_field_package_acceptance_blocked_at_import",
+        "primary_action": "R7a_import_real_field_package_with_metadata_and_csv",
+        "boundary": "Field-supported claims remain blocked until all R7 acceptance stages pass."
+      }
+    ],
+    "field_package_submission_repair_work_order": {
+      "work_order_id": "R8u86_field_package_submission_repair_work_order",
+      "work_order_status": "field_package_submission_repair_work_order_blocked_at_import_preflight",
+      "submission_readiness_status": "field_package_submission_blocked_at_import_preflight",
+      "highest_priority_blocker": "R7A_IMPORT_PREFLIGHT",
+      "next_operator_action": "repair_metadata_headers_and_real_rows_before_agent42",
+      "blocking_stage_count": 5,
+      "repair_item_count": 13,
+      "repair_items": [
+        {
+          "work_item_id": "R7A_METADATA_PLACEHOLDERS",
+          "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+          "source_plan_name": "coverage_patch_plan",
+          "source_patch_stage": "preflight",
+          "priority": "P1",
+          "target": "metadata.json",
+          "action": "replace_placeholder_metadata_with_real_provenance",
+          "acceptance": "真实 site/campaign/time/operator/instrument/custody provenance。",
+          "why_required": "placeholder metadata cannot establish field origin or chain of custody.",
+          "fields_to_fill": [
+            "site_id",
+            "campaign_id",
+            "sampling_start",
+            "sampling_end",
+            "operator_id",
+            "instrument_snapshot_id",
+            "chain_of_custody_id"
+          ]
+        },
+        {
+          "work_item_id": "R7A_REAL_ROWS_campaign_operation_log",
+          "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+          "source_plan_name": "coverage_patch_plan",
+          "source_patch_stage": "preflight",
+          "priority": "P1",
+          "target": "campaign_operation_log",
+          "action": "add_real_timestamped_rows",
+          "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "minimum_rows": 1
+        },
+        {
+          "work_item_id": "R7A_REAL_ROWS_fast_proxy_event_log",
+          "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+          "source_plan_name": "coverage_patch_plan",
+          "source_patch_stage": "preflight",
+          "priority": "P1",
+          "target": "fast_proxy_event_log",
+          "action": "add_real_timestamped_rows",
+          "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "minimum_rows": 1
+        },
+        {
+          "work_item_id": "R7A_REAL_ROWS_offline_lab_results",
+          "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+          "source_plan_name": "coverage_patch_plan",
+          "source_patch_stage": "preflight",
+          "priority": "P1",
+          "target": "offline_lab_results",
+          "action": "add_real_timestamped_rows",
+          "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "minimum_rows": 1
+        },
+        {
+          "work_item_id": "R7A_REAL_ROWS_pressure_headloss_event_log",
+          "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+          "source_plan_name": "coverage_patch_plan",
+          "source_patch_stage": "preflight",
+          "priority": "P1",
+          "target": "pressure_headloss_event_log",
+          "action": "add_real_timestamped_rows",
+          "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "minimum_rows": 1
+        },
+        {
+          "work_item_id": "R7A_REAL_ROWS_sensor_timeseries",
+          "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+          "source_plan_name": "coverage_patch_plan",
+          "source_patch_stage": "preflight",
+          "priority": "P1",
+          "target": "sensor_timeseries",
+          "action": "add_real_timestamped_rows",
+          "acceptance": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates.",
+          "minimum_rows": 1
+        },
+        {
+          "work_item_id": "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED",
+          "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+          "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+          "source_patch_stage": "-",
+          "priority": "P2",
+          "target": "site_topology_or_bed_geometry",
+          "action": "add_real_field_rows",
+          "acceptance": "site_topology_or_bed_geometry has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+          "why_required": "Required before this package can advance through R7.",
+          "minimum_rows_hint": 1
+        },
+        {
+          "work_item_id": "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED",
+          "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+          "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+          "source_patch_stage": "-",
+          "priority": "P1",
+          "target": "node_modality_sensor_timeseries",
+          "action": "add_real_field_rows",
+          "acceptance": "node_modality_sensor_timeseries has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+          "why_required": "Required before this package can advance through R7.",
+          "minimum_rows_hint": 5
+        },
+        {
+          "work_item_id": "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED",
+          "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+          "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+          "source_patch_stage": "-",
+          "priority": "P1",
+          "target": "hydraulic_path_stage_labels",
+          "action": "add_real_field_rows",
+          "acceptance": "hydraulic_path_stage_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+          "why_required": "Required before this package can advance through R7.",
+          "minimum_rows_hint": 5
+        },
+        {
+          "work_item_id": "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED",
+          "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+          "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+          "source_patch_stage": "-",
+          "priority": "P1",
+          "target": "final_effluent_endpoint_labels",
+          "action": "add_real_field_rows",
+          "acceptance": "final_effluent_endpoint_labels has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+          "why_required": "Required before this package can advance through R7.",
+          "minimum_rows_hint": 5
+        },
+        {
+          "work_item_id": "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED",
+          "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+          "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+          "source_patch_stage": "-",
+          "priority": "P1",
+          "target": "campaign_operation_log",
+          "action": "add_real_field_rows",
+          "acceptance": "campaign_operation_log has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+          "why_required": "Required before this package can advance through R7.",
+          "minimum_rows_hint": 5
+        },
+        {
+          "work_item_id": "R8U76_OFFLINE_LAB_RESULTS_ROWS_REQUIRED",
+          "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+          "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+          "source_patch_stage": "-",
+          "priority": "P1",
+          "target": "offline_lab_results",
+          "action": "add_real_field_rows",
+          "acceptance": "offline_lab_results has non-template rows with all required fields; rows must keep data_origin/provenance outside synthetic/template evidence.",
+          "why_required": "Required before this package can advance through R7.",
+          "minimum_rows_hint": 5
+        },
+        {
+          "work_item_id": "R8U76_MINIMUM_MATCHED_BATCH_DEFICIT",
+          "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+          "source_plan_name": "field_path_endpoint_alignment_patch_plan",
+          "source_patch_stage": "-",
+          "priority": "P1",
+          "target": "cross_table_batch_alignment",
+          "action": "collect_same_batch_bundle_across_path_endpoint_tables",
+          "acceptance": "matched_batch_count >= 5 across node_modality_sensor_timeseries, hydraulic_path_stage_labels, final_effluent_endpoint_labels, campaign_operation_log, offline_lab_results.",
+          "why_required": "Required before this package can advance through R7.",
+          "required_matched_batch_deficit": 5
+        }
+      ],
+      "submission_requirements": {
+        "required_package_env_var": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+        "metadata_data_origin_must_equal": "field",
+        "reject_header_only_template": true,
+        "reject_synthetic_or_sample_rows_as_field_evidence": true,
+        "minimum_same_batch_replay_batch_count": 3,
+        "minimum_path_endpoint_matched_batch_count": 5,
+        "required_path_endpoint_matched_batch_deficit": 5
+      },
+      "routing_contract": {
+        "can_submit_to_agent42_smoke_replay": false,
+        "can_route_to_path_endpoint_layout_holdout": false,
+        "can_route_to_human_review_candidate": false,
+        "can_write_to_actuator": false,
+        "can_write_to_release_gate": false,
+        "no_write_boundary_pass": true
+      },
+      "field_boundary": "This work order converts blocking preflight and patch-plan facts into operator repair tasks only. It does not synthesize field rows, does not validate field performance, and does not authorize actuator or release-gate writeback."
+    },
+    "field_boundary": "Submission readiness only prioritizes field package repair and routing. It does not create field evidence, does not upgrade claims, and cannot authorize actuator or release-gate writeback."
+  },
+  "field_package_submission_repair_response_template": {
+    "template_id": "R8u87_field_package_submission_repair_response_template",
+    "linked_work_order_id": "R8u86_field_package_submission_repair_work_order",
+    "linked_work_order_status": "field_package_submission_repair_work_order_blocked_at_import_preflight",
+    "required_work_item_count": 13,
+    "accepted_operator_statuses": [
+      "submitted",
+      "submitted_for_r7_preflight",
+      "blocked_with_reason",
+      "not_applicable_with_reason"
+    ],
+    "repair_response_rows": [
+      {
+        "work_item_id": "R7A_METADATA_PLACEHOLDERS",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "metadata.json",
+        "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+        "action": "replace_placeholder_metadata_with_real_provenance",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R7A_REAL_ROWS_campaign_operation_log",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "campaign_operation_log",
+        "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+        "action": "add_real_timestamped_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R7A_REAL_ROWS_fast_proxy_event_log",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "fast_proxy_event_log",
+        "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+        "action": "add_real_timestamped_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R7A_REAL_ROWS_offline_lab_results",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "offline_lab_results",
+        "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+        "action": "add_real_timestamped_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R7A_REAL_ROWS_pressure_headloss_event_log",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "pressure_headloss_event_log",
+        "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+        "action": "add_real_timestamped_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R7A_REAL_ROWS_sensor_timeseries",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "sensor_timeseries",
+        "source_stage_id": "R7I_MINIMUM_REPLAY_CONTRACT",
+        "action": "add_real_timestamped_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "site_topology_or_bed_geometry",
+        "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "action": "add_real_field_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "node_modality_sensor_timeseries",
+        "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "action": "add_real_field_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "hydraulic_path_stage_labels",
+        "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "action": "add_real_field_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "final_effluent_endpoint_labels",
+        "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "action": "add_real_field_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "campaign_operation_log",
+        "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "action": "add_real_field_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R8U76_OFFLINE_LAB_RESULTS_ROWS_REQUIRED",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "offline_lab_results",
+        "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "action": "add_real_field_rows",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      },
+      {
+        "work_item_id": "R8U76_MINIMUM_MATCHED_BATCH_DEFICIT",
+        "operator_status": "TODO_submitted_or_blocked_with_reason",
+        "target": "cross_table_batch_alignment",
+        "source_stage_id": "R8U66_PATH_ENDPOINT_ALIGNMENT",
+        "action": "collect_same_batch_bundle_across_path_endpoint_tables",
+        "evidence_artifact": "TODO_path_or_table_rows_added",
+        "evidence_type": "TODO_metadata_or_csv_rows_or_review_record",
+        "data_origin_assertion": "TODO_field",
+        "batch_id_count": "TODO_integer_if_applicable",
+        "reviewer_id": "TODO_operator_or_reviewer_id",
+        "review_time": "TODO_review_time",
+        "no_write_boundary_confirmed": "TODO_true",
+        "operator_notes": "TODO_explain_repair_or_blocker",
+        "template_only": true
+      }
+    ],
+    "operator_instructions": [
+      "Replace every TODO value before submission.",
+      "Use submitted/submitted_for_r7_preflight only when real field metadata, CSV rows, or review records have been supplied.",
+      "Use blocked_with_reason when the item cannot be repaired yet; blocked rows do not route to R7 preflight.",
+      "This response does not create field evidence; R7/Agent44 preflight must still inspect the package directory."
+    ],
+    "field_boundary": "This template is an operator response scaffold. It is template-only until all TODO/template markers are removed and it still cannot authorize actuator or release-gate writeback."
+  },
+  "field_package_submission_repair_response_preflight": {
+    "preflight_id": "R8u87_field_package_submission_repair_response_preflight",
+    "preflight_status": "repair_response_preflight_blocked_at_template_markers",
+    "linked_work_order_id": "R8u86_field_package_submission_repair_work_order",
+    "required_work_item_count": 13,
+    "response_row_count": 13,
+    "submitted_item_count": 0,
+    "blocked_item_count": 0,
+    "missing_response_item_count": 0,
+    "unexpected_item_count": 0,
+    "duplicate_item_count": 0,
+    "invalid_row_count": 0,
+    "invalid_status_count": 13,
+    "template_marker_count": 13,
+    "submitted_missing_evidence_count": 0,
+    "work_order_id_mismatch": false,
+    "missing_response_item_ids": [],
+    "unexpected_response_item_ids": [],
+    "duplicate_response_item_ids": [],
+    "invalid_status_item_ids": [
+      "R7A_METADATA_PLACEHOLDERS",
+      "R7A_REAL_ROWS_campaign_operation_log",
+      "R7A_REAL_ROWS_fast_proxy_event_log",
+      "R7A_REAL_ROWS_offline_lab_results",
+      "R7A_REAL_ROWS_pressure_headloss_event_log",
+      "R7A_REAL_ROWS_sensor_timeseries",
+      "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED",
+      "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED",
+      "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED",
+      "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED",
+      "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED",
+      "R8U76_OFFLINE_LAB_RESULTS_ROWS_REQUIRED",
+      "R8U76_MINIMUM_MATCHED_BATCH_DEFICIT"
+    ],
+    "template_marker_item_ids": [
+      "R7A_METADATA_PLACEHOLDERS",
+      "R7A_REAL_ROWS_campaign_operation_log",
+      "R7A_REAL_ROWS_fast_proxy_event_log",
+      "R7A_REAL_ROWS_offline_lab_results",
+      "R7A_REAL_ROWS_pressure_headloss_event_log",
+      "R7A_REAL_ROWS_sensor_timeseries",
+      "R8U76_SITE_TOPOLOGY_OR_BED_GEOMETRY_ROWS_REQUIRED",
+      "R8U76_NODE_MODALITY_SENSOR_TIMESERIES_ROWS_REQUIRED",
+      "R8U76_HYDRAULIC_PATH_STAGE_LABELS_ROWS_REQUIRED",
+      "R8U76_FINAL_EFFLUENT_ENDPOINT_LABELS_ROWS_REQUIRED",
+      "R8U76_CAMPAIGN_OPERATION_LOG_ROWS_REQUIRED",
+      "R8U76_OFFLINE_LAB_RESULTS_ROWS_REQUIRED",
+      "R8U76_MINIMUM_MATCHED_BATCH_DEFICIT"
+    ],
+    "submitted_missing_evidence_item_ids": [],
+    "can_route_to_r7_preflight": false,
+    "next_operator_action": "replace_todo_template_markers_before_submission",
+    "field_boundary": "Repair response preflight only checks operator response completeness. Even when it is ready, R7/Agent44 must still inspect the real package rows before any field evidence, actuator policy or release-gate claim can be created."
+  },
+  "field_package_coverage": {
+    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "metadata_fields": [
+      "campaign_id",
+      "chain_of_custody_id",
+      "data_origin",
+      "instrument_snapshot_id",
+      "notes",
+      "operator_id",
+      "sampling_end",
+      "sampling_start",
+      "site_id"
+    ],
+    "table_profiles": {
+      "campaign_operation_log": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/campaign_operation_log.csv",
+        "headers": [
+          "campaign_id",
+          "batch_id",
+          "action_id",
+          "command_time_min",
+          "effect_time_min",
+          "start_min",
+          "end_min",
+          "release_policy",
+          "recycle_ratio",
+          "tank_storage_margin",
+          "actuator_latency_p90",
+          "pump_valve_result",
+          "hold_time_min",
+          "regeneration_event",
+          "bed_id",
+          "pressure_headloss_review_required",
+          "operator_override"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "campaign_id": [],
+          "batch_id": [],
+          "action_id": [],
+          "command_time_min": [],
+          "effect_time_min": [],
+          "start_min": [],
+          "end_min": [],
+          "release_policy": [],
+          "recycle_ratio": [],
+          "tank_storage_margin": [],
+          "actuator_latency_p90": [],
+          "pump_valve_result": [],
+          "hold_time_min": [],
+          "regeneration_event": [],
+          "bed_id": [],
+          "pressure_headloss_review_required": [],
+          "operator_override": []
+        },
+        "unique_values_by_field": {
+          "batch_id": [],
+          "campaign_id": [],
+          "action_id": []
+        },
+        "time_order_violations": [],
+        "operation_action_quality": {
+          "required_fields": [
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy"
+          ],
+          "accepted_pump_valve_results": [
+            "confirmed",
+            "executed",
+            "normal",
+            "ok",
+            "pass",
+            "passed",
+            "success",
+            "合格",
+            "正常"
+          ],
+          "row_count": 0,
+          "valid_operation_action_count": 0,
+          "valid_operation_action_batch_count": 0,
+          "valid_operation_action_batch_ids": [],
+          "invalid_operation_action_count": 0,
+          "invalid_operation_action_rows": [],
+          "action_counts": {},
+          "pump_valve_result_counts": {},
+          "quality_pass": false,
+          "quality_note": "Valid operation rows require executable action_id, parseable command/effect/start/end times and release_policy. Optional engineering fields are range-checked when provided."
+        },
+        "lab_result_quality": {},
+        "proxy_label_quality": {},
+        "pressure_headloss_quality": {}
+      },
+      "fast_proxy_event_log": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/fast_proxy_event_log.csv",
+        "headers": [
+          "campaign_id",
+          "batch_id",
+          "event_time_min",
+          "proxy_score",
+          "specificity_guard_score",
+          "protective_triggered",
+          "triggered_action_id",
+          "field_label_matrix_shock",
+          "lab_label_time_min",
+          "false_positive_cost_index"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "campaign_id": [],
+          "batch_id": [],
+          "event_time_min": [],
+          "proxy_score": [],
+          "specificity_guard_score": [],
+          "protective_triggered": [],
+          "triggered_action_id": [],
+          "field_label_matrix_shock": [],
+          "lab_label_time_min": [],
+          "false_positive_cost_index": []
+        },
+        "unique_values_by_field": {
+          "batch_id": [],
+          "campaign_id": []
+        },
+        "time_order_violations": [],
+        "operation_action_quality": {},
+        "lab_result_quality": {},
+        "proxy_label_quality": {
+          "required_fields": [
+            "protective_triggered",
+            "field_label_matrix_shock",
+            "false_positive_cost_index",
+            "event_time_min",
+            "lab_label_time_min"
+          ],
+          "row_count": 0,
+          "valid_proxy_label_count": 0,
+          "valid_proxy_label_batch_count": 0,
+          "valid_proxy_label_batch_ids": [],
+          "invalid_proxy_label_count": 0,
+          "invalid_proxy_label_rows": [],
+          "proxy_label_class_counts": {
+            "protective_triggered_true": 0,
+            "protective_triggered_false": 0,
+            "field_label_matrix_shock_true": 0,
+            "field_label_matrix_shock_false": 0
+          },
+          "quality_pass": false,
+          "quality_note": "Valid fast-proxy labels require parseable protective_triggered, field_label_matrix_shock, false_positive_cost_index, event_time_min and lab_label_time_min. Timestamp order is audited separately."
+        },
+        "pressure_headloss_quality": {}
+      },
+      "final_effluent_endpoint_labels": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/final_effluent_endpoint_labels.csv",
+        "headers": [
+          "batch_id",
+          "endpoint_node_id",
+          "sample_time_min",
+          "final_effluent_direct_observed",
+          "release_gate_label",
+          "release_risk_label",
+          "analyte",
+          "value",
+          "unit",
+          "qa_flag",
+          "reviewer_id"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "batch_id": [],
+          "endpoint_node_id": [],
+          "sample_time_min": [],
+          "final_effluent_direct_observed": [],
+          "release_gate_label": [],
+          "release_risk_label": [],
+          "analyte": [],
+          "value": [],
+          "unit": [],
+          "qa_flag": [],
+          "reviewer_id": []
+        },
+        "unique_values_by_field": {
+          "batch_id": [],
+          "analyte": []
+        },
+        "time_order_violations": [],
+        "operation_action_quality": {},
+        "lab_result_quality": {},
+        "proxy_label_quality": {},
+        "pressure_headloss_quality": {}
+      },
+      "hydraulic_path_stage_labels": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/hydraulic_path_stage_labels.csv",
+        "headers": [
+          "batch_id",
+          "layout_id",
+          "node_id",
+          "zone",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "stage_coverage_label",
+          "direct_path_stage_coverage_label",
+          "proxy_path_stage_coverage_label",
+          "label_source",
+          "reviewer_id",
+          "review_time_min"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "batch_id": [],
+          "layout_id": [],
+          "node_id": [],
+          "zone": [],
+          "path_stage_id": [],
+          "hydraulic_path_role": [],
+          "stage_coverage_label": [],
+          "direct_path_stage_coverage_label": [],
+          "proxy_path_stage_coverage_label": [],
+          "label_source": [],
+          "reviewer_id": [],
+          "review_time_min": []
+        },
+        "unique_values_by_field": {
+          "batch_id": []
+        },
+        "time_order_violations": [],
+        "operation_action_quality": {},
+        "lab_result_quality": {},
+        "proxy_label_quality": {},
+        "pressure_headloss_quality": {}
+      },
+      "node_modality_sensor_timeseries": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/node_modality_sensor_timeseries.csv",
+        "headers": [
+          "batch_id",
+          "timestamp_min",
+          "node_id",
+          "zone",
+          "modality",
+          "value",
+          "sensor_status",
+          "instrument_id",
+          "acquisition_time_min",
+          "ingest_time_min",
+          "layout_id",
+          "availability_mask",
+          "time_since_last_observed_min",
+          "data_origin",
+          "sensor_value"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "batch_id": [],
+          "timestamp_min": [],
+          "node_id": [],
+          "zone": [],
+          "modality": [],
+          "value": [],
+          "sensor_status": [],
+          "instrument_id": [],
+          "acquisition_time_min": [],
+          "ingest_time_min": [],
+          "layout_id": [],
+          "availability_mask": [],
+          "time_since_last_observed_min": [],
+          "data_origin": [],
+          "sensor_value": []
+        },
+        "unique_values_by_field": {
+          "batch_id": []
+        },
+        "time_order_violations": [],
+        "operation_action_quality": {},
+        "lab_result_quality": {},
+        "proxy_label_quality": {},
+        "pressure_headloss_quality": {}
+      },
+      "offline_lab_results": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/offline_lab_results.csv",
+        "headers": [
+          "batch_id",
+          "sample_time_min",
+          "result_time_min",
+          "analyte",
+          "value",
+          "qa_flag",
+          "proxy_holdout_label",
+          "catalyst_activity_label",
+          "pressure_headloss_proxy_label",
+          "lab_label_time_min",
+          "detection_limit",
+          "method",
+          "unit",
+          "sample_source"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "batch_id": [],
+          "sample_time_min": [],
+          "result_time_min": [],
+          "analyte": [],
+          "value": [],
+          "qa_flag": [],
+          "proxy_holdout_label": [],
+          "catalyst_activity_label": [],
+          "pressure_headloss_proxy_label": [],
+          "lab_label_time_min": [],
+          "detection_limit": [],
+          "method": [],
+          "unit": [],
+          "sample_source": []
+        },
+        "unique_values_by_field": {
+          "batch_id": [],
+          "analyte": []
+        },
+        "time_order_violations": [],
+        "operation_action_quality": {},
+        "lab_result_quality": {
+          "required_fields": [
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag"
+          ],
+          "accepted_qa_flags": [
+            "ok",
+            "pass",
+            "passed",
+            "qc_pass",
+            "qualified",
+            "valid",
+            "合格"
+          ],
+          "row_count": 0,
+          "valid_lab_result_count": 0,
+          "valid_lab_result_batch_count": 0,
+          "valid_lab_result_batch_ids": [],
+          "invalid_lab_result_count": 0,
+          "invalid_lab_result_rows": [],
+          "analyte_valid_counts": {},
+          "qa_flag_counts": {},
+          "quality_pass": false,
+          "quality_note": "Valid offline lab results require parseable sample/result times, non-negative numeric value, non-empty analyte and a passing QA flag. Claim-specific method/unit/detection_limit are audited separately."
+        },
+        "proxy_label_quality": {},
+        "pressure_headloss_quality": {}
+      },
+      "pressure_headloss_event_log": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/pressure_headloss_event_log.csv",
+        "headers": [
+          "campaign_id",
+          "batch_id",
+          "event_time_min",
+          "bed_id",
+          "pressure_drop_kPa",
+          "headloss_kPa_per_m",
+          "flow_Lmin",
+          "matched_lab_sample_time_min",
+          "regeneration_event",
+          "hydraulic_anomaly_label",
+          "flow_normalized_pressure_residual",
+          "expected_clean_bed_pressure_drop_kPa",
+          "operator_review_required"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "campaign_id": [],
+          "batch_id": [],
+          "event_time_min": [],
+          "bed_id": [],
+          "pressure_drop_kPa": [],
+          "headloss_kPa_per_m": [],
+          "flow_Lmin": [],
+          "matched_lab_sample_time_min": [],
+          "regeneration_event": [],
+          "hydraulic_anomaly_label": [],
+          "flow_normalized_pressure_residual": [],
+          "expected_clean_bed_pressure_drop_kPa": [],
+          "operator_review_required": []
+        },
+        "unique_values_by_field": {
+          "batch_id": [],
+          "campaign_id": []
+        },
+        "time_order_violations": [],
+        "operation_action_quality": {},
+        "lab_result_quality": {},
+        "proxy_label_quality": {},
+        "pressure_headloss_quality": {
+          "required_fields": [
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label"
+          ],
+          "row_count": 0,
+          "valid_pressure_headloss_event_count": 0,
+          "valid_pressure_headloss_batch_count": 0,
+          "valid_pressure_headloss_batch_ids": [],
+          "invalid_pressure_headloss_event_count": 0,
+          "invalid_pressure_headloss_event_rows": [],
+          "pressure_headloss_class_counts": {
+            "hydraulic_anomaly_label_true": 0,
+            "hydraulic_anomaly_label_false": 0,
+            "regeneration_event_true": 0,
+            "regeneration_event_false": 0
+          },
+          "quality_pass": false,
+          "quality_note": "Valid pressure/headloss events require same-batch bed_id, parseable non-negative pressure/headloss signals, positive flow, parseable matched lab sample time and hydraulic/regeneration labels."
+        }
+      },
+      "sensor_timeseries": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/sensor_timeseries.csv",
+        "headers": [
+          "batch_id",
+          "timestamp_min",
+          "EC_uScm",
+          "turbidity_NTU",
+          "UV254_abs",
+          "pH",
+          "ORP_mV",
+          "flow_Lmin",
+          "pressure_drop_kPa",
+          "headloss_kPa_per_m",
+          "bed_inlet_pressure_kPa",
+          "bed_outlet_pressure_kPa",
+          "sensor_status",
+          "instrument_id",
+          "acquisition_time_min",
+          "ingest_time_min"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "batch_id": [],
+          "timestamp_min": [],
+          "EC_uScm": [],
+          "turbidity_NTU": [],
+          "UV254_abs": [],
+          "pH": [],
+          "ORP_mV": [],
+          "flow_Lmin": [],
+          "pressure_drop_kPa": [],
+          "headloss_kPa_per_m": [],
+          "bed_inlet_pressure_kPa": [],
+          "bed_outlet_pressure_kPa": [],
+          "sensor_status": [],
+          "instrument_id": [],
+          "acquisition_time_min": [],
+          "ingest_time_min": []
+        },
+        "unique_values_by_field": {
+          "batch_id": []
+        },
+        "time_order_violations": [],
+        "operation_action_quality": {},
+        "lab_result_quality": {},
+        "proxy_label_quality": {},
+        "pressure_headloss_quality": {}
+      },
+      "site_topology_or_bed_geometry": {
+        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/site_topology_or_bed_geometry.csv",
+        "headers": [
+          "node_id",
+          "bed_volume",
+          "nominal_HRT_min",
+          "flow_Lmin",
+          "site_id",
+          "zone",
+          "upstream_node_id",
+          "downstream_node_id",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "nominal_flow_Lmin",
+          "recycle_ratio",
+          "release_boundary_flag",
+          "recirculation_loop_flag"
+        ],
+        "row_count": 0,
+        "non_empty_fields": [],
+        "sample_values_by_field": {
+          "node_id": [],
+          "bed_volume": [],
+          "nominal_HRT_min": [],
+          "flow_Lmin": [],
+          "site_id": [],
+          "zone": [],
+          "upstream_node_id": [],
+          "downstream_node_id": [],
+          "path_stage_id": [],
+          "hydraulic_path_role": [],
+          "nominal_flow_Lmin": [],
+          "recycle_ratio": [],
+          "release_boundary_flag": [],
+          "recirculation_loop_flag": []
+        },
+        "unique_values_by_field": {},
+        "time_order_violations": [],
+        "operation_action_quality": {},
+        "lab_result_quality": {},
+        "proxy_label_quality": {},
+        "pressure_headloss_quality": {}
+      }
+    },
+    "claim_coverage_audit": [
+      {
+        "need_id": "FVQ01",
+        "field_validation_need": "真实传感漂移记录",
+        "need_type": "sensor_drift_and_low_cost_signal_validity",
+        "metadata_missing": [
+          "site_id",
+          "instrument_snapshot_id",
+          "chain_of_custody_id"
+        ],
+        "table_audits": {
+          "sensor_timeseries": {
+            "required_fields": [
+              "EC_uScm",
+              "ORP_mV",
+              "UV254_abs",
+              "acquisition_time_min",
+              "batch_id",
+              "cycle_id",
+              "flow_Lmin",
+              "ingest_time_min",
+              "instrument_id",
+              "pH",
+              "sensor_status",
+              "temp_C",
+              "timestamp_min",
+              "turbidity_NTU"
+            ],
+            "row_count": 0,
+            "missing_headers": [
+              "cycle_id",
+              "temp_C"
+            ],
+            "empty_required_fields": [
+              "EC_uScm",
+              "ORP_mV",
+              "UV254_abs",
+              "acquisition_time_min",
+              "batch_id",
+              "flow_Lmin",
+              "ingest_time_min",
+              "instrument_id",
+              "pH",
+              "sensor_status",
+              "timestamp_min",
+              "turbidity_NTU"
+            ],
+            "row_presence_pass": false
+          }
+        },
+        "logical_guardrail_fields": [],
+        "missing_logical_guardrail_fields": [],
+        "missing_row_tables": [
+          "sensor_timeseries"
+        ],
+        "coverage_pass": false,
+        "claim_upgrade_blocked_by": [
+          "metadata_required_fields_missing",
+          "claim_required_headers_missing",
+          "claim_required_fields_empty",
+          "claim_required_tables_have_no_rows"
+        ]
+      },
+      {
+        "need_id": "FVQ02",
+        "field_validation_need": "离线放行标签",
+        "need_type": "offline_release_label_for_soft_sensor_and_claim_gate",
+        "metadata_missing": [
+          "site_id",
+          "campaign_id",
+          "chain_of_custody_id"
+        ],
+        "table_audits": {
+          "offline_lab_results": {
+            "required_fields": [
+              "analyte",
+              "batch_id",
+              "detection_limit",
+              "method",
+              "qa_flag",
+              "result_time_min",
+              "sample_source",
+              "sample_time_min",
+              "unit",
+              "value"
+            ],
+            "row_count": 0,
+            "missing_headers": [],
+            "empty_required_fields": [
+              "analyte",
+              "batch_id",
+              "detection_limit",
+              "method",
+              "qa_flag",
+              "result_time_min",
+              "sample_source",
+              "sample_time_min",
+              "unit",
+              "value"
+            ],
+            "row_presence_pass": false
+          }
+        },
+        "logical_guardrail_fields": [],
+        "missing_logical_guardrail_fields": [],
+        "missing_row_tables": [
+          "offline_lab_results"
+        ],
+        "coverage_pass": false,
+        "claim_upgrade_blocked_by": [
+          "metadata_required_fields_missing",
+          "claim_required_fields_empty",
+          "claim_required_tables_have_no_rows"
+        ]
+      },
+      {
+        "need_id": "FVQ03",
+        "field_validation_need": "低浓度目标物检测限",
+        "need_type": "low_concentration_detection_limit_for_target_pollutants",
+        "metadata_missing": [
+          "site_id",
+          "campaign_id",
+          "chain_of_custody_id"
+        ],
+        "table_audits": {
+          "offline_lab_results": {
+            "required_fields": [
+              "analyte",
+              "batch_id",
+              "detection_limit",
+              "method",
+              "qa_flag",
+              "replicate_id",
+              "result_time_min",
+              "sample_source",
+              "sample_time_min",
+              "unit",
+              "value"
+            ],
+            "row_count": 0,
+            "missing_headers": [
+              "replicate_id"
+            ],
+            "empty_required_fields": [
+              "analyte",
+              "batch_id",
+              "detection_limit",
+              "method",
+              "qa_flag",
+              "result_time_min",
+              "sample_source",
+              "sample_time_min",
+              "unit",
+              "value"
+            ],
+            "row_presence_pass": false
+          }
+        },
+        "logical_guardrail_fields": [],
+        "missing_logical_guardrail_fields": [],
+        "missing_row_tables": [
+          "offline_lab_results"
+        ],
+        "coverage_pass": false,
+        "claim_upgrade_blocked_by": [
+          "metadata_required_fields_missing",
+          "claim_required_headers_missing",
+          "claim_required_fields_empty",
+          "claim_required_tables_have_no_rows"
+        ]
+      },
+      {
+        "need_id": "R4F04",
+        "field_validation_need": "R4 guardrail 催化剂代理不确定现场验证",
+        "need_type": "guardrail_catalyst_proxy_uncertainty_validation",
+        "metadata_missing": [
+          "site_id",
+          "campaign_id",
+          "operator_id",
+          "chain_of_custody_id"
+        ],
+        "table_audits": {
+          "campaign_operation_log": {
+            "required_fields": [
+              "action_id",
+              "batch_id",
+              "campaign_id",
+              "end_min",
+              "intake_fraction",
+              "operator_override",
+              "start_min",
+              "success"
+            ],
+            "row_count": 0,
+            "missing_headers": [
+              "intake_fraction",
+              "success"
+            ],
+            "empty_required_fields": [
+              "action_id",
+              "batch_id",
+              "campaign_id",
+              "end_min",
+              "operator_override",
+              "start_min"
+            ],
+            "row_presence_pass": false
+          },
+          "catalyst_lifecycle": {
+            "required_fields": [
+              "activity_assay",
+              "batch_id",
+              "catalyst_id",
+              "cycle_count",
+              "lifetime_fraction",
+              "pressure_drop_kPa",
+              "regen_count",
+              "regen_method",
+              "replacement_flag",
+              "surface_pollution_index"
+            ],
+            "row_count": 0,
+            "missing_headers": [
+              "activity_assay",
+              "batch_id",
+              "catalyst_id",
+              "cycle_count",
+              "lifetime_fraction",
+              "pressure_drop_kPa",
+              "regen_count",
+              "regen_method",
+              "replacement_flag",
+              "surface_pollution_index"
+            ],
+            "empty_required_fields": [],
+            "row_presence_pass": false
+          },
+          "offline_lab_results": {
+            "required_fields": [
+              "analyte",
+              "batch_id",
+              "method",
+              "qa_flag",
+              "sample_time_min",
+              "unit",
+              "value"
+            ],
+            "row_count": 0,
+            "missing_headers": [],
+            "empty_required_fields": [
+              "analyte",
+              "batch_id",
+              "method",
+              "qa_flag",
+              "sample_time_min",
+              "unit",
+              "value"
+            ],
+            "row_presence_pass": false
+          },
+          "sensor_timeseries": {
+            "required_fields": [
+              "EC_uScm",
+              "ORP_mV",
+              "UV254_abs",
+              "batch_id",
+              "cycle_id",
+              "flow_Lmin",
+              "pH",
+              "temp_C",
+              "timestamp_min",
+              "turbidity_NTU"
+            ],
+            "row_count": 0,
+            "missing_headers": [
+              "cycle_id",
+              "temp_C"
+            ],
+            "empty_required_fields": [
+              "EC_uScm",
+              "ORP_mV",
+              "UV254_abs",
+              "batch_id",
+              "flow_Lmin",
+              "pH",
+              "timestamp_min",
+              "turbidity_NTU"
+            ],
+            "row_presence_pass": false
+          }
+        },
+        "logical_guardrail_fields": [
+          "N3_catalyst_bed_outlet:UV254_abs",
+          "N3_catalyst_bed_outlet:turbidity_NTU",
+          "operator_override",
+          "pressure_drop_kPa",
+          "proxy_holdout_label",
+          "regeneration_event"
+        ],
+        "missing_logical_guardrail_fields": [
+          "N3_catalyst_bed_outlet:UV254_abs",
+          "N3_catalyst_bed_outlet:turbidity_NTU"
+        ],
+        "missing_row_tables": [
+          "campaign_operation_log",
+          "catalyst_lifecycle",
+          "offline_lab_results",
+          "sensor_timeseries"
+        ],
+        "coverage_pass": false,
+        "claim_upgrade_blocked_by": [
+          "metadata_required_fields_missing",
+          "claim_required_headers_missing",
+          "claim_required_fields_empty",
+          "claim_required_tables_have_no_rows",
+          "logical_guardrail_fields_not_present_in_any_table"
+        ]
+      },
+      {
+        "need_id": "R4F05",
+        "field_validation_need": "R4 guardrail 水力延迟与池容执行验证",
+        "need_type": "guardrail_hydraulic_latency_storage_validation",
+        "metadata_missing": [
+          "site_id",
+          "campaign_id",
+          "operator_id",
+          "chain_of_custody_id"
+        ],
+        "table_audits": {
+          "campaign_operation_log": {
+            "required_fields": [
+              "action_id",
+              "batch_id",
+              "campaign_id",
+              "command_time_min",
+              "effect_time_min",
+              "end_min",
+              "intake_fraction",
+              "operator_override",
+              "recycle_ratio",
+              "start_min",
+              "success",
+              "validation_minutes"
+            ],
+            "row_count": 0,
+            "missing_headers": [
+              "intake_fraction",
+              "success",
+              "validation_minutes"
+            ],
+            "empty_required_fields": [
+              "action_id",
+              "batch_id",
+              "campaign_id",
+              "command_time_min",
+              "effect_time_min",
+              "end_min",
+              "operator_override",
+              "recycle_ratio",
+              "start_min"
+            ],
+            "row_presence_pass": false
+          },
+          "sensor_timeseries": {
+            "required_fields": [
+              "EC_uScm",
+              "ORP_mV",
+              "UV254_abs",
+              "batch_id",
+              "cycle_id",
+              "flow_Lmin",
+              "pH",
+              "temp_C",
+              "timestamp_min",
+              "turbidity_NTU"
+            ],
+            "row_count": 0,
+            "missing_headers": [
+              "cycle_id",
+              "temp_C"
+            ],
+            "empty_required_fields": [
+              "EC_uScm",
+              "ORP_mV",
+              "UV254_abs",
+              "batch_id",
+              "flow_Lmin",
+              "pH",
+              "timestamp_min",
+              "turbidity_NTU"
+            ],
+            "row_presence_pass": false
+          }
+        },
+        "logical_guardrail_fields": [
+          "actuator_latency_p90",
+          "flow_Lmin",
+          "hold_time_min",
+          "pump_valve_result",
+          "recycle_ratio",
+          "tank_storage_margin"
+        ],
+        "missing_logical_guardrail_fields": [],
+        "missing_row_tables": [
+          "campaign_operation_log",
+          "sensor_timeseries"
+        ],
+        "coverage_pass": false,
+        "claim_upgrade_blocked_by": [
+          "metadata_required_fields_missing",
+          "claim_required_headers_missing",
+          "claim_required_fields_empty",
+          "claim_required_tables_have_no_rows"
+        ]
+      }
+    ],
+    "soft_holdout_coverage_audit": {
+      "table_audits": {
+        "sensor_timeseries": {
+          "required_fields": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin"
+          ],
+          "row_count": 0,
+          "missing_headers": [],
+          "empty_required_fields": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin"
+          ]
+        },
+        "offline_lab_results": {
+          "required_fields": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag"
+          ],
+          "row_count": 0,
+          "missing_headers": [],
+          "empty_required_fields": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag"
+          ]
+        }
+      },
+      "observed_offline_analytes": [],
+      "required_weak_target_analytes": [
+        "catalyst_activity",
+        "matrix_interference"
+      ],
+      "missing_weak_target_analytes": [
+        "catalyst_activity",
+        "matrix_interference"
+      ],
+      "upstream_failed_check_ids": [
+        "SFG0_field_holdout_origin",
+        "SFG5_weak_target_coverage"
+      ],
+      "coverage_pass": false
+    },
+    "field_proxy_holdout_audit": {
+      "audit_id": "R7j_agent51_catalyst_proxy_holdout_contract",
+      "repair_status": "agent48_catalyst_axis_requires_proxy_patch_and_field_label",
+      "holdout_required": true,
+      "coverage_pass": false,
+      "status": "field_proxy_holdout_coverage_gaps",
+      "minimum_matched_batch_count": 3,
+      "required_patch_signals": [
+        "N3_catalyst_bed_outlet:UV254_abs",
+        "N3_catalyst_bed_outlet:ORP_mV",
+        "N3_catalyst_bed:pressure_drop_kPa"
+      ],
+      "table_audits": {
+        "node_modality_sensor_timeseries": {
+          "requirement_id": "CAX_1_low_cost_sensor",
+          "patch_class": "low_cost_sensor",
+          "accepted_alternative_tables": [
+            "node_modality_sensor_timeseries",
+            "sensor_timeseries"
+          ],
+          "minimum_evidence": "same-batch inlet/outlet signal pairs with calibration status",
+          "supports_patch_signals": [
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "required_fields": [
+            "timestamp_min",
+            "batch_id",
+            "node_id",
+            "modality",
+            "value",
+            "sensor_status"
+          ],
+          "table_present": true,
+          "row_count": 0,
+          "missing_headers": [],
+          "empty_required_fields": [
+            "timestamp_min",
+            "batch_id",
+            "node_id",
+            "modality",
+            "value",
+            "sensor_status"
+          ]
+        },
+        "site_topology_or_bed_geometry": {
+          "requirement_id": "CAX_2_hydraulic_or_geometry_field",
+          "patch_class": "hydraulic_or_geometry_field",
+          "accepted_alternative_tables": [],
+          "minimum_evidence": "bed geometry and flow records to normalize reaction rate residuals",
+          "supports_patch_signals": [
+            "reactor_bed_volume_or_HRT"
+          ],
+          "required_fields": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin"
+          ],
+          "table_present": true,
+          "row_count": 0,
+          "missing_headers": [],
+          "empty_required_fields": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin"
+          ]
+        },
+        "campaign_operation_log": {
+          "requirement_id": "CAX_3_operation_log_field",
+          "patch_class": "operation_log_field",
+          "accepted_alternative_tables": [],
+          "minimum_evidence": "time-aligned regeneration events before/after proxy response",
+          "supports_patch_signals": [
+            "campaign_operation_log.regeneration_event"
+          ],
+          "required_fields": [
+            "batch_id",
+            "regeneration_event",
+            "command_time_min",
+            "effect_time_min"
+          ],
+          "table_present": true,
+          "row_count": 0,
+          "missing_headers": [],
+          "empty_required_fields": [
+            "batch_id",
+            "regeneration_event",
+            "command_time_min",
+            "effect_time_min"
+          ]
+        },
+        "offline_lab_results": {
+          "requirement_id": "CAX_4_offline_lab_label",
+          "patch_class": "offline_lab_label",
+          "accepted_alternative_tables": [],
+          "minimum_evidence": "QA-passed catalyst activity or regeneration response labels",
+          "supports_patch_signals": [
+            "pre_post_regeneration_lab_label"
+          ],
+          "required_fields": [
+            "batch_id",
+            "analyte",
+            "value",
+            "qa_flag",
+            "lab_label_time_min"
+          ],
+          "table_present": true,
+          "row_count": 0,
+          "missing_headers": [],
+          "empty_required_fields": [
+            "batch_id",
+            "analyte",
+            "value",
+            "qa_flag",
+            "lab_label_time_min"
+          ]
+        }
+      },
+      "missing_required_tables": [],
+      "missing_required_fields_by_table": {},
+      "empty_required_fields_by_table": {
+        "node_modality_sensor_timeseries": [
+          "timestamp_min",
+          "batch_id",
+          "node_id",
+          "modality",
+          "value",
+          "sensor_status"
+        ],
+        "site_topology_or_bed_geometry": [
+          "node_id",
+          "bed_volume",
+          "nominal_HRT_min",
+          "flow_Lmin"
+        ],
+        "campaign_operation_log": [
+          "batch_id",
+          "regeneration_event",
+          "command_time_min",
+          "effect_time_min"
+        ],
+        "offline_lab_results": [
+          "batch_id",
+          "analyte",
+          "value",
+          "qa_flag",
+          "lab_label_time_min"
+        ]
+      },
+      "pressure_source_conflict_count": 0,
+      "resolved_pressure_source_conflict_count": 0,
+      "unresolved_pressure_source_conflict_count": 0,
+      "pressure_source_resolution_record_count": 0,
+      "pressure_source_conflict_batch_ids_sample": [],
+      "unresolved_pressure_source_conflict_batch_ids_sample": [],
+      "pressure_source_conflicts": [],
+      "unresolved_pressure_source_conflicts": [],
+      "pressure_source_resolutions": [],
+      "conflict_requires_operator_review": false,
+      "sensor_signal_audit": {
+        "source_table": "node_modality_sensor_timeseries",
+        "fallback_table": "sensor_timeseries",
+        "required_sensor_table_format": "node_modality_sensor_timeseries_supplement",
+        "accepted_sensor_status": [
+          "calibrated",
+          "normal",
+          "ok",
+          "pass",
+          "passed",
+          "qualified",
+          "valid",
+          "合格",
+          "正常"
+        ],
+        "required_patch_signals": [
+          "N3_catalyst_bed_outlet:UV254_abs",
+          "N3_catalyst_bed_outlet:ORP_mV",
+          "N3_catalyst_bed:pressure_drop_kPa"
+        ],
+        "accepted_pressure_evidence_sources": [],
+        "pressure_headloss_event_valid_batch_count": 0,
+        "pressure_source_resolution_record_count": 0,
+        "pressure_source_resolution_required_fields": [
+          "pressure_source_resolution",
+          "authoritative_pressure_source",
+          "reviewer_id",
+          "review_time",
+          "calibration_action_id",
+          "calibration_note"
+        ],
+        "pressure_source_resolution_invalid_rows": [],
+        "pressure_source_conflict_count": 0,
+        "pressure_source_conflict_batch_ids_sample": [],
+        "unresolved_pressure_source_conflict_count": 0,
+        "unresolved_pressure_source_conflict_batch_ids_sample": [],
+        "resolved_pressure_source_conflict_count": 0,
+        "pressure_source_conflicts": [],
+        "unresolved_pressure_source_conflicts": [],
+        "pressure_source_resolutions": [],
+        "pressure_source_conflict_abs_tolerance_kPa": 1.0,
+        "pressure_source_conflict_rel_tolerance": 0.25,
+        "pressure_source_resolution_fields": [
+          "pressure_source_resolution",
+          "authoritative_pressure_source",
+          "reviewer_id",
+          "review_time",
+          "calibration_action_id",
+          "calibration_note"
+        ],
+        "conflict_requires_operator_review": false,
+        "signal_audits": {
+          "N3_catalyst_bed_outlet:UV254_abs": {
+            "node_id": "N3_catalyst_bed_outlet",
+            "modality": "UV254_abs",
+            "valid_row_count": 0,
+            "node_modality_valid_batch_count": 0,
+            "node_modality_valid_batch_ids_sample": [],
+            "pressure_headloss_event_valid_batch_count": 0,
+            "pressure_headloss_event_valid_batch_ids_sample": [],
+            "accepted_evidence_sources": [],
+            "pressure_source_conflict_audit": {},
+            "valid_batch_count": 0,
+            "valid_batch_ids_sample": [],
+            "invalid_row_count": 0,
+            "invalid_rows": [],
+            "coverage_pass": false
+          },
+          "N3_catalyst_bed_outlet:ORP_mV": {
+            "node_id": "N3_catalyst_bed_outlet",
+            "modality": "ORP_mV",
+            "valid_row_count": 0,
+            "node_modality_valid_batch_count": 0,
+            "node_modality_valid_batch_ids_sample": [],
+            "pressure_headloss_event_valid_batch_count": 0,
+            "pressure_headloss_event_valid_batch_ids_sample": [],
+            "accepted_evidence_sources": [],
+            "pressure_source_conflict_audit": {},
+            "valid_batch_count": 0,
+            "valid_batch_ids_sample": [],
+            "invalid_row_count": 0,
+            "invalid_rows": [],
+            "coverage_pass": false
+          },
+          "N3_catalyst_bed:pressure_drop_kPa": {
+            "node_id": "N3_catalyst_bed",
+            "modality": "pressure_drop_kPa",
+            "valid_row_count": 0,
+            "node_modality_valid_batch_count": 0,
+            "node_modality_valid_batch_ids_sample": [],
+            "pressure_headloss_event_valid_batch_count": 0,
+            "pressure_headloss_event_valid_batch_ids_sample": [],
+            "accepted_evidence_sources": [],
+            "pressure_source_conflict_audit": {
+              "pressure_source_conflict_count": 0,
+              "pressure_source_conflict_batch_ids": [],
+              "unresolved_pressure_source_conflict_count": 0,
+              "unresolved_pressure_source_conflict_batch_ids": [],
+              "resolved_pressure_source_conflict_count": 0,
+              "pressure_source_conflicts": [],
+              "unresolved_pressure_source_conflicts": [],
+              "pressure_source_resolutions": [],
+              "conflict_requires_operator_review": false
+            },
+            "valid_batch_count": 0,
+            "valid_batch_ids_sample": [],
+            "invalid_row_count": 0,
+            "invalid_rows": [],
+            "coverage_pass": false
+          }
+        },
+        "missing_patch_signals": [
+          "N3_catalyst_bed_outlet:UV254_abs",
+          "N3_catalyst_bed_outlet:ORP_mV",
+          "N3_catalyst_bed:pressure_drop_kPa"
+        ],
+        "valid_all_signal_batch_count": 0,
+        "valid_all_signal_batch_ids": [],
+        "valid_all_signal_batch_ids_sample": []
+      },
+      "lab_label_audit": {
+        "required_analyte": "catalyst_activity",
+        "valid_catalyst_activity_label_count": 0,
+        "valid_catalyst_activity_batch_ids": [],
+        "valid_catalyst_activity_batch_ids_sample": [],
+        "invalid_catalyst_activity_label_rows": [],
+        "catalyst_activity_label_pass": false
+      },
+      "operation_event_audit": {
+        "valid_regeneration_event_count": 0,
+        "valid_regeneration_event_batch_ids": [],
+        "valid_regeneration_event_batch_ids_sample": [],
+        "invalid_regeneration_event_rows": [],
+        "regeneration_event_pass": false
+      },
+      "geometry_audit": {
+        "target_table": "site_topology_or_bed_geometry",
+        "valid_geometry_row_count": 0,
+        "valid_geometry_node_ids": [],
+        "invalid_geometry_rows": [],
+        "geometry_coverage_pass": false
+      },
+      "matched_proxy_holdout_batch_count": 0,
+      "matched_proxy_holdout_batch_ids_sample": [],
+      "matched_batch_requirement": "At least three batch_id values must have all Agent51 catalyst proxy sensor signals, QA-passed catalyst_activity lab labels and parseable regeneration_event operation rows.",
+      "field_boundary": "R7j only validates that the field package can support Agent51 catalyst proxy holdout. It does not make the catalyst proxy field-supported or relax Agent49 catalyst uncertainty by itself."
+    },
+    "minimum_replay_contract_audit": {
+      "contract_id": "R7_minimum_timestamped_replay_package_contract",
+      "minimum_smoke_test_matched_batch_count": 3,
+      "recommended_calibration_proxy_event_count": 12,
+      "required_tables": [
+        "sensor_timeseries",
+        "offline_lab_results",
+        "campaign_operation_log",
+        "fast_proxy_event_log",
+        "pressure_headloss_event_log"
+      ],
+      "table_row_counts": {
+        "sensor_timeseries": 0,
+        "offline_lab_results": 0,
+        "campaign_operation_log": 0,
+        "fast_proxy_event_log": 0,
+        "pressure_headloss_event_log": 0
+      },
+      "table_batch_counts": {
+        "sensor_timeseries": 0,
+        "offline_lab_results": 0,
+        "campaign_operation_log": 0,
+        "fast_proxy_event_log": 0,
+        "pressure_headloss_event_log": 0
+      },
+      "common_batch_count": 0,
+      "common_batch_ids_sample": [],
+      "valid_matched_batch_count": 0,
+      "valid_matched_batch_ids_sample": [],
+      "valid_operation_action_count": 0,
+      "invalid_operation_action_count": 0,
+      "operation_action_quality": {
+        "required_fields": [
+          "action_id",
+          "command_time_min",
+          "effect_time_min",
+          "start_min",
+          "end_min",
+          "release_policy"
+        ],
+        "accepted_pump_valve_results": [
+          "confirmed",
+          "executed",
+          "normal",
+          "ok",
+          "pass",
+          "passed",
+          "success",
+          "合格",
+          "正常"
+        ],
+        "row_count": 0,
+        "valid_operation_action_count": 0,
+        "valid_operation_action_batch_count": 0,
+        "valid_operation_action_batch_ids": [],
+        "invalid_operation_action_count": 0,
+        "invalid_operation_action_rows": [],
+        "action_counts": {},
+        "pump_valve_result_counts": {},
+        "quality_pass": false,
+        "quality_note": "Valid operation rows require executable action_id, parseable command/effect/start/end times and release_policy. Optional engineering fields are range-checked when provided."
+      },
+      "valid_lab_result_count": 0,
+      "invalid_lab_result_count": 0,
+      "lab_result_quality": {
+        "required_fields": [
+          "sample_time_min",
+          "result_time_min",
+          "analyte",
+          "value",
+          "qa_flag"
+        ],
+        "accepted_qa_flags": [
+          "ok",
+          "pass",
+          "passed",
+          "qc_pass",
+          "qualified",
+          "valid",
+          "合格"
+        ],
+        "row_count": 0,
+        "valid_lab_result_count": 0,
+        "valid_lab_result_batch_count": 0,
+        "valid_lab_result_batch_ids": [],
+        "invalid_lab_result_count": 0,
+        "invalid_lab_result_rows": [],
+        "analyte_valid_counts": {},
+        "qa_flag_counts": {},
+        "quality_pass": false,
+        "quality_note": "Valid offline lab results require parseable sample/result times, non-negative numeric value, non-empty analyte and a passing QA flag. Claim-specific method/unit/detection_limit are audited separately."
+      },
+      "proxy_event_count": 0,
+      "valid_proxy_label_count": 0,
+      "invalid_proxy_label_count": 0,
+      "proxy_label_quality": {
+        "required_fields": [
+          "protective_triggered",
+          "field_label_matrix_shock",
+          "false_positive_cost_index",
+          "event_time_min",
+          "lab_label_time_min"
+        ],
+        "row_count": 0,
+        "valid_proxy_label_count": 0,
+        "valid_proxy_label_batch_count": 0,
+        "valid_proxy_label_batch_ids": [],
+        "invalid_proxy_label_count": 0,
+        "invalid_proxy_label_rows": [],
+        "proxy_label_class_counts": {
+          "protective_triggered_true": 0,
+          "protective_triggered_false": 0,
+          "field_label_matrix_shock_true": 0,
+          "field_label_matrix_shock_false": 0
+        },
+        "quality_pass": false,
+        "quality_note": "Valid fast-proxy labels require parseable protective_triggered, field_label_matrix_shock, false_positive_cost_index, event_time_min and lab_label_time_min. Timestamp order is audited separately."
+      },
+      "pressure_headloss_event_count": 0,
+      "valid_pressure_headloss_event_count": 0,
+      "invalid_pressure_headloss_event_count": 0,
+      "valid_pressure_headloss_batch_count": 0,
+      "pressure_headloss_quality": {
+        "required_fields": [
+          "batch_id",
+          "event_time_min",
+          "bed_id",
+          "pressure_drop_kPa",
+          "headloss_kPa_per_m",
+          "flow_Lmin",
+          "matched_lab_sample_time_min",
+          "regeneration_event",
+          "hydraulic_anomaly_label"
+        ],
+        "row_count": 0,
+        "valid_pressure_headloss_event_count": 0,
+        "valid_pressure_headloss_batch_count": 0,
+        "valid_pressure_headloss_batch_ids": [],
+        "invalid_pressure_headloss_event_count": 0,
+        "invalid_pressure_headloss_event_rows": [],
+        "pressure_headloss_class_counts": {
+          "hydraulic_anomaly_label_true": 0,
+          "hydraulic_anomaly_label_false": 0,
+          "regeneration_event_true": 0,
+          "regeneration_event_false": 0
+        },
+        "quality_pass": false,
+        "quality_note": "Valid pressure/headloss events require same-batch bed_id, parseable non-negative pressure/headloss signals, positive flow, parseable matched lab sample time and hydraulic/regeneration labels."
+      },
+      "missing_row_tables": [
+        "sensor_timeseries",
+        "offline_lab_results",
+        "campaign_operation_log",
+        "fast_proxy_event_log",
+        "pressure_headloss_event_log"
+      ],
+      "time_order_violation_count": 0,
+      "time_order_violations": {
+        "sensor_timeseries": [],
+        "offline_lab_results": [],
+        "campaign_operation_log": [],
+        "fast_proxy_event_log": [],
+        "pressure_headloss_event_log": []
+      },
+      "status": "minimum_replay_contract_blocked_missing_rows",
+      "contract_pass": false,
+      "batch_linkage_requirement": "At least three batch_id values should appear across sensor_timeseries, offline_lab_results, campaign_operation_log, fast_proxy_event_log and pressure_headloss_event_log for an Agent42 smoke replay.",
+      "valid_matched_batch_requirement": "At least three common batch_id values should also have QA-passed offline lab results and valid operation actions, field-labeled fast-proxy events and valid pressure/headloss events on the same batch_id.",
+      "time_order_constraints": [
+        "offline_lab_results: sample_time_min <= result_time_min",
+        "campaign_operation_log: command_time_min <= effect_time_min <= end_min and start_min <= end_min",
+        "fast_proxy_event_log: event_time_min <= lab_label_time_min"
+      ],
+      "calibration_note": "Three matched batches are a smoke-test floor; field calibration should target at least 12 proxy events before protective control tuning."
+    },
+    "field_evidence_sufficiency_gate": {
+      "gate_id": "R7_field_evidence_sufficiency_gate",
+      "field_evidence_sufficiency_status": "field_evidence_sufficiency_blocked_before_import",
+      "field_evidence_sufficiency_score": 0.26,
+      "field_evidence_smoke_pass": false,
+      "field_evidence_calibration_volume_pass": false,
+      "minimum_smoke_matched_batch_count": 3,
+      "recommended_calibration_proxy_event_count": 12,
+      "current_valid_matched_batch_count": 0,
+      "current_valid_proxy_label_count": 0,
+      "current_proxy_event_count": 0,
+      "checks": [
+        {
+          "check_id": "field_origin_import",
+          "requirement": "Field provenance/import preflight is ready.",
+          "passed": false,
+          "weight": 0.2,
+          "blocking_reason": "field package import/preflight is not ready"
+        },
+        {
+          "check_id": "claim_specific_rows",
+          "requirement": "Claim-specific required rows and fields are sufficiently covered.",
+          "passed": false,
+          "weight": 0.12,
+          "blocking_reason": "claim-specific field rows or required fields are missing"
+        },
+        {
+          "check_id": "soft_sensor_holdout_labels",
+          "requirement": "Soft-sensor holdout labels and weak targets are present.",
+          "passed": false,
+          "weight": 0.12,
+          "blocking_reason": "soft-sensor holdout labels or weak-target analytes are missing"
+        },
+        {
+          "check_id": "catalyst_proxy_holdout",
+          "requirement": "Catalyst proxy holdout contract is satisfied when requested.",
+          "passed": false,
+          "weight": 0.14,
+          "blocking_reason": "catalyst proxy holdout evidence is missing or blocked"
+        },
+        {
+          "check_id": "minimum_replay_contract",
+          "requirement": "Minimum same-batch timestamped replay contract is satisfied.",
+          "passed": false,
+          "weight": 0.16,
+          "blocking_reason": "minimum replay contract is not satisfied"
+        },
+        {
+          "check_id": "temporal_alignment",
+          "requirement": "Sensor/lab/operation/proxy timing has no detected ordering violation.",
+          "passed": true,
+          "weight": 0.08,
+          "blocking_reason": ""
+        },
+        {
+          "check_id": "pressure_conflict_resolution",
+          "requirement": "Pressure/headloss source conflicts are absent or operator-resolved.",
+          "passed": true,
+          "weight": 0.08,
+          "blocking_reason": ""
+        },
+        {
+          "check_id": "no_write_boundary",
+          "requirement": "Coverage gate cannot write actuator or release-gate policy.",
+          "passed": true,
+          "weight": 0.1,
+          "blocking_reason": ""
+        }
+      ],
+      "blocking_reasons": [
+        "field package import/preflight is not ready",
+        "claim-specific field rows or required fields are missing",
+        "soft-sensor holdout labels or weak-target analytes are missing",
+        "catalyst proxy holdout evidence is missing or blocked",
+        "minimum replay contract is not satisfied"
+      ],
+      "can_route_to_agent42_smoke_replay": false,
+      "can_route_to_field_holdout": false,
+      "can_route_to_human_review_candidate": false,
+      "field_supported_claim_upgrade_ready": false,
+      "control_candidate_ready": false,
+      "release_gate_candidate_ready": false,
+      "no_write_boundary_pass": true,
+      "no_write_boundary": {
+        "can_write_to_actuator": false,
+        "can_write_to_release_gate": false,
+        "can_write_field_supported_claim": false,
+        "why": "This gate only proves data sufficiency for replay, holdout, and human-review queueing. Field-supported claims, actuator candidates, and release-gate candidates require downstream R7 gates."
+      },
+      "field_boundary": "A sufficient field package is not a deployed-control result. It only permits downstream replay, field holdout, unified evidence review, and human review."
+    },
+    "readiness": {
+      "field_package_coverage_status": "field_package_coverage_blocked_before_import",
+      "claim_need_count": 5,
+      "claim_need_pass_count": 0,
+      "claim_specific_coverage_rate": 0.0,
+      "soft_holdout_coverage_pass": false,
+      "field_proxy_holdout_status": "field_proxy_holdout_coverage_gaps",
+      "field_proxy_holdout_required": true,
+      "field_proxy_holdout_coverage_pass": false,
+      "field_proxy_holdout_matched_batch_count": 0,
+      "field_proxy_holdout_minimum_matched_batch_count": 3,
+      "pressure_source_conflict_count": 0,
+      "resolved_pressure_source_conflict_count": 0,
+      "unresolved_pressure_source_conflict_count": 0,
+      "pressure_source_resolution_record_count": 0,
+      "pressure_source_conflict_requires_operator_review": false,
+      "pressure_source_conflict_batch_ids_sample": [],
+      "unresolved_pressure_source_conflict_batch_ids_sample": [],
+      "field_package_pressure_conflict_resolution_status": "pressure_source_conflict_resolution_clear",
+      "field_package_pressure_conflict_resolution_ready": true,
+      "preflight_status": "field_package_template_ready_needs_real_values_and_rows",
+      "minimum_replay_contract_status": "minimum_replay_contract_blocked_missing_rows",
+      "minimum_replay_contract_pass": false,
+      "minimum_common_batch_count": 0,
+      "minimum_valid_matched_batch_count": 0,
+      "minimum_valid_operation_action_count": 0,
+      "minimum_invalid_operation_action_count": 0,
+      "minimum_valid_lab_result_count": 0,
+      "minimum_invalid_lab_result_count": 0,
+      "minimum_proxy_event_count": 0,
+      "minimum_valid_proxy_label_count": 0,
+      "minimum_invalid_proxy_label_count": 0,
+      "minimum_pressure_headloss_event_count": 0,
+      "minimum_valid_pressure_headloss_event_count": 0,
+      "minimum_invalid_pressure_headloss_event_count": 0,
+      "minimum_valid_pressure_headloss_batch_count": 0,
+      "minimum_time_order_violation_count": 0,
+      "can_support_claim_specific_review": false,
+      "can_support_soft_sensor_holdout": false,
+      "can_support_agent51_field_proxy_holdout": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_evidence_sufficiency_gate": {
+        "gate_id": "R7_field_evidence_sufficiency_gate",
+        "field_evidence_sufficiency_status": "field_evidence_sufficiency_blocked_before_import",
+        "field_evidence_sufficiency_score": 0.26,
+        "field_evidence_smoke_pass": false,
+        "field_evidence_calibration_volume_pass": false,
+        "minimum_smoke_matched_batch_count": 3,
+        "recommended_calibration_proxy_event_count": 12,
+        "current_valid_matched_batch_count": 0,
+        "current_valid_proxy_label_count": 0,
+        "current_proxy_event_count": 0,
+        "checks": [
+          {
+            "check_id": "field_origin_import",
+            "requirement": "Field provenance/import preflight is ready.",
+            "passed": false,
+            "weight": 0.2,
+            "blocking_reason": "field package import/preflight is not ready"
+          },
+          {
+            "check_id": "claim_specific_rows",
+            "requirement": "Claim-specific required rows and fields are sufficiently covered.",
+            "passed": false,
+            "weight": 0.12,
+            "blocking_reason": "claim-specific field rows or required fields are missing"
+          },
+          {
+            "check_id": "soft_sensor_holdout_labels",
+            "requirement": "Soft-sensor holdout labels and weak targets are present.",
+            "passed": false,
+            "weight": 0.12,
+            "blocking_reason": "soft-sensor holdout labels or weak-target analytes are missing"
+          },
+          {
+            "check_id": "catalyst_proxy_holdout",
+            "requirement": "Catalyst proxy holdout contract is satisfied when requested.",
+            "passed": false,
+            "weight": 0.14,
+            "blocking_reason": "catalyst proxy holdout evidence is missing or blocked"
+          },
+          {
+            "check_id": "minimum_replay_contract",
+            "requirement": "Minimum same-batch timestamped replay contract is satisfied.",
+            "passed": false,
+            "weight": 0.16,
+            "blocking_reason": "minimum replay contract is not satisfied"
+          },
+          {
+            "check_id": "temporal_alignment",
+            "requirement": "Sensor/lab/operation/proxy timing has no detected ordering violation.",
+            "passed": true,
+            "weight": 0.08,
+            "blocking_reason": ""
+          },
+          {
+            "check_id": "pressure_conflict_resolution",
+            "requirement": "Pressure/headloss source conflicts are absent or operator-resolved.",
+            "passed": true,
+            "weight": 0.08,
+            "blocking_reason": ""
+          },
+          {
+            "check_id": "no_write_boundary",
+            "requirement": "Coverage gate cannot write actuator or release-gate policy.",
+            "passed": true,
+            "weight": 0.1,
+            "blocking_reason": ""
+          }
+        ],
+        "blocking_reasons": [
+          "field package import/preflight is not ready",
+          "claim-specific field rows or required fields are missing",
+          "soft-sensor holdout labels or weak-target analytes are missing",
+          "catalyst proxy holdout evidence is missing or blocked",
+          "minimum replay contract is not satisfied"
+        ],
+        "can_route_to_agent42_smoke_replay": false,
+        "can_route_to_field_holdout": false,
+        "can_route_to_human_review_candidate": false,
+        "field_supported_claim_upgrade_ready": false,
+        "control_candidate_ready": false,
+        "release_gate_candidate_ready": false,
+        "no_write_boundary_pass": true,
+        "no_write_boundary": {
+          "can_write_to_actuator": false,
+          "can_write_to_release_gate": false,
+          "can_write_field_supported_claim": false,
+          "why": "This gate only proves data sufficiency for replay, holdout, and human-review queueing. Field-supported claims, actuator candidates, and release-gate candidates require downstream R7 gates."
+        },
+        "field_boundary": "A sufficient field package is not a deployed-control result. It only permits downstream replay, field holdout, unified evidence review, and human review."
+      },
+      "field_evidence_sufficiency_status": "field_evidence_sufficiency_blocked_before_import",
+      "field_evidence_sufficiency_score": 0.26,
+      "field_evidence_smoke_pass": false,
+      "field_evidence_calibration_volume_pass": false,
+      "can_route_to_agent42_smoke_replay": false,
+      "can_route_to_field_holdout": false,
+      "can_route_to_human_review_candidate": false,
+      "field_supported_claim_upgrade_ready": false,
+      "control_candidate_ready": false,
+      "release_gate_candidate_ready": false,
+      "no_write_boundary_pass": true
+    },
+    "next_actions": [
+      "Fix preflight/import blockers before interpreting claim or soft-holdout coverage."
+    ],
+    "patch_plan": {
+      "patch_plan_status": "patch_plan_blocked_at_import_preflight",
+      "next_blocking_stage": "R7a_import_preflight",
+      "item_count": 6,
+      "items": [
+        {
+          "item_id": "R7A_METADATA_PLACEHOLDERS",
+          "stage": "preflight",
+          "target_file": "metadata.json",
+          "action": "replace_placeholder_metadata_with_real_provenance",
+          "fields_to_fill": [
+            "site_id",
+            "campaign_id",
+            "sampling_start",
+            "sampling_end",
+            "operator_id",
+            "instrument_snapshot_id",
+            "chain_of_custody_id"
+          ],
+          "minimum_evidence": "真实 site/campaign/time/operator/instrument/custody provenance。",
+          "why_required": "placeholder metadata cannot establish field origin or chain of custody."
+        },
+        {
+          "item_id": "R7A_REAL_ROWS_campaign_operation_log",
+          "stage": "preflight",
+          "target_table": "campaign_operation_log",
+          "action": "add_real_timestamped_rows",
+          "minimum_rows": 1,
+          "recommended_rows": "At least 3 matched batches for replay smoke tests; more for holdout calibration.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates."
+        },
+        {
+          "item_id": "R7A_REAL_ROWS_fast_proxy_event_log",
+          "stage": "preflight",
+          "target_table": "fast_proxy_event_log",
+          "action": "add_real_timestamped_rows",
+          "minimum_rows": 1,
+          "recommended_rows": "At least 3 matched batches for replay smoke tests; more for holdout calibration.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates."
+        },
+        {
+          "item_id": "R7A_REAL_ROWS_offline_lab_results",
+          "stage": "preflight",
+          "target_table": "offline_lab_results",
+          "action": "add_real_timestamped_rows",
+          "minimum_rows": 1,
+          "recommended_rows": "At least 3 matched batches for replay smoke tests; more for holdout calibration.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates."
+        },
+        {
+          "item_id": "R7A_REAL_ROWS_pressure_headloss_event_log",
+          "stage": "preflight",
+          "target_table": "pressure_headloss_event_log",
+          "action": "add_real_timestamped_rows",
+          "minimum_rows": 1,
+          "recommended_rows": "At least 3 matched batches for replay smoke tests; more for holdout calibration.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates."
+        },
+        {
+          "item_id": "R7A_REAL_ROWS_sensor_timeseries",
+          "stage": "preflight",
+          "target_table": "sensor_timeseries",
+          "action": "add_real_timestamped_rows",
+          "minimum_rows": 1,
+          "recommended_rows": "At least 3 matched batches for replay smoke tests; more for holdout calibration.",
+          "why_required": "header-only CSVs cannot enter timestamped replay or field evidence gates."
+        }
+      ],
+      "operator_checklist": [
+        "R7A_METADATA_PLACEHOLDERS: replace_placeholder_metadata_with_real_provenance",
+        "R7A_REAL_ROWS_campaign_operation_log: add_real_timestamped_rows",
+        "R7A_REAL_ROWS_fast_proxy_event_log: add_real_timestamped_rows",
+        "R7A_REAL_ROWS_offline_lab_results: add_real_timestamped_rows",
+        "R7A_REAL_ROWS_pressure_headloss_event_log: add_real_timestamped_rows",
+        "R7A_REAL_ROWS_sensor_timeseries: add_real_timestamped_rows",
+        "After patching, rerun Agent44 preflight before interpreting claim or holdout coverage."
+      ],
+      "can_execute_without_real_field_values": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_boundary": "Patch plan items only describe missing evidence needed for replay and claim review. They do not authorize field-supported claims, actuator writeback or release-gate writeback."
+    }
+  },
+  "agent51_field_proxy_holdout_summary": {
+    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "summary_id": "Agent51_catalyst_proxy_field_holdout_summary",
+    "field_proxy_holdout_summary_status": "field_proxy_holdout_coverage_gaps",
+    "source_basis": "field_package_extractor",
+    "evidence_stage": "field_proxy_holdout_candidate",
+    "minimum_batch_count": 3,
+    "missing_required_tables": [],
+    "missing_required_signals": [
+      "N3_catalyst_bed_outlet:UV254_abs",
+      "N3_catalyst_bed_outlet:ORP_mV",
+      "N3_catalyst_bed:pressure_drop_kPa"
+    ],
+    "matched_batch_count": 0,
+    "matched_batch_ids_sample": [],
+    "scoreable_batch_count": 0,
+    "ready_for_agent51_validation": false,
+    "field_validation_pass": false,
+    "field_validation_metrics": {
+      "field_label_coverage": 0.0,
+      "proxy_label_correlation": 0.0,
+      "holdout_mae": 1.0,
+      "scoreable_batch_count": 0,
+      "matched_batch_count": 0
+    },
+    "required_node_signals": [
+      "N3_catalyst_bed:pressure_drop_kPa",
+      "N3_catalyst_bed_outlet:ORP_mV",
+      "N3_catalyst_bed_outlet:UV254_abs"
+    ],
+    "signal_batch_counts": {
+      "N3_catalyst_bed:pressure_drop_kPa": 0,
+      "N3_catalyst_bed_outlet:ORP_mV": 0,
+      "N3_catalyst_bed_outlet:UV254_abs": 0
+    },
+    "accepted_pressure_evidence_sources": [],
+    "pressure_headloss_event_source_batch_count": 0,
+    "pressure_evidence_source_batch_counts": {
+      "node_modality_sensor_timeseries": 0,
+      "pressure_headloss_event_log": 0,
+      "source_conflict_requires_operator_review": 0
+    },
+    "pressure_source_priority_policy": "Use node_modality_sensor_timeseries pressure_drop_kPa when available, fill missing pressure from pressure_headloss_event_log, and block scoreability when both sources conflict beyond tolerance.",
+    "pressure_source_conflict_count": 0,
+    "pressure_source_conflicts": [],
+    "resolved_pressure_source_conflict_count": 0,
+    "unresolved_pressure_source_conflict_count": 0,
+    "unresolved_pressure_source_conflicts": [],
+    "pressure_source_resolutions": [],
+    "pressure_source_resolution_record_count": 0,
+    "pressure_source_resolution_invalid_rows": [],
+    "pressure_source_conflict_abs_tolerance_kPa": 1.0,
+    "pressure_source_conflict_rel_tolerance": 0.25,
+    "conflict_requires_operator_review": false,
+    "lab_label_batch_count": 0,
+    "operation_event_batch_count": 0,
+    "bed_geometry_available": false,
+    "feature_rows": [],
+    "invalid_rows": {
+      "node_modality_sensor_timeseries": [],
+      "pressure_headloss_event_log": [],
+      "pressure_source_resolution": [],
+      "offline_lab_results": [],
+      "campaign_operation_log": [],
+      "site_topology_or_bed_geometry": []
+    },
+    "boundary": "This summary only turns an R7j-ready package into Agent51 validation rows. It does not prove field-supported control, write actuators or write release gates.",
+    "can_relax_agent49_catalyst_uncertainty_block": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false
+  },
+  "import_report": {
+    "agent_name": "field_replay_import_agent",
+    "confidence": 0.417,
+    "summary": "现场 replay 导入门：field_replay_import_metadata_blocked；表验收 0/5，可进入 timestamped replay False。",
+    "recommendations": [
+      "不要把当前 replay 包传给 G6/P6；先补齐 metadata provenance、CSV 必需字段、类型转换和 batch 关联。",
+      "synthetic/sample 包只能用于接口联调，不得作为现场快代理 precision/recall 证据。",
+      "真实导入包至少应包含 data_origin=field、site_id、campaign_id、operator_id、instrument_snapshot_id 和 chain_of_custody_id。",
+      "若使用 pressure/headloss 作为水力代理，必须提供 pressure_headloss_event_log.csv，并确保每个 pressure batch 有同 batch 离线标签锚点。"
+    ],
+    "issue_types": [
+      "metadata_required_fields_missing",
+      "missing_table",
+      "missing_table",
+      "missing_table",
+      "missing_table",
+      "missing_table"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "field_replay_import_gate_before_timestamped_replay",
+        "borrowed_from": [
+          "academic_research_agent_evidence_before_claims",
+          "systematic_literature_review_data_extraction_gates",
+          "model_validation_and_uncertainty_provenance_checks",
+          "timestamped_campaign_replay_for_fast_proxy_validation"
+        ],
+        "reality_mapping": "把真实现场 replay 包从“几张 CSV”提升为可追溯、可类型验收、可 batch 回连的数据入口，防止 synthetic/sample 数据误入现场校准。",
+        "data_needs": [
+          "metadata.json",
+          "sensor_timeseries.csv",
+          "offline_lab_results.csv",
+          "campaign_operation_log.csv",
+          "fast_proxy_event_log.csv",
+          "pressure_headloss_event_log.csv",
+          "node_modality_sensor_timeseries.csv for Agent51 catalyst proxy holdout",
+          "site_topology_or_bed_geometry.csv for Agent51 catalyst proxy holdout",
+          "pressure/headloss batch labels and bed_id linkage",
+          "site_id",
+          "campaign_id",
+          "instrument_snapshot_id",
+          "chain_of_custody_id"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/field_replay_import_agent.py",
+          "experiments/run_agent44_field_replay_import.py",
+          "outputs/field_replay_import/import_acceptance_metrics.json"
+        ],
+        "evaluation_metrics": [
+          "field_replay_import_score",
+          "accepted_table_count",
+          "type_coercion_error_count",
+          "metadata_origin_ready",
+          "batch_linkage_status"
+        ],
+        "failure_boundary": "导入通过只代表现场 replay 包可进入 Agent42；不能替代 Agent42 replay 指标、Agent43 G6/P6 或真实污染物达标验证。"
+      },
+      "import_schema_contract": {
+        "metadata_required_fields": [
+          "data_origin",
+          "site_id",
+          "campaign_id",
+          "sampling_start",
+          "sampling_end",
+          "operator_id",
+          "instrument_snapshot_id",
+          "chain_of_custody_id"
+        ],
+        "table_contract": {
+          "sensor_timeseries": {
+            "description": "低成本传感原始时间序列，支撑快代理触发时间。",
+            "required_fields": [
+              "batch_id",
+              "timestamp_min",
+              "EC_uScm",
+              "turbidity_NTU",
+              "UV254_abs",
+              "pH",
+              "ORP_mV"
+            ],
+            "optional_fields": [
+              "flow_Lmin",
+              "pressure_drop_kPa",
+              "headloss_kPa_per_m",
+              "bed_inlet_pressure_kPa",
+              "bed_outlet_pressure_kPa"
+            ],
+            "timestamp_fields": [
+              "timestamp_min"
+            ],
+            "primary_key": [
+              "batch_id",
+              "timestamp_min"
+            ]
+          },
+          "offline_lab_results": {
+            "description": "离线标签与结果返回时间，用于计算检测 turnaround 和快代理标签。",
+            "required_fields": [
+              "batch_id",
+              "sample_time_min",
+              "result_time_min",
+              "analyte",
+              "value",
+              "qa_flag"
+            ],
+            "optional_fields": [
+              "proxy_holdout_label",
+              "catalyst_activity_label",
+              "pressure_headloss_proxy_label"
+            ],
+            "timestamp_fields": [
+              "sample_time_min",
+              "result_time_min"
+            ],
+            "primary_key": [
+              "batch_id",
+              "sample_time_min",
+              "analyte"
+            ]
+          },
+          "campaign_operation_log": {
+            "description": "控制动作命令、执行和生效时间，用于计算执行器/预处理延迟。",
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "action_id",
+              "command_time_min",
+              "effect_time_min",
+              "start_min",
+              "end_min",
+              "release_policy"
+            ],
+            "optional_fields": [
+              "recycle_ratio",
+              "tank_storage_margin",
+              "actuator_latency_p90",
+              "pump_valve_result",
+              "hold_time_min",
+              "regeneration_event",
+              "bed_id",
+              "pressure_headloss_review_required"
+            ],
+            "timestamp_fields": [
+              "command_time_min",
+              "effect_time_min",
+              "start_min",
+              "end_min"
+            ],
+            "primary_key": [
+              "campaign_id",
+              "batch_id",
+              "action_id",
+              "command_time_min"
+            ]
+          },
+          "pressure_headloss_event_log": {
+            "description": "压降/水头损失候选代理事件，用于 replay 催化剂床堵塞、水力异常和 guardrail 阻断边界。",
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "event_time_min",
+              "bed_id",
+              "pressure_drop_kPa",
+              "headloss_kPa_per_m",
+              "flow_Lmin",
+              "matched_lab_sample_time_min",
+              "regeneration_event",
+              "hydraulic_anomaly_label"
+            ],
+            "optional_fields": [
+              "flow_normalized_pressure_residual",
+              "expected_clean_bed_pressure_drop_kPa",
+              "operator_review_required"
+            ],
+            "timestamp_fields": [
+              "event_time_min",
+              "matched_lab_sample_time_min"
+            ],
+            "primary_key": [
+              "campaign_id",
+              "batch_id",
+              "bed_id",
+              "event_time_min"
+            ]
+          },
+          "fast_proxy_event_log": {
+            "description": "基质冲击快代理事件与现场标签，用于 precision/recall、提前量和误触发成本校准。",
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "event_time_min",
+              "proxy_score",
+              "specificity_guard_score",
+              "protective_triggered",
+              "triggered_action_id",
+              "field_label_matrix_shock",
+              "lab_label_time_min",
+              "false_positive_cost_index"
+            ],
+            "timestamp_fields": [
+              "event_time_min",
+              "lab_label_time_min"
+            ],
+            "primary_key": [
+              "campaign_id",
+              "batch_id",
+              "event_time_min"
+            ]
+          }
+        },
+        "template_headers": {
+          "sensor_timeseries": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "offline_lab_results": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag",
+            "proxy_holdout_label",
+            "catalyst_activity_label",
+            "pressure_headloss_proxy_label",
+            "lab_label_time_min",
+            "detection_limit",
+            "method",
+            "unit",
+            "sample_source"
+          ],
+          "campaign_operation_log": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "hold_time_min",
+            "regeneration_event",
+            "bed_id",
+            "pressure_headloss_review_required",
+            "operator_override"
+          ],
+          "pressure_headloss_event_log": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa",
+            "operator_review_required"
+          ],
+          "fast_proxy_event_log": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "node_modality_sensor_timeseries": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "zone",
+            "modality",
+            "value",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min",
+            "layout_id",
+            "availability_mask",
+            "time_since_last_observed_min",
+            "data_origin",
+            "sensor_value"
+          ],
+          "site_topology_or_bed_geometry": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin",
+            "site_id",
+            "zone",
+            "upstream_node_id",
+            "downstream_node_id",
+            "path_stage_id",
+            "hydraulic_path_role",
+            "nominal_flow_Lmin",
+            "recycle_ratio",
+            "release_boundary_flag",
+            "recirculation_loop_flag"
+          ],
+          "hydraulic_path_stage_labels": [
+            "batch_id",
+            "layout_id",
+            "node_id",
+            "zone",
+            "path_stage_id",
+            "hydraulic_path_role",
+            "stage_coverage_label",
+            "direct_path_stage_coverage_label",
+            "proxy_path_stage_coverage_label",
+            "label_source",
+            "reviewer_id",
+            "review_time_min"
+          ],
+          "final_effluent_endpoint_labels": [
+            "batch_id",
+            "endpoint_node_id",
+            "sample_time_min",
+            "final_effluent_direct_observed",
+            "release_gate_label",
+            "release_risk_label",
+            "analyte",
+            "value",
+            "unit",
+            "qa_flag",
+            "reviewer_id"
+          ]
+        },
+        "optional_supplement_files": [
+          "node_modality_sensor_timeseries.csv",
+          "site_topology_or_bed_geometry.csv"
+        ],
+        "r7j_catalyst_proxy_holdout_template": {
+          "headers": {
+            "sensor_timeseries": [
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ],
+            "node_modality_sensor_timeseries": [
+              "batch_id",
+              "timestamp_min",
+              "node_id",
+              "zone",
+              "modality",
+              "value",
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ],
+            "offline_lab_results": [
+              "lab_label_time_min",
+              "detection_limit",
+              "method",
+              "unit"
+            ],
+            "site_topology_or_bed_geometry": [
+              "node_id",
+              "bed_volume",
+              "nominal_HRT_min",
+              "flow_Lmin"
+            ]
+          },
+          "minimum_matched_batch_count": 3,
+          "required_patch_signals": [
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "field_boundary": "Optional for Agent44 import; required by R7j when Agent51 weak_axis_repair_plan is evaluated."
+        },
+        "numeric_fields": {
+          "sensor_timeseries": [
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "acquisition_time_min",
+            "ingest_time_min",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa"
+          ],
+          "node_modality_sensor_timeseries": [
+            "timestamp_min",
+            "value",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "offline_lab_results": [
+            "sample_time_min",
+            "result_time_min",
+            "value",
+            "lab_label_time_min"
+          ],
+          "campaign_operation_log": [
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "hold_time_min"
+          ],
+          "fast_proxy_event_log": [
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "pressure_headloss_event_log": [
+            "event_time_min",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa"
+          ]
+        },
+        "boolean_fields": {
+          "offline_lab_results": [
+            "proxy_holdout_label",
+            "pressure_headloss_proxy_label"
+          ],
+          "campaign_operation_log": [
+            "regeneration_event",
+            "pressure_headloss_review_required"
+          ],
+          "fast_proxy_event_log": [
+            "protective_triggered",
+            "field_label_matrix_shock"
+          ],
+          "pressure_headloss_event_log": [
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "operator_review_required"
+          ]
+        }
+      },
+      "metadata": {
+        "data_origin": "field",
+        "site_id": "TODO_REAL_SITE_ID",
+        "campaign_id": "TODO_REAL_CAMPAIGN_ID",
+        "sampling_start": "TODO_ISO8601_START_TIME",
+        "sampling_end": "TODO_ISO8601_END_TIME",
+        "operator_id": "TODO_REAL_OPERATOR_ID",
+        "instrument_snapshot_id": "TODO_SENSOR_AND_LAB_INSTRUMENT_SNAPSHOT_ID",
+        "chain_of_custody_id": "TODO_SIGNED_CHAIN_OF_CUSTODY_ID",
+        "notes": "Replace every TODO value before running Agent44 as real field evidence."
+      },
+      "metadata_audit": {
+        "status": "metadata_required_fields_missing",
+        "data_origin": "field",
+        "expected_data_origin": "field",
+        "origin_ready": true,
+        "missing_required_fields": [
+          "site_id",
+          "campaign_id",
+          "sampling_start",
+          "sampling_end",
+          "operator_id",
+          "instrument_snapshot_id",
+          "chain_of_custody_id"
+        ],
+        "provenance_fields": {
+          "site_id": "TODO_REAL_SITE_ID",
+          "campaign_id": "TODO_REAL_CAMPAIGN_ID",
+          "operator_id": "TODO_REAL_OPERATOR_ID",
+          "instrument_snapshot_id": "TODO_SENSOR_AND_LAB_INSTRUMENT_SNAPSHOT_ID",
+          "chain_of_custody_id": "TODO_SIGNED_CHAIN_OF_CUSTODY_ID"
+        }
+      },
+      "table_import_audit": {
+        "sensor_timeseries": {
+          "record_count": 0,
+          "normalized_record_count": 0,
+          "required_fields": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV"
+          ],
+          "missing_required_fields": [
+            "EC_uScm",
+            "ORP_mV",
+            "UV254_abs",
+            "batch_id",
+            "pH",
+            "timestamp_min",
+            "turbidity_NTU"
+          ],
+          "numeric_fields": [
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "acquisition_time_min",
+            "ingest_time_min",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa"
+          ],
+          "boolean_fields": [],
+          "type_errors": [],
+          "status": "missing_table"
+        },
+        "offline_lab_results": {
+          "record_count": 0,
+          "normalized_record_count": 0,
+          "required_fields": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag"
+          ],
+          "missing_required_fields": [
+            "analyte",
+            "batch_id",
+            "qa_flag",
+            "result_time_min",
+            "sample_time_min",
+            "value"
+          ],
+          "numeric_fields": [
+            "sample_time_min",
+            "result_time_min",
+            "value",
+            "lab_label_time_min"
+          ],
+          "boolean_fields": [
+            "proxy_holdout_label",
+            "pressure_headloss_proxy_label"
+          ],
+          "type_errors": [],
+          "status": "missing_table"
+        },
+        "campaign_operation_log": {
+          "record_count": 0,
+          "normalized_record_count": 0,
+          "required_fields": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy"
+          ],
+          "missing_required_fields": [
+            "action_id",
+            "batch_id",
+            "campaign_id",
+            "command_time_min",
+            "effect_time_min",
+            "end_min",
+            "release_policy",
+            "start_min"
+          ],
+          "numeric_fields": [
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "hold_time_min"
+          ],
+          "boolean_fields": [
+            "regeneration_event",
+            "pressure_headloss_review_required"
+          ],
+          "type_errors": [],
+          "status": "missing_table"
+        },
+        "pressure_headloss_event_log": {
+          "record_count": 0,
+          "normalized_record_count": 0,
+          "required_fields": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label"
+          ],
+          "missing_required_fields": [
+            "batch_id",
+            "bed_id",
+            "campaign_id",
+            "event_time_min",
+            "flow_Lmin",
+            "headloss_kPa_per_m",
+            "hydraulic_anomaly_label",
+            "matched_lab_sample_time_min",
+            "pressure_drop_kPa",
+            "regeneration_event"
+          ],
+          "numeric_fields": [
+            "event_time_min",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa"
+          ],
+          "boolean_fields": [
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "operator_review_required"
+          ],
+          "type_errors": [],
+          "status": "missing_table"
+        },
+        "fast_proxy_event_log": {
+          "record_count": 0,
+          "normalized_record_count": 0,
+          "required_fields": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "missing_required_fields": [
+            "batch_id",
+            "campaign_id",
+            "event_time_min",
+            "false_positive_cost_index",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "protective_triggered",
+            "proxy_score",
+            "specificity_guard_score",
+            "triggered_action_id"
+          ],
+          "numeric_fields": [
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "boolean_fields": [
+            "protective_triggered",
+            "field_label_matrix_shock"
+          ],
+          "type_errors": [],
+          "status": "missing_table"
+        }
+      },
+      "linkage_audit": {
+        "status": "linkage_ready",
+        "sensor_batch_count": 0,
+        "lab_batch_count": 0,
+        "operation_batch_count": 0,
+        "proxy_batch_count": 0,
+        "pressure_headloss_batch_count": 0,
+        "orphan_reference_batches": [],
+        "unlabeled_proxy_batches": [],
+        "pressure_headloss_without_lab_batches": [],
+        "operation_without_proxy_batches": []
+      },
+      "readiness": {
+        "field_replay_import_status": "field_replay_import_metadata_blocked",
+        "field_replay_import_score": 0.54,
+        "accepted_table_count": 0,
+        "total_table_count": 5,
+        "accepted_data_origin": "blocked",
+        "can_pass_to_timestamped_replay": false,
+        "can_pass_to_g6": false,
+        "can_write_to_protective_control": false
+      },
+      "export_policy": {
+        "allowed_downstream_agent": "none",
+        "blocked_downstream_agents": [
+          "TimestampedCampaignReplayAgent",
+          "FieldReplayCalibrationGateAgent"
+        ],
+        "can_write_to_protective_control": false,
+        "writeback_boundary": "Agent44 只负责导入验收；保护性控制写回必须继续通过 Agent42 replay 和 Agent43 G6/P6。"
+      }
+    }
+  },
+  "field_replay_evidence_chain_report": {
+    "agent_name": "field_replay_evidence_chain_agent",
+    "confidence": 0.295,
+    "summary": "现场 replay 证据链：field_replay_evidence_chain_blocked_at_import；导入通过 False，G6 保护性候选 False。",
+    "recommendations": [
+      "先补真实 metadata.json 与四张 replay CSV，并通过 Agent44；不要单独运行 Agent42/Agent43 来绕过导入门。",
+      "synthetic/sample 包只能作为接口联调，不能产生任何现场保护性写回候选。"
+    ],
+    "issue_types": [
+      "import_gate_not_passed"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "field_replay_import_to_g6_evidence_chain",
+        "borrowed_from": [
+          "academic_research_agent_evidence_before_claims",
+          "model_validation_and_uncertainty_provenance_checks",
+          "timestamped_campaign_replay_for_fast_proxy_validation",
+          "field_replay_calibration_gate_for_fast_proxy_writeback"
+        ],
+        "reality_mapping": "把 Agent44 导入门、Agent42 时间戳回放和 Agent43 G6/P6 变成不可绕过的现场校准证据链，只有完整链条通过才形成保护性控制写回候选。",
+        "data_needs": [
+          "agent44_import_ready_report",
+          "normalized_field_replay_datasets",
+          "field_label_matrix_shock",
+          "result_time_min",
+          "effect_time_min",
+          "false_positive_cost_index",
+          "matrix_fast_proxy_release_boundary"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/field_replay_evidence_chain_agent.py",
+          "experiments/run_agent45_field_replay_evidence_chain.py",
+          "outputs/field_replay_evidence_chain/evidence_chain_metrics.json"
+        ],
+        "evaluation_metrics": [
+          "field_replay_evidence_chain_score",
+          "import_ready",
+          "timestamped_replay_ready",
+          "g6_ready",
+          "can_emit_protective_writeback_candidate"
+        ],
+        "failure_boundary": "证据链通过也只形成保护性控制候选，不能自动写入现场 PLC/SCADA，不能替代 release gate、污染物达标或 field conformal calibration。"
+      },
+      "import_stage": {
+        "import_ready": false,
+        "import_status": "field_replay_import_metadata_blocked",
+        "data_origin": "field",
+        "accepted_table_count": 0,
+        "total_table_count": 5,
+        "can_pass_to_timestamped_replay": false,
+        "can_pass_to_g6": false,
+        "blocking_reasons": [
+          "field_replay_import_metadata_blocked"
+        ]
+      },
+      "timestamped_replay_stage": {
+        "stage_name": "timestamped_campaign_replay",
+        "stage_status": "not_run"
+      },
+      "g6_stage": {
+        "stage_name": "field_replay_calibration_gate",
+        "stage_status": "not_run"
+      },
+      "writeback_candidate": {
+        "target_agent": "MatrixShockFastProxyAgent",
+        "candidate_type": "no_candidate",
+        "can_emit_protective_writeback_candidate": false,
+        "can_write_to_release_gate": false,
+        "requires_human_review_before_application": true,
+        "source_chain": [
+          "FieldReplayImportAgent",
+          "TimestampedCampaignReplayAgent",
+          "FieldReplayCalibrationGateAgent"
+        ],
+        "g6_writeback_policy": {}
+      },
+      "readiness": {
+        "field_replay_evidence_chain_status": "field_replay_evidence_chain_blocked_at_import",
+        "field_replay_evidence_chain_score": 0.0,
+        "import_ready": false,
+        "timestamped_replay_ready": false,
+        "g6_ready": false,
+        "timestamped_replay_status": "not_run",
+        "field_replay_gate_status": "not_run",
+        "can_emit_protective_writeback_candidate": false,
+        "can_write_to_release_gate": false
+      }
+    }
+  },
+  "r7_acceptance": {
+    "method_contract": {
+      "upgrade_id": "R7_real_field_package_import_acceptance_gate",
+      "borrowed_from": [
+        "field data package acceptance gates",
+        "timestamped campaign replay validation",
+        "soft sensor field holdout release gate",
+        "multi-facility replay control-promotion gate",
+        "evidence-before-claims workflow",
+        "human-reviewed field deployment gate"
+      ],
+      "reality_mapping": "把真实 sensor/lab/operation/catalyst 数据包导入、timestamped replay、G6/P6 保护性控制门、软传感 field holdout 和 claim-specific 采集包验收合成一个 R7 总门。",
+      "data_needs": [
+        "metadata.json with data_origin=field",
+        "sensor_timeseries.csv",
+        "offline_lab_results.csv",
+        "campaign_operation_log.csv",
+        "fast_proxy_event_log.csv",
+        "catalyst_lifecycle.csv",
+        "claim-specific holdout labels and chain-of-custody metadata"
+      ],
+      "evaluation_metrics": [
+        "field_package_import_pass",
+        "timestamped_replay_pass",
+        "field_replay_evidence_chain_pass",
+        "multi_facility_control_promotion_pass",
+        "catalyst_proxy_field_validation_pass",
+        "soft_sensor_field_holdout_gate_pass",
+        "claim_specific_field_package_pass",
+        "field_supported_edge_ratio"
+      ],
+      "failure_boundary": "R7 can produce acceptance status and human-review candidates only. It must not treat synthetic templates as field replay, must not bypass offline lab confirmation, and must not auto-write actuator or release-gate policy."
+    },
+    "minimum_real_field_package": {
+      "metadata_required_fields": [
+        "data_origin",
+        "site_id",
+        "campaign_id",
+        "sampling_start",
+        "sampling_end",
+        "operator_id",
+        "instrument_snapshot_id",
+        "chain_of_custody_id"
+      ],
+      "metadata_required_values": {
+        "data_origin": "field"
+      },
+      "csv_tables": [
+        "sensor_timeseries.csv",
+        "offline_lab_results.csv",
+        "campaign_operation_log.csv",
+        "fast_proxy_event_log.csv",
+        "catalyst_lifecycle.csv",
+        "cost_deployment.csv"
+      ],
+      "guardrail_required_fields": [
+        "proxy_holdout_label",
+        "regeneration_event",
+        "tank_storage_margin",
+        "actuator_latency_p90",
+        "pump_valve_result",
+        "hold_time_min",
+        "recycle_ratio"
+      ],
+      "minimum_gate_sequence": [
+        "Agent44 field origin/import gate",
+        "Agent42 timestamped replay",
+        "Agent43 G6/P6 replay gate",
+        "Agent45 field replay evidence chain",
+        "Agent52 multi-facility replay promotion gate with Agent51 catalyst proxy holdout",
+        "Agent46 soft-sensor field holdout gate",
+        "human review before any release-gate calibration writeback"
+      ]
+    },
+    "acceptance_matrix": [
+      {
+        "stage_id": "R7S1_field_package_import",
+        "title": "真实 field package 导入与 provenance",
+        "status": "field_replay_import_metadata_blocked",
+        "passed": false,
+        "gate_metric": "can_pass_to_timestamped_replay",
+        "blocker": "field_package_not_imported_or_data_origin_not_field",
+        "evidence": {
+          "accepted_data_origin": "blocked",
+          "accepted_table_count": 0,
+          "total_table_count": 5
+        }
+      },
+      {
+        "stage_id": "R7S2_timestamped_replay",
+        "title": "sensor/lab/operation/proxy 同轴 replay",
+        "status": "not_available",
+        "passed": false,
+        "gate_metric": "timestamped_replay_ready",
+        "blocker": "timestamped_replay_not_field_ready",
+        "evidence": {
+          "timestamp_coverage": null,
+          "proxy_precision": null,
+          "proxy_recall": null
+        }
+      },
+      {
+        "stage_id": "R7S3_g6_p6_replay_gate",
+        "title": "G6/P6 replay gate 与保护性控制候选",
+        "status": "not_available",
+        "passed": false,
+        "gate_metric": "can_write_to_protective_control",
+        "blocker": "g6_p6_replay_gate_not_passed",
+        "evidence": {
+          "accepted_gate_count": null,
+          "total_gate_count": null,
+          "failed_gate_ids": []
+        }
+      },
+      {
+        "stage_id": "R7S4_field_replay_evidence_chain",
+        "title": "Agent44 -> Agent42 -> Agent43 -> Agent45 证据链",
+        "status": "field_replay_evidence_chain_blocked_at_import",
+        "passed": false,
+        "gate_metric": "can_emit_protective_writeback_candidate",
+        "blocker": "field_replay_evidence_chain_not_passed",
+        "evidence": {
+          "import_ready": false,
+          "timestamped_replay_ready": false,
+          "g6_ready": false
+        }
+      },
+      {
+        "stage_id": "R7S4b_multi_facility_control_promotion",
+        "title": "Agent49/52 多设施控制晋级与催化剂代理验证门",
+        "status": "synthetic_replay_evaluation_ready_needs_field_replay",
+        "passed": false,
+        "gate_metric": "field_ready_and_catalyst_proxy_field_validation_pass",
+        "blocker": "multi_facility_control_or_catalyst_proxy_holdout_not_passed",
+        "evidence": {
+          "field_ready": false,
+          "can_write_to_actuator_candidate": false,
+          "field_replay_coverage": 0.0,
+          "joint_action_accuracy": 0.667,
+          "mean_reward_regret": 0.055,
+          "catalyst_proxy_summary_status": "field_proxy_holdout_coverage_gaps",
+          "catalyst_proxy_scoreable_batch_count": 0,
+          "catalyst_proxy_field_validation_pass": false,
+          "catalyst_guardrail_mode": "agent51_holdout_coverage_gaps_keep_catalyst_guardrail"
+        }
+      },
+      {
+        "stage_id": "R7S5_soft_sensor_field_holdout",
+        "title": "软传感 field holdout release calibration gate",
+        "status": "soft_sensor_release_gate_blocked_non_field_holdout",
+        "passed": false,
+        "gate_metric": "can_write_to_release_gate",
+        "blocker": "soft_sensor_field_holdout_gate_not_passed",
+        "evidence": {
+          "passed_check_count": 5,
+          "total_check_count": 7,
+          "failed_check_ids": [
+            "SFG0_field_holdout_origin",
+            "SFG5_weak_target_coverage"
+          ]
+        }
+      },
+      {
+        "stage_id": "R7S6_claim_specific_field_package",
+        "title": "claim-specific 字段、source_basis 与真实 field rows",
+        "status": "claim_specific_package_ready_needs_real_data_and_source_basis_detail",
+        "passed": false,
+        "gate_metric": "minimal_field_package_field_pass_rate",
+        "blocker": "claim_specific_real_field_rows_not_passed",
+        "evidence": {
+          "source_basis_completion_rate": 1.0,
+          "minimal_field_package_schema_pass_rate": 1.0,
+          "minimal_field_package_field_pass_rate": 0.0
+        }
+      },
+      {
+        "stage_id": "R7S7_unified_field_evidence_gate",
+        "title": "统一 evidence gate 的 field-supported 升级判断",
+        "status": "unified_gate_ready_blocking_field_claim_upgrade",
+        "passed": false,
+        "gate_metric": "can_emit_field_claim_upgrade",
+        "blocker": "unified_field_evidence_gate_not_passed",
+        "evidence": {
+          "field_import_pass": false,
+          "field_replay_evidence_chain_pass": false,
+          "soft_sensor_field_holdout_gate_pass": false,
+          "field_supported_edge_ratio": 0.0
+        }
+      }
+    ],
+    "readiness": {
+      "real_field_package_acceptance_status": "real_field_package_acceptance_blocked_at_import",
+      "real_field_package_acceptance_score": 0.0,
+      "passed_stage_count": 0,
+      "total_stage_count": 8,
+      "failed_stage_ids": [
+        "R7S1_field_package_import",
+        "R7S2_timestamped_replay",
+        "R7S3_g6_p6_replay_gate",
+        "R7S4_field_replay_evidence_chain",
+        "R7S4b_multi_facility_control_promotion",
+        "R7S5_soft_sensor_field_holdout",
+        "R7S6_claim_specific_field_package",
+        "R7S7_unified_field_evidence_gate"
+      ],
+      "blocking_reasons": [
+        "field_package_not_imported_or_data_origin_not_field",
+        "timestamped_replay_not_field_ready",
+        "g6_p6_replay_gate_not_passed",
+        "field_replay_evidence_chain_not_passed",
+        "multi_facility_control_or_catalyst_proxy_holdout_not_passed",
+        "soft_sensor_field_holdout_gate_not_passed",
+        "claim_specific_real_field_rows_not_passed",
+        "unified_field_evidence_gate_not_passed"
+      ],
+      "field_package_import_pass": false,
+      "timestamped_replay_pass": false,
+      "field_replay_evidence_chain_pass": false,
+      "multi_facility_control_promotion_pass": false,
+      "catalyst_proxy_field_validation_pass": false,
+      "soft_sensor_field_holdout_gate_pass": false,
+      "claim_specific_field_package_pass": false,
+      "unified_field_evidence_gate_pass": false,
+      "can_emit_protective_control_candidate": false,
+      "can_emit_release_gate_calibration_candidate": false,
+      "can_emit_field_supported_claim_candidate": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "next_recommended_core_action": "R7a_import_real_field_package_with_metadata_and_csv"
+    },
+    "writeback_policy": {
+      "allowed_writeback": [
+        "R7_acceptance_status_for_governance",
+        "field_package_blocker_table"
+      ],
+      "blocked_writeback": [
+        "actuator_policy",
+        "automatic_release_gate_policy",
+        "field_control_effectiveness_claim_without_human_review",
+        "synthetic_template_as_field_evidence"
+      ],
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "policy_effect": "R7 can route real-field acceptance evidence to human review; it cannot auto-authorize control or discharge."
+    },
+    "next_refactor_action": {
+      "action_id": "R7a_import_real_field_package_with_metadata_and_csv",
+      "title": "导入 data_origin=field 的真实 metadata 与 CSV 包",
+      "reason": "field_package_not_imported_or_data_origin_not_field; timestamped_replay_not_field_ready; g6_p6_replay_gate_not_passed; field_replay_evidence_chain_not_passed; multi_facility_control_or_catalyst_proxy_holdout_not_passed; soft_sensor_field_holdout_gate_not_passed; claim_specific_real_field_rows_not_passed; unified_field_evidence_gate_not_passed",
+      "must_not_do": "不能把 synthetic/sample 包当成真实现场 replay；不能绕过人工复核写执行器或 release gate。"
+    }
+  },
+  "pipeline_readiness": {
+    "field_replay_import_status": "field_replay_import_metadata_blocked",
+    "field_replay_evidence_chain_status": "field_replay_evidence_chain_blocked_at_import",
+    "field_package_coverage_status": "field_package_coverage_blocked_before_import",
+    "claim_specific_coverage_rate": 0.0,
+    "soft_holdout_coverage_pass": false,
+    "field_proxy_holdout_status": "field_proxy_holdout_coverage_gaps",
+    "field_proxy_holdout_required": true,
+    "field_proxy_holdout_coverage_pass": false,
+    "field_proxy_holdout_matched_batch_count": 0,
+    "field_proxy_holdout_minimum_matched_batch_count": 3,
+    "pressure_source_conflict_count": 0,
+    "resolved_pressure_source_conflict_count": 0,
+    "unresolved_pressure_source_conflict_count": 0,
+    "pressure_source_resolution_record_count": 0,
+    "pressure_source_conflict_requires_operator_review": false,
+    "pressure_source_conflict_batch_ids_sample": [],
+    "field_package_pressure_conflict_resolution_status": "pressure_source_conflict_resolution_clear",
+    "field_package_pressure_conflict_resolution_ready": true,
+    "agent51_pressure_source_conflict_count": 0,
+    "agent51_resolved_pressure_source_conflict_count": 0,
+    "agent51_unresolved_pressure_source_conflict_count": 0,
+    "agent51_pressure_source_resolution_record_count": 0,
+    "agent51_pressure_source_conflict_requires_operator_review": false,
+    "agent51_field_proxy_summary_status": "field_proxy_holdout_coverage_gaps",
+    "agent51_field_proxy_scoreable_batch_count": 0,
+    "agent51_field_proxy_validation_pass": false,
+    "agent51_field_proxy_holdout_mae": 1.0,
+    "agent51_field_proxy_label_correlation": 0.0,
+    "minimum_replay_contract_status": "minimum_replay_contract_blocked_missing_rows",
+    "minimum_replay_contract_pass": false,
+    "field_evidence_sufficiency_status": "field_evidence_sufficiency_blocked_before_import",
+    "field_evidence_sufficiency_score": 0.26,
+    "field_evidence_smoke_pass": false,
+    "field_evidence_calibration_volume_pass": false,
+    "can_route_to_agent42_smoke_replay": false,
+    "can_route_to_field_holdout": false,
+    "field_path_endpoint_label_preflight_status": "field_path_endpoint_label_package_blocked_by_preflight",
+    "field_path_endpoint_matched_batch_count": 0,
+    "field_path_endpoint_minimum_matched_batch_count": 5,
+    "field_path_endpoint_missing_tables": [],
+    "field_path_endpoint_required_field_gap_count": 0,
+    "field_path_endpoint_template_marker_count": 0,
+    "field_path_endpoint_table_row_counts": {
+      "site_topology_or_bed_geometry": 0,
+      "node_modality_sensor_timeseries": 0,
+      "hydraulic_path_stage_labels": 0,
+      "final_effluent_endpoint_labels": 0,
+      "campaign_operation_log": 0,
+      "offline_lab_results": 0
+    },
+    "field_path_endpoint_table_batch_counts": {
+      "site_topology_or_bed_geometry": 0,
+      "node_modality_sensor_timeseries": 0,
+      "hydraulic_path_stage_labels": 0,
+      "final_effluent_endpoint_labels": 0,
+      "campaign_operation_log": 0,
+      "offline_lab_results": 0
+    },
+    "field_path_endpoint_batch_alignment_gap_count": 0,
+    "field_path_endpoint_required_matched_batch_deficit": 5,
+    "field_path_endpoint_alignment_patch_plan_status": "field_path_endpoint_alignment_blocked_by_preflight",
+    "field_path_endpoint_alignment_patch_plan_item_count": 7,
+    "field_path_endpoint_label_package_ready": false,
+    "field_path_endpoint_final_effluent_label_ready": false,
+    "can_route_to_field_layout_holdout_with_path_labels": false,
+    "release_gate_endpoint_label_blocked": true,
+    "can_route_to_human_review_candidate": false,
+    "field_supported_claim_upgrade_ready": false,
+    "multi_facility_control_promotion_pass": false,
+    "catalyst_proxy_field_validation_pass": false,
+    "minimum_common_batch_count": 0,
+    "minimum_valid_matched_batch_count": 0,
+    "minimum_valid_operation_action_count": 0,
+    "minimum_invalid_operation_action_count": 0,
+    "minimum_valid_lab_result_count": 0,
+    "minimum_invalid_lab_result_count": 0,
+    "minimum_proxy_event_count": 0,
+    "minimum_valid_proxy_label_count": 0,
+    "minimum_invalid_proxy_label_count": 0,
+    "minimum_pressure_headloss_event_count": 0,
+    "minimum_valid_pressure_headloss_event_count": 0,
+    "minimum_invalid_pressure_headloss_event_count": 0,
+    "minimum_valid_pressure_headloss_batch_count": 0,
+    "minimum_time_order_violation_count": 0,
+    "coverage_patch_plan_status": "patch_plan_blocked_at_import_preflight",
+    "coverage_patch_plan_item_count": 6,
+    "r7_status": "real_field_package_acceptance_blocked_at_import",
+    "r7_score": 0.0,
+    "r7_next_action": "R7a_import_real_field_package_with_metadata_and_csv",
+    "can_emit_protective_control_candidate": false,
+    "can_emit_field_supported_claim_candidate": false,
+    "can_write_to_actuator": false,
+    "can_write_to_release_gate": false,
+    "field_package_submission_readiness_status": "field_package_submission_blocked_at_import_preflight",
+    "field_package_submission_highest_priority_blocker": "R7A_IMPORT_PREFLIGHT",
+    "field_package_submission_next_operator_action": "repair_metadata_headers_and_real_rows_before_agent42",
+    "field_package_submission_blocking_stage_count": 5,
+    "field_package_submission_can_submit_to_agent42_smoke_replay": false,
+    "field_package_submission_can_route_to_path_endpoint_layout_holdout": false,
+    "field_package_submission_no_write_boundary_pass": true,
+    "field_package_submission_repair_work_order_status": "field_package_submission_repair_work_order_blocked_at_import_preflight",
+    "field_package_submission_repair_item_count": 13,
+    "field_package_submission_repair_response_preflight_status": "repair_response_preflight_blocked_at_template_markers",
+    "field_package_submission_repair_response_missing_item_count": 0,
+    "field_package_submission_repair_response_template_marker_count": 13,
+    "field_package_submission_repair_response_can_route_to_r7_preflight": false
+  },
+  "source_package_type": "header_only_template_preflight"
+}

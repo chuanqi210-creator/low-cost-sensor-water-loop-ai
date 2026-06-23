@@ -1,0 +1,23 @@
+{
+  "source_preflight_status": "formal_search_result_package_source_ready_for_validation_gate",
+  "source_can_route_to_validation_gate": true,
+  "source_template_marker_gap_count": 0,
+  "row_preflight_status": "formal_search_result_package_row_preflight_ready_for_validation_gate",
+  "checked_work_package_count": 7,
+  "checked_hit_row_count": 7,
+  "checked_comparison_row_count": 7,
+  "checked_fallback_row_count": 7,
+  "row_gap_count": 0,
+  "comparison_coverage_gap_count": 0,
+  "forbidden_review_boundary_count": 0,
+  "row_can_route_to_validation_gate": true,
+  "validation_execution_status": "formal_search_result_validation_execution_ready_for_human_nonlegal_comparison_review",
+  "validated_hit_count": 7,
+  "rejected_hit_count": 0,
+  "can_enter_human_nonlegal_comparison_review": true,
+  "nonlegal_review_packet_status": "formal_search_nonlegal_review_packet_ready_waiting_for_human_review",
+  "nonlegal_review_packet_row_count": 7,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false
+}

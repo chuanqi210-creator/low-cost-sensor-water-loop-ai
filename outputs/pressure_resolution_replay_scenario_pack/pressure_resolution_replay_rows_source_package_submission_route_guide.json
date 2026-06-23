@@ -1,0 +1,298 @@
+{
+  "source_package_submission_route_guide_id": "R8u48_source_package_submission_route_guide",
+  "source_package_submission_route_guide_status": "source_package_submission_route_guide_ready_for_source_package_submission",
+  "guide_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_source_package_submission_route_guide.json",
+  "model_core_layers": [
+    "observability_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "observability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "current_source_status": "field_rows_file_missing",
+  "submission_readiness_review_status": "submission_readiness_review_blocked_at_source_package",
+  "recommended_route_id": "direct_r8p_json_or_csv_source_package",
+  "alternate_route_ids": [
+    "direct_r8p_json_table_mapping",
+    "direct_r8p_csv_directory",
+    "r7_to_r8p_route_work_package_submission"
+  ],
+  "next_operator_action": "R8p_submit_direct_json_or_csv_source_package",
+  "route_option_count": 3,
+  "route_options": [
+    {
+      "route_id": "direct_r8p_json_table_mapping",
+      "route_kind": "direct_r8p_source_package",
+      "when_to_use": "Use when field rows can be exported directly as a JSON table mapping with all required tables.",
+      "submission_target": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+      "env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=/absolute/path/to/pressure_resolution_replay_rows.json",
+      "required_inputs": [
+        "one JSON object whose keys are required table names",
+        "six required field-origin tables plus agent52_replay_table",
+        "non-template reviewer, calibration, operation, lab, pressure/headloss, and replay fields"
+      ],
+      "required_tables": [
+        "agent52_replay_table",
+        "campaign_operation_log",
+        "fast_proxy_event_log",
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "pressure_headloss_event_log"
+      ],
+      "required_fields_by_table": {
+        "agent52_replay_table": [
+          "batch_id",
+          "scenario",
+          "policy_action_id",
+          "expert_action_id",
+          "pressure_source_conflict_count",
+          "resolved_pressure_source_conflict_count",
+          "unresolved_pressure_source_conflict_count",
+          "pressure_source_resolution_record_count",
+          "pressure_source_conflict_requires_operator_review",
+          "pressure_source_conflict_control_block",
+          "data_origin"
+        ],
+        "campaign_operation_log": [
+          "batch_id",
+          "action_id",
+          "operator_review_required",
+          "pressure_source_resolution",
+          "authoritative_pressure_source",
+          "reviewer_id",
+          "review_time",
+          "calibration_action_id",
+          "calibration_note",
+          "hold_time_min",
+          "recycle_ratio",
+          "data_origin"
+        ],
+        "fast_proxy_event_log": [
+          "batch_id",
+          "proxy_label_time_min",
+          "proxy_event_type",
+          "protective_triggered",
+          "false_positive_cost_index",
+          "data_origin"
+        ],
+        "node_modality_sensor_timeseries": [
+          "batch_id",
+          "node_id",
+          "modality",
+          "value",
+          "unit",
+          "sample_time_min",
+          "instrument_id",
+          "sensor_status",
+          "data_origin"
+        ],
+        "offline_lab_results": [
+          "batch_id",
+          "sample_time_min",
+          "lab_label_time_min",
+          "analyte",
+          "value",
+          "unit",
+          "method",
+          "qa_flag",
+          "data_origin"
+        ],
+        "pressure_headloss_event_log": [
+          "batch_id",
+          "bed_id",
+          "pressure_drop_kPa",
+          "headloss_kPa_per_m",
+          "flow_Lmin",
+          "event_time_min",
+          "matched_lab_sample_time_min",
+          "hydraulic_anomaly_label",
+          "instrument_id",
+          "data_origin"
+        ]
+      },
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "source_format_after_load": "json_table_mapping",
+      "highest_priority_patch_id": "R8P_SOURCE_MISSING_FIELD_ROWS_FILE",
+      "operator_action": "Create a real field rows JSON file or a six-table CSV directory at this path, or set PRESSURE_RESOLUTION_REPLAY_ROWS_PATH to either source format. Use templates only as a form, then replace every TODO/template marker with field-origin rows.",
+      "failure_boundary": "A JSON package that loads still must pass schema, provenance, template-marker, bundle, temporal, semantic, downstream routing, and R8p acceptance gates."
+    },
+    {
+      "route_id": "direct_r8p_csv_directory",
+      "route_kind": "direct_r8p_source_package",
+      "when_to_use": "Use when field rows are easier to collect as metadata.json plus one CSV per required table.",
+      "submission_target": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template",
+      "env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=/absolute/path/to/pressure_resolution_replay_rows_csv_directory",
+      "required_inputs": [
+        "metadata.json",
+        "one CSV file per required table",
+        "all TODO/template placeholders replaced by field values",
+        "field-origin data_origin values in every required table row"
+      ],
+      "required_files": [
+        "metadata.json",
+        "agent52_replay_table.csv",
+        "campaign_operation_log.csv",
+        "fast_proxy_event_log.csv",
+        "node_modality_sensor_timeseries.csv",
+        "offline_lab_results.csv",
+        "pressure_headloss_event_log.csv"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "source_format_after_load": "csv_directory_with_optional_metadata_json",
+      "highest_priority_patch_id": "R8P_SOURCE_MISSING_FIELD_ROWS_FILE",
+      "operator_action": "Create a real field rows JSON file or a six-table CSV directory at this path, or set PRESSURE_RESOLUTION_REPLAY_ROWS_PATH to either source format. Use templates only as a form, then replace every TODO/template marker with field-origin rows.",
+      "failure_boundary": "The CSV directory template is a scaffold only; header-only or TODO/template rows are rejected before field acceptance."
+    },
+    {
+      "route_id": "r7_to_r8p_route_work_package_submission",
+      "route_kind": "assembled_from_r7_field_package_operator_supplement_and_agent52_export",
+      "when_to_use": "Use when an R7 field package already exists and R8p rows should be assembled from R7 shared tables, operator supplement records, and Agent52 replay export.",
+      "submission_target": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates",
+      "env_override": "R7_TO_R8P_WORK_PACKAGE_DIR=/absolute/path/to/r7_to_r8p_work_package_submission",
+      "required_inputs": [
+        "R7 source package work package",
+        "operator supplement work package",
+        "Agent52 replay export work package",
+        "R8p validation gates work package"
+      ],
+      "route_contracts_status": "completion_route_contracts_ready_waiting_for_r7_package",
+      "work_packages_status": "route_work_packages_ready_waiting_for_r7_package",
+      "completion_plan_status": "r7_to_r8p_completion_plan_waiting_for_r7_package",
+      "highest_priority_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR",
+      "operator_action": "Copy the generated work-package templates to a real submission directory, replace all TODO/header-only content with field/operator/replay values, set R7_TO_R8P_WORK_PACKAGE_DIR to that directory, and rerun Agent61.",
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "failure_boundary": "R7 shared field CSV values cannot invent Agent52 replay rows; replay rows must come from the Agent49/52 replay export route and then pass R8p/R8v gates."
+    }
+  ],
+  "operator_action_queue": [
+    {
+      "order": 1,
+      "action_id": "R8p_submit_direct_json_or_csv_source_package",
+      "route_id": "direct_r8p_json_or_csv_source_package",
+      "why_first": "Current submission readiness is blocked before R8v routing."
+    },
+    {
+      "order": 2,
+      "action_id": "R8p_fix_field_rows_source_preflight",
+      "route_id": "submission_readiness_review_next_action",
+      "why_first": "Keeps source-package repair aligned with the aggregated R8p/R7 gate sequence."
+    },
+    {
+      "order": 3,
+      "action_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR",
+      "route_id": "r7_to_r8p_route_work_package_submission",
+      "why_first": "Use only if the direct R8p source package cannot be produced from field exports."
+    }
+  ],
+  "accepted_source_formats": [
+    "json_table_mapping",
+    "csv_directory_with_optional_metadata_json"
+  ],
+  "default_field_rows_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+  "env_override_name": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH",
+  "validation_command_default": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+  "validation_command_with_env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=/absolute/path/to/pressure_resolution_replay_rows.json .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+  "source_package_contract": {
+    "expected_tables": [
+      "agent52_replay_table",
+      "campaign_operation_log",
+      "fast_proxy_event_log",
+      "node_modality_sensor_timeseries",
+      "offline_lab_results",
+      "pressure_headloss_event_log"
+    ],
+    "required_fields_by_table": {
+      "agent52_replay_table": [
+        "batch_id",
+        "scenario",
+        "policy_action_id",
+        "expert_action_id",
+        "pressure_source_conflict_count",
+        "resolved_pressure_source_conflict_count",
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "data_origin"
+      ],
+      "campaign_operation_log": [
+        "batch_id",
+        "action_id",
+        "operator_review_required",
+        "pressure_source_resolution",
+        "authoritative_pressure_source",
+        "reviewer_id",
+        "review_time",
+        "calibration_action_id",
+        "calibration_note",
+        "hold_time_min",
+        "recycle_ratio",
+        "data_origin"
+      ],
+      "fast_proxy_event_log": [
+        "batch_id",
+        "proxy_label_time_min",
+        "proxy_event_type",
+        "protective_triggered",
+        "false_positive_cost_index",
+        "data_origin"
+      ],
+      "node_modality_sensor_timeseries": [
+        "batch_id",
+        "node_id",
+        "modality",
+        "value",
+        "unit",
+        "sample_time_min",
+        "instrument_id",
+        "sensor_status",
+        "data_origin"
+      ],
+      "offline_lab_results": [
+        "batch_id",
+        "sample_time_min",
+        "lab_label_time_min",
+        "analyte",
+        "value",
+        "unit",
+        "method",
+        "qa_flag",
+        "data_origin"
+      ],
+      "pressure_headloss_event_log": [
+        "batch_id",
+        "bed_id",
+        "pressure_drop_kPa",
+        "headloss_kPa_per_m",
+        "flow_Lmin",
+        "event_time_min",
+        "matched_lab_sample_time_min",
+        "hydraulic_anomaly_label",
+        "instrument_id",
+        "data_origin"
+      ]
+    },
+    "schema_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
+    "collection_checklist_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_collection_checklist.json",
+    "submission_readiness_review_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_submission_readiness_review.json"
+  },
+  "technical_feature_mapping": {
+    "technical_problem": "The pressure-resolution evidence chain allows multiple source-package entry routes, but field operators need a single route decision before replay/holdout gates can run.",
+    "technical_means": "A source-package route guide compares direct JSON, direct CSV-directory, and R7-to-R8p work-package submission routes using the same schema, provenance, and downstream gate contracts.",
+    "technical_effect": "Source-package repair loops are reduced while preventing template rows, generated replay surrogates, or incomplete R7 packages from bypassing the grey-box replay evidence chain."
+  },
+  "evidence_boundaries": [
+    "This route guide is not field evidence.",
+    "It does not validate row contents beyond the existing R8p gates.",
+    "It cannot generate Agent52 replay rows from R7 source values.",
+    "It cannot write actuator, protective control, release gate, or field-supported claim."
+  ],
+  "can_route_to_r8v": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false
+}

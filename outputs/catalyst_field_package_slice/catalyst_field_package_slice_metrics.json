@@ -1,0 +1,72 @@
+{
+  "slice_id": "R8u113_catalyst_field_package_slice",
+  "slice_type": "focused_catalyst_activity_field_package_slice_preflight",
+  "target_hidden_state": "catalyst_activity",
+  "source_env_var": "CATALYST_FIELD_PACKAGE_SLICE_DIR",
+  "source_path": "",
+  "external_slice_supplied": false,
+  "slice_status": "catalyst_field_package_slice_waiting_for_CATALYST_FIELD_PACKAGE_SLICE_DIR",
+  "slice_preflight_pass": false,
+  "required_table_count": 4,
+  "required_tables": [
+    "node_modality_sensor_timeseries",
+    "offline_lab_results",
+    "campaign_operation_log",
+    "site_topology_or_bed_geometry"
+  ],
+  "generated_table_count": 4,
+  "minimum_matched_batch_count": 3,
+  "matched_batch_count": 0,
+  "matched_batch_ids": [],
+  "matched_batch_requirement_pass": false,
+  "table_audits": {},
+  "sensor_audit": {
+    "required_sensor_signals": [
+      "N3_catalyst_bed:pressure_drop_kPa",
+      "N3_catalyst_bed_outlet:UV254_abs",
+      "N3_catalyst_bed_outlet:ORP_mV"
+    ],
+    "signal_results": {},
+    "all_signal_shared_batch_count": 0,
+    "all_signal_shared_batch_ids": [],
+    "sensor_coverage_pass": false
+  },
+  "lab_audit": {
+    "required_analyte": "catalyst_activity",
+    "valid_catalyst_activity_label_count": 0,
+    "valid_catalyst_activity_batch_ids": [],
+    "invalid_catalyst_activity_label_rows": [],
+    "catalyst_activity_label_pass": false
+  },
+  "operation_audit": {
+    "valid_regeneration_event_count": 0,
+    "valid_regeneration_event_batch_ids": [],
+    "invalid_regeneration_event_rows": [],
+    "regeneration_event_pass": false
+  },
+  "geometry_audit": {
+    "target_table": "site_topology_or_bed_geometry",
+    "valid_geometry_row_count": 0,
+    "valid_geometry_node_ids": [],
+    "invalid_geometry_rows": [],
+    "geometry_coverage_pass": false
+  },
+  "blocking_reason_count": 1,
+  "blocking_reasons": [
+    "missing_external_slice_dir"
+  ],
+  "can_route_to_r7_field_package_patch_candidate": false,
+  "can_route_to_agent51_field_proxy_holdout": false,
+  "can_relax_agent49_catalyst_uncertainty_block": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "next_operator_action": "fill_focused_field_package_slice_template_and_set_CATALYST_FIELD_PACKAGE_SLICE_DIR",
+  "field_boundary": "This focused slice can only prepare the catalyst_activity rows for a full R7 field package import. It cannot replace the complete field package, Agent51 field proxy holdout, or field-supported claims.",
+  "no_write_boundary": "This focused field package slice cannot authorize actuator writes, release-gate writes, Agent51 field proxy holdout pass, Agent49 guardrail relaxation, or field-supported claims.",
+  "focused_field_package_slice_template_dir": "outputs/catalyst_field_package_slice/focused_field_package_slice_template",
+  "focused_field_package_slice_template_summary_path": "outputs/catalyst_field_package_slice/focused_field_package_slice_template_summary.json",
+  "planned_node_modality_row_count": 9,
+  "planned_offline_lab_row_count": 3,
+  "planned_campaign_operation_row_count": 3,
+  "planned_geometry_row_count": 1
+}

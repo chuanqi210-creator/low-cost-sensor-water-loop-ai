@@ -1,0 +1,445 @@
+{
+  "grey_box_dynamic_latency": {
+    "agent_name": "grey_box_dynamic_latency_agent",
+    "confidence": 0.477,
+    "summary": "灰箱动态延迟审计：synthetic_latency_budget_ready_needs_field_timestamps；延迟违约率 0.200，最小证据余量 -31.0 min。",
+    "recommendations": [
+      "把采样时间、软传感计算时间、人工复核、执行器响应、混合时间、回流停留时间和离线检测 turnaround 写入 field schema。",
+      "用真实 timestamped campaign replay 计算 latency_budget_violation_rate，不能只用 synthetic episode 的步数或成功率证明闭环可执行。",
+      "优先重设 matrix_shock 的暂存/回流窗口、快检代理信号或自动执行器逻辑，直到 evidence_margin_min 和 action_latency_margin_min 同时为正。",
+      "当前只允许把延迟预算作为模型真实性审计层，不允许作为现场自动放行依据。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "grey_box_dynamic_control_latency",
+        "borrowed_from": [
+          "parsa_2024_dynamic_control_review"
+        ],
+        "reality_mapping": "把循环、暂存、低频采样、离线验证、人工复核和执行器响应共同建成时序约束。",
+        "data_needs": [
+          "sampling_timestamp",
+          "soft_sensor_prediction_timestamp",
+          "offline_sample_timestamp",
+          "offline_result_timestamp",
+          "actuator_command_timestamp",
+          "actuator_effect_timestamp",
+          "recycle_start_end_timestamp",
+          "hold_tank_release_timestamp",
+          "batch_id"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/grey_box_dynamic_latency_agent.py",
+          "experiments/run_agent40_grey_box_dynamic_latency.py",
+          "deliverables/grey_box_dynamic_latency.md"
+        ],
+        "evaluation_metrics": [
+          "latency_budget_violation_rate",
+          "minimum_evidence_margin_min",
+          "minimum_action_margin_min",
+          "field_replay_success_rate",
+          "closed_loop_stability_under_delay"
+        ],
+        "failure_boundary": "synthetic replay 中的闭环稳定不等于 PLC/人工复核/检测排队/执行器滞后条件下可执行。"
+      },
+      "latency_budget": [
+        {
+          "scenario": "sensor_faults",
+          "risk_mode": "sensor_reliability",
+          "borrowed_from": "parsa_2024_dynamic_control_review",
+          "reality_mapping": "低成本传感异常时需要质控窗口和旁路校准，不能即时信任放行信号。",
+          "data_needs": [
+            "sampling_timestamp",
+            "soft_sensor_prediction_timestamp",
+            "offline_sample_timestamp",
+            "offline_result_timestamp",
+            "actuator_command_timestamp",
+            "actuator_effect_timestamp",
+            "recycle_start_end_timestamp",
+            "hold_tank_release_timestamp",
+            "batch_id"
+          ],
+          "evaluation_metrics": [
+            "latency_budget_violation_rate",
+            "minimum_evidence_margin_min",
+            "minimum_action_margin_min",
+            "field_replay_success_rate",
+            "closed_loop_stability_under_delay"
+          ],
+          "failure_boundary": "synthetic replay 中的闭环稳定不等于 PLC/人工复核/检测排队/执行器滞后条件下可执行。",
+          "sampling_interval_min": 5.0,
+          "qc_window_min": 12.0,
+          "soft_sensor_compute_min": 1.0,
+          "human_review_min": 10.0,
+          "lab_turnaround_min": 45.0,
+          "actuator_delay_min": 5.0,
+          "mixing_delay_min": 8.0,
+          "hold_buffer_min": 60.0,
+          "recycle_retention_min": 24.0,
+          "validation_overlap_credit_min": 15.0,
+          "action_deadline_min": 110.0,
+          "observation_latency_min": 18.0,
+          "control_action_latency_min": 41.0,
+          "release_evidence_latency_min": 73.0,
+          "loop_time_credit_min": 99.0,
+          "action_latency_margin_min": 69.0,
+          "evidence_margin_min": 26.0,
+          "latency_pressure_min": 0.0,
+          "latency_status": "grey_box_latency_feasible"
+        },
+        {
+          "scenario": "oxidant_limitation",
+          "risk_mode": "fast_reagent_correction",
+          "borrowed_from": "parsa_2024_dynamic_control_review",
+          "reality_mapping": "氧化剂不足可由在线 ORP/UV254 代理快速触发加药，但仍要考虑执行器和混合滞后。",
+          "data_needs": [
+            "sampling_timestamp",
+            "soft_sensor_prediction_timestamp",
+            "offline_sample_timestamp",
+            "offline_result_timestamp",
+            "actuator_command_timestamp",
+            "actuator_effect_timestamp",
+            "recycle_start_end_timestamp",
+            "hold_tank_release_timestamp",
+            "batch_id"
+          ],
+          "evaluation_metrics": [
+            "latency_budget_violation_rate",
+            "minimum_evidence_margin_min",
+            "minimum_action_margin_min",
+            "field_replay_success_rate",
+            "closed_loop_stability_under_delay"
+          ],
+          "failure_boundary": "synthetic replay 中的闭环稳定不等于 PLC/人工复核/检测排队/执行器滞后条件下可执行。",
+          "sampling_interval_min": 3.0,
+          "qc_window_min": 6.0,
+          "soft_sensor_compute_min": 1.0,
+          "human_review_min": 4.0,
+          "lab_turnaround_min": 0.0,
+          "actuator_delay_min": 5.0,
+          "mixing_delay_min": 8.0,
+          "hold_buffer_min": 30.0,
+          "recycle_retention_min": 36.0,
+          "validation_overlap_credit_min": 0.0,
+          "action_deadline_min": 70.0,
+          "observation_latency_min": 10.0,
+          "control_action_latency_min": 27.0,
+          "release_evidence_latency_min": 27.0,
+          "loop_time_credit_min": 66.0,
+          "action_latency_margin_min": 43.0,
+          "evidence_margin_min": 39.0,
+          "latency_pressure_min": 0.0,
+          "latency_status": "grey_box_latency_feasible"
+        },
+        {
+          "scenario": "reaction_time_insufficient",
+          "risk_mode": "retention_extension",
+          "borrowed_from": "parsa_2024_dynamic_control_review",
+          "reality_mapping": "反应时间不足主要靠回流和延长停留时间处理，慢证据压力低于基质冲击场景。",
+          "data_needs": [
+            "sampling_timestamp",
+            "soft_sensor_prediction_timestamp",
+            "offline_sample_timestamp",
+            "offline_result_timestamp",
+            "actuator_command_timestamp",
+            "actuator_effect_timestamp",
+            "recycle_start_end_timestamp",
+            "hold_tank_release_timestamp",
+            "batch_id"
+          ],
+          "evaluation_metrics": [
+            "latency_budget_violation_rate",
+            "minimum_evidence_margin_min",
+            "minimum_action_margin_min",
+            "field_replay_success_rate",
+            "closed_loop_stability_under_delay"
+          ],
+          "failure_boundary": "synthetic replay 中的闭环稳定不等于 PLC/人工复核/检测排队/执行器滞后条件下可执行。",
+          "sampling_interval_min": 5.0,
+          "qc_window_min": 8.0,
+          "soft_sensor_compute_min": 1.0,
+          "human_review_min": 5.0,
+          "lab_turnaround_min": 30.0,
+          "actuator_delay_min": 5.0,
+          "mixing_delay_min": 8.0,
+          "hold_buffer_min": 45.0,
+          "recycle_retention_min": 48.0,
+          "validation_overlap_credit_min": 10.0,
+          "action_deadline_min": 160.0,
+          "observation_latency_min": 14.0,
+          "control_action_latency_min": 32.0,
+          "release_evidence_latency_min": 49.0,
+          "loop_time_credit_min": 103.0,
+          "action_latency_margin_min": 128.0,
+          "evidence_margin_min": 54.0,
+          "latency_pressure_min": 0.0,
+          "latency_status": "grey_box_latency_feasible"
+        },
+        {
+          "scenario": "catalyst_deactivation",
+          "risk_mode": "maintenance_decision",
+          "borrowed_from": "parsa_2024_dynamic_control_review",
+          "reality_mapping": "催化剂失活需要生命周期验证和维护动作，回流窗口必须覆盖慢验证和停机决策。",
+          "data_needs": [
+            "sampling_timestamp",
+            "soft_sensor_prediction_timestamp",
+            "offline_sample_timestamp",
+            "offline_result_timestamp",
+            "actuator_command_timestamp",
+            "actuator_effect_timestamp",
+            "recycle_start_end_timestamp",
+            "hold_tank_release_timestamp",
+            "batch_id"
+          ],
+          "evaluation_metrics": [
+            "latency_budget_violation_rate",
+            "minimum_evidence_margin_min",
+            "minimum_action_margin_min",
+            "field_replay_success_rate",
+            "closed_loop_stability_under_delay"
+          ],
+          "failure_boundary": "synthetic replay 中的闭环稳定不等于 PLC/人工复核/检测排队/执行器滞后条件下可执行。",
+          "sampling_interval_min": 5.0,
+          "qc_window_min": 10.0,
+          "soft_sensor_compute_min": 1.0,
+          "human_review_min": 15.0,
+          "lab_turnaround_min": 90.0,
+          "actuator_delay_min": 5.0,
+          "mixing_delay_min": 8.0,
+          "hold_buffer_min": 90.0,
+          "recycle_retention_min": 72.0,
+          "validation_overlap_credit_min": 30.0,
+          "action_deadline_min": 240.0,
+          "observation_latency_min": 16.0,
+          "control_action_latency_min": 44.0,
+          "release_evidence_latency_min": 121.0,
+          "loop_time_credit_min": 192.0,
+          "action_latency_margin_min": 196.0,
+          "evidence_margin_min": 71.0,
+          "latency_pressure_min": 0.0,
+          "latency_status": "grey_box_latency_feasible"
+        },
+        {
+          "scenario": "matrix_shock",
+          "risk_mode": "pretreatment_or_switching",
+          "borrowed_from": "parsa_2024_dynamic_control_review",
+          "reality_mapping": "基质冲击需要快代理信号先触发预处理/切换，离线确认往往赶不上早期控制窗口。",
+          "data_needs": [
+            "sampling_timestamp",
+            "soft_sensor_prediction_timestamp",
+            "offline_sample_timestamp",
+            "offline_result_timestamp",
+            "actuator_command_timestamp",
+            "actuator_effect_timestamp",
+            "recycle_start_end_timestamp",
+            "hold_tank_release_timestamp",
+            "batch_id"
+          ],
+          "evaluation_metrics": [
+            "latency_budget_violation_rate",
+            "minimum_evidence_margin_min",
+            "minimum_action_margin_min",
+            "field_replay_success_rate",
+            "closed_loop_stability_under_delay"
+          ],
+          "failure_boundary": "synthetic replay 中的闭环稳定不等于 PLC/人工复核/检测排队/执行器滞后条件下可执行。",
+          "sampling_interval_min": 3.0,
+          "qc_window_min": 9.0,
+          "soft_sensor_compute_min": 1.0,
+          "human_review_min": 12.0,
+          "lab_turnaround_min": 90.0,
+          "actuator_delay_min": 5.0,
+          "mixing_delay_min": 8.0,
+          "hold_buffer_min": 45.0,
+          "recycle_retention_min": 24.0,
+          "validation_overlap_credit_min": 15.0,
+          "action_deadline_min": 85.0,
+          "observation_latency_min": 13.0,
+          "control_action_latency_min": 38.0,
+          "release_evidence_latency_min": 115.0,
+          "loop_time_credit_min": 84.0,
+          "action_latency_margin_min": 47.0,
+          "evidence_margin_min": -31.0,
+          "latency_pressure_min": 31.0,
+          "latency_status": "needs_longer_buffer_or_fast_proxy"
+        }
+      ],
+      "readiness": {
+        "latency_status": "synthetic_latency_budget_ready_needs_field_timestamps",
+        "latency_readiness_score": 0.443,
+        "latency_budget_violation_rate": 0.2,
+        "violation_count": 1,
+        "action_violation_count": 0,
+        "minimum_evidence_margin_min": -31.0,
+        "minimum_action_margin_min": 43.0,
+        "mean_latency_pressure_min": 6.2,
+        "field_timestamps_required": true,
+        "field_replay_ready": false,
+        "release_gate_can_use_latency_budget": false
+      },
+      "evidence_stage": "synthetic_replay",
+      "field_timestamp_coverage": 0.0,
+      "conformal_readiness": {
+        "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+        "conformal_score": 0.854,
+        "field_holdout_required": true,
+        "can_write_to_release_gate": false
+      },
+      "campaign_context": {
+        "source_agent": "agent27_recovery_execution_replay",
+        "comparison": {
+          "replay_verdict": "recovery_execution_validated",
+          "strategy_stable": true,
+          "fallback_required": false,
+          "target_intake_fraction": 0.75,
+          "fallback_intake_fraction": 0.6,
+          "recommended_next_intake_fraction": 0.75,
+          "time_usage_without_strategy": 0.978,
+          "time_usage_with_strategy": 0.884,
+          "time_usage_reduction": 0.094,
+          "validation_usage_without_strategy": 0.394,
+          "validation_usage_with_strategy": 0.394,
+          "strategy_bottleneck_ids": [],
+          "without_strategy_bottleneck_ids": [
+            "campaign_time_budget"
+          ],
+          "elapsed_reduction_min": 90.2,
+          "expected_time_budget_usage": 0.884,
+          "time_usage_delta_from_expected": 0.0,
+          "actual_throughput_fraction": 0.75,
+          "admitted_batch_count": 6
+        },
+        "with_recovery_strategy": {
+          "apply_recovery_policy": true,
+          "baseline_version": "baseline_v1_replan_recovery",
+          "selected_candidate_id": "stagger_validation_overlap",
+          "target_intake_fraction": 0.75,
+          "fallback_intake_fraction": 0.6,
+          "actual_throughput_fraction": 0.75,
+          "admitted_batch_count": 6,
+          "elapsed_reduction_min": 90.2,
+          "campaign_metrics": {
+            "batch_count": 6,
+            "success_rate": 1.0,
+            "total_elapsed_min": 848.9,
+            "mean_elapsed_min": 141.5,
+            "total_cost": 5.747,
+            "total_energy": 3.154,
+            "validation_hours": 4.133,
+            "validation_staff_usage": 0.394,
+            "time_budget_usage": 0.884,
+            "regeneration_count": 3,
+            "replacement_count": 1,
+            "oxidant_dose_count": 2,
+            "catalyst_lifetime_fraction_end": 0.847,
+            "catalyst_activity_end": 0.859,
+            "catalyst_spares_remaining": 3,
+            "oxidant_stock_units_remaining": 3.5,
+            "evidence_strength": 1.0
+          },
+          "bottleneck_ids": [],
+          "schedule": {
+            "operating_mode": "normal_intake",
+            "action_queue": [],
+            "next_campaign_review_after_batches": 3
+          },
+          "scenario_sequence": [
+            "matrix_shock",
+            "catalyst_deactivation",
+            "matrix_shock",
+            "catalyst_deactivation",
+            "oxidant_limitation",
+            "oxidant_limitation"
+          ]
+        }
+      }
+    },
+    "issues": [
+      {
+        "sensor": "grey_box_dynamic_latency",
+        "issue_type": "field_timestamps_required_for_latency_budget",
+        "severity": "warning",
+        "message": "当前延迟预算仍基于 synthetic replay 和文献约束，需要现场采样、检测、执行器和回流时间戳验证。",
+        "evidence": {
+          "latency_status": "synthetic_latency_budget_ready_needs_field_timestamps",
+          "latency_readiness_score": 0.443,
+          "latency_budget_violation_rate": 0.2,
+          "violation_count": 1,
+          "action_violation_count": 0,
+          "minimum_evidence_margin_min": -31.0,
+          "minimum_action_margin_min": 43.0,
+          "mean_latency_pressure_min": 6.2,
+          "field_timestamps_required": true,
+          "field_replay_ready": false,
+          "release_gate_can_use_latency_budget": false
+        }
+      },
+      {
+        "sensor": "matrix_shock",
+        "issue_type": "release_evidence_latency_exceeds_loop_credit",
+        "severity": "warning",
+        "message": "循环/暂存争取到的时间不足以等待慢证据，不能把仿真放行直接外推到现场。",
+        "evidence": {
+          "scenario": "matrix_shock",
+          "risk_mode": "pretreatment_or_switching",
+          "borrowed_from": "parsa_2024_dynamic_control_review",
+          "reality_mapping": "基质冲击需要快代理信号先触发预处理/切换，离线确认往往赶不上早期控制窗口。",
+          "data_needs": [
+            "sampling_timestamp",
+            "soft_sensor_prediction_timestamp",
+            "offline_sample_timestamp",
+            "offline_result_timestamp",
+            "actuator_command_timestamp",
+            "actuator_effect_timestamp",
+            "recycle_start_end_timestamp",
+            "hold_tank_release_timestamp",
+            "batch_id"
+          ],
+          "evaluation_metrics": [
+            "latency_budget_violation_rate",
+            "minimum_evidence_margin_min",
+            "minimum_action_margin_min",
+            "field_replay_success_rate",
+            "closed_loop_stability_under_delay"
+          ],
+          "failure_boundary": "synthetic replay 中的闭环稳定不等于 PLC/人工复核/检测排队/执行器滞后条件下可执行。",
+          "sampling_interval_min": 3.0,
+          "qc_window_min": 9.0,
+          "soft_sensor_compute_min": 1.0,
+          "human_review_min": 12.0,
+          "lab_turnaround_min": 90.0,
+          "actuator_delay_min": 5.0,
+          "mixing_delay_min": 8.0,
+          "hold_buffer_min": 45.0,
+          "recycle_retention_min": 24.0,
+          "validation_overlap_credit_min": 15.0,
+          "action_deadline_min": 85.0,
+          "observation_latency_min": 13.0,
+          "control_action_latency_min": 38.0,
+          "release_evidence_latency_min": 115.0,
+          "loop_time_credit_min": 84.0,
+          "action_latency_margin_min": 47.0,
+          "evidence_margin_min": -31.0,
+          "latency_pressure_min": 31.0,
+          "latency_status": "needs_longer_buffer_or_fast_proxy"
+        }
+      },
+      {
+        "sensor": "grey_box_dynamic_latency",
+        "issue_type": "conformal_release_gate_not_field_ready",
+        "severity": "info",
+        "message": "软传感保形校准尚未通过 field holdout，延迟预算即使可行也不能单独授权放行。",
+        "evidence": {
+          "conformal_status": "synthetic_conformal_interface_ready_needs_field_holdout",
+          "conformal_score": 0.854,
+          "field_holdout_required": true,
+          "can_write_to_release_gate": false
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "grey_box_dynamic_latency": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/grey_box_dynamic_latency.md",
+    "agent40_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent40_grey_box_dynamic_latency/agent40_report.md",
+    "latency_budget_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/grey_box_dynamic_latency/latency_budget_metrics.json"
+  }
+}

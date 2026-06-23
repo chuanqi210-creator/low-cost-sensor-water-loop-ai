@@ -1,0 +1,1 @@
+batch_id,timestamp_min,node_id,zone,modality,value,sensor_status,instrument_id,acquisition_time_min,ingest_time_min,layout_id,availability_mask,time_since_last_observed_min,data_origin,sensor_value

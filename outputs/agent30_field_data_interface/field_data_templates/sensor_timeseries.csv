@@ -1,0 +1,1 @@
+batch_id,timestamp_min,cycle_id,pH,ORP_mV,EC_uScm,turbidity_NTU,temp_C,flow_Lmin,UV254_abs,sensor_status,operator_note,instrument_id,acquisition_time_min,ingest_time_min,pressure_drop_kPa,headloss_kPa_per_m,bed_inlet_pressure_kPa,bed_outlet_pressure_kPa,flow_normalized_pressure_residual

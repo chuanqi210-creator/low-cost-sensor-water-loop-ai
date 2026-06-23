@@ -1,0 +1,5 @@
+item_id,category,unit_cost_cny,quantity,lead_time_days,vendor,maintenance_hours_per_month,interface_point
+sensor_uv254,sensor,4200,1,7,template_vendor,1.5,AI_UV254
+sensor_orp,sensor,1600,1,5,template_vendor,1.2,AI_ORP
+catalyst_module,catalyst,12000,3,21,template_vendor,0.4,inventory_catalyst
+validation_shift,labor,900,4,3,internal_lab,0,lab_schedule

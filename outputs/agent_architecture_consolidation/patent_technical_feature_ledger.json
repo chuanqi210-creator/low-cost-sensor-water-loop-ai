@@ -1,0 +1,557 @@
+{
+  "coverage": {
+    "patent_technical_feature_status": "technical_feature_ledger_ready_as_disclosure_scaffold_not_field_claim",
+    "feature_count": 8,
+    "complete_feature_count": 8,
+    "incomplete_features": [],
+    "abstract_only_feature_ids": [],
+    "technical_feature_coverage_rate": 1.0,
+    "field_claim_upgrade_allowed": false,
+    "field_claim_upgrade_boundary": "该 ledger 只证明技术方案骨架更清楚；任何现场成立 claim 仍必须通过 R7/R8p/R8v、field holdout、operator review 和 release gate。",
+    "legal_status": "technical_disclosure_candidate_not_legal_advice",
+    "excluded_modules": [
+      "M9_presentation_delivery"
+    ]
+  },
+  "features": [
+    {
+      "feature_id": "PTF1_node_modality_sparse_sensing",
+      "module_id": "M1_sparse_observation_layout",
+      "technical_problem": "低成本现场只能布设少量 pH/ORP/电导/浊度/UV254/流量等传感器，中间反应过程仍接近黑箱。",
+      "technical_means": "构建 node-modality 稀疏感知矩阵，把节点、传感模态、安装成本、缺测风险和隐藏状态覆盖统一评分。",
+      "system_structure": "污染场景与处理拓扑输入后，输出候选布点、弱状态覆盖、单点依赖和软传感输入先验。",
+      "control_actions": [
+        "选择布点组合",
+        "标记弱观测轴",
+        "触发催化剂活性代理补点",
+        "保留未验证保护边界"
+      ],
+      "implementation_example": "在催化剂床进出口和末端单元布设 UV254/ORP/压降代理，形成 N3 catalyst bed 的低成本观测合同。",
+      "verification_metrics": [
+        "weak_state_coverage",
+        "matrix_rank",
+        "condition_number_proxy",
+        "single_point_dependency"
+      ],
+      "technical_effect": "用有限传感预算提升关键隐藏状态可估计性，并把不能观测的轴显式转入补证据队列。",
+      "prior_art_distinction": "区别于只按经验选点或只建黑箱预测模型，本特征把布点、隐藏状态覆盖和后续软传感/控制接口绑定。",
+      "claim_skeleton_role": "主权利要求中的稀疏感知输入构建步骤；可作为 node-modality 布点从属特征。",
+      "evidence_boundary": "当前可作为 synthetic/design-prior 与接口验证；真实部署仍需 field topology、安装可达性和节点标签。",
+      "field_validation_gate": "R7/R8p field package 中的 node_modality_sensor_timeseries、site_topology_or_bed_geometry 和离线标签。",
+      "failure_boundary": "无真实拓扑和弱状态标签时不能声称现场最优布点或现场可观测性达标。",
+      "protectability_note": "保护重点不是“使用传感器”，而是受成本约束的 node-modality 矩阵、弱状态覆盖和下游软传感接口组合。",
+      "module_title": "低成本稀疏感知与布点",
+      "mapped_layers": [
+        "L2_observation_layer",
+        "L1_field_object_layer",
+        "L3_state_estimation_layer"
+      ],
+      "core_abilities": [
+        "observability",
+        "engineering_feasibility"
+      ],
+      "module_inputs": "污染场景、处理单元/管网拓扑候选、低成本传感候选、安装/维护成本、节点-模态可用性。",
+      "module_outputs": "node-modality 观测矩阵、候选布点方案、弱隐藏状态覆盖、成本约束和软传感输入先验。",
+      "state_variables": [
+        "observable_nodes",
+        "modalities",
+        "weak_state_coverage",
+        "cost_index",
+        "topology_prior"
+      ],
+      "interface_metrics": [
+        "weak_state_coverage",
+        "soft_sensor_reconstruction_gain",
+        "total_cost_index",
+        "single_point_dependency"
+      ],
+      "upstream_dependencies": [
+        "field_object_definition",
+        "sensor_cost_catalog",
+        "site_topology_or_bed_geometry"
+      ],
+      "downstream_consumers": [
+        "M2_soft_sensor_state_estimation",
+        "M4_collaborative_control",
+        "M6_field_evidence_chain"
+      ],
+      "field_claim_status": "not_field_supported_until_replay_holdout_operator_review_and_release_gate_pass",
+      "legal_status": "technical_disclosure_candidate_not_legal_advice",
+      "missing_feature_fields": [],
+      "abstract_only_risk": false,
+      "feature_status": "technical_feature_candidate_complete_not_field_claim"
+    },
+    {
+      "feature_id": "PTF2_soft_sensor_grey_state_estimation",
+      "module_id": "M2_soft_sensor_state_estimation",
+      "technical_problem": "低频、延迟和缺测传感无法直接测得残留污染物、反应完成度、催化剂活性和副产物风险。",
+      "technical_means": "以稀疏传感矩阵、缺测 mask、时间延迟、灰箱先验和离线标签训练软传感器，并输出不确定性和 abstention 标志。",
+      "system_structure": "观测层输出进入状态估计层，生成隐藏状态、预测区间、缺测鲁棒性和放行前风险边界。",
+      "control_actions": [
+        "估计隐藏状态",
+        "输出不确定性",
+        "触发暂存等待",
+        "阻断 release gate",
+        "要求人工复核"
+      ],
+      "implementation_example": "当 UV254/ORP/压降代理不足以确认催化剂活性时，软传感器输出高不确定性并维持催化剂保护规则。",
+      "verification_metrics": [
+        "masked_mae",
+        "interval_coverage",
+        "missingness_robustness_score",
+        "field_holdout_gate_pass"
+      ],
+      "technical_effect": "把不可直接观测的黑箱状态转成可审查的灰箱估计，同时防止低置信估计直接驱动放行。",
+      "prior_art_distinction": "区别于只输出点预测的 ML 软测量，本特征把缺测、低频、灰箱先验、不确定性和 release gate 绑定。",
+      "claim_skeleton_role": "主权利要求中的隐藏状态估计步骤；可作为软传感/不确定性从属特征。",
+      "evidence_boundary": "synthetic dropout 或模板 holdout 只能证明接口可运行，不能替代真实 field holdout。",
+      "field_validation_gate": "field holdout、离线实验标签、真实缺测 replay 和 operator-reviewed release decision。",
+      "failure_boundary": "预测区间未校准或 OOD 标志触发时，不能放松保护性阻断。",
+      "protectability_note": "保护重点是低成本稀疏观测到隐藏过程状态的灰箱估计链，而不是泛称软传感算法。",
+      "module_title": "软传感、缺测矩阵与不确定性",
+      "mapped_layers": [
+        "L3_state_estimation_layer",
+        "L2_observation_layer",
+        "L7_validation_governance_layer"
+      ],
+      "core_abilities": [
+        "observability",
+        "verifiability"
+      ],
+      "module_inputs": "node-modality 观测矩阵、缺测 mask、低频/延迟特征、灰箱先验、离线标签和 field holdout split。",
+      "module_outputs": "隐藏状态估计、预测区间、缺测鲁棒性、OOD/abstention 标志和 release 前不确定性边界。",
+      "state_variables": [
+        "pollutant_residual",
+        "reaction_completion",
+        "matrix_interference",
+        "catalyst_activity",
+        "uncertainty_interval"
+      ],
+      "interface_metrics": [
+        "masked_mae",
+        "interval_coverage",
+        "missingness_robustness_score",
+        "field_holdout_gate_pass"
+      ],
+      "upstream_dependencies": [
+        "M1_sparse_observation_layout",
+        "M3_grey_box_mechanism",
+        "offline_lab_results"
+      ],
+      "downstream_consumers": [
+        "M3_grey_box_mechanism",
+        "M4_collaborative_control",
+        "M6_field_evidence_chain"
+      ],
+      "field_claim_status": "not_field_supported_until_replay_holdout_operator_review_and_release_gate_pass",
+      "legal_status": "technical_disclosure_candidate_not_legal_advice",
+      "missing_feature_fields": [],
+      "abstract_only_risk": false,
+      "feature_status": "technical_feature_candidate_complete_not_field_claim"
+    },
+    {
+      "feature_id": "PTF3_grey_box_mechanism_boundary",
+      "module_id": "M3_grey_box_mechanism",
+      "technical_problem": "单纯预测无法解释为何需要回流、延长停留、补药、再生催化剂或阻断放行。",
+      "technical_means": "引入反应动力学、质量守恒、水力延迟、催化剂衰减、基质抑制和副产物风险等灰箱边界。",
+      "system_structure": "状态估计输出与机理证据层耦合，形成故障模式、机理假设和控制约束补丁。",
+      "control_actions": [
+        "解释故障模式",
+        "约束投药/回流动作",
+        "触发催化剂再生或更换候选",
+        "生成保护性阻断"
+      ],
+      "implementation_example": "当压降冲突和催化剂代理标签不一致时，系统要求 operator review 并保持水力/催化剂保护边界。",
+      "verification_metrics": [
+        "grey_box_residual",
+        "mass_balance_residual",
+        "fault_mode_coverage",
+        "resolved_case_to_mechanism_coverage"
+      ],
+      "technical_effect": "让控制动作能够回到反应、水力和催化剂机制，而不是只依赖黑箱分数。",
+      "prior_art_distinction": "区别于纯机器学习过程模拟，本特征把机制残差、故障边界和控制动作候选联动。",
+      "claim_skeleton_role": "主权利要求中的灰箱机理约束步骤；可作为催化剂活性/水力延迟从属特征。",
+      "evidence_boundary": "未由现场 RTD、污染物面板和催化剂历史校准前，灰箱参数只能作为先验。",
+      "field_validation_gate": "field RTD、进出水污染物、副产物面板、催化剂再生记录和 pressure_source_resolution。",
+      "failure_boundary": "机理证据冲突未解决时不能升级控制策略或解除保护。",
+      "protectability_note": "保护重点是灰箱机理边界对诊断和闭环动作的约束关系，而不是泛称机理解释。",
+      "module_title": "灰箱物理、机理解释与故障诊断",
+      "mapped_layers": [
+        "L4_mechanism_evidence_layer",
+        "L3_state_estimation_layer",
+        "L5_diagnostic_decision_layer"
+      ],
+      "core_abilities": [
+        "explainability",
+        "verifiability"
+      ],
+      "module_inputs": "软传感状态、反应/传质先验、RTD/停留时间、催化剂历史、基质信息和副产物风险标签。",
+      "module_outputs": "灰箱残差、机理假设、故障模式、反应/水力/催化剂边界和可解释控制约束。",
+      "state_variables": [
+        "k_eff",
+        "mass_balance_residual",
+        "hydraulic_delay",
+        "catalyst_decay",
+        "byproduct_risk"
+      ],
+      "interface_metrics": [
+        "grey_box_residual",
+        "mass_balance_residual",
+        "mechanism_hypothesis_count",
+        "fault_mode_coverage"
+      ],
+      "upstream_dependencies": [
+        "M2_soft_sensor_state_estimation",
+        "M5_kg_claim_evidence",
+        "field RTD and lab panels"
+      ],
+      "downstream_consumers": [
+        "M4_collaborative_control",
+        "M5_kg_claim_evidence",
+        "M6_field_evidence_chain"
+      ],
+      "field_claim_status": "not_field_supported_until_replay_holdout_operator_review_and_release_gate_pass",
+      "legal_status": "technical_disclosure_candidate_not_legal_advice",
+      "missing_feature_fields": [],
+      "abstract_only_risk": false,
+      "feature_status": "technical_feature_candidate_complete_not_field_claim"
+    },
+    {
+      "feature_id": "PTF4_cyclic_low_frequency_control",
+      "module_id": "M4_collaborative_control",
+      "technical_problem": "低成本传感速度慢、采样少，传统一次通过式处理难以及时判断是否达标。",
+      "technical_means": "利用循环、暂存、延长停留和多设施协同控制，为软传感、诊断和人工复核争取时间窗口。",
+      "system_structure": "诊断决策层生成联合动作候选，闭环执行层执行回流、暂存、投药、切换单元和 release gate 阻断。",
+      "control_actions": [
+        "回流",
+        "延长停留时间",
+        "暂存等待",
+        "调整投药",
+        "切换处理单元",
+        "催化剂再生/更换",
+        "放行或阻断"
+      ],
+      "implementation_example": "当低频代理显示 matrix shock 且软传感不确定性高时，系统选择暂存等待和再测，而不是立即放行。",
+      "verification_metrics": [
+        "joint_action_accuracy",
+        "reward_regret",
+        "false_positive_cost",
+        "release_block_correctness"
+      ],
+      "technical_effect": "通过循环窗口降低对高速昂贵传感器的依赖，并把控制动作变成可回退、可解释的工程动作。",
+      "prior_art_distinction": "区别于实时高频全量传感控制，本特征把低频感知约束与循环式处理结构协同设计。",
+      "claim_skeleton_role": "主权利要求中的闭环控制步骤；可作为低频传感-循环窗口协同控制从属特征。",
+      "evidence_boundary": "synthetic replay 只能证明控制候选逻辑，不能写真实执行器或 release gate。",
+      "field_validation_gate": "多节点 state-action-reward replay、operator review、actuator latency、R8v routing 和 field holdout。",
+      "failure_boundary": "无真实 replay 和人工复核时，联合动作只能是候选，不能作为自动执行策略。",
+      "protectability_note": "保护重点是低频观测、循环缓冲和动作仲裁的组合技术路线。",
+      "module_title": "循环式处理、多设施协同控制与仲裁",
+      "mapped_layers": [
+        "L5_diagnostic_decision_layer",
+        "L6_closed_loop_execution_layer",
+        "L7_validation_governance_layer"
+      ],
+      "core_abilities": [
+        "controllability",
+        "explainability",
+        "verifiability"
+      ],
+      "module_inputs": "状态估计、灰箱边界、工程约束、候选动作、reward prior、多节点 replay schema 和人工复核规则。",
+      "module_outputs": "联合动作候选、保护性阻断、回流/暂存/投药/切换建议、策略解释和不可写执行器边界。",
+      "state_variables": [
+        "facility_state",
+        "joint_action",
+        "reward_components",
+        "guardrail_context",
+        "operator_review_required"
+      ],
+      "interface_metrics": [
+        "joint_action_accuracy",
+        "reward_regret",
+        "distilled_policy_accuracy",
+        "false_positive_cost"
+      ],
+      "upstream_dependencies": [
+        "M2_soft_sensor_state_estimation",
+        "M3_grey_box_mechanism",
+        "M6_field_evidence_chain"
+      ],
+      "downstream_consumers": [
+        "M6_field_evidence_chain",
+        "M7_project_operations_support"
+      ],
+      "field_claim_status": "not_field_supported_until_replay_holdout_operator_review_and_release_gate_pass",
+      "legal_status": "technical_disclosure_candidate_not_legal_advice",
+      "missing_feature_fields": [],
+      "abstract_only_risk": false,
+      "feature_status": "technical_feature_candidate_complete_not_field_claim"
+    },
+    {
+      "feature_id": "PTF5_mechanism_kg_evidence_constraint",
+      "module_id": "M5_kg_claim_evidence",
+      "technical_problem": "材料、污染物、工况和低成本信号之间的证据分散，容易让模型生成不可追溯 claim。",
+      "technical_means": "构建 typed KG 和 source_basis，把污染物、材料、过程条件、低成本信号、隐藏状态、动作和风险连接为证据路径。",
+      "system_structure": "机理证据层向状态估计和控制层输出 action constraint patch、field validation queue 和 claim evidence boundary。",
+      "control_actions": [
+        "约束控制候选",
+        "触发必采字段",
+        "阻断无证据 claim",
+        "标记文献支持与现场支持边界"
+      ],
+      "implementation_example": "PFAS/抗生素/染料等污染场景进入知识图谱后，系统只允许在 source_basis 覆盖的工况范围内生成处理建议。",
+      "verification_metrics": [
+        "evidence_traceability",
+        "constraint_hit_rate",
+        "source_basis_completion_rate",
+        "field_supported_edge_ratio"
+      ],
+      "technical_effect": "让多智能体诊断和控制动作具有证据路径，减少无依据扩展。",
+      "prior_art_distinction": "区别于只堆论文摘要，本特征把 KG 证据转成可传递控制约束和现场验证字段。",
+      "claim_skeleton_role": "从属权利要求中的机理证据约束与 claim gate 特征。",
+      "evidence_boundary": "literature-supported 和 KG-inferred 不能等同于 field-supported。",
+      "field_validation_gate": "source_basis detail、claim-specific field package、field-supported KG edge 和 evidence chain pass。",
+      "failure_boundary": "source_basis 不完整或参数超出文献边界时，不能升级为强 claim。",
+      "protectability_note": "保护重点是证据图谱到控制约束/验证字段的转化，不是泛称知识图谱。",
+      "module_title": "知识图谱、文献证据与 Claim 审查",
+      "mapped_layers": [
+        "L4_mechanism_evidence_layer",
+        "L1_field_object_layer",
+        "L7_validation_governance_layer"
+      ],
+      "core_abilities": [
+        "explainability",
+        "verifiability"
+      ],
+      "module_inputs": "污染物、材料、工况、过程机制、低成本信号、文献 source_basis 和 field validation needs。",
+      "module_outputs": "typed KG edge、evidence path、claim constraint、source_basis detail 和 field validation queue。",
+      "state_variables": [
+        "evidence_edge",
+        "claim_status",
+        "source_basis_detail",
+        "constraint_hit",
+        "field_supported_edge"
+      ],
+      "interface_metrics": [
+        "evidence_traceability",
+        "constraint_hit_rate",
+        "source_basis_completion_rate",
+        "field_supported_edge_ratio"
+      ],
+      "upstream_dependencies": [
+        "field object taxonomy",
+        "literature evidence matrix",
+        "M3_grey_box_mechanism"
+      ],
+      "downstream_consumers": [
+        "M3_grey_box_mechanism",
+        "M4_collaborative_control",
+        "M6_field_evidence_chain"
+      ],
+      "field_claim_status": "not_field_supported_until_replay_holdout_operator_review_and_release_gate_pass",
+      "legal_status": "technical_disclosure_candidate_not_legal_advice",
+      "missing_feature_fields": [],
+      "abstract_only_risk": false,
+      "feature_status": "technical_feature_candidate_complete_not_field_claim"
+    },
+    {
+      "feature_id": "PTF6_field_replay_release_gate",
+      "module_id": "M6_field_evidence_chain",
+      "technical_problem": "仿真、模板和真实现场数据混杂时，系统可能错误地把可运行流程当成现场有效。",
+      "technical_means": "建立 field package、timestamped replay、holdout、operator review、calibration 和 release gate 的分级证据链。",
+      "system_structure": "验证治理层接收 metadata/CSV、共同 batch、时间顺序、行级 provenance 和 replay 输出，决定 claim 升级或阻断。",
+      "control_actions": [
+        "导入真实包",
+        "运行 replay",
+        "执行 holdout",
+        "要求 calibration",
+        "阻断 claim upgrade",
+        "允许或拒绝 release gate"
+      ],
+      "implementation_example": "R7-to-R8p work package 通过 preflight 后，仍必须经 R8p schema/provenance/template/bundle/temporal/semantic gates 和 R8v routing。",
+      "verification_metrics": [
+        "field_replay_import_pass",
+        "evidence_chain_pass",
+        "claim_gate_status",
+        "can_write_to_release_gate"
+      ],
+      "technical_effect": "把证据等级从 synthetic/template/literature/field/operator-reviewed/release-gated 明确分层，降低误放行风险。",
+      "prior_art_distinction": "区别于只报告模型精度，本特征把现场证据升级路径和保护性写回边界作为系统组成。",
+      "claim_skeleton_role": "主权利要求中的验证治理与保护性控制写回步骤；也可形成现场 replay 分案。",
+      "evidence_boundary": "header-only、template、sample 或 synthetic replay 均不能替代 data_origin=field。",
+      "field_validation_gate": "R7 import、R8p/R8v gates、field holdout、Agent51/49/52/R7 evidence chain 和人工复核。",
+      "failure_boundary": "任一必需 gate 阻断时，不能写 actuator、release gate 或 field-supported claim。",
+      "protectability_note": "保护重点是现场 replay 证据门控与保护性写回之间的硬连接。",
+      "module_title": "现场数据接口、Replay 与证据门控",
+      "mapped_layers": [
+        "L7_validation_governance_layer",
+        "L2_observation_layer",
+        "L5_diagnostic_decision_layer"
+      ],
+      "core_abilities": [
+        "verifiability",
+        "engineering_feasibility"
+      ],
+      "module_inputs": "metadata、sensor/lab/operation/proxy/replay CSV、field origin、timestamp alignment、holdout 和 calibration records。",
+      "module_outputs": "import gate、timestamped replay、evidence chain、claim gate、field package patch plan 和升级/阻断结论。",
+      "state_variables": [
+        "field_import_pass",
+        "evidence_chain_pass",
+        "claim_gate_status",
+        "replay_contract_status",
+        "field_supported_claim"
+      ],
+      "interface_metrics": [
+        "field_replay_import_pass",
+        "field_need_to_gate_coverage",
+        "evidence_chain_pass",
+        "can_write_to_release_gate"
+      ],
+      "upstream_dependencies": [
+        "M1_sparse_observation_layout",
+        "M2_soft_sensor_state_estimation",
+        "M4_collaborative_control",
+        "M5_kg_claim_evidence"
+      ],
+      "downstream_consumers": [
+        "M4_collaborative_control",
+        "M8_model_governance"
+      ],
+      "field_claim_status": "not_field_supported_until_replay_holdout_operator_review_and_release_gate_pass",
+      "legal_status": "technical_disclosure_candidate_not_legal_advice",
+      "missing_feature_fields": [],
+      "abstract_only_risk": false,
+      "feature_status": "technical_feature_candidate_complete_not_field_claim"
+    },
+    {
+      "feature_id": "PTF7_engineering_execution_constraints",
+      "module_id": "M7_project_operations_support",
+      "technical_problem": "即使模型给出动作，现场仍受泵阀、药剂、库存、人工、延迟和恢复爬坡限制。",
+      "technical_means": "把资源、成本、执行延迟、恢复爬坡和 SOP 约束作为控制 reward、仲裁和实施计划的硬边界。",
+      "system_structure": "闭环执行层与项目运行支持层共享执行约束，向控制策略输出不可行动作、成本惩罚和重规划触发。",
+      "control_actions": [
+        "限制不可执行动作",
+        "触发重规划",
+        "调整恢复爬坡",
+        "约束投药/回流执行时序"
+      ],
+      "implementation_example": "当泵阀响应超过允许延迟或暂存容量不足时，系统不允许选择需要快速切换的策略。",
+      "verification_metrics": [
+        "resource_bottleneck_count",
+        "replan_trigger",
+        "recovery_load_fraction",
+        "execution_constraint_violation_count"
+      ],
+      "technical_effect": "提高控制候选的工程可执行性，避免算法策略与现场执行条件脱节。",
+      "prior_art_distinction": "区别于只优化水质目标，本特征把现场执行约束纳入控制候选生成与仲裁。",
+      "claim_skeleton_role": "从属权利要求中的工程执行约束和实施支持特征。",
+      "evidence_boundary": "项目运维支持不替代状态估计、field replay 或 release gate。",
+      "field_validation_gate": "PLC/SCADA 点表、SOP、操作日志、库存/药剂记录和执行反馈 replay。",
+      "failure_boundary": "无现场执行反馈时，工程约束只能作为候选边界。",
+      "protectability_note": "保护重点是执行约束进入控制仲裁链，而不是普通项目管理。",
+      "module_title": "项目运行、资源调度与实施管理",
+      "mapped_layers": [
+        "L6_closed_loop_execution_layer",
+        "L1_field_object_layer",
+        "L7_validation_governance_layer"
+      ],
+      "core_abilities": [
+        "engineering_feasibility",
+        "controllability"
+      ],
+      "module_inputs": "批次、队列、资源、库存、预算、执行时间、恢复爬坡和现场作业约束。",
+      "module_outputs": "项目运行计划、资源瓶颈、重规划触发、恢复策略和工程实施支持信号。",
+      "state_variables": [
+        "campaign_queue",
+        "resource_capacity",
+        "replan_trigger",
+        "recovery_load_fraction",
+        "deployment_budget"
+      ],
+      "interface_metrics": [
+        "campaign_success_rate",
+        "resource_bottleneck_count",
+        "replan_trigger",
+        "recovery_load_fraction"
+      ],
+      "upstream_dependencies": [
+        "M4_collaborative_control",
+        "M6_field_evidence_chain",
+        "site operations records"
+      ],
+      "downstream_consumers": [
+        "M8_model_governance",
+        "implementation planning"
+      ],
+      "field_claim_status": "not_field_supported_until_replay_holdout_operator_review_and_release_gate_pass",
+      "legal_status": "technical_disclosure_candidate_not_legal_advice",
+      "missing_feature_fields": [],
+      "abstract_only_risk": false,
+      "feature_status": "technical_feature_candidate_complete_not_field_claim"
+    },
+    {
+      "feature_id": "PTF8_stage_gated_model_governance",
+      "module_id": "M8_model_governance",
+      "technical_problem": "agent 数量增长会造成重复 gate、上下游割裂和模型主链不清。",
+      "technical_means": "采用七层系统骨架、接口契约、冗余簇、fallback 和阶段门控，审查每个新增能力是否回接主链。",
+      "system_structure": "模型治理层读取各模块指标、manifest、测试和 evidence matrix，输出优先级、冻结/合并建议和下一步核心动作。",
+      "control_actions": [
+        "冻结展示层",
+        "合并重复 gate",
+        "重排高边际价值任务",
+        "阻断越界 field claim",
+        "维持低频自我打断"
+      ],
+      "implementation_example": "当无真实 field package 时，治理层保持 R7a 为最高证据动作，同时允许 R8p work package preflight/assembly gate 离线推进。",
+      "verification_metrics": [
+        "system_spine_coverage",
+        "interface_contract_coverage",
+        "redundancy_cluster_count",
+        "self_interrupt_verdict"
+      ],
+      "technical_effect": "让系统演化更短、更稳、更可审查，减少无效 agent 扩张。",
+      "prior_art_distinction": "区别于单次 agent 编排，本特征把证据边界、接口契约和阶段门控作为长期演化机制。",
+      "claim_skeleton_role": "可作为系统治理或计算机实现方法的支撑特征，不单独替代水处理核心。",
+      "evidence_boundary": "治理输出不产生 field evidence，只审查证据路径与模型边界。",
+      "field_validation_gate": "所有 field claim 仍必须回到 R7/R8p/R8v、holdout、operator review 和 release gate。",
+      "failure_boundary": "治理层不能替代模型能力、现场数据或执行器授权。",
+      "protectability_note": "保护重点是阶段门控治理如何约束水处理灰箱闭环系统，而不是泛称项目管理。",
+      "module_title": "模型治理、主链回接与减冗复盘",
+      "mapped_layers": [
+        "L7_validation_governance_layer"
+      ],
+      "core_abilities": [
+        "evolvability",
+        "verifiability"
+      ],
+      "module_inputs": "全局 goal、模块指标、agent audit、evidence matrix、backlog、stage gate 和 regression results。",
+      "module_outputs": "优先级排序、骨架覆盖、接口缺口、冗余合并建议、冻结策略和下一步核心动作。",
+      "state_variables": [
+        "system_spine_status",
+        "interface_contract_coverage",
+        "consolidation_score",
+        "self_interrupt_verdict",
+        "fallback_action"
+      ],
+      "interface_metrics": [
+        "main_chain_prior_consumption_rate",
+        "mapped_agent_count",
+        "redundancy_cluster_count",
+        "system_spine_coverage"
+      ],
+      "upstream_dependencies": [
+        "all core modules",
+        "global goal",
+        "test/regression outputs"
+      ],
+      "downstream_consumers": [
+        "all module owners",
+        "future refactor work"
+      ],
+      "field_claim_status": "not_field_supported_until_replay_holdout_operator_review_and_release_gate_pass",
+      "legal_status": "technical_disclosure_candidate_not_legal_advice",
+      "missing_feature_fields": [],
+      "abstract_only_risk": false,
+      "feature_status": "technical_feature_candidate_complete_not_field_claim"
+    }
+  ]
+}

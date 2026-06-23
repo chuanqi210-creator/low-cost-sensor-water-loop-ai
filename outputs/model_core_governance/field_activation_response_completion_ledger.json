@@ -1,0 +1,469 @@
+{
+  "ledger_id": "R8u124_field_activation_response_completion_ledger",
+  "ledger_type": "field_activation_response_completion_ledger",
+  "ledger_status": "field_activation_response_completion_waiting_for_external_response",
+  "source_preflight_status": "field_activation_response_source_using_default_template",
+  "external_response_supplied": false,
+  "response_preflight_status": "field_activation_response_blocked_before_external_package_preflight",
+  "expected_response_row_count": 33,
+  "provided_response_row_count": 33,
+  "completed_response_row_count": 0,
+  "incomplete_response_row_count": 33,
+  "completion_ratio": 0.0,
+  "issue_scope_counts": {
+    "missing_alignment": 33,
+    "no_write_unconfirmed": 33,
+    "non_field_origin": 33,
+    "template_marker": 33,
+    "template_value_payload": 33
+  },
+  "hidden_state_completion_rows": [
+    {
+      "hidden_state": "pollutant_residual",
+      "completion_status": "group_not_started",
+      "expected_row_count": 6,
+      "provided_row_count": 6,
+      "completed_row_count": 0,
+      "incomplete_row_count": 6,
+      "completion_ratio": 0.0,
+      "table_names": [
+        "context_or_manual_review",
+        "field_holdout_release_labels",
+        "final_effluent_endpoint_labels",
+        "offline_lab_results",
+        "sensor_timeseries"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ],
+      "issue_scope_counts": {
+        "missing_alignment": 6,
+        "no_write_unconfirmed": 6,
+        "non_field_origin": 6,
+        "template_marker": 6,
+        "template_value_payload": 6
+      },
+      "incomplete_response_row_ids": [
+        "pollutant_residual_01",
+        "pollutant_residual_02",
+        "pollutant_residual_03",
+        "pollutant_residual_04",
+        "pollutant_residual_05",
+        "pollutant_residual_06"
+      ],
+      "next_operator_action": "fill_batch_id_and_evidence_value_reference"
+    },
+    {
+      "hidden_state": "reaction_completion",
+      "completion_status": "group_not_started",
+      "expected_row_count": 6,
+      "provided_row_count": 6,
+      "completed_row_count": 0,
+      "incomplete_row_count": 6,
+      "completion_ratio": 0.0,
+      "table_names": [
+        "campaign_operation_log",
+        "context_or_manual_review",
+        "offline_lab_results",
+        "site_topology_or_bed_geometry"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ],
+      "issue_scope_counts": {
+        "missing_alignment": 6,
+        "no_write_unconfirmed": 6,
+        "non_field_origin": 6,
+        "template_marker": 6,
+        "template_value_payload": 6
+      },
+      "incomplete_response_row_ids": [
+        "reaction_completion_01",
+        "reaction_completion_02",
+        "reaction_completion_03",
+        "reaction_completion_04",
+        "reaction_completion_05",
+        "reaction_completion_06"
+      ],
+      "next_operator_action": "fill_batch_id_and_evidence_value_reference"
+    },
+    {
+      "hidden_state": "catalyst_activity",
+      "completion_status": "group_not_started",
+      "expected_row_count": 6,
+      "provided_row_count": 6,
+      "completed_row_count": 0,
+      "incomplete_row_count": 6,
+      "completion_ratio": 0.0,
+      "table_names": [
+        "campaign_operation_log",
+        "node_modality_sensor_timeseries",
+        "offline_lab_results",
+        "site_topology_or_bed_geometry"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ],
+      "issue_scope_counts": {
+        "missing_alignment": 6,
+        "no_write_unconfirmed": 6,
+        "non_field_origin": 6,
+        "template_marker": 6,
+        "template_value_payload": 6
+      },
+      "incomplete_response_row_ids": [
+        "catalyst_activity_01",
+        "catalyst_activity_02",
+        "catalyst_activity_03",
+        "catalyst_activity_04",
+        "catalyst_activity_05",
+        "catalyst_activity_06"
+      ],
+      "next_operator_action": "fill_batch_id_and_evidence_value_reference"
+    },
+    {
+      "hidden_state": "matrix_interference",
+      "completion_status": "group_not_started",
+      "expected_row_count": 5,
+      "provided_row_count": 5,
+      "completed_row_count": 0,
+      "incomplete_row_count": 5,
+      "completion_ratio": 0.0,
+      "table_names": [
+        "field_labeled_fast_proxy_event_log",
+        "offline_lab_results",
+        "sensor_timeseries"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ],
+      "issue_scope_counts": {
+        "missing_alignment": 5,
+        "no_write_unconfirmed": 5,
+        "non_field_origin": 5,
+        "template_marker": 5,
+        "template_value_payload": 5
+      },
+      "incomplete_response_row_ids": [
+        "matrix_interference_01",
+        "matrix_interference_02",
+        "matrix_interference_03",
+        "matrix_interference_04",
+        "matrix_interference_05"
+      ],
+      "next_operator_action": "fill_batch_id_and_evidence_value_reference"
+    },
+    {
+      "hidden_state": "hydraulic_delay",
+      "completion_status": "group_not_started",
+      "expected_row_count": 5,
+      "provided_row_count": 5,
+      "completed_row_count": 0,
+      "incomplete_row_count": 5,
+      "completion_ratio": 0.0,
+      "table_names": [
+        "campaign_operation_log",
+        "hydraulic_path_stage_labels",
+        "site_topology_or_bed_geometry"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ],
+      "issue_scope_counts": {
+        "missing_alignment": 5,
+        "no_write_unconfirmed": 5,
+        "non_field_origin": 5,
+        "template_marker": 5,
+        "template_value_payload": 5
+      },
+      "incomplete_response_row_ids": [
+        "hydraulic_delay_01",
+        "hydraulic_delay_02",
+        "hydraulic_delay_03",
+        "hydraulic_delay_04",
+        "hydraulic_delay_05"
+      ],
+      "next_operator_action": "fill_batch_id_and_evidence_value_reference"
+    },
+    {
+      "hidden_state": "release_or_byproduct_risk",
+      "completion_status": "group_not_started",
+      "expected_row_count": 5,
+      "provided_row_count": 5,
+      "completed_row_count": 0,
+      "incomplete_row_count": 5,
+      "completion_ratio": 0.0,
+      "table_names": [
+        "campaign_operation_log",
+        "context_or_manual_review",
+        "final_effluent_endpoint_labels",
+        "human_reviewed_release_gate_labels",
+        "offline_lab_results"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ],
+      "issue_scope_counts": {
+        "missing_alignment": 5,
+        "no_write_unconfirmed": 5,
+        "non_field_origin": 5,
+        "template_marker": 5,
+        "template_value_payload": 5
+      },
+      "incomplete_response_row_ids": [
+        "release_or_byproduct_risk_01",
+        "release_or_byproduct_risk_02",
+        "release_or_byproduct_risk_03",
+        "release_or_byproduct_risk_04",
+        "release_or_byproduct_risk_05"
+      ],
+      "next_operator_action": "fill_batch_id_and_evidence_value_reference"
+    }
+  ],
+  "table_completion_rows": [
+    {
+      "table_name": "offline_lab_results",
+      "completion_status": "group_not_started",
+      "expected_row_count": 5,
+      "completed_row_count": 0,
+      "incomplete_row_count": 5,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "catalyst_activity",
+        "matrix_interference",
+        "pollutant_residual",
+        "reaction_completion",
+        "release_or_byproduct_risk"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "context_or_manual_review",
+      "completion_status": "group_not_started",
+      "expected_row_count": 3,
+      "completed_row_count": 0,
+      "incomplete_row_count": 3,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "pollutant_residual",
+        "reaction_completion",
+        "release_or_byproduct_risk"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "sensor_timeseries",
+      "completion_status": "group_not_started",
+      "expected_row_count": 5,
+      "completed_row_count": 0,
+      "incomplete_row_count": 5,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "matrix_interference",
+        "pollutant_residual"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "final_effluent_endpoint_labels",
+      "completion_status": "group_not_started",
+      "expected_row_count": 2,
+      "completed_row_count": 0,
+      "incomplete_row_count": 2,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "pollutant_residual",
+        "release_or_byproduct_risk"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "field_holdout_release_labels",
+      "completion_status": "group_not_started",
+      "expected_row_count": 1,
+      "completed_row_count": 0,
+      "incomplete_row_count": 1,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "pollutant_residual"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "campaign_operation_log",
+      "completion_status": "group_not_started",
+      "expected_row_count": 8,
+      "completed_row_count": 0,
+      "incomplete_row_count": 8,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "catalyst_activity",
+        "hydraulic_delay",
+        "reaction_completion",
+        "release_or_byproduct_risk"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "site_topology_or_bed_geometry",
+      "completion_status": "group_not_started",
+      "expected_row_count": 3,
+      "completed_row_count": 0,
+      "incomplete_row_count": 3,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "catalyst_activity",
+        "hydraulic_delay",
+        "reaction_completion"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "node_modality_sensor_timeseries",
+      "completion_status": "group_not_started",
+      "expected_row_count": 3,
+      "completed_row_count": 0,
+      "incomplete_row_count": 3,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "catalyst_activity"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "field_labeled_fast_proxy_event_log",
+      "completion_status": "group_not_started",
+      "expected_row_count": 1,
+      "completed_row_count": 0,
+      "incomplete_row_count": 1,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "matrix_interference"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "hydraulic_path_stage_labels",
+      "completion_status": "group_not_started",
+      "expected_row_count": 1,
+      "completed_row_count": 0,
+      "incomplete_row_count": 1,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "hydraulic_delay"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    },
+    {
+      "table_name": "human_reviewed_release_gate_labels",
+      "completion_status": "group_not_started",
+      "expected_row_count": 1,
+      "completed_row_count": 0,
+      "incomplete_row_count": 1,
+      "completion_ratio": 0.0,
+      "hidden_states": [
+        "release_or_byproduct_risk"
+      ],
+      "top_issue_scopes": [
+        "missing_alignment",
+        "no_write_unconfirmed",
+        "non_field_origin",
+        "template_marker",
+        "template_value_payload"
+      ]
+    }
+  ],
+  "next_hidden_state_focus": "catalyst_activity",
+  "next_hidden_state_focus_status": "group_not_started",
+  "next_operator_action": "copy_template_fill_real_field_values_and_set_FIELD_ACTIVATION_RESPONSE_PATH",
+  "can_route_to_response_preflight": true,
+  "can_route_to_package_assembly": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "no_write_boundary": "This ledger only measures response completion and machine-readiness gaps. It does not create field evidence, run replay/holdout, resume the model chain, write actuator policy, write a release gate, or upgrade any claim to field-supported."
+}

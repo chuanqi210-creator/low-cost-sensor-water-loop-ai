@@ -1,0 +1,1 @@
+catalyst_id,batch_id,cycle_count,regen_count,activity_assay,pressure_drop_kPa,lifetime_fraction,surface_pollution_index,replacement_flag,regen_method,regeneration_event,headloss_kPa_per_m,bed_geometry_id,catalyst_bed_depth_m

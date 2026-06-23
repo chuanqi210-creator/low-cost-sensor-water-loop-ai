@@ -1,0 +1,29 @@
+{
+  "formal_search_nonlegal_review_response_source_status": "formal_search_nonlegal_review_response_preflight_blocked_at_template",
+  "linked_review_packet_status": "formal_search_nonlegal_review_packet_blocked_at_validation_execution",
+  "linked_response_template_status": "formal_search_nonlegal_review_response_template_blocked_at_review_packet",
+  "expected_env_var": "FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH",
+  "formal_search_nonlegal_review_response_path": "",
+  "expected_review_packet_row_count": 0,
+  "accepted_review_row_count": 0,
+  "rejected_review_row_count": 0,
+  "review_response_gap_count": 0,
+  "review_response_gaps": [],
+  "forbidden_review_boundary_count": 0,
+  "forbidden_review_boundary_gaps": [],
+  "ai_draft_boundary_gap_count": 0,
+  "ai_draft_boundary_gaps": [],
+  "template_marker_gap_count": 0,
+  "template_marker_gaps": [],
+  "accepted_review_rows": [],
+  "review_response_supplied": false,
+  "human_review_completed": false,
+  "can_route_to_claim_scope_patch_draft": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "failure_boundary": "该 preflight 只验收人工非法律技术比较审查回填包的结构、行覆盖和边界声明；即使通过，也只能进入 claim scope patch draft，不能生成 prior-art 结论、法律意见或现场 claim。",
+  "preflight_blockers": [
+    "review_packet:not_ready_for_human_review"
+  ]
+}

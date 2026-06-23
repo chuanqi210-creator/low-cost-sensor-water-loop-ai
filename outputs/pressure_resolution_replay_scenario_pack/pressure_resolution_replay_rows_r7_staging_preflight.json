@@ -1,0 +1,46 @@
+{
+  "staging_id": "R8u21_r7_to_r8p_pressure_resolution_rows_staging_preflight",
+  "model_core_layers": [
+    "observability_layer",
+    "verification_governance_layer"
+  ],
+  "source_package": "R7_Agent44_real_field_package",
+  "target_package": "R8p_pressure_resolution_replay_rows",
+  "r7_package_env_override": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+  "staging_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staging_preflight.json",
+  "staged_draft_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json",
+  "expected_tables": [
+    "agent52_replay_table",
+    "campaign_operation_log",
+    "fast_proxy_event_log",
+    "node_modality_sensor_timeseries",
+    "offline_lab_results",
+    "pressure_headloss_event_log"
+  ],
+  "staged_draft_rows_by_table": {
+    "agent52_replay_table": [],
+    "campaign_operation_log": [],
+    "fast_proxy_event_log": [],
+    "node_modality_sensor_timeseries": [],
+    "offline_lab_results": [],
+    "pressure_headloss_event_log": []
+  },
+  "can_generate_field_evidence_from_staging": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "staging_boundary": "R7-to-R8p staging only copies reusable field/package values into a draft. It does not create Agent52 replay rows, does not replace operator review/calibration supplements, and does not make field-supported claims until Agent44/R7 and Agent61/R8p gates pass.",
+  "r7_staging_preflight_status": "r7_to_r8p_staging_preflight_no_r7_package_supplied",
+  "r7_package_path": null,
+  "metadata_audit": {
+    "metadata_status": "not_checked_no_package"
+  },
+  "source_table_audit": [],
+  "table_staging_preflight": [],
+  "staged_table_count": 0,
+  "staged_row_count": 0,
+  "required_field_gap_count": 0,
+  "supplement_required_field_gap_count": 0,
+  "agent52_export_required_field_gap_count": 11,
+  "can_enter_r8p_schema_preflight": false,
+  "next_operator_action": "Set REAL_FIELD_REPLAY_PACKAGE_DIR to a real R7 metadata+CSV package and rerun Agent61."
+}

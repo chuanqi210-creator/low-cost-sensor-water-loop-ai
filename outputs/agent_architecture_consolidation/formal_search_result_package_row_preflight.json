@@ -1,0 +1,25 @@
+{
+  "formal_search_result_package_row_preflight_status": "formal_search_result_package_row_preflight_blocked_at_source_preflight",
+  "source_preflight_status": "formal_search_result_package_preflight_waiting_for_submission_path",
+  "formal_search_result_package_path": "",
+  "checked_work_package_count": 0,
+  "required_work_package_count": 7,
+  "checked_hit_row_count": 0,
+  "checked_comparison_row_count": 0,
+  "checked_fallback_row_count": 0,
+  "structurally_valid_hit_row_count": 0,
+  "row_gap_count": 0,
+  "row_gaps": [],
+  "comparison_coverage_gap_count": 0,
+  "comparison_coverage_gaps": [],
+  "forbidden_review_boundary_count": 0,
+  "forbidden_review_boundary_gaps": [],
+  "can_route_to_validation_gate": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "failure_boundary": "该 row preflight 只检查正式检索结果包的行级字段、来源、查询和 reviewer 边界；通过后也只能进入 validation gate，不能直接生成 prior-art comparison、法律意见或 field-supported claim。",
+  "preflight_blockers": [
+    "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+  ]
+}

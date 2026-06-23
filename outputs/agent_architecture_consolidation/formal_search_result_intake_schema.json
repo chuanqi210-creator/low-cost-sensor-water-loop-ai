@@ -1,0 +1,834 @@
+{
+  "coverage": {
+    "formal_search_result_intake_status": "formal_search_result_intake_schema_ready_waiting_for_external_results",
+    "intake_count": 7,
+    "complete_intake_count": 7,
+    "formal_search_result_intake_coverage_rate": 1.0,
+    "incomplete_intakes": [],
+    "covered_work_package_ids": [
+      "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "FSWP2_node_modality_sparse_hidden_state_search",
+      "FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "FSWP4_low_cost_observation_gated_flowsheet_search",
+      "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "FSWP6_operational_catalyst_activity_guardrail_search",
+      "FSWP7_pressure_resolution_protective_release_gate_search"
+    ],
+    "missing_work_package_coverage": [],
+    "formal_search_result_supplied": false,
+    "accepted_hit_count": 0,
+    "can_generate_prior_art_result": false,
+    "legal_opinion_allowed": false,
+    "field_claim_upgrade_allowed": false,
+    "required_hit_table_fields": [
+      "hit_id",
+      "linked_work_package_id",
+      "source_database",
+      "publication_or_patent_id",
+      "title",
+      "assignee_or_authors",
+      "publication_date",
+      "url_or_reference",
+      "matched_query",
+      "matched_claim_elements",
+      "disclosed_capabilities",
+      "missing_project_elements",
+      "overlap_level",
+      "novelty_risk_signal",
+      "combination_risk_signal",
+      "reviewer_id",
+      "review_status",
+      "legal_status"
+    ],
+    "required_claim_element_comparison_fields": [
+      "comparison_id",
+      "linked_hit_id",
+      "linked_work_package_id",
+      "claim_or_feature_element",
+      "project_element_text",
+      "prior_art_disclosure_text",
+      "match_level",
+      "missing_or_distinguishing_detail",
+      "fallback_claim_scope_impact",
+      "field_validation_gate_to_preserve",
+      "reviewer_decision",
+      "legal_status"
+    ],
+    "evidence_boundary": "该 schema 只定义正式检索结果的接收、字段和阻断规则；没有外部检索结果与人工复核时，不能生成 prior-art hit 结论、法律意见或 field-supported claim。"
+  },
+  "intake_schema": [
+    {
+      "intake_id": "FSRI1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "linked_work_package_id": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "linked_distinction_ids": [
+        "PAD1_soft_sensor_ml_vs_cyclic_greybox_release_gated_control"
+      ],
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "mapped_effect_ids": [
+        "TEM1_observability_gain_under_sparse_sensing",
+        "TEM2_blackbox_to_greybox_state_estimation",
+        "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+        "TEM5_field_replay_protective_writeback_reduces_false_release"
+      ],
+      "required_hit_table_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "required_claim_element_comparison_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "required_reviewer_fields": [
+        "reviewer_id",
+        "review_time",
+        "review_status",
+        "review_note",
+        "legal_status"
+      ],
+      "input_artifacts": [
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_prior_art_hit_table.csv_or_json",
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP1_cyclic_greybox_soft_sensor_release_gate_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "acceptance_checks": [
+        "linked_work_package_id must match a generated formal search work package",
+        "source_database must be one of search_databases from the linked work package",
+        "matched_query must be one of the english/chinese search queries or a reviewer-approved expansion",
+        "claim element comparison must cover mapped claim, feature or effect elements",
+        "each hit must state both disclosed capabilities and missing project elements",
+        "review_status must not contain legal conclusion or field-supported claim upgrade"
+      ],
+      "blocking_conditions": [
+        "missing publication_or_patent_id or url_or_reference",
+        "unknown source_database",
+        "empty matched_claim_elements",
+        "empty missing_project_elements when overlap_level is full_or_near_full",
+        "legal opinion text in reviewer fields",
+        "attempt to set field_claim_upgrade_allowed=true before field validation gates"
+      ],
+      "minimum_evidence_to_accept_hit": [
+        "publication_or_patent_id",
+        "title",
+        "source_database",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "missing_project_elements",
+        "reviewer_id",
+        "review_status"
+      ],
+      "claim_scope_decision_options": [
+        "retain_candidate_scope_pending_formal_review",
+        "narrow_to_dependent_fallback",
+        "request_external_counsel_review",
+        "discard_claim_route",
+        "keep_as_research_only_not_claim_candidate"
+      ],
+      "field_validation_gate_to_preserve": "field holdout + timestamped replay + operator review + release gate",
+      "formal_search_result_supplied": false,
+      "accepted_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 intake 只定义检索结果如何提交和审查；没有人工/外部正式检索结果、claim element comparison 和 field validation gate 时，不能生成 prior-art 结论、法律意见或现场 claim。",
+      "intake_status": "formal_search_result_intake_schema_ready_waiting_for_search_results",
+      "missing_formal_search_result_intake_fields": [],
+      "intake_ready_status": "formal_search_result_intake_complete_waiting_for_external_search_results"
+    },
+    {
+      "intake_id": "FSRI2_FSWP2_node_modality_sparse_hidden_state_search",
+      "linked_work_package_id": "FSWP2_node_modality_sparse_hidden_state_search",
+      "linked_distinction_ids": [
+        "PAD2_sparse_sensor_placement_vs_node_modality_hidden_state_layout"
+      ],
+      "mapped_claim_ids": [
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation"
+      ],
+      "mapped_effect_ids": [
+        "TEM1_observability_gain_under_sparse_sensing"
+      ],
+      "required_hit_table_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "required_claim_element_comparison_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "required_reviewer_fields": [
+        "reviewer_id",
+        "review_time",
+        "review_status",
+        "review_note",
+        "legal_status"
+      ],
+      "input_artifacts": [
+        "FSWP2_node_modality_sparse_hidden_state_search_prior_art_hit_table.csv_or_json",
+        "FSWP2_node_modality_sparse_hidden_state_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP2_node_modality_sparse_hidden_state_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "acceptance_checks": [
+        "linked_work_package_id must match a generated formal search work package",
+        "source_database must be one of search_databases from the linked work package",
+        "matched_query must be one of the english/chinese search queries or a reviewer-approved expansion",
+        "claim element comparison must cover mapped claim, feature or effect elements",
+        "each hit must state both disclosed capabilities and missing project elements",
+        "review_status must not contain legal conclusion or field-supported claim upgrade"
+      ],
+      "blocking_conditions": [
+        "missing publication_or_patent_id or url_or_reference",
+        "unknown source_database",
+        "empty matched_claim_elements",
+        "empty missing_project_elements when overlap_level is full_or_near_full",
+        "legal opinion text in reviewer fields",
+        "attempt to set field_claim_upgrade_allowed=true before field validation gates"
+      ],
+      "minimum_evidence_to_accept_hit": [
+        "publication_or_patent_id",
+        "title",
+        "source_database",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "missing_project_elements",
+        "reviewer_id",
+        "review_status"
+      ],
+      "claim_scope_decision_options": [
+        "retain_candidate_scope_pending_formal_review",
+        "narrow_to_dependent_fallback",
+        "request_external_counsel_review",
+        "discard_claim_route",
+        "keep_as_research_only_not_claim_candidate"
+      ],
+      "field_validation_gate_to_preserve": "field topology + node-specific time series + offline weak-state labels + missingness replay",
+      "formal_search_result_supplied": false,
+      "accepted_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 intake 只定义检索结果如何提交和审查；没有人工/外部正式检索结果、claim element comparison 和 field validation gate 时，不能生成 prior-art 结论、法律意见或现场 claim。",
+      "intake_status": "formal_search_result_intake_schema_ready_waiting_for_search_results",
+      "missing_formal_search_result_intake_fields": [],
+      "intake_ready_status": "formal_search_result_intake_complete_waiting_for_external_search_results"
+    },
+    {
+      "intake_id": "FSRI3_FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "linked_work_package_id": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "linked_distinction_ids": [
+        "PAD3_marl_pump_coordination_vs_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_claim_ids": [
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_feature_ids": [
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF7_engineering_execution_constraints",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions",
+        "TEM7_engineering_execution_constraint_feasibility"
+      ],
+      "required_hit_table_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "required_claim_element_comparison_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "required_reviewer_fields": [
+        "reviewer_id",
+        "review_time",
+        "review_status",
+        "review_note",
+        "legal_status"
+      ],
+      "input_artifacts": [
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_prior_art_hit_table.csv_or_json",
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP3_greybox_multi_agent_safety_arbitration_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "acceptance_checks": [
+        "linked_work_package_id must match a generated formal search work package",
+        "source_database must be one of search_databases from the linked work package",
+        "matched_query must be one of the english/chinese search queries or a reviewer-approved expansion",
+        "claim element comparison must cover mapped claim, feature or effect elements",
+        "each hit must state both disclosed capabilities and missing project elements",
+        "review_status must not contain legal conclusion or field-supported claim upgrade"
+      ],
+      "blocking_conditions": [
+        "missing publication_or_patent_id or url_or_reference",
+        "unknown source_database",
+        "empty matched_claim_elements",
+        "empty missing_project_elements when overlap_level is full_or_near_full",
+        "legal opinion text in reviewer fields",
+        "attempt to set field_claim_upgrade_allowed=true before field validation gates"
+      ],
+      "minimum_evidence_to_accept_hit": [
+        "publication_or_patent_id",
+        "title",
+        "source_database",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "missing_project_elements",
+        "reviewer_id",
+        "review_status"
+      ],
+      "claim_scope_decision_options": [
+        "retain_candidate_scope_pending_formal_review",
+        "narrow_to_dependent_fallback",
+        "request_external_counsel_review",
+        "discard_claim_route",
+        "keep_as_research_only_not_claim_candidate"
+      ],
+      "field_validation_gate_to_preserve": "field state-action-reward replay + KG source_basis + operator review + engineering constraint replay",
+      "formal_search_result_supplied": false,
+      "accepted_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 intake 只定义检索结果如何提交和审查；没有人工/外部正式检索结果、claim element comparison 和 field validation gate 时，不能生成 prior-art 结论、法律意见或现场 claim。",
+      "intake_status": "formal_search_result_intake_schema_ready_waiting_for_search_results",
+      "missing_formal_search_result_intake_fields": [],
+      "intake_ready_status": "formal_search_result_intake_complete_waiting_for_external_search_results"
+    },
+    {
+      "intake_id": "FSRI4_FSWP4_low_cost_observation_gated_flowsheet_search",
+      "linked_work_package_id": "FSWP4_low_cost_observation_gated_flowsheet_search",
+      "linked_distinction_ids": [
+        "PAD4_flowsheet_optimization_vs_low_cost_observation_gated_greybox_control"
+      ],
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "mapped_feature_ids": [
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF7_engineering_execution_constraints"
+      ],
+      "mapped_effect_ids": [
+        "TEM2_blackbox_to_greybox_state_estimation",
+        "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+        "TEM7_engineering_execution_constraint_feasibility"
+      ],
+      "required_hit_table_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "required_claim_element_comparison_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "required_reviewer_fields": [
+        "reviewer_id",
+        "review_time",
+        "review_status",
+        "review_note",
+        "legal_status"
+      ],
+      "input_artifacts": [
+        "FSWP4_low_cost_observation_gated_flowsheet_search_prior_art_hit_table.csv_or_json",
+        "FSWP4_low_cost_observation_gated_flowsheet_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP4_low_cost_observation_gated_flowsheet_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "acceptance_checks": [
+        "linked_work_package_id must match a generated formal search work package",
+        "source_database must be one of search_databases from the linked work package",
+        "matched_query must be one of the english/chinese search queries or a reviewer-approved expansion",
+        "claim element comparison must cover mapped claim, feature or effect elements",
+        "each hit must state both disclosed capabilities and missing project elements",
+        "review_status must not contain legal conclusion or field-supported claim upgrade"
+      ],
+      "blocking_conditions": [
+        "missing publication_or_patent_id or url_or_reference",
+        "unknown source_database",
+        "empty matched_claim_elements",
+        "empty missing_project_elements when overlap_level is full_or_near_full",
+        "legal opinion text in reviewer fields",
+        "attempt to set field_claim_upgrade_allowed=true before field validation gates"
+      ],
+      "minimum_evidence_to_accept_hit": [
+        "publication_or_patent_id",
+        "title",
+        "source_database",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "missing_project_elements",
+        "reviewer_id",
+        "review_status"
+      ],
+      "claim_scope_decision_options": [
+        "retain_candidate_scope_pending_formal_review",
+        "narrow_to_dependent_fallback",
+        "request_external_counsel_review",
+        "discard_claim_route",
+        "keep_as_research_only_not_claim_candidate"
+      ],
+      "field_validation_gate_to_preserve": "field calibration + RTD/HRT evidence + actuator feedback + timestamped replay",
+      "formal_search_result_supplied": false,
+      "accepted_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 intake 只定义检索结果如何提交和审查；没有人工/外部正式检索结果、claim element comparison 和 field validation gate 时，不能生成 prior-art 结论、法律意见或现场 claim。",
+      "intake_status": "formal_search_result_intake_schema_ready_waiting_for_search_results",
+      "missing_formal_search_result_intake_fields": [],
+      "intake_ready_status": "formal_search_result_intake_complete_waiting_for_external_search_results"
+    },
+    {
+      "intake_id": "FSRI5_FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "linked_work_package_id": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "linked_distinction_ids": [
+        "PAD5_scientific_kg_vs_action_constraint_and_claim_gate"
+      ],
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_feature_ids": [
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM5_field_replay_protective_writeback_reduces_false_release",
+        "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions"
+      ],
+      "required_hit_table_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "required_claim_element_comparison_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "required_reviewer_fields": [
+        "reviewer_id",
+        "review_time",
+        "review_status",
+        "review_note",
+        "legal_status"
+      ],
+      "input_artifacts": [
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_prior_art_hit_table.csv_or_json",
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP5_scientific_kg_action_constraint_claim_gate_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "acceptance_checks": [
+        "linked_work_package_id must match a generated formal search work package",
+        "source_database must be one of search_databases from the linked work package",
+        "matched_query must be one of the english/chinese search queries or a reviewer-approved expansion",
+        "claim element comparison must cover mapped claim, feature or effect elements",
+        "each hit must state both disclosed capabilities and missing project elements",
+        "review_status must not contain legal conclusion or field-supported claim upgrade"
+      ],
+      "blocking_conditions": [
+        "missing publication_or_patent_id or url_or_reference",
+        "unknown source_database",
+        "empty matched_claim_elements",
+        "empty missing_project_elements when overlap_level is full_or_near_full",
+        "legal opinion text in reviewer fields",
+        "attempt to set field_claim_upgrade_allowed=true before field validation gates"
+      ],
+      "minimum_evidence_to_accept_hit": [
+        "publication_or_patent_id",
+        "title",
+        "source_database",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "missing_project_elements",
+        "reviewer_id",
+        "review_status"
+      ],
+      "claim_scope_decision_options": [
+        "retain_candidate_scope_pending_formal_review",
+        "narrow_to_dependent_fallback",
+        "request_external_counsel_review",
+        "discard_claim_route",
+        "keep_as_research_only_not_claim_candidate"
+      ],
+      "field_validation_gate_to_preserve": "citation-level source_basis audit + field-supported KG edges + release gate audit",
+      "formal_search_result_supplied": false,
+      "accepted_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 intake 只定义检索结果如何提交和审查；没有人工/外部正式检索结果、claim element comparison 和 field validation gate 时，不能生成 prior-art 结论、法律意见或现场 claim。",
+      "intake_status": "formal_search_result_intake_schema_ready_waiting_for_search_results",
+      "missing_formal_search_result_intake_fields": [],
+      "intake_ready_status": "formal_search_result_intake_complete_waiting_for_external_search_results"
+    },
+    {
+      "intake_id": "FSRI6_FSWP6_operational_catalyst_activity_guardrail_search",
+      "linked_work_package_id": "FSWP6_operational_catalyst_activity_guardrail_search",
+      "linked_distinction_ids": [
+        "PAD6_ai_catalyst_discovery_vs_operational_catalyst_activity_guardrail"
+      ],
+      "mapped_claim_ids": [
+        "TCS3_dependent_catalyst_activity_regeneration_control"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "mapped_effect_ids": [
+        "TEM4_catalyst_proxy_guardrail_effect"
+      ],
+      "required_hit_table_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "required_claim_element_comparison_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "required_reviewer_fields": [
+        "reviewer_id",
+        "review_time",
+        "review_status",
+        "review_note",
+        "legal_status"
+      ],
+      "input_artifacts": [
+        "FSWP6_operational_catalyst_activity_guardrail_search_prior_art_hit_table.csv_or_json",
+        "FSWP6_operational_catalyst_activity_guardrail_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP6_operational_catalyst_activity_guardrail_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "acceptance_checks": [
+        "linked_work_package_id must match a generated formal search work package",
+        "source_database must be one of search_databases from the linked work package",
+        "matched_query must be one of the english/chinese search queries or a reviewer-approved expansion",
+        "claim element comparison must cover mapped claim, feature or effect elements",
+        "each hit must state both disclosed capabilities and missing project elements",
+        "review_status must not contain legal conclusion or field-supported claim upgrade"
+      ],
+      "blocking_conditions": [
+        "missing publication_or_patent_id or url_or_reference",
+        "unknown source_database",
+        "empty matched_claim_elements",
+        "empty missing_project_elements when overlap_level is full_or_near_full",
+        "legal opinion text in reviewer fields",
+        "attempt to set field_claim_upgrade_allowed=true before field validation gates"
+      ],
+      "minimum_evidence_to_accept_hit": [
+        "publication_or_patent_id",
+        "title",
+        "source_database",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "missing_project_elements",
+        "reviewer_id",
+        "review_status"
+      ],
+      "claim_scope_decision_options": [
+        "retain_candidate_scope_pending_formal_review",
+        "narrow_to_dependent_fallback",
+        "request_external_counsel_review",
+        "discard_claim_route",
+        "keep_as_research_only_not_claim_candidate"
+      ],
+      "field_validation_gate_to_preserve": "Agent51 field proxy holdout + pressure source resolution + offline catalyst_activity labels",
+      "formal_search_result_supplied": false,
+      "accepted_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 intake 只定义检索结果如何提交和审查；没有人工/外部正式检索结果、claim element comparison 和 field validation gate 时，不能生成 prior-art 结论、法律意见或现场 claim。",
+      "intake_status": "formal_search_result_intake_schema_ready_waiting_for_search_results",
+      "missing_formal_search_result_intake_fields": [],
+      "intake_ready_status": "formal_search_result_intake_complete_waiting_for_external_search_results"
+    },
+    {
+      "intake_id": "FSRI7_FSWP7_pressure_resolution_protective_release_gate_search",
+      "linked_work_package_id": "FSWP7_pressure_resolution_protective_release_gate_search",
+      "linked_distinction_ids": [
+        "PAD7_replay_validation_vs_pressure_resolution_protective_release_gate"
+      ],
+      "mapped_claim_ids": [
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS6_dependent_low_frequency_cycle_window_control"
+      ],
+      "mapped_feature_ids": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM5_field_replay_protective_writeback_reduces_false_release"
+      ],
+      "required_hit_table_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "required_claim_element_comparison_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "required_reviewer_fields": [
+        "reviewer_id",
+        "review_time",
+        "review_status",
+        "review_note",
+        "legal_status"
+      ],
+      "input_artifacts": [
+        "FSWP7_pressure_resolution_protective_release_gate_search_prior_art_hit_table.csv_or_json",
+        "FSWP7_pressure_resolution_protective_release_gate_search_claim_element_comparison_chart.csv_or_json",
+        "FSWP7_pressure_resolution_protective_release_gate_search_fallback_claim_scope_recommendation.md_or_json"
+      ],
+      "acceptance_checks": [
+        "linked_work_package_id must match a generated formal search work package",
+        "source_database must be one of search_databases from the linked work package",
+        "matched_query must be one of the english/chinese search queries or a reviewer-approved expansion",
+        "claim element comparison must cover mapped claim, feature or effect elements",
+        "each hit must state both disclosed capabilities and missing project elements",
+        "review_status must not contain legal conclusion or field-supported claim upgrade"
+      ],
+      "blocking_conditions": [
+        "missing publication_or_patent_id or url_or_reference",
+        "unknown source_database",
+        "empty matched_claim_elements",
+        "empty missing_project_elements when overlap_level is full_or_near_full",
+        "legal opinion text in reviewer fields",
+        "attempt to set field_claim_upgrade_allowed=true before field validation gates"
+      ],
+      "minimum_evidence_to_accept_hit": [
+        "publication_or_patent_id",
+        "title",
+        "source_database",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "missing_project_elements",
+        "reviewer_id",
+        "review_status"
+      ],
+      "claim_scope_decision_options": [
+        "retain_candidate_scope_pending_formal_review",
+        "narrow_to_dependent_fallback",
+        "request_external_counsel_review",
+        "discard_claim_route",
+        "keep_as_research_only_not_claim_candidate"
+      ],
+      "field_validation_gate_to_preserve": "R7_TO_R8P_WORK_PACKAGE_DIR + R8p acceptance + R8v routing + operator review + release gate audit",
+      "formal_search_result_supplied": false,
+      "accepted_hit_count": 0,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 intake 只定义检索结果如何提交和审查；没有人工/外部正式检索结果、claim element comparison 和 field validation gate 时，不能生成 prior-art 结论、法律意见或现场 claim。",
+      "intake_status": "formal_search_result_intake_schema_ready_waiting_for_search_results",
+      "missing_formal_search_result_intake_fields": [],
+      "intake_ready_status": "formal_search_result_intake_complete_waiting_for_external_search_results"
+    }
+  ]
+}

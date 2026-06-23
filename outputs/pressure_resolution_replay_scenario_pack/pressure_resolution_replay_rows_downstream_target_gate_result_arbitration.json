@@ -1,0 +1,53 @@
+{
+  "downstream_target_gate_result_arbitration_id": "R8u53_downstream_target_gate_result_arbitration",
+  "arbitration_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_arbitration.json",
+  "linked_result_preflight_status": "downstream_target_gate_result_preflight_blocked_by_target_gate_preflight",
+  "expected_target_count": 4,
+  "expected_target_ids": [
+    "agent51_catalyst_proxy_holdout",
+    "agent49_guardrail_context",
+    "agent52_replay_clearance",
+    "r7_evidence_chain"
+  ],
+  "accepted_target_result_count": 0,
+  "target_gate_status_counts": {
+    "target_gate_result_passed": 0,
+    "target_gate_result_failed": 0,
+    "target_gate_result_blocked": 0,
+    "target_gate_result_waiting_for_operator_review": 0,
+    "target_gate_result_invalid_or_missing": 0
+  },
+  "target_gate_decisions": [],
+  "model_core_layers": [
+    "diagnostic_decision_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "controllability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "A structurally valid downstream result package still does not prove that all target gates agree on safe replay, holdout, evidence-chain, and control-boundary status.",
+    "technical_means": "A target-gate result arbitration gate aggregates accepted Agent51/49/52/R7 target statuses, separates passed, failed, blocked, and operator-review states, and routes only unanimous pass cases to human review before any control write.",
+    "technical_effect": "The grey-box closed loop gains a deterministic safety gate between downstream validation results and any later protective-control or release-gate decision.",
+    "prior_art_distinction_candidate": "Unlike generic workflow result aggregation, the arbitration gate preserves multi-target evidence tiers, operator review, and no-write safety constraints for low-cost sensing water-treatment control."
+  },
+  "evidence_boundaries": [
+    "Arbitration is not field-supported success and is not legal or patentability opinion.",
+    "A unanimous pass can only route to operator review; it cannot write actuator or release gate.",
+    "Any failed, blocked, waiting, invalid, missing, or unreviewed target keeps control and release blocked."
+  ],
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false,
+  "downstream_target_gate_result_arbitration_status": "downstream_target_gate_result_arbitration_blocked_by_result_preflight",
+  "blocking_reasons": [
+    "result_preflight_status=downstream_target_gate_result_preflight_blocked_by_target_gate_preflight"
+  ],
+  "next_operator_action": "R8p_fix_field_rows_source_preflight",
+  "can_route_to_operator_review": false,
+  "can_emit_protective_control_candidate": false
+}

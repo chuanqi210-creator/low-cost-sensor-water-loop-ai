@@ -1,0 +1,17 @@
+{
+  "formal_search_claim_scope_patch_draft_status": "formal_search_claim_scope_patch_draft_blocked_at_nonlegal_review_response",
+  "linked_nonlegal_review_response_status": "formal_search_nonlegal_review_response_preflight_blocked_at_template",
+  "source_review_response_path": "",
+  "draft_patch_count": 0,
+  "claim_scope_patch_rows": [],
+  "human_review_completed": false,
+  "can_route_to_formal_counsel_review": false,
+  "can_emit_claim_text": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "failure_boundary": "该 scaffold 只把人工非法律技术比较结果转成待正式专利代理人/法律审查的技术范围修补建议；不能生成权利要求文本、不能判断新颖性/创造性/授权可能性，也不能把任何结论升级为现场成立。",
+  "draft_blockers": [
+    "nonlegal_review_response_status:formal_search_nonlegal_review_response_preflight_blocked_at_template"
+  ]
+}

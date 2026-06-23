@@ -1,0 +1,3752 @@
+{
+  "source_package_type": "synthetic_interface_package",
+  "source_package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/synthetic_replay_import_package",
+  "preflight": {
+    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/synthetic_replay_import_package",
+    "status": "field_package_preflight_blocked_non_field_origin",
+    "required_files": [
+      "metadata.json",
+      "sensor_timeseries.csv",
+      "offline_lab_results.csv",
+      "campaign_operation_log.csv",
+      "pressure_headloss_event_log.csv",
+      "fast_proxy_event_log.csv"
+    ],
+    "file_audit": {
+      "metadata_exists": true,
+      "csv_files": {
+        "sensor_timeseries": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV"
+          ],
+          "expected_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": [
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ]
+        },
+        "offline_lab_results": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag"
+          ],
+          "expected_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag",
+            "proxy_holdout_label",
+            "catalyst_activity_label",
+            "pressure_headloss_proxy_label",
+            "lab_label_time_min",
+            "detection_limit",
+            "method",
+            "unit"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag",
+            "proxy_holdout_label",
+            "catalyst_activity_label",
+            "pressure_headloss_proxy_label"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": [
+            "lab_label_time_min",
+            "detection_limit",
+            "method",
+            "unit"
+          ]
+        },
+        "campaign_operation_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "hold_time_min",
+            "regeneration_event",
+            "bed_id",
+            "pressure_headloss_review_required"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "hold_time_min",
+            "regeneration_event",
+            "bed_id",
+            "pressure_headloss_review_required"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "pressure_headloss_event_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa",
+            "operator_review_required"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa",
+            "operator_review_required"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "fast_proxy_event_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        }
+      },
+      "r7j_supplement_csv_files": {
+        "node_modality_sensor_timeseries": {
+          "exists": false,
+          "status": "supplement_missing_optional_file",
+          "expected_headers": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "zone",
+            "modality",
+            "value",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "actual_headers": [],
+          "missing_headers": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "zone",
+            "modality",
+            "value",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "row_count": 0,
+          "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+        },
+        "site_topology_or_bed_geometry": {
+          "exists": false,
+          "status": "supplement_missing_optional_file",
+          "expected_headers": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin"
+          ],
+          "actual_headers": [],
+          "missing_headers": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin"
+          ],
+          "row_count": 0,
+          "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+        }
+      }
+    },
+    "r7j_supplement_audit": {
+      "node_modality_sensor_timeseries": {
+        "exists": false,
+        "status": "supplement_missing_optional_file",
+        "expected_headers": [
+          "batch_id",
+          "timestamp_min",
+          "node_id",
+          "zone",
+          "modality",
+          "value",
+          "sensor_status",
+          "instrument_id",
+          "acquisition_time_min",
+          "ingest_time_min"
+        ],
+        "actual_headers": [],
+        "missing_headers": [
+          "batch_id",
+          "timestamp_min",
+          "node_id",
+          "zone",
+          "modality",
+          "value",
+          "sensor_status",
+          "instrument_id",
+          "acquisition_time_min",
+          "ingest_time_min"
+        ],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      },
+      "site_topology_or_bed_geometry": {
+        "exists": false,
+        "status": "supplement_missing_optional_file",
+        "expected_headers": [
+          "node_id",
+          "bed_volume",
+          "nominal_HRT_min",
+          "flow_Lmin"
+        ],
+        "actual_headers": [],
+        "missing_headers": [
+          "node_id",
+          "bed_volume",
+          "nominal_HRT_min",
+          "flow_Lmin"
+        ],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      }
+    },
+    "placeholder_metadata_fields": [],
+    "row_counts": {
+      "campaign_operation_log": 12,
+      "fast_proxy_event_log": 12,
+      "offline_lab_results": 12,
+      "pressure_headloss_event_log": 12,
+      "sensor_timeseries": 60
+    },
+    "files_ready": true,
+    "real_rows_ready": true,
+    "agent44_import_status": "field_replay_import_blocked_non_field_origin",
+    "agent44_import_score": 0.6,
+    "can_pass_to_timestamped_replay": false,
+    "next_actions": [
+      "Use this package only for interface testing; create a separate package with data_origin=field and real provenance before replay.",
+      "Do not label this package field-supported until Agent44/42/43/45/46/59/R7 gates pass."
+    ],
+    "field_boundary": "This template is not evidence. It is only a collection scaffold until metadata placeholders are replaced and all CSVs contain real timestamped field rows."
+  },
+  "real_field_package_template": {
+    "template_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "required_files": [
+      "metadata.json",
+      "sensor_timeseries.csv",
+      "offline_lab_results.csv",
+      "campaign_operation_log.csv",
+      "pressure_headloss_event_log.csv",
+      "fast_proxy_event_log.csv"
+    ],
+    "optional_supplement_files": [
+      "node_modality_sensor_timeseries.csv",
+      "site_topology_or_bed_geometry.csv"
+    ],
+    "field_boundary": "This template is not evidence. It is only a collection scaffold until metadata placeholders are replaced and all CSVs contain real timestamped field rows."
+  },
+  "real_field_package_template_preflight": {
+    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "status": "field_package_template_ready_needs_real_values_and_rows",
+    "required_files": [
+      "metadata.json",
+      "sensor_timeseries.csv",
+      "offline_lab_results.csv",
+      "campaign_operation_log.csv",
+      "pressure_headloss_event_log.csv",
+      "fast_proxy_event_log.csv"
+    ],
+    "file_audit": {
+      "metadata_exists": true,
+      "csv_files": {
+        "sensor_timeseries": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV"
+          ],
+          "expected_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "offline_lab_results": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag"
+          ],
+          "expected_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag",
+            "proxy_holdout_label",
+            "catalyst_activity_label",
+            "pressure_headloss_proxy_label",
+            "lab_label_time_min",
+            "detection_limit",
+            "method",
+            "unit"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag",
+            "proxy_holdout_label",
+            "catalyst_activity_label",
+            "pressure_headloss_proxy_label",
+            "lab_label_time_min",
+            "detection_limit",
+            "method",
+            "unit"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "campaign_operation_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "hold_time_min",
+            "regeneration_event",
+            "bed_id",
+            "pressure_headloss_review_required"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "hold_time_min",
+            "regeneration_event",
+            "bed_id",
+            "pressure_headloss_review_required"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "pressure_headloss_event_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa",
+            "operator_review_required"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa",
+            "operator_review_required"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        },
+        "fast_proxy_event_log": {
+          "exists": true,
+          "status": "header_ready",
+          "required_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "expected_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "actual_headers": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "missing_required_headers": [],
+          "missing_optional_headers": []
+        }
+      },
+      "r7j_supplement_csv_files": {
+        "node_modality_sensor_timeseries": {
+          "exists": true,
+          "status": "supplement_header_ready",
+          "expected_headers": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "zone",
+            "modality",
+            "value",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "actual_headers": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "zone",
+            "modality",
+            "value",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "missing_headers": [],
+          "row_count": 0,
+          "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+        },
+        "site_topology_or_bed_geometry": {
+          "exists": true,
+          "status": "supplement_header_ready",
+          "expected_headers": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin"
+          ],
+          "actual_headers": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin"
+          ],
+          "missing_headers": [],
+          "row_count": 0,
+          "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+        }
+      }
+    },
+    "r7j_supplement_audit": {
+      "node_modality_sensor_timeseries": {
+        "exists": true,
+        "status": "supplement_header_ready",
+        "expected_headers": [
+          "batch_id",
+          "timestamp_min",
+          "node_id",
+          "zone",
+          "modality",
+          "value",
+          "sensor_status",
+          "instrument_id",
+          "acquisition_time_min",
+          "ingest_time_min"
+        ],
+        "actual_headers": [
+          "batch_id",
+          "timestamp_min",
+          "node_id",
+          "zone",
+          "modality",
+          "value",
+          "sensor_status",
+          "instrument_id",
+          "acquisition_time_min",
+          "ingest_time_min"
+        ],
+        "missing_headers": [],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      },
+      "site_topology_or_bed_geometry": {
+        "exists": true,
+        "status": "supplement_header_ready",
+        "expected_headers": [
+          "node_id",
+          "bed_volume",
+          "nominal_HRT_min",
+          "flow_Lmin"
+        ],
+        "actual_headers": [
+          "node_id",
+          "bed_volume",
+          "nominal_HRT_min",
+          "flow_Lmin"
+        ],
+        "missing_headers": [],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      }
+    },
+    "placeholder_metadata_fields": [
+      "site_id",
+      "campaign_id",
+      "sampling_start",
+      "sampling_end",
+      "operator_id",
+      "instrument_snapshot_id",
+      "chain_of_custody_id"
+    ],
+    "row_counts": {
+      "campaign_operation_log": 0,
+      "fast_proxy_event_log": 0,
+      "offline_lab_results": 0,
+      "pressure_headloss_event_log": 0,
+      "sensor_timeseries": 0
+    },
+    "files_ready": true,
+    "real_rows_ready": false,
+    "agent44_import_status": "field_replay_import_metadata_blocked",
+    "agent44_import_score": 0.54,
+    "can_pass_to_timestamped_replay": false,
+    "next_actions": [
+      "Replace placeholder metadata fields: site_id, campaign_id, sampling_start, sampling_end, operator_id, instrument_snapshot_id, chain_of_custody_id.",
+      "Add real timestamped field rows to every CSV; header-only templates cannot enter field replay.",
+      "Do not label this package field-supported until Agent44/42/43/45/46/59/R7 gates pass."
+    ],
+    "field_boundary": "This template is not evidence. It is only a collection scaffold until metadata placeholders are replaced and all CSVs contain real timestamped field rows."
+  },
+  "source_synthetic_replay_package": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/timestamped_campaign_replay/synthetic_timestamped_replay",
+  "field_replay_import": {
+    "agent_name": "field_replay_import_agent",
+    "confidence": 0.567,
+    "summary": "现场 replay 导入门：field_replay_import_blocked_non_field_origin；表验收 5/5，可进入 timestamped replay False。",
+    "recommendations": [
+      "不要把当前 replay 包传给 G6/P6；先补齐 metadata provenance、CSV 必需字段、类型转换和 batch 关联。",
+      "synthetic/sample 包只能用于接口联调，不得作为现场快代理 precision/recall 证据。",
+      "真实导入包至少应包含 data_origin=field、site_id、campaign_id、operator_id、instrument_snapshot_id 和 chain_of_custody_id。",
+      "若使用 pressure/headloss 作为水力代理，必须提供 pressure_headloss_event_log.csv，并确保每个 pressure batch 有同 batch 离线标签锚点。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "field_replay_import_gate_before_timestamped_replay",
+        "borrowed_from": [
+          "academic_research_agent_evidence_before_claims",
+          "systematic_literature_review_data_extraction_gates",
+          "model_validation_and_uncertainty_provenance_checks",
+          "timestamped_campaign_replay_for_fast_proxy_validation"
+        ],
+        "reality_mapping": "把真实现场 replay 包从“几张 CSV”提升为可追溯、可类型验收、可 batch 回连的数据入口，防止 synthetic/sample 数据误入现场校准。",
+        "data_needs": [
+          "metadata.json",
+          "sensor_timeseries.csv",
+          "offline_lab_results.csv",
+          "campaign_operation_log.csv",
+          "fast_proxy_event_log.csv",
+          "pressure_headloss_event_log.csv",
+          "node_modality_sensor_timeseries.csv for Agent51 catalyst proxy holdout",
+          "site_topology_or_bed_geometry.csv for Agent51 catalyst proxy holdout",
+          "pressure/headloss batch labels and bed_id linkage",
+          "site_id",
+          "campaign_id",
+          "instrument_snapshot_id",
+          "chain_of_custody_id"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/field_replay_import_agent.py",
+          "experiments/run_agent44_field_replay_import.py",
+          "outputs/field_replay_import/import_acceptance_metrics.json"
+        ],
+        "evaluation_metrics": [
+          "field_replay_import_score",
+          "accepted_table_count",
+          "type_coercion_error_count",
+          "metadata_origin_ready",
+          "batch_linkage_status"
+        ],
+        "failure_boundary": "导入通过只代表现场 replay 包可进入 Agent42；不能替代 Agent42 replay 指标、Agent43 G6/P6 或真实污染物达标验证。"
+      },
+      "import_schema_contract": {
+        "metadata_required_fields": [
+          "data_origin",
+          "site_id",
+          "campaign_id",
+          "sampling_start",
+          "sampling_end",
+          "operator_id",
+          "instrument_snapshot_id",
+          "chain_of_custody_id"
+        ],
+        "table_contract": {
+          "sensor_timeseries": {
+            "description": "低成本传感原始时间序列，支撑快代理触发时间。",
+            "required_fields": [
+              "batch_id",
+              "timestamp_min",
+              "EC_uScm",
+              "turbidity_NTU",
+              "UV254_abs",
+              "pH",
+              "ORP_mV"
+            ],
+            "optional_fields": [
+              "flow_Lmin",
+              "pressure_drop_kPa",
+              "headloss_kPa_per_m",
+              "bed_inlet_pressure_kPa",
+              "bed_outlet_pressure_kPa"
+            ],
+            "timestamp_fields": [
+              "timestamp_min"
+            ],
+            "primary_key": [
+              "batch_id",
+              "timestamp_min"
+            ]
+          },
+          "offline_lab_results": {
+            "description": "离线标签与结果返回时间，用于计算检测 turnaround 和快代理标签。",
+            "required_fields": [
+              "batch_id",
+              "sample_time_min",
+              "result_time_min",
+              "analyte",
+              "value",
+              "qa_flag"
+            ],
+            "optional_fields": [
+              "proxy_holdout_label",
+              "catalyst_activity_label",
+              "pressure_headloss_proxy_label"
+            ],
+            "timestamp_fields": [
+              "sample_time_min",
+              "result_time_min"
+            ],
+            "primary_key": [
+              "batch_id",
+              "sample_time_min",
+              "analyte"
+            ]
+          },
+          "campaign_operation_log": {
+            "description": "控制动作命令、执行和生效时间，用于计算执行器/预处理延迟。",
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "action_id",
+              "command_time_min",
+              "effect_time_min",
+              "start_min",
+              "end_min",
+              "release_policy"
+            ],
+            "optional_fields": [
+              "recycle_ratio",
+              "tank_storage_margin",
+              "actuator_latency_p90",
+              "pump_valve_result",
+              "hold_time_min",
+              "regeneration_event",
+              "bed_id",
+              "pressure_headloss_review_required"
+            ],
+            "timestamp_fields": [
+              "command_time_min",
+              "effect_time_min",
+              "start_min",
+              "end_min"
+            ],
+            "primary_key": [
+              "campaign_id",
+              "batch_id",
+              "action_id",
+              "command_time_min"
+            ]
+          },
+          "pressure_headloss_event_log": {
+            "description": "压降/水头损失候选代理事件，用于 replay 催化剂床堵塞、水力异常和 guardrail 阻断边界。",
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "event_time_min",
+              "bed_id",
+              "pressure_drop_kPa",
+              "headloss_kPa_per_m",
+              "flow_Lmin",
+              "matched_lab_sample_time_min",
+              "regeneration_event",
+              "hydraulic_anomaly_label"
+            ],
+            "optional_fields": [
+              "flow_normalized_pressure_residual",
+              "expected_clean_bed_pressure_drop_kPa",
+              "operator_review_required"
+            ],
+            "timestamp_fields": [
+              "event_time_min",
+              "matched_lab_sample_time_min"
+            ],
+            "primary_key": [
+              "campaign_id",
+              "batch_id",
+              "bed_id",
+              "event_time_min"
+            ]
+          },
+          "fast_proxy_event_log": {
+            "description": "基质冲击快代理事件与现场标签，用于 precision/recall、提前量和误触发成本校准。",
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "event_time_min",
+              "proxy_score",
+              "specificity_guard_score",
+              "protective_triggered",
+              "triggered_action_id",
+              "field_label_matrix_shock",
+              "lab_label_time_min",
+              "false_positive_cost_index"
+            ],
+            "timestamp_fields": [
+              "event_time_min",
+              "lab_label_time_min"
+            ],
+            "primary_key": [
+              "campaign_id",
+              "batch_id",
+              "event_time_min"
+            ]
+          }
+        },
+        "template_headers": {
+          "sensor_timeseries": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "offline_lab_results": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag",
+            "proxy_holdout_label",
+            "catalyst_activity_label",
+            "pressure_headloss_proxy_label",
+            "lab_label_time_min",
+            "detection_limit",
+            "method",
+            "unit"
+          ],
+          "campaign_operation_log": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "pump_valve_result",
+            "hold_time_min",
+            "regeneration_event",
+            "bed_id",
+            "pressure_headloss_review_required"
+          ],
+          "pressure_headloss_event_log": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa",
+            "operator_review_required"
+          ],
+          "fast_proxy_event_log": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "node_modality_sensor_timeseries": [
+            "batch_id",
+            "timestamp_min",
+            "node_id",
+            "zone",
+            "modality",
+            "value",
+            "sensor_status",
+            "instrument_id",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "site_topology_or_bed_geometry": [
+            "node_id",
+            "bed_volume",
+            "nominal_HRT_min",
+            "flow_Lmin"
+          ]
+        },
+        "optional_supplement_files": [
+          "node_modality_sensor_timeseries.csv",
+          "site_topology_or_bed_geometry.csv"
+        ],
+        "r7j_catalyst_proxy_holdout_template": {
+          "headers": {
+            "sensor_timeseries": [
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ],
+            "node_modality_sensor_timeseries": [
+              "batch_id",
+              "timestamp_min",
+              "node_id",
+              "zone",
+              "modality",
+              "value",
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ],
+            "offline_lab_results": [
+              "lab_label_time_min",
+              "detection_limit",
+              "method",
+              "unit"
+            ],
+            "site_topology_or_bed_geometry": [
+              "node_id",
+              "bed_volume",
+              "nominal_HRT_min",
+              "flow_Lmin"
+            ]
+          },
+          "minimum_matched_batch_count": 3,
+          "required_patch_signals": [
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "field_boundary": "Optional for Agent44 import; required by R7j when Agent51 weak_axis_repair_plan is evaluated."
+        },
+        "numeric_fields": {
+          "sensor_timeseries": [
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "acquisition_time_min",
+            "ingest_time_min",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa"
+          ],
+          "node_modality_sensor_timeseries": [
+            "timestamp_min",
+            "value",
+            "acquisition_time_min",
+            "ingest_time_min"
+          ],
+          "offline_lab_results": [
+            "sample_time_min",
+            "result_time_min",
+            "value",
+            "lab_label_time_min"
+          ],
+          "campaign_operation_log": [
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "hold_time_min"
+          ],
+          "fast_proxy_event_log": [
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "pressure_headloss_event_log": [
+            "event_time_min",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa"
+          ]
+        },
+        "boolean_fields": {
+          "offline_lab_results": [
+            "proxy_holdout_label",
+            "pressure_headloss_proxy_label"
+          ],
+          "campaign_operation_log": [
+            "regeneration_event",
+            "pressure_headloss_review_required"
+          ],
+          "fast_proxy_event_log": [
+            "protective_triggered",
+            "field_label_matrix_shock"
+          ],
+          "pressure_headloss_event_log": [
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "operator_review_required"
+          ]
+        }
+      },
+      "metadata": {
+        "data_origin": "synthetic",
+        "site_id": "synthetic_site_for_interface_test",
+        "campaign_id": "synthetic_timestamped_campaign",
+        "sampling_start": "2026-05-31T08:00:00+08:00",
+        "sampling_end": "2026-05-31T12:00:00+08:00",
+        "operator_id": "codex_interface_test",
+        "instrument_snapshot_id": "synthetic_sensor_snapshot_v1",
+        "chain_of_custody_id": "synthetic_not_for_field_calibration",
+        "intended_use": "interface_test_only"
+      },
+      "metadata_audit": {
+        "status": "non_field_origin_blocked",
+        "data_origin": "synthetic",
+        "expected_data_origin": "field",
+        "origin_ready": false,
+        "missing_required_fields": [],
+        "provenance_fields": {
+          "site_id": "synthetic_site_for_interface_test",
+          "campaign_id": "synthetic_timestamped_campaign",
+          "operator_id": "codex_interface_test",
+          "instrument_snapshot_id": "synthetic_sensor_snapshot_v1",
+          "chain_of_custody_id": "synthetic_not_for_field_calibration"
+        }
+      },
+      "table_import_audit": {
+        "sensor_timeseries": {
+          "record_count": 60,
+          "normalized_record_count": 60,
+          "required_fields": [
+            "batch_id",
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV"
+          ],
+          "missing_required_fields": [],
+          "numeric_fields": [
+            "timestamp_min",
+            "EC_uScm",
+            "turbidity_NTU",
+            "UV254_abs",
+            "pH",
+            "ORP_mV",
+            "flow_Lmin",
+            "acquisition_time_min",
+            "ingest_time_min",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "bed_inlet_pressure_kPa",
+            "bed_outlet_pressure_kPa"
+          ],
+          "boolean_fields": [],
+          "type_errors": [],
+          "status": "import_ready"
+        },
+        "offline_lab_results": {
+          "record_count": 12,
+          "normalized_record_count": 12,
+          "required_fields": [
+            "batch_id",
+            "sample_time_min",
+            "result_time_min",
+            "analyte",
+            "value",
+            "qa_flag"
+          ],
+          "missing_required_fields": [],
+          "numeric_fields": [
+            "sample_time_min",
+            "result_time_min",
+            "value",
+            "lab_label_time_min"
+          ],
+          "boolean_fields": [
+            "proxy_holdout_label",
+            "pressure_headloss_proxy_label"
+          ],
+          "type_errors": [],
+          "status": "import_ready"
+        },
+        "campaign_operation_log": {
+          "record_count": 12,
+          "normalized_record_count": 12,
+          "required_fields": [
+            "campaign_id",
+            "batch_id",
+            "action_id",
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "release_policy"
+          ],
+          "missing_required_fields": [],
+          "numeric_fields": [
+            "command_time_min",
+            "effect_time_min",
+            "start_min",
+            "end_min",
+            "recycle_ratio",
+            "tank_storage_margin",
+            "actuator_latency_p90",
+            "hold_time_min"
+          ],
+          "boolean_fields": [
+            "regeneration_event",
+            "pressure_headloss_review_required"
+          ],
+          "type_errors": [],
+          "status": "import_ready"
+        },
+        "pressure_headloss_event_log": {
+          "record_count": 12,
+          "normalized_record_count": 12,
+          "required_fields": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "bed_id",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "regeneration_event",
+            "hydraulic_anomaly_label"
+          ],
+          "missing_required_fields": [],
+          "numeric_fields": [
+            "event_time_min",
+            "pressure_drop_kPa",
+            "headloss_kPa_per_m",
+            "flow_Lmin",
+            "matched_lab_sample_time_min",
+            "flow_normalized_pressure_residual",
+            "expected_clean_bed_pressure_drop_kPa"
+          ],
+          "boolean_fields": [
+            "regeneration_event",
+            "hydraulic_anomaly_label",
+            "operator_review_required"
+          ],
+          "type_errors": [],
+          "status": "import_ready"
+        },
+        "fast_proxy_event_log": {
+          "record_count": 12,
+          "normalized_record_count": 12,
+          "required_fields": [
+            "campaign_id",
+            "batch_id",
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "protective_triggered",
+            "triggered_action_id",
+            "field_label_matrix_shock",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "missing_required_fields": [],
+          "numeric_fields": [
+            "event_time_min",
+            "proxy_score",
+            "specificity_guard_score",
+            "lab_label_time_min",
+            "false_positive_cost_index"
+          ],
+          "boolean_fields": [
+            "protective_triggered",
+            "field_label_matrix_shock"
+          ],
+          "type_errors": [],
+          "status": "import_ready"
+        }
+      },
+      "linkage_audit": {
+        "status": "linkage_ready",
+        "sensor_batch_count": 12,
+        "lab_batch_count": 12,
+        "operation_batch_count": 12,
+        "proxy_batch_count": 12,
+        "pressure_headloss_batch_count": 12,
+        "orphan_reference_batches": [],
+        "unlabeled_proxy_batches": [],
+        "pressure_headloss_without_lab_batches": [],
+        "operation_without_proxy_batches": []
+      },
+      "normalized_datasets": {
+        "sensor_timeseries": [
+          {
+            "batch_id": "TS001",
+            "timestamp_min": 0.0,
+            "EC_uScm": 2990.0,
+            "turbidity_NTU": 39.0,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.6,
+            "headloss_kPa_per_m": 8.25,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS001",
+            "timestamp_min": 5.0,
+            "EC_uScm": 2992.5,
+            "turbidity_NTU": 38.6,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.675,
+            "headloss_kPa_per_m": 8.34,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS001",
+            "timestamp_min": 10.0,
+            "EC_uScm": 2995.0,
+            "turbidity_NTU": 38.2,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.75,
+            "headloss_kPa_per_m": 8.43,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS001",
+            "timestamp_min": 15.0,
+            "EC_uScm": 2997.5,
+            "turbidity_NTU": 37.8,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.825,
+            "headloss_kPa_per_m": 8.52,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS001",
+            "timestamp_min": 20.0,
+            "EC_uScm": 3000.0,
+            "turbidity_NTU": 37.4,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.9,
+            "headloss_kPa_per_m": 8.61,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS002",
+            "timestamp_min": 0.0,
+            "EC_uScm": 2990.0,
+            "turbidity_NTU": 39.0,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.6,
+            "headloss_kPa_per_m": 8.25,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS002",
+            "timestamp_min": 5.0,
+            "EC_uScm": 2992.5,
+            "turbidity_NTU": 38.6,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.675,
+            "headloss_kPa_per_m": 8.34,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS002",
+            "timestamp_min": 10.0,
+            "EC_uScm": 2995.0,
+            "turbidity_NTU": 38.2,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.75,
+            "headloss_kPa_per_m": 8.43,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS002",
+            "timestamp_min": 15.0,
+            "EC_uScm": 2997.5,
+            "turbidity_NTU": 37.8,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.825,
+            "headloss_kPa_per_m": 8.52,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS002",
+            "timestamp_min": 20.0,
+            "EC_uScm": 3000.0,
+            "turbidity_NTU": 37.4,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.9,
+            "headloss_kPa_per_m": 8.61,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS003",
+            "timestamp_min": 0.0,
+            "EC_uScm": 2990.0,
+            "turbidity_NTU": 39.0,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.6,
+            "headloss_kPa_per_m": 8.25,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS003",
+            "timestamp_min": 5.0,
+            "EC_uScm": 2992.5,
+            "turbidity_NTU": 38.6,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.675,
+            "headloss_kPa_per_m": 8.34,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS003",
+            "timestamp_min": 10.0,
+            "EC_uScm": 2995.0,
+            "turbidity_NTU": 38.2,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.75,
+            "headloss_kPa_per_m": 8.43,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS003",
+            "timestamp_min": 15.0,
+            "EC_uScm": 2997.5,
+            "turbidity_NTU": 37.8,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.825,
+            "headloss_kPa_per_m": 8.52,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS003",
+            "timestamp_min": 20.0,
+            "EC_uScm": 3000.0,
+            "turbidity_NTU": 37.4,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.9,
+            "headloss_kPa_per_m": 8.61,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS004",
+            "timestamp_min": 0.0,
+            "EC_uScm": 2990.0,
+            "turbidity_NTU": 39.0,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.6,
+            "headloss_kPa_per_m": 8.25,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS004",
+            "timestamp_min": 5.0,
+            "EC_uScm": 2992.5,
+            "turbidity_NTU": 38.6,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.675,
+            "headloss_kPa_per_m": 8.34,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS004",
+            "timestamp_min": 10.0,
+            "EC_uScm": 2995.0,
+            "turbidity_NTU": 38.2,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.75,
+            "headloss_kPa_per_m": 8.43,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS004",
+            "timestamp_min": 15.0,
+            "EC_uScm": 2997.5,
+            "turbidity_NTU": 37.8,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.825,
+            "headloss_kPa_per_m": 8.52,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS004",
+            "timestamp_min": 20.0,
+            "EC_uScm": 3000.0,
+            "turbidity_NTU": 37.4,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.9,
+            "headloss_kPa_per_m": 8.61,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS005",
+            "timestamp_min": 0.0,
+            "EC_uScm": 2990.0,
+            "turbidity_NTU": 39.0,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.6,
+            "headloss_kPa_per_m": 8.25,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS005",
+            "timestamp_min": 5.0,
+            "EC_uScm": 2992.5,
+            "turbidity_NTU": 38.6,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.675,
+            "headloss_kPa_per_m": 8.34,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS005",
+            "timestamp_min": 10.0,
+            "EC_uScm": 2995.0,
+            "turbidity_NTU": 38.2,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.75,
+            "headloss_kPa_per_m": 8.43,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS005",
+            "timestamp_min": 15.0,
+            "EC_uScm": 2997.5,
+            "turbidity_NTU": 37.8,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.825,
+            "headloss_kPa_per_m": 8.52,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS005",
+            "timestamp_min": 20.0,
+            "EC_uScm": 3000.0,
+            "turbidity_NTU": 37.4,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.9,
+            "headloss_kPa_per_m": 8.61,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS006",
+            "timestamp_min": 0.0,
+            "EC_uScm": 2990.0,
+            "turbidity_NTU": 39.0,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.6,
+            "headloss_kPa_per_m": 8.25,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS006",
+            "timestamp_min": 5.0,
+            "EC_uScm": 2992.5,
+            "turbidity_NTU": 38.6,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.675,
+            "headloss_kPa_per_m": 8.34,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS006",
+            "timestamp_min": 10.0,
+            "EC_uScm": 2995.0,
+            "turbidity_NTU": 38.2,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.75,
+            "headloss_kPa_per_m": 8.43,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS006",
+            "timestamp_min": 15.0,
+            "EC_uScm": 2997.5,
+            "turbidity_NTU": 37.8,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.825,
+            "headloss_kPa_per_m": 8.52,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS006",
+            "timestamp_min": 20.0,
+            "EC_uScm": 3000.0,
+            "turbidity_NTU": 37.4,
+            "UV254_abs": 0.85,
+            "pH": 7.75,
+            "ORP_mV": 512.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.9,
+            "headloss_kPa_per_m": 8.61,
+            "bed_inlet_pressure_kPa": 105.3,
+            "bed_outlet_pressure_kPa": 98.7
+          },
+          {
+            "batch_id": "TS007",
+            "timestamp_min": 0.0,
+            "EC_uScm": 1100.0,
+            "turbidity_NTU": 7.0,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.4,
+            "headloss_kPa_per_m": 4.25,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS007",
+            "timestamp_min": 5.0,
+            "EC_uScm": 1102.5,
+            "turbidity_NTU": 6.6,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.475,
+            "headloss_kPa_per_m": 4.34,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS007",
+            "timestamp_min": 10.0,
+            "EC_uScm": 1105.0,
+            "turbidity_NTU": 6.2,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.55,
+            "headloss_kPa_per_m": 4.43,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS007",
+            "timestamp_min": 15.0,
+            "EC_uScm": 1107.5,
+            "turbidity_NTU": 5.8,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.625,
+            "headloss_kPa_per_m": 4.52,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS007",
+            "timestamp_min": 20.0,
+            "EC_uScm": 1110.0,
+            "turbidity_NTU": 5.4,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.7,
+            "headloss_kPa_per_m": 4.61,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS008",
+            "timestamp_min": 0.0,
+            "EC_uScm": 1100.0,
+            "turbidity_NTU": 7.0,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.4,
+            "headloss_kPa_per_m": 4.25,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS008",
+            "timestamp_min": 5.0,
+            "EC_uScm": 1102.5,
+            "turbidity_NTU": 6.6,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.475,
+            "headloss_kPa_per_m": 4.34,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS008",
+            "timestamp_min": 10.0,
+            "EC_uScm": 1105.0,
+            "turbidity_NTU": 6.2,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.55,
+            "headloss_kPa_per_m": 4.43,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS008",
+            "timestamp_min": 15.0,
+            "EC_uScm": 1107.5,
+            "turbidity_NTU": 5.8,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.625,
+            "headloss_kPa_per_m": 4.52,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS008",
+            "timestamp_min": 20.0,
+            "EC_uScm": 1110.0,
+            "turbidity_NTU": 5.4,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.7,
+            "headloss_kPa_per_m": 4.61,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS009",
+            "timestamp_min": 0.0,
+            "EC_uScm": 1280.0,
+            "turbidity_NTU": 19.0,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.4,
+            "headloss_kPa_per_m": 5.5,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS009",
+            "timestamp_min": 5.0,
+            "EC_uScm": 1282.5,
+            "turbidity_NTU": 18.6,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.475,
+            "headloss_kPa_per_m": 5.59,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS009",
+            "timestamp_min": 10.0,
+            "EC_uScm": 1285.0,
+            "turbidity_NTU": 18.2,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.55,
+            "headloss_kPa_per_m": 5.68,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS009",
+            "timestamp_min": 15.0,
+            "EC_uScm": 1287.5,
+            "turbidity_NTU": 17.8,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.625,
+            "headloss_kPa_per_m": 5.77,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS009",
+            "timestamp_min": 20.0,
+            "EC_uScm": 1290.0,
+            "turbidity_NTU": 17.4,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.7,
+            "headloss_kPa_per_m": 5.86,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS010",
+            "timestamp_min": 0.0,
+            "EC_uScm": 1280.0,
+            "turbidity_NTU": 19.0,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.4,
+            "headloss_kPa_per_m": 5.5,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS010",
+            "timestamp_min": 5.0,
+            "EC_uScm": 1282.5,
+            "turbidity_NTU": 18.6,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.475,
+            "headloss_kPa_per_m": 5.59,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS010",
+            "timestamp_min": 10.0,
+            "EC_uScm": 1285.0,
+            "turbidity_NTU": 18.2,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.55,
+            "headloss_kPa_per_m": 5.68,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS010",
+            "timestamp_min": 15.0,
+            "EC_uScm": 1287.5,
+            "turbidity_NTU": 17.8,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.625,
+            "headloss_kPa_per_m": 5.77,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS010",
+            "timestamp_min": 20.0,
+            "EC_uScm": 1290.0,
+            "turbidity_NTU": 17.4,
+            "UV254_abs": 0.82,
+            "pH": 7.1,
+            "ORP_mV": 278.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 4.7,
+            "headloss_kPa_per_m": 5.86,
+            "bed_inlet_pressure_kPa": 104.2,
+            "bed_outlet_pressure_kPa": 99.8
+          },
+          {
+            "batch_id": "TS011",
+            "timestamp_min": 0.0,
+            "EC_uScm": 1680.0,
+            "turbidity_NTU": 24.0,
+            "UV254_abs": 0.62,
+            "pH": 7.4,
+            "ORP_mV": 390.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.1,
+            "headloss_kPa_per_m": 7.65,
+            "bed_inlet_pressure_kPa": 105.05,
+            "bed_outlet_pressure_kPa": 98.95
+          },
+          {
+            "batch_id": "TS011",
+            "timestamp_min": 5.0,
+            "EC_uScm": 1682.5,
+            "turbidity_NTU": 23.6,
+            "UV254_abs": 0.62,
+            "pH": 7.4,
+            "ORP_mV": 390.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.175,
+            "headloss_kPa_per_m": 7.74,
+            "bed_inlet_pressure_kPa": 105.05,
+            "bed_outlet_pressure_kPa": 98.95
+          },
+          {
+            "batch_id": "TS011",
+            "timestamp_min": 10.0,
+            "EC_uScm": 1685.0,
+            "turbidity_NTU": 23.2,
+            "UV254_abs": 0.62,
+            "pH": 7.4,
+            "ORP_mV": 390.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.25,
+            "headloss_kPa_per_m": 7.83,
+            "bed_inlet_pressure_kPa": 105.05,
+            "bed_outlet_pressure_kPa": 98.95
+          },
+          {
+            "batch_id": "TS011",
+            "timestamp_min": 15.0,
+            "EC_uScm": 1687.5,
+            "turbidity_NTU": 22.8,
+            "UV254_abs": 0.62,
+            "pH": 7.4,
+            "ORP_mV": 390.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.325,
+            "headloss_kPa_per_m": 7.92,
+            "bed_inlet_pressure_kPa": 105.05,
+            "bed_outlet_pressure_kPa": 98.95
+          },
+          {
+            "batch_id": "TS011",
+            "timestamp_min": 20.0,
+            "EC_uScm": 1690.0,
+            "turbidity_NTU": 22.4,
+            "UV254_abs": 0.62,
+            "pH": 7.4,
+            "ORP_mV": 390.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 6.4,
+            "headloss_kPa_per_m": 8.01,
+            "bed_inlet_pressure_kPa": 105.05,
+            "bed_outlet_pressure_kPa": 98.95
+          },
+          {
+            "batch_id": "TS012",
+            "timestamp_min": 0.0,
+            "EC_uScm": 1100.0,
+            "turbidity_NTU": 7.0,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.4,
+            "headloss_kPa_per_m": 4.25,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS012",
+            "timestamp_min": 5.0,
+            "EC_uScm": 1102.5,
+            "turbidity_NTU": 6.6,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.475,
+            "headloss_kPa_per_m": 4.34,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS012",
+            "timestamp_min": 10.0,
+            "EC_uScm": 1105.0,
+            "turbidity_NTU": 6.2,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.55,
+            "headloss_kPa_per_m": 4.43,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS012",
+            "timestamp_min": 15.0,
+            "EC_uScm": 1107.5,
+            "turbidity_NTU": 5.8,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.625,
+            "headloss_kPa_per_m": 4.52,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          },
+          {
+            "batch_id": "TS012",
+            "timestamp_min": 20.0,
+            "EC_uScm": 1110.0,
+            "turbidity_NTU": 5.4,
+            "UV254_abs": 0.3,
+            "pH": 7.1,
+            "ORP_mV": 635.0,
+            "flow_Lmin": 1.1,
+            "pressure_drop_kPa": 3.7,
+            "headloss_kPa_per_m": 4.61,
+            "bed_inlet_pressure_kPa": 103.7,
+            "bed_outlet_pressure_kPa": 100.3
+          }
+        ],
+        "offline_lab_results": [
+          {
+            "batch_id": "TS001",
+            "sample_time_min": 19.0,
+            "result_time_min": 93.0,
+            "analyte": "matrix_shock_label",
+            "value": 1.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": true
+          },
+          {
+            "batch_id": "TS002",
+            "sample_time_min": 20.0,
+            "result_time_min": 94.0,
+            "analyte": "matrix_shock_label",
+            "value": 1.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": true
+          },
+          {
+            "batch_id": "TS003",
+            "sample_time_min": 18.0,
+            "result_time_min": 95.0,
+            "analyte": "matrix_shock_label",
+            "value": 1.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": true
+          },
+          {
+            "batch_id": "TS004",
+            "sample_time_min": 19.0,
+            "result_time_min": 96.0,
+            "analyte": "matrix_shock_label",
+            "value": 1.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": true
+          },
+          {
+            "batch_id": "TS005",
+            "sample_time_min": 20.0,
+            "result_time_min": 97.0,
+            "analyte": "matrix_shock_label",
+            "value": 1.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": true
+          },
+          {
+            "batch_id": "TS006",
+            "sample_time_min": 18.0,
+            "result_time_min": 98.0,
+            "analyte": "matrix_shock_label",
+            "value": 1.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": true
+          },
+          {
+            "batch_id": "TS007",
+            "sample_time_min": 19.0,
+            "result_time_min": 99.0,
+            "analyte": "matrix_shock_label",
+            "value": 0.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": false
+          },
+          {
+            "batch_id": "TS008",
+            "sample_time_min": 20.0,
+            "result_time_min": 100.0,
+            "analyte": "matrix_shock_label",
+            "value": 0.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": false
+          },
+          {
+            "batch_id": "TS009",
+            "sample_time_min": 18.0,
+            "result_time_min": 92.0,
+            "analyte": "matrix_shock_label",
+            "value": 0.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": false
+          },
+          {
+            "batch_id": "TS010",
+            "sample_time_min": 19.0,
+            "result_time_min": 93.0,
+            "analyte": "matrix_shock_label",
+            "value": 0.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": false
+          },
+          {
+            "batch_id": "TS011",
+            "sample_time_min": 20.0,
+            "result_time_min": 94.0,
+            "analyte": "matrix_shock_label",
+            "value": 0.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": true
+          },
+          {
+            "batch_id": "TS012",
+            "sample_time_min": 18.0,
+            "result_time_min": 95.0,
+            "analyte": "matrix_shock_label",
+            "value": 0.0,
+            "qa_flag": "synthetic_pass",
+            "proxy_holdout_label": true,
+            "catalyst_activity_label": "",
+            "pressure_headloss_proxy_label": false
+          }
+        ],
+        "campaign_operation_log": [
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS001",
+            "action_id": "switch_or_pretreat",
+            "command_time_min": 11.0,
+            "effect_time_min": 17.0,
+            "start_min": 17.0,
+            "end_min": 62.0,
+            "release_policy": "block_release_until_lab_and_field_conformal_calibration",
+            "recycle_ratio": 0.25,
+            "tank_storage_margin": 0.42,
+            "actuator_latency_p90": 6.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 45.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS002",
+            "action_id": "switch_or_pretreat",
+            "command_time_min": 12.0,
+            "effect_time_min": 18.0,
+            "start_min": 18.0,
+            "end_min": 63.0,
+            "release_policy": "block_release_until_lab_and_field_conformal_calibration",
+            "recycle_ratio": 0.25,
+            "tank_storage_margin": 0.42,
+            "actuator_latency_p90": 6.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 45.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS003",
+            "action_id": "switch_or_pretreat",
+            "command_time_min": 13.0,
+            "effect_time_min": 19.0,
+            "start_min": 19.0,
+            "end_min": 64.0,
+            "release_policy": "block_release_until_lab_and_field_conformal_calibration",
+            "recycle_ratio": 0.25,
+            "tank_storage_margin": 0.42,
+            "actuator_latency_p90": 6.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 45.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS004",
+            "action_id": "switch_or_pretreat",
+            "command_time_min": 10.0,
+            "effect_time_min": 16.0,
+            "start_min": 16.0,
+            "end_min": 61.0,
+            "release_policy": "block_release_until_lab_and_field_conformal_calibration",
+            "recycle_ratio": 0.25,
+            "tank_storage_margin": 0.42,
+            "actuator_latency_p90": 6.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 45.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS005",
+            "action_id": "switch_or_pretreat",
+            "command_time_min": 11.0,
+            "effect_time_min": 17.0,
+            "start_min": 17.0,
+            "end_min": 62.0,
+            "release_policy": "block_release_until_lab_and_field_conformal_calibration",
+            "recycle_ratio": 0.25,
+            "tank_storage_margin": 0.42,
+            "actuator_latency_p90": 6.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 45.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS006",
+            "action_id": "switch_or_pretreat",
+            "command_time_min": 12.0,
+            "effect_time_min": 18.0,
+            "start_min": 18.0,
+            "end_min": 63.0,
+            "release_policy": "block_release_until_lab_and_field_conformal_calibration",
+            "recycle_ratio": 0.25,
+            "tank_storage_margin": 0.42,
+            "actuator_latency_p90": 6.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 45.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS007",
+            "action_id": "standard_monitoring",
+            "command_time_min": 45.0,
+            "effect_time_min": 55.0,
+            "start_min": 55.0,
+            "end_min": 75.0,
+            "release_policy": "standard_release_gate",
+            "recycle_ratio": 0.0,
+            "tank_storage_margin": 0.67,
+            "actuator_latency_p90": 10.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 20.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": false
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS008",
+            "action_id": "standard_monitoring",
+            "command_time_min": 46.0,
+            "effect_time_min": 56.0,
+            "start_min": 56.0,
+            "end_min": 76.0,
+            "release_policy": "standard_release_gate",
+            "recycle_ratio": 0.0,
+            "tank_storage_margin": 0.67,
+            "actuator_latency_p90": 10.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 20.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": false
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS009",
+            "action_id": "standard_monitoring",
+            "command_time_min": 47.0,
+            "effect_time_min": 57.0,
+            "start_min": 57.0,
+            "end_min": 77.0,
+            "release_policy": "standard_release_gate",
+            "recycle_ratio": 0.0,
+            "tank_storage_margin": 0.67,
+            "actuator_latency_p90": 10.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 20.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": false
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS010",
+            "action_id": "standard_monitoring",
+            "command_time_min": 48.0,
+            "effect_time_min": 58.0,
+            "start_min": 58.0,
+            "end_min": 78.0,
+            "release_policy": "standard_release_gate",
+            "recycle_ratio": 0.0,
+            "tank_storage_margin": 0.67,
+            "actuator_latency_p90": 10.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 20.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": false
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS011",
+            "action_id": "standard_monitoring",
+            "command_time_min": 49.0,
+            "effect_time_min": 59.0,
+            "start_min": 59.0,
+            "end_min": 79.0,
+            "release_policy": "standard_release_gate",
+            "recycle_ratio": 0.0,
+            "tank_storage_margin": 0.67,
+            "actuator_latency_p90": 10.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 20.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS012",
+            "action_id": "standard_monitoring",
+            "command_time_min": 50.0,
+            "effect_time_min": 60.0,
+            "start_min": 60.0,
+            "end_min": 80.0,
+            "release_policy": "standard_release_gate",
+            "recycle_ratio": 0.0,
+            "tank_storage_margin": 0.67,
+            "actuator_latency_p90": 10.0,
+            "pump_valve_result": "ok",
+            "hold_time_min": 20.0,
+            "regeneration_event": false,
+            "bed_id": "BED_A",
+            "pressure_headloss_review_required": false
+          }
+        ],
+        "pressure_headloss_event_log": [
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS001",
+            "event_time_min": 15.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 6.7,
+            "headloss_kPa_per_m": 8.375,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 19.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": true,
+            "flow_normalized_pressure_residual": 3.182,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS002",
+            "event_time_min": 16.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 6.7,
+            "headloss_kPa_per_m": 8.375,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 20.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": true,
+            "flow_normalized_pressure_residual": 3.182,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS003",
+            "event_time_min": 17.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 6.7,
+            "headloss_kPa_per_m": 8.375,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 18.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": true,
+            "flow_normalized_pressure_residual": 3.182,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS004",
+            "event_time_min": 14.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 6.7,
+            "headloss_kPa_per_m": 8.375,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 19.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": true,
+            "flow_normalized_pressure_residual": 3.182,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS005",
+            "event_time_min": 15.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 6.7,
+            "headloss_kPa_per_m": 8.375,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 20.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": true,
+            "flow_normalized_pressure_residual": 3.182,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS006",
+            "event_time_min": 16.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 6.7,
+            "headloss_kPa_per_m": 8.375,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 18.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": true,
+            "flow_normalized_pressure_residual": 3.182,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS007",
+            "event_time_min": 17.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 3.7,
+            "headloss_kPa_per_m": 4.625,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 19.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": false,
+            "flow_normalized_pressure_residual": 0.455,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": false
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS008",
+            "event_time_min": 14.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 3.7,
+            "headloss_kPa_per_m": 4.625,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 20.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": false,
+            "flow_normalized_pressure_residual": 0.455,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": false
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS009",
+            "event_time_min": 15.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 4.4,
+            "headloss_kPa_per_m": 5.5,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 18.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": false,
+            "flow_normalized_pressure_residual": 1.091,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": false
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS010",
+            "event_time_min": 16.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 4.4,
+            "headloss_kPa_per_m": 5.5,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 19.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": false,
+            "flow_normalized_pressure_residual": 1.091,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": false
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS011",
+            "event_time_min": 17.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 6.7,
+            "headloss_kPa_per_m": 8.375,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 20.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": true,
+            "flow_normalized_pressure_residual": 3.182,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": true
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS012",
+            "event_time_min": 14.0,
+            "bed_id": "BED_A",
+            "pressure_drop_kPa": 3.7,
+            "headloss_kPa_per_m": 4.625,
+            "flow_Lmin": 1.1,
+            "matched_lab_sample_time_min": 18.0,
+            "regeneration_event": false,
+            "hydraulic_anomaly_label": false,
+            "flow_normalized_pressure_residual": 0.455,
+            "expected_clean_bed_pressure_drop_kPa": 3.2,
+            "operator_review_required": false
+          }
+        ],
+        "fast_proxy_event_log": [
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS001",
+            "event_time_min": 11.0,
+            "proxy_score": 0.559,
+            "specificity_guard_score": 0.633,
+            "protective_triggered": true,
+            "triggered_action_id": "switch_or_pretreat",
+            "field_label_matrix_shock": true,
+            "lab_label_time_min": 93.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS002",
+            "event_time_min": 12.0,
+            "proxy_score": 0.571,
+            "specificity_guard_score": 0.641,
+            "protective_triggered": true,
+            "triggered_action_id": "switch_or_pretreat",
+            "field_label_matrix_shock": true,
+            "lab_label_time_min": 94.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS003",
+            "event_time_min": 13.0,
+            "proxy_score": 0.552,
+            "specificity_guard_score": 0.619,
+            "protective_triggered": true,
+            "triggered_action_id": "switch_or_pretreat",
+            "field_label_matrix_shock": true,
+            "lab_label_time_min": 95.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS004",
+            "event_time_min": 10.0,
+            "proxy_score": 0.601,
+            "specificity_guard_score": 0.671,
+            "protective_triggered": true,
+            "triggered_action_id": "switch_or_pretreat",
+            "field_label_matrix_shock": true,
+            "lab_label_time_min": 96.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS005",
+            "event_time_min": 11.0,
+            "proxy_score": 0.583,
+            "specificity_guard_score": 0.652,
+            "protective_triggered": true,
+            "triggered_action_id": "switch_or_pretreat",
+            "field_label_matrix_shock": true,
+            "lab_label_time_min": 97.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS006",
+            "event_time_min": 12.0,
+            "proxy_score": 0.564,
+            "specificity_guard_score": 0.635,
+            "protective_triggered": true,
+            "triggered_action_id": "switch_or_pretreat",
+            "field_label_matrix_shock": true,
+            "lab_label_time_min": 98.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS007",
+            "event_time_min": 13.0,
+            "proxy_score": 0.008,
+            "specificity_guard_score": 0.009,
+            "protective_triggered": false,
+            "triggered_action_id": "none",
+            "field_label_matrix_shock": false,
+            "lab_label_time_min": 99.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS008",
+            "event_time_min": 10.0,
+            "proxy_score": 0.012,
+            "specificity_guard_score": 0.015,
+            "protective_triggered": false,
+            "triggered_action_id": "none",
+            "field_label_matrix_shock": false,
+            "lab_label_time_min": 100.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS009",
+            "event_time_min": 11.0,
+            "proxy_score": 0.149,
+            "specificity_guard_score": 0.035,
+            "protective_triggered": false,
+            "triggered_action_id": "none",
+            "field_label_matrix_shock": false,
+            "lab_label_time_min": 92.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS010",
+            "event_time_min": 12.0,
+            "proxy_score": 0.161,
+            "specificity_guard_score": 0.044,
+            "protective_triggered": false,
+            "triggered_action_id": "none",
+            "field_label_matrix_shock": false,
+            "lab_label_time_min": 93.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS011",
+            "event_time_min": 13.0,
+            "proxy_score": 0.218,
+            "specificity_guard_score": 0.201,
+            "protective_triggered": false,
+            "triggered_action_id": "none",
+            "field_label_matrix_shock": false,
+            "lab_label_time_min": 94.0,
+            "false_positive_cost_index": 0.0
+          },
+          {
+            "campaign_id": "synthetic_timestamped_campaign",
+            "batch_id": "TS012",
+            "event_time_min": 10.0,
+            "proxy_score": 0.018,
+            "specificity_guard_score": 0.017,
+            "protective_triggered": false,
+            "triggered_action_id": "none",
+            "field_label_matrix_shock": false,
+            "lab_label_time_min": 95.0,
+            "false_positive_cost_index": 0.0
+          }
+        ]
+      },
+      "readiness": {
+        "field_replay_import_status": "field_replay_import_blocked_non_field_origin",
+        "field_replay_import_score": 0.6,
+        "accepted_table_count": 5,
+        "total_table_count": 5,
+        "accepted_data_origin": "blocked",
+        "can_pass_to_timestamped_replay": false,
+        "can_pass_to_g6": false,
+        "can_write_to_protective_control": false
+      },
+      "export_policy": {
+        "allowed_downstream_agent": "none",
+        "blocked_downstream_agents": [
+          "TimestampedCampaignReplayAgent",
+          "FieldReplayCalibrationGateAgent"
+        ],
+        "can_write_to_protective_control": false,
+        "writeback_boundary": "Agent44 只负责导入验收；保护性控制写回必须继续通过 Agent42 replay 和 Agent43 G6/P6。"
+      },
+      "source_package_type": "synthetic_interface_package",
+      "source_package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/synthetic_replay_import_package",
+      "preflight": {
+        "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/synthetic_replay_import_package",
+        "status": "field_package_preflight_blocked_non_field_origin",
+        "required_files": [
+          "metadata.json",
+          "sensor_timeseries.csv",
+          "offline_lab_results.csv",
+          "campaign_operation_log.csv",
+          "pressure_headloss_event_log.csv",
+          "fast_proxy_event_log.csv"
+        ],
+        "file_audit": {
+          "metadata_exists": true,
+          "csv_files": {
+            "sensor_timeseries": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "batch_id",
+                "timestamp_min",
+                "EC_uScm",
+                "turbidity_NTU",
+                "UV254_abs",
+                "pH",
+                "ORP_mV"
+              ],
+              "expected_headers": [
+                "batch_id",
+                "timestamp_min",
+                "EC_uScm",
+                "turbidity_NTU",
+                "UV254_abs",
+                "pH",
+                "ORP_mV",
+                "flow_Lmin",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "bed_inlet_pressure_kPa",
+                "bed_outlet_pressure_kPa",
+                "sensor_status",
+                "instrument_id",
+                "acquisition_time_min",
+                "ingest_time_min"
+              ],
+              "actual_headers": [
+                "batch_id",
+                "timestamp_min",
+                "EC_uScm",
+                "turbidity_NTU",
+                "UV254_abs",
+                "pH",
+                "ORP_mV",
+                "flow_Lmin",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "bed_inlet_pressure_kPa",
+                "bed_outlet_pressure_kPa"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": [
+                "sensor_status",
+                "instrument_id",
+                "acquisition_time_min",
+                "ingest_time_min"
+              ]
+            },
+            "offline_lab_results": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "batch_id",
+                "sample_time_min",
+                "result_time_min",
+                "analyte",
+                "value",
+                "qa_flag"
+              ],
+              "expected_headers": [
+                "batch_id",
+                "sample_time_min",
+                "result_time_min",
+                "analyte",
+                "value",
+                "qa_flag",
+                "proxy_holdout_label",
+                "catalyst_activity_label",
+                "pressure_headloss_proxy_label",
+                "lab_label_time_min",
+                "detection_limit",
+                "method",
+                "unit"
+              ],
+              "actual_headers": [
+                "batch_id",
+                "sample_time_min",
+                "result_time_min",
+                "analyte",
+                "value",
+                "qa_flag",
+                "proxy_holdout_label",
+                "catalyst_activity_label",
+                "pressure_headloss_proxy_label"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": [
+                "lab_label_time_min",
+                "detection_limit",
+                "method",
+                "unit"
+              ]
+            },
+            "campaign_operation_log": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "campaign_id",
+                "batch_id",
+                "action_id",
+                "command_time_min",
+                "effect_time_min",
+                "start_min",
+                "end_min",
+                "release_policy"
+              ],
+              "expected_headers": [
+                "campaign_id",
+                "batch_id",
+                "action_id",
+                "command_time_min",
+                "effect_time_min",
+                "start_min",
+                "end_min",
+                "release_policy",
+                "recycle_ratio",
+                "tank_storage_margin",
+                "actuator_latency_p90",
+                "pump_valve_result",
+                "hold_time_min",
+                "regeneration_event",
+                "bed_id",
+                "pressure_headloss_review_required"
+              ],
+              "actual_headers": [
+                "campaign_id",
+                "batch_id",
+                "action_id",
+                "command_time_min",
+                "effect_time_min",
+                "start_min",
+                "end_min",
+                "release_policy",
+                "recycle_ratio",
+                "tank_storage_margin",
+                "actuator_latency_p90",
+                "pump_valve_result",
+                "hold_time_min",
+                "regeneration_event",
+                "bed_id",
+                "pressure_headloss_review_required"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": []
+            },
+            "pressure_headloss_event_log": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "bed_id",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "flow_Lmin",
+                "matched_lab_sample_time_min",
+                "regeneration_event",
+                "hydraulic_anomaly_label"
+              ],
+              "expected_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "bed_id",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "flow_Lmin",
+                "matched_lab_sample_time_min",
+                "regeneration_event",
+                "hydraulic_anomaly_label",
+                "flow_normalized_pressure_residual",
+                "expected_clean_bed_pressure_drop_kPa",
+                "operator_review_required"
+              ],
+              "actual_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "bed_id",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "flow_Lmin",
+                "matched_lab_sample_time_min",
+                "regeneration_event",
+                "hydraulic_anomaly_label",
+                "flow_normalized_pressure_residual",
+                "expected_clean_bed_pressure_drop_kPa",
+                "operator_review_required"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": []
+            },
+            "fast_proxy_event_log": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "proxy_score",
+                "specificity_guard_score",
+                "protective_triggered",
+                "triggered_action_id",
+                "field_label_matrix_shock",
+                "lab_label_time_min",
+                "false_positive_cost_index"
+              ],
+              "expected_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "proxy_score",
+                "specificity_guard_score",
+                "protective_triggered",
+                "triggered_action_id",
+                "field_label_matrix_shock",
+                "lab_label_time_min",
+                "false_positive_cost_index"
+              ],
+              "actual_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "proxy_score",
+                "specificity_guard_score",
+                "protective_triggered",
+                "triggered_action_id",
+                "field_label_matrix_shock",
+                "lab_label_time_min",
+                "false_positive_cost_index"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": []
+            }
+          },
+          "r7j_supplement_csv_files": {
+            "node_modality_sensor_timeseries": {
+              "exists": false,
+              "status": "supplement_missing_optional_file",
+              "expected_headers": [
+                "batch_id",
+                "timestamp_min",
+                "node_id",
+                "zone",
+                "modality",
+                "value",
+                "sensor_status",
+                "instrument_id",
+                "acquisition_time_min",
+                "ingest_time_min"
+              ],
+              "actual_headers": [],
+              "missing_headers": [
+                "batch_id",
+                "timestamp_min",
+                "node_id",
+                "zone",
+                "modality",
+                "value",
+                "sensor_status",
+                "instrument_id",
+                "acquisition_time_min",
+                "ingest_time_min"
+              ],
+              "row_count": 0,
+              "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+            },
+            "site_topology_or_bed_geometry": {
+              "exists": false,
+              "status": "supplement_missing_optional_file",
+              "expected_headers": [
+                "node_id",
+                "bed_volume",
+                "nominal_HRT_min",
+                "flow_Lmin"
+              ],
+              "actual_headers": [],
+              "missing_headers": [
+                "node_id",
+                "bed_volume",
+                "nominal_HRT_min",
+                "flow_Lmin"
+              ],
+              "row_count": 0,
+              "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+            }
+          }
+        },
+        "r7j_supplement_audit": {
+          "node_modality_sensor_timeseries": {
+            "exists": false,
+            "status": "supplement_missing_optional_file",
+            "expected_headers": [
+              "batch_id",
+              "timestamp_min",
+              "node_id",
+              "zone",
+              "modality",
+              "value",
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ],
+            "actual_headers": [],
+            "missing_headers": [
+              "batch_id",
+              "timestamp_min",
+              "node_id",
+              "zone",
+              "modality",
+              "value",
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ],
+            "row_count": 0,
+            "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+          },
+          "site_topology_or_bed_geometry": {
+            "exists": false,
+            "status": "supplement_missing_optional_file",
+            "expected_headers": [
+              "node_id",
+              "bed_volume",
+              "nominal_HRT_min",
+              "flow_Lmin"
+            ],
+            "actual_headers": [],
+            "missing_headers": [
+              "node_id",
+              "bed_volume",
+              "nominal_HRT_min",
+              "flow_Lmin"
+            ],
+            "row_count": 0,
+            "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+          }
+        },
+        "placeholder_metadata_fields": [],
+        "row_counts": {
+          "campaign_operation_log": 12,
+          "fast_proxy_event_log": 12,
+          "offline_lab_results": 12,
+          "pressure_headloss_event_log": 12,
+          "sensor_timeseries": 60
+        },
+        "files_ready": true,
+        "real_rows_ready": true,
+        "agent44_import_status": "field_replay_import_blocked_non_field_origin",
+        "agent44_import_score": 0.6,
+        "can_pass_to_timestamped_replay": false,
+        "next_actions": [
+          "Use this package only for interface testing; create a separate package with data_origin=field and real provenance before replay.",
+          "Do not label this package field-supported until Agent44/42/43/45/46/59/R7 gates pass."
+        ],
+        "field_boundary": "This template is not evidence. It is only a collection scaffold until metadata placeholders are replaced and all CSVs contain real timestamped field rows."
+      },
+      "real_field_package_template": {
+        "template_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+        "required_files": [
+          "metadata.json",
+          "sensor_timeseries.csv",
+          "offline_lab_results.csv",
+          "campaign_operation_log.csv",
+          "pressure_headloss_event_log.csv",
+          "fast_proxy_event_log.csv"
+        ],
+        "optional_supplement_files": [
+          "node_modality_sensor_timeseries.csv",
+          "site_topology_or_bed_geometry.csv"
+        ],
+        "field_boundary": "This template is not evidence. It is only a collection scaffold until metadata placeholders are replaced and all CSVs contain real timestamped field rows."
+      },
+      "real_field_package_template_preflight": {
+        "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+        "status": "field_package_template_ready_needs_real_values_and_rows",
+        "required_files": [
+          "metadata.json",
+          "sensor_timeseries.csv",
+          "offline_lab_results.csv",
+          "campaign_operation_log.csv",
+          "pressure_headloss_event_log.csv",
+          "fast_proxy_event_log.csv"
+        ],
+        "file_audit": {
+          "metadata_exists": true,
+          "csv_files": {
+            "sensor_timeseries": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "batch_id",
+                "timestamp_min",
+                "EC_uScm",
+                "turbidity_NTU",
+                "UV254_abs",
+                "pH",
+                "ORP_mV"
+              ],
+              "expected_headers": [
+                "batch_id",
+                "timestamp_min",
+                "EC_uScm",
+                "turbidity_NTU",
+                "UV254_abs",
+                "pH",
+                "ORP_mV",
+                "flow_Lmin",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "bed_inlet_pressure_kPa",
+                "bed_outlet_pressure_kPa",
+                "sensor_status",
+                "instrument_id",
+                "acquisition_time_min",
+                "ingest_time_min"
+              ],
+              "actual_headers": [
+                "batch_id",
+                "timestamp_min",
+                "EC_uScm",
+                "turbidity_NTU",
+                "UV254_abs",
+                "pH",
+                "ORP_mV",
+                "flow_Lmin",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "bed_inlet_pressure_kPa",
+                "bed_outlet_pressure_kPa",
+                "sensor_status",
+                "instrument_id",
+                "acquisition_time_min",
+                "ingest_time_min"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": []
+            },
+            "offline_lab_results": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "batch_id",
+                "sample_time_min",
+                "result_time_min",
+                "analyte",
+                "value",
+                "qa_flag"
+              ],
+              "expected_headers": [
+                "batch_id",
+                "sample_time_min",
+                "result_time_min",
+                "analyte",
+                "value",
+                "qa_flag",
+                "proxy_holdout_label",
+                "catalyst_activity_label",
+                "pressure_headloss_proxy_label",
+                "lab_label_time_min",
+                "detection_limit",
+                "method",
+                "unit"
+              ],
+              "actual_headers": [
+                "batch_id",
+                "sample_time_min",
+                "result_time_min",
+                "analyte",
+                "value",
+                "qa_flag",
+                "proxy_holdout_label",
+                "catalyst_activity_label",
+                "pressure_headloss_proxy_label",
+                "lab_label_time_min",
+                "detection_limit",
+                "method",
+                "unit"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": []
+            },
+            "campaign_operation_log": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "campaign_id",
+                "batch_id",
+                "action_id",
+                "command_time_min",
+                "effect_time_min",
+                "start_min",
+                "end_min",
+                "release_policy"
+              ],
+              "expected_headers": [
+                "campaign_id",
+                "batch_id",
+                "action_id",
+                "command_time_min",
+                "effect_time_min",
+                "start_min",
+                "end_min",
+                "release_policy",
+                "recycle_ratio",
+                "tank_storage_margin",
+                "actuator_latency_p90",
+                "pump_valve_result",
+                "hold_time_min",
+                "regeneration_event",
+                "bed_id",
+                "pressure_headloss_review_required"
+              ],
+              "actual_headers": [
+                "campaign_id",
+                "batch_id",
+                "action_id",
+                "command_time_min",
+                "effect_time_min",
+                "start_min",
+                "end_min",
+                "release_policy",
+                "recycle_ratio",
+                "tank_storage_margin",
+                "actuator_latency_p90",
+                "pump_valve_result",
+                "hold_time_min",
+                "regeneration_event",
+                "bed_id",
+                "pressure_headloss_review_required"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": []
+            },
+            "pressure_headloss_event_log": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "bed_id",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "flow_Lmin",
+                "matched_lab_sample_time_min",
+                "regeneration_event",
+                "hydraulic_anomaly_label"
+              ],
+              "expected_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "bed_id",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "flow_Lmin",
+                "matched_lab_sample_time_min",
+                "regeneration_event",
+                "hydraulic_anomaly_label",
+                "flow_normalized_pressure_residual",
+                "expected_clean_bed_pressure_drop_kPa",
+                "operator_review_required"
+              ],
+              "actual_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "bed_id",
+                "pressure_drop_kPa",
+                "headloss_kPa_per_m",
+                "flow_Lmin",
+                "matched_lab_sample_time_min",
+                "regeneration_event",
+                "hydraulic_anomaly_label",
+                "flow_normalized_pressure_residual",
+                "expected_clean_bed_pressure_drop_kPa",
+                "operator_review_required"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": []
+            },
+            "fast_proxy_event_log": {
+              "exists": true,
+              "status": "header_ready",
+              "required_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "proxy_score",
+                "specificity_guard_score",
+                "protective_triggered",
+                "triggered_action_id",
+                "field_label_matrix_shock",
+                "lab_label_time_min",
+                "false_positive_cost_index"
+              ],
+              "expected_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "proxy_score",
+                "specificity_guard_score",
+                "protective_triggered",
+                "triggered_action_id",
+                "field_label_matrix_shock",
+                "lab_label_time_min",
+                "false_positive_cost_index"
+              ],
+              "actual_headers": [
+                "campaign_id",
+                "batch_id",
+                "event_time_min",
+                "proxy_score",
+                "specificity_guard_score",
+                "protective_triggered",
+                "triggered_action_id",
+                "field_label_matrix_shock",
+                "lab_label_time_min",
+                "false_positive_cost_index"
+              ],
+              "missing_required_headers": [],
+              "missing_optional_headers": []
+            }
+          },
+          "r7j_supplement_csv_files": {
+            "node_modality_sensor_timeseries": {
+              "exists": true,
+              "status": "supplement_header_ready",
+              "expected_headers": [
+                "batch_id",
+                "timestamp_min",
+                "node_id",
+                "zone",
+                "modality",
+                "value",
+                "sensor_status",
+                "instrument_id",
+                "acquisition_time_min",
+                "ingest_time_min"
+              ],
+              "actual_headers": [
+                "batch_id",
+                "timestamp_min",
+                "node_id",
+                "zone",
+                "modality",
+                "value",
+                "sensor_status",
+                "instrument_id",
+                "acquisition_time_min",
+                "ingest_time_min"
+              ],
+              "missing_headers": [],
+              "row_count": 0,
+              "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+            },
+            "site_topology_or_bed_geometry": {
+              "exists": true,
+              "status": "supplement_header_ready",
+              "expected_headers": [
+                "node_id",
+                "bed_volume",
+                "nominal_HRT_min",
+                "flow_Lmin"
+              ],
+              "actual_headers": [
+                "node_id",
+                "bed_volume",
+                "nominal_HRT_min",
+                "flow_Lmin"
+              ],
+              "missing_headers": [],
+              "row_count": 0,
+              "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+            }
+          }
+        },
+        "r7j_supplement_audit": {
+          "node_modality_sensor_timeseries": {
+            "exists": true,
+            "status": "supplement_header_ready",
+            "expected_headers": [
+              "batch_id",
+              "timestamp_min",
+              "node_id",
+              "zone",
+              "modality",
+              "value",
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ],
+            "actual_headers": [
+              "batch_id",
+              "timestamp_min",
+              "node_id",
+              "zone",
+              "modality",
+              "value",
+              "sensor_status",
+              "instrument_id",
+              "acquisition_time_min",
+              "ingest_time_min"
+            ],
+            "missing_headers": [],
+            "row_count": 0,
+            "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+          },
+          "site_topology_or_bed_geometry": {
+            "exists": true,
+            "status": "supplement_header_ready",
+            "expected_headers": [
+              "node_id",
+              "bed_volume",
+              "nominal_HRT_min",
+              "flow_Lmin"
+            ],
+            "actual_headers": [
+              "node_id",
+              "bed_volume",
+              "nominal_HRT_min",
+              "flow_Lmin"
+            ],
+            "missing_headers": [],
+            "row_count": 0,
+            "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+          }
+        },
+        "placeholder_metadata_fields": [
+          "site_id",
+          "campaign_id",
+          "sampling_start",
+          "sampling_end",
+          "operator_id",
+          "instrument_snapshot_id",
+          "chain_of_custody_id"
+        ],
+        "row_counts": {
+          "campaign_operation_log": 0,
+          "fast_proxy_event_log": 0,
+          "offline_lab_results": 0,
+          "pressure_headloss_event_log": 0,
+          "sensor_timeseries": 0
+        },
+        "files_ready": true,
+        "real_rows_ready": false,
+        "agent44_import_status": "field_replay_import_metadata_blocked",
+        "agent44_import_score": 0.54,
+        "can_pass_to_timestamped_replay": false,
+        "next_actions": [
+          "Replace placeholder metadata fields: site_id, campaign_id, sampling_start, sampling_end, operator_id, instrument_snapshot_id, chain_of_custody_id.",
+          "Add real timestamped field rows to every CSV; header-only templates cannot enter field replay.",
+          "Do not label this package field-supported until Agent44/42/43/45/46/59/R7 gates pass."
+        ],
+        "field_boundary": "This template is not evidence. It is only a collection scaffold until metadata placeholders are replaced and all CSVs contain real timestamped field rows."
+      }
+    },
+    "issues": [
+      {
+        "sensor": "field_replay_metadata",
+        "issue_type": "non_field_origin_blocked",
+        "severity": "critical",
+        "message": "现场 replay 包 metadata 未达到 provenance 和 field origin 要求。",
+        "evidence": {
+          "status": "non_field_origin_blocked",
+          "data_origin": "synthetic",
+          "expected_data_origin": "field",
+          "origin_ready": false,
+          "missing_required_fields": [],
+          "provenance_fields": {
+            "site_id": "synthetic_site_for_interface_test",
+            "campaign_id": "synthetic_timestamped_campaign",
+            "operator_id": "codex_interface_test",
+            "instrument_snapshot_id": "synthetic_sensor_snapshot_v1",
+            "chain_of_custody_id": "synthetic_not_for_field_calibration"
+          }
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "field_replay_import_protocol": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_replay_import_protocol.md",
+    "agent44_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent44_field_replay_import/agent44_report.md",
+    "import_acceptance_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/import_acceptance_metrics.json",
+    "preflight_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_preflight_metrics.json",
+    "template_preflight_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template_preflight_metrics.json",
+    "import_schema": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/import_schema.json",
+    "real_field_package_template": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "input_replay_package": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/synthetic_replay_import_package"
+  }
+}

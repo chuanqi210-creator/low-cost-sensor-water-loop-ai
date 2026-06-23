@@ -1,0 +1,31 @@
+# Agent 11 旁路验证规划模拟报告
+
+## sensor_faults
+
+- summary: 验证规划：sensor_reliability_cross_check，紧迫度 0.487。
+- validation plan: `{'plan_name': 'sensor_reliability_cross_check', 'urgency': 0.487, 'hold_min': 28, 'validation_delay_min': 12, 'targets': ['grab_sample_COD_or_TOC', 'sensor_calibration_check', 'target_pollutant_proxy'], 'release_gate': 'use validation evidence to update offline_residual_proxy before release'}`
+- top fault: `{'fault_id': 'hydraulic_retention_anomaly', 'fault_name': '水力停留时间或回流执行异常', 'score': 0.836, 'risk_level': 'medium', 'evidence': {'sustained_shift': False, 'low_flow_absolute': True, 'hydraulic_confidence': 0.272, 'mechanism_ids': ['hydraulic_anomaly', 'loop_buffer_needed', 'sensor_uncertainty'], 'recycle_gain': 0.204}, 'next_check': '核查泵、阀、回流管路和实际流量；必要时重新计算 HRT。'}`
+
+## oxidant_limitation
+
+- summary: 验证规划：routine_soft_sensor_audit，紧迫度 0.442。
+- validation plan: `{'plan_name': 'routine_soft_sensor_audit', 'urgency': 0.442, 'hold_min': 18, 'validation_delay_min': 8, 'targets': ['residual_oxidant_quick_test'], 'release_gate': 'use validation evidence to update offline_residual_proxy before release'}`
+- top fault: `{'fault_id': 'cycle_window_insufficient', 'fault_name': '循环缓冲或验证窗口不足', 'score': 0.9, 'risk_level': 'medium', 'evidence': {'pollutant_residual_risk': 0.586, 'oxidant_remaining': 0.151, 'release_readiness': 0.653, 'recycle_gain': 0.534, 'mechanism_ids': ['oxidant_limitation', 'loop_buffer_needed'], 'knowledge_support': [{'entry_id': 'kb_oxidant_limited_refractory_organics', 'match_score': 0.82, 'pollutant_class': '高负荷还原性或难降解有机污染物', 'material_family': '氧化剂驱动体系'}, {'entry_id': 'kb_loop_buffer_for_slow_sensing', 'match_score': 0.82, 'pollutant_class': '目标污染物需慢检测或低成本代理检测的废水', 'material_family': '循环式反应器/旁路快检系统'}]}, 'next_check': '安排下一回流/停留窗口，并同步进行软传感复估与旁路快检，而不是立即放行。'}`
+
+## reaction_time_insufficient
+
+- summary: 验证规划：routine_soft_sensor_audit，紧迫度 0.211。
+- validation plan: `{'plan_name': 'routine_soft_sensor_audit', 'urgency': 0.211, 'hold_min': 18, 'validation_delay_min': 8, 'targets': ['periodic_grab_sample_COD_or_TOC'], 'release_gate': 'use validation evidence to update offline_residual_proxy before release'}`
+- top fault: `{'fault_id': 'cycle_window_insufficient', 'fault_name': '循环缓冲或验证窗口不足', 'score': 0.779, 'risk_level': 'medium', 'evidence': {'pollutant_residual_risk': 0.414, 'oxidant_remaining': 0.752, 'release_readiness': 0.782, 'recycle_gain': 0.285, 'mechanism_ids': ['loop_buffer_needed'], 'knowledge_support': [{'entry_id': 'kb_loop_buffer_for_slow_sensing', 'match_score': 0.82, 'pollutant_class': '目标污染物需慢检测或低成本代理检测的废水', 'material_family': '循环式反应器/旁路快检系统'}, {'entry_id': 'kb_catalyst_site_fouling', 'match_score': 0.613, 'pollutant_class': '含络合物、天然有机质或颗粒物的复杂废水', 'material_family': '负载型催化剂/类芬顿/光催化材料'}]}, 'next_check': '安排下一回流/停留窗口，并同步进行软传感复估与旁路快检，而不是立即放行。'}`
+
+## catalyst_deactivation
+
+- summary: 验证规划：catalyst_lifecycle_validation，紧迫度 0.644。
+- validation plan: `{'plan_name': 'catalyst_lifecycle_validation', 'urgency': 0.644, 'hold_min': 45, 'validation_delay_min': 28, 'targets': ['catalyst_activity_assay', 'pressure_drop_check', 'residual_oxidant_quick_test', 'surface_fouling_inspection'], 'release_gate': 'use validation evidence to update offline_residual_proxy before release'}`
+- top fault: `{'fault_id': 'cycle_window_insufficient', 'fault_name': '循环缓冲或验证窗口不足', 'score': 0.821, 'risk_level': 'medium', 'evidence': {'pollutant_residual_risk': 0.478, 'oxidant_remaining': 0.726, 'release_readiness': 0.739, 'recycle_gain': 0.362, 'mechanism_ids': ['loop_buffer_needed', 'catalyst_deactivation'], 'knowledge_support': [{'entry_id': 'kb_catalyst_site_fouling', 'match_score': 0.82, 'pollutant_class': '含络合物、天然有机质或颗粒物的复杂废水', 'material_family': '负载型催化剂/类芬顿/光催化材料'}, {'entry_id': 'kb_loop_buffer_for_slow_sensing', 'match_score': 0.82, 'pollutant_class': '目标污染物需慢检测或低成本代理检测的废水', 'material_family': '循环式反应器/旁路快检系统'}]}, 'next_check': '安排下一回流/停留窗口，并同步进行软传感复估与旁路快检，而不是立即放行。'}`
+
+## matrix_shock
+
+- summary: 验证规划：matrix_shock_characterization，紧迫度 0.671。
+- validation plan: `{'plan_name': 'matrix_shock_characterization', 'urgency': 0.671, 'hold_min': 35, 'validation_delay_min': 18, 'targets': ['COD_or_TOC', 'residual_oxidant_quick_test', 'salinity_or_EC_reference', 'turbidity_reference'], 'release_gate': 'use validation evidence to update offline_residual_proxy before release'}`
+- top fault: `{'fault_id': 'reaction_time_insufficient', 'fault_name': '反应时间不足', 'score': 0.887, 'risk_level': 'medium', 'evidence': {'pollutant_residual_risk': 0.549, 'oxidant_remaining': 0.641, 'catalyst_activity': 0.5, 'recycle_gain': 0.405, 'knowledge_support': [{'entry_id': 'kb_matrix_aop_inhibition', 'match_score': 0.82, 'pollutant_class': '高盐/高 COD 难降解有机废水', 'material_family': '高级氧化或催化氧化材料'}]}, 'next_check': '优先延长停留或增加回流窗口，而不是立即加药。'}`

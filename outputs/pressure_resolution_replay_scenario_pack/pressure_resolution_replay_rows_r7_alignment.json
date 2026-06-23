@@ -1,0 +1,740 @@
+{
+  "alignment_id": "R8u20_r7_to_r8p_pressure_resolution_rows_alignment",
+  "alignment_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_alignment.json",
+  "alignment_status": "r7_to_r8p_alignment_ready_requires_r8p_supplements_and_agent52_export",
+  "model_core_layers": [
+    "observability_layer",
+    "verification_governance_layer"
+  ],
+  "source_package": "R7_Agent44_real_field_package",
+  "target_package": "R8p_pressure_resolution_replay_rows",
+  "expected_table_count": 6,
+  "r7_shared_table_count": 5,
+  "r8p_reusable_table_count": 5,
+  "direct_field_count": 29,
+  "alias_field_count": 2,
+  "metadata_field_count": 5,
+  "supplement_required_field_count": 10,
+  "agent52_export_required_field_count": 11,
+  "table_alignments": [
+    {
+      "target_table": "agent52_replay_table",
+      "r7_source_table": null,
+      "r7_source_table_present": false,
+      "r7_headers": [],
+      "required_fields": [
+        "batch_id",
+        "scenario",
+        "policy_action_id",
+        "expert_action_id",
+        "pressure_source_conflict_count",
+        "resolved_pressure_source_conflict_count",
+        "unresolved_pressure_source_conflict_count",
+        "pressure_source_resolution_record_count",
+        "pressure_source_conflict_requires_operator_review",
+        "pressure_source_conflict_control_block",
+        "data_origin"
+      ],
+      "table_reuse_status": "requires_agent52_replay_export",
+      "direct_field_count": 0,
+      "alias_field_count": 0,
+      "metadata_field_count": 0,
+      "supplement_required_field_count": 0,
+      "agent52_export_required_field_count": 11,
+      "field_mappings": [
+        {
+          "target_field": "batch_id",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "batch_id",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "scenario",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "scenario",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "policy_action_id",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "policy_action_id",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "expert_action_id",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "expert_action_id",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "pressure_source_conflict_count",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "pressure_source_conflict_count",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "resolved_pressure_source_conflict_count",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "resolved_pressure_source_conflict_count",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "unresolved_pressure_source_conflict_count",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "unresolved_pressure_source_conflict_count",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "pressure_source_resolution_record_count",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "pressure_source_resolution_record_count",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "pressure_source_conflict_requires_operator_review",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "pressure_source_conflict_requires_operator_review",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "pressure_source_conflict_control_block",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "pressure_source_conflict_control_block",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        },
+        {
+          "target_field": "data_origin",
+          "source_kind": "agent52_replay_export_required",
+          "source_table": "Agent49/52 replay output",
+          "source_field": "data_origin",
+          "transformation": "export policy_action/expert_action and pressure-source conflict counters after replay.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Must not be fabricated from field package rows."
+        }
+      ]
+    },
+    {
+      "target_table": "campaign_operation_log",
+      "r7_source_table": "campaign_operation_log",
+      "r7_source_table_present": true,
+      "r7_headers": [
+        "campaign_id",
+        "batch_id",
+        "action_id",
+        "command_time_min",
+        "effect_time_min",
+        "start_min",
+        "end_min",
+        "release_policy",
+        "recycle_ratio",
+        "tank_storage_margin",
+        "actuator_latency_p90",
+        "pump_valve_result",
+        "hold_time_min",
+        "regeneration_event",
+        "bed_id",
+        "pressure_headloss_review_required"
+      ],
+      "required_fields": [
+        "batch_id",
+        "action_id",
+        "operator_review_required",
+        "pressure_source_resolution",
+        "authoritative_pressure_source",
+        "reviewer_id",
+        "review_time",
+        "calibration_action_id",
+        "calibration_note",
+        "hold_time_min",
+        "recycle_ratio",
+        "data_origin"
+      ],
+      "table_reuse_status": "reusable_from_r7_package_with_aliases_and_supplements",
+      "direct_field_count": 4,
+      "alias_field_count": 0,
+      "metadata_field_count": 1,
+      "supplement_required_field_count": 7,
+      "agent52_export_required_field_count": 0,
+      "field_mappings": [
+        {
+          "target_field": "batch_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "campaign_operation_log",
+          "source_field": "batch_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "action_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "campaign_operation_log",
+          "source_field": "action_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "operator_review_required",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "pressure_headloss_review_required",
+          "transformation": "rename optional R7 guardrail review flag if present.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "pressure_source_resolution",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.pressure_source_resolution",
+          "transformation": "add operator review outcome.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "authoritative_pressure_source",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.authoritative_pressure_source",
+          "transformation": "add reviewed source selection.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "reviewer_id",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.reviewer_id",
+          "transformation": "add reviewer identity or approved role id.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "review_time",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.review_time",
+          "transformation": "add timestamp for review completion.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "calibration_action_id",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.calibration_action_id",
+          "transformation": "add calibration action id.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "calibration_note",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "campaign_operation_log or operator_resolution_supplement",
+          "source_field": "operator_resolution_supplement.calibration_note",
+          "transformation": "add calibration note.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Operator review fields must come from real review/calibration records."
+        },
+        {
+          "target_field": "hold_time_min",
+          "source_kind": "direct_csv_field",
+          "source_table": "campaign_operation_log",
+          "source_field": "hold_time_min",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "recycle_ratio",
+          "source_kind": "direct_csv_field",
+          "source_table": "campaign_operation_log",
+          "source_field": "recycle_ratio",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "data_origin",
+          "source_kind": "metadata_to_row_copy_after_agent44_gate",
+          "source_table": "metadata.json",
+          "source_field": "data_origin",
+          "transformation": "copy metadata data_origin to each row only after Agent44 metadata provenance passes.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Metadata copy is provenance context; R8p row gates still decide acceptance."
+        }
+      ]
+    },
+    {
+      "target_table": "fast_proxy_event_log",
+      "r7_source_table": "fast_proxy_event_log",
+      "r7_source_table_present": true,
+      "r7_headers": [
+        "campaign_id",
+        "batch_id",
+        "event_time_min",
+        "proxy_score",
+        "specificity_guard_score",
+        "protective_triggered",
+        "triggered_action_id",
+        "field_label_matrix_shock",
+        "lab_label_time_min",
+        "false_positive_cost_index"
+      ],
+      "required_fields": [
+        "batch_id",
+        "proxy_label_time_min",
+        "proxy_event_type",
+        "protective_triggered",
+        "false_positive_cost_index",
+        "data_origin"
+      ],
+      "table_reuse_status": "reusable_from_r7_package_with_aliases_and_supplements",
+      "direct_field_count": 3,
+      "alias_field_count": 1,
+      "metadata_field_count": 1,
+      "supplement_required_field_count": 1,
+      "agent52_export_required_field_count": 0,
+      "field_mappings": [
+        {
+          "target_field": "batch_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "fast_proxy_event_log",
+          "source_field": "batch_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "proxy_label_time_min",
+          "source_kind": "alias_csv_field",
+          "source_table": "fast_proxy_event_log",
+          "source_field": "event_time_min",
+          "transformation": "rename `event_time_min` to `proxy_label_time_min` for R8p.",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "proxy_event_type",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "fast_proxy_event_log",
+          "source_field": "triggered_action_id/proxy_event_type",
+          "transformation": "add proxy_event_type or map from reviewed triggered_action_id taxonomy.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Event type taxonomy must be stable before replay comparison."
+        },
+        {
+          "target_field": "protective_triggered",
+          "source_kind": "direct_csv_field",
+          "source_table": "fast_proxy_event_log",
+          "source_field": "protective_triggered",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "false_positive_cost_index",
+          "source_kind": "direct_csv_field",
+          "source_table": "fast_proxy_event_log",
+          "source_field": "false_positive_cost_index",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "data_origin",
+          "source_kind": "metadata_to_row_copy_after_agent44_gate",
+          "source_table": "metadata.json",
+          "source_field": "data_origin",
+          "transformation": "copy metadata data_origin to each row only after Agent44 metadata provenance passes.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Metadata copy is provenance context; R8p row gates still decide acceptance."
+        }
+      ]
+    },
+    {
+      "target_table": "node_modality_sensor_timeseries",
+      "r7_source_table": "node_modality_sensor_timeseries",
+      "r7_source_table_present": true,
+      "r7_headers": [
+        "batch_id",
+        "timestamp_min",
+        "node_id",
+        "zone",
+        "modality",
+        "value",
+        "sensor_status",
+        "instrument_id",
+        "acquisition_time_min",
+        "ingest_time_min"
+      ],
+      "required_fields": [
+        "batch_id",
+        "node_id",
+        "modality",
+        "value",
+        "unit",
+        "sample_time_min",
+        "instrument_id",
+        "sensor_status",
+        "data_origin"
+      ],
+      "table_reuse_status": "reusable_from_r7_package_with_aliases_and_supplements",
+      "direct_field_count": 6,
+      "alias_field_count": 1,
+      "metadata_field_count": 1,
+      "supplement_required_field_count": 1,
+      "agent52_export_required_field_count": 0,
+      "field_mappings": [
+        {
+          "target_field": "batch_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "node_modality_sensor_timeseries",
+          "source_field": "batch_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "node_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "node_modality_sensor_timeseries",
+          "source_field": "node_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "modality",
+          "source_kind": "direct_csv_field",
+          "source_table": "node_modality_sensor_timeseries",
+          "source_field": "modality",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "value",
+          "source_kind": "direct_csv_field",
+          "source_table": "node_modality_sensor_timeseries",
+          "source_field": "value",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "unit",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "node_modality_sensor_timeseries or modality dictionary",
+          "source_field": "unit",
+          "transformation": "add explicit unit column, or derive from a reviewed modality-unit dictionary.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Unit inference must be reviewed; do not assume every modality is kPa."
+        },
+        {
+          "target_field": "sample_time_min",
+          "source_kind": "alias_csv_field",
+          "source_table": "node_modality_sensor_timeseries",
+          "source_field": "timestamp_min",
+          "transformation": "rename `timestamp_min` to `sample_time_min` for R8p.",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "instrument_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "node_modality_sensor_timeseries",
+          "source_field": "instrument_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "sensor_status",
+          "source_kind": "direct_csv_field",
+          "source_table": "node_modality_sensor_timeseries",
+          "source_field": "sensor_status",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "data_origin",
+          "source_kind": "metadata_to_row_copy_after_agent44_gate",
+          "source_table": "metadata.json",
+          "source_field": "data_origin",
+          "transformation": "copy metadata data_origin to each row only after Agent44 metadata provenance passes.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Metadata copy is provenance context; R8p row gates still decide acceptance."
+        }
+      ]
+    },
+    {
+      "target_table": "offline_lab_results",
+      "r7_source_table": "offline_lab_results",
+      "r7_source_table_present": true,
+      "r7_headers": [
+        "batch_id",
+        "sample_time_min",
+        "result_time_min",
+        "analyte",
+        "value",
+        "qa_flag",
+        "proxy_holdout_label",
+        "catalyst_activity_label",
+        "pressure_headloss_proxy_label",
+        "lab_label_time_min",
+        "detection_limit",
+        "method",
+        "unit"
+      ],
+      "required_fields": [
+        "batch_id",
+        "sample_time_min",
+        "lab_label_time_min",
+        "analyte",
+        "value",
+        "unit",
+        "method",
+        "qa_flag",
+        "data_origin"
+      ],
+      "table_reuse_status": "fully_reusable_from_r7_package_with_metadata_copy",
+      "direct_field_count": 8,
+      "alias_field_count": 0,
+      "metadata_field_count": 1,
+      "supplement_required_field_count": 0,
+      "agent52_export_required_field_count": 0,
+      "field_mappings": [
+        {
+          "target_field": "batch_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "offline_lab_results",
+          "source_field": "batch_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "sample_time_min",
+          "source_kind": "direct_csv_field",
+          "source_table": "offline_lab_results",
+          "source_field": "sample_time_min",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "lab_label_time_min",
+          "source_kind": "direct_csv_field",
+          "source_table": "offline_lab_results",
+          "source_field": "lab_label_time_min",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "analyte",
+          "source_kind": "direct_csv_field",
+          "source_table": "offline_lab_results",
+          "source_field": "analyte",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "value",
+          "source_kind": "direct_csv_field",
+          "source_table": "offline_lab_results",
+          "source_field": "value",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "unit",
+          "source_kind": "direct_csv_field",
+          "source_table": "offline_lab_results",
+          "source_field": "unit",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "method",
+          "source_kind": "direct_csv_field",
+          "source_table": "offline_lab_results",
+          "source_field": "method",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "qa_flag",
+          "source_kind": "direct_csv_field",
+          "source_table": "offline_lab_results",
+          "source_field": "qa_flag",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "data_origin",
+          "source_kind": "metadata_to_row_copy_after_agent44_gate",
+          "source_table": "metadata.json",
+          "source_field": "data_origin",
+          "transformation": "copy metadata data_origin to each row only after Agent44 metadata provenance passes.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Metadata copy is provenance context; R8p row gates still decide acceptance."
+        }
+      ]
+    },
+    {
+      "target_table": "pressure_headloss_event_log",
+      "r7_source_table": "pressure_headloss_event_log",
+      "r7_source_table_present": true,
+      "r7_headers": [
+        "campaign_id",
+        "batch_id",
+        "event_time_min",
+        "bed_id",
+        "pressure_drop_kPa",
+        "headloss_kPa_per_m",
+        "flow_Lmin",
+        "matched_lab_sample_time_min",
+        "regeneration_event",
+        "hydraulic_anomaly_label",
+        "flow_normalized_pressure_residual",
+        "expected_clean_bed_pressure_drop_kPa",
+        "operator_review_required"
+      ],
+      "required_fields": [
+        "batch_id",
+        "bed_id",
+        "pressure_drop_kPa",
+        "headloss_kPa_per_m",
+        "flow_Lmin",
+        "event_time_min",
+        "matched_lab_sample_time_min",
+        "hydraulic_anomaly_label",
+        "instrument_id",
+        "data_origin"
+      ],
+      "table_reuse_status": "reusable_from_r7_package_with_aliases_and_supplements",
+      "direct_field_count": 8,
+      "alias_field_count": 0,
+      "metadata_field_count": 1,
+      "supplement_required_field_count": 1,
+      "agent52_export_required_field_count": 0,
+      "field_mappings": [
+        {
+          "target_field": "batch_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "pressure_headloss_event_log",
+          "source_field": "batch_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "bed_id",
+          "source_kind": "direct_csv_field",
+          "source_table": "pressure_headloss_event_log",
+          "source_field": "bed_id",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "pressure_drop_kPa",
+          "source_kind": "direct_csv_field",
+          "source_table": "pressure_headloss_event_log",
+          "source_field": "pressure_drop_kPa",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "headloss_kPa_per_m",
+          "source_kind": "direct_csv_field",
+          "source_table": "pressure_headloss_event_log",
+          "source_field": "headloss_kPa_per_m",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "flow_Lmin",
+          "source_kind": "direct_csv_field",
+          "source_table": "pressure_headloss_event_log",
+          "source_field": "flow_Lmin",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "event_time_min",
+          "source_kind": "direct_csv_field",
+          "source_table": "pressure_headloss_event_log",
+          "source_field": "event_time_min",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "matched_lab_sample_time_min",
+          "source_kind": "direct_csv_field",
+          "source_table": "pressure_headloss_event_log",
+          "source_field": "matched_lab_sample_time_min",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "hydraulic_anomaly_label",
+          "source_kind": "direct_csv_field",
+          "source_table": "pressure_headloss_event_log",
+          "source_field": "hydraulic_anomaly_label",
+          "transformation": "copy_value",
+          "can_be_filled_from_r7_csv_only": true
+        },
+        {
+          "target_field": "instrument_id",
+          "source_kind": "r8p_supplement_or_operator_record_required",
+          "source_table": "metadata.json or pressure_headloss_event_log",
+          "source_field": "instrument_snapshot_id/instrument_id",
+          "transformation": "copy instrument snapshot into row-level instrument_id or add row-level instrument_id.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Instrument provenance must remain traceable to calibration records."
+        },
+        {
+          "target_field": "data_origin",
+          "source_kind": "metadata_to_row_copy_after_agent44_gate",
+          "source_table": "metadata.json",
+          "source_field": "data_origin",
+          "transformation": "copy metadata data_origin to each row only after Agent44 metadata provenance passes.",
+          "can_be_filled_from_r7_csv_only": false,
+          "field_boundary": "Metadata copy is provenance context; R8p row gates still decide acceptance."
+        }
+      ]
+    }
+  ],
+  "required_pipeline_sequence": [
+    "Fill and pass Agent44/R7 metadata+CSV field package import gates.",
+    "Copy or transform R7 shared CSV rows into the R8p pressure-resolution row package.",
+    "Add R8p scenario identifiers and operator pressure-source resolution supplement fields.",
+    "Export Agent49/52 replay rows into agent52_replay_table.csv instead of fabricating them from field CSV.",
+    "Run Agent61 R8p schema, provenance, template-marker, bundle, temporal, semantic, and downstream-routing gates."
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "R7 field packages and R8p pressure-resolution replay packages collect overlapping evidence but use different field names and different model-output tables, which can create duplicate entry and hidden gaps.",
+    "technical_means": "A machine-readable crosswalk separates directly reusable R7 fields, alias transforms, metadata-to-row provenance copies, operator supplements, and Agent52 replay export requirements.",
+    "technical_effect": "The same low-cost field package can feed pressure-source conflict replay without weakening evidence gates or fabricating control replay rows.",
+    "prior_art_distinction_candidate": "The alignment treats sparse field observations, operator review records, and offline replay actions as separate evidence classes with explicit routing and failure boundaries."
+  },
+  "field_boundary": "This alignment is an interface contract only. It does not transform template rows into field evidence, does not generate Agent52 replay evidence, and cannot write actuator or release gates.",
+  "can_generate_field_evidence_from_template": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false
+}

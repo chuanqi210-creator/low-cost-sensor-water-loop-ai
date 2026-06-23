@@ -1,0 +1,1 @@
+node_id,bed_volume,nominal_HRT_min,flow_Lmin,site_id,zone,upstream_node_id,downstream_node_id,path_stage_id,hydraulic_path_role,nominal_flow_Lmin,recycle_ratio,release_boundary_flag,recirculation_loop_flag

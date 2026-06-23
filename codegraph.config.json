@@ -1,0 +1,22 @@
+{
+  "discovery": {
+    "includeGlobs": [
+      "src/**/*.py",
+      "experiments/**/*.py",
+      "tests/**/*.py",
+      "deliverables/**/*.md",
+      "deliverables/**/*.json",
+      "docs/**/*.md",
+      "notes/**/*.md"
+    ],
+    "ignoreGlobs": [
+      ".venv/**",
+      ".pytest_cache/**",
+      "**/__pycache__/**",
+      "src/**/*.egg-info/**",
+      "outputs/**",
+      "deliverables/ppt/**"
+    ],
+    "useGitignore": true
+  }
+}

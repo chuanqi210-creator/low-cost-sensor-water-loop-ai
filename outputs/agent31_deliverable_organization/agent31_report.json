@@ -1,0 +1,1025 @@
+{
+  "source_manifest": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/manifest.json",
+  "source_reports": {
+    "agent29": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent29_project_synthesis/agent29_report.json",
+    "agent30": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/agent30_report.json"
+  },
+  "deliverable_organization": {
+    "agent_name": "deliverable_organization_agent",
+    "confidence": 0.81,
+    "summary": "成果整理：deliverable_pack_ready；索引文件 112/112 可用，汇报章节 8 个。",
+    "recommendations": [
+      "用 executive_brief.md 作为项目书摘要开头，用 presentation_outline.md 作为汇报/PPT 结构。",
+      "用 key_metrics_table.md 统一口径，避免汇报时把 0.75 条件恢复误说成永久满负荷结论。",
+      "下一阶段以 field_data_interface_spec.md、timestamped_campaign_replay_schema.md 和 CSV 模板为入口接入真实现场数据。"
+    ],
+    "metrics": {
+      "artifact_index": [
+        {
+          "category": "core_document",
+          "path": "docs/研究方案_Word兼容版.docx",
+          "exists": true,
+          "role": "对外研究方案"
+        },
+        {
+          "category": "core_document",
+          "path": "docs/agent_system_spec.md",
+          "exists": true,
+          "role": "系统规格和技术细节"
+        },
+        {
+          "category": "core_document",
+          "path": "docs/project_overview_28_agent.md",
+          "exists": true,
+          "role": "项目级总览和证据链"
+        },
+        {
+          "category": "core_document",
+          "path": "docs/field_data_interface_spec.md",
+          "exists": true,
+          "role": "真实数据接口与校准模板"
+        },
+        {
+          "category": "core_document",
+          "path": "notes/current_status.md",
+          "exists": true,
+          "role": "最新状态"
+        },
+        {
+          "category": "core_document",
+          "path": "notes/iteration_log.md",
+          "exists": true,
+          "role": "迭代审计轨迹"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/full_chain/full_chain_report.md",
+          "exists": true,
+          "role": "关键模拟报告"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/scenario_sweep/scenario_sweep.md",
+          "exists": true,
+          "role": "关键模拟报告"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/closed_loop_robustness/closed_loop_robustness.md",
+          "exists": true,
+          "role": "关键模拟报告"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/design_sensitivity/design_sensitivity.md",
+          "exists": true,
+          "role": "关键模拟报告"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/agent23_post_replan_replay/agent23_report.md",
+          "exists": true,
+          "role": "关键模拟报告"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/agent27_recovery_execution_replay/agent27_report.md",
+          "exists": true,
+          "role": "关键模拟报告"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/agent28_recovery_online_control/agent28_report.md",
+          "exists": true,
+          "role": "关键模拟报告"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/agent29_project_synthesis/agent29_report.md",
+          "exists": true,
+          "role": "关键模拟报告"
+        },
+        {
+          "category": "key_report",
+          "path": "outputs/agent30_field_data_interface/agent30_report.md",
+          "exists": true,
+          "role": "真实数据接口与校准模板"
+        },
+        {
+          "category": "field_data_interface",
+          "path": "outputs/agent30_field_data_interface/field_data_schema.json",
+          "exists": true,
+          "role": "真实数据接口与校准模板"
+        },
+        {
+          "category": "field_data_interface",
+          "path": "outputs/agent30_field_data_interface/field_data_templates/",
+          "exists": true,
+          "role": "真实数据接口与校准模板"
+        },
+        {
+          "category": "field_data_interface",
+          "path": "outputs/agent30_field_data_interface/synthetic_field_data_package/",
+          "exists": true,
+          "role": "真实数据接口与校准模板"
+        },
+        {
+          "category": "organization_output",
+          "path": "deliverables/executive_brief.md",
+          "exists": true,
+          "role": "整理阶段汇报素材"
+        },
+        {
+          "category": "organization_output",
+          "path": "deliverables/presentation_outline.md",
+          "exists": true,
+          "role": "整理阶段汇报素材"
+        },
+        {
+          "category": "organization_output",
+          "path": "deliverables/key_metrics_table.md",
+          "exists": true,
+          "role": "整理阶段汇报素材"
+        },
+        {
+          "category": "organization_output",
+          "path": "deliverables/artifact_index.md",
+          "exists": true,
+          "role": "整理阶段汇报素材"
+        },
+        {
+          "category": "organization_output",
+          "path": "deliverables/calibration_task_board.md",
+          "exists": true,
+          "role": "整理阶段汇报素材"
+        },
+        {
+          "category": "presentation_asset",
+          "path": "deliverables/visual_storyboard.md",
+          "exists": true,
+          "role": "图表与讲述素材"
+        },
+        {
+          "category": "presentation_asset",
+          "path": "deliverables/figure_specs.md",
+          "exists": true,
+          "role": "图表与讲述素材"
+        },
+        {
+          "category": "presentation_asset",
+          "path": "deliverables/slide_narrative_script.md",
+          "exists": true,
+          "role": "图表与讲述素材"
+        },
+        {
+          "category": "presentation_asset",
+          "path": "deliverables/project_book_sections.md",
+          "exists": true,
+          "role": "图表与讲述素材"
+        },
+        {
+          "category": "formal_deck",
+          "path": "deliverables/deck_claim_spine.md",
+          "exists": true,
+          "role": "正式 PPT 与展示 QA 交付"
+        },
+        {
+          "category": "formal_deck",
+          "path": "deliverables/deck_design_system.md",
+          "exists": true,
+          "role": "正式 PPT 与展示 QA 交付"
+        },
+        {
+          "category": "formal_deck",
+          "path": "deliverables/deck_qa_checklist.md",
+          "exists": true,
+          "role": "正式 PPT 与展示 QA 交付"
+        },
+        {
+          "category": "formal_deck",
+          "path": "deliverables/ppt/low_cost_water_ai_formal_deck.pptx",
+          "exists": true,
+          "role": "正式 PPT 与展示 QA 交付"
+        },
+        {
+          "category": "field_calibration_gate",
+          "path": "deliverables/field_calibration_protocol.md",
+          "exists": true,
+          "role": "现场校准门控与运行手册"
+        },
+        {
+          "category": "field_calibration_gate",
+          "path": "deliverables/field_data_acceptance_gates.md",
+          "exists": true,
+          "role": "现场校准门控与运行手册"
+        },
+        {
+          "category": "field_calibration_gate",
+          "path": "deliverables/field_calibration_runbook.md",
+          "exists": true,
+          "role": "现场校准门控与运行手册"
+        },
+        {
+          "category": "field_calibration_gate",
+          "path": "outputs/agent34_field_calibration_gate/agent34_report.md",
+          "exists": true,
+          "role": "现场校准门控与运行手册"
+        },
+        {
+          "category": "model_realism_audit",
+          "path": "deliverables/model_realism_audit.md",
+          "exists": true,
+          "role": "模型真实性审计与优化路线"
+        },
+        {
+          "category": "model_realism_audit",
+          "path": "deliverables/model_upgrade_backlog.md",
+          "exists": true,
+          "role": "模型真实性审计与优化路线"
+        },
+        {
+          "category": "model_realism_audit",
+          "path": "outputs/agent35_model_realism_audit/agent35_report.md",
+          "exists": true,
+          "role": "模型真实性审计与优化路线"
+        },
+        {
+          "category": "soft_sensor_uncertainty",
+          "path": "deliverables/soft_sensor_uncertainty_validation.md",
+          "exists": true,
+          "role": "软传感不确定性验证"
+        },
+        {
+          "category": "soft_sensor_uncertainty",
+          "path": "outputs/agent36_soft_sensor_uncertainty_validation/agent36_report.md",
+          "exists": true,
+          "role": "软传感不确定性验证"
+        },
+        {
+          "category": "soft_sensor_uncertainty",
+          "path": "outputs/soft_sensor_training/soft_sensor_uncertainty_metrics.json",
+          "exists": true,
+          "role": "软传感不确定性验证"
+        },
+        {
+          "category": "knowledge_graph_curation",
+          "path": "deliverables/knowledge_graph_curation.md",
+          "exists": true,
+          "role": "知识图谱策展与证据矩阵"
+        },
+        {
+          "category": "knowledge_graph_curation",
+          "path": "deliverables/knowledge_graph_schema.md",
+          "exists": true,
+          "role": "知识图谱策展与证据矩阵"
+        },
+        {
+          "category": "knowledge_graph_curation",
+          "path": "outputs/agent37_knowledge_graph_curation/agent37_report.md",
+          "exists": true,
+          "role": "知识图谱策展与证据矩阵"
+        },
+        {
+          "category": "knowledge_graph_curation",
+          "path": "outputs/agent37_knowledge_graph_curation/knowledge_graph_records.json",
+          "exists": true,
+          "role": "知识图谱策展与证据矩阵"
+        },
+        {
+          "category": "literature_evidence",
+          "path": "deliverables/literature_evidence_matrix.md",
+          "exists": true,
+          "role": "文献证据抽取与模型升级映射"
+        },
+        {
+          "category": "literature_evidence",
+          "path": "deliverables/literature_evidence_schema.md",
+          "exists": true,
+          "role": "文献证据抽取与模型升级映射"
+        },
+        {
+          "category": "literature_evidence",
+          "path": "outputs/agent38_literature_evidence/agent38_report.md",
+          "exists": true,
+          "role": "文献证据抽取与模型升级映射"
+        },
+        {
+          "category": "literature_evidence",
+          "path": "outputs/agent38_literature_evidence/literature_evidence_records.json",
+          "exists": true,
+          "role": "文献证据抽取与模型升级映射"
+        },
+        {
+          "category": "soft_sensor_conformal_calibration",
+          "path": "deliverables/soft_sensor_conformal_calibration.md",
+          "exists": true,
+          "role": "软传感保形校准接口"
+        },
+        {
+          "category": "soft_sensor_conformal_calibration",
+          "path": "outputs/agent39_soft_sensor_conformal_calibration/agent39_report.md",
+          "exists": true,
+          "role": "软传感保形校准接口"
+        },
+        {
+          "category": "soft_sensor_conformal_calibration",
+          "path": "outputs/soft_sensor_training/soft_sensor_conformal_metrics.json",
+          "exists": true,
+          "role": "软传感保形校准接口"
+        },
+        {
+          "category": "soft_sensor_field_holdout_gate",
+          "path": "deliverables/soft_sensor_field_holdout_gate.md",
+          "exists": true,
+          "role": "软传感 field holdout 放行门控"
+        },
+        {
+          "category": "soft_sensor_field_holdout_gate",
+          "path": "outputs/agent46_soft_sensor_field_holdout_gate/agent46_report.md",
+          "exists": true,
+          "role": "软传感 field holdout 放行门控"
+        },
+        {
+          "category": "soft_sensor_field_holdout_gate",
+          "path": "outputs/soft_sensor_field_holdout_gate/field_holdout_gate_metrics.json",
+          "exists": true,
+          "role": "软传感 field holdout 放行门控"
+        },
+        {
+          "category": "weak_target_stratified_conformal",
+          "path": "deliverables/weak_target_stratified_conformal.md",
+          "exists": true,
+          "role": "弱目标分层保形校准"
+        },
+        {
+          "category": "weak_target_stratified_conformal",
+          "path": "outputs/agent47_weak_target_stratified_conformal/agent47_report.md",
+          "exists": true,
+          "role": "弱目标分层保形校准"
+        },
+        {
+          "category": "weak_target_stratified_conformal",
+          "path": "outputs/weak_target_stratified_conformal/weak_target_stratified_metrics.json",
+          "exists": true,
+          "role": "弱目标分层保形校准"
+        },
+        {
+          "category": "sensor_network_sparse_placement",
+          "path": "deliverables/sensor_network_sparse_placement.md",
+          "exists": true,
+          "role": "管网布点与稀疏感知"
+        },
+        {
+          "category": "sensor_network_sparse_placement",
+          "path": "outputs/agent48_sensor_network_sparse_placement/agent48_report.md",
+          "exists": true,
+          "role": "管网布点与稀疏感知"
+        },
+        {
+          "category": "sensor_network_sparse_placement",
+          "path": "outputs/sensor_network_sparse_placement/sparse_placement_metrics.json",
+          "exists": true,
+          "role": "管网布点与稀疏感知"
+        },
+        {
+          "category": "multi_facility_collaborative_control",
+          "path": "deliverables/multi_facility_collaborative_control.md",
+          "exists": true,
+          "role": "多设施协同控制与策略蒸馏"
+        },
+        {
+          "category": "multi_facility_collaborative_control",
+          "path": "outputs/agent49_multi_facility_collaborative_control/agent49_report.md",
+          "exists": true,
+          "role": "多设施协同控制与策略蒸馏"
+        },
+        {
+          "category": "multi_facility_collaborative_control",
+          "path": "outputs/multi_facility_collaborative_control/collaborative_control_metrics.json",
+          "exists": true,
+          "role": "多设施协同控制与策略蒸馏"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "deliverables/model_core_optimization/model_core_goal.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "deliverables/model_core_optimization/goal_iteration_trace.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "deliverables/model_core_optimization/user_interrupt_lessons.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "deliverables/model_core_optimization/external_evidence_matrix.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "deliverables/model_core_optimization/issue_priority_ranking.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "deliverables/model_core_optimization/execution_prompt.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "deliverables/model_core_optimization/self_interrupt_checklist.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "deliverables/model_core_optimization/governance_report.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "outputs/agent50_model_core_governance/agent50_report.md",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "model_core_optimization_governance",
+          "path": "outputs/model_core_governance/priority_ranking.json",
+          "exists": true,
+          "role": "全局系统架构治理与模型核心优化"
+        },
+        {
+          "category": "catalyst_activity_proxy",
+          "path": "deliverables/catalyst_activity_proxy.md",
+          "exists": true,
+          "role": "催化剂活性代理观测"
+        },
+        {
+          "category": "catalyst_activity_proxy",
+          "path": "outputs/agent51_catalyst_activity_proxy/agent51_report.md",
+          "exists": true,
+          "role": "催化剂活性代理观测"
+        },
+        {
+          "category": "catalyst_activity_proxy",
+          "path": "outputs/catalyst_activity_proxy/catalyst_activity_proxy_metrics.json",
+          "exists": true,
+          "role": "催化剂活性代理观测"
+        },
+        {
+          "category": "catalyst_activity_proxy",
+          "path": "outputs/catalyst_activity_proxy/field_proxy_holdout_summary.json",
+          "exists": true,
+          "role": "催化剂活性代理观测"
+        },
+        {
+          "category": "multi_facility_replay_evaluation",
+          "path": "deliverables/multi_facility_replay_evaluation.md",
+          "exists": true,
+          "role": "多设施 replay 离线评估"
+        },
+        {
+          "category": "multi_facility_replay_evaluation",
+          "path": "outputs/agent52_multi_facility_replay_evaluation/agent52_report.md",
+          "exists": true,
+          "role": "多设施 replay 离线评估"
+        },
+        {
+          "category": "multi_facility_replay_evaluation",
+          "path": "outputs/multi_facility_replay_evaluation/replay_evaluation_metrics.json",
+          "exists": true,
+          "role": "多设施 replay 离线评估"
+        },
+        {
+          "category": "minimal_grey_box_physics",
+          "path": "deliverables/minimal_grey_box_physics.md",
+          "exists": true,
+          "role": "最小灰箱物理机制增强"
+        },
+        {
+          "category": "minimal_grey_box_physics",
+          "path": "outputs/agent53_minimal_grey_box_physics/agent53_report.md",
+          "exists": true,
+          "role": "最小灰箱物理机制增强"
+        },
+        {
+          "category": "minimal_grey_box_physics",
+          "path": "outputs/minimal_grey_box_physics/grey_box_physics_metrics.json",
+          "exists": true,
+          "role": "最小灰箱物理机制增强"
+        },
+        {
+          "category": "soft_sensor_matrix_coupling",
+          "path": "deliverables/soft_sensor_matrix_coupling.md",
+          "exists": true,
+          "role": "软传感矩阵耦合"
+        },
+        {
+          "category": "soft_sensor_matrix_coupling",
+          "path": "outputs/agent54_soft_sensor_matrix_coupling/agent54_report.md",
+          "exists": true,
+          "role": "软传感矩阵耦合"
+        },
+        {
+          "category": "soft_sensor_matrix_coupling",
+          "path": "outputs/soft_sensor_matrix_coupling/soft_sensor_matrix_metrics.json",
+          "exists": true,
+          "role": "软传感矩阵耦合"
+        },
+        {
+          "category": "grey_box_dynamic_latency",
+          "path": "deliverables/grey_box_dynamic_latency.md",
+          "exists": true,
+          "role": "灰箱动态延迟审计"
+        },
+        {
+          "category": "grey_box_dynamic_latency",
+          "path": "outputs/agent40_grey_box_dynamic_latency/agent40_report.md",
+          "exists": true,
+          "role": "灰箱动态延迟审计"
+        },
+        {
+          "category": "grey_box_dynamic_latency",
+          "path": "outputs/grey_box_dynamic_latency/latency_budget_metrics.json",
+          "exists": true,
+          "role": "灰箱动态延迟审计"
+        },
+        {
+          "category": "matrix_shock_fast_proxy_control",
+          "path": "deliverables/matrix_shock_fast_proxy_control.md",
+          "exists": true,
+          "role": "基质冲击快代理与延迟感知控制"
+        },
+        {
+          "category": "matrix_shock_fast_proxy_control",
+          "path": "outputs/agent41_matrix_shock_fast_proxy/agent41_report.md",
+          "exists": true,
+          "role": "基质冲击快代理与延迟感知控制"
+        },
+        {
+          "category": "matrix_shock_fast_proxy_control",
+          "path": "outputs/matrix_shock_fast_proxy/fast_proxy_metrics.json",
+          "exists": true,
+          "role": "基质冲击快代理与延迟感知控制"
+        },
+        {
+          "category": "timestamped_campaign_replay",
+          "path": "deliverables/timestamped_campaign_replay_schema.md",
+          "exists": true,
+          "role": "现场时间戳回放接口"
+        },
+        {
+          "category": "timestamped_campaign_replay",
+          "path": "outputs/agent42_timestamped_campaign_replay/agent42_report.md",
+          "exists": true,
+          "role": "现场时间戳回放接口"
+        },
+        {
+          "category": "timestamped_campaign_replay",
+          "path": "outputs/timestamped_campaign_replay/timestamped_replay_schema.json",
+          "exists": true,
+          "role": "现场时间戳回放接口"
+        },
+        {
+          "category": "timestamped_campaign_replay",
+          "path": "outputs/timestamped_campaign_replay/templates",
+          "exists": true,
+          "role": "现场时间戳回放接口"
+        },
+        {
+          "category": "timestamped_campaign_replay",
+          "path": "outputs/timestamped_campaign_replay/synthetic_timestamped_replay",
+          "exists": true,
+          "role": "现场时间戳回放接口"
+        },
+        {
+          "category": "field_replay_calibration_gate",
+          "path": "deliverables/field_replay_calibration_gate.md",
+          "exists": true,
+          "role": "现场回放校准门控"
+        },
+        {
+          "category": "field_replay_calibration_gate",
+          "path": "outputs/agent43_field_replay_calibration_gate/agent43_report.md",
+          "exists": true,
+          "role": "现场回放校准门控"
+        },
+        {
+          "category": "field_replay_calibration_gate",
+          "path": "outputs/field_replay_calibration_gate/g6_p6_gate_metrics.json",
+          "exists": true,
+          "role": "现场回放校准门控"
+        },
+        {
+          "category": "field_replay_import",
+          "path": "deliverables/field_replay_import_protocol.md",
+          "exists": true,
+          "role": "现场 replay 包导入与 provenance 验收"
+        },
+        {
+          "category": "field_replay_import",
+          "path": "outputs/agent44_field_replay_import/agent44_report.md",
+          "exists": true,
+          "role": "现场 replay 包导入与 provenance 验收"
+        },
+        {
+          "category": "field_replay_import",
+          "path": "outputs/field_replay_import/import_acceptance_metrics.json",
+          "exists": true,
+          "role": "现场 replay 包导入与 provenance 验收"
+        },
+        {
+          "category": "field_replay_import",
+          "path": "outputs/field_replay_import/real_field_package_preflight_metrics.json",
+          "exists": true,
+          "role": "现场 replay 包导入与 provenance 验收"
+        },
+        {
+          "category": "field_replay_import",
+          "path": "outputs/field_replay_import/real_field_package_template_preflight_metrics.json",
+          "exists": true,
+          "role": "现场 replay 包导入与 provenance 验收"
+        },
+        {
+          "category": "field_replay_import",
+          "path": "outputs/field_replay_import/import_schema.json",
+          "exists": true,
+          "role": "现场 replay 包导入与 provenance 验收"
+        },
+        {
+          "category": "field_replay_import",
+          "path": "outputs/field_replay_import/real_field_package_template",
+          "exists": true,
+          "role": "现场 replay 包导入与 provenance 验收"
+        },
+        {
+          "category": "field_replay_import",
+          "path": "outputs/field_replay_import/synthetic_replay_import_package",
+          "exists": true,
+          "role": "现场 replay 包导入与 provenance 验收"
+        },
+        {
+          "category": "field_replay_evidence_chain",
+          "path": "deliverables/field_replay_evidence_chain.md",
+          "exists": true,
+          "role": "现场 replay 校准证据链"
+        },
+        {
+          "category": "field_replay_evidence_chain",
+          "path": "outputs/agent45_field_replay_evidence_chain/agent45_report.md",
+          "exists": true,
+          "role": "现场 replay 校准证据链"
+        },
+        {
+          "category": "field_replay_evidence_chain",
+          "path": "outputs/field_replay_evidence_chain/evidence_chain_metrics.json",
+          "exists": true,
+          "role": "现场 replay 校准证据链"
+        }
+      ],
+      "core_metrics": {
+        "total_agent_chain_count": 54,
+        "execution_agent_count": 28,
+        "organizing_interface_agent_count": 26,
+        "support_layer_label": "综合、接口、整理、展示素材、正式展示、校准门控、模型真实性审计、软传感不确定性验证、知识图谱策展、文献证据抽取、软传感保形校准、灰箱动态延迟审计、基质冲击快代理控制、时间戳回放接口、现场回放校准门控、现场 replay 导入门、现场 replay 证据链、软传感 field holdout 放行门控、弱目标分层保形校准、管网布点与稀疏感知、多设施协同控制、模型核心优化治理、催化剂活性代理观测、多设施 replay 离线评估、最小灰箱物理机制、软传感矩阵耦合",
+        "latest_regression": "346 passed",
+        "project_maturity": "research_platform_ready_for_field_calibration",
+        "recovery_control_mode": "maintain_conditional_recovery",
+        "next_intake_fraction": 0.75,
+        "fallback_intake_fraction": 0.6,
+        "replan_required": false,
+        "field_interface_status": "template_ready_not_field_validated",
+        "field_data_origin": "synthetic",
+        "field_template_table_count": 6,
+        "artifact_count": 112,
+        "available_artifact_count": 112
+      },
+      "executive_summary": [
+        "本项目已经从研究想法整理为可运行的低成本传感循环式水处理多智能体研究平台。",
+        "当前链条包含 54 个 agent：28 个执行 agent 加 26 个综合、接口、整理、展示素材、正式展示、校准门控、模型真实性审计、软传感不确定性验证、知识图谱策展、文献证据抽取、软传感保形校准、灰箱动态延迟审计、基质冲击快代理控制、时间戳回放接口、现场回放校准门控、现场 replay 导入门、现场 replay 证据链、软传感 field holdout 放行门控、弱目标分层保形校准、管网布点与稀疏感知、多设施协同控制、模型核心优化治理、催化剂活性代理观测、多设施 replay 离线评估、最小灰箱物理机制、软传感矩阵耦合 agent。",
+        "核心机制是用循环、暂存和慢证据窗口降低传感与反应速度要求，再用软传感器和多智能体诊断把黑箱过程变成可解释、可回退的灰箱。",
+        "最新恢复控制为 maintain_conditional_recovery：下一轮进水 0.75，失败回退 0.6。",
+        "真实数据接口状态为 template_ready_not_field_validated，当前模板可运行，但必须用现场数据替换 synthetic/sample 行。"
+      ],
+      "presentation_outline": [
+        {
+          "section_id": "S1",
+          "title": "研究缘起：低成本传感下的黑箱困境",
+          "message": "高端仪器昂贵且反应/检测存在延迟，工程上常出现进水、出水可测而中间过程不可观测的问题。",
+          "evidence": [
+            "聊天中提出的“软传感器把黑箱变灰箱”",
+            "低成本传感与循环争取时间的研究定位"
+          ]
+        },
+        {
+          "section_id": "S2",
+          "title": "总体思路：循环结构 + 软传感 + 多智能体",
+          "message": "系统不追求一次处理完，而是用回流、暂存、慢证据和闭环控制让行动可行。",
+          "evidence": [
+            "project_overview_28_agent.md",
+            "agent_system_spec.md"
+          ]
+        },
+        {
+          "section_id": "S3",
+          "title": "系统架构：执行链 + 综合接口整理展示层",
+          "message": "当前成果包包含 54 个 agent：执行链覆盖数据质控、软传感、机理诊断、控制仲裁、重规划和恢复控制，支持层覆盖综合、接口、整理、展示素材、正式展示、校准门控、模型真实性审计、软传感不确定性验证、知识图谱策展、文献证据抽取、软传感保形校准、灰箱动态延迟审计、基质冲击快代理控制、时间戳回放接口、现场回放校准门控、现场 replay 导入门、现场 replay 证据链、软传感 field holdout 放行门控、弱目标分层保形校准、管网布点与稀疏感知、多设施协同控制、模型核心优化治理、催化剂活性代理观测、多设施 replay 离线评估、最小灰箱物理机制、软传感矩阵耦合。",
+          "evidence": [
+            "total_agent_chain_count=54",
+            "docs/agent_system_spec.md"
+          ]
+        },
+        {
+          "section_id": "S4",
+          "title": "关键证据：从瓶颈发现到自动重规划",
+          "message": "多批次运行暴露验证工时、时间窗口和催化剂库存瓶颈，系统能转入资源扩容、分阶段实施和写回回放。",
+          "evidence": [
+            "outputs/agent23_post_replan_replay/agent23_report.md"
+          ]
+        },
+        {
+          "section_id": "S5",
+          "title": "工程恢复：0.75 条件恢复与 0.60 回退线",
+          "message": "0.75 不是永久满负荷结论，而是在验证错峰和 campaign 后复核条件下维持的恢复状态。",
+          "evidence": [
+            "outputs/agent27_recovery_execution_replay/agent27_report.md",
+            "outputs/agent28_recovery_online_control/agent28_report.md"
+          ]
+        },
+        {
+          "section_id": "S6",
+          "title": "真实数据接口：从仿真平台进入实证校准",
+          "message": "已定义五张现场数据表和 CSV 模板，用 batch_id 连接传感、离线检测、催化剂和操作日志。",
+          "evidence": [
+            "docs/field_data_interface_spec.md",
+            "outputs/agent30_field_data_interface/field_data_templates/"
+          ]
+        },
+        {
+          "section_id": "S7",
+          "title": "边界说明：可作为研究平台，不是现场自治结论",
+          "message": "当前结果适合项目书、原型展示和实证前仿真基线；真实漂移、寿命、副产物和部署接口仍需校准。",
+          "evidence": [
+            "field_data_origin=synthetic",
+            "project_maturity=research_platform_ready_for_field_calibration"
+          ]
+        },
+        {
+          "section_id": "S8",
+          "title": "下一步实证校准",
+          "message": "先接入真实传感时间序列、离线标签和 campaign 日志，再校准软传感器、时间预算和 fallback triggers。",
+          "evidence": [
+            "deliverables/README.md",
+            "outputs/agent30_field_data_interface/agent30_report.md"
+          ]
+        }
+      ],
+      "key_metrics_table": [
+        {
+          "metric": "agent_chain_count",
+          "value": 54,
+          "interpretation": "28 个执行 agent 加 26 个综合、接口、整理、展示素材、正式展示、校准门控、模型真实性审计、软传感不确定性验证、知识图谱策展、文献证据抽取、软传感保形校准、灰箱动态延迟审计、基质冲击快代理控制、时间戳回放接口、现场回放校准门控、现场 replay 导入门、现场 replay 证据链、软传感 field holdout 放行门控、弱目标分层保形校准、管网布点与稀疏感知、多设施协同控制、模型核心优化治理、催化剂活性代理观测、多设施 replay 离线评估、最小灰箱物理机制、软传感矩阵耦合 agent"
+        },
+        {
+          "metric": "latest_regression",
+          "value": "346 passed",
+          "interpretation": "完整测试回归"
+        },
+        {
+          "metric": "project_maturity",
+          "value": "research_platform_ready_for_field_calibration",
+          "interpretation": "适合进入真实数据校准的研究平台"
+        },
+        {
+          "metric": "recovery_control_mode",
+          "value": "maintain_conditional_recovery",
+          "interpretation": "最新恢复在线控制状态"
+        },
+        {
+          "metric": "next_intake_fraction",
+          "value": 0.75,
+          "interpretation": "下一轮条件恢复进水比例"
+        },
+        {
+          "metric": "fallback_intake_fraction",
+          "value": 0.6,
+          "interpretation": "恢复失败时回退比例"
+        },
+        {
+          "metric": "replan_required",
+          "value": false,
+          "interpretation": "当前是否需要重规划"
+        },
+        {
+          "metric": "field_interface_status",
+          "value": "template_ready_not_field_validated",
+          "interpretation": "真实数据接口状态"
+        },
+        {
+          "metric": "field_template_table_count",
+          "value": 6,
+          "interpretation": "已定义现场数据表数量"
+        },
+        {
+          "metric": "available_artifacts",
+          "value": "112/112",
+          "interpretation": "成果包索引可用性"
+        }
+      ],
+      "calibration_task_board": [
+        {
+          "task_id": "P1_sensor_noise_drift",
+          "title": "真实传感器噪声、漂移和污染结垢标定",
+          "current_status": "template_ready",
+          "next_action": "导入真实传感器原始时间序列与校准/清洗记录。",
+          "blockers": []
+        },
+        {
+          "task_id": "P2_soft_sensor_retraining",
+          "title": "软传感器真实标签重训",
+          "current_status": "template_ready",
+          "next_action": "对齐离线检测标签与传感窗口，重训软传感器。",
+          "blockers": []
+        },
+        {
+          "task_id": "P3_catalyst_lifecycle",
+          "title": "催化剂寿命、再生收益和副产物风险校准",
+          "current_status": "template_ready",
+          "next_action": "补充催化剂活性、压降、再生和寿命记录。",
+          "blockers": []
+        },
+        {
+          "task_id": "P4_loop_time_budget",
+          "title": "循环、暂存、验证错峰和回退门槛校准",
+          "current_status": "template_ready",
+          "next_action": "导入真实动作开始/结束时间，校准错峰收益和回退阈值。",
+          "blockers": []
+        },
+        {
+          "task_id": "P5_cost_deployment",
+          "title": "经济性和现场部署接口校准",
+          "current_status": "template_ready",
+          "next_action": "替换真实报价、人工成本、提前期和 PLC/SCADA 点表。",
+          "blockers": []
+        },
+        {
+          "task_id": "P6_pressure_headloss_replay_contract",
+          "title": "压降/水头损失候选观测的现场 replay 校准",
+          "current_status": "template_ready",
+          "next_action": "补齐真实数据并重新运行接口检查。",
+          "blockers": []
+        },
+        {
+          "task_id": "P6_timestamped_fast_proxy_replay",
+          "title": "时间戳回放与快代理校准",
+          "current_status": "field_replay_required",
+          "next_action": "导入真实 fast_proxy_event_log，对齐 result_time_min、effect_time_min、field_label_matrix_shock 和 false_positive_cost_index。",
+          "blockers": [
+            "field_labeled_timestamped_replay_missing"
+          ]
+        },
+        {
+          "task_id": "P7_field_replay_import_package",
+          "title": "现场 replay 包导入与 provenance 验收",
+          "current_status": "field_package_required",
+          "next_action": "准备带 metadata.json 的真实 sensor/lab/operation/fast_proxy CSV 包，先通过 Agent44 再进入 Agent42/Agent43。",
+          "blockers": [
+            "field_metadata_and_csv_package_missing"
+          ]
+        },
+        {
+          "task_id": "P8_field_replay_evidence_chain",
+          "title": "现场 replay 导入-回放-G6 证据链",
+          "current_status": "evidence_chain_waiting_for_field_package",
+          "next_action": "按 Agent44 -> Agent42 -> Agent43 -> Agent45 顺序重跑证据链，只在完整链条通过后形成保护性写回候选。",
+          "blockers": [
+            "agent44_field_package_not_passed"
+          ]
+        },
+        {
+          "task_id": "P9_soft_sensor_field_holdout_gate",
+          "title": "软传感 field holdout 放行门控",
+          "current_status": "field_holdout_required",
+          "next_action": "采集真实 field holdout 标签，重跑 Agent36/Agent39/Agent46，只有全门控通过才形成软传感 release gate 校准候选。",
+          "blockers": [
+            "field_holdout_labels_missing"
+          ]
+        },
+        {
+          "task_id": "P10_weak_target_stratified_conformal",
+          "title": "弱目标分层保形校准",
+          "current_status": "field_holdout_required",
+          "next_action": "补 matrix_interference 与 catalyst_activity 的真实场景标签，重跑 Agent47 后再交给 Agent46 审查。",
+          "blockers": [
+            "weak_target_field_labels_missing"
+          ]
+        },
+        {
+          "task_id": "P11_sensor_network_sparse_placement",
+          "title": "管网布点与稀疏感知",
+          "current_status": "field_topology_required",
+          "next_action": "补真实管网/处理单元拓扑、水力停留时间、节点维护成本和节点级标签，重跑 Agent48 更新软传感观测矩阵。",
+          "blockers": [
+            "field_topology_and_node_labels_missing"
+          ]
+        },
+        {
+          "task_id": "P12_multi_facility_collaborative_control",
+          "title": "多设施协同控制与策略蒸馏",
+          "current_status": "field_coordination_replay_required",
+          "next_action": "补真实多节点 sensor/lab/operation/action replay，重跑 Agent49 校准 joint_action_accuracy、reward_regret 和决策树蒸馏准确度。",
+          "blockers": [
+            "multi_node_state_action_replay_missing",
+            "distilled_policy_field_accuracy_missing"
+          ]
+        },
+        {
+          "task_id": "P13_model_core_optimization_governance",
+          "title": "全局系统架构治理与模型核心优化",
+          "current_status": "active_model_core_governance",
+          "next_action": "以全局七层系统骨架和六类能力为准星运行架构治理；普通新想法先沉淀，只有阶段边界或硬风险时才做深度重排。",
+          "blockers": []
+        },
+        {
+          "task_id": "P14_catalyst_activity_proxy",
+          "title": "催化剂活性弱观测代理",
+          "current_status": "field_proxy_holdout_required",
+          "next_action": "采集催化剂床前后 UV254/ORP、压降、再生事件和离线 catalyst_activity 标签，重跑 Agent51 形成 field_proxy_holdout，再由 Agent50 判断是否切回 P2 或推进 P3。",
+          "blockers": [
+            "field_catalyst_activity_labels_missing",
+            "pressure_drop_and_regeneration_events_missing"
+          ]
+        },
+        {
+          "task_id": "P15_multi_facility_replay_evaluation",
+          "title": "多设施协同控制 replay 离线评估",
+          "current_status": "field_multinode_replay_required",
+          "next_action": "采集真实多节点 sensor/lab/operation/action/reward replay，重跑 Agent52 校准 joint_action_accuracy、reward_regret、误保护成本和决策树 replay accuracy。",
+          "blockers": [
+            "multi_node_state_action_reward_replay_missing",
+            "operator_or_validated_expert_action_labels_missing"
+          ]
+        },
+        {
+          "task_id": "P16_minimal_grey_box_physics",
+          "title": "最小灰箱物理机制校准",
+          "current_status": "field_physics_calibration_required",
+          "next_action": "采集 RTD/池容/流量、进出水目标污染物、氧化剂投加与余量、催化剂再生历史和副产物面板，重跑 Agent53 校准 k_eff、质量残差和副产物风险。",
+          "blockers": [
+            "field_rtd_or_hydraulic_replay_missing",
+            "inlet_outlet_target_pollutant_labels_missing",
+            "byproduct_lab_panel_missing"
+          ]
+        },
+        {
+          "task_id": "P17_soft_sensor_matrix_coupling",
+          "title": "软传感 node-modality/missingness 矩阵耦合",
+          "current_status": "field_missingness_replay_required",
+          "next_action": "采集 node-specific 传感值、layout_id holdout split、缺测原因和 field missingness replay，重跑 Agent54 后再训练 layout-aware soft sensor baseline。",
+          "blockers": [
+            "node_specific_sensor_values_missing",
+            "layout_holdout_split_missing",
+            "field_missingness_reason_labels_missing"
+          ]
+        }
+      ],
+      "readiness": {
+        "deliverable_status": "deliverable_pack_ready",
+        "deliverable_score": 1.0,
+        "available_artifact_count": 112,
+        "total_artifact_count": 112,
+        "missing_artifacts": []
+      },
+      "latest_regression": "346 passed"
+    },
+    "issues": [
+      {
+        "sensor": "deliverable_boundary",
+        "issue_type": "field_validation_not_completed",
+        "severity": "info",
+        "message": "成果包可用于汇报和项目书，但真实现场数据校准尚未完成。",
+        "evidence": {
+          "next_stage": "field calibration"
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "executive_brief": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/executive_brief.md",
+    "presentation_outline": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/presentation_outline.md",
+    "key_metrics_table": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/key_metrics_table.md",
+    "artifact_index": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/artifact_index.md",
+    "calibration_task_board": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/calibration_task_board.md"
+  }
+}

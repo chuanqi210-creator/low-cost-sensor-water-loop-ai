@@ -1,0 +1,458 @@
+{
+  "coverage": {
+    "prior_art_distinction_status": "prior_art_distinction_matrix_ready_as_hypothesis_not_search_or_legal_opinion",
+    "distinction_count": 7,
+    "complete_distinction_count": 7,
+    "prior_art_distinction_coverage_rate": 1.0,
+    "incomplete_distinctions": [],
+    "covered_claim_ids": [
+      "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+      "TCS2_independent_system_architecture",
+      "TCS3_dependent_catalyst_activity_regeneration_control",
+      "TCS4_dependent_node_modality_sparse_hidden_state_estimation",
+      "TCS5_dependent_field_replay_protective_writeback",
+      "TCS6_dependent_low_frequency_cycle_window_control",
+      "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+    ],
+    "missing_claim_coverage": [],
+    "covered_feature_ids": [
+      "PTF1_node_modality_sparse_sensing",
+      "PTF2_soft_sensor_grey_state_estimation",
+      "PTF3_grey_box_mechanism_boundary",
+      "PTF4_cyclic_low_frequency_control",
+      "PTF5_mechanism_kg_evidence_constraint",
+      "PTF6_field_replay_release_gate",
+      "PTF7_engineering_execution_constraints",
+      "PTF8_stage_gated_model_governance"
+    ],
+    "missing_feature_coverage": [],
+    "covered_effect_ids": [
+      "TEM1_observability_gain_under_sparse_sensing",
+      "TEM2_blackbox_to_greybox_state_estimation",
+      "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+      "TEM4_catalyst_proxy_guardrail_effect",
+      "TEM5_field_replay_protective_writeback_reduces_false_release",
+      "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions",
+      "TEM7_engineering_execution_constraint_feasibility"
+    ],
+    "missing_effect_coverage": [],
+    "formal_search_required": true,
+    "field_claim_upgrade_allowed": false,
+    "novelty_or_inventiveness_opinion_allowed": false,
+    "legal_status": "prior_art_distinction_hypothesis_not_legal_opinion",
+    "evidence_boundary": "该矩阵只把已有技术家族与本项目候选区别点映射成检索/交底假设；没有正式 prior-art search、法律审查和 field validation 时，不能声称新颖性、创造性或授权可能性。"
+  },
+  "distinctions": [
+    {
+      "distinction_id": "PAD1_soft_sensor_ml_vs_cyclic_greybox_release_gated_control",
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "mapped_effect_ids": [
+        "TEM1_observability_gain_under_sparse_sensing",
+        "TEM2_blackbox_to_greybox_state_estimation",
+        "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+        "TEM5_field_replay_protective_writeback_reduces_false_release"
+      ],
+      "prior_art_family": "wastewater soft sensors, data-driven process monitoring and sensor-limited control",
+      "representative_sources": [
+        "Model validation and uncertainty skill",
+        "GRU-D / BRITS / PyPOTS missing-data modeling references",
+        "scikit-learn missing-value-native baseline documentation"
+      ],
+      "known_prior_capability": "已有软传感和缺测时间序列方法可估计水质或过程状态，但通常不把循环结构、低频等待窗口、release gate 和现场 replay 绑定为一个保护性闭环。",
+      "distinguishing_combination": "低成本 node-modality 稀疏观测 + 软传感不确定性 + 灰箱边界 + 回流/暂存争取时间 + field replay/release gate 的组合。",
+      "why_not_generic_ai_or_control": "区别点不是使用机器学习，而是让低频/缺测观测先进入灰箱状态和证据门，再决定能否回流、暂存、投药、切换或放行。",
+      "technical_problem_addressed": "低成本观测不足和检测延迟导致中间过程黑箱、控制动作缺少可验证依据。",
+      "required_embodiments": [
+        "TE1_end_to_end_low_cost_cyclic_greybox_control",
+        "TE4_node_modality_sparse_hidden_state_layout",
+        "TE5_low_frequency_cycle_window_control"
+      ],
+      "measurable_effects": [
+        "hidden-state observability gain",
+        "field holdout calibrated grey-state estimation",
+        "latency violation reduction before release decisions"
+      ],
+      "evidence_status": "distinction_hypothesis_needs_formal_prior_art_search_and_field_validation",
+      "novelty_risk_level": "medium",
+      "combination_risk": "soft sensors, cyclic reactors and release gates may each be known; protectability depends on whether the constrained combination and evidence-gated action path is sufficiently specific.",
+      "dependent_fallback_path": "将独立方向收窄到低成本低频观测下的循环窗口、field replay release gate 或 node-modality hidden-state coverage 子组合。",
+      "verification_needed": [
+        "formal patent/prior-art search",
+        "field holdout",
+        "timestamped replay",
+        "release gate audit"
+      ],
+      "legal_status": "prior_art_distinction_hypothesis_not_legal_opinion",
+      "formal_search_required": true,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "未完成正式检索和现场 gate 前，只能作为区别假设，不能写成新颖性/创造性结论。",
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "missing_effect_ids": [],
+      "novelty_or_inventiveness_opinion_allowed": false,
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "distinction_status": "prior_art_distinction_hypothesis_not_search_not_legal_opinion",
+      "missing_prior_art_distinction_fields": [],
+      "distinction_ready_status": "prior_art_distinction_complete_waiting_for_formal_search_and_field_evidence"
+    },
+    {
+      "distinction_id": "PAD2_sparse_sensor_placement_vs_node_modality_hidden_state_layout",
+      "mapped_claim_ids": [
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation"
+      ],
+      "mapped_effect_ids": [
+        "TEM1_observability_gain_under_sparse_sensing"
+      ],
+      "prior_art_family": "sparse sensor placement for reconstruction or classification",
+      "representative_sources": [
+        "PySensors official repository",
+        "SSPOR/SSPOC, QR/CCQR/GQR and SVD/PCA basis selection methods"
+      ],
+      "known_prior_capability": "已有稀疏传感布点方法可服务重构或分类，也可结合成本约束选择传感位置。",
+      "distinguishing_combination": "把传感位置扩展为 node-modality 矩阵，并把覆盖目标从一般重构转成 pollutant_residual、reaction_completion、catalyst_activity 等隐藏状态及下游控制可用性。",
+      "why_not_generic_ai_or_control": "区别点不是稀疏布点算法本身，而是布点合同向软传感、催化剂代理、循环控制和 field missingness replay 传递约束。",
+      "technical_problem_addressed": "预算受限时传感器数量少，传统进出水布点无法保证关键隐藏状态可估计。",
+      "required_embodiments": [
+        "TE4_node_modality_sparse_hidden_state_layout"
+      ],
+      "measurable_effects": [
+        "weak_state_coverage gain",
+        "selected_matrix_rank preservation",
+        "single-point dependency reduction"
+      ],
+      "evidence_status": "method_mapping_ready_waiting_for_field_topology_and_labels",
+      "novelty_risk_level": "medium_high",
+      "combination_risk": "通用稀疏布点方法较成熟；保护点应落在水处理隐藏状态、node-modality 合同和后续 release/holdout gate 的耦合。",
+      "dependent_fallback_path": "收窄到 catalyst_activity 弱轴补点、pressure/headloss proxy 与 field missingness replay 的从属方向。",
+      "verification_needed": [
+        "field topology",
+        "node-specific time series",
+        "offline weak-state labels",
+        "missingness replay"
+      ],
+      "legal_status": "prior_art_distinction_hypothesis_not_legal_opinion",
+      "formal_search_required": true,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "无真实拓扑和标签时不能宣称现场布点优于已有稀疏传感方案。",
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "missing_effect_ids": [],
+      "novelty_or_inventiveness_opinion_allowed": false,
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "distinction_status": "prior_art_distinction_hypothesis_not_search_not_legal_opinion",
+      "missing_prior_art_distinction_fields": [],
+      "distinction_ready_status": "prior_art_distinction_complete_waiting_for_formal_search_and_field_evidence"
+    },
+    {
+      "distinction_id": "PAD3_marl_pump_coordination_vs_greybox_multi_agent_safety_arbitration",
+      "mapped_claim_ids": [
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_feature_ids": [
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF7_engineering_execution_constraints",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions",
+        "TEM7_engineering_execution_constraint_feasibility"
+      ],
+      "prior_art_family": "multi-agent reinforcement learning, pump-station coordination and policy distillation",
+      "representative_sources": [
+        "User-provided wastewater multi-facility coordination slides",
+        "Offline RL / Conservative Q-Learning",
+        "D4RL and VIPER policy extraction references"
+      ],
+      "known_prior_capability": "已有多智能体协同控制、共享经验池、联合奖励和策略蒸馏思路，泵站调度中也常见基于水位/流量的联动控制。",
+      "distinguishing_combination": "本项目把多 agent 输出限制在灰箱机理、KG 证据、工程执行约束、operator review 和 field replay 之内，不允许黑箱策略直接写执行器。",
+      "why_not_generic_ai_or_control": "区别点不是多个 agent 或强化学习，而是候选动作必须回到状态估计、机理证据、工程约束和验证门，冲突动作默认保护性阻断。",
+      "technical_problem_addressed": "多设施协同动作容易因证据不足、动作冲突或执行约束缺失而造成误投药、误放行或过度自动化。",
+      "required_embodiments": [
+        "TE6_greybox_multi_agent_safety_arbitration"
+      ],
+      "measurable_effects": [
+        "joint_action_accuracy under replay",
+        "constraint_hit_rate with false_positive_cost",
+        "operator_review_required for conflicts"
+      ],
+      "evidence_status": "synthetic_counterfactual_replay_waiting_for_field_state_action_reward_replay",
+      "novelty_risk_level": "medium",
+      "combination_risk": "多智能体和策略蒸馏均已有公开方法；保护点应避免泛化到 MARL，本项目应限定为灰箱证据门控的水处理控制仲裁链。",
+      "dependent_fallback_path": "收窄到 pressure conflict、catalyst guardrail 或 release gate 下的安全仲裁从属方案。",
+      "verification_needed": [
+        "field state-action-reward replay",
+        "operator review labels",
+        "engineering constraint replay"
+      ],
+      "legal_status": "prior_art_distinction_hypothesis_not_legal_opinion",
+      "formal_search_required": true,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "无现场 replay 时不能证明多 agent 仲裁比已有协同控制更优或可部署。",
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "missing_effect_ids": [],
+      "novelty_or_inventiveness_opinion_allowed": false,
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "distinction_status": "prior_art_distinction_hypothesis_not_search_not_legal_opinion",
+      "missing_prior_art_distinction_fields": [],
+      "distinction_ready_status": "prior_art_distinction_complete_waiting_for_formal_search_and_field_evidence"
+    },
+    {
+      "distinction_id": "PAD4_flowsheet_optimization_vs_low_cost_observation_gated_greybox_control",
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "mapped_feature_ids": [
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF7_engineering_execution_constraints"
+      ],
+      "mapped_effect_ids": [
+        "TEM2_blackbox_to_greybox_state_estimation",
+        "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+        "TEM7_engineering_execution_constraint_feasibility"
+      ],
+      "prior_art_family": "water treatment flowsheet modeling, unit-model optimization, TEA/LCA and process constraints",
+      "representative_sources": [
+        "WaterTAP official repository and documentation",
+        "QSDsan process/system simulation",
+        "Pyomo constraints and WaterTAP costing references"
+      ],
+      "known_prior_capability": "已有水处理 flowsheet、单元模型、成本、约束优化和系统仿真框架。",
+      "distinguishing_combination": "本项目不是先假设完整高保真参数，而是在低成本观测不足时用软传感和循环窗口形成可校准灰箱，再由 replay/field gate 限制控制动作。",
+      "why_not_generic_ai_or_control": "区别点不是优化求解器，而是将不完整观测、低频证据到达、循环等待和保护性放行门写成控制前置条件。",
+      "technical_problem_addressed": "真实现场往往缺少完整 flowsheet 参数和高频传感，纯优化模型容易产生虚假精确控制。",
+      "required_embodiments": [
+        "TE1_end_to_end_low_cost_cyclic_greybox_control",
+        "TE5_low_frequency_cycle_window_control"
+      ],
+      "measurable_effects": [
+        "grey_box_residual under field holdout",
+        "latency budget coverage",
+        "execution constraint violation count"
+      ],
+      "evidence_status": "greybox_interface_ready_waiting_for_field_calibration_and_actuator_feedback",
+      "novelty_risk_level": "medium",
+      "combination_risk": "流程模拟和约束优化已有成熟工具；本项目应突出低成本稀疏观测条件下的循环窗口与证据门控控制链。",
+      "dependent_fallback_path": "收窄到低频传感-循环窗口协同控制或工程执行约束仲裁。",
+      "verification_needed": [
+        "field calibration",
+        "RTD/HRT evidence",
+        "actuator feedback",
+        "timestamped replay"
+      ],
+      "legal_status": "prior_art_distinction_hypothesis_not_legal_opinion",
+      "formal_search_required": true,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "没有完整工艺参数和现场校准时，不能把灰箱约束写成真实机理论证。",
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "missing_effect_ids": [],
+      "novelty_or_inventiveness_opinion_allowed": false,
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "distinction_status": "prior_art_distinction_hypothesis_not_search_not_legal_opinion",
+      "missing_prior_art_distinction_fields": [],
+      "distinction_ready_status": "prior_art_distinction_complete_waiting_for_formal_search_and_field_evidence"
+    },
+    {
+      "distinction_id": "PAD5_scientific_kg_vs_action_constraint_and_claim_gate",
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_feature_ids": [
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM5_field_replay_protective_writeback_reduces_false_release",
+        "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions"
+      ],
+      "prior_art_family": "scientific knowledge graphs, literature evidence matrices and research-agent claim verification",
+      "representative_sources": [
+        "SciKG survey seed in literature evidence matrix",
+        "Academic Research Agent Skill",
+        "Agent37/38 KG and literature evidence records"
+      ],
+      "known_prior_capability": "已有科学知识图谱和文献抽取流程可组织证据、节点、关系和 claim boundary。",
+      "distinguishing_combination": "本项目把 KG/source_basis 作为控制候选约束、claim gate 和 field validation queue，而不是只做文献摘要或解释文本。",
+      "why_not_generic_ai_or_control": "区别点不是知识图谱，而是 KG 边必须影响动作约束、失败边界、现场字段需求和 release/claim gate。",
+      "technical_problem_addressed": "多 agent 容易产生缺证据的解释和控制建议，需要可追溯证据路径约束动作和 claim 升级。",
+      "required_embodiments": [
+        "TE1_end_to_end_low_cost_cyclic_greybox_control",
+        "TE6_greybox_multi_agent_safety_arbitration"
+      ],
+      "measurable_effects": [
+        "evidence_chain_pass",
+        "constraint_hit_rate",
+        "operator_review_required for unsupported actions"
+      ],
+      "evidence_status": "source_basis_detail_ready_not_field_supported",
+      "novelty_risk_level": "medium_high",
+      "combination_risk": "KG 和 claim verification 已是通用科研 AI 方法；保护点应落在水处理控制动作、field validation queue 和 release gate 的耦合。",
+      "dependent_fallback_path": "收窄到 KG action constraint patch、claim-specific field package 或 unsupported action 阻断。",
+      "verification_needed": [
+        "citation-level source_basis audit",
+        "field-supported KG edges",
+        "release gate audit"
+      ],
+      "legal_status": "prior_art_distinction_hypothesis_not_legal_opinion",
+      "formal_search_required": true,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "文献证据只能支撑先验与约束，不能替代现场数据或 claim 成立。",
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "missing_effect_ids": [],
+      "novelty_or_inventiveness_opinion_allowed": false,
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "distinction_status": "prior_art_distinction_hypothesis_not_search_not_legal_opinion",
+      "missing_prior_art_distinction_fields": [],
+      "distinction_ready_status": "prior_art_distinction_complete_waiting_for_formal_search_and_field_evidence"
+    },
+    {
+      "distinction_id": "PAD6_ai_catalyst_discovery_vs_operational_catalyst_activity_guardrail",
+      "mapped_claim_ids": [
+        "TCS3_dependent_catalyst_activity_regeneration_control"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "mapped_effect_ids": [
+        "TEM4_catalyst_proxy_guardrail_effect"
+      ],
+      "prior_art_family": "AI-for-science catalyst/material discovery and catalyst process monitoring",
+      "representative_sources": [
+        "Multi-agent AI catalyst discovery reference from user-provided PDF",
+        "AOP/photocatalytic degradation kinetics seed records",
+        "Agent51 catalyst proxy holdout metrics"
+      ],
+      "known_prior_capability": "已有 AI 催化剂发现、材料筛选和降解动力学建模可以辅助材料设计或反应机理分析。",
+      "distinguishing_combination": "本项目把催化剂活性作为运行过程中的隐藏状态，用低成本代理、压力冲突解除、field proxy holdout 和循环控制决定保护、再生或更换候选。",
+      "why_not_generic_ai_or_control": "区别点不是用 AI 发现新催化剂，而是把不可直接低成本测量的催化剂活性纳入受证据门控的现场闭环控制。",
+      "technical_problem_addressed": "现场催化剂活性衰减难以直接低成本观测，误判会导致过度再生、更换或误放行。",
+      "required_embodiments": [
+        "TE3_catalyst_activity_proxy_regeneration"
+      ],
+      "measurable_effects": [
+        "proxy_label_correlation",
+        "holdout_mae",
+        "catalyst_guardrail_mode"
+      ],
+      "evidence_status": "design_prior_and_schema_ready_waiting_for_field_proxy_holdout",
+      "novelty_risk_level": "medium",
+      "combination_risk": "催化剂监测和 AI 材料发现均可能已有；保护点应限定在低成本代理、压力冲突解除和再生/更换控制 gate。",
+      "dependent_fallback_path": "收窄到 UV254/ORP/pressure_drop/regeneration_event 的代理观测组合和 holdout 保护边界。",
+      "verification_needed": [
+        "Agent51 field proxy holdout",
+        "pressure source resolution",
+        "offline catalyst activity labels"
+      ],
+      "legal_status": "prior_art_distinction_hypothesis_not_legal_opinion",
+      "formal_search_required": true,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "field proxy holdout 未通过前不能触发自动再生/更换，也不能主张现场催化剂控制效果。",
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "missing_effect_ids": [],
+      "novelty_or_inventiveness_opinion_allowed": false,
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "distinction_status": "prior_art_distinction_hypothesis_not_search_not_legal_opinion",
+      "missing_prior_art_distinction_fields": [],
+      "distinction_ready_status": "prior_art_distinction_complete_waiting_for_formal_search_and_field_evidence"
+    },
+    {
+      "distinction_id": "PAD7_replay_validation_vs_pressure_resolution_protective_release_gate",
+      "mapped_claim_ids": [
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS6_dependent_low_frequency_cycle_window_control"
+      ],
+      "mapped_feature_ids": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM5_field_replay_protective_writeback_reduces_false_release"
+      ],
+      "prior_art_family": "offline replay validation, data provenance gates and operational safety review",
+      "representative_sources": [
+        "R7/R8p/R8v pressure-resolution scenario pack outputs",
+        "field replay evidence chain",
+        "operator review and release gate contracts"
+      ],
+      "known_prior_capability": "已有 replay、数据溯源和人工审核可用于模型验证或运行审查。",
+      "distinguishing_combination": "本项目把压力源冲突、TODO/template/provenance gate、同批次六表、时间窗、场景语义和下游路由组合成 release 前的保护性证据门。",
+      "why_not_generic_ai_or_control": "区别点不是做 replay，而是 replay 失败或压力源冲突未解除时自动转为补包/人工复核/保护性阻断，不能静默平均或放行。",
+      "technical_problem_addressed": "现场证据源冲突和模板数据混入会导致错误解除保护或误放行。",
+      "required_embodiments": [
+        "TE2_pressure_resolution_route_package_validation",
+        "TE5_low_frequency_cycle_window_control"
+      ],
+      "measurable_effects": [
+        "pressure_source_conflict_requires_operator_review",
+        "evidence_chain_pass",
+        "release_block_correctness"
+      ],
+      "evidence_status": "route_work_package_gate_ready_waiting_for_submission_dir",
+      "novelty_risk_level": "medium",
+      "combination_risk": "单独 replay/provenance gate 风险较高；保护点应集中在水处理压力源冲突解除到 release gate 的装配链。",
+      "dependent_fallback_path": "收窄到 pressure-source conflict resolution、R7-to-R8p work package assembly 或 release-block correctness。",
+      "verification_needed": [
+        "R7_TO_R8P_WORK_PACKAGE_DIR",
+        "R8p acceptance",
+        "R8v routing",
+        "operator review",
+        "release gate audit"
+      ],
+      "legal_status": "prior_art_distinction_hypothesis_not_legal_opinion",
+      "formal_search_required": true,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "未通过真实行包、operator review 和 release gate 前，所有 protective writeback 只能是候选或阻断。",
+      "missing_claim_ids": [],
+      "missing_feature_ids": [],
+      "missing_effect_ids": [],
+      "novelty_or_inventiveness_opinion_allowed": false,
+      "can_generate_field_evidence": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "distinction_status": "prior_art_distinction_hypothesis_not_search_not_legal_opinion",
+      "missing_prior_art_distinction_fields": [],
+      "distinction_ready_status": "prior_art_distinction_complete_waiting_for_formal_search_and_field_evidence"
+    }
+  ]
+}

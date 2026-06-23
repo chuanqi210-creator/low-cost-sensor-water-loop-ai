@@ -1,0 +1,451 @@
+[
+  {
+    "citation_key": "pan_2026_ecomats",
+    "title": "Multi-agent artificial intelligence designs novel catalysts for ultrafast water purification",
+    "year": 2026,
+    "source_url": "https://doi.org/10.1038/s44221-026-00634-9",
+    "evidence_type": "peer_reviewed_article",
+    "source_access": "abstract_and_metadata",
+    "pollutant_axes": [
+      "PFAS",
+      "PPCPs/微污染物"
+    ],
+    "water_matrix_axes": [
+      "pH",
+      "真实废水基质"
+    ],
+    "material_axes": [
+      "催化剂",
+      "AOP/强氧化"
+    ],
+    "process_axes": [
+      "剂量/氧化剂",
+      "pH 调节"
+    ],
+    "observable_signal_axes": [
+      "pH"
+    ],
+    "model_upgrade_axes": [
+      "multi_agent_scientific_review",
+      "knowledge_graph_evidence",
+      "material_discovery"
+    ],
+    "extracted_claim": "多智能体系统可以把专家验证知识图谱、多个专用模型和盲审评分融合，用于设计 PMS 活化催化剂并验证 PFOA 降解。",
+    "borrowed_idea": "把多智能体从简单分工升级为专家知识图谱、候选生成、理论筛选和盲审一致性融合的科学审查链。",
+    "project_mapping": "本项目不直接宣称能自主发现催化剂，但可借鉴其 KG + 多 agent 审查结构，用于审查污染物-材料-机制-动作边。",
+    "data_requirements": [
+      "候选材料属性",
+      "目标污染物离线标签",
+      "pH 范围",
+      "实际废水样本来源",
+      "盲审评分记录"
+    ],
+    "implementation_path": [
+      "deliverables/knowledge_graph_schema.md",
+      "src/water_ai/agents/knowledge_graph_curation_agent.py"
+    ],
+    "evaluation_metrics": [
+      "blind_review_consistency",
+      "mechanism_evidence_traceability",
+      "field_sample_generalization"
+    ],
+    "failure_boundary": "该文献支持多智能体材料发现范式，不证明本项目当前软传感或现场闭环控制已被 field 验证。",
+    "evidence_stage": "literature_supported",
+    "field_validation_status": "field_validation_required",
+    "claim_boundary": "可作为文献证据 seed；不能替代本项目 field validation。"
+  },
+  {
+    "citation_key": "ching_2021_wwtp_soft_sensor_review",
+    "title": "Advances in soft sensors for wastewater treatment plants: A systematic review",
+    "year": 2021,
+    "source_url": "https://doi.org/10.1016/j.jwpe.2021.102367",
+    "evidence_type": "systematic_review",
+    "source_access": "abstract_and_metadata",
+    "pollutant_axes": [
+      "生化尾水/营养盐"
+    ],
+    "water_matrix_axes": [
+      "COD/有机负荷",
+      "噪声/多重共线性"
+    ],
+    "material_axes": [
+      "生物处理耦合"
+    ],
+    "process_axes": [
+      "在线监测",
+      "硬件传感器可靠性"
+    ],
+    "observable_signal_axes": [
+      "pH",
+      "ORP",
+      "电导",
+      "浊度",
+      "UV254",
+      "流量",
+      "温度"
+    ],
+    "model_upgrade_axes": [
+      "soft_sensor",
+      "sensor_noise",
+      "hardware_sensor_linkage"
+    ],
+    "extracted_claim": "WWTP 在线监测受传感器干扰和故障限制，软传感从机理模型发展到机器学习，并需处理数据噪声、共线性和现场差异。",
+    "borrowed_idea": "软传感器不能只汇报 MAE/R2，还要记录硬件传感可靠性、噪声、场站差异和模型适用上下文。",
+    "project_mapping": "对应 Agent36 的不确定性层，并要求 field holdout 按场景和传感故障分层评价。",
+    "data_requirements": [
+      "传感器缺失/漂移日志",
+      "场站或批次 ID",
+      "离线水质标签",
+      "传感器维护记录"
+    ],
+    "implementation_path": [
+      "src/water_ai/soft_sensor_model.py",
+      "src/water_ai/agents/soft_sensor_uncertainty_validation_agent.py"
+    ],
+    "evaluation_metrics": [
+      "field_holdout_MAE",
+      "prediction_interval_coverage",
+      "OOD_alert_precision",
+      "sensor_fault_stratified_error"
+    ],
+    "failure_boundary": "综述支持软传感方向和挑战，不能替代本项目真实现场数据重训与校准。",
+    "evidence_stage": "literature_supported",
+    "field_validation_status": "field_validation_required",
+    "claim_boundary": "可作为文献证据 seed；不能替代本项目 field validation。"
+  },
+  {
+    "citation_key": "parsa_2024_dynamic_control_review",
+    "title": "Dynamic Modelling, Process Control, and Monitoring of Selected Biological and Advanced Oxidation Processes for Wastewater Treatment",
+    "year": 2024,
+    "source_url": "https://doi.org/10.3390/bioengineering11020189",
+    "evidence_type": "review_article",
+    "source_access": "open_access",
+    "pollutant_axes": [
+      "PPCPs/微污染物",
+      "生化尾水/营养盐"
+    ],
+    "water_matrix_axes": [
+      "COD/有机负荷",
+      "pH"
+    ],
+    "material_axes": [
+      "AOP/强氧化",
+      "生物处理耦合"
+    ],
+    "process_axes": [
+      "停留时间/回流",
+      "流量/水力",
+      "在线监测",
+      "执行器选择"
+    ],
+    "observable_signal_axes": [
+      "pH",
+      "ORP",
+      "流量",
+      "温度"
+    ],
+    "model_upgrade_axes": [
+      "grey_box_process_model",
+      "closed_loop_control",
+      "field_control_latency"
+    ],
+    "extracted_claim": "可靠控制依赖过程动态行为、实时数据、合适硬件传感或软传感，并且许多控制研究仍停留在仿真阶段。",
+    "borrowed_idea": "把闭环控制从动作枚举推进到动态模型、执行器、采样延迟和现场可测性的共同设计。",
+    "project_mapping": "对应本项目循环结构、暂存验证、低频采样和 field calibration gate；下一步要把 PLC/人工复核/检测排队作为控制延迟参数。",
+    "data_requirements": [
+      "进出水时间序列",
+      "执行器动作日志",
+      "采样和检测延迟",
+      "流量/水力记录",
+      "在线与离线标签对齐"
+    ],
+    "implementation_path": [
+      "src/water_ai/process_dynamics.py",
+      "src/water_ai/agents/field_calibration_gate_agent.py"
+    ],
+    "evaluation_metrics": [
+      "closed_loop_stability",
+      "latency_budget_violation_rate",
+      "actuator_feasibility_score",
+      "field_replay_success_rate"
+    ],
+    "failure_boundary": "该综述支持动态建模和控制约束，但本项目当前控制结果仍是 synthetic replay，不是现场运行证明。",
+    "evidence_stage": "literature_supported",
+    "field_validation_status": "field_validation_required",
+    "claim_boundary": "可作为文献证据 seed；不能替代本项目 field validation。"
+  },
+  {
+    "citation_key": "angelopoulos_2021_conformal_prediction_intro",
+    "title": "A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification",
+    "year": 2021,
+    "source_url": "https://arxiv.org/abs/2107.07511",
+    "evidence_type": "method_tutorial",
+    "source_access": "open_access_preprint",
+    "pollutant_axes": [],
+    "water_matrix_axes": [
+      "分布漂移"
+    ],
+    "material_axes": [],
+    "process_axes": [
+      "校准集",
+      "时间序列",
+      "异常值"
+    ],
+    "observable_signal_axes": [],
+    "model_upgrade_axes": [
+      "uncertainty_quantification",
+      "conformal_calibration",
+      "OOD_risk"
+    ],
+    "extracted_claim": "Conformal prediction 提供模型无关、分布无关的不确定性区间思路，并讨论结构化输出、分布漂移、时间序列、异常值和 abstention 等扩展。",
+    "borrowed_idea": "用 calibration set 把软传感 prediction interval 从启发式区间升级为有覆盖率目标的保形区间。",
+    "project_mapping": "对应 Agent36 的下一步：field holdout 上做 prediction interval coverage 和 release probability calibration。",
+    "data_requirements": [
+      "field_holdout_features",
+      "field_holdout_labels",
+      "nonconformity_score",
+      "污染物/基质分层标签"
+    ],
+    "implementation_path": [
+      "src/water_ai/soft_sensor_model.py",
+      "experiments/train_soft_sensor_model.py"
+    ],
+    "evaluation_metrics": [
+      "coverage_at_90pct",
+      "mean_interval_width",
+      "calibration_error",
+      "abstention_rate"
+    ],
+    "failure_boundary": "保形预测依赖校准数据可交换性或适当分层；现场分布漂移严重时必须单独标记 OOD 和重新校准。",
+    "evidence_stage": "literature_supported",
+    "field_validation_status": "field_validation_required",
+    "claim_boundary": "可作为文献证据 seed；不能替代本项目 field validation。"
+  },
+  {
+    "citation_key": "nsr_2026_scientific_kg_survey",
+    "title": "Bridging data and discovery: a survey on knowledge graphs in AI for science",
+    "year": 2026,
+    "source_url": "https://academic.oup.com/nsr/article/13/8/nwag140/8507209",
+    "evidence_type": "survey_article",
+    "source_access": "open_metadata",
+    "pollutant_axes": [],
+    "water_matrix_axes": [],
+    "material_axes": [
+      "材料科学"
+    ],
+    "process_axes": [
+      "知识组织",
+      "机器学习推理",
+      "LLM-KG 协同"
+    ],
+    "observable_signal_axes": [],
+    "model_upgrade_axes": [
+      "scientific_knowledge_graph",
+      "evidence_traceability",
+      "LLM_KG_synergy"
+    ],
+    "extracted_claim": "SciKG 从静态编目走向机器学习推理和 LLM-KG 双向协同，可用于组织异构科学证据并支持发现过程。",
+    "borrowed_idea": "知识库应包含 typed nodes/edges、证据来源、可推理路径和 claim boundary，而不是只存自由文本解释。",
+    "project_mapping": "对应 Agent37 的 KG schema 和 Agent38 的 evidence extraction schema。",
+    "data_requirements": [
+      "typed_edge",
+      "evidence_stage",
+      "citation_key",
+      "source_basis",
+      "field_validation_need"
+    ],
+    "implementation_path": [
+      "deliverables/knowledge_graph_schema.md",
+      "outputs/agent37_knowledge_graph_curation/knowledge_graph_records.json"
+    ],
+    "evaluation_metrics": [
+      "axis_coverage_score",
+      "edge_traceability_rate",
+      "field_supported_edge_count",
+      "claim_boundary_completeness"
+    ],
+    "failure_boundary": "SciKG 范式支持结构化证据组织，不自动保证每条水处理机制边在本项目现场成立。",
+    "evidence_stage": "literature_supported",
+    "field_validation_status": "field_validation_required",
+    "claim_boundary": "可作为文献证据 seed；不能替代本项目 field validation。"
+  },
+  {
+    "citation_key": "lupu_2023_antibiotics_aop_review",
+    "title": "Key Principles of Advanced Oxidation Processes: Current and Future Perspectives of Antibiotics Removal from Wastewater",
+    "year": 2023,
+    "source_url": "https://doi.org/10.3390/catal13091280",
+    "evidence_type": "review_article",
+    "source_access": "open_access",
+    "pollutant_axes": [
+      "抗生素",
+      "PPCPs/微污染物"
+    ],
+    "water_matrix_axes": [
+      "有机污染物"
+    ],
+    "material_axes": [
+      "AOP/强氧化",
+      "光催化",
+      "电催化"
+    ],
+    "process_axes": [
+      "剂量/氧化剂",
+      "光照/电流",
+      "pH 调节"
+    ],
+    "observable_signal_axes": [
+      "pH",
+      "ORP"
+    ],
+    "model_upgrade_axes": [
+      "pollutant_axis_expansion",
+      "process_condition_axis_expansion",
+      "byproduct_risk"
+    ],
+    "extracted_claim": "抗生素作为 CECs 可通过 photo-Fenton、光解、臭氧、电氧化、异相催化和生物过程等路径处理，但需要记录工艺优缺点和条件。",
+    "borrowed_idea": "补齐抗生素污染物轴时，要把处理机制、pH/光照/电流/氧化剂条件和副产物风险一起进入 KG。",
+    "project_mapping": "对应 Agent37 缺失污染物轴中的抗生素，并补过程条件轴中的 pH 调节和光照/电流。",
+    "data_requirements": [
+      "antibiotic_compound",
+      "influent_effluent_concentration",
+      "AOP_type",
+      "pH",
+      "oxidant_dose",
+      "byproduct_label"
+    ],
+    "implementation_path": [
+      "src/water_ai/knowledge.py",
+      "deliverables/knowledge_graph_curation.md"
+    ],
+    "evaluation_metrics": [
+      "compound_specific_removal",
+      "byproduct_risk_flag_accuracy",
+      "dose_response_fit",
+      "pH_stratified_performance"
+    ],
+    "failure_boundary": "抗生素 AOP 文献不能泛化到所有 PPCPs；必须按具体化合物、基质和副产物标签校准。",
+    "evidence_stage": "literature_supported",
+    "field_validation_status": "field_validation_required",
+    "claim_boundary": "可作为文献证据 seed；不能替代本项目 field validation。"
+  },
+  {
+    "citation_key": "water_2021_textile_dye_aop_review",
+    "title": "Treatment of Textile Wastewater Using Advanced Oxidation Processes: A Critical Review",
+    "year": 2021,
+    "source_url": "https://doi.org/10.3390/w13243515",
+    "evidence_type": "critical_review",
+    "source_access": "open_access",
+    "pollutant_axes": [
+      "染料"
+    ],
+    "water_matrix_axes": [
+      "色度/UV254",
+      "盐度/电导",
+      "pH"
+    ],
+    "material_axes": [
+      "AOP/强氧化",
+      "光催化",
+      "电催化"
+    ],
+    "process_axes": [
+      "光照/电流",
+      "剂量/氧化剂",
+      "pH 调节"
+    ],
+    "observable_signal_axes": [
+      "pH",
+      "电导",
+      "UV254"
+    ],
+    "model_upgrade_axes": [
+      "pollutant_axis_expansion",
+      "observable_signal_axis_expansion",
+      "energy_cost"
+    ],
+    "extracted_claim": "纺织染料废水常用 AOP/光催化/电化学等工艺处理，评价不能只看去色，还应考虑能耗、矿化和操作条件。",
+    "borrowed_idea": "补染料轴时，把 UV254/色度、盐度、pH、能耗和矿化/副产物分开建模。",
+    "project_mapping": "对应 Agent37 缺失污染物轴中的染料，并强化 UV254 原始信号到残留/副产物状态的证据边。",
+    "data_requirements": [
+      "dye_class",
+      "color_or_UV254",
+      "TOC_or_COD",
+      "energy_per_order",
+      "pH",
+      "salt_conductivity"
+    ],
+    "implementation_path": [
+      "src/water_ai/knowledge.py",
+      "src/water_ai/agents/sensitivity_analysis_agent.py"
+    ],
+    "evaluation_metrics": [
+      "color_removal",
+      "TOC_removal",
+      "energy_per_order",
+      "UV254_state_correlation"
+    ],
+    "failure_boundary": "染料去色不等于矿化或无毒化，不能把 UV254/色度改善直接等同于安全放行。",
+    "evidence_stage": "literature_supported",
+    "field_validation_status": "field_validation_required",
+    "claim_boundary": "可作为文献证据 seed；不能替代本项目 field validation。"
+  },
+  {
+    "citation_key": "sustainability_2025_pesticide_aop_review",
+    "title": "A Review of Various Advanced Oxidation Techniques for Pesticide Degradation for Practical Application in Aqueous Environments",
+    "year": 2025,
+    "source_url": "https://doi.org/10.3390/su17104710",
+    "evidence_type": "review_article",
+    "source_access": "open_access",
+    "pollutant_axes": [
+      "农药"
+    ],
+    "water_matrix_axes": [
+      "天然有机质",
+      "pH"
+    ],
+    "material_axes": [
+      "AOP/强氧化",
+      "光催化",
+      "电催化"
+    ],
+    "process_axes": [
+      "剂量/氧化剂",
+      "光照/电流",
+      "pH 调节"
+    ],
+    "observable_signal_axes": [
+      "pH",
+      "UV254"
+    ],
+    "model_upgrade_axes": [
+      "pollutant_axis_expansion",
+      "practical_applicability",
+      "byproduct_risk"
+    ],
+    "extracted_claim": "农药水相降解可比较 Fenton、臭氧、光催化、电化学等 AOP 技术的效率、优势、限制和实际适用性。",
+    "borrowed_idea": "补农药轴时必须记录实际适用性、反应条件和潜在中间产物，而不是只记录去除率。",
+    "project_mapping": "对应 Agent37 缺失污染物轴中的农药，并与副产物风险和 field validation need 绑定。",
+    "data_requirements": [
+      "pesticide_class",
+      "intermediate_products",
+      "toxicity_proxy",
+      "AOP_type",
+      "matrix_NOM",
+      "pH"
+    ],
+    "implementation_path": [
+      "src/water_ai/knowledge.py",
+      "deliverables/field_data_acceptance_gates.md"
+    ],
+    "evaluation_metrics": [
+      "parent_compound_removal",
+      "intermediate_risk_score",
+      "toxicity_reduction",
+      "field_matrix_transferability"
+    ],
+    "failure_boundary": "农药降解路径和中间体高度依赖化合物类别，不能用单一 AOP 仿真参数外推到所有农药废水。",
+    "evidence_stage": "literature_supported",
+    "field_validation_status": "field_validation_required",
+    "claim_boundary": "可作为文献证据 seed；不能替代本项目 field validation。"
+  }
+]

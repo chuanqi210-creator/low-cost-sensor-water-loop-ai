@@ -1,0 +1,884 @@
+{
+  "catalyst_activity_proxy": {
+    "agent_name": "catalyst_activity_proxy_agent",
+    "confidence": 0.375,
+    "summary": "催化剂活性代理观测：synthetic_catalyst_proxy_design_ready_needs_field_labels；当前代理观测 0.331，补点后 0.720。",
+    "recommendations": [
+      "把 catalyst_activity 从单点弱状态改成床前后差分、反应速率残差、污堵/压降和再生响应共同支持的代理观测。",
+      "将 proxy_observability_after_recommended_patch 写回 Agent48/Agent49 作为设计先验，但 synthetic 阶段不能解除执行器保护规则。",
+      "优先补充这些信号或字段：['N3_catalyst_bed:pressure_drop_kPa', 'N3_catalyst_bed_outlet:ORP_mV', 'N3_catalyst_bed_outlet:UV254_abs']。",
+      "Agent48 已证明 catalyst_activity 不是当前候选池可自然补足的弱轴；下一步应按 weak_axis_repair_plan 优先补床出口 UV254/ORP、压降、再生事件和离线活性标签。",
+      "下一步需要 field_proxy_holdout：至少包含催化剂活性离线标签、压降、再生事件和床前后 UV254/ORP。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "catalyst_activity_proxy_observability",
+        "borrowed_from": [
+          "UV254 removal monitoring for organic oxidation progress",
+          "ORP as low-cost oxidation process signal",
+          "pressure-drop/turbidity fouling diagnostics for packed or catalyst beds",
+          "regeneration response gain for catalyst deactivation diagnosis",
+          "grey-box residence-time-normalized rate residual"
+        ],
+        "reality_mapping": "把不可直接在线观测的 catalyst_activity 拆成床前后水质差分、氧化还原变化、污堵/压降、再生响应和停留时间归一化速率残差。",
+        "input_contract": [
+          "Agent48 sparse placement metrics",
+          "paired catalyst bed inlet/outlet UV254 or ORP",
+          "turbidity and pressure drop around catalyst bed",
+          "operation log regeneration events",
+          "field catalyst activity labels for holdout validation",
+          "R7j node_modality_sensor_timeseries + pressure_headloss_event_log + offline_lab_results + operation log + bed geometry package"
+        ],
+        "output_contract": [
+          "proxy_catalog",
+          "proxy_feature_table",
+          "proxy_observability_after_recommended_patch",
+          "weak_state_coverage_after_proxy_design",
+          "field_proxy_holdout_summary",
+          "weak_axis_repair_plan",
+          "agent49_interface"
+        ],
+        "data_needs": [
+          "catalyst_bed_inlet_outlet_uv254",
+          "catalyst_bed_inlet_outlet_orp",
+          "pressure_drop_kPa",
+          "pressure_headloss_event_log.pressure_drop_kPa",
+          "pressure_headloss_event_log.headloss_kPa_per_m",
+          "turbidity_delta",
+          "bed_hydraulic_residence_time",
+          "regeneration_event_log",
+          "offline_catalyst_activity_label"
+        ],
+        "evaluation_metrics": [
+          "proxy_observability_after_recommended_patch",
+          "weak_state_coverage_after_proxy_design",
+          "proxy_label_correlation",
+          "holdout_mae",
+          "can_relax_agent49_catalyst_uncertainty_block",
+          "weak_axis_repair_plan.repair_score",
+          "weak_axis_repair_plan.field_repair_evidence_requirements",
+          "field_proxy_holdout_summary.scoreable_batch_count",
+          "field_proxy_holdout_summary.accepted_pressure_evidence_sources",
+          "field_proxy_holdout_summary.pressure_headloss_event_source_batch_count"
+        ],
+        "failure_boundary": "synthetic proxy design can update model priors, but cannot prove real catalyst deactivation or relax Agent49 actuator/release gates without field_proxy_holdout."
+      },
+      "sparse_context": {
+        "available_node_modalities": [
+          "N0_influent:EC_uScm",
+          "N1_equalization_tank:flow_Lmin",
+          "N2_reactor_mid:ORP_mV",
+          "N3_catalyst_bed_outlet:turbidity_NTU",
+          "N4_recirculation_loop:UV254_abs",
+          "N5_polishing_inlet:turbidity_NTU"
+        ],
+        "available_nodes": [
+          "N0_influent",
+          "N1_equalization_tank",
+          "N2_reactor_mid",
+          "N3_catalyst_bed_outlet",
+          "N4_recirculation_loop",
+          "N5_polishing_inlet"
+        ],
+        "available_modalities": [
+          "EC_uScm",
+          "ORP_mV",
+          "UV254_abs",
+          "flow_Lmin",
+          "turbidity_NTU"
+        ],
+        "current_weak_state_coverage": 0.3,
+        "current_catalyst_activity_observability": 0.3,
+        "sparse_placement_status": "sparse_sensor_layout_ready_needs_field_topology",
+        "selected_strategy_id": "greedy_marginal",
+        "placement_diagnostics": {
+          "diagnostic_status": "placement_diagnostics_need_axis_patch_or_field_benchmark",
+          "axis_span_rank_ratio": 0.667,
+          "condition_number_proxy": 61.726,
+          "reconstruction_stability_score": 0.401,
+          "weak_axis_gap_count": 2,
+          "single_point_dependency_count": 4
+        },
+        "agent48_weak_axis_gaps": [
+          {
+            "axis": "catalyst_activity_observability",
+            "current_coverage": 0.3,
+            "target": 0.55,
+            "gap": 0.25,
+            "best_available_candidate": "N3_catalyst_bed_outlet:UV254_abs",
+            "best_available_value": 0.404,
+            "recoverable_by_current_candidate_pool": false
+          },
+          {
+            "axis": "fault_classification_observability",
+            "current_coverage": 0.587,
+            "target": 0.6,
+            "gap": 0.013,
+            "best_available_candidate": "N4_recirculation_loop:EC_uScm",
+            "best_available_value": 0.687,
+            "recoverable_by_current_candidate_pool": true
+          }
+        ],
+        "agent48_catalyst_axis_gap": {
+          "axis": "catalyst_activity_observability",
+          "current_coverage": 0.3,
+          "target": 0.55,
+          "gap": 0.25,
+          "best_available_candidate": "N3_catalyst_bed_outlet:UV254_abs",
+          "best_available_value": 0.404,
+          "recoverable_by_current_candidate_pool": false
+        }
+      },
+      "proxy_catalog": [
+        {
+          "proxy_id": "bed_uv254_removal_delta",
+          "proxy_name": "催化剂床前后 UV254 去除率",
+          "required_signals": [
+            "N4_recirculation_loop:UV254_abs",
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "recommended_patch": [
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "weight": 0.3,
+          "formula": "(UV254_in - UV254_out) / max(UV254_in, eps)",
+          "reality_mapping": "用催化剂床前后芳香/共轭有机物吸收下降作为活性代理。",
+          "currently_supported_signals": [
+            "N4_recirculation_loop:UV254_abs"
+          ],
+          "missing_signals": [
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "current_support_score": 0.5,
+          "support_after_recommended_patch": 1.0,
+          "evidence_stage": "synthetic_proxy_design",
+          "failure_boundary": "proxy design only until field catalyst labels, pressure/drop data and regeneration events are observed"
+        },
+        {
+          "proxy_id": "orp_decay_across_bed",
+          "proxy_name": "催化剂床前后 ORP 衰减/利用",
+          "required_signals": [
+            "N2_reactor_mid:ORP_mV",
+            "N3_catalyst_bed_outlet:ORP_mV"
+          ],
+          "recommended_patch": [
+            "N3_catalyst_bed_outlet:ORP_mV"
+          ],
+          "weight": 0.18,
+          "formula": "clip((ORP_in - ORP_out) / 180, 0, 1)",
+          "reality_mapping": "用氧化还原电位变化辅助判断催化反应是否发生，而不是单看出口水质。",
+          "currently_supported_signals": [
+            "N2_reactor_mid:ORP_mV"
+          ],
+          "missing_signals": [
+            "N3_catalyst_bed_outlet:ORP_mV"
+          ],
+          "current_support_score": 0.5,
+          "support_after_recommended_patch": 1.0,
+          "evidence_stage": "synthetic_proxy_design",
+          "failure_boundary": "proxy design only until field catalyst labels, pressure/drop data and regeneration events are observed"
+        },
+        {
+          "proxy_id": "turbidity_pressure_fouling",
+          "proxy_name": "浊度/压降污染堵塞代理",
+          "required_signals": [
+            "N3_catalyst_bed_outlet:turbidity_NTU",
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "recommended_patch": [
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "weight": 0.17,
+          "formula": "0.55 * turbidity_delta_norm + 0.45 * pressure_drop_norm",
+          "reality_mapping": "区分活性位失活与床层堵塞/污堵，避免把水力或悬浮物问题误判为催化剂本征失活。",
+          "currently_supported_signals": [
+            "N3_catalyst_bed_outlet:turbidity_NTU"
+          ],
+          "missing_signals": [
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "current_support_score": 0.5,
+          "support_after_recommended_patch": 1.0,
+          "evidence_stage": "synthetic_proxy_design",
+          "failure_boundary": "proxy design only until field catalyst labels, pressure/drop data and regeneration events are observed"
+        },
+        {
+          "proxy_id": "regeneration_response_gain",
+          "proxy_name": "再生前后响应增益",
+          "required_signals": [
+            "operation_log:regeneration_event",
+            "pre_post_regeneration:uv254_or_rate_gain"
+          ],
+          "recommended_patch": [
+            "campaign_operation_log.regeneration_event",
+            "pre_post_regeneration_lab_label"
+          ],
+          "weight": 0.17,
+          "formula": "post_regen_removal_or_rate - pre_regen_removal_or_rate",
+          "reality_mapping": "如果再生后活性代理明显恢复，说明更像可逆污染；若不恢复，则提示寿命耗尽或不可逆失活。",
+          "currently_supported_signals": [],
+          "missing_signals": [
+            "operation_log:regeneration_event",
+            "pre_post_regeneration:uv254_or_rate_gain"
+          ],
+          "current_support_score": 0.0,
+          "support_after_recommended_patch": 1.0,
+          "evidence_stage": "synthetic_proxy_design",
+          "failure_boundary": "proxy design only until field catalyst labels, pressure/drop data and regeneration events are observed"
+        },
+        {
+          "proxy_id": "residence_time_normalized_rate_residual",
+          "proxy_name": "停留时间归一化反应速率残差",
+          "required_signals": [
+            "N4_recirculation_loop:UV254_abs",
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N1_equalization_tank:flow_Lmin",
+            "N2_reactor_mid:ORP_mV"
+          ],
+          "recommended_patch": [
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "reactor_bed_volume_or_HRT"
+          ],
+          "weight": 0.18,
+          "formula": "-ln(UV254_out / UV254_in) / HRT compared with expected oxidant-adjusted rate",
+          "reality_mapping": "把单次去除率转为受停留时间和氧化剂条件约束的灰箱残差。",
+          "currently_supported_signals": [
+            "N4_recirculation_loop:UV254_abs",
+            "N1_equalization_tank:flow_Lmin",
+            "N2_reactor_mid:ORP_mV"
+          ],
+          "missing_signals": [
+            "N3_catalyst_bed_outlet:UV254_abs"
+          ],
+          "current_support_score": 0.75,
+          "support_after_recommended_patch": 1.0,
+          "evidence_stage": "synthetic_proxy_design",
+          "failure_boundary": "proxy design only until field catalyst labels, pressure/drop data and regeneration events are observed"
+        }
+      ],
+      "proxy_feature_table": [
+        {
+          "case_id": "C0_healthy_active",
+          "scenario": "healthy_active_catalyst",
+          "uv254_removal_ratio": 0.676,
+          "orp_decay_score": 0.639,
+          "fouling_load_score": 0.11,
+          "regeneration_response_gain": 0.12,
+          "residence_time_normalized_rate_score": 1.0,
+          "catalyst_activity_proxy_score": 0.687,
+          "catalyst_activity_label": 0.78,
+          "absolute_proxy_error": 0.093,
+          "evidence_stage": "synthetic_proxy_design"
+        },
+        {
+          "case_id": "C1_reversible_fouling",
+          "scenario": "fouled_but_regenerable",
+          "uv254_removal_ratio": 0.382,
+          "orp_decay_score": 0.306,
+          "fouling_load_score": 0.719,
+          "regeneration_response_gain": 0.25,
+          "residence_time_normalized_rate_score": 0.481,
+          "catalyst_activity_proxy_score": 0.357,
+          "catalyst_activity_label": 0.46,
+          "absolute_proxy_error": 0.103,
+          "evidence_stage": "synthetic_proxy_design"
+        },
+        {
+          "case_id": "C2_exhausted_low_response",
+          "scenario": "exhausted_or_irreversible_deactivation",
+          "uv254_removal_ratio": 0.22,
+          "orp_decay_score": 0.167,
+          "fouling_load_score": 0.216,
+          "regeneration_response_gain": 0.06,
+          "residence_time_normalized_rate_score": 0.217,
+          "catalyst_activity_proxy_score": 0.268,
+          "catalyst_activity_label": 0.28,
+          "absolute_proxy_error": 0.012,
+          "evidence_stage": "synthetic_proxy_design"
+        },
+        {
+          "case_id": "C3_matrix_suppressed",
+          "scenario": "matrix_interference_masks_activity",
+          "uv254_removal_ratio": 0.376,
+          "orp_decay_score": 0.222,
+          "fouling_load_score": 0.417,
+          "regeneration_response_gain": 0.1,
+          "residence_time_normalized_rate_score": 0.491,
+          "catalyst_activity_proxy_score": 0.365,
+          "catalyst_activity_label": 0.52,
+          "absolute_proxy_error": 0.155,
+          "evidence_stage": "synthetic_proxy_design"
+        }
+      ],
+      "proxy_metrics": {
+        "current_proxy_observability": 0.331,
+        "proxy_observability_after_recommended_patch": 0.72,
+        "weak_state_coverage_after_proxy_design": 0.72,
+        "weighted_current_proxy_support": 0.46,
+        "weighted_patch_proxy_support": 1.0,
+        "synthetic_proxy_label_mae": 0.091,
+        "synthetic_proxy_label_correlation": 0.961,
+        "field_validation": {
+          "field_label_coverage": 0.0,
+          "proxy_label_correlation": 0.0,
+          "holdout_mae": 1.0
+        },
+        "field_validation_source": "field_proxy_holdout_summary",
+        "field_proxy_holdout_summary_status": "field_proxy_holdout_coverage_gaps",
+        "recommended_sensor_patches": [
+          "N3_catalyst_bed_outlet:UV254_abs",
+          "N3_catalyst_bed_outlet:ORP_mV",
+          "N3_catalyst_bed:pressure_drop_kPa"
+        ],
+        "proxy_case_count": 4
+      },
+      "field_proxy_holdout_summary": {
+        "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+        "summary_id": "Agent51_catalyst_proxy_field_holdout_summary",
+        "field_proxy_holdout_summary_status": "field_proxy_holdout_coverage_gaps",
+        "source_basis": "field_package_extractor",
+        "evidence_stage": "field_proxy_holdout_candidate",
+        "minimum_batch_count": 3,
+        "missing_required_tables": [],
+        "missing_required_signals": [
+          "N3_catalyst_bed_outlet:UV254_abs",
+          "N3_catalyst_bed_outlet:ORP_mV",
+          "N3_catalyst_bed:pressure_drop_kPa"
+        ],
+        "matched_batch_count": 0,
+        "matched_batch_ids_sample": [],
+        "scoreable_batch_count": 0,
+        "ready_for_agent51_validation": false,
+        "field_validation_pass": false,
+        "field_validation_metrics": {
+          "field_label_coverage": 0.0,
+          "proxy_label_correlation": 0.0,
+          "holdout_mae": 1.0,
+          "scoreable_batch_count": 0,
+          "matched_batch_count": 0
+        },
+        "required_node_signals": [
+          "N3_catalyst_bed:pressure_drop_kPa",
+          "N3_catalyst_bed_outlet:ORP_mV",
+          "N3_catalyst_bed_outlet:UV254_abs"
+        ],
+        "signal_batch_counts": {
+          "N3_catalyst_bed:pressure_drop_kPa": 0,
+          "N3_catalyst_bed_outlet:ORP_mV": 0,
+          "N3_catalyst_bed_outlet:UV254_abs": 0
+        },
+        "accepted_pressure_evidence_sources": [],
+        "pressure_headloss_event_source_batch_count": 0,
+        "pressure_evidence_source_batch_counts": {
+          "node_modality_sensor_timeseries": 0,
+          "pressure_headloss_event_log": 0,
+          "source_conflict_requires_operator_review": 0
+        },
+        "pressure_source_priority_policy": "Use node_modality_sensor_timeseries pressure_drop_kPa when available, fill missing pressure from pressure_headloss_event_log, and block scoreability when both sources conflict beyond tolerance.",
+        "pressure_source_conflict_count": 0,
+        "pressure_source_conflicts": [],
+        "resolved_pressure_source_conflict_count": 0,
+        "unresolved_pressure_source_conflict_count": 0,
+        "unresolved_pressure_source_conflicts": [],
+        "pressure_source_resolutions": [],
+        "pressure_source_resolution_record_count": 0,
+        "pressure_source_resolution_invalid_rows": [],
+        "pressure_source_conflict_abs_tolerance_kPa": 1.0,
+        "pressure_source_conflict_rel_tolerance": 0.25,
+        "conflict_requires_operator_review": false,
+        "lab_label_batch_count": 0,
+        "operation_event_batch_count": 0,
+        "bed_geometry_available": false,
+        "feature_rows": [],
+        "invalid_rows": {
+          "node_modality_sensor_timeseries": [],
+          "pressure_headloss_event_log": [],
+          "pressure_source_resolution": [],
+          "offline_lab_results": [],
+          "campaign_operation_log": [],
+          "site_topology_or_bed_geometry": []
+        },
+        "boundary": "This summary only turns an R7j-ready package into Agent51 validation rows. It does not prove field-supported control, write actuators or write release gates.",
+        "can_relax_agent49_catalyst_uncertainty_block": false,
+        "can_write_to_actuator": false,
+        "can_write_to_release_gate": false
+      },
+      "weak_axis_repair_plan": {
+        "repair_status": "agent48_catalyst_axis_requires_proxy_patch_and_field_label",
+        "target_axis": "catalyst_activity_observability",
+        "agent48_gap_detected": true,
+        "current_axis_coverage": 0.3,
+        "target_axis_coverage": 0.55,
+        "agent48_best_available_candidate": "N3_catalyst_bed_outlet:UV254_abs",
+        "agent48_best_available_value": 0.404,
+        "recoverable_by_current_candidate_pool": false,
+        "proxy_projected_axis_coverage": 0.72,
+        "repair_score": 0.983,
+        "prioritized_proxy_patches": [
+          {
+            "patch_signal": "N3_catalyst_bed_outlet:UV254_abs",
+            "supports_proxy_ids": [
+              "bed_uv254_removal_delta",
+              "residence_time_normalized_rate_residual"
+            ],
+            "proxy_weight_sum": 0.48,
+            "patch_class": "low_cost_sensor",
+            "repair_priority_score": 0.66,
+            "why_needed": "床出口 UV254 与回流/床入口 UV254 组成差分，支撑活性和停留时间归一化速率残差。"
+          },
+          {
+            "patch_signal": "N3_catalyst_bed_outlet:ORP_mV",
+            "supports_proxy_ids": [
+              "orp_decay_across_bed"
+            ],
+            "proxy_weight_sum": 0.18,
+            "patch_class": "low_cost_sensor",
+            "repair_priority_score": 0.36,
+            "why_needed": "床出口 ORP 与反应核心 ORP 组成氧化剂利用/衰减代理。"
+          },
+          {
+            "patch_signal": "N3_catalyst_bed:pressure_drop_kPa",
+            "supports_proxy_ids": [
+              "turbidity_pressure_fouling"
+            ],
+            "proxy_weight_sum": 0.17,
+            "patch_class": "low_cost_sensor",
+            "repair_priority_score": 0.35,
+            "why_needed": "压降用于区分催化剂活性衰减与床层堵塞/污堵。"
+          },
+          {
+            "patch_signal": "reactor_bed_volume_or_HRT",
+            "supports_proxy_ids": [
+              "residence_time_normalized_rate_residual"
+            ],
+            "proxy_weight_sum": 0.18,
+            "patch_class": "hydraulic_or_geometry_field",
+            "repair_priority_score": 0.28,
+            "why_needed": "床体积或停留时间用于把去除率转化为灰箱速率残差。"
+          },
+          {
+            "patch_signal": "campaign_operation_log.regeneration_event",
+            "supports_proxy_ids": [
+              "regeneration_response_gain"
+            ],
+            "proxy_weight_sum": 0.17,
+            "patch_class": "operation_log_field",
+            "repair_priority_score": 0.25,
+            "why_needed": "再生事件用于判断活性下降是否可逆。"
+          },
+          {
+            "patch_signal": "pre_post_regeneration_lab_label",
+            "supports_proxy_ids": [
+              "regeneration_response_gain"
+            ],
+            "proxy_weight_sum": 0.17,
+            "patch_class": "offline_lab_label",
+            "repair_priority_score": 0.23,
+            "why_needed": "离线标签用于把 synthetic proxy 升级为 field_proxy_holdout。"
+          }
+        ],
+        "field_repair_evidence_requirements": [
+          {
+            "required_table": "node_modality_sensor_timeseries",
+            "required_fields": [
+              "timestamp_min",
+              "batch_id",
+              "node_id",
+              "modality",
+              "value",
+              "sensor_status"
+            ],
+            "minimum_evidence": "same-batch inlet/outlet signal pairs with calibration status",
+            "requirement_id": "CAX_1_low_cost_sensor",
+            "patch_class": "low_cost_sensor",
+            "supports_patch_signals": [
+              "N3_catalyst_bed_outlet:UV254_abs",
+              "N3_catalyst_bed_outlet:ORP_mV",
+              "N3_catalyst_bed:pressure_drop_kPa"
+            ],
+            "evidence_stage_required": "field_proxy_holdout"
+          },
+          {
+            "required_table": "site_topology_or_bed_geometry",
+            "required_fields": [
+              "node_id",
+              "bed_volume",
+              "nominal_HRT_min",
+              "flow_Lmin"
+            ],
+            "minimum_evidence": "bed geometry and flow records to normalize reaction rate residuals",
+            "requirement_id": "CAX_2_hydraulic_or_geometry_field",
+            "patch_class": "hydraulic_or_geometry_field",
+            "supports_patch_signals": [
+              "reactor_bed_volume_or_HRT"
+            ],
+            "evidence_stage_required": "field_proxy_holdout"
+          },
+          {
+            "required_table": "campaign_operation_log",
+            "required_fields": [
+              "batch_id",
+              "regeneration_event",
+              "command_time_min",
+              "effect_time_min"
+            ],
+            "minimum_evidence": "time-aligned regeneration events before/after proxy response",
+            "requirement_id": "CAX_3_operation_log_field",
+            "patch_class": "operation_log_field",
+            "supports_patch_signals": [
+              "campaign_operation_log.regeneration_event"
+            ],
+            "evidence_stage_required": "field_proxy_holdout"
+          },
+          {
+            "required_table": "offline_lab_results",
+            "required_fields": [
+              "batch_id",
+              "analyte",
+              "value",
+              "qa_flag",
+              "lab_label_time_min"
+            ],
+            "minimum_evidence": "QA-passed catalyst activity or regeneration response labels",
+            "requirement_id": "CAX_4_offline_lab_label",
+            "patch_class": "offline_lab_label",
+            "supports_patch_signals": [
+              "pre_post_regeneration_lab_label"
+            ],
+            "evidence_stage_required": "field_proxy_holdout"
+          }
+        ],
+        "design_boundary": "This repair plan can update Agent48/R2/Agent49 design priors, but cannot relax catalyst uncertainty or write actuator/release decisions until field_proxy_holdout passes."
+      },
+      "readiness": {
+        "catalyst_proxy_status": "synthetic_catalyst_proxy_design_ready_needs_field_labels",
+        "catalyst_proxy_score": 0.5,
+        "data_origin": "synthetic_proxy_design",
+        "field_proxy_holdout_summary_status": "field_proxy_holdout_coverage_gaps",
+        "field_holdout_scoreable_batch_count": 0,
+        "field_holdout_matched_batch_count": 0,
+        "pressure_evidence_source_contract": [
+          "node_modality_sensor_timeseries",
+          "pressure_headloss_event_log"
+        ],
+        "accepted_pressure_evidence_sources": [],
+        "pressure_headloss_event_source_batch_count": 0,
+        "pressure_evidence_source_batch_counts": {
+          "node_modality_sensor_timeseries": 0,
+          "pressure_headloss_event_log": 0,
+          "source_conflict_requires_operator_review": 0
+        },
+        "field_labels_required": true,
+        "proxy_ready": true,
+        "field_validated": false,
+        "can_update_agent48_prior": true,
+        "can_relax_agent49_catalyst_uncertainty_block": false,
+        "can_write_to_actuator": false,
+        "can_write_to_release_gate": false
+      },
+      "agent49_interface": {
+        "facility_agent": "catalyst_bed_agent",
+        "state_patch": {
+          "catalyst_activity_proxy_observability": 0.72,
+          "weak_state_coverage_after_proxy_design": 0.72,
+          "recommended_sensor_patches": [
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "weak_axis_repair_status": "agent48_catalyst_axis_requires_proxy_patch_and_field_label",
+          "prioritized_proxy_patches": [
+            {
+              "patch_signal": "N3_catalyst_bed_outlet:UV254_abs",
+              "supports_proxy_ids": [
+                "bed_uv254_removal_delta",
+                "residence_time_normalized_rate_residual"
+              ],
+              "proxy_weight_sum": 0.48,
+              "patch_class": "low_cost_sensor",
+              "repair_priority_score": 0.66,
+              "why_needed": "床出口 UV254 与回流/床入口 UV254 组成差分，支撑活性和停留时间归一化速率残差。"
+            },
+            {
+              "patch_signal": "N3_catalyst_bed_outlet:ORP_mV",
+              "supports_proxy_ids": [
+                "orp_decay_across_bed"
+              ],
+              "proxy_weight_sum": 0.18,
+              "patch_class": "low_cost_sensor",
+              "repair_priority_score": 0.36,
+              "why_needed": "床出口 ORP 与反应核心 ORP 组成氧化剂利用/衰减代理。"
+            },
+            {
+              "patch_signal": "N3_catalyst_bed:pressure_drop_kPa",
+              "supports_proxy_ids": [
+                "turbidity_pressure_fouling"
+              ],
+              "proxy_weight_sum": 0.17,
+              "patch_class": "low_cost_sensor",
+              "repair_priority_score": 0.35,
+              "why_needed": "压降用于区分催化剂活性衰减与床层堵塞/污堵。"
+            },
+            {
+              "patch_signal": "reactor_bed_volume_or_HRT",
+              "supports_proxy_ids": [
+                "residence_time_normalized_rate_residual"
+              ],
+              "proxy_weight_sum": 0.18,
+              "patch_class": "hydraulic_or_geometry_field",
+              "repair_priority_score": 0.28,
+              "why_needed": "床体积或停留时间用于把去除率转化为灰箱速率残差。"
+            },
+            {
+              "patch_signal": "campaign_operation_log.regeneration_event",
+              "supports_proxy_ids": [
+                "regeneration_response_gain"
+              ],
+              "proxy_weight_sum": 0.17,
+              "patch_class": "operation_log_field",
+              "repair_priority_score": 0.25,
+              "why_needed": "再生事件用于判断活性下降是否可逆。"
+            },
+            {
+              "patch_signal": "pre_post_regeneration_lab_label",
+              "supports_proxy_ids": [
+                "regeneration_response_gain"
+              ],
+              "proxy_weight_sum": 0.17,
+              "patch_class": "offline_lab_label",
+              "repair_priority_score": 0.23,
+              "why_needed": "离线标签用于把 synthetic proxy 升级为 field_proxy_holdout。"
+            }
+          ]
+        },
+        "policy_effect": "keep_R3_catalyst_uncertainty_block",
+        "can_relax_catalyst_uncertainty_block": false,
+        "boundary": "synthetic proxy design cannot relax Agent49 actuator or release gate blocks"
+      }
+    },
+    "issues": [
+      {
+        "sensor": "catalyst_activity_proxy",
+        "issue_type": "proxy_required_signals_missing",
+        "severity": "warning",
+        "message": "催化剂活性代理仍缺少床前后差分、压降或再生事件相关信号。",
+        "evidence": {
+          "missing_signals": [
+            "N3_catalyst_bed:pressure_drop_kPa",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "operation_log:regeneration_event",
+            "pre_post_regeneration:uv254_or_rate_gain"
+          ]
+        }
+      },
+      {
+        "sensor": "catalyst_activity_proxy",
+        "issue_type": "field_catalyst_labels_required",
+        "severity": "warning",
+        "message": "当前代理只是在 synthetic proxy cases 上可计算，必须用真实催化剂活性/再生/压降标签验证。",
+        "evidence": {
+          "data_origin": "synthetic_proxy_design"
+        }
+      },
+      {
+        "sensor": "agent51_field_proxy_holdout",
+        "issue_type": "field_proxy_holdout_summary_not_ready",
+        "severity": "warning",
+        "message": "已提供 field proxy holdout 摘要，但批次、信号、标签或主表上下文不足，暂不能作为 Agent51 field validation 输入。",
+        "evidence": {
+          "status": "field_proxy_holdout_coverage_gaps",
+          "matched_batch_count": 0,
+          "scoreable_batch_count": 0
+        }
+      },
+      {
+        "sensor": "agent49_catalyst_block",
+        "issue_type": "catalyst_proxy_cannot_relax_agent49_block",
+        "severity": "info",
+        "message": "未通过 field proxy holdout 前，Agent49 的催化剂不确定性保护规则仍必须保留。",
+        "evidence": {
+          "current_proxy_observability": 0.331,
+          "proxy_observability_after_recommended_patch": 0.72,
+          "weak_state_coverage_after_proxy_design": 0.72,
+          "weighted_current_proxy_support": 0.46,
+          "weighted_patch_proxy_support": 1.0,
+          "synthetic_proxy_label_mae": 0.091,
+          "synthetic_proxy_label_correlation": 0.961,
+          "field_validation": {
+            "field_label_coverage": 0.0,
+            "proxy_label_correlation": 0.0,
+            "holdout_mae": 1.0
+          },
+          "field_validation_source": "field_proxy_holdout_summary",
+          "field_proxy_holdout_summary_status": "field_proxy_holdout_coverage_gaps",
+          "recommended_sensor_patches": [
+            "N3_catalyst_bed_outlet:UV254_abs",
+            "N3_catalyst_bed_outlet:ORP_mV",
+            "N3_catalyst_bed:pressure_drop_kPa"
+          ],
+          "proxy_case_count": 4
+        }
+      },
+      {
+        "sensor": "agent48_catalyst_axis",
+        "issue_type": "agent48_catalyst_axis_not_recoverable_by_current_candidate_pool",
+        "severity": "warning",
+        "message": "Agent48 诊断显示 catalyst_activity 弱轴无法由当前低成本候选池自然补足，必须通过代理补点和 field labels 修复。",
+        "evidence": {
+          "repair_status": "agent48_catalyst_axis_requires_proxy_patch_and_field_label",
+          "target_axis": "catalyst_activity_observability",
+          "agent48_gap_detected": true,
+          "current_axis_coverage": 0.3,
+          "target_axis_coverage": 0.55,
+          "agent48_best_available_candidate": "N3_catalyst_bed_outlet:UV254_abs",
+          "agent48_best_available_value": 0.404,
+          "recoverable_by_current_candidate_pool": false,
+          "proxy_projected_axis_coverage": 0.72,
+          "repair_score": 0.983,
+          "prioritized_proxy_patches": [
+            {
+              "patch_signal": "N3_catalyst_bed_outlet:UV254_abs",
+              "supports_proxy_ids": [
+                "bed_uv254_removal_delta",
+                "residence_time_normalized_rate_residual"
+              ],
+              "proxy_weight_sum": 0.48,
+              "patch_class": "low_cost_sensor",
+              "repair_priority_score": 0.66,
+              "why_needed": "床出口 UV254 与回流/床入口 UV254 组成差分，支撑活性和停留时间归一化速率残差。"
+            },
+            {
+              "patch_signal": "N3_catalyst_bed_outlet:ORP_mV",
+              "supports_proxy_ids": [
+                "orp_decay_across_bed"
+              ],
+              "proxy_weight_sum": 0.18,
+              "patch_class": "low_cost_sensor",
+              "repair_priority_score": 0.36,
+              "why_needed": "床出口 ORP 与反应核心 ORP 组成氧化剂利用/衰减代理。"
+            },
+            {
+              "patch_signal": "N3_catalyst_bed:pressure_drop_kPa",
+              "supports_proxy_ids": [
+                "turbidity_pressure_fouling"
+              ],
+              "proxy_weight_sum": 0.17,
+              "patch_class": "low_cost_sensor",
+              "repair_priority_score": 0.35,
+              "why_needed": "压降用于区分催化剂活性衰减与床层堵塞/污堵。"
+            },
+            {
+              "patch_signal": "reactor_bed_volume_or_HRT",
+              "supports_proxy_ids": [
+                "residence_time_normalized_rate_residual"
+              ],
+              "proxy_weight_sum": 0.18,
+              "patch_class": "hydraulic_or_geometry_field",
+              "repair_priority_score": 0.28,
+              "why_needed": "床体积或停留时间用于把去除率转化为灰箱速率残差。"
+            },
+            {
+              "patch_signal": "campaign_operation_log.regeneration_event",
+              "supports_proxy_ids": [
+                "regeneration_response_gain"
+              ],
+              "proxy_weight_sum": 0.17,
+              "patch_class": "operation_log_field",
+              "repair_priority_score": 0.25,
+              "why_needed": "再生事件用于判断活性下降是否可逆。"
+            },
+            {
+              "patch_signal": "pre_post_regeneration_lab_label",
+              "supports_proxy_ids": [
+                "regeneration_response_gain"
+              ],
+              "proxy_weight_sum": 0.17,
+              "patch_class": "offline_lab_label",
+              "repair_priority_score": 0.23,
+              "why_needed": "离线标签用于把 synthetic proxy 升级为 field_proxy_holdout。"
+            }
+          ],
+          "field_repair_evidence_requirements": [
+            {
+              "required_table": "node_modality_sensor_timeseries",
+              "required_fields": [
+                "timestamp_min",
+                "batch_id",
+                "node_id",
+                "modality",
+                "value",
+                "sensor_status"
+              ],
+              "minimum_evidence": "same-batch inlet/outlet signal pairs with calibration status",
+              "requirement_id": "CAX_1_low_cost_sensor",
+              "patch_class": "low_cost_sensor",
+              "supports_patch_signals": [
+                "N3_catalyst_bed_outlet:UV254_abs",
+                "N3_catalyst_bed_outlet:ORP_mV",
+                "N3_catalyst_bed:pressure_drop_kPa"
+              ],
+              "evidence_stage_required": "field_proxy_holdout"
+            },
+            {
+              "required_table": "site_topology_or_bed_geometry",
+              "required_fields": [
+                "node_id",
+                "bed_volume",
+                "nominal_HRT_min",
+                "flow_Lmin"
+              ],
+              "minimum_evidence": "bed geometry and flow records to normalize reaction rate residuals",
+              "requirement_id": "CAX_2_hydraulic_or_geometry_field",
+              "patch_class": "hydraulic_or_geometry_field",
+              "supports_patch_signals": [
+                "reactor_bed_volume_or_HRT"
+              ],
+              "evidence_stage_required": "field_proxy_holdout"
+            },
+            {
+              "required_table": "campaign_operation_log",
+              "required_fields": [
+                "batch_id",
+                "regeneration_event",
+                "command_time_min",
+                "effect_time_min"
+              ],
+              "minimum_evidence": "time-aligned regeneration events before/after proxy response",
+              "requirement_id": "CAX_3_operation_log_field",
+              "patch_class": "operation_log_field",
+              "supports_patch_signals": [
+                "campaign_operation_log.regeneration_event"
+              ],
+              "evidence_stage_required": "field_proxy_holdout"
+            },
+            {
+              "required_table": "offline_lab_results",
+              "required_fields": [
+                "batch_id",
+                "analyte",
+                "value",
+                "qa_flag",
+                "lab_label_time_min"
+              ],
+              "minimum_evidence": "QA-passed catalyst activity or regeneration response labels",
+              "requirement_id": "CAX_4_offline_lab_label",
+              "patch_class": "offline_lab_label",
+              "supports_patch_signals": [
+                "pre_post_regeneration_lab_label"
+              ],
+              "evidence_stage_required": "field_proxy_holdout"
+            }
+          ],
+          "design_boundary": "This repair plan can update Agent48/R2/Agent49 design priors, but cannot relax catalyst uncertainty or write actuator/release decisions until field_proxy_holdout passes."
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "catalyst_activity_proxy": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/catalyst_activity_proxy.md",
+    "agent51_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent51_catalyst_activity_proxy/agent51_report.md",
+    "catalyst_activity_proxy_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_activity_proxy/catalyst_activity_proxy_metrics.json",
+    "field_proxy_holdout_summary": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_activity_proxy/field_proxy_holdout_summary.json"
+  }
+}

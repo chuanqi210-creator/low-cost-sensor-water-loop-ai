@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500">
+  <defs>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .title { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 44px; font-weight: 900; fill: #14202b; }
+      .subtitle { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 22px; fill: #526274; }
+      .lane-title { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 26px; font-weight: 900; fill: #152230; }
+      .box-title { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 22px; font-weight: 850; fill: #172534; }
+      .body { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 18px; fill: #344658; }
+      .small { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 16px; fill: #45586a; }
+      .tiny { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 14px; fill: #5c6d7c; }
+      .tag { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 15px; font-weight: 800; fill: #ffffff; }
+      .metric { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; font-size: 17px; font-weight: 850; fill: #16283a; }
+      .panel { fill: #ffffff; stroke-width: 2.2; rx: 22; }
+      .card { fill: #ffffff; stroke-width: 1.7; rx: 16; }
+      .softblue { fill: #eff8ff; }
+      .softgreen { fill: #eef9f3; }
+      .softpurple { fill: #f6f1ff; }
+      .softorange { fill: #fff6ea; }
+      .softred { fill: #fff1f1; }
+      .softyellow { fill: #fffceb; }
+      .arrow { fill: none; stroke: #44576a; stroke-width: 3.2; marker-end: url(#arrow); }
+      .arrow2 { fill: none; stroke: #687c8e; stroke-width: 2.2; marker-end: url(#arrow2); }
+      .feedback { fill: none; stroke: #2d7b61; stroke-width: 3; marker-end: url(#arrowGreen); stroke-dasharray: 8 7; }
+      .block { fill: none; stroke: #b84c4c; stroke-width: 3; marker-end: url(#arrowRed); stroke-dasharray: 9 7; }
+    </style>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10.5" refY="6.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L11,6.5 L2,11 Z" fill="#44576a"/>
+    </marker>
+    <marker id="arrow2" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L9,5.5 L1,10 Z" fill="#687c8e"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2d7b61"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#b84c4c"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="2400" height="1500"/>
+  <text class="title" x="70" y="70">低成本传感循环式水处理智能闭环：全模型逻辑图</text>
+  <text class="subtitle" x="72" y="110">主线：用循环结构争取时间，把低成本观测转成软传感灰箱状态，再经机理诊断、多智能体控制、回放验证和现场校准形成可落地闭环。</text>
+
+  <rect x="70" y="145" width="2260" height="88" rx="20" fill="#17212b"/>
+  <text class="tag" x="105" y="178">核心研究目的</text>
+  <text class="subtitle" x="105" y="210" fill="#e7eef6">不是追求传感器最快最贵，而是通过“循环 / 暂存 / 延迟验证 / 多智能体审查”降低传感与反应速度要求，同时保证安全边界和工程可解释性。</text>
+
+  <!-- Left inputs -->
+  <rect class="panel" x="70" y="280" width="420" height="700" stroke="#7890a6"/>
+  <rect x="70" y="280" width="420" height="58" rx="20" fill="#526b80"/>
+  <text class="tag" x="100" y="316">A 输入与先验层</text>
+
+  <rect class="card softblue" x="105" y="365" width="350" height="145" stroke="#9ac7df"/>
+  <text class="box-title" x="130" y="402">低成本在线信号</text>
+  <text class="body" x="130" y="435">pH / ORP / EC / 浊度 / UV254</text>
+  <text class="body" x="130" y="465">流量 / 温度 / 液位 / 压降</text>
+  <text class="small" x="130" y="493">进入数据质控与软传感</text>
+
+  <rect class="card softpurple" x="105" y="540" width="350" height="145" stroke="#b7a3dd"/>
+  <text class="box-title" x="130" y="577">知识库与文献证据</text>
+  <text class="body" x="130" y="610">污染物-基质-材料-过程</text>
+  <text class="body" x="130" y="640">低成本信号-隐藏状态</text>
+  <text class="small" x="130" y="668">提供机理先验与动作约束</text>
+
+  <rect class="card softorange" x="105" y="715" width="350" height="145" stroke="#e1b175"/>
+  <text class="box-title" x="130" y="752">慢证据与现场回放</text>
+  <text class="body" x="130" y="785">离线 lab / catalyst label</text>
+  <text class="body" x="130" y="815">operation log / replay package</text>
+  <text class="small" x="130" y="843">用于校准，不直接替代验证</text>
+
+  <!-- Core loop -->
+  <rect class="panel" x="550" y="280" width="1010" height="700" stroke="#2f80a6"/>
+  <rect x="550" y="280" width="1010" height="58" rx="20" fill="#2f80a6"/>
+  <text class="tag" x="585" y="316">B 单批次核心闭环 A1-A10：黑箱到灰箱</text>
+
+  <rect class="card" x="595" y="380" width="250" height="120" stroke="#b8c7d6"/>
+  <text class="box-title" x="620" y="415">A1 数据质控</text>
+  <text class="body" x="620" y="448">缺失 / 越界 / 漂移</text>
+  <text class="body" x="620" y="476">sensor_confidence</text>
+
+  <rect class="card" x="905" y="380" width="270" height="120" stroke="#b8c7d6"/>
+  <text class="box-title" x="930" y="415">A2 软传感灰箱状态</text>
+  <text class="body" x="930" y="448">残留风险 / 反应完成度</text>
+  <text class="body" x="930" y="476">催化活性 / 基质干扰</text>
+
+  <rect class="card" x="1235" y="380" width="270" height="120" stroke="#b8c7d6"/>
+  <text class="box-title" x="1260" y="415">A3-A4 机理与故障</text>
+  <text class="body" x="1260" y="448">知识匹配 / 机理解释</text>
+  <text class="body" x="1260" y="476">水力 / 氧化剂 / 催化剂</text>
+
+  <rect class="card" x="595" y="570" width="250" height="140" stroke="#b8c7d6"/>
+  <text class="box-title" x="620" y="605">A5-A7 动作生成</text>
+  <text class="body" x="620" y="638">催化剂生命周期</text>
+  <text class="body" x="620" y="668">旁路验证计划</text>
+  <text class="body" x="620" y="698">回流 / 加药 / 切换</text>
+
+  <rect class="card" x="905" y="570" width="270" height="140" stroke="#b8c7d6"/>
+  <text class="box-title" x="930" y="605">A8-A10 仲裁执行</text>
+  <text class="body" x="930" y="638">策略 profile / 成本安全</text>
+  <text class="body" x="930" y="668">objective_score</text>
+  <text class="body" x="930" y="698">硬安全门</text>
+
+  <rect class="card softgreen" x="1235" y="570" width="270" height="140" stroke="#8cc6a6"/>
+  <text class="box-title" x="1260" y="605">循环式处理结构</text>
+  <text class="body" x="1260" y="638">暂存 / 回流 / 延长停留</text>
+  <text class="body" x="1260" y="668">调整药剂 / 再生 / 更换</text>
+  <text class="body" x="1260" y="698">达标后才放行</text>
+
+  <rect x="620" y="785" width="810" height="100" rx="18" fill="#eef9f3" stroke="#6fb28b" stroke-width="2"/>
+  <text class="box-title" x="650" y="825">核心闭环输出</text>
+  <text class="body" x="650" y="858">final_action + safety_gates + evidence_need + next_observation_window</text>
+
+  <path class="arrow" d="M845 440 L905 440"/>
+  <path class="arrow" d="M1175 440 L1235 440"/>
+  <path class="arrow" d="M1370 500 C1370 535, 720 535, 720 570"/>
+  <path class="arrow" d="M845 640 L905 640"/>
+  <path class="arrow" d="M1175 640 L1235 640"/>
+  <path class="feedback" d="M1370 710 C1370 760, 720 760, 720 500"/>
+  <path class="arrow2" d="M1035 710 L1035 785"/>
+
+  <!-- Right validation -->
+  <rect class="panel" x="1620" y="280" width="710" height="700" stroke="#b8792f"/>
+  <rect x="1620" y="280" width="710" height="58" rx="20" fill="#b8792f"/>
+  <text class="tag" x="1655" y="316">C 实证校准与写回门控 A30 / A34 / A36-A47 / A52</text>
+
+  <rect class="card softyellow" x="1660" y="365" width="300" height="145" stroke="#d5b84a"/>
+  <text class="box-title" x="1685" y="402">现场数据接口</text>
+  <text class="body" x="1685" y="435">sensor / lab / operation</text>
+  <text class="body" x="1685" y="465">catalyst / economics</text>
+  <text class="small" x="1685" y="493">G0-G6 验收门</text>
+
+  <rect class="card softblue" x="1990" y="365" width="300" height="145" stroke="#9ac7df"/>
+  <text class="box-title" x="2015" y="402">不确定性与保形</text>
+  <text class="body" x="2015" y="435">Agent36 / 39 / 46 / 47</text>
+  <text class="body" x="2015" y="465">coverage / OOD / weak target</text>
+  <text class="small" x="2015" y="493">synthetic 不能写 release gate</text>
+
+  <rect class="card softorange" x="1660" y="555" width="300" height="145" stroke="#e1b175"/>
+  <text class="box-title" x="1685" y="592">时间戳 replay 链</text>
+  <text class="body" x="1685" y="625">Agent42 / 43 / 44 / 45</text>
+  <text class="body" x="1685" y="655">precision / lead time</text>
+  <text class="small" x="1685" y="683">保护性控制候选</text>
+
+  <rect class="card softpurple" x="1990" y="555" width="300" height="145" stroke="#b7a3dd"/>
+  <text class="box-title" x="2015" y="592">多设施 replay</text>
+  <text class="body" x="2015" y="625">Agent52 state-action-reward</text>
+  <text class="body" x="2015" y="655">accuracy 0.667 / regret 0.055</text>
+  <text class="small" x="2015" y="683">只写 schema 和 metric contract</text>
+
+  <rect class="card softred" x="1660" y="745" width="630" height="120" stroke="#cc7a7a"/>
+  <text class="box-title" x="1685" y="782">硬边界</text>
+  <text class="body" x="1685" y="815">没有 field holdout / field replay：不能写 release gate，不能写执行器策略。</text>
+  <text class="body" x="1685" y="845">synthetic 结果只作为模型结构、接口和离线评价基线。</text>
+
+  <path class="arrow2" d="M1960 438 L1990 438"/>
+  <path class="arrow2" d="M1960 628 L1990 628"/>
+  <path class="block" d="M1975 700 L1975 745"/>
+
+  <!-- Cross arrows -->
+  <path class="arrow" d="M490 437 L595 437"/>
+  <path class="arrow2" d="M455 612 C510 612, 520 440, 595 440"/>
+  <path class="arrow2" d="M455 787 C525 787, 520 655, 595 655"/>
+  <path class="arrow" d="M1560 640 L1620 640"/>
+  <path class="feedback" d="M1660 805 C1560 890, 1400 900, 1230 858"/>
+
+  <!-- Bottom layers -->
+  <rect class="panel" x="70" y="1040" width="2260" height="350" stroke="#7a8fa3"/>
+  <rect x="70" y="1040" width="2260" height="58" rx="20" fill="#445c72"/>
+  <text class="tag" x="105" y="1076">D 跨批次、布点、协同控制与研究治理层</text>
+
+  <rect class="card softblue" x="105" y="1130" width="390" height="185" stroke="#9ac7df"/>
+  <text class="box-title" x="130" y="1168">传感设计层 A11 / A48</text>
+  <text class="body" x="130" y="1202">传感器经济性 + 噪声敏感性</text>
+  <text class="body" x="130" y="1232">管网布点 + 稀疏感知矩阵</text>
+  <text class="metric" x="130" y="1270">weak_state_coverage 仍暴露催化剂弱观测</text>
+
+  <rect class="card softgreen" x="545" y="1130" width="390" height="185" stroke="#8cc6a6"/>
+  <text class="box-title" x="570" y="1168">多设施协同 A49 / A52</text>
+  <text class="body" x="570" y="1202">facility-state/action 矩阵</text>
+  <text class="body" x="570" y="1232">联合奖励 + replay 离线评价</text>
+  <text class="metric" x="570" y="1270">候选策略必须经 field replay 校准</text>
+
+  <rect class="card softorange" x="985" y="1130" width="430" height="185" stroke="#e1b175"/>
+  <text class="box-title" x="1010" y="1168">运行恢复层 A12-A28</text>
+  <text class="body" x="1010" y="1202">多批次调度 / 队列 / 资源扩容</text>
+  <text class="body" x="1010" y="1232">长期经济性 / 压力测试 / 重规划</text>
+  <text class="metric" x="1010" y="1270">0.75 条件恢复 + 0.60 回退线</text>
+
+  <rect class="card softpurple" x="1465" y="1130" width="390" height="185" stroke="#b7a3dd"/>
+  <text class="box-title" x="1490" y="1168">知识与证据层 A35-A38</text>
+  <text class="body" x="1490" y="1202">模型真实性审计</text>
+  <text class="body" x="1490" y="1232">Scientific KG + 文献证据矩阵</text>
+  <text class="metric" x="1490" y="1270">证据等级区分：文献 / 仿真 / field</text>
+
+  <rect class="card softyellow" x="1905" y="1130" width="390" height="185" stroke="#d5b84a"/>
+  <text class="box-title" x="1930" y="1168">Agent50 治理与下一步</text>
+  <text class="body" x="1930" y="1202">自我打断：展示低优先级</text>
+  <text class="body" x="1930" y="1232">边际价值排序：P4 当前最高</text>
+  <text class="metric" x="1930" y="1270">最小灰箱物理机制增强</text>
+
+  <path class="arrow2" d="M495 1222 L545 1222"/>
+  <path class="arrow2" d="M935 1222 L985 1222"/>
+  <path class="arrow2" d="M1415 1222 L1465 1222"/>
+  <path class="arrow2" d="M1855 1222 L1905 1222"/>
+  <path class="feedback" d="M2100 1130 C2040 1010, 1530 990, 1370 885"/>
+
+  <rect x="70" y="1420" width="2260" height="44" rx="12" fill="#ffffff" stroke="#d0dae3"/>
+  <text class="tiny" x="95" y="1448">当前状态：52-agent 工作链，101/101 artifacts，234 passed。下一步不是继续美化展示，而是进入 P4：反应动力学、传质限制、催化剂衰减、基质抑制、副产物风险的最小灰箱物理增强。</text>
+</svg>

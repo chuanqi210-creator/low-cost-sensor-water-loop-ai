@@ -1,0 +1,131 @@
+{
+  "handle": "agent-9ff421b3c0",
+  "agent_id": "agent:53:minimal_grey_box_physics",
+  "agent_number": 53,
+  "slug": "minimal_grey_box_physics",
+  "runner": "experiments/run_agent53_minimal_grey_box_physics.py",
+  "source": "src/water_ai/agents/minimal_grey_box_physics_agent.py",
+  "deliverable": "deliverables/minimal_grey_box_physics.md",
+  "test": "tests/test_minimal_grey_box_physics_agent.py",
+  "output_dir": "outputs/agent53_minimal_grey_box_physics",
+  "related_nodes": [
+    {
+      "handle": "agent-9ff421b3c0",
+      "node_id": "agent:53:minimal_grey_box_physics",
+      "kind": "agent_workflow",
+      "label": "Agent53 minimal_grey_box_physics",
+      "path": "experiments/run_agent53_minimal_grey_box_physics.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 53
+      }
+    },
+    {
+      "handle": "dir-49296e4d81",
+      "node_id": "dir:outputs/agent53_minimal_grey_box_physics",
+      "kind": "output_dir",
+      "label": "agent53_minimal_grey_box_physics",
+      "path": "outputs/agent53_minimal_grey_box_physics",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-9d78af2631",
+      "node_id": "file:deliverables/minimal_grey_box_physics.md",
+      "kind": "referenced_path",
+      "label": "minimal_grey_box_physics.md",
+      "path": "deliverables/minimal_grey_box_physics.md",
+      "layer": "deliverable",
+      "summary": "最小灰箱物理机制增强",
+      "metrics": {
+        "lines": 45,
+        "size_bytes": 3092
+      }
+    },
+    {
+      "handle": "file-5cb211b5cf",
+      "node_id": "file:experiments/run_agent53_minimal_grey_box_physics.py",
+      "kind": "file",
+      "label": "run_agent53_minimal_grey_box_physics.py",
+      "path": "experiments/run_agent53_minimal_grey_box_physics.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 167,
+        "size_bytes": 7459
+      }
+    },
+    {
+      "handle": "file-7036d89d3a",
+      "node_id": "file:src/water_ai/agents/minimal_grey_box_physics_agent.py",
+      "kind": "file",
+      "label": "minimal_grey_box_physics_agent.py",
+      "path": "src/water_ai/agents/minimal_grey_box_physics_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 465,
+        "size_bytes": 24019
+      }
+    },
+    {
+      "handle": "file-f21fa9a166",
+      "node_id": "file:tests/test_minimal_grey_box_physics_agent.py",
+      "kind": "file",
+      "label": "test_minimal_grey_box_physics_agent.py",
+      "path": "tests/test_minimal_grey_box_physics_agent.py",
+      "layer": "verification",
+      "summary": "from water_ai.agents.minimal_grey_box_physics_agent import MinimalGreyBoxPhysicsAgent",
+      "metrics": {
+        "lines": 108,
+        "size_bytes": 4454
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:53:minimal_grey_box_physics",
+      "target": "file:deliverables/minimal_grey_box_physics.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:53:minimal_grey_box_physics",
+      "target": "file:src/water_ai/agents/minimal_grey_box_physics_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:53:minimal_grey_box_physics",
+      "target": "file:experiments/run_agent53_minimal_grey_box_physics.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:53:minimal_grey_box_physics",
+      "target": "file:tests/test_minimal_grey_box_physics_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:53:minimal_grey_box_physics",
+      "target": "dir:outputs/agent53_minimal_grey_box_physics",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

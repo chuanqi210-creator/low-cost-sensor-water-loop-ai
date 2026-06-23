@@ -1,0 +1,142 @@
+{
+  "sensor_timeseries": {
+    "description": "低成本传感原始时间序列，支撑快代理触发时间。",
+    "required_fields": [
+      "batch_id",
+      "timestamp_min",
+      "EC_uScm",
+      "turbidity_NTU",
+      "UV254_abs",
+      "pH",
+      "ORP_mV"
+    ],
+    "optional_fields": [
+      "flow_Lmin",
+      "pressure_drop_kPa",
+      "headloss_kPa_per_m",
+      "bed_inlet_pressure_kPa",
+      "bed_outlet_pressure_kPa"
+    ],
+    "timestamp_fields": [
+      "timestamp_min"
+    ],
+    "primary_key": [
+      "batch_id",
+      "timestamp_min"
+    ]
+  },
+  "offline_lab_results": {
+    "description": "离线标签与结果返回时间，用于计算检测 turnaround 和快代理标签。",
+    "required_fields": [
+      "batch_id",
+      "sample_time_min",
+      "result_time_min",
+      "analyte",
+      "value",
+      "qa_flag"
+    ],
+    "optional_fields": [
+      "proxy_holdout_label",
+      "catalyst_activity_label",
+      "pressure_headloss_proxy_label"
+    ],
+    "timestamp_fields": [
+      "sample_time_min",
+      "result_time_min"
+    ],
+    "primary_key": [
+      "batch_id",
+      "sample_time_min",
+      "analyte"
+    ]
+  },
+  "campaign_operation_log": {
+    "description": "控制动作命令、执行和生效时间，用于计算执行器/预处理延迟。",
+    "required_fields": [
+      "campaign_id",
+      "batch_id",
+      "action_id",
+      "command_time_min",
+      "effect_time_min",
+      "start_min",
+      "end_min",
+      "release_policy"
+    ],
+    "optional_fields": [
+      "recycle_ratio",
+      "tank_storage_margin",
+      "actuator_latency_p90",
+      "pump_valve_result",
+      "hold_time_min",
+      "regeneration_event",
+      "bed_id",
+      "pressure_headloss_review_required"
+    ],
+    "timestamp_fields": [
+      "command_time_min",
+      "effect_time_min",
+      "start_min",
+      "end_min"
+    ],
+    "primary_key": [
+      "campaign_id",
+      "batch_id",
+      "action_id",
+      "command_time_min"
+    ]
+  },
+  "pressure_headloss_event_log": {
+    "description": "压降/水头损失候选代理事件，用于 replay 催化剂床堵塞、水力异常和 guardrail 阻断边界。",
+    "required_fields": [
+      "campaign_id",
+      "batch_id",
+      "event_time_min",
+      "bed_id",
+      "pressure_drop_kPa",
+      "headloss_kPa_per_m",
+      "flow_Lmin",
+      "matched_lab_sample_time_min",
+      "regeneration_event",
+      "hydraulic_anomaly_label"
+    ],
+    "optional_fields": [
+      "flow_normalized_pressure_residual",
+      "expected_clean_bed_pressure_drop_kPa",
+      "operator_review_required"
+    ],
+    "timestamp_fields": [
+      "event_time_min",
+      "matched_lab_sample_time_min"
+    ],
+    "primary_key": [
+      "campaign_id",
+      "batch_id",
+      "bed_id",
+      "event_time_min"
+    ]
+  },
+  "fast_proxy_event_log": {
+    "description": "基质冲击快代理事件与现场标签，用于 precision/recall、提前量和误触发成本校准。",
+    "required_fields": [
+      "campaign_id",
+      "batch_id",
+      "event_time_min",
+      "proxy_score",
+      "specificity_guard_score",
+      "protective_triggered",
+      "triggered_action_id",
+      "field_label_matrix_shock",
+      "lab_label_time_min",
+      "false_positive_cost_index"
+    ],
+    "timestamp_fields": [
+      "event_time_min",
+      "lab_label_time_min"
+    ],
+    "primary_key": [
+      "campaign_id",
+      "batch_id",
+      "event_time_min"
+    ]
+  }
+}

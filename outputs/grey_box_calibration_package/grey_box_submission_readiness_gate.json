@@ -1,0 +1,58 @@
+{
+  "gate_id": "R8u160_grey_box_submission_readiness_gate",
+  "gate_type": "grey_box_external_package_submission_readiness_gate",
+  "architecture_layer": "verification_governance_to_state_estimation",
+  "enhanced_abilities": [
+    "verifiability",
+    "engineering_feasibility",
+    "explainability"
+  ],
+  "source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+  "source_path": "",
+  "package_status": "grey_box_calibration_package_waiting_for_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+  "summary_status": "grey_box_field_calibration_waiting_for_preflight_ready",
+  "work_order_status": "grey_box_calibration_collection_work_order_waiting_for_external_package",
+  "gate_status": "grey_box_submission_readiness_waiting_for_external_package",
+  "readiness_score": 0.143,
+  "component_scores": {
+    "source_package_present": 0.0,
+    "schema_completeness": 0.0,
+    "field_origin_integrity": 0.0,
+    "matched_batch_coverage": 0.0,
+    "signal_validity_coverage": 0.0,
+    "agent53_summary_readiness": 0.0,
+    "residual_threshold_readiness": 0.0,
+    "no_write_boundary_integrity": 1.0,
+    "submitted_table_presence": 0.0
+  },
+  "minimum_matched_batch_count": 3,
+  "matched_batch_count": 0,
+  "computable_batch_count": 0,
+  "highest_priority_gap": {
+    "gap_type": "missing_external_package",
+    "table": "all_required_tables",
+    "missing_table_count": 5,
+    "missing_tables": [
+      "batch_inlet_outlet_lab",
+      "hydraulic_rtd_or_tracer",
+      "oxidant_dose_residual_log",
+      "catalyst_age_regeneration_log",
+      "byproduct_panel"
+    ],
+    "source_env_var": "GREY_BOX_CALIBRATION_PACKAGE_DIR",
+    "next_action": "fill_grey_box_calibration_package_template_and_set_GREY_BOX_CALIBRATION_PACKAGE_DIR"
+  },
+  "blocking_reasons": [
+    "missing_external_package_dir"
+  ],
+  "can_submit_to_agent53_field_calibration": false,
+  "can_submit_to_agent53_field_candidate": false,
+  "can_generate_field_evidence": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "can_emit_field_supported_claim": false,
+  "next_operator_action": "fill_grey_box_calibration_package_template_and_set_GREY_BOX_CALIBRATION_PACKAGE_DIR",
+  "failure_boundary": "This gate scores package submission readiness only. It can route a package to Agent53 field calibration when inputs are complete, but it cannot generate field evidence, prove mechanism validity, authorize actuator writes, authorize release-gate writes or emit field-supported claims.",
+  "no_write_boundary": "This package is only a grey-box calibration preflight input. It cannot write actuator policy, release-gate policy, field-supported mechanism claims or deployment clearance."
+}

@@ -1,0 +1,13 @@
+campaign_id,batch_id,event_time_min,proxy_score,specificity_guard_score,protective_triggered,triggered_action_id,field_label_matrix_shock,lab_label_time_min,false_positive_cost_index
+synthetic_timestamped_campaign,TS001,11,0.559,0.633,True,switch_or_pretreat,True,93,0.0
+synthetic_timestamped_campaign,TS002,12,0.571,0.641,True,switch_or_pretreat,True,94,0.0
+synthetic_timestamped_campaign,TS003,13,0.552,0.619,True,switch_or_pretreat,True,95,0.0
+synthetic_timestamped_campaign,TS004,10,0.601,0.671,True,switch_or_pretreat,True,96,0.0
+synthetic_timestamped_campaign,TS005,11,0.583,0.652,True,switch_or_pretreat,True,97,0.0
+synthetic_timestamped_campaign,TS006,12,0.564,0.635,True,switch_or_pretreat,True,98,0.0
+synthetic_timestamped_campaign,TS007,13,0.008,0.009,False,none,False,99,0.0
+synthetic_timestamped_campaign,TS008,10,0.012,0.015,False,none,False,100,0.0
+synthetic_timestamped_campaign,TS009,11,0.149,0.035,False,none,False,92,0.0
+synthetic_timestamped_campaign,TS010,12,0.161,0.044,False,none,False,93,0.0
+synthetic_timestamped_campaign,TS011,13,0.218,0.201,False,none,False,94,0.0
+synthetic_timestamped_campaign,TS012,10,0.018,0.017,False,none,False,95,0.0

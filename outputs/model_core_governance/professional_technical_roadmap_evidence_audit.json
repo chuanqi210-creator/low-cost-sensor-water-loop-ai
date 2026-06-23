@@ -1,0 +1,210 @@
+{
+  "audit_id": "R8u71_professional_technical_roadmap_evidence_audit",
+  "artifact": "deliverables/model_core_optimization/professional_technical_roadmap.md",
+  "audit_status": "roadmap_claims_traceable_with_field_boundaries",
+  "claim_count": 12,
+  "traceable_claim_count": 12,
+  "unsupported_claim_count": 0,
+  "field_overclaim_count": 0,
+  "external_method_reference_count": 5,
+  "synthetic_or_literature_claim_count": 9,
+  "field_supported_claim_count": 0,
+  "no_write_boundary_preserved": true,
+  "stage_boundary_status": "external_field_package_or_new_core_interface_required",
+  "claim_rows": [
+    {
+      "claim_id": "TR01_main_system_chain",
+      "roadmap_section": "图 1：系统总技术路线",
+      "claim": "低成本传感、循环结构、软传感灰箱估计、多智能体诊断控制与 field evidence gate 构成主系统链。",
+      "evidence_stage": "architecture_contract",
+      "source_paths": [
+        "outputs/model_core_governance/core_score_termination_gate.json",
+        "deliverables/model_core_optimization/model_core_goal.md"
+      ],
+      "metric_support": [
+        "core_score=0.960",
+        "stage_decision=stop_expansion_wait_for_real_field_package_or_new_core_interface"
+      ],
+      "field_boundary": "主链是架构和接口合同，不是现场运行证明。"
+    },
+    {
+      "claim_id": "TR02_hidden_state_ledger",
+      "roadmap_section": "图 2：七层系统骨架与当前产物",
+      "claim": "六个关键隐藏状态均已进入可追踪合同。",
+      "evidence_stage": "synthetic_architecture_contract",
+      "source_paths": [
+        "outputs/model_core_governance/core_score_termination_gate.json"
+      ],
+      "metric_support": [
+        "state_variable_contract_coverage=1.000",
+        "sparse_estimation_ready_coverage=0.667",
+        "field_validated_state_coverage=0.000",
+        "control_ready_state_coverage=0.000"
+      ],
+      "field_boundary": "合同覆盖不等于 field validated，不支持 actuator 或 release gate 写回。"
+    },
+    {
+      "claim_id": "TR03_observation_contract",
+      "roadmap_section": "图 3/图 4：核心工程实现路径与观测层技术路径",
+      "claim": "R2 已把稀疏布点、催化剂代理观测和软传感矩阵合成预算内观测合同。",
+      "evidence_stage": "synthetic_observation_design_prior",
+      "source_paths": [
+        "outputs/observation_contract_merge/observation_contract_metrics.json"
+      ],
+      "metric_support": [
+        "recommended_contract_id=budget_rebalanced_proxy_contract",
+        "recommended_sensor_count=7",
+        "recommended_cost_index=5.272",
+        "budget_pass=true",
+        "proxy_enhanced_weak_state_coverage=0.580"
+      ],
+      "field_boundary": "该合同不是最终现场布点，仍需 field topology、installability、proxy labels 和 missingness replay。"
+    },
+    {
+      "claim_id": "TR04_catalyst_proxy",
+      "roadmap_section": "图 4/图 8：catalyst_activity 弱状态修复",
+      "claim": "catalyst_activity 从弱观测状态转为可设计验证的代理观测链。",
+      "evidence_stage": "synthetic_proxy_design",
+      "source_paths": [
+        "outputs/observation_contract_merge/observation_contract_metrics.json",
+        "outputs/catalyst_activity_proxy/catalyst_activity_proxy_metrics.json"
+      ],
+      "metric_support": [
+        "base_weak_state_coverage=0.300",
+        "proxy_enhanced_weak_state_coverage=0.580",
+        "catalyst_observability_gain=0.280",
+        "field_proxy_labels_ready=false"
+      ],
+      "field_boundary": "不能证明催化剂真实衰减，也不能解除 Agent49 catalyst uncertainty block。"
+    },
+    {
+      "claim_id": "TR05_soft_sensor_path_features",
+      "roadmap_section": "图 5：状态估计与灰箱化路径",
+      "claim": "软传感模型已接入路径阶段特征和 layout holdout schema。",
+      "evidence_stage": "synthetic_training_and_schema_readiness",
+      "source_paths": [
+        "deliverables/manifest.json",
+        "outputs/soft_sensor_training/soft_sensor_metrics.json",
+        "outputs/soft_sensor_training/soft_sensor_model.joblib"
+      ],
+      "metric_support": [
+        "latest_soft_sensor_model_version=rf_multioutput_v5_path_layout_holdout",
+        "latest_soft_sensor_feature_count=23",
+        "latest_soft_sensor_hydraulic_path_feature_count=8",
+        "latest_soft_sensor_layout_holdout_status=synthetic_layout_holdout_ready_needs_field_path_labels"
+      ],
+      "field_boundary": "路径特征和 layout holdout 仍来自 synthetic layout prior，不证明现场软传感泛化。"
+    },
+    {
+      "claim_id": "TR06_grey_box_prior",
+      "roadmap_section": "图 5：状态估计与灰箱化路径",
+      "claim": "灰箱物理先验已覆盖停留时间、反应、基质抑制、催化剂衰减和副产物风险等最小机制。",
+      "evidence_stage": "synthetic_grey_box_prior",
+      "source_paths": [
+        "outputs/minimal_grey_box_physics/grey_box_physics_metrics.json"
+      ],
+      "metric_support": [
+        "grey_box_physics_status=synthetic_grey_box_physics_prior_ready_needs_field_calibration"
+      ],
+      "field_boundary": "参数未由现场 RTD、实验室污染物、氧化剂残留、催化剂历史和副产物标签校准。"
+    },
+    {
+      "claim_id": "TR07_control_replay_stress",
+      "roadmap_section": "图 6：闭环控制与 replay 验证路径",
+      "claim": "R3 反事实压力测试可把高风险动作修正为 guardrail reward prior。",
+      "evidence_stage": "synthetic_counterfactual_replay",
+      "source_paths": [
+        "outputs/control_replay_counterfactual_stress/control_replay_stress_metrics.json"
+      ],
+      "metric_support": [
+        "stress_case_count=6",
+        "accuracy_gain_guardrail=0.333",
+        "p95_reward_regret_delta_guardrail=0.177",
+        "protective_false_positive_cost_delta_guardrail=0.180",
+        "field_replay_coverage=0.000"
+      ],
+      "field_boundary": "R3 只能更新 reward prior 和 stress suite，不能证明现场控制有效，也不能训练在线 MARL 或写执行器。"
+    },
+    {
+      "claim_id": "TR08_source_basis_traceability",
+      "roadmap_section": "图 7：证据分层与终止条件",
+      "claim": "source_basis citation、参数边界与 failure boundary 已闭合。",
+      "evidence_stage": "literature_supported_traceability_complete_needs_field_validation",
+      "source_paths": [
+        "outputs/unified_field_evidence_gate/unified_field_evidence_gate_metrics.json"
+      ],
+      "metric_support": [
+        "source_basis_completion_rate=1.000",
+        "citation_detail_completion_rate=1.000",
+        "source_basis_parameter_boundary_coverage=1.000",
+        "field_supported_edge_ratio=0.000"
+      ],
+      "field_boundary": "文献可追溯不等于 field-supported evidence，不能升级现场 claim。"
+    },
+    {
+      "claim_id": "TR09_real_field_package_wait",
+      "roadmap_section": "图 7/下一步专业路线判断",
+      "claim": "当前系统进入真实 field package 或新核心接口阶段边界。",
+      "evidence_stage": "governance_stage_boundary",
+      "source_paths": [
+        "outputs/model_core_governance/priority_ranking.json",
+        "outputs/real_field_package_acceptance_gate/real_field_package_acceptance_gate_metrics.json"
+      ],
+      "metric_support": [
+        "recommended_next_core_action=WAIT_real_field_package_or_new_core_interface",
+        "field_import_ready=false",
+        "real_field_package_acceptance_status=real_field_package_acceptance_blocked_at_import",
+        "passed_stage_count=0/8"
+      ],
+      "field_boundary": "等待态不代表模型失败，而是禁止继续把 synthetic/template/literature 加工成 field 结论。"
+    },
+    {
+      "claim_id": "TR10_no_write_boundary",
+      "roadmap_section": "图 6/图 7：no-write boundary",
+      "claim": "当前所有 actuator、release gate 和 field claim 写回均被阻断。",
+      "evidence_stage": "safety_boundary",
+      "source_paths": [
+        "outputs/model_core_governance/core_score_termination_gate.json",
+        "outputs/unified_field_evidence_gate/unified_field_evidence_gate_metrics.json",
+        "outputs/real_field_package_acceptance_gate/real_field_package_acceptance_gate_metrics.json"
+      ],
+      "metric_support": [
+        "can_write_to_actuator=false",
+        "can_write_to_release_gate=false",
+        "can_emit_field_claim_upgrade=false",
+        "can_emit_protective_control_candidate=false"
+      ],
+      "field_boundary": "没有真实 field replay、operator review 和 release validation，不允许任何执行器或放行写回。"
+    },
+    {
+      "claim_id": "TR11_innovation_scaffold",
+      "roadmap_section": "图 8/专利论文创新表达骨架",
+      "claim": "创新点应表达为低成本受限观测、循环时间缓冲、灰箱状态估计、多智能体候选控制和 field gate 的组合链。",
+      "evidence_stage": "patent_disclosure_scaffold_not_legal_opinion",
+      "source_paths": [
+        "deliverables/model_core_optimization/model_maturity_patent_paper_audit.md",
+        "outputs/agent_architecture_consolidation/patent_technical_feature_ledger.json"
+      ],
+      "metric_support": [
+        "protectability_score_from_agent50=1.000",
+        "field_supported_claim_count=0"
+      ],
+      "field_boundary": "这不是专利授权判断，也不是正式 prior art search 结论。"
+    },
+    {
+      "claim_id": "TR12_external_engineering_methods",
+      "roadmap_section": "图 9：工程借鉴路径与本项目映射",
+      "claim": "PySensors、WNTR/EPANET、WaterTAP、QSDsan、Pyomo 等只作为方法启发和接口映射。",
+      "evidence_stage": "external_method_reference",
+      "source_paths": [
+        "deliverables/model_core_optimization/external_evidence_matrix.md",
+        "deliverables/model_core_optimization/professional_technical_roadmap.md"
+      ],
+      "metric_support": [
+        "external_method_reference_count=5"
+      ],
+      "field_boundary": "这些工程框架未被声明为已完整安装、复现或验证本项目现场性能。"
+    }
+  ],
+  "recommended_next_action": "If no real field package is available, keep expansion stopped and route work to formal search, human review, or definition of a new verifiable core interface."
+}

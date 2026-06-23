@@ -1,0 +1,877 @@
+{
+  "coverage": {
+    "formal_search_result_package_template_status": "formal_search_result_package_templates_ready_waiting_for_submission",
+    "package_template_count": 7,
+    "complete_package_template_count": 7,
+    "formal_search_result_package_template_coverage_rate": 1.0,
+    "incomplete_package_templates": [],
+    "covered_validation_gate_ids": [
+      "FSRG1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "FSRG2_FSWP2_node_modality_sparse_hidden_state_search",
+      "FSRG3_FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "FSRG4_FSWP4_low_cost_observation_gated_flowsheet_search",
+      "FSRG5_FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "FSRG6_FSWP6_operational_catalyst_activity_guardrail_search",
+      "FSRG7_FSWP7_pressure_resolution_protective_release_gate_search"
+    ],
+    "missing_validation_gate_coverage": [],
+    "formal_search_result_package_supplied": false,
+    "can_route_to_validation_gate": false,
+    "can_generate_prior_art_result": false,
+    "legal_opinion_allowed": false,
+    "field_claim_upgrade_allowed": false,
+    "required_package_template_fields": [
+      "package_template_id",
+      "linked_validation_gate_id",
+      "linked_intake_id",
+      "linked_work_package_id",
+      "mapped_claim_ids",
+      "mapped_feature_ids",
+      "mapped_effect_ids",
+      "package_root_key",
+      "package_manifest_required_fields",
+      "required_result_tables",
+      "prior_art_hit_table_template_fields",
+      "claim_element_comparison_template_fields",
+      "fallback_recommendation_fields",
+      "allowed_source_databases",
+      "allowed_query_sources",
+      "row_level_rejection_rules",
+      "validation_command",
+      "package_template_status",
+      "formal_search_result_package_supplied",
+      "can_route_to_validation_gate",
+      "can_generate_prior_art_result",
+      "legal_opinion_allowed",
+      "field_claim_upgrade_allowed",
+      "failure_boundary"
+    ],
+    "evidence_boundary": "该 package template 只提供外部/人工检索结果包的提交合同；没有提交真实结果包时，不能进入 validation gate，也不能生成 prior-art comparison、法律意见或 field-supported claim。"
+  },
+  "package_templates": [
+    {
+      "package_template_id": "FSRPT1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "linked_validation_gate_id": "FSRG1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "linked_intake_id": "FSRI1_FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "linked_work_package_id": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "mapped_effect_ids": [
+        "TEM1_observability_gain_under_sparse_sensing",
+        "TEM2_blackbox_to_greybox_state_estimation",
+        "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+        "TEM5_field_replay_protective_writeback_reduces_false_release"
+      ],
+      "package_root_key": "FSWP1_cyclic_greybox_soft_sensor_release_gate_search",
+      "package_manifest_required_fields": [
+        "package_id",
+        "linked_work_package_id",
+        "search_executor",
+        "search_date",
+        "databases_searched",
+        "query_log",
+        "reviewer_id",
+        "review_time",
+        "review_boundary_statement",
+        "legal_status"
+      ],
+      "required_result_tables": [
+        "prior_art_hit_table",
+        "claim_element_comparison_chart",
+        "fallback_claim_scope_recommendation"
+      ],
+      "prior_art_hit_table_template_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "claim_element_comparison_template_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "fallback_recommendation_fields": [
+        "linked_work_package_id",
+        "claim_scope_decision_option",
+        "decision_rationale",
+        "triggering_hit_ids",
+        "preserved_field_validation_gate",
+        "reviewer_id",
+        "legal_status"
+      ],
+      "allowed_source_databases": [
+        "CNIPA",
+        "Google Patents",
+        "Espacenet",
+        "WIPO Patentscope",
+        "Google Scholar"
+      ],
+      "allowed_query_sources": [
+        "\"wastewater\" \"soft sensor\" \"recycle\" \"release gate\"",
+        "\"low cost sensor\" \"grey-box\" \"wastewater\" \"closed-loop control\"",
+        "\"soft sensing\" \"hydraulic retention\" \"recycle\" \"effluent release\"",
+        "\"sensor-limited\" \"water treatment\" \"hold tank\" \"control\"",
+        "污水处理 软传感 回流 放行 门控",
+        "低成本传感 灰箱 水处理 闭环控制",
+        "低频传感 暂存 回流 水处理 控制",
+        "软测量 出水放行 证据门控",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "row_level_rejection_rules": [
+        "reject TODO/template/sample rows",
+        "reject rows without publication_or_patent_id and url_or_reference",
+        "reject rows without matched_claim_elements",
+        "reject rows whose source_database is outside allowed_source_databases",
+        "reject rows whose matched_query lacks generated-query or reviewer expansion provenance",
+        "reject comparison rows without prior_art_disclosure_text",
+        "reject reviewer fields that assert legal conclusion or field-supported claim"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
+      "package_template_status": "formal_search_result_package_template_ready_waiting_for_submission",
+      "formal_search_result_package_supplied": false,
+      "can_route_to_validation_gate": false,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 template 只规定正式检索结果包的提交结构；模板行、TODO 行或 sample 行不能作为 prior-art hit，也不能生成法律意见或 field-supported claim。",
+      "missing_formal_search_result_package_template_fields": [],
+      "package_template_ready_status": "formal_search_result_package_template_complete_waiting_for_submission"
+    },
+    {
+      "package_template_id": "FSRPT2_FSWP2_node_modality_sparse_hidden_state_search",
+      "linked_validation_gate_id": "FSRG2_FSWP2_node_modality_sparse_hidden_state_search",
+      "linked_intake_id": "FSRI2_FSWP2_node_modality_sparse_hidden_state_search",
+      "linked_work_package_id": "FSWP2_node_modality_sparse_hidden_state_search",
+      "mapped_claim_ids": [
+        "TCS4_dependent_node_modality_sparse_hidden_state_estimation"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation"
+      ],
+      "mapped_effect_ids": [
+        "TEM1_observability_gain_under_sparse_sensing"
+      ],
+      "package_root_key": "FSWP2_node_modality_sparse_hidden_state_search",
+      "package_manifest_required_fields": [
+        "package_id",
+        "linked_work_package_id",
+        "search_executor",
+        "search_date",
+        "databases_searched",
+        "query_log",
+        "reviewer_id",
+        "review_time",
+        "review_boundary_statement",
+        "legal_status"
+      ],
+      "required_result_tables": [
+        "prior_art_hit_table",
+        "claim_element_comparison_chart",
+        "fallback_claim_scope_recommendation"
+      ],
+      "prior_art_hit_table_template_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "claim_element_comparison_template_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "fallback_recommendation_fields": [
+        "linked_work_package_id",
+        "claim_scope_decision_option",
+        "decision_rationale",
+        "triggering_hit_ids",
+        "preserved_field_validation_gate",
+        "reviewer_id",
+        "legal_status"
+      ],
+      "allowed_source_databases": [
+        "Google Patents",
+        "Espacenet",
+        "CNIPA",
+        "IEEE Xplore",
+        "Google Scholar",
+        "GitHub"
+      ],
+      "allowed_query_sources": [
+        "\"sparse sensor placement\" \"wastewater\" \"hidden state\"",
+        "\"node modality\" \"sensor placement\" \"water treatment\"",
+        "\"SSPOR\" OR \"SSPOC\" \"water quality\" \"sensor placement\"",
+        "\"catalyst activity\" \"sensor placement\" \"soft sensor\"",
+        "稀疏传感 布点 污水处理 隐藏状态",
+        "节点 模态 传感器布设 水处理",
+        "催化剂活性 软传感 布点",
+        "低成本传感 布点 水质 状态估计",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "row_level_rejection_rules": [
+        "reject TODO/template/sample rows",
+        "reject rows without publication_or_patent_id and url_or_reference",
+        "reject rows without matched_claim_elements",
+        "reject rows whose source_database is outside allowed_source_databases",
+        "reject rows whose matched_query lacks generated-query or reviewer expansion provenance",
+        "reject comparison rows without prior_art_disclosure_text",
+        "reject reviewer fields that assert legal conclusion or field-supported claim"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
+      "package_template_status": "formal_search_result_package_template_ready_waiting_for_submission",
+      "formal_search_result_package_supplied": false,
+      "can_route_to_validation_gate": false,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 template 只规定正式检索结果包的提交结构；模板行、TODO 行或 sample 行不能作为 prior-art hit，也不能生成法律意见或 field-supported claim。",
+      "missing_formal_search_result_package_template_fields": [],
+      "package_template_ready_status": "formal_search_result_package_template_complete_waiting_for_submission"
+    },
+    {
+      "package_template_id": "FSRPT3_FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "linked_validation_gate_id": "FSRG3_FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "linked_intake_id": "FSRI3_FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "linked_work_package_id": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "mapped_claim_ids": [
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_feature_ids": [
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF7_engineering_execution_constraints",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions",
+        "TEM7_engineering_execution_constraint_feasibility"
+      ],
+      "package_root_key": "FSWP3_greybox_multi_agent_safety_arbitration_search",
+      "package_manifest_required_fields": [
+        "package_id",
+        "linked_work_package_id",
+        "search_executor",
+        "search_date",
+        "databases_searched",
+        "query_log",
+        "reviewer_id",
+        "review_time",
+        "review_boundary_statement",
+        "legal_status"
+      ],
+      "required_result_tables": [
+        "prior_art_hit_table",
+        "claim_element_comparison_chart",
+        "fallback_claim_scope_recommendation"
+      ],
+      "prior_art_hit_table_template_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "claim_element_comparison_template_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "fallback_recommendation_fields": [
+        "linked_work_package_id",
+        "claim_scope_decision_option",
+        "decision_rationale",
+        "triggering_hit_ids",
+        "preserved_field_validation_gate",
+        "reviewer_id",
+        "legal_status"
+      ],
+      "allowed_source_databases": [
+        "CNIPA",
+        "Google Patents",
+        "Espacenet",
+        "IEEE Xplore",
+        "ACM Digital Library",
+        "Google Scholar"
+      ],
+      "allowed_query_sources": [
+        "\"multi-agent\" \"wastewater\" \"grey-box\" \"safety arbitration\"",
+        "\"multi-agent reinforcement learning\" \"pump station\" \"policy distillation\"",
+        "\"offline reinforcement learning\" \"water treatment\" \"operator review\"",
+        "\"grey-box\" \"multi-agent\" \"control\" \"release gate\"",
+        "多智能体 污水处理 灰箱 安全仲裁",
+        "多智能体强化学习 泵站 协同控制 策略蒸馏",
+        "离线强化学习 水处理 人工复核",
+        "灰箱 多智能体 控制 放行门控",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "row_level_rejection_rules": [
+        "reject TODO/template/sample rows",
+        "reject rows without publication_or_patent_id and url_or_reference",
+        "reject rows without matched_claim_elements",
+        "reject rows whose source_database is outside allowed_source_databases",
+        "reject rows whose matched_query lacks generated-query or reviewer expansion provenance",
+        "reject comparison rows without prior_art_disclosure_text",
+        "reject reviewer fields that assert legal conclusion or field-supported claim"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
+      "package_template_status": "formal_search_result_package_template_ready_waiting_for_submission",
+      "formal_search_result_package_supplied": false,
+      "can_route_to_validation_gate": false,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 template 只规定正式检索结果包的提交结构；模板行、TODO 行或 sample 行不能作为 prior-art hit，也不能生成法律意见或 field-supported claim。",
+      "missing_formal_search_result_package_template_fields": [],
+      "package_template_ready_status": "formal_search_result_package_template_complete_waiting_for_submission"
+    },
+    {
+      "package_template_id": "FSRPT4_FSWP4_low_cost_observation_gated_flowsheet_search",
+      "linked_validation_gate_id": "FSRG4_FSWP4_low_cost_observation_gated_flowsheet_search",
+      "linked_intake_id": "FSRI4_FSWP4_low_cost_observation_gated_flowsheet_search",
+      "linked_work_package_id": "FSWP4_low_cost_observation_gated_flowsheet_search",
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS2_independent_system_architecture"
+      ],
+      "mapped_feature_ids": [
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF7_engineering_execution_constraints"
+      ],
+      "mapped_effect_ids": [
+        "TEM2_blackbox_to_greybox_state_estimation",
+        "TEM3_low_frequency_cycle_window_reduces_fast_sensor_need",
+        "TEM7_engineering_execution_constraint_feasibility"
+      ],
+      "package_root_key": "FSWP4_low_cost_observation_gated_flowsheet_search",
+      "package_manifest_required_fields": [
+        "package_id",
+        "linked_work_package_id",
+        "search_executor",
+        "search_date",
+        "databases_searched",
+        "query_log",
+        "reviewer_id",
+        "review_time",
+        "review_boundary_statement",
+        "legal_status"
+      ],
+      "required_result_tables": [
+        "prior_art_hit_table",
+        "claim_element_comparison_chart",
+        "fallback_claim_scope_recommendation"
+      ],
+      "prior_art_hit_table_template_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "claim_element_comparison_template_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "fallback_recommendation_fields": [
+        "linked_work_package_id",
+        "claim_scope_decision_option",
+        "decision_rationale",
+        "triggering_hit_ids",
+        "preserved_field_validation_gate",
+        "reviewer_id",
+        "legal_status"
+      ],
+      "allowed_source_databases": [
+        "Google Patents",
+        "CNIPA",
+        "Espacenet",
+        "Google Scholar",
+        "WaterTAP/QSDsan/Pyomo documentation"
+      ],
+      "allowed_query_sources": [
+        "\"water treatment\" \"flowsheet\" \"low-cost sensors\" \"control\"",
+        "\"grey-box\" \"water treatment\" \"optimization\" \"sensor limited\"",
+        "\"hydraulic retention\" \"soft sensor\" \"process optimization\"",
+        "\"unit model\" \"release gate\" \"water treatment\"",
+        "水处理 流程模拟 低成本传感 控制",
+        "灰箱 水处理 优化 传感受限",
+        "水力停留时间 软传感 工艺优化",
+        "单元模型 放行门控 水处理",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "row_level_rejection_rules": [
+        "reject TODO/template/sample rows",
+        "reject rows without publication_or_patent_id and url_or_reference",
+        "reject rows without matched_claim_elements",
+        "reject rows whose source_database is outside allowed_source_databases",
+        "reject rows whose matched_query lacks generated-query or reviewer expansion provenance",
+        "reject comparison rows without prior_art_disclosure_text",
+        "reject reviewer fields that assert legal conclusion or field-supported claim"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
+      "package_template_status": "formal_search_result_package_template_ready_waiting_for_submission",
+      "formal_search_result_package_supplied": false,
+      "can_route_to_validation_gate": false,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 template 只规定正式检索结果包的提交结构；模板行、TODO 行或 sample 行不能作为 prior-art hit，也不能生成法律意见或 field-supported claim。",
+      "missing_formal_search_result_package_template_fields": [],
+      "package_template_ready_status": "formal_search_result_package_template_complete_waiting_for_submission"
+    },
+    {
+      "package_template_id": "FSRPT5_FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "linked_validation_gate_id": "FSRG5_FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "linked_intake_id": "FSRI5_FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "linked_work_package_id": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "mapped_claim_ids": [
+        "TCS1_independent_method_low_cost_sparse_cyclic_greybox_control",
+        "TCS7_dependent_greybox_multi_agent_safety_arbitration"
+      ],
+      "mapped_feature_ids": [
+        "PTF5_mechanism_kg_evidence_constraint",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM5_field_replay_protective_writeback_reduces_false_release",
+        "TEM6_greybox_multi_agent_arbitration_reduces_conflict_actions"
+      ],
+      "package_root_key": "FSWP5_scientific_kg_action_constraint_claim_gate_search",
+      "package_manifest_required_fields": [
+        "package_id",
+        "linked_work_package_id",
+        "search_executor",
+        "search_date",
+        "databases_searched",
+        "query_log",
+        "reviewer_id",
+        "review_time",
+        "review_boundary_statement",
+        "legal_status"
+      ],
+      "required_result_tables": [
+        "prior_art_hit_table",
+        "claim_element_comparison_chart",
+        "fallback_claim_scope_recommendation"
+      ],
+      "prior_art_hit_table_template_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "claim_element_comparison_template_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "fallback_recommendation_fields": [
+        "linked_work_package_id",
+        "claim_scope_decision_option",
+        "decision_rationale",
+        "triggering_hit_ids",
+        "preserved_field_validation_gate",
+        "reviewer_id",
+        "legal_status"
+      ],
+      "allowed_source_databases": [
+        "Google Scholar",
+        "Google Patents",
+        "CNIPA",
+        "WIPO Patentscope",
+        "Semantic Scholar"
+      ],
+      "allowed_query_sources": [
+        "\"scientific knowledge graph\" \"water treatment\" \"control constraint\"",
+        "\"knowledge graph\" \"wastewater\" \"claim verification\"",
+        "\"literature evidence\" \"release gate\" \"water treatment\"",
+        "\"knowledge graph\" \"multi-agent\" \"action constraint\"",
+        "科学知识图谱 水处理 控制约束",
+        "知识图谱 污水处理 证据链",
+        "文献证据 放行门控 水处理",
+        "知识图谱 多智能体 动作约束",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "row_level_rejection_rules": [
+        "reject TODO/template/sample rows",
+        "reject rows without publication_or_patent_id and url_or_reference",
+        "reject rows without matched_claim_elements",
+        "reject rows whose source_database is outside allowed_source_databases",
+        "reject rows whose matched_query lacks generated-query or reviewer expansion provenance",
+        "reject comparison rows without prior_art_disclosure_text",
+        "reject reviewer fields that assert legal conclusion or field-supported claim"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
+      "package_template_status": "formal_search_result_package_template_ready_waiting_for_submission",
+      "formal_search_result_package_supplied": false,
+      "can_route_to_validation_gate": false,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 template 只规定正式检索结果包的提交结构；模板行、TODO 行或 sample 行不能作为 prior-art hit，也不能生成法律意见或 field-supported claim。",
+      "missing_formal_search_result_package_template_fields": [],
+      "package_template_ready_status": "formal_search_result_package_template_complete_waiting_for_submission"
+    },
+    {
+      "package_template_id": "FSRPT6_FSWP6_operational_catalyst_activity_guardrail_search",
+      "linked_validation_gate_id": "FSRG6_FSWP6_operational_catalyst_activity_guardrail_search",
+      "linked_intake_id": "FSRI6_FSWP6_operational_catalyst_activity_guardrail_search",
+      "linked_work_package_id": "FSWP6_operational_catalyst_activity_guardrail_search",
+      "mapped_claim_ids": [
+        "TCS3_dependent_catalyst_activity_regeneration_control"
+      ],
+      "mapped_feature_ids": [
+        "PTF1_node_modality_sparse_sensing",
+        "PTF2_soft_sensor_grey_state_estimation",
+        "PTF3_grey_box_mechanism_boundary",
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate"
+      ],
+      "mapped_effect_ids": [
+        "TEM4_catalyst_proxy_guardrail_effect"
+      ],
+      "package_root_key": "FSWP6_operational_catalyst_activity_guardrail_search",
+      "package_manifest_required_fields": [
+        "package_id",
+        "linked_work_package_id",
+        "search_executor",
+        "search_date",
+        "databases_searched",
+        "query_log",
+        "reviewer_id",
+        "review_time",
+        "review_boundary_statement",
+        "legal_status"
+      ],
+      "required_result_tables": [
+        "prior_art_hit_table",
+        "claim_element_comparison_chart",
+        "fallback_claim_scope_recommendation"
+      ],
+      "prior_art_hit_table_template_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "claim_element_comparison_template_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "fallback_recommendation_fields": [
+        "linked_work_package_id",
+        "claim_scope_decision_option",
+        "decision_rationale",
+        "triggering_hit_ids",
+        "preserved_field_validation_gate",
+        "reviewer_id",
+        "legal_status"
+      ],
+      "allowed_source_databases": [
+        "Google Scholar",
+        "Google Patents",
+        "CNIPA",
+        "Espacenet",
+        "WIPO Patentscope"
+      ],
+      "allowed_query_sources": [
+        "\"catalyst activity\" \"soft sensor\" \"water treatment\"",
+        "\"photocatalyst\" \"regeneration\" \"ORP\" \"UV254\"",
+        "\"AI\" \"catalyst discovery\" \"wastewater\" \"closed-loop control\"",
+        "\"pressure drop\" \"catalyst bed\" \"activity\" \"water purification\"",
+        "催化剂活性 软传感 水处理",
+        "光催化剂 再生 ORP UV254",
+        "AI 催化剂发现 污水处理 闭环控制",
+        "压降 催化剂床 活性 水净化",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "row_level_rejection_rules": [
+        "reject TODO/template/sample rows",
+        "reject rows without publication_or_patent_id and url_or_reference",
+        "reject rows without matched_claim_elements",
+        "reject rows whose source_database is outside allowed_source_databases",
+        "reject rows whose matched_query lacks generated-query or reviewer expansion provenance",
+        "reject comparison rows without prior_art_disclosure_text",
+        "reject reviewer fields that assert legal conclusion or field-supported claim"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
+      "package_template_status": "formal_search_result_package_template_ready_waiting_for_submission",
+      "formal_search_result_package_supplied": false,
+      "can_route_to_validation_gate": false,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 template 只规定正式检索结果包的提交结构；模板行、TODO 行或 sample 行不能作为 prior-art hit，也不能生成法律意见或 field-supported claim。",
+      "missing_formal_search_result_package_template_fields": [],
+      "package_template_ready_status": "formal_search_result_package_template_complete_waiting_for_submission"
+    },
+    {
+      "package_template_id": "FSRPT7_FSWP7_pressure_resolution_protective_release_gate_search",
+      "linked_validation_gate_id": "FSRG7_FSWP7_pressure_resolution_protective_release_gate_search",
+      "linked_intake_id": "FSRI7_FSWP7_pressure_resolution_protective_release_gate_search",
+      "linked_work_package_id": "FSWP7_pressure_resolution_protective_release_gate_search",
+      "mapped_claim_ids": [
+        "TCS5_dependent_field_replay_protective_writeback",
+        "TCS6_dependent_low_frequency_cycle_window_control"
+      ],
+      "mapped_feature_ids": [
+        "PTF4_cyclic_low_frequency_control",
+        "PTF6_field_replay_release_gate",
+        "PTF8_stage_gated_model_governance"
+      ],
+      "mapped_effect_ids": [
+        "TEM5_field_replay_protective_writeback_reduces_false_release"
+      ],
+      "package_root_key": "FSWP7_pressure_resolution_protective_release_gate_search",
+      "package_manifest_required_fields": [
+        "package_id",
+        "linked_work_package_id",
+        "search_executor",
+        "search_date",
+        "databases_searched",
+        "query_log",
+        "reviewer_id",
+        "review_time",
+        "review_boundary_statement",
+        "legal_status"
+      ],
+      "required_result_tables": [
+        "prior_art_hit_table",
+        "claim_element_comparison_chart",
+        "fallback_claim_scope_recommendation"
+      ],
+      "prior_art_hit_table_template_fields": [
+        "hit_id",
+        "linked_work_package_id",
+        "source_database",
+        "publication_or_patent_id",
+        "title",
+        "assignee_or_authors",
+        "publication_date",
+        "url_or_reference",
+        "matched_query",
+        "matched_claim_elements",
+        "disclosed_capabilities",
+        "missing_project_elements",
+        "overlap_level",
+        "novelty_risk_signal",
+        "combination_risk_signal",
+        "reviewer_id",
+        "review_status",
+        "legal_status"
+      ],
+      "claim_element_comparison_template_fields": [
+        "comparison_id",
+        "linked_hit_id",
+        "linked_work_package_id",
+        "claim_or_feature_element",
+        "project_element_text",
+        "prior_art_disclosure_text",
+        "match_level",
+        "missing_or_distinguishing_detail",
+        "fallback_claim_scope_impact",
+        "field_validation_gate_to_preserve",
+        "reviewer_decision",
+        "legal_status"
+      ],
+      "fallback_recommendation_fields": [
+        "linked_work_package_id",
+        "claim_scope_decision_option",
+        "decision_rationale",
+        "triggering_hit_ids",
+        "preserved_field_validation_gate",
+        "reviewer_id",
+        "legal_status"
+      ],
+      "allowed_source_databases": [
+        "CNIPA",
+        "Google Patents",
+        "Espacenet",
+        "WIPO Patentscope",
+        "Google Scholar"
+      ],
+      "allowed_query_sources": [
+        "\"pressure source conflict\" \"water treatment\" \"operator review\"",
+        "\"field replay\" \"release gate\" \"wastewater\"",
+        "\"data provenance\" \"water treatment\" \"protective control\"",
+        "\"pressure drop\" \"replay\" \"catalyst bed\" \"release\"",
+        "压力源 冲突 水处理 人工复核",
+        "现场回放 放行门控 污水处理",
+        "数据溯源 水处理 保护性控制",
+        "压降 回放 催化剂床 放行",
+        "reviewer_approved_query_expansion_with_rationale"
+      ],
+      "row_level_rejection_rules": [
+        "reject TODO/template/sample rows",
+        "reject rows without publication_or_patent_id and url_or_reference",
+        "reject rows without matched_claim_elements",
+        "reject rows whose source_database is outside allowed_source_databases",
+        "reject rows whose matched_query lacks generated-query or reviewer expansion provenance",
+        "reject comparison rows without prior_art_disclosure_text",
+        "reject reviewer fields that assert legal conclusion or field-supported claim"
+      ],
+      "validation_command": ".venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
+      "package_template_status": "formal_search_result_package_template_ready_waiting_for_submission",
+      "formal_search_result_package_supplied": false,
+      "can_route_to_validation_gate": false,
+      "can_generate_prior_art_result": false,
+      "legal_opinion_allowed": false,
+      "field_claim_upgrade_allowed": false,
+      "failure_boundary": "该 template 只规定正式检索结果包的提交结构；模板行、TODO 行或 sample 行不能作为 prior-art hit，也不能生成法律意见或 field-supported claim。",
+      "missing_formal_search_result_package_template_fields": [],
+      "package_template_ready_status": "formal_search_result_package_template_complete_waiting_for_submission"
+    }
+  ]
+}

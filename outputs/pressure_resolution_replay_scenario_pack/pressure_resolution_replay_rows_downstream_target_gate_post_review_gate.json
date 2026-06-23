@@ -1,0 +1,41 @@
+{
+  "downstream_target_gate_post_review_gate_id": "R8u55_downstream_target_gate_post_review_protective_candidate_gate",
+  "post_review_gate_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_post_review_gate.json",
+  "linked_operator_review_preflight_status": "downstream_target_gate_operator_review_preflight_blocked_by_arbitration",
+  "expected_target_count": 0,
+  "expected_target_ids": [],
+  "approved_operator_review_count": 0,
+  "post_review_candidate_targets": [],
+  "model_core_layers": [
+    "diagnostic_decision_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "controllability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "Operator-approved downstream target-gate results still need a deterministic boundary before they can become even protective control candidates in a low-cost grey-box water-treatment loop.",
+    "technical_means": "A post-review gate checks that every target has an accepted operator approval, converts the approved targets into protective-candidate evaluation rows, and preserves actuator, release-gate, and field-claim write prohibitions.",
+    "technical_effect": "The system separates human-reviewed evidence from executable control, reducing accidental promotion of replay/holdout success into pump, valve, dose, or release actions.",
+    "prior_art_distinction_candidate": "Unlike generic human-in-the-loop approval, the gate is downstream-target specific, batch-traceable, and limited to protective candidate evaluation under explicit no-write boundaries."
+  },
+  "evidence_boundaries": [
+    "Post-review readiness is not actuator permission and is not release clearance.",
+    "A protective control candidate still needs policy, safety interlock, actuator feedback, and final operator gates.",
+    "Release gate and field-supported claim upgrades remain separate blocked boundaries."
+  ],
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false,
+  "downstream_target_gate_post_review_gate_status": "downstream_target_gate_post_review_gate_blocked_by_operator_review_preflight",
+  "blocking_reasons": [
+    "operator_review_preflight_status=downstream_target_gate_operator_review_preflight_blocked_by_arbitration"
+  ],
+  "next_operator_action": "R8p_fix_field_rows_source_preflight",
+  "can_route_to_protective_candidate_evaluation": false,
+  "can_emit_protective_control_candidate": false
+}

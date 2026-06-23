@@ -1,0 +1,114 @@
+{
+  "source_package_route_preflight_id": "R8u49_source_package_route_preflight",
+  "source_package_route_preflight_status": "source_package_route_preflight_waiting_for_source_package_submission",
+  "route_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_source_package_route_preflight.json",
+  "model_core_layers": [
+    "observability_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "observability",
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "current_source_status": "field_rows_file_missing",
+  "current_source_format": "missing",
+  "current_source_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+  "source_path_exists": false,
+  "recommended_route_id": "direct_r8p_json_or_csv_source_package",
+  "recommended_route_preflight_status": "recommended_route_preflight_waiting_for_direct_source_package",
+  "next_operator_action": "R8p_submit_direct_json_or_csv_source_package",
+  "ready_route_count": 0,
+  "waiting_route_count": 3,
+  "blocked_route_count": 0,
+  "route_preflight_results": [
+    {
+      "route_id": "direct_r8p_json_table_mapping",
+      "route_kind": "direct_r8p_source_package",
+      "expected_source_format": "json_table_mapping",
+      "route_preflight_status": "route_preflight_waiting_for_source_package_submission",
+      "configured_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+      "path_exists": false,
+      "path_is_directory": false,
+      "current_source_status": "field_rows_file_missing",
+      "current_source_format": "missing",
+      "route_matches_current_source": false,
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=<path> .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "next_operator_action": "R8p_submit_direct_r8p_json_table_mapping",
+      "blockers": [
+        "source_package_not_submitted"
+      ],
+      "can_route_to_r8v": false,
+      "can_generate_field_evidence_by_route_only": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_claim_upgrade_allowed": false
+    },
+    {
+      "route_id": "direct_r8p_csv_directory",
+      "route_kind": "direct_r8p_source_package",
+      "expected_source_format": "csv_directory_with_optional_metadata_json",
+      "route_preflight_status": "route_preflight_waiting_for_source_package_submission",
+      "configured_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+      "path_exists": false,
+      "path_is_directory": false,
+      "current_source_status": "field_rows_file_missing",
+      "current_source_format": "missing",
+      "route_matches_current_source": false,
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=<path> .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "next_operator_action": "R8p_submit_direct_r8p_csv_directory",
+      "blockers": [
+        "source_package_not_submitted"
+      ],
+      "can_route_to_r8v": false,
+      "can_generate_field_evidence_by_route_only": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_claim_upgrade_allowed": false
+    },
+    {
+      "route_id": "r7_to_r8p_route_work_package_submission",
+      "route_kind": "assembled_from_r7_field_package_operator_supplement_and_agent52_export",
+      "expected_source_format": "r7_to_r8p_work_package_directory",
+      "route_preflight_status": "route_preflight_waiting_for_r7_to_r8p_work_package_submission",
+      "configured_path": "",
+      "path_exists": false,
+      "submitted_work_package_count": 0,
+      "passed_work_package_count": 0,
+      "blocked_work_package_count": 4,
+      "route_work_package_preflight_status": "route_work_package_preflight_waiting_for_submission_dir",
+      "route_work_package_assembly_gate_status": "route_work_package_assembly_gate_blocked_waiting_for_submission_dir",
+      "validation_command": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "env_override": "R7_TO_R8P_WORK_PACKAGE_DIR=<dir> .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+      "next_operator_action": "R8p_submit_r7_to_r8p_work_package_directory",
+      "blockers": [
+        "R7_TO_R8P_WORK_PACKAGE_DIR_not_configured_or_not_submitted"
+      ],
+      "can_route_to_r8v": false,
+      "can_generate_field_evidence_by_route_only": false,
+      "can_write_to_actuator": false,
+      "can_write_to_release_gate": false,
+      "field_claim_upgrade_allowed": false
+    }
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "A route guide can still leave field operators guessing whether the current submitted package, CSV directory, or R7 work-package route is actually actionable before replay gates.",
+    "technical_means": "A route-level preflight converts direct JSON, direct CSV-directory, and R7-to-R8p work-package routes into explicit ready/waiting/blocked states with path, format, validation command, and blockers.",
+    "technical_effect": "The system can select the next source-package action before R8v replay without treating templates, invalid packages, or incomplete work packages as field evidence.",
+    "prior_art_distinction_candidate": "Unlike a generic importer, the preflight binds sparse field evidence submission routes to the same closed-loop replay/holdout boundary used by the grey-box control chain."
+  },
+  "evidence_boundaries": [
+    "This preflight is route readiness metadata, not field evidence.",
+    "Ready source-package routing still cannot write actuator, protective control, release gate, or field claim.",
+    "Synthetic, sample, template, TODO, and header-only packages remain non-field evidence.",
+    "R7 work packages cannot fabricate Agent52 replay rows; replay export remains a separate evidence source."
+  ],
+  "can_route_to_r8v": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false
+}

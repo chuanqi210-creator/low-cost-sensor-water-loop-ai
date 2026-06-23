@@ -1,0 +1,192 @@
+{
+  "downstream_target_gate_result_intake_schema_id": "R8u52_downstream_target_gate_result_intake_schema",
+  "schema_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_intake_schema.json",
+  "result_package_env_var": "R8V_TARGET_GATE_RESULT_PACKAGE_PATH",
+  "linked_target_gate_preflight_status": "downstream_target_gate_preflight_blocked_by_downstream_route_handoff",
+  "expected_target_count": 4,
+  "expected_target_ids": [
+    "agent51_catalyst_proxy_holdout",
+    "agent49_guardrail_context",
+    "agent52_replay_clearance",
+    "r7_evidence_chain"
+  ],
+  "target_result_schemas": [
+    {
+      "target_id": "agent51_catalyst_proxy_holdout",
+      "target_agent": "Agent51",
+      "expected_metrics_artifact": "outputs/catalyst_activity_proxy/catalyst_activity_proxy_metrics.json",
+      "expected_gate_metrics": [
+        "field_proxy_holdout_summary_status",
+        "scoreable_batch_count",
+        "agent51_scoreable_batch_count_after_resolution"
+      ],
+      "required_result_fields": [
+        "target_id",
+        "target_gate_status",
+        "batch_ids",
+        "source_metrics_artifact",
+        "reported_metrics",
+        "operator_review_boundary_preserved",
+        "can_write_to_actuator",
+        "can_write_to_release_gate",
+        "field_claim_upgrade_allowed"
+      ],
+      "required_boolean_fields": [
+        "operator_review_boundary_preserved",
+        "can_write_to_actuator",
+        "can_write_to_release_gate",
+        "field_claim_upgrade_allowed"
+      ],
+      "accepted_status_values": [
+        "target_gate_result_passed",
+        "target_gate_result_failed",
+        "target_gate_result_blocked",
+        "target_gate_result_waiting_for_operator_review"
+      ],
+      "must_preserve_batch_id": true,
+      "must_preserve_operator_review_boundary": true,
+      "intake_cannot_authorize_actuator_or_release": true
+    },
+    {
+      "target_id": "agent49_guardrail_context",
+      "target_agent": "Agent49",
+      "expected_metrics_artifact": "outputs/multi_facility_collaborative_control/collaborative_control_metrics.json",
+      "expected_gate_metrics": [
+        "agent49_pressure_conflict_guardrail_clear",
+        "pressure_source_conflict_control_block",
+        "can_write_to_actuator"
+      ],
+      "required_result_fields": [
+        "target_id",
+        "target_gate_status",
+        "batch_ids",
+        "source_metrics_artifact",
+        "reported_metrics",
+        "operator_review_boundary_preserved",
+        "can_write_to_actuator",
+        "can_write_to_release_gate",
+        "field_claim_upgrade_allowed"
+      ],
+      "required_boolean_fields": [
+        "operator_review_boundary_preserved",
+        "can_write_to_actuator",
+        "can_write_to_release_gate",
+        "field_claim_upgrade_allowed"
+      ],
+      "accepted_status_values": [
+        "target_gate_result_passed",
+        "target_gate_result_failed",
+        "target_gate_result_blocked",
+        "target_gate_result_waiting_for_operator_review"
+      ],
+      "must_preserve_batch_id": true,
+      "must_preserve_operator_review_boundary": true,
+      "intake_cannot_authorize_actuator_or_release": true
+    },
+    {
+      "target_id": "agent52_replay_clearance",
+      "target_agent": "Agent52",
+      "expected_metrics_artifact": "outputs/multi_facility_replay_evaluation/replay_evaluation_metrics.json",
+      "expected_gate_metrics": [
+        "agent52_pressure_source_conflict_clear",
+        "joint_action_accuracy",
+        "human_review_gate_pass"
+      ],
+      "required_result_fields": [
+        "target_id",
+        "target_gate_status",
+        "batch_ids",
+        "source_metrics_artifact",
+        "reported_metrics",
+        "operator_review_boundary_preserved",
+        "can_write_to_actuator",
+        "can_write_to_release_gate",
+        "field_claim_upgrade_allowed"
+      ],
+      "required_boolean_fields": [
+        "operator_review_boundary_preserved",
+        "can_write_to_actuator",
+        "can_write_to_release_gate",
+        "field_claim_upgrade_allowed"
+      ],
+      "accepted_status_values": [
+        "target_gate_result_passed",
+        "target_gate_result_failed",
+        "target_gate_result_blocked",
+        "target_gate_result_waiting_for_operator_review"
+      ],
+      "must_preserve_batch_id": true,
+      "must_preserve_operator_review_boundary": true,
+      "intake_cannot_authorize_actuator_or_release": true
+    },
+    {
+      "target_id": "r7_evidence_chain",
+      "target_agent": "R7 facade",
+      "expected_metrics_artifact": "outputs/r7_real_field_replay_pipeline/r7_real_field_replay_pipeline_metrics.json",
+      "expected_gate_metrics": [
+        "field_replay_evidence_chain_pass",
+        "claim_gate_status",
+        "operator_review_gate_pass",
+        "can_write_to_release_gate"
+      ],
+      "required_result_fields": [
+        "target_id",
+        "target_gate_status",
+        "batch_ids",
+        "source_metrics_artifact",
+        "reported_metrics",
+        "operator_review_boundary_preserved",
+        "can_write_to_actuator",
+        "can_write_to_release_gate",
+        "field_claim_upgrade_allowed"
+      ],
+      "required_boolean_fields": [
+        "operator_review_boundary_preserved",
+        "can_write_to_actuator",
+        "can_write_to_release_gate",
+        "field_claim_upgrade_allowed"
+      ],
+      "accepted_status_values": [
+        "target_gate_result_passed",
+        "target_gate_result_failed",
+        "target_gate_result_blocked",
+        "target_gate_result_waiting_for_operator_review"
+      ],
+      "must_preserve_batch_id": true,
+      "must_preserve_operator_review_boundary": true,
+      "intake_cannot_authorize_actuator_or_release": true
+    }
+  ],
+  "package_shape": {
+    "root_type": "object",
+    "required_top_level_fields": [
+      "package_metadata",
+      "target_gate_results"
+    ],
+    "target_gate_results_type": "list_of_objects"
+  },
+  "model_core_layers": [
+    "diagnostic_decision_layer",
+    "closed_loop_execution_layer",
+    "verification_governance_layer"
+  ],
+  "core_capabilities": [
+    "verifiability",
+    "engineering_feasibility",
+    "protectability"
+  ],
+  "technical_feature_mapping": {
+    "technical_problem": "Downstream gate commands are not enough: the returned gate results need a deterministic intake contract before they can influence grey-box control arbitration.",
+    "technical_means": "A result-intake schema binds each downstream target to required result fields, expected gate metrics, source artifact provenance, batch preservation, and protective write boundaries.",
+    "technical_effect": "The system can receive Agent51/49/52/R7 outputs without treating arbitrary metrics files as field replay success, actuator clearance, or release-gate clearance.",
+    "prior_art_distinction_candidate": "Unlike generic pipeline output collection, the intake schema preserves target-level evidence tiers, batch traceability, and grey-box safety boundaries."
+  },
+  "evidence_boundaries": [
+    "The intake schema is not a downstream target result.",
+    "A structurally valid result package is not field-supported success unless later arbitration and review pass.",
+    "The intake layer never authorizes actuator or release-gate writes."
+  ],
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "field_claim_upgrade_allowed": false
+}

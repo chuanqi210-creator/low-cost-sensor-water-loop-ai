@@ -1,0 +1,300 @@
+{
+  "source_reports": {
+    "agent32": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent32_presentation_assets/agent32_report.json"
+  },
+  "presentation_deck": {
+    "agent_name": "presentation_deck_agent",
+    "confidence": 0.83,
+    "summary": "正式展示包规划：formal_deck_plan_ready；8 页，QA 门槛 5 项。",
+    "recommendations": [
+      "按 deck_claim_spine.md 生成正式 PPTX，标题采用主张句，不做泛泛介绍页。",
+      "PPTX 导出后必须检查中文字体、恢复边界页和 synthetic/sample 边界说明。",
+      "正式汇报时把下一阶段定位为真实现场数据导入与参数校准。"
+    ],
+    "metrics": {
+      "core": {
+        "agent_chain_count": 33,
+        "latest_regression": "141 passed",
+        "available_artifacts": "31/31",
+        "recovery_control_mode": "maintain_conditional_recovery",
+        "next_intake_fraction": 0.75,
+        "fallback_intake_fraction": 0.6,
+        "field_interface_status": "template_ready_not_field_validated",
+        "field_data_origin": "synthetic"
+      },
+      "claim_spine": [
+        {
+          "slide_id": "S1",
+          "sequence": 1,
+          "title": "低成本传感条件下，把水处理黑箱变成灰箱",
+          "claim": "低成本传感的核心难题不是少装仪器，而是中间过程不可观测。",
+          "proof_object": "黑箱到灰箱逻辑图",
+          "visual_id": "grey_box_loop",
+          "must_keep": []
+        },
+        {
+          "slide_id": "S2",
+          "sequence": 2,
+          "title": "总体方案：循环结构 + 软传感器 + 多智能体闭环",
+          "claim": "循环结构为慢传感和慢验证争取时间，使低成本闭环控制可执行。",
+          "proof_object": "循环式闭环控制图",
+          "visual_id": "control_loop",
+          "must_keep": []
+        },
+        {
+          "slide_id": "S3",
+          "sequence": 3,
+          "title": "系统架构：30-agent 原型链与整理展示交付层",
+          "claim": "当前系统已形成 33 个 agent 的可运行研究平台。",
+          "proof_object": "agent 分层架构图",
+          "visual_id": "agent_layer_map",
+          "must_keep": [
+            "33 agents",
+            "141 passed"
+          ]
+        },
+        {
+          "slide_id": "S4",
+          "sequence": 4,
+          "title": "关键证据链：从多批次瓶颈到自动重规划",
+          "claim": "多批次瓶颈必须被自动转译为资源、排程和项目重规划动作。",
+          "proof_object": "瓶颈到重规划证据链",
+          "visual_id": "evidence_waterfall",
+          "must_keep": []
+        },
+        {
+          "slide_id": "S5",
+          "sequence": 5,
+          "title": "恢复控制边界：0.75 条件恢复，0.60 失败回退",
+          "claim": "0.75 是条件恢复边界，0.6 是失败回退线。",
+          "proof_object": "恢复控制边界图",
+          "visual_id": "recovery_boundary",
+          "must_keep": [
+            "intake=0.75",
+            "fallback=0.6"
+          ]
+        },
+        {
+          "slide_id": "S6",
+          "sequence": 6,
+          "title": "真实数据接口：五张表连接现场和模型",
+          "claim": "五张现场数据表把传感、离线标签、催化剂寿命、操作日志和成本连成校准入口。",
+          "proof_object": "真实数据接口图",
+          "visual_id": "field_data_schema",
+          "must_keep": []
+        },
+        {
+          "slide_id": "S7",
+          "sequence": 7,
+          "title": "边界和诚实口径：研究平台，不是现场自治结论",
+          "claim": "当前结论是研究平台和仿真基线，不是现场自治系统已经成立。",
+          "proof_object": "边界说明卡片",
+          "visual_id": "validation_boundary",
+          "must_keep": [
+            "template_ready_not_field_validated",
+            "synthetic"
+          ]
+        },
+        {
+          "slide_id": "S8",
+          "sequence": 8,
+          "title": "下一步：真实数据导入与参数校准",
+          "claim": "下一步应先做真实数据导入，再校准软传感、时间预算和回退门槛。",
+          "proof_object": "P1-P5 校准路线图",
+          "visual_id": "calibration_roadmap",
+          "must_keep": [
+            "P1-P5 field calibration"
+          ]
+        }
+      ],
+      "design_system": {
+        "deck_profile": "engineering-platform",
+        "task_mode": "create",
+        "canvas": "16:9 widescreen",
+        "font_policy": {
+          "primary_cjk": "Microsoft YaHei",
+          "mac_fallback": "PingFang SC",
+          "latin": "Aptos",
+          "reason": "避免中文在 Word/PPT 兼容环境中出现乱码或缺字。"
+        },
+        "palette": {
+          "ink": "#1E293B",
+          "paper": "#F8FAFC",
+          "blue": "#2563EB",
+          "green": "#059669",
+          "amber": "#D97706",
+          "red": "#DC2626",
+          "line": "#CBD5E1"
+        },
+        "layout_rules": [
+          "每页只有一个可复述主张，证据图形必须支撑该主张。",
+          "图形节点保持明确方向、分组和边界，不使用装饰性连接线。",
+          "所有边界页必须显式写出 synthetic/sample 不能代表现场实证。",
+          "恢复控制页必须同时出现 0.75 条件恢复和 0.60 回退线。"
+        ]
+      },
+      "deck_plan": [
+        {
+          "slide_id": "S1",
+          "sequence": 1,
+          "title": "低成本传感条件下，把水处理黑箱变成灰箱",
+          "claim": "低成本传感的核心难题不是少装仪器，而是中间过程不可观测。",
+          "proof_object": "黑箱到灰箱逻辑图",
+          "visual_id": "grey_box_loop",
+          "must_keep": [],
+          "layout": "problem-framing-flow",
+          "speaker_mode": "claim-first, diagram-second, boundary-explicit",
+          "footer_evidence": "synthetic/sample 数据仅用于接口与仿真验证，现场校准未完成。"
+        },
+        {
+          "slide_id": "S2",
+          "sequence": 2,
+          "title": "总体方案：循环结构 + 软传感器 + 多智能体闭环",
+          "claim": "循环结构为慢传感和慢验证争取时间，使低成本闭环控制可执行。",
+          "proof_object": "循环式闭环控制图",
+          "visual_id": "control_loop",
+          "must_keep": [],
+          "layout": "closed-loop-architecture",
+          "speaker_mode": "claim-first, diagram-second, boundary-explicit",
+          "footer_evidence": "synthetic/sample 数据仅用于接口与仿真验证，现场校准未完成。"
+        },
+        {
+          "slide_id": "S3",
+          "sequence": 3,
+          "title": "系统架构：30-agent 原型链与整理展示交付层",
+          "claim": "当前系统已形成 33 个 agent 的可运行研究平台。",
+          "proof_object": "agent 分层架构图",
+          "visual_id": "agent_layer_map",
+          "must_keep": [
+            "33 agents",
+            "141 passed"
+          ],
+          "layout": "layered-agent-map",
+          "speaker_mode": "claim-first, diagram-second, boundary-explicit",
+          "footer_evidence": "synthetic/sample 数据仅用于接口与仿真验证，现场校准未完成。"
+        },
+        {
+          "slide_id": "S4",
+          "sequence": 4,
+          "title": "关键证据链：从多批次瓶颈到自动重规划",
+          "claim": "多批次瓶颈必须被自动转译为资源、排程和项目重规划动作。",
+          "proof_object": "瓶颈到重规划证据链",
+          "visual_id": "evidence_waterfall",
+          "must_keep": [],
+          "layout": "evidence-waterfall",
+          "speaker_mode": "claim-first, diagram-second, boundary-explicit",
+          "footer_evidence": "synthetic/sample 数据仅用于接口与仿真验证，现场校准未完成。"
+        },
+        {
+          "slide_id": "S5",
+          "sequence": 5,
+          "title": "恢复控制边界：0.75 条件恢复，0.60 失败回退",
+          "claim": "0.75 是条件恢复边界，0.6 是失败回退线。",
+          "proof_object": "恢复控制边界图",
+          "visual_id": "recovery_boundary",
+          "must_keep": [
+            "intake=0.75",
+            "fallback=0.6"
+          ],
+          "layout": "decision-boundary",
+          "speaker_mode": "claim-first, diagram-second, boundary-explicit",
+          "footer_evidence": "synthetic/sample 数据仅用于接口与仿真验证，现场校准未完成。"
+        },
+        {
+          "slide_id": "S6",
+          "sequence": 6,
+          "title": "真实数据接口：五张表连接现场和模型",
+          "claim": "五张现场数据表把传感、离线标签、催化剂寿命、操作日志和成本连成校准入口。",
+          "proof_object": "真实数据接口图",
+          "visual_id": "field_data_schema",
+          "must_keep": [],
+          "layout": "schema-linkage",
+          "speaker_mode": "claim-first, diagram-second, boundary-explicit",
+          "footer_evidence": "synthetic/sample 数据仅用于接口与仿真验证，现场校准未完成。"
+        },
+        {
+          "slide_id": "S7",
+          "sequence": 7,
+          "title": "边界和诚实口径：研究平台，不是现场自治结论",
+          "claim": "当前结论是研究平台和仿真基线，不是现场自治系统已经成立。",
+          "proof_object": "边界说明卡片",
+          "visual_id": "validation_boundary",
+          "must_keep": [
+            "template_ready_not_field_validated",
+            "synthetic"
+          ],
+          "layout": "boundary-callout",
+          "speaker_mode": "claim-first, diagram-second, boundary-explicit",
+          "footer_evidence": "synthetic/sample 数据仅用于接口与仿真验证，现场校准未完成。"
+        },
+        {
+          "slide_id": "S8",
+          "sequence": 8,
+          "title": "下一步：真实数据导入与参数校准",
+          "claim": "下一步应先做真实数据导入，再校准软传感、时间预算和回退门槛。",
+          "proof_object": "P1-P5 校准路线图",
+          "visual_id": "calibration_roadmap",
+          "must_keep": [
+            "P1-P5 field calibration"
+          ],
+          "layout": "calibration-roadmap",
+          "speaker_mode": "claim-first, diagram-second, boundary-explicit",
+          "footer_evidence": "synthetic/sample 数据仅用于接口与仿真验证，现场校准未完成。"
+        }
+      ],
+      "qa_gates": [
+        {
+          "gate": "cjk_font_compatibility",
+          "requirement": "PPTX 采用 Microsoft YaHei / PingFang SC / Aptos 字体策略，避免中文乱码。"
+        },
+        {
+          "gate": "recovery_boundary_integrity",
+          "requirement": "必须同时显示 0.75 条件恢复和 0.6 失败回退。"
+        },
+        {
+          "gate": "field_validation_disclosure",
+          "requirement": "必须说明当前数据来源为 synthetic/sample，不得表述为现场自治结论。"
+        },
+        {
+          "gate": "artifact_consistency",
+          "requirement": "关键页必须保持 33 agent、31/31 成果索引和 141 passed 回归口径。"
+        },
+        {
+          "gate": "render_layout_check",
+          "requirement": "导出前必须渲染预览并检查中文、线条、图表标签和页脚没有重叠。"
+        }
+      ],
+      "readiness": {
+        "deck_status": "formal_deck_plan_ready",
+        "deck_score": 1.0,
+        "slide_count": 8,
+        "qa_gate_count": 5,
+        "has_font_policy": true,
+        "has_recovery_boundary": true
+      },
+      "output_targets": {
+        "pptx": "deliverables/ppt/low_cost_water_ai_formal_deck.pptx",
+        "claim_spine": "deliverables/deck_claim_spine.md",
+        "design_system": "deliverables/deck_design_system.md",
+        "qa_checklist": "deliverables/deck_qa_checklist.md"
+      }
+    },
+    "issues": [
+      {
+        "sensor": "presentation_boundary",
+        "issue_type": "deck_must_disclose_synthetic_data",
+        "severity": "info",
+        "message": "正式 PPT 必须说明 synthetic/sample 数据不能代表现场实证。",
+        "evidence": {
+          "field_data_origin": "synthetic"
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "claim_spine": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/deck_claim_spine.md",
+    "design_system": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/deck_design_system.md",
+    "qa_checklist": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/deck_qa_checklist.md",
+    "pptx": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/ppt/low_cost_water_ai_formal_deck.pptx"
+  }
+}

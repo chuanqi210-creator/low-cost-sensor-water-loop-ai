@@ -1,0 +1,39 @@
+{
+  "schema_id": "R8u111_focused_catalyst_activity_response_schema",
+  "package_type": "focused_catalyst_activity_response",
+  "required_top_level_fields": [
+    "template_id",
+    "package_type",
+    "source_interface_id",
+    "target_hidden_state",
+    "required_response_row_count",
+    "minimum_matched_batch_count",
+    "evidence_rows",
+    "no_write_boundary"
+  ],
+  "required_row_fields": [
+    "response_row_id",
+    "hidden_state",
+    "required_evidence",
+    "evidence_channel",
+    "table_name",
+    "field_name",
+    "data_origin",
+    "batch_id",
+    "matched_batch_ids",
+    "timestamp",
+    "node_id",
+    "sensor_id",
+    "evidence_value_reference",
+    "offline_method_id",
+    "detection_limit",
+    "chain_of_custody_id",
+    "operator_id",
+    "no_write_boundary_confirmed",
+    "review_notes"
+  ],
+  "row_count_must_equal": 6,
+  "target_hidden_state_must_equal": "catalyst_activity",
+  "matched_batch_requirement": "Every row should reference at least three shared real field batch_id values before R8u110 can pass.",
+  "no_write_required": true
+}

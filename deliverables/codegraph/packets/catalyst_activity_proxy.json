@@ -1,0 +1,131 @@
+{
+  "handle": "agent-07e3480502",
+  "agent_id": "agent:51:catalyst_activity_proxy",
+  "agent_number": 51,
+  "slug": "catalyst_activity_proxy",
+  "runner": "experiments/run_agent51_catalyst_activity_proxy.py",
+  "source": "src/water_ai/agents/catalyst_activity_proxy_agent.py",
+  "deliverable": "deliverables/catalyst_activity_proxy.md",
+  "test": "tests/test_catalyst_activity_proxy_agent.py",
+  "output_dir": "outputs/agent51_catalyst_activity_proxy",
+  "related_nodes": [
+    {
+      "handle": "agent-07e3480502",
+      "node_id": "agent:51:catalyst_activity_proxy",
+      "kind": "agent_workflow",
+      "label": "Agent51 catalyst_activity_proxy",
+      "path": "experiments/run_agent51_catalyst_activity_proxy.py",
+      "layer": "agent_workflow",
+      "summary": null,
+      "metrics": {
+        "agent_number": 51
+      }
+    },
+    {
+      "handle": "dir-3b3bf75f3c",
+      "node_id": "dir:outputs/agent51_catalyst_activity_proxy",
+      "kind": "output_dir",
+      "label": "agent51_catalyst_activity_proxy",
+      "path": "outputs/agent51_catalyst_activity_proxy",
+      "layer": "generated_artifact",
+      "summary": null,
+      "metrics": {}
+    },
+    {
+      "handle": "file-c856388cc5",
+      "node_id": "file:deliverables/catalyst_activity_proxy.md",
+      "kind": "referenced_path",
+      "label": "catalyst_activity_proxy.md",
+      "path": "deliverables/catalyst_activity_proxy.md",
+      "layer": "deliverable",
+      "summary": "催化剂活性代理观测设计",
+      "metrics": {
+        "lines": 77,
+        "size_bytes": 6211
+      }
+    },
+    {
+      "handle": "file-80035a1ed2",
+      "node_id": "file:experiments/run_agent51_catalyst_activity_proxy.py",
+      "kind": "file",
+      "label": "run_agent51_catalyst_activity_proxy.py",
+      "path": "experiments/run_agent51_catalyst_activity_proxy.py",
+      "layer": "experiment_runner",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 249,
+        "size_bytes": 11699
+      }
+    },
+    {
+      "handle": "file-33c3f4be4e",
+      "node_id": "file:src/water_ai/agents/catalyst_activity_proxy_agent.py",
+      "kind": "referenced_path",
+      "label": "catalyst_activity_proxy_agent.py",
+      "path": "src/water_ai/agents/catalyst_activity_proxy_agent.py",
+      "layer": "agent_logic",
+      "summary": "from __future__ import annotations",
+      "metrics": {
+        "lines": 847,
+        "size_bytes": 43501
+      }
+    },
+    {
+      "handle": "file-da78a4add3",
+      "node_id": "file:tests/test_catalyst_activity_proxy_agent.py",
+      "kind": "file",
+      "label": "test_catalyst_activity_proxy_agent.py",
+      "path": "tests/test_catalyst_activity_proxy_agent.py",
+      "layer": "verification",
+      "summary": "import csv",
+      "metrics": {
+        "lines": 397,
+        "size_bytes": 17105
+      }
+    }
+  ],
+  "forward_edges": [
+    {
+      "source": "agent:51:catalyst_activity_proxy",
+      "target": "file:deliverables/catalyst_activity_proxy.md",
+      "kind": "documented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:51:catalyst_activity_proxy",
+      "target": "file:src/water_ai/agents/catalyst_activity_proxy_agent.py",
+      "kind": "implemented_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:51:catalyst_activity_proxy",
+      "target": "file:experiments/run_agent51_catalyst_activity_proxy.py",
+      "kind": "runs_experiment",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:51:catalyst_activity_proxy",
+      "target": "file:tests/test_catalyst_activity_proxy_agent.py",
+      "kind": "verified_by",
+      "confidence": "high",
+      "evidence": null
+    },
+    {
+      "source": "agent:51:catalyst_activity_proxy",
+      "target": "dir:outputs/agent51_catalyst_activity_proxy",
+      "kind": "writes_output_dir",
+      "confidence": "medium",
+      "evidence": null
+    }
+  ],
+  "reverse_edges": [],
+  "how_to_use": [
+    "Read runner first to understand generated artifacts and report wiring.",
+    "Read source next for behavior and interfaces.",
+    "Read test before editing to preserve current contract.",
+    "Treat output_dir and deliverable as evidence of previous runs, not as field validation unless explicitly marked field-origin."
+  ]
+}

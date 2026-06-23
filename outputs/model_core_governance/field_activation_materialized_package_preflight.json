@@ -1,0 +1,39 @@
+{
+  "preflight_id": "R8u105_field_activation_materialized_package_preflight",
+  "package_pointer": "REAL_FIELD_REPLAY_PACKAGE_DIR",
+  "package_dir_path": "",
+  "preflight_status": "field_activation_materialized_package_preflight_blocked_by_staging_manifest",
+  "selected_channel_ids": [
+    "R7_REAL_FIELD_PACKAGE"
+  ],
+  "selected_channel_count": 1,
+  "expected_table_count": 11,
+  "checked_table_count": 0,
+  "present_table_count": 0,
+  "missing_table_count": 0,
+  "header_gap_count": 0,
+  "empty_table_count": 0,
+  "template_marker_row_count": 0,
+  "non_field_row_count": 0,
+  "blueprint_expected_row_count": 0,
+  "blueprint_matched_row_count": 0,
+  "blueprint_missing_row_count": 0,
+  "metadata_blocker_count": 0,
+  "blocker_count": 1,
+  "highest_priority_blocker": "R8U105_STAGING_MANIFEST_NOT_READY",
+  "blockers": [
+    {
+      "blocker_id": "R8U105_STAGING_MANIFEST_NOT_READY",
+      "reason": "field_activation_package_staging_manifest_blocked_by_response_preflight"
+    }
+  ],
+  "metadata_audit": {},
+  "table_audits": [],
+  "can_route_to_external_activation_router": false,
+  "can_resume_model_chain": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "router_validation_command": ".venv/bin/python experiments/run_external_activation_router.py",
+  "next_operator_action": "complete_field_activation_staging_manifest_before_materializing_package",
+  "no_write_boundary": "This preflight only checks whether an operator-materialized package directory matches the field activation staging manifest. It does not run replay/holdout, does not create field evidence, and cannot write actuator policy, release gate, legal conclusions or field-supported claims."
+}

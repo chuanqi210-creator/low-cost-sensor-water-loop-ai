@@ -1,0 +1,23 @@
+{
+  "formal_search_result_validation_execution_status": "formal_search_result_validation_execution_blocked_at_row_preflight",
+  "source_preflight_status": "formal_search_result_package_preflight_waiting_for_submission_path",
+  "row_preflight_status": "formal_search_result_package_row_preflight_blocked_at_source_preflight",
+  "formal_search_result_package_path": "",
+  "required_work_package_count": 7,
+  "work_package_execution_count": 0,
+  "execution_row_count": 0,
+  "validated_hit_count": 0,
+  "rejected_hit_count": 0,
+  "comparison_row_count": 0,
+  "fallback_row_count": 0,
+  "execution_rows": [],
+  "execution_patch_plan": [],
+  "can_enter_human_nonlegal_comparison_review": false,
+  "can_generate_prior_art_result": false,
+  "legal_opinion_allowed": false,
+  "field_claim_upgrade_allowed": false,
+  "failure_boundary": "该 execution 只把通过 row preflight 的检索结果包转成结构验收计数、hit-comparison 回连和下一步人工非法律比较审查入口；它不生成法律意见、不判断新颖性/创造性，也不能把任何检索结果升级为 field-supported claim。",
+  "preflight_blockers": [
+    "FORMAL_SEARCH_RESULT_PACKAGE_PATH:not_set"
+  ]
+}

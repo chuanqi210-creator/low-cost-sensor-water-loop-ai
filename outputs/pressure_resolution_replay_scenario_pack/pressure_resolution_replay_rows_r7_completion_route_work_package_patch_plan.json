@@ -1,0 +1,35 @@
+{
+  "route_work_package_patch_plan_id": "R8u27_r7_to_r8p_route_work_package_preflight_patch_plan",
+  "route_work_package_patch_plan_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_patch_plan.json",
+  "route_work_package_patch_plan_status": "route_work_package_patch_plan_waiting_for_submission_dir",
+  "source_preflight_status": "route_work_package_preflight_waiting_for_submission_dir",
+  "configured_submission_dir": "",
+  "expected_work_package_count": 4,
+  "patch_item_count": 1,
+  "highest_priority_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR",
+  "patch_item_type_counts": {
+    "submission_source_preflight": 1
+  },
+  "patch_items": [
+    {
+      "patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR",
+      "priority": "P0",
+      "patch_type": "submission_source_preflight",
+      "blocking_condition": "missing_submission_dir",
+      "target_work_package_id": "ALL_OPEN_R7_TO_R8P_WORK_PACKAGES",
+      "operator_action": "Copy the generated work-package templates to a real submission directory, replace all TODO/header-only content with field/operator/replay values, set R7_TO_R8P_WORK_PACKAGE_DIR to that directory, and rerun Agent61.",
+      "acceptance_check": "R7_TO_R8P_WORK_PACKAGE_DIR must point to an existing directory containing every expected work-package subdirectory before package-level preflight can evaluate evidence gaps.",
+      "technical_feature_mapping": [
+        "field package evidence gate",
+        "operator-reviewed route submission",
+        "template is not evidence boundary"
+      ],
+      "failure_boundary": "No package can become field evidence until a real submission directory is supplied."
+    }
+  ],
+  "next_operator_action": "Copy the generated work-package templates to a real submission directory, replace all TODO/header-only content with field/operator/replay values, set R7_TO_R8P_WORK_PACKAGE_DIR to that directory, and rerun Agent61.",
+  "can_generate_field_evidence_from_patch_plan": false,
+  "can_write_to_actuator": false,
+  "can_write_to_release_gate": false,
+  "patch_plan_boundary": "This patch plan converts preflight blockers into operator-repair tasks only. It is not field evidence, does not replace R7 import, and cannot bypass R8p/R8v/holdout/release gates."
+}

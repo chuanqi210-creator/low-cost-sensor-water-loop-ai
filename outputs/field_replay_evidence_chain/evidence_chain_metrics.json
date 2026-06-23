@@ -1,0 +1,79 @@
+{
+  "method_contract": {
+    "upgrade_id": "field_replay_import_to_g6_evidence_chain",
+    "borrowed_from": [
+      "academic_research_agent_evidence_before_claims",
+      "model_validation_and_uncertainty_provenance_checks",
+      "timestamped_campaign_replay_for_fast_proxy_validation",
+      "field_replay_calibration_gate_for_fast_proxy_writeback"
+    ],
+    "reality_mapping": "把 Agent44 导入门、Agent42 时间戳回放和 Agent43 G6/P6 变成不可绕过的现场校准证据链，只有完整链条通过才形成保护性控制写回候选。",
+    "data_needs": [
+      "agent44_import_ready_report",
+      "normalized_field_replay_datasets",
+      "field_label_matrix_shock",
+      "result_time_min",
+      "effect_time_min",
+      "false_positive_cost_index",
+      "matrix_fast_proxy_release_boundary"
+    ],
+    "implementation_path": [
+      "src/water_ai/agents/field_replay_evidence_chain_agent.py",
+      "experiments/run_agent45_field_replay_evidence_chain.py",
+      "outputs/field_replay_evidence_chain/evidence_chain_metrics.json"
+    ],
+    "evaluation_metrics": [
+      "field_replay_evidence_chain_score",
+      "import_ready",
+      "timestamped_replay_ready",
+      "g6_ready",
+      "can_emit_protective_writeback_candidate"
+    ],
+    "failure_boundary": "证据链通过也只形成保护性控制候选，不能自动写入现场 PLC/SCADA，不能替代 release gate、污染物达标或 field conformal calibration。"
+  },
+  "import_stage": {
+    "import_ready": false,
+    "import_status": "field_replay_import_blocked_non_field_origin",
+    "data_origin": "synthetic",
+    "accepted_table_count": 4,
+    "total_table_count": 4,
+    "can_pass_to_timestamped_replay": false,
+    "can_pass_to_g6": false,
+    "blocking_reasons": [
+      "data_origin=synthetic",
+      "field_replay_import_blocked_non_field_origin"
+    ]
+  },
+  "timestamped_replay_stage": {
+    "stage_name": "timestamped_campaign_replay",
+    "stage_status": "not_run"
+  },
+  "g6_stage": {
+    "stage_name": "field_replay_calibration_gate",
+    "stage_status": "not_run"
+  },
+  "writeback_candidate": {
+    "target_agent": "MatrixShockFastProxyAgent",
+    "candidate_type": "no_candidate",
+    "can_emit_protective_writeback_candidate": false,
+    "can_write_to_release_gate": false,
+    "requires_human_review_before_application": true,
+    "source_chain": [
+      "FieldReplayImportAgent",
+      "TimestampedCampaignReplayAgent",
+      "FieldReplayCalibrationGateAgent"
+    ],
+    "g6_writeback_policy": {}
+  },
+  "readiness": {
+    "field_replay_evidence_chain_status": "field_replay_evidence_chain_blocked_at_import",
+    "field_replay_evidence_chain_score": 0.0,
+    "import_ready": false,
+    "timestamped_replay_ready": false,
+    "g6_ready": false,
+    "timestamped_replay_status": "not_run",
+    "field_replay_gate_status": "not_run",
+    "can_emit_protective_writeback_candidate": false,
+    "can_write_to_release_gate": false
+  }
+}

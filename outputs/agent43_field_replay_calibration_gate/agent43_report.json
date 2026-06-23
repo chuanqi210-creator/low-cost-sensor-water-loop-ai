@@ -1,0 +1,308 @@
+{
+  "source_agent42_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent42_timestamped_campaign_replay/agent42_report.json",
+  "source_agent41_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/matrix_shock_fast_proxy/fast_proxy_metrics.json",
+  "field_replay_calibration_gate": {
+    "agent_name": "field_replay_calibration_gate_agent",
+    "confidence": 0.695,
+    "summary": "现场回放校准门：synthetic_replay_gate_blocked；G6 7/8，保护性写回 False。",
+    "recommendations": [
+      "不要把当前 replay 写入保护性控制；先补齐失败的 G6 gate。",
+      "优先采集真实 field-labeled fast_proxy_event_log，并保留 result_time_min、effect_time_min、field_label_matrix_shock 和 false_positive_cost_index。",
+      "synthetic replay 只能作为接口联调，不得作为现场 precision/recall 或保护性控制证据。"
+    ],
+    "metrics": {
+      "method_contract": {
+        "upgrade_id": "field_replay_calibration_gate_for_fast_proxy_writeback",
+        "borrowed_from": [
+          "timestamped_campaign_replay_for_fast_proxy_validation",
+          "model_validation_and_uncertainty_skill",
+          "academic_research_agent_evidence_before_claims",
+          "matrix_shock_fast_proxy_latency_aware_control"
+        ],
+        "reality_mapping": "把真实 timestamped replay 指标转化为 G6/P6 验收门，只有 field-labeled precision/recall、提前量和误触发成本达标时才允许写入保护性控制。",
+        "data_needs": [
+          "field_origin_timestamped_replay",
+          "result_time_min",
+          "effect_time_min",
+          "field_label_matrix_shock",
+          "false_positive_cost_index",
+          "proxy_precision",
+          "proxy_recall"
+        ],
+        "implementation_path": [
+          "src/water_ai/agents/field_replay_calibration_gate_agent.py",
+          "experiments/run_agent43_field_replay_calibration_gate.py",
+          "outputs/field_replay_calibration_gate/g6_p6_gate_metrics.json"
+        ],
+        "evaluation_metrics": [
+          "G6_gate_pass_rate",
+          "proxy_precision",
+          "proxy_recall",
+          "protective_action_lead_time_min",
+          "false_positive_cost_index",
+          "writeback_mode"
+        ],
+        "failure_boundary": "G6/P6 通过只允许写入 matrix_shock 保护性控制；不能替代污染物达标、离线标签或 release conformal calibration。"
+      },
+      "thresholds": {
+        "minimum_proxy_events": 12,
+        "minimum_precision": 0.82,
+        "minimum_recall": 0.78,
+        "minimum_timestamp_coverage": 0.95,
+        "minimum_protective_lead_time_min": 30.0,
+        "maximum_actuator_p90_latency_min": 15.0,
+        "maximum_false_positive_cost_index": 0.15
+      },
+      "timestamped_replay": {
+        "data_origin": "synthetic",
+        "timestamped_replay_status": "synthetic_timestamp_schema_ready_needs_field_replay",
+        "timestamp_coverage": 1.0,
+        "can_calibrate_fast_proxy": false,
+        "can_write_to_protective_control": false,
+        "proxy_label_count": 12,
+        "proxy_precision": 1.0,
+        "proxy_recall": 1.0,
+        "mean_protective_action_lead_time_min": 84.0,
+        "p90_lab_turnaround_min": 80.0,
+        "p90_actuator_latency_min": 10.0,
+        "mean_false_positive_cost_index": 0.0,
+        "table_audit": {
+          "sensor_timeseries": {
+            "record_count": 60,
+            "required_fields": [
+              "batch_id",
+              "timestamp_min",
+              "EC_uScm",
+              "turbidity_NTU",
+              "UV254_abs",
+              "pH",
+              "ORP_mV"
+            ],
+            "timestamp_fields": [
+              "timestamp_min"
+            ],
+            "missing_required_fields": [],
+            "timestamp_coverage": 1.0,
+            "invalid_time_rows": [],
+            "status": "timestamp_ready"
+          },
+          "offline_lab_results": {
+            "record_count": 12,
+            "required_fields": [
+              "batch_id",
+              "sample_time_min",
+              "result_time_min",
+              "analyte",
+              "value",
+              "qa_flag"
+            ],
+            "timestamp_fields": [
+              "sample_time_min",
+              "result_time_min"
+            ],
+            "missing_required_fields": [],
+            "timestamp_coverage": 1.0,
+            "invalid_time_rows": [],
+            "status": "timestamp_ready"
+          },
+          "campaign_operation_log": {
+            "record_count": 12,
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "action_id",
+              "command_time_min",
+              "effect_time_min",
+              "start_min",
+              "end_min",
+              "release_policy"
+            ],
+            "timestamp_fields": [
+              "command_time_min",
+              "effect_time_min",
+              "start_min",
+              "end_min"
+            ],
+            "missing_required_fields": [],
+            "timestamp_coverage": 1.0,
+            "invalid_time_rows": [],
+            "status": "timestamp_ready"
+          },
+          "fast_proxy_event_log": {
+            "record_count": 12,
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "event_time_min",
+              "proxy_score",
+              "specificity_guard_score",
+              "protective_triggered",
+              "triggered_action_id",
+              "field_label_matrix_shock",
+              "lab_label_time_min",
+              "false_positive_cost_index"
+            ],
+            "timestamp_fields": [
+              "event_time_min",
+              "lab_label_time_min"
+            ],
+            "missing_required_fields": [],
+            "timestamp_coverage": 1.0,
+            "invalid_time_rows": [],
+            "status": "timestamp_ready"
+          }
+        },
+        "linkage": {
+          "sensor_batch_count": 12,
+          "lab_batch_count": 12,
+          "operation_batch_count": 12,
+          "proxy_batch_count": 12,
+          "orphan_reference_batches": [],
+          "unlabeled_proxy_batches": [],
+          "operation_without_proxy_batches": []
+        },
+        "matrix_fast_proxy_readiness": {
+          "fast_proxy_status": "synthetic_fast_proxy_ready_needs_field_timestamp_validation",
+          "fast_proxy_readiness_score": 0.56,
+          "field_proxy_validation_required": true,
+          "can_write_to_protective_control": false,
+          "can_write_to_release_gate": false,
+          "release_gate_block_reason": "fast proxy can trigger protection, but release still requires lab evidence and field conformal calibration"
+        }
+      },
+      "gate_results": {
+        "gates": [
+          {
+            "gate_id": "G6_1_field_origin",
+            "accepted": false,
+            "rule": "data_origin 必须为 field，synthetic/sample 不得写入快代理控制。",
+            "evidence": {
+              "data_origin": "synthetic"
+            }
+          },
+          {
+            "gate_id": "G6_2_timestamp_schema_ready",
+            "accepted": true,
+            "rule": "四张 replay 表必须时间戳完整，且 timestamp coverage 达标。",
+            "evidence": {
+              "failed_tables": [],
+              "timestamp_coverage": 1.0
+            }
+          },
+          {
+            "gate_id": "G6_3_batch_linkage_complete",
+            "accepted": true,
+            "rule": "sensor、lab、operation 和 fast_proxy_event_log 必须能按 batch_id 回连。",
+            "evidence": {
+              "orphan_reference_batches": [],
+              "unlabeled_proxy_batches": []
+            }
+          },
+          {
+            "gate_id": "G6_4_proxy_label_volume",
+            "accepted": true,
+            "rule": "快代理验证必须有足够 field-labeled events。",
+            "evidence": {
+              "proxy_label_count": 12,
+              "minimum_proxy_events": 12
+            }
+          },
+          {
+            "gate_id": "G6_5_proxy_precision_recall",
+            "accepted": true,
+            "rule": "快代理 precision/recall 必须同时达标。",
+            "evidence": {
+              "proxy_precision": 1.0,
+              "proxy_recall": 1.0
+            }
+          },
+          {
+            "gate_id": "G6_6_latency_action_margin",
+            "accepted": true,
+            "rule": "保护性动作必须早于慢标签足够长时间，且执行器 P90 延迟不能过高。",
+            "evidence": {
+              "mean_protective_action_lead_time_min": 84.0,
+              "p90_actuator_latency_min": 10.0
+            }
+          },
+          {
+            "gate_id": "G6_7_false_positive_cost",
+            "accepted": true,
+            "rule": "误触发成本必须低于保护性控制可接受阈值。",
+            "evidence": {
+              "mean_false_positive_cost_index": 0.0
+            }
+          },
+          {
+            "gate_id": "G6_8_release_boundary_preserved",
+            "accepted": true,
+            "rule": "快代理只能写入保护性控制，不能写入自动放行门。",
+            "evidence": {
+              "matrix_fast_proxy_readiness": {
+                "fast_proxy_status": "synthetic_fast_proxy_ready_needs_field_timestamp_validation",
+                "fast_proxy_readiness_score": 0.56,
+                "field_proxy_validation_required": true,
+                "can_write_to_protective_control": false,
+                "can_write_to_release_gate": false,
+                "release_gate_block_reason": "fast proxy can trigger protection, but release still requires lab evidence and field conformal calibration"
+              }
+            }
+          }
+        ],
+        "accepted_gate_count": 7,
+        "total_gate_count": 8,
+        "failed_gate_ids": [
+          "G6_1_field_origin"
+        ],
+        "blocking_gate_ids": [
+          "G6_1_field_origin"
+        ],
+        "calibration_gate_ids": []
+      },
+      "writeback_policy": {
+        "target_agent": "MatrixShockFastProxyAgent",
+        "parameter_scope": [
+          "field_proxy_precision",
+          "field_proxy_recall",
+          "protective_action_lead_time_min",
+          "false_positive_cost_index",
+          "protective_trigger_boundary"
+        ],
+        "can_write_to_protective_control": false,
+        "can_write_to_release_gate": false,
+        "release_policy": "block_release_until_lab_and_field_conformal_calibration",
+        "writeback_mode": "blocked_until_field_replay_passes_g6",
+        "blocked_by": [
+          "G6_1_field_origin"
+        ]
+      },
+      "readiness": {
+        "field_replay_gate_status": "synthetic_replay_gate_blocked",
+        "field_replay_gate_score": 0.875,
+        "accepted_gate_count": 7,
+        "total_gate_count": 8,
+        "failed_gate_ids": [
+          "G6_1_field_origin"
+        ],
+        "can_write_to_protective_control": false,
+        "can_write_to_release_gate": false
+      }
+    },
+    "issues": [
+      {
+        "sensor": "field_replay_calibration_gate",
+        "issue_type": "G6_1_field_origin",
+        "severity": "critical",
+        "message": "data_origin 必须为 field，synthetic/sample 不得写入快代理控制。",
+        "evidence": {
+          "data_origin": "synthetic"
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "field_replay_calibration_gate": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_replay_calibration_gate.md",
+    "agent43_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent43_field_replay_calibration_gate/agent43_report.md",
+    "g6_p6_gate_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_calibration_gate/g6_p6_gate_metrics.json"
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "source_reports": {
+    "agent30": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/agent30_report.json"
+  },
+  "field_calibration_gate": {
+    "agent_name": "field_calibration_gate_agent",
+    "confidence": 0.74,
+    "summary": "实证校准门控：calibration_protocol_ready_waiting_for_field_data；数据门 5/6 通过。",
+    "recommendations": [
+      "先按 G0-G2 采集最小现场数据包：传感时间序列、离线标签和 campaign 操作日志。",
+      "不要用 synthetic/sample 行重训软传感器；它们只用于接口演示和脚本联调。",
+      "现场数据通过验收门后，再按 P1-P5 顺序写回模型参数并重跑全链条回归。"
+    ],
+    "metrics": {
+      "core": {
+        "data_origin": "synthetic",
+        "interface_status": "template_ready_not_field_validated",
+        "calibration_readiness_score": 1.0,
+        "field_coverage": 1.0,
+        "volume_coverage": 1.0,
+        "linkage_score": 1.0,
+        "table_statuses": {
+          "sensor_timeseries": {
+            "record_count": 288,
+            "minimum_records": 24,
+            "required_fields": [
+              "batch_id",
+              "timestamp_min",
+              "cycle_id",
+              "pH",
+              "ORP_mV",
+              "EC_uScm",
+              "turbidity_NTU",
+              "temp_C",
+              "flow_Lmin",
+              "UV254_abs"
+            ],
+            "missing_required_fields": [],
+            "duplicate_primary_keys": [],
+            "field_coverage": 1.0,
+            "volume_coverage": 1.0,
+            "table_score": 1.0,
+            "status": "import_ready"
+          },
+          "offline_lab_results": {
+            "record_count": 24,
+            "minimum_records": 6,
+            "required_fields": [
+              "batch_id",
+              "sample_time_min",
+              "analyte",
+              "value",
+              "unit",
+              "method",
+              "qa_flag"
+            ],
+            "missing_required_fields": [],
+            "duplicate_primary_keys": [],
+            "field_coverage": 1.0,
+            "volume_coverage": 1.0,
+            "table_score": 1.0,
+            "status": "import_ready"
+          },
+          "catalyst_lifecycle": {
+            "record_count": 8,
+            "minimum_records": 2,
+            "required_fields": [
+              "catalyst_id",
+              "batch_id",
+              "cycle_count",
+              "regen_count",
+              "activity_assay",
+              "pressure_drop_kPa",
+              "lifetime_fraction"
+            ],
+            "missing_required_fields": [],
+            "duplicate_primary_keys": [],
+            "field_coverage": 1.0,
+            "volume_coverage": 1.0,
+            "table_score": 1.0,
+            "status": "import_ready"
+          },
+          "campaign_operation_log": {
+            "record_count": 35,
+            "minimum_records": 4,
+            "required_fields": [
+              "campaign_id",
+              "batch_id",
+              "action_id",
+              "start_min",
+              "end_min",
+              "intake_fraction",
+              "success"
+            ],
+            "missing_required_fields": [],
+            "duplicate_primary_keys": [],
+            "field_coverage": 1.0,
+            "volume_coverage": 1.0,
+            "table_score": 1.0,
+            "status": "import_ready"
+          },
+          "cost_deployment": {
+            "record_count": 4,
+            "minimum_records": 3,
+            "required_fields": [
+              "item_id",
+              "category",
+              "unit_cost_cny",
+              "quantity",
+              "lead_time_days"
+            ],
+            "missing_required_fields": [],
+            "duplicate_primary_keys": [],
+            "field_coverage": 1.0,
+            "volume_coverage": 1.0,
+            "table_score": 1.0,
+            "status": "import_ready"
+          }
+        },
+        "calibration_tasks": [
+          {
+            "task_id": "P1_sensor_noise_drift",
+            "title": "真实传感器噪声、漂移和污染结垢标定",
+            "required_tables": [
+              "sensor_timeseries"
+            ],
+            "task_ready": true,
+            "readiness_score": 1.0,
+            "blockers": [],
+            "model_update": "校准 DataQualityAgent 阈值、采样噪声模型和 sensor_confidence。"
+          },
+          {
+            "task_id": "P2_soft_sensor_retraining",
+            "title": "软传感器真实标签重训",
+            "required_tables": [
+              "sensor_timeseries",
+              "offline_lab_results"
+            ],
+            "task_ready": true,
+            "readiness_score": 1.0,
+            "blockers": [],
+            "model_update": "重训 soft sensor calibrator，并估计不可观测状态的不确定性。"
+          },
+          {
+            "task_id": "P3_catalyst_lifecycle",
+            "title": "催化剂寿命、再生收益和副产物风险校准",
+            "required_tables": [
+              "catalyst_lifecycle",
+              "offline_lab_results"
+            ],
+            "task_ready": true,
+            "readiness_score": 1.0,
+            "blockers": [],
+            "model_update": "校准再生/更换门槛、寿命衰减和副产物安全门。"
+          },
+          {
+            "task_id": "P4_loop_time_budget",
+            "title": "循环、暂存、验证错峰和回退门槛校准",
+            "required_tables": [
+              "campaign_operation_log",
+              "offline_lab_results"
+            ],
+            "task_ready": true,
+            "readiness_score": 1.0,
+            "blockers": [],
+            "model_update": "校准 Agent24-28 的时间预算、错峰收益、恢复爬坡和 fallback triggers。"
+          },
+          {
+            "task_id": "P5_cost_deployment",
+            "title": "经济性和现场部署接口校准",
+            "required_tables": [
+              "cost_deployment",
+              "campaign_operation_log"
+            ],
+            "task_ready": true,
+            "readiness_score": 1.0,
+            "blockers": [],
+            "model_update": "校准传感器经济性、资源扩容成本、预算释放顺序和 PLC/SCADA 接口。"
+          }
+        ],
+        "latest_regression": "153 passed"
+      },
+      "acceptance_gates": [
+        {
+          "gate_id": "G0_data_origin",
+          "title": "真实数据来源确认",
+          "required_tables": [],
+          "acceptance_rule": "data_origin 必须为 field，且保留原始数据快照、导入版本号和采样说明。",
+          "model_target": "所有后续校准任务",
+          "minimum_field_package": "至少 3 个真实 batch 的在线传感、离线标签和操作日志。",
+          "gate_ready": false,
+          "gate_score": 0.0,
+          "blockers": [
+            "data_origin:synthetic"
+          ],
+          "current_evidence": {
+            "data_origin": "synthetic",
+            "tables": {}
+          }
+        },
+        {
+          "gate_id": "G1_sensor_stream_quality",
+          "title": "传感时间序列验收",
+          "required_tables": [
+            "sensor_timeseries"
+          ],
+          "acceptance_rule": "每个 batch 至少覆盖完整循环窗口；主键 batch_id+timestamp_min 无重复；传感器状态可追溯。",
+          "model_target": "DataQualityAgent / SoftSensorAgent",
+          "minimum_field_package": "每个 batch >= 24 条记录，建议包含清洗前后和一次低流量扰动。",
+          "gate_ready": true,
+          "gate_score": 1.0,
+          "blockers": [],
+          "current_evidence": {
+            "data_origin": "synthetic",
+            "tables": {
+              "sensor_timeseries": {
+                "status": "import_ready",
+                "record_count": 288,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              }
+            }
+          }
+        },
+        {
+          "gate_id": "G2_lab_label_alignment",
+          "title": "离线检测标签对齐",
+          "required_tables": [
+            "sensor_timeseries",
+            "offline_lab_results"
+          ],
+          "acceptance_rule": "离线标签必须能回连同一 batch 的传感窗口，并含 qa_flag、method 和单位。",
+          "model_target": "SoftSensorAgent / ValidationPlanningAgent / release_gate",
+          "minimum_field_package": "每个关键 batch 至少 2 个标签时点，覆盖处理前/后或回流前/后。",
+          "gate_ready": true,
+          "gate_score": 1.0,
+          "blockers": [],
+          "current_evidence": {
+            "data_origin": "synthetic",
+            "tables": {
+              "sensor_timeseries": {
+                "status": "import_ready",
+                "record_count": 288,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              },
+              "offline_lab_results": {
+                "status": "import_ready",
+                "record_count": 24,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              }
+            }
+          }
+        },
+        {
+          "gate_id": "G3_catalyst_lifecycle_alignment",
+          "title": "催化剂寿命与副产物风险对齐",
+          "required_tables": [
+            "catalyst_lifecycle",
+            "offline_lab_results"
+          ],
+          "acceptance_rule": "催化剂活性、压降、再生次数和寿命比例必须能回连 batch_id 与离线标签。",
+          "model_target": "CatalystLifecycleAgent / RecoveryStrategyWritebackAgent",
+          "minimum_field_package": "至少覆盖新鲜、再生后和活性下降三个状态点。",
+          "gate_ready": true,
+          "gate_score": 1.0,
+          "blockers": [],
+          "current_evidence": {
+            "data_origin": "synthetic",
+            "tables": {
+              "catalyst_lifecycle": {
+                "status": "import_ready",
+                "record_count": 8,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              },
+              "offline_lab_results": {
+                "status": "import_ready",
+                "record_count": 24,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              }
+            }
+          }
+        },
+        {
+          "gate_id": "G4_loop_time_budget_alignment",
+          "title": "循环时间预算与回退门槛验收",
+          "required_tables": [
+            "campaign_operation_log",
+            "offline_lab_results"
+          ],
+          "acceptance_rule": "动作开始/结束、验证耗时、回流/暂存参数和成功标记必须完整。",
+          "model_target": "CampaignTelemetryAgent / RecoveryRampAgent / RecoveryOnlineControlAgent",
+          "minimum_field_package": "至少 1 个完整 campaign，含一次回流或暂存动作。",
+          "gate_ready": true,
+          "gate_score": 1.0,
+          "blockers": [],
+          "current_evidence": {
+            "data_origin": "synthetic",
+            "tables": {
+              "campaign_operation_log": {
+                "status": "import_ready",
+                "record_count": 35,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              },
+              "offline_lab_results": {
+                "status": "import_ready",
+                "record_count": 24,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              }
+            }
+          }
+        },
+        {
+          "gate_id": "G5_cost_deployment_alignment",
+          "title": "成本和部署接口验收",
+          "required_tables": [
+            "cost_deployment",
+            "campaign_operation_log"
+          ],
+          "acceptance_rule": "传感器、试剂、催化剂、人工与接口成本必须可追溯到部署项和 lead time。",
+          "model_target": "SensitivityAnalysisAgent / ResourceExpansionAgent / LongTermEconomicsAgent",
+          "minimum_field_package": "至少包含传感器、离线检测、催化剂、氧化剂和 PLC/SCADA 接口条目。",
+          "gate_ready": true,
+          "gate_score": 1.0,
+          "blockers": [],
+          "current_evidence": {
+            "data_origin": "synthetic",
+            "tables": {
+              "cost_deployment": {
+                "status": "import_ready",
+                "record_count": 4,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              },
+              "campaign_operation_log": {
+                "status": "import_ready",
+                "record_count": 35,
+                "field_coverage": 1.0,
+                "volume_coverage": 1.0
+              }
+            }
+          }
+        }
+      ],
+      "calibration_sequence": [
+        {
+          "phase_id": "P0_field_snapshot",
+          "title": "冻结现场原始数据快照",
+          "action": "先建立 raw/imported/accepted 三层数据目录，记录采样设备、人员和导入版本。",
+          "upstream_task_ready": true,
+          "current_blockers": []
+        },
+        {
+          "phase_id": "P1_sensor_noise_drift",
+          "title": "标定传感噪声与漂移",
+          "action": "更新 DataQualityAgent 阈值、sensor_confidence 和采样噪声模型。",
+          "upstream_task_ready": true,
+          "current_blockers": []
+        },
+        {
+          "phase_id": "P2_soft_sensor_retraining",
+          "title": "重训软传感器",
+          "action": "用离线标签校准污染物残留、反应完成度、副产物风险和达标概率。",
+          "upstream_task_ready": true,
+          "current_blockers": []
+        },
+        {
+          "phase_id": "P3_catalyst_lifecycle",
+          "title": "校准催化剂寿命",
+          "action": "更新再生/更换门槛、寿命衰减和压降风险。",
+          "upstream_task_ready": true,
+          "current_blockers": []
+        },
+        {
+          "phase_id": "P4_loop_time_budget",
+          "title": "校准循环时间预算",
+          "action": "更新暂存/回流/验证错峰收益和 0.75/0.60 恢复边界。",
+          "upstream_task_ready": true,
+          "current_blockers": []
+        },
+        {
+          "phase_id": "P5_cost_deployment",
+          "title": "校准成本与部署接口",
+          "action": "更新传感器经济性、资源扩容成本和 PLC/SCADA 接口约束。",
+          "upstream_task_ready": true,
+          "current_blockers": []
+        }
+      ],
+      "writeback_plan": [
+        {
+          "target": "DataQualityAgent",
+          "writeback": "sensor_ranges、rate_limits、flatline_eps、sensor_confidence thresholds"
+        },
+        {
+          "target": "SoftSensorAgent",
+          "writeback": "soft_sensor_calibrator、label windows、uncertainty calibration"
+        },
+        {
+          "target": "ValidationPlanningAgent",
+          "writeback": "offline validation delay、release gate、qa_flag weighting"
+        },
+        {
+          "target": "CatalystLifecycleAgent",
+          "writeback": "regen threshold、replacement urgency、lifetime decay curve"
+        },
+        {
+          "target": "RecoveryOnlineControlAgent",
+          "writeback": "next_intake_fraction、fallback triggers、campaign review gates"
+        },
+        {
+          "target": "LongTermEconomicsAgent",
+          "writeback": "unit costs、lead times、staff capacity、deployment interface points"
+        }
+      ],
+      "runbook": [
+        {
+          "step": "R1_collect",
+          "title": "采集最小现场数据包",
+          "detail": "先围绕同一批次采集 sensor_timeseries、offline_lab_results 和 campaign_operation_log，再补 catalyst_lifecycle 与 cost_deployment。",
+          "exit_criteria": "G0-G2 通过，且 batch_id 可回连。"
+        },
+        {
+          "step": "R2_accept",
+          "title": "运行验收门",
+          "detail": "逐表检查必需字段、主键重复、记录量、qa_flag、时间窗口和跨表 batch_id。",
+          "exit_criteria": "当前通过 5/6 个 gate。"
+        },
+        {
+          "step": "R3_calibrate",
+          "title": "按 P1-P5 写回模型",
+          "detail": "先写回数据质控和软传感，再写回催化剂、时间预算和成本部署参数。",
+          "exit_criteria": "校准后重新运行 closed_loop、scenario_sweep、robustness 和 recovery online control。"
+        },
+        {
+          "step": "R4_audit",
+          "title": "形成现场校准审计包",
+          "detail": "保留原始数据、清洗脚本、参数 diff、回归结果和边界说明。",
+          "exit_criteria": "回归结果不低于当前基线：153 passed。"
+        }
+      ],
+      "readiness": {
+        "calibration_gate_status": "calibration_protocol_ready_waiting_for_field_data",
+        "gate_score": 0.833,
+        "accepted_gate_count": 5,
+        "total_gate_count": 6,
+        "data_origin": "synthetic",
+        "field_data_required": true,
+        "blocking_gates": [
+          "G0_data_origin"
+        ]
+      }
+    },
+    "issues": [
+      {
+        "sensor": "field_calibration_gate",
+        "issue_type": "field_data_required_before_calibration",
+        "severity": "info",
+        "message": "当前只能生成校准门控和采集验收计划；必须导入真实 field 数据后才能执行参数校准。",
+        "evidence": {
+          "data_origin": "synthetic",
+          "blocking_gates": [
+            "G0_data_origin"
+          ]
+        }
+      }
+    ]
+  },
+  "generated_files": {
+    "calibration_protocol": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_calibration_protocol.md",
+    "acceptance_gates": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_data_acceptance_gates.md",
+    "calibration_runbook": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_calibration_runbook.md",
+    "agent34_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent34_field_calibration_gate/agent34_report.md"
+  }
+}
