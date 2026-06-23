@@ -1,5 +1,5 @@
 {
-  "source_report": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent22_control_baseline_update/agent22_report.json",
+  "source_report": "outputs/agent22_control_baseline_update/agent22_report.json",
   "campaign": {
     "records": [
       {

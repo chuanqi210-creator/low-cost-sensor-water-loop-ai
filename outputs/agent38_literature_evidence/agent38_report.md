@@ -6,10 +6,10 @@
 
 ## 生成文件
 
-- literature_evidence_matrix: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/literature_evidence_matrix.md`
-- literature_evidence_schema: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/literature_evidence_schema.md`
-- agent38_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent38_literature_evidence/agent38_report.md`
-- literature_evidence_records: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent38_literature_evidence/literature_evidence_records.json`
+- literature_evidence_matrix: `deliverables/literature_evidence_matrix.md`
+- literature_evidence_schema: `deliverables/literature_evidence_schema.md`
+- agent38_report: `outputs/agent38_literature_evidence/agent38_report.md`
+- literature_evidence_records: `outputs/agent38_literature_evidence/literature_evidence_records.json`
 
 ## 风险边界
 

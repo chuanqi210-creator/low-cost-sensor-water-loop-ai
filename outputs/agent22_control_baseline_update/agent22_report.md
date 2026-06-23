@@ -1,6 +1,6 @@
 # Agent 22 控制基线写回模拟报告
 
-- source_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent21_replanning_orchestrator/agent21_report.json`
+- source_report: `outputs/agent21_replanning_orchestrator/agent21_report.json`
 - summary: 控制基线更新：已写回 baseline_v1_replan，下一轮保护性进水比例 0.45。
 - update_required: `True`
 - baseline_version: `baseline_v1_replan`

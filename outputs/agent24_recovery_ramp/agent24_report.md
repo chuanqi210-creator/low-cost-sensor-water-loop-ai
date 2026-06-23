@@ -1,6 +1,6 @@
 # Agent 24 恢复放量爬坡验证报告
 
-- source_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent22_control_baseline_update/agent22_report.json`
+- source_report: `outputs/agent22_control_baseline_update/agent22_report.json`
 - summary: 恢复爬坡：partial_ramp_hold；稳定轮次 1/2，安全进水上限 0.6，实际吞吐 0.625。
 - verdict: `partial_ramp_hold`
 - start_fraction: `0.45`

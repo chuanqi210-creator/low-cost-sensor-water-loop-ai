@@ -9,10 +9,10 @@
 
 ## 生成文件
 
-- schema: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/field_data_schema.json`
-- templates: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/field_data_templates`
-- synthetic_package: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/synthetic_field_data_package`
-- doc: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/docs/field_data_interface_spec.md`
+- schema: `outputs/agent30_field_data_interface/field_data_schema.json`
+- templates: `outputs/agent30_field_data_interface/field_data_templates`
+- synthetic_package: `outputs/agent30_field_data_interface/synthetic_field_data_package`
+- doc: `docs/field_data_interface_spec.md`
 
 ## 数据表状态
 

@@ -8,9 +8,9 @@
 
 ## 生成文件
 
-- minimal_grey_box_physics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/minimal_grey_box_physics.md`
-- agent53_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent53_minimal_grey_box_physics/agent53_report.md`
-- grey_box_physics_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/minimal_grey_box_physics/grey_box_physics_metrics.json`
+- minimal_grey_box_physics: `deliverables/minimal_grey_box_physics.md`
+- agent53_report: `outputs/agent53_minimal_grey_box_physics/agent53_report.md`
+- grey_box_physics_metrics: `outputs/minimal_grey_box_physics/grey_box_physics_metrics.json`
 
 ## 风险边界
 

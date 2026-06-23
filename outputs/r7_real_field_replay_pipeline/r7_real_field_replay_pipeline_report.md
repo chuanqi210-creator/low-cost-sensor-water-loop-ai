@@ -1,7 +1,7 @@
 # R7 Real Field Replay Pipeline 报告
 
 - source_package_type：`header_only_template_preflight`
-- package_dir：`/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template`
+- package_dir：`outputs/field_replay_import/real_field_package_template`
 - submission_readiness_status：`field_package_submission_blocked_at_import_preflight`
 - submission_highest_priority_blocker：`R7A_IMPORT_PREFLIGHT`
 - submission_next_operator_action：`repair_metadata_headers_and_real_rows_before_agent42`

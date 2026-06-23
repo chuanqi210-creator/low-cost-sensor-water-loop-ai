@@ -11,10 +11,10 @@
 
 ## 生成文件
 
-- catalyst_activity_proxy: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/catalyst_activity_proxy.md`
-- agent51_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent51_catalyst_activity_proxy/agent51_report.md`
-- catalyst_activity_proxy_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_activity_proxy/catalyst_activity_proxy_metrics.json`
-- field_proxy_holdout_summary: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_activity_proxy/field_proxy_holdout_summary.json`
+- catalyst_activity_proxy: `deliverables/catalyst_activity_proxy.md`
+- agent51_report: `outputs/agent51_catalyst_activity_proxy/agent51_report.md`
+- catalyst_activity_proxy_metrics: `outputs/catalyst_activity_proxy/catalyst_activity_proxy_metrics.json`
+- field_proxy_holdout_summary: `outputs/catalyst_activity_proxy/field_proxy_holdout_summary.json`
 
 ## 风险边界
 

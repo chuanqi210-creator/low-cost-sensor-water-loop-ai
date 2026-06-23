@@ -7,7 +7,7 @@
   "source_slice_path": "",
   "base_package_path": "",
   "base_package_supplied": false,
-  "candidate_package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_slice_r7_patch_candidate/r7_patch_candidate_package",
+  "candidate_package_dir": "outputs/catalyst_slice_r7_patch_candidate/r7_patch_candidate_package",
   "patch_status": "catalyst_slice_r7_patch_waiting_for_valid_catalyst_slice",
   "slice_preflight_status": "catalyst_field_package_slice_waiting_for_CATALYST_FIELD_PACKAGE_SLICE_DIR",
   "slice_preflight_pass": false,

@@ -1,7 +1,7 @@
 {
-  "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+  "package_dir": "outputs/field_replay_import/real_field_package_template",
   "preflight": {
-    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "package_dir": "outputs/field_replay_import/real_field_package_template",
     "status": "field_package_template_ready_needs_real_values_and_rows",
     "required_files": [
       "metadata.json",
@@ -1411,7 +1411,7 @@
     "field_boundary": "Repair response preflight only checks operator response completeness. Even when it is ready, R7/Agent44 must still inspect the real package rows before any field evidence, actuator policy or release-gate claim can be created."
   },
   "field_package_coverage": {
-    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "package_dir": "outputs/field_replay_import/real_field_package_template",
     "metadata_fields": [
       "campaign_id",
       "chain_of_custody_id",
@@ -1425,7 +1425,7 @@
     ],
     "table_profiles": {
       "campaign_operation_log": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/campaign_operation_log.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/campaign_operation_log.csv",
         "headers": [
           "campaign_id",
           "batch_id",
@@ -1508,7 +1508,7 @@
         "pressure_headloss_quality": {}
       },
       "fast_proxy_event_log": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/fast_proxy_event_log.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/fast_proxy_event_log.csv",
         "headers": [
           "campaign_id",
           "batch_id",
@@ -1568,7 +1568,7 @@
         "pressure_headloss_quality": {}
       },
       "final_effluent_endpoint_labels": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/final_effluent_endpoint_labels.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/final_effluent_endpoint_labels.csv",
         "headers": [
           "batch_id",
           "endpoint_node_id",
@@ -1608,7 +1608,7 @@
         "pressure_headloss_quality": {}
       },
       "hydraulic_path_stage_labels": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/hydraulic_path_stage_labels.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/hydraulic_path_stage_labels.csv",
         "headers": [
           "batch_id",
           "layout_id",
@@ -1649,7 +1649,7 @@
         "pressure_headloss_quality": {}
       },
       "node_modality_sensor_timeseries": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/node_modality_sensor_timeseries.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/node_modality_sensor_timeseries.csv",
         "headers": [
           "batch_id",
           "timestamp_min",
@@ -1696,7 +1696,7 @@
         "pressure_headloss_quality": {}
       },
       "offline_lab_results": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/offline_lab_results.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/offline_lab_results.csv",
         "headers": [
           "batch_id",
           "sample_time_min",
@@ -1769,7 +1769,7 @@
         "pressure_headloss_quality": {}
       },
       "pressure_headloss_event_log": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/pressure_headloss_event_log.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/pressure_headloss_event_log.csv",
         "headers": [
           "campaign_id",
           "batch_id",
@@ -1839,7 +1839,7 @@
         }
       },
       "sensor_timeseries": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/sensor_timeseries.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/sensor_timeseries.csv",
         "headers": [
           "batch_id",
           "timestamp_min",
@@ -1888,7 +1888,7 @@
         "pressure_headloss_quality": {}
       },
       "site_topology_or_bed_geometry": {
-        "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template/site_topology_or_bed_geometry.csv",
+        "path": "outputs/field_replay_import/real_field_package_template/site_topology_or_bed_geometry.csv",
         "headers": [
           "node_id",
           "bed_volume",
@@ -3216,7 +3216,7 @@
     }
   },
   "agent51_field_proxy_holdout_summary": {
-    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "package_dir": "outputs/field_replay_import/real_field_package_template",
     "summary_id": "Agent51_catalyst_proxy_field_holdout_summary",
     "field_proxy_holdout_summary_status": "field_proxy_holdout_coverage_gaps",
     "source_basis": "field_package_extractor",

@@ -6,10 +6,10 @@
 
 ## 生成文件
 
-- knowledge_graph_curation: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/knowledge_graph_curation.md`
-- knowledge_graph_schema: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/knowledge_graph_schema.md`
-- agent37_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent37_knowledge_graph_curation/agent37_report.md`
-- knowledge_graph_records: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent37_knowledge_graph_curation/knowledge_graph_records.json`
+- knowledge_graph_curation: `deliverables/knowledge_graph_curation.md`
+- knowledge_graph_schema: `deliverables/knowledge_graph_schema.md`
+- agent37_report: `outputs/agent37_knowledge_graph_curation/agent37_report.md`
+- knowledge_graph_records: `outputs/agent37_knowledge_graph_curation/knowledge_graph_records.json`
 
 ## 风险边界
 

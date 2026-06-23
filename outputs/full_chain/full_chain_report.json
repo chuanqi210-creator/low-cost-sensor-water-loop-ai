@@ -79,7 +79,7 @@
       "model_info": {
         "model_used": true,
         "model_version": "rf_multioutput_v3_catalyst",
-        "model_path": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/models/soft_sensor_calibrator.pkl",
+        "model_path": "models/soft_sensor_calibrator.pkl",
         "blend_alpha": 0.491,
         "model_prediction": {
           "pollutant_residual_risk": 0.084,

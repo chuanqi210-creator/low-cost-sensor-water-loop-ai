@@ -101,7 +101,7 @@
 - source package route preflight：source_package_route_preflight_waiting_for_source_package_submission
 - source package recommended route preflight：recommended_route_preflight_waiting_for_direct_source_package
 - source package ready/waiting/blocked routes：0/3/0
-- completion plan 路径：/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_plan.json
+- completion plan 路径：outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_plan.json
 
 ## 全局七层系统骨架
 

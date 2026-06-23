@@ -7,10 +7,10 @@
 
 ## 生成文件
 
-- calibration_protocol: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_calibration_protocol.md`
-- acceptance_gates: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_data_acceptance_gates.md`
-- calibration_runbook: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_calibration_runbook.md`
-- agent34_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent34_field_calibration_gate/agent34_report.md`
+- calibration_protocol: `deliverables/field_calibration_protocol.md`
+- acceptance_gates: `deliverables/field_data_acceptance_gates.md`
+- calibration_runbook: `deliverables/field_calibration_runbook.md`
+- agent34_report: `outputs/agent34_field_calibration_gate/agent34_report.md`
 
 ## 建议
 

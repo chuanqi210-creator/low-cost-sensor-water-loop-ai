@@ -11,7 +11,7 @@
 - filled_work_package_count: `7`
 - expected_work_package_count: `7`
 - source_env_var: `FORMAL_SEARCH_RESULT_PACKAGE_PATH`
-- package_path: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json`
+- package_path: `outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json`
 - can_route_to_agent60_formal_search_preflight: `True`
 - can_generate_prior_art_result: `False`
 - legal_opinion_allowed: `False`
@@ -29,7 +29,7 @@
 
 ## Handoff Commands
 
-- `export FORMAL_SEARCH_RESULT_PACKAGE_PATH=/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json`
+- `export FORMAL_SEARCH_RESULT_PACKAGE_PATH=outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json`
 - `.venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py`
 - `.venv/bin/python experiments/run_external_activation_router.py`
 - `.venv/bin/python experiments/run_agent50_model_core_governance.py`

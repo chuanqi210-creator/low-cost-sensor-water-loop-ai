@@ -1,9 +1,9 @@
 {
   "source_reports": {
-    "agent23": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent23_post_replan_replay/agent23_report.json",
-    "agent25": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent25_time_budget_recovery/agent25_report.json",
-    "agent27": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent27_recovery_execution_replay/agent27_report.json",
-    "agent28": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent28_recovery_online_control/agent28_report.json"
+    "agent23": "outputs/agent23_post_replan_replay/agent23_report.json",
+    "agent25": "outputs/agent25_time_budget_recovery/agent25_report.json",
+    "agent27": "outputs/agent27_recovery_execution_replay/agent27_report.json",
+    "agent28": "outputs/agent28_recovery_online_control/agent28_report.json"
   },
   "project_synthesis": {
     "agent_name": "project_synthesis_agent",
@@ -304,11 +304,11 @@
         },
         {
           "artifact": "agent29_report",
-          "path": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent29_project_synthesis/agent29_report.md"
+          "path": "outputs/agent29_project_synthesis/agent29_report.md"
         },
         {
           "artifact": "project_overview",
-          "path": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/docs/project_overview_28_agent.md"
+          "path": "docs/project_overview_28_agent.md"
         }
       ],
       "latest_control_state": {

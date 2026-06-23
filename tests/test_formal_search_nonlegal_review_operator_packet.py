@@ -1,6 +1,34 @@
 from water_ai.formal_search_nonlegal_review_operator_packet import (
     build_formal_search_nonlegal_review_operator_packet,
 )
+from experiments.run_formal_search_nonlegal_review_operator_packet import (
+    PROJECT_ROOT,
+    _local_project_path_from_handoff,
+)
+
+
+def test_runner_rebases_legacy_upstream_package_path_to_current_project() -> None:
+    legacy_roots = (
+        "/legacy/workspaces/low-cost-sensor-water-loop-ai",
+        "/legacy/workspaces/low-cost-sensor-water-loop-ai-cn",
+        "/legacy/workspaces/py-learning/low-cost-sensor-water-loop-ai-cn",
+    )
+
+    expected = str(
+        PROJECT_ROOT
+        / "outputs"
+        / "agent_architecture_consolidation"
+        / "preliminary_formal_search_result_package.json"
+    )
+    for legacy_root in legacy_roots:
+        legacy_path = (
+            f"{legacy_root}/outputs/agent_architecture_consolidation/"
+            "preliminary_formal_search_result_package.json"
+        )
+
+        rebased = _local_project_path_from_handoff(legacy_path)
+
+        assert rebased == expected
 
 
 def test_operator_packet_compresses_human_review_handoff_without_unlocking_claim_patch() -> None:

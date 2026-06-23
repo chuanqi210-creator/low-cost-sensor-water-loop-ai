@@ -8,10 +8,10 @@
 
 ## 生成文件
 
-- engineering_execution_constraints: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/engineering_execution_constraints.md`
-- agent55_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent55_engineering_execution_constraints/agent55_report.md`
-- engineering_constraints_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/engineering_execution_constraints/engineering_constraints_metrics.json`
-- agent49_engineering_patched_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent55_engineering_execution_constraints/agent49_engineering_patched_report.md`
+- engineering_execution_constraints: `deliverables/engineering_execution_constraints.md`
+- agent55_report: `outputs/agent55_engineering_execution_constraints/agent55_report.md`
+- engineering_constraints_metrics: `outputs/engineering_execution_constraints/engineering_constraints_metrics.json`
+- agent49_engineering_patched_report: `outputs/agent55_engineering_execution_constraints/agent49_engineering_patched_report.md`
 
 ## 风险边界
 

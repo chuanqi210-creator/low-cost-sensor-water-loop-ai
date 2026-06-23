@@ -8,10 +8,10 @@
 
 ## 生成文件
 
-- knowledge_graph_reasoning: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/knowledge_graph_reasoning.md`
-- agent_chain_retrospective: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_core_optimization/agent_chain_retrospective.md`
-- agent56_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent56_knowledge_graph_reasoning/agent56_report.md`
-- kg_reasoning_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/knowledge_graph_reasoning/kg_reasoning_metrics.json`
+- knowledge_graph_reasoning: `deliverables/knowledge_graph_reasoning.md`
+- agent_chain_retrospective: `deliverables/model_core_optimization/agent_chain_retrospective.md`
+- agent56_report: `outputs/agent56_knowledge_graph_reasoning/agent56_report.md`
+- kg_reasoning_metrics: `outputs/knowledge_graph_reasoning/kg_reasoning_metrics.json`
 
 ## 主链回接
 

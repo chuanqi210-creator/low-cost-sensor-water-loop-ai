@@ -7,8 +7,8 @@
   "source_package": "R7_Agent44_real_field_package",
   "target_package": "R8p_pressure_resolution_replay_rows",
   "r7_package_env_override": "REAL_FIELD_REPLAY_PACKAGE_DIR",
-  "staging_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staging_preflight.json",
-  "staged_draft_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json",
+  "staging_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staging_preflight.json",
+  "staged_draft_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json",
   "expected_tables": [
     "agent52_replay_table",
     "campaign_operation_log",

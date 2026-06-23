@@ -8,10 +8,10 @@
 
 ## 生成文件
 
-- visual_storyboard: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/visual_storyboard.md`
-- figure_specs: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/figure_specs.md`
-- slide_narrative_script: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/slide_narrative_script.md`
-- project_book_sections: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/project_book_sections.md`
+- visual_storyboard: `deliverables/visual_storyboard.md`
+- figure_specs: `deliverables/figure_specs.md`
+- slide_narrative_script: `deliverables/slide_narrative_script.md`
+- project_book_sections: `deliverables/project_book_sections.md`
 
 ## 建议
 

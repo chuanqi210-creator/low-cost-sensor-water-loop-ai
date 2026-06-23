@@ -11,7 +11,7 @@ This packet is a machine-readable handoff for the human nonlegal technical compa
 - linked_ai_brief_status: `formal_search_ai_nonlegal_review_brief_ready_for_human_review`
 - linked_review_readiness_status: `formal_search_review_blocked_at_result_package_source_preflight`
 - upstream_source_env_var: `FORMAL_SEARCH_RESULT_PACKAGE_PATH`
-- upstream_formal_search_result_package_path: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json`
+- upstream_formal_search_result_package_path: `outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json`
 - source_env_var: `FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH`
 - recommended_output_path: `outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response.json`
 - expected_review_packet_row_count: `7`
@@ -60,7 +60,7 @@ This packet is a machine-readable handoff for the human nonlegal technical compa
 
 ## Validation Commands
 
-- `FORMAL_SEARCH_RESULT_PACKAGE_PATH=/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH=outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response.json .venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py`
+- `FORMAL_SEARCH_RESULT_PACKAGE_PATH=outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH=outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response.json .venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py`
 - `.venv/bin/python experiments/run_agent50_model_core_governance.py`
 
 ## Boundary

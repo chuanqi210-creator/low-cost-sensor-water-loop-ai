@@ -1,5 +1,5 @@
 {
-  "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/synthetic_replay_import_package",
+  "package_dir": "outputs/field_replay_import/synthetic_replay_import_package",
   "status": "field_package_preflight_blocked_non_field_origin",
   "required_files": [
     "metadata.json",
@@ -88,7 +88,8 @@
           "lab_label_time_min",
           "detection_limit",
           "method",
-          "unit"
+          "unit",
+          "sample_source"
         ],
         "actual_headers": [
           "batch_id",
@@ -106,7 +107,8 @@
           "lab_label_time_min",
           "detection_limit",
           "method",
-          "unit"
+          "unit",
+          "sample_source"
         ]
       },
       "campaign_operation_log": {
@@ -138,7 +140,8 @@
           "hold_time_min",
           "regeneration_event",
           "bed_id",
-          "pressure_headloss_review_required"
+          "pressure_headloss_review_required",
+          "operator_override"
         ],
         "actual_headers": [
           "campaign_id",
@@ -159,7 +162,9 @@
           "pressure_headloss_review_required"
         ],
         "missing_required_headers": [],
-        "missing_optional_headers": []
+        "missing_optional_headers": [
+          "operator_override"
+        ]
       },
       "pressure_headloss_event_log": {
         "exists": true,
@@ -266,7 +271,12 @@
           "sensor_status",
           "instrument_id",
           "acquisition_time_min",
-          "ingest_time_min"
+          "ingest_time_min",
+          "layout_id",
+          "availability_mask",
+          "time_since_last_observed_min",
+          "data_origin",
+          "sensor_value"
         ],
         "actual_headers": [],
         "missing_headers": [
@@ -279,7 +289,12 @@
           "sensor_status",
           "instrument_id",
           "acquisition_time_min",
-          "ingest_time_min"
+          "ingest_time_min",
+          "layout_id",
+          "availability_mask",
+          "time_since_last_observed_min",
+          "data_origin",
+          "sensor_value"
         ],
         "row_count": 0,
         "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
@@ -291,14 +306,102 @@
           "node_id",
           "bed_volume",
           "nominal_HRT_min",
-          "flow_Lmin"
+          "flow_Lmin",
+          "site_id",
+          "zone",
+          "upstream_node_id",
+          "downstream_node_id",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "nominal_flow_Lmin",
+          "recycle_ratio",
+          "release_boundary_flag",
+          "recirculation_loop_flag"
         ],
         "actual_headers": [],
         "missing_headers": [
           "node_id",
           "bed_volume",
           "nominal_HRT_min",
-          "flow_Lmin"
+          "flow_Lmin",
+          "site_id",
+          "zone",
+          "upstream_node_id",
+          "downstream_node_id",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "nominal_flow_Lmin",
+          "recycle_ratio",
+          "release_boundary_flag",
+          "recirculation_loop_flag"
+        ],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      },
+      "hydraulic_path_stage_labels": {
+        "exists": false,
+        "status": "supplement_missing_optional_file",
+        "expected_headers": [
+          "batch_id",
+          "layout_id",
+          "node_id",
+          "zone",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "stage_coverage_label",
+          "direct_path_stage_coverage_label",
+          "proxy_path_stage_coverage_label",
+          "label_source",
+          "reviewer_id",
+          "review_time_min"
+        ],
+        "actual_headers": [],
+        "missing_headers": [
+          "batch_id",
+          "layout_id",
+          "node_id",
+          "zone",
+          "path_stage_id",
+          "hydraulic_path_role",
+          "stage_coverage_label",
+          "direct_path_stage_coverage_label",
+          "proxy_path_stage_coverage_label",
+          "label_source",
+          "reviewer_id",
+          "review_time_min"
+        ],
+        "row_count": 0,
+        "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+      },
+      "final_effluent_endpoint_labels": {
+        "exists": false,
+        "status": "supplement_missing_optional_file",
+        "expected_headers": [
+          "batch_id",
+          "endpoint_node_id",
+          "sample_time_min",
+          "final_effluent_direct_observed",
+          "release_gate_label",
+          "release_risk_label",
+          "analyte",
+          "value",
+          "unit",
+          "qa_flag",
+          "reviewer_id"
+        ],
+        "actual_headers": [],
+        "missing_headers": [
+          "batch_id",
+          "endpoint_node_id",
+          "sample_time_min",
+          "final_effluent_direct_observed",
+          "release_gate_label",
+          "release_risk_label",
+          "analyte",
+          "value",
+          "unit",
+          "qa_flag",
+          "reviewer_id"
         ],
         "row_count": 0,
         "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
@@ -319,7 +422,12 @@
         "sensor_status",
         "instrument_id",
         "acquisition_time_min",
-        "ingest_time_min"
+        "ingest_time_min",
+        "layout_id",
+        "availability_mask",
+        "time_since_last_observed_min",
+        "data_origin",
+        "sensor_value"
       ],
       "actual_headers": [],
       "missing_headers": [
@@ -332,7 +440,12 @@
         "sensor_status",
         "instrument_id",
         "acquisition_time_min",
-        "ingest_time_min"
+        "ingest_time_min",
+        "layout_id",
+        "availability_mask",
+        "time_since_last_observed_min",
+        "data_origin",
+        "sensor_value"
       ],
       "row_count": 0,
       "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
@@ -344,14 +457,102 @@
         "node_id",
         "bed_volume",
         "nominal_HRT_min",
-        "flow_Lmin"
+        "flow_Lmin",
+        "site_id",
+        "zone",
+        "upstream_node_id",
+        "downstream_node_id",
+        "path_stage_id",
+        "hydraulic_path_role",
+        "nominal_flow_Lmin",
+        "recycle_ratio",
+        "release_boundary_flag",
+        "recirculation_loop_flag"
       ],
       "actual_headers": [],
       "missing_headers": [
         "node_id",
         "bed_volume",
         "nominal_HRT_min",
-        "flow_Lmin"
+        "flow_Lmin",
+        "site_id",
+        "zone",
+        "upstream_node_id",
+        "downstream_node_id",
+        "path_stage_id",
+        "hydraulic_path_role",
+        "nominal_flow_Lmin",
+        "recycle_ratio",
+        "release_boundary_flag",
+        "recirculation_loop_flag"
+      ],
+      "row_count": 0,
+      "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+    },
+    "hydraulic_path_stage_labels": {
+      "exists": false,
+      "status": "supplement_missing_optional_file",
+      "expected_headers": [
+        "batch_id",
+        "layout_id",
+        "node_id",
+        "zone",
+        "path_stage_id",
+        "hydraulic_path_role",
+        "stage_coverage_label",
+        "direct_path_stage_coverage_label",
+        "proxy_path_stage_coverage_label",
+        "label_source",
+        "reviewer_id",
+        "review_time_min"
+      ],
+      "actual_headers": [],
+      "missing_headers": [
+        "batch_id",
+        "layout_id",
+        "node_id",
+        "zone",
+        "path_stage_id",
+        "hydraulic_path_role",
+        "stage_coverage_label",
+        "direct_path_stage_coverage_label",
+        "proxy_path_stage_coverage_label",
+        "label_source",
+        "reviewer_id",
+        "review_time_min"
+      ],
+      "row_count": 0,
+      "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
+    },
+    "final_effluent_endpoint_labels": {
+      "exists": false,
+      "status": "supplement_missing_optional_file",
+      "expected_headers": [
+        "batch_id",
+        "endpoint_node_id",
+        "sample_time_min",
+        "final_effluent_direct_observed",
+        "release_gate_label",
+        "release_risk_label",
+        "analyte",
+        "value",
+        "unit",
+        "qa_flag",
+        "reviewer_id"
+      ],
+      "actual_headers": [],
+      "missing_headers": [
+        "batch_id",
+        "endpoint_node_id",
+        "sample_time_min",
+        "final_effluent_direct_observed",
+        "release_gate_label",
+        "release_risk_label",
+        "analyte",
+        "value",
+        "unit",
+        "qa_flag",
+        "reviewer_id"
       ],
       "row_count": 0,
       "field_boundary": "Optional for Agent44 import, but required by R7j when Agent51 catalyst proxy holdout is evaluated."
@@ -369,6 +570,11 @@
   "real_rows_ready": true,
   "agent44_import_status": "field_replay_import_blocked_non_field_origin",
   "agent44_import_score": 0.6,
+  "agent44_blocking_table_statuses": {},
+  "agent44_type_error_count": 0,
+  "agent44_type_error_tables": {},
+  "agent44_required_field_blockers": {},
+  "agent44_linkage_blockers": {},
   "can_pass_to_timestamped_replay": false,
   "next_actions": [
     "Use this package only for interface testing; create a separate package with data_origin=field and real provenance before replay.",

@@ -1,6 +1,6 @@
 {
-  "source_report": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent27_recovery_execution_replay/agent27_report.json",
-  "baseline_report": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent26_recovery_strategy_writeback/agent26_report.json",
+  "source_report": "outputs/agent27_recovery_execution_replay/agent27_report.json",
+  "baseline_report": "outputs/agent26_recovery_strategy_writeback/agent26_report.json",
   "recovery_online_control": {
     "agent_name": "recovery_online_control_agent",
     "confidence": 0.7,

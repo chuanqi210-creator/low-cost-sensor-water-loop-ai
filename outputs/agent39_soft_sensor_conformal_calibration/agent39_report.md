@@ -7,9 +7,9 @@
 
 ## 生成文件
 
-- soft_sensor_conformal_calibration: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/soft_sensor_conformal_calibration.md`
-- agent39_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent39_soft_sensor_conformal_calibration/agent39_report.md`
-- conformal_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_training/soft_sensor_conformal_metrics.json`
+- soft_sensor_conformal_calibration: `deliverables/soft_sensor_conformal_calibration.md`
+- agent39_report: `outputs/agent39_soft_sensor_conformal_calibration/agent39_report.md`
+- conformal_metrics: `outputs/soft_sensor_training/soft_sensor_conformal_metrics.json`
 
 ## 风险边界
 

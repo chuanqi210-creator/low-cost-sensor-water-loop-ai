@@ -1,8 +1,8 @@
 {
   "source_reports": {
-    "agent29": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent29_project_synthesis/agent29_report.json",
-    "agent30": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/agent30_report.json",
-    "agent31": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent31_deliverable_organization/agent31_report.json"
+    "agent29": "outputs/agent29_project_synthesis/agent29_report.json",
+    "agent30": "outputs/agent30_field_data_interface/agent30_report.json",
+    "agent31": "outputs/agent31_deliverable_organization/agent31_report.json"
   },
   "presentation_assets": {
     "agent_name": "presentation_asset_agent",
@@ -234,9 +234,9 @@
     ]
   },
   "generated_files": {
-    "visual_storyboard": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/visual_storyboard.md",
-    "figure_specs": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/figure_specs.md",
-    "slide_narrative_script": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/slide_narrative_script.md",
-    "project_book_sections": "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/project_book_sections.md"
+    "visual_storyboard": "deliverables/visual_storyboard.md",
+    "figure_specs": "deliverables/figure_specs.md",
+    "slide_narrative_script": "deliverables/slide_narrative_script.md",
+    "project_book_sections": "deliverables/project_book_sections.md"
   }
 }

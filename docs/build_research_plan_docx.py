@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from docx import Document
 from docx.enum.table import WD_ALIGN_VERTICAL
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -6,7 +8,7 @@ from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 
 
-OUT = "/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理重大项目研究方案.docx"
+OUT = Path(__file__).resolve().with_name("研究方案_Word兼容版.docx")
 
 BLUE = RGBColor(46, 116, 181)
 DARK_BLUE = RGBColor(31, 77, 120)

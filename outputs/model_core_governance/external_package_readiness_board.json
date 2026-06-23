@@ -2,7 +2,7 @@
   "board_metadata": {
     "board_id": "R8u154_external_package_readiness_board",
     "board_role": "new_core_external_package_readiness_queue",
-    "created_at": "2026-06-22T09:33:04Z",
+    "created_at": "2026-06-23T03:40:14Z",
     "source_gate_id": "R8u147_new_core_interface_candidate_gate",
     "source_gate_status": "new_core_interface_candidate_gate_ready_with_ranked_contracts"
   },

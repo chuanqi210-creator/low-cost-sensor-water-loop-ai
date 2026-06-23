@@ -6,9 +6,9 @@
 
 ## 生成文件
 
-- model_realism_audit: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_realism_audit.md`
-- model_upgrade_backlog: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/model_upgrade_backlog.md`
-- agent35_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent35_model_realism_audit/agent35_report.md`
+- model_realism_audit: `deliverables/model_realism_audit.md`
+- model_upgrade_backlog: `deliverables/model_upgrade_backlog.md`
+- agent35_report: `outputs/agent35_model_realism_audit/agent35_report.md`
 
 ## 优先建议
 

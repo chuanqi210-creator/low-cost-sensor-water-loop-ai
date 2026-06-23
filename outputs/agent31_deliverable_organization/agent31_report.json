@@ -1,8 +1,8 @@
 {
-  "source_manifest": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/manifest.json",
+  "source_manifest": "deliverables/manifest.json",
   "source_reports": {
-    "agent29": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent29_project_synthesis/agent29_report.json",
-    "agent30": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/agent30_report.json"
+    "agent29": "outputs/agent29_project_synthesis/agent29_report.json",
+    "agent30": "outputs/agent30_field_data_interface/agent30_report.json"
   },
   "deliverable_organization": {
     "agent_name": "deliverable_organization_agent",
@@ -1016,10 +1016,10 @@
     ]
   },
   "generated_files": {
-    "executive_brief": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/executive_brief.md",
-    "presentation_outline": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/presentation_outline.md",
-    "key_metrics_table": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/key_metrics_table.md",
-    "artifact_index": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/artifact_index.md",
-    "calibration_task_board": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/calibration_task_board.md"
+    "executive_brief": "deliverables/executive_brief.md",
+    "presentation_outline": "deliverables/presentation_outline.md",
+    "key_metrics_table": "deliverables/key_metrics_table.md",
+    "artifact_index": "deliverables/artifact_index.md",
+    "calibration_task_board": "deliverables/calibration_task_board.md"
   }
 }

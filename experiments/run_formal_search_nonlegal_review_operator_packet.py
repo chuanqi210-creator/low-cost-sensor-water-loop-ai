@@ -10,6 +10,11 @@ from water_ai.formal_search_nonlegal_review_operator_packet import (
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+LEGACY_PROJECT_ROOTS = (
+    Path("/legacy/workspaces/low-cost-sensor-water-loop-ai"),
+    Path("/legacy/workspaces/low-cost-sensor-water-loop-ai-cn"),
+    Path("/legacy/workspaces/py-learning/low-cost-sensor-water-loop-ai-cn"),
+)
 MANIFEST_PATH = PROJECT_ROOT / "deliverables" / "manifest.json"
 AGENT60_DIR = PROJECT_ROOT / "outputs" / "agent_architecture_consolidation"
 AI_BRIEF_PATH = AGENT60_DIR / "formal_search_ai_nonlegal_review_brief.json"
@@ -44,8 +49,8 @@ def main() -> None:
         claim_scope_patch_draft=_read_json(CLAIM_SCOPE_PATCH_DRAFT_PATH),
         upstream_formal_search_result_package_path=_upstream_formal_search_result_package_path(),
     )
-    OUT_PATH.write_text(json.dumps(packet, ensure_ascii=False, indent=2), encoding="utf-8")
-    REPORT_PATH.write_text(_report_md(packet), encoding="utf-8")
+    _write_json(OUT_PATH, packet)
+    _write_text(REPORT_PATH, _report_md(packet))
     _update_manifest(packet)
 
     metadata = packet["operator_packet_metadata"]
@@ -65,6 +70,18 @@ def _read_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _write_json(path: Path, payload: Any) -> None:
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _write_text(path: Path, content: str) -> None:
+    path.write_text(content, encoding="utf-8")
+
+
+def _project_relative(path: Path) -> str:
+    return str(path.relative_to(PROJECT_ROOT))
 
 
 def _report_md(packet: dict[str, Any]) -> str:
@@ -171,11 +188,11 @@ def _update_manifest(packet: dict[str, Any]) -> None:
     action = packet["operator_action"]
     downstream = packet["downstream_state"]
     boundary = packet["boundary"]
-    manifest["latest_formal_search_nonlegal_review_operator_packet"] = str(
-        OUT_PATH.relative_to(PROJECT_ROOT)
+    manifest["latest_formal_search_nonlegal_review_operator_packet"] = _project_relative(
+        OUT_PATH
     )
-    manifest["latest_formal_search_nonlegal_review_operator_packet_report"] = str(
-        REPORT_PATH.relative_to(PROJECT_ROOT)
+    manifest["latest_formal_search_nonlegal_review_operator_packet_report"] = _project_relative(
+        REPORT_PATH
     )
     manifest["latest_formal_search_nonlegal_review_operator_packet_status"] = metadata[
         "packet_status"
@@ -219,7 +236,7 @@ def _update_manifest(packet: dict[str, Any]) -> None:
     manifest["latest_formal_search_nonlegal_review_operator_packet_can_write_to_release_gate"] = (
         boundary["can_write_to_release_gate"]
     )
-    MANIFEST_PATH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    _write_json(MANIFEST_PATH, manifest)
 
 
 def _upstream_formal_search_result_package_path() -> str:
@@ -228,7 +245,20 @@ def _upstream_formal_search_result_package_path() -> str:
         "preliminary_formal_search_package_ready_for_FORMAL_SEARCH_RESULT_PACKAGE_PATH"
     ):
         return ""
-    return str(handoff.get("package_path", ""))
+    return _local_project_path_from_handoff(str(handoff.get("package_path", "")))
+
+
+def _local_project_path_from_handoff(package_path: str) -> str:
+    if not package_path:
+        return ""
+    path = Path(package_path)
+    for legacy_root in LEGACY_PROJECT_ROOTS:
+        try:
+            relative_path = path.relative_to(legacy_root)
+        except ValueError:
+            continue
+        return str(PROJECT_ROOT / relative_path)
+    return package_path
 
 
 if __name__ == "__main__":

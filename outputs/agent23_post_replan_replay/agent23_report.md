@@ -1,6 +1,6 @@
 # Agent 23 重规划后回放验证报告
 
-- source_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent22_control_baseline_update/agent22_report.json`
+- source_report: `outputs/agent22_control_baseline_update/agent22_report.json`
 - summary: 重规划回放：validated；验证占用 1.406 -> 0.337，时间占用 1.188 -> 0.755。
 - verdict: `validated`
 - impact_score: `0.864`

@@ -321,7 +321,7 @@
     "proxy_case_count": 4
   },
   "field_proxy_holdout_summary": {
-    "package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template",
+    "package_dir": "outputs/field_replay_import/real_field_package_template",
     "summary_id": "Agent51_catalyst_proxy_field_holdout_summary",
     "field_proxy_holdout_summary_status": "field_proxy_holdout_coverage_gaps",
     "source_basis": "field_package_extractor",

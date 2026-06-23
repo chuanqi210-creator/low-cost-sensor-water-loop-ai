@@ -1,7 +1,7 @@
 # Agent 28 恢复在线控制接入报告
 
-- source_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent27_recovery_execution_replay/agent27_report.json`
-- baseline_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent26_recovery_strategy_writeback/agent26_report.json`
+- source_report: `outputs/agent27_recovery_execution_replay/agent27_report.json`
+- baseline_report: `outputs/agent26_recovery_strategy_writeback/agent26_report.json`
 - summary: 恢复在线控制：maintain_conditional_recovery；下一轮进水 0.75，重规划 False。
 - recovery_control_mode: `maintain_conditional_recovery`
 - next_intake_fraction: `0.75`

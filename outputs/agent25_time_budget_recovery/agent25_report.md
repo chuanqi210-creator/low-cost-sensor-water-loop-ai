@@ -1,7 +1,7 @@
 # Agent 25 时间预算恢复方案报告
 
-- source_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent24_recovery_ramp/agent24_report.json`
-- baseline_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent22_control_baseline_update/agent22_report.json`
+- source_report: `outputs/agent24_recovery_ramp/agent24_report.json`
+- baseline_report: `outputs/agent22_control_baseline_update/agent22_report.json`
 - summary: 时间预算恢复：target_recovery_feasible；推荐 stagger_validation_overlap，目标进水 0.75，时间占用 0.884。
 - verdict: `target_recovery_feasible`
 - target_intake_fraction: `0.75`

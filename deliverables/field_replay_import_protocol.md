@@ -1,7 +1,7 @@
 # Field Replay Import Protocol
 
 - source_package_type：`synthetic_interface_package`
-- source_package_dir：`/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/synthetic_replay_import_package`
+- source_package_dir：`outputs/field_replay_import/synthetic_replay_import_package`
 - preflight_status：`field_package_preflight_blocked_non_field_origin`
 - field_replay_import_status：`field_replay_import_blocked_non_field_origin`
 - field_replay_import_score：`0.6`
@@ -11,7 +11,7 @@
 - can_pass_to_timestamped_replay：`False`
 - can_pass_to_g6：`False`
 - can_write_to_protective_control：`False`
-- real_field_template_optional_supplements：`['node_modality_sensor_timeseries.csv', 'site_topology_or_bed_geometry.csv']`
+- real_field_template_optional_supplements：`['node_modality_sensor_timeseries.csv', 'site_topology_or_bed_geometry.csv', 'hydraulic_path_stage_labels.csv', 'final_effluent_endpoint_labels.csv']`
 - real_field_template_preflight_status：`field_package_template_ready_needs_real_values_and_rows`
 
 ## 方法契约
@@ -42,8 +42,10 @@
 
 | Supplement Table | 状态 | 行数 | 缺失字段 |
 | --- | --- | --- | --- |
-| `node_modality_sensor_timeseries` | `supplement_missing_optional_file` | `0` | `['batch_id', 'timestamp_min', 'node_id', 'zone', 'modality', 'value', 'sensor_status', 'instrument_id', 'acquisition_time_min', 'ingest_time_min']` |
-| `site_topology_or_bed_geometry` | `supplement_missing_optional_file` | `0` | `['node_id', 'bed_volume', 'nominal_HRT_min', 'flow_Lmin']` |
+| `node_modality_sensor_timeseries` | `supplement_missing_optional_file` | `0` | `['batch_id', 'timestamp_min', 'node_id', 'zone', 'modality', 'value', 'sensor_status', 'instrument_id', 'acquisition_time_min', 'ingest_time_min', 'layout_id', 'availability_mask', 'time_since_last_observed_min', 'data_origin', 'sensor_value']` |
+| `site_topology_or_bed_geometry` | `supplement_missing_optional_file` | `0` | `['node_id', 'bed_volume', 'nominal_HRT_min', 'flow_Lmin', 'site_id', 'zone', 'upstream_node_id', 'downstream_node_id', 'path_stage_id', 'hydraulic_path_role', 'nominal_flow_Lmin', 'recycle_ratio', 'release_boundary_flag', 'recirculation_loop_flag']` |
+| `hydraulic_path_stage_labels` | `supplement_missing_optional_file` | `0` | `['batch_id', 'layout_id', 'node_id', 'zone', 'path_stage_id', 'hydraulic_path_role', 'stage_coverage_label', 'direct_path_stage_coverage_label', 'proxy_path_stage_coverage_label', 'label_source', 'reviewer_id', 'review_time_min']` |
+| `final_effluent_endpoint_labels` | `supplement_missing_optional_file` | `0` | `['batch_id', 'endpoint_node_id', 'sample_time_min', 'final_effluent_direct_observed', 'release_gate_label', 'release_risk_label', 'analyte', 'value', 'unit', 'qa_flag', 'reviewer_id']` |
 
 - R7j supplement 对 Agent44 导入是 optional；当 R7 coverage 消费 Agent51 weak_axis_repair_plan 时，它会成为 catalyst proxy field holdout 的证据要求。
 
@@ -53,17 +55,19 @@
 | --- | --- | --- | --- |
 | `node_modality_sensor_timeseries` | `supplement_header_ready` | `0` | `[]` |
 | `site_topology_or_bed_geometry` | `supplement_header_ready` | `0` | `[]` |
+| `hydraulic_path_stage_labels` | `supplement_header_ready` | `0` | `[]` |
+| `final_effluent_endpoint_labels` | `supplement_header_ready` | `0` | `[]` |
 
 ## 生成文件
 
-- field_replay_import_protocol: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_replay_import_protocol.md`
-- agent44_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent44_field_replay_import/agent44_report.md`
-- import_acceptance_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/import_acceptance_metrics.json`
-- preflight_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_preflight_metrics.json`
-- template_preflight_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template_preflight_metrics.json`
-- import_schema: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/import_schema.json`
-- real_field_package_template: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template`
-- input_replay_package: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/synthetic_replay_import_package`
+- field_replay_import_protocol: `deliverables/field_replay_import_protocol.md`
+- agent44_report: `outputs/agent44_field_replay_import/agent44_report.md`
+- import_acceptance_metrics: `outputs/field_replay_import/import_acceptance_metrics.json`
+- preflight_metrics: `outputs/field_replay_import/real_field_package_preflight_metrics.json`
+- template_preflight_metrics: `outputs/field_replay_import/real_field_package_template_preflight_metrics.json`
+- import_schema: `outputs/field_replay_import/import_schema.json`
+- real_field_package_template: `outputs/field_replay_import/real_field_package_template`
+- input_replay_package: `outputs/field_replay_import/synthetic_replay_import_package`
 
 ## 结论
 

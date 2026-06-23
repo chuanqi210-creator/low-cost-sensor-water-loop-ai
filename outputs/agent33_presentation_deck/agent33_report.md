@@ -8,10 +8,10 @@
 
 ## 生成文件
 
-- claim_spine: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/deck_claim_spine.md`
-- design_system: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/deck_design_system.md`
-- qa_checklist: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/deck_qa_checklist.md`
-- pptx: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/deliverables/ppt/low_cost_water_ai_formal_deck.pptx`
+- claim_spine: `deliverables/deck_claim_spine.md`
+- design_system: `deliverables/deck_design_system.md`
+- qa_checklist: `deliverables/deck_qa_checklist.md`
+- pptx: `deliverables/ppt/low_cost_water_ai_formal_deck.pptx`
 
 ## 建议
 

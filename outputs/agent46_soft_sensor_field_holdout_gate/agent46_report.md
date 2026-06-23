@@ -7,9 +7,9 @@
 
 ## 生成文件
 
-- soft_sensor_field_holdout_gate: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/soft_sensor_field_holdout_gate.md`
-- agent46_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent46_soft_sensor_field_holdout_gate/agent46_report.md`
-- field_holdout_gate_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_field_holdout_gate/field_holdout_gate_metrics.json`
+- soft_sensor_field_holdout_gate: `deliverables/soft_sensor_field_holdout_gate.md`
+- agent46_report: `outputs/agent46_soft_sensor_field_holdout_gate/agent46_report.md`
+- field_holdout_gate_metrics: `outputs/soft_sensor_field_holdout_gate/field_holdout_gate_metrics.json`
 
 ## 风险边界
 

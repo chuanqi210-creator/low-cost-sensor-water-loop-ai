@@ -6,18 +6,28 @@ This project is the focused Codex workspace for the low-cost sensing circular wa
 
 ## Defaults
 
-- Preserve the original source directory at `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目`; do not mutate it unless explicitly asked.
+- Treat this repository as the sole active project workspace. Do not rely on, mutate, or route commands through any pre-migration project directory.
 - Keep code, experiments, reports, and model artifacts traceable.
 - Put runtime code in `src/`, runnable experiment scripts in `experiments/`, tests in `tests/`, and publishable outputs in `deliverables/` or `outputs/`.
 - Keep heavy or generated local artifacts out of Git when already ignored, especially `.venv/`, `.pytest_cache/`, `__pycache__/`, `*.pkl`, and `.worktrees/`.
 - If creating worktrees, use `.worktrees/` and verify it is ignored before adding a worktree.
+- Create and use this repository's own Python 3.12 virtual environment at `.venv/`; do not borrow another project's virtual environment.
+
+## Capability Discovery
+
+- At the start of each task, review the currently injected skills and read the `SKILL.md` for every triggered skill before acting.
+- Use `tool_search` to look for useful tools, plugins, connectors, or APIs that may not already be exposed, especially for GitHub, browser, automation, document, data-analysis, and API-reference work.
+- When a task depends on an external API, platform rule, or recently changing capability, prefer official documentation or existing project documentation as the source of truth.
+- Re-evaluate available capabilities at major phase changes: after understanding the request, before implementation, before verification or release, and when a new domain or blocker appears.
+- In the final report, state which skills/tools were actually used and which relevant capabilities were considered but not used, with the reason.
+- Use `skill-creator` only when creating or updating a reusable Codex skill; do not use it as a general discovery entrypoint.
 
 ## Verification
 
 Prefer lightweight checks before broad reruns:
 
 ```bash
-python3 -m pytest -q
+.venv/bin/python -m pytest -q
 ```
 
 If dependency installation or a full test run is too costly, run the smallest relevant test file and record the reason in `操作记录.md`.

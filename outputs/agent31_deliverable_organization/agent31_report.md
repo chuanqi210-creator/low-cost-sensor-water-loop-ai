@@ -7,11 +7,11 @@
 
 ## 生成文件
 
-- executive_brief: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/executive_brief.md`
-- presentation_outline: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/presentation_outline.md`
-- key_metrics_table: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/key_metrics_table.md`
-- artifact_index: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/artifact_index.md`
-- calibration_task_board: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/calibration_task_board.md`
+- executive_brief: `deliverables/executive_brief.md`
+- presentation_outline: `deliverables/presentation_outline.md`
+- key_metrics_table: `deliverables/key_metrics_table.md`
+- artifact_index: `deliverables/artifact_index.md`
+- calibration_task_board: `deliverables/calibration_task_board.md`
 
 ## 执行摘要
 

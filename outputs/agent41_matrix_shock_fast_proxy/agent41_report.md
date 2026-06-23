@@ -8,9 +8,9 @@
 
 ## 生成文件
 
-- matrix_shock_fast_proxy_control: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/matrix_shock_fast_proxy_control.md`
-- agent41_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent41_matrix_shock_fast_proxy/agent41_report.md`
-- fast_proxy_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/matrix_shock_fast_proxy/fast_proxy_metrics.json`
+- matrix_shock_fast_proxy_control: `deliverables/matrix_shock_fast_proxy_control.md`
+- agent41_report: `outputs/agent41_matrix_shock_fast_proxy/agent41_report.md`
+- fast_proxy_metrics: `outputs/matrix_shock_fast_proxy/fast_proxy_metrics.json`
 
 ## 风险边界
 

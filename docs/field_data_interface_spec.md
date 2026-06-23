@@ -9,9 +9,9 @@ Agent30 的作用是把当前仿真研究平台推进到真实数据校准阶段
 - 数据来源：`synthetic`。
 - 接口状态：`template_ready_not_field_validated`。
 - 校准就绪度：`1.0`。
-- 生成 schema：`/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/field_data_schema.json`。
-- 生成采集模板：`/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/field_data_templates`。
-- 合成样例数据包：`/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent30_field_data_interface/synthetic_field_data_package`。
+- 生成 schema：`outputs/agent30_field_data_interface/field_data_schema.json`。
+- 生成采集模板：`outputs/agent30_field_data_interface/field_data_templates`。
+- 合成样例数据包：`outputs/agent30_field_data_interface/synthetic_field_data_package`。
 
 ## 数据表契约
 

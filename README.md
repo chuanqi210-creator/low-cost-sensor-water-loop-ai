@@ -1,232 +1,176 @@
-# 低成本传感循环式水处理智能闭环项目
+# Low-Cost Sensor Water Loop AI
 
-本项目把研究方案整理成一个可持续迭代的实验工作区，目标是逐步构建：
+低成本传感循环式水处理智能闭环研究原型。
 
-1. 循环式水处理过程模拟器
-2. 低成本传感数据与故障注入
-3. 软传感器灰箱状态估计
-4. 多智能体机理诊断
-5. 闭环控制与回流决策
+This repository contains a reproducible Python research workspace for exploring how low-cost sensing, grey-box soft sensing, evidence gates, and multi-agent decision logic can support circular water-treatment control.
 
-当前迭代状态：
+The project is intentionally conservative: it can simulate, replay, validate interfaces, rank protective actions, and prepare operator handoffs, but it does not claim field performance until real field packages pass the required evidence gates.
 
-- 已归档研究方案 Word：`docs/研究方案_Word兼容版.docx`
-- 已归档 Word 生成脚本：`docs/build_research_plan_docx.py`
-- 已新增系统规格说明：`docs/agent_system_spec.md`
-- 已新增项目级总览：`docs/project_overview_28_agent.md`
-- 已新增真实数据接口规范：`docs/field_data_interface_spec.md`
-- 已新增整理阶段成果包入口：`deliverables/README.md`
-- 已完成原有模型本体、Agent60 架构复盘治理与 Agent61/R8p pressure resolution replay 采集链：R1/R1b 统一 evidence gate 与 source_basis detail，R2 合并 Agent48/51/54 观测契约，R3/R3b/R3c 打通 Agent49/52 控制 replay、reward prior guardrail 和 guardrail-aware replay，R4/R4b/R5/R6 完成“控制失败 -> 灰箱边界 -> field requirement -> schema 覆盖 -> source_basis detail”的回传链；R8u-5 已把无真实包时的 fallback 推进为 `field_rows_patch_plan`，R8u-6 已让 Agent60 消费该补包计划，R8u-7 已新增 `field_rows_operator_handoff`，R8u-8 已新增机器可读 `pressure_resolution_replay_rows_schema.json`，R8u-9 已新增运行时 `field_rows_schema_validation`，R8u-10 已新增机器可读 `pressure_resolution_replay_rows_collection_checklist.json`，R8u-11 已把 `data_origin` field provenance gate 扩展到全部 6 张必需表，synthetic/template/TODO 来源会在 R8p acceptance 前被拒绝；R8u-12 已把 non-field `data_origin` 前移到 schema/provenance preflight，生成 `field_origin_gap_count`、`schema_validation_failed_provenance_contract` 和 `R8p_fix_field_origin_provenance` 补包动作；R8u-13 已把 TODO/template/sample 占位值前移到 schema/template-marker preflight，生成 `template_marker_gap_count`、`schema_validation_failed_template_marker_contract` 和 `R8p_replace_template_markers_with_field_values` 补包动作；R8u-14 已新增 `pressure_resolution_replay_rows_batch_bundle_preflight.json`，把同一 `batch_id` 是否同时覆盖 6 张必需表、每个场景是否具备 complete candidate bundle 和缺表补包动作前移到 scenario acceptance 之前；R8u-15 已新增 `pressure_resolution_replay_rows_temporal_window_preflight.json`，把传感采样、压力事件、快代理、离线标签和 hold/recycle 时间窗是否支撑低频证据到达前移到 scenario acceptance 之前；R8u-16 已新增 `pressure_resolution_replay_rows_scenario_semantic_preflight.json`，把未解决冲突必须保持人工复核/控制阻断、已解决冲突必须具备 authoritative source/resolution record、guardrail clearance 必须无复核/阻断标志前移到 scenario acceptance 之前；R8u-17 已新增 `pressure_resolution_replay_rows_downstream_routing_preflight.json`，把 R8p accepted rows 到 Agent51 holdout、Agent49 guardrail context、Agent52 replay clearance 和 R7 evidence chain 的下游路由边界固化为 R8v 合同。当前主任务仍是 `R7a_import_real_field_package_with_metadata_and_csv`；无真实包时的离线核心 fallback 为 `R8p_fix_field_rows_source_preflight`，当前 schema validation 为 `schema_validation_blocked_at_source_preflight`，collection checklist 为 `field_rows_collection_checklist_ready_needs_source_package`，template marker preflight 为 `template_marker_preflight_blocked_at_source_preflight`，provenance gate 为 `all_required_tables_require_field_origin`，provenance preflight 为 `provenance_preflight_blocked_at_source_preflight`，batch bundle preflight 为 `batch_bundle_preflight_blocked_at_source_preflight`，temporal window preflight 为 `temporal_window_preflight_blocked_at_source_preflight`，scenario semantic preflight 为 `scenario_semantic_preflight_blocked_at_source_preflight`，downstream routing preflight 为 `downstream_routing_preflight_blocked_at_source_preflight`，缺失 6 张必需表，最高优先补包项为 `R8P_SOURCE_MISSING_FIELD_ROWS_FILE`。
-- R8u-18 已把 R8p 真实 pressure-resolution 行包入口从单一 JSON 表映射扩展为 `json_table_mapping` 或 `metadata.json + 六张 CSV` 目录包，并按 R8p schema 对 CSV 数字/布尔字段做保守类型转换；目录包仍只改进采集/导入工程性，不能绕过 field provenance、TODO/template、同批次六表、时间窗、场景语义、R8v 路由和 R7 evidence chain。
-- R8u-19 已生成 R8p CSV/metadata 采集目录模板：`outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/`，包含 `metadata.json` 与 6 张必需 CSV、共 30 条场景级 TODO 模板行；该目录是采集工单，不是现场证据，原样提交会被 template-marker gate 阻断。
-- R8u-20 已生成 R7-to-R8p 字段对齐矩阵：`outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_alignment.json`，明确 R7/Agent44 field package 可共享 5 张表，但仍需 10 个 R8p operator/supplement 字段和 11 个 Agent52 replay export 字段；该 crosswalk 是接口合同，不会从现场 CSV 伪造 replay 证据。
-- R8u-21 已把 R7-to-R8p crosswalk 推进为可执行 staging preflight：`outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staging_preflight.json` 和 `pressure_resolution_replay_rows_r7_staged_draft.json`。当设置 `REAL_FIELD_REPLAY_PACKAGE_DIR` 后，Agent61 可从 R7 共享 CSV/metadata 中生成 R8p draft，并逐字段标注 direct/alias/metadata copy、operator supplement gap 和 Agent52 replay export gap；默认无真实 R7 包时状态为 `r7_to_r8p_staging_preflight_no_r7_package_supplied`，不会产生 field evidence、actuator 写回或 release gate。
-- R8u-22 已把 R7-to-R8p staging gap 继续压实为机器可读 completion plan：`outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_plan.json`。当前无真实 R7 包时状态为 `r7_to_r8p_completion_plan_waiting_for_r7_package`，包含 6 个补齐项：1 个 R7 source package、4 个 operator supplement、1 个 Agent52 replay export；字段缺口按证据类别分离为 10 个 operator supplement 字段和 11 个 Agent52 replay export 字段。该 plan 是补包/导出工单，不是 field evidence。
-- R8u-23 已把 R8u-22 completion plan 回接到 Agent60 架构治理 fallback：当 R8o/R8p 已具备 schema、patch plan 和 operator handoff，但真实 pressure-resolution 行包仍停在 source preflight 时，Agent60 现在同步输出 `r7_completion_plan_status`、`r7_completion_item_class_counts`、`r7_completion_field_gap_count_by_class`、`r7_completion_required_execution_order` 和 completion plan 路径。当前离线 fallback 仍为 `R8p_fix_field_rows_source_preflight`，但下一步行动已从泛化补包进一步拆成 R7 source package、operator supplement 和 Agent52 replay export 三类证据路线；该治理写回仍不能产生 field evidence、actuator 写回或 release gate。
-- R8u-24 已把 R7-to-R8p completion plan 继续压实为 route execution contracts：`outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json`。该合同把补齐路线拆成 `r7_source_package`、`operator_supplement`、`agent52_replay_export` 和 `r8p_validation_gates` 四条 route，并为每条 route 写明 producer、input_contract、output_contract、required_fields_by_table、validation_gates、validation_command、downstream_consumers 与 failure_boundary。当前状态为 `completion_route_contracts_ready_waiting_for_r7_package`，open routes 为 4/4；Agent60 fallback 已消费 `r7_completion_route_contracts_status`、`r7_completion_open_route_count` 和 `r7_completion_open_route_ids`。该 route contract 是接口合同，不是现场证据，不能写 actuator 或 release gate。
-- R8u-25 已把 R8u-24 route contracts 进一步压实为 route work packages：`outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_packages.json`。四个 work package 分别面向 R7 source package、operator supplement、Agent52 replay export 和 R8p validation gates，逐项写明 expected_input_files、expected_output_files、required_fields_by_table、submission_contract、acceptance_checks、validation_command、evidence_level_after_package 和 failure_boundary。当前状态为 `route_work_packages_ready_waiting_for_r7_package`，open work packages 为 4/4；Agent60 fallback 已消费 `r7_completion_route_work_packages_status`、`r7_completion_open_work_package_count` 和 `r7_completion_open_work_package_ids`。该 work package 是工程交付接口，不是现场证据，不能写 actuator 或 release gate。
-- R8u-26 已把 R8u-25 work packages 推进为可填报模板与 submission preflight：模板目录为 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/`，preflight 输出为 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_preflight.json`。模板按四个 work package 生成子目录、`submission_manifest.json`、CSV header 和 JSON placeholder；默认未设置 `R7_TO_R8P_WORK_PACKAGE_DIR` 时，preflight 状态为 `route_work_package_preflight_waiting_for_submission_dir`，submitted=0、passed=0、blocked=4。模板原样提交会被 TODO/header-only/provenance gap 阻断；该机制只提供提交入口与预检，不生成 field evidence，不写 actuator 或 release gate。
-- R8u-27 已把 R8u-26 submission preflight 推进为 route work package patch plan：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_patch_plan.json`。当前默认未设置 `R7_TO_R8P_WORK_PACKAGE_DIR` 时，状态为 `route_work_package_patch_plan_waiting_for_submission_dir`，`patch_item_count=1`，最高优先项为 `R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR`；如果提交模板目录，patch plan 会把缺文件、空 CSV、缺 header、invalid JSON、TODO/template marker、metadata provenance gap 和 project dependency gate 分别转成可执行修补项。Agent60 fallback 已消费该状态、patch item 数和最高修补项；该 patch plan 只指导修补提交包，不生成 field evidence，不写 actuator 或 release gate。
-- R8u-28 已把 R8u-27 patch plan 推进为 route work package assembly gate：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_assembly_gate.json`。该 gate 明确 6 个装配步骤：验证 work package 提交目录、stage R7 source package rows、merge operator supplement、merge Agent52 replay export、materialize R8p candidate rows package、重跑 R8p/R8v validation gates。当前默认仍因未设置 `R7_TO_R8P_WORK_PACKAGE_DIR` 阻断，状态为 `route_work_package_assembly_gate_blocked_waiting_for_submission_dir`，assembly_steps=6、ready=0、blocked=6；该 gate 只定义 candidate rows 装配顺序，不生成 field evidence，不写 actuator 或 release gate。
-- R8u-29 已把 Agent60 七层骨架和模块接口契约压成专利级技术特征 ledger：新增 `outputs/agent_architecture_consolidation/patent_technical_feature_ledger.json`。该 ledger 覆盖 M1-M8 八条技术特征，逐条写明技术问题、技术手段、系统结构、状态变量、控制动作、实施例、验证指标、技术效果、现有技术区别、claim skeleton role、证据边界和失败边界；M9 展示层被排除。当前 `technical_feature_coverage_rate=1.0`、`abstract_only_feature_ids=[]`、`field_claim_upgrade_allowed=False`，说明它只是技术交底成熟度 scaffold，不生成 field evidence，不写 actuator 或 release gate。
-- R8u-30 已把 R8u-29 技术特征 ledger 进一步组合成 technical claim skeleton scaffold：新增 `outputs/agent_architecture_consolidation/technical_claim_skeleton_scaffold.json`。该 scaffold 包含 2 个独立方向：低成本稀疏传感循环式灰箱闭环控制方法、低成本传感循环式水处理智能灰箱闭环系统；以及 5 个从属/分案方向：催化剂活性代理观测与再生/更换、node-modality 稀疏布点与隐藏状态估计、现场 replay 证据门控与保护性写回、低频传感-循环窗口协同控制、灰箱机理约束下的多智能体安全仲裁。当前 `technical_claim_skeleton_coverage_rate=1.0`、`missing_feature_coverage=[]`、`field_claim_upgrade_allowed=False`，说明它只是方法/系统/从属方向的技术骨架，不是法律权利要求文本，不产生 field evidence。
-- R8u-31 已把 R8u-30 claim skeleton scaffold 推进为 technical embodiment validation matrix：新增 `outputs/agent_architecture_consolidation/technical_embodiment_validation_matrix.json`。该矩阵包含 6 个可验收实施例：端到端低成本循环式灰箱闭环、压力源冲突解除/R7-to-R8p work package 验收、催化剂活性代理观测与再生/更换、node-modality 稀疏布点、低频传感-循环窗口协同控制、灰箱机理约束下的多智能体安全仲裁。当前 `technical_embodiment_validation_coverage_rate=1.0`、`missing_claim_coverage=[]`、`missing_feature_coverage=[]`、`can_generate_field_evidence=False`、`can_write_to_actuator=False`、`can_write_to_release_gate=False`，说明它只定义实施例与验证门，不产生现场证据。
-- R8u-32 已把 R8u-31 implementation matrix 推进为 technical effect measurement matrix：新增 `outputs/agent_architecture_consolidation/technical_effect_measurement_matrix.json`。该矩阵包含 7 个可度量技术效果：稀疏感知可观测性提升、黑箱到灰箱状态估计、低频传感-循环窗口降低高频传感依赖、催化剂活性代理保护边界、field replay/release gate 防误放行、多智能体灰箱仲裁降低冲突动作、工程执行约束可行性。当前 `technical_effect_measurement_coverage_rate=1.0`、`missing_embodiment_coverage=[]`、`field_claim_upgrade_allowed=False`、`can_write_to_actuator=False`、`can_write_to_release_gate=False`，说明它只把技术效果转成基线、指标、阈值和验证门，不产生现场成立结论。
-- R8u-33 已把 R8u-32 技术效果矩阵推进为 prior-art distinction / protectability risk matrix：新增 `outputs/agent_architecture_consolidation/prior_art_distinction_matrix.json`。该矩阵包含 7 条区别假设：软传感/ML 与循环灰箱放行门控的区别、稀疏布点与 node-modality 隐藏状态布局的区别、多智能体/MARL 与灰箱安全仲裁的区别、flowsheet 优化与低成本观测门控灰箱控制的区别、Scientific KG 与 action constraint/claim gate 的区别、AI 催化剂发现与运行态催化剂活性保护的区别、普通 replay 验证与压力源冲突保护性 release gate 的区别。当前 `prior_art_distinction_coverage_rate=1.0`、`missing_claim_coverage=[]`、`missing_feature_coverage=[]`、`missing_effect_coverage=[]`、`formal_search_required=True`、`novelty_or_inventiveness_opinion_allowed=False`，说明它只是正式检索前的区别/风险假设，不是法律意见或授权判断。
-- R8u-34 已把 R8u-33 prior-art distinction matrix 推进为 formal search work packages：新增 `outputs/agent_architecture_consolidation/formal_search_work_packages.json`。该矩阵为 7 条区别假设分别生成正式检索工作包，逐项写明检索目标、CNIPA/Google Patents/Espacenet/WIPO/Scholar 等检索库、中英文检索式、分类号提示、需收集证据、负面证据检查、claim fallback、field validation gate 和决策规则。当前 `formal_search_work_package_coverage_rate=1.0`、`missing_distinction_coverage=[]`、`formal_search_completed=False`、`legal_opinion_allowed=False`、`field_claim_upgrade_allowed=False`，说明它只是检索任务和收窄路线，不是检索结果或法律意见。
-- R8u-35 已把 R8u-34 formal search work packages 推进为 formal search result intake schema：新增 `outputs/agent_architecture_consolidation/formal_search_result_intake_schema.json`。该 schema 为 7 个检索工作包分别定义 prior-art hit table 和 claim element comparison chart 的接收字段、输入工件、验收检查、阻断条件、最小证据要求和 claim scope decision options。当前 `formal_search_result_intake_coverage_rate=1.0`、`missing_work_package_coverage=[]`、`formal_search_result_supplied=False`、`accepted_hit_count=0`、`can_generate_prior_art_result=False`、`legal_opinion_allowed=False`，说明它只是结果接收门，不是 prior-art 结果、不是法律意见、不能升级 field claim。
-- R8u-36 已把 R8u-35 intake schema 推进为 formal search result validation gate：新增 `outputs/agent_architecture_consolidation/formal_search_result_validation_gate.json`。该 gate 为 7 个 intake 分别定义运行时验收规则，检查结果包是否可读、hit table/comparison chart 字段是否完整、source_database 是否属于对应检索工作包、matched_query 是否来自生成检索式或 reviewer-approved expansion、claim element comparison 是否覆盖 claim/feature/effect、reviewer 字段是否越界到法律结论或 field claim 升级。当前 `formal_search_result_validation_gate_coverage_rate=1.0`、`missing_intake_coverage=[]`、`formal_search_result_package_supplied=False`、`validated_hit_count=0`、`rejected_hit_count=0`、`can_generate_prior_art_result=False`、`legal_opinion_allowed=False`，说明它只是外部/人工检索结果包进入模型前的验证门，不是检索结论、不是法律意见、不能生成 field-supported claim。
-- R8u-37 已把 R8u-36 validation gate 推进为 formal search result package template 与 source preflight：新增 `outputs/agent_architecture_consolidation/formal_search_result_package_template.json` 和 `outputs/agent_architecture_consolidation/formal_search_result_package_source_preflight.json`。模板为 7 个检索工作包分别定义 package manifest、prior_art_hit_table、claim_element_comparison_chart 和 fallback_claim_scope_recommendation 的提交字段；source preflight 读取可选 `FORMAL_SEARCH_RESULT_PACKAGE_PATH`，先检查路径、JSON 根结构、`package_metadata`、`work_package_results`、工作包覆盖和必需表形状。当前 `formal_search_result_package_template_coverage_rate=1.0`、`formal_search_result_package_source_status=formal_search_result_package_preflight_waiting_for_submission_path`、`can_route_to_validation_gate=False`、`can_generate_prior_art_result=False`，说明尚未提交真实外部/人工检索结果包，不能进入 validation gate 或生成 prior-art comparison。
-- R8u-38 已把 R8u-37 template/preflight 推进为可填报 submission skeleton 与 template-marker preflight：新增 `outputs/agent_architecture_consolidation/formal_search_result_package_submission_template.json`。该 skeleton 包含 `package_metadata` 和 7 个 `work_package_results`，每个工作包预置 `package_manifest`、`prior_art_hit_table`、`claim_element_comparison_chart` 和 `fallback_claim_scope_recommendation` 占位行，并全部标记 `template_only=True`、`evidence_status=template_not_prior_art_evidence`。source preflight 现在会扫描 `TODO_*`、`template_not_prior_art_evidence`、`template_not_legal_opinion` 和 `template_only=true`；如果把 skeleton 原样作为 `FORMAL_SEARCH_RESULT_PACKAGE_PATH` 提交，会被 `formal_search_result_package_failed_template_marker_preflight` 阻断。当前默认未提交真实包时仍为 `formal_search_result_package_preflight_waiting_for_submission_path`，不能进入 validation gate 或生成 prior-art comparison。
-- R8u-39 已把 R8u-38 submission skeleton/source preflight 推进为 formal search result package row-level preflight：新增 `outputs/agent_architecture_consolidation/formal_search_result_package_row_preflight.json`。该 preflight 在 source/template-marker 通过后检查 `package_metadata`、work package manifest、prior_art_hit_table、claim_element_comparison_chart 和 fallback_claim_scope_recommendation 的行级必填字段、work_package 回连、source_database 是否属于允许检索库、matched_query 是否属于生成检索式/允许查询来源、comparison 是否覆盖 mapped claim/feature/effect，以及 reviewer 字段是否包含法律意见/现场 claim 越界文本。当前默认无提交包时状态为 `formal_search_result_package_row_preflight_blocked_at_source_preflight`，`can_route_to_validation_gate=False`，`can_generate_prior_art_result=False`；测试中的完整临时包可进入 validation gate，但仍不能生成 prior-art 结论、法律意见或 field-supported claim。
-- R8u-40 已把 R8u-39 row-level preflight 继续推进为 formal search result validation execution：新增 `outputs/agent_architecture_consolidation/formal_search_result_validation_execution.json`。该 execution 只在 row preflight 通过后读取正式检索结果包，统计 work package execution、validated/rejected hit、comparison/fallback 行数，并检查每个 hit 是否有 comparison 回连和 mapped claim/feature/effect 覆盖。当前默认无提交包时状态为 `formal_search_result_validation_execution_blocked_at_row_preflight`，validated/rejected hit 均为 0，`can_enter_human_nonlegal_comparison_review=False`，`can_generate_prior_art_result=False`；测试中的完整临时包可得到结构验收 ready，但仍不能生成法律意见、授权判断或 field-supported claim。
-- R8u-41 已把 R8u-40 validation execution 推进为 formal search nonlegal comparison review packet：新增 `outputs/agent_architecture_consolidation/formal_search_nonlegal_comparison_review_packet.json`。该 packet 只在 validation execution ready 后，为每个结构验收通过的 hit 生成人工非法律技术比较审查任务：要求 reviewer 填写 overlap assessment、distinguishing technical detail、fallback scope recommendation、preserved field validation gate 和 evidence boundary acknowledgement。当前默认状态为 `formal_search_nonlegal_review_packet_blocked_at_validation_execution`，review packet 行数为 0，`human_review_completed=False`，`can_generate_prior_art_result=False`；测试中的完整临时包可生成 7 行审查任务，但仍不产生审查结论、法律意见、授权判断或 field-supported claim。
-- R8u-42 已把 R8u-41 review packet 推进为 formal search nonlegal review response template/source preflight：新增 `outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response_template.json` 和 `outputs/agent_architecture_consolidation/formal_search_nonlegal_review_response_source_preflight.json`。该层定义人工 reviewer 如何回填非法律技术比较结果，要求 `FORMAL_SEARCH_NONLEGAL_REVIEW_RESPONSE_PATH` 指向包含 `review_metadata` 与 `review_rows` 的 JSON 包，并逐行检查 reviewer、review_time、nonlegal overlap、distinguishing technical detail、fallback scope、preserved field gate、evidence boundary 和 trace id。当前默认状态为 template 被 review packet 阻断、source preflight 被 template 阻断；测试中的完整临时回填包可进入 `claim_scope_patch_draft` 路由，但仍不能生成 prior-art 结论、法律意见、授权判断或 field-supported claim。
-- R8u-43 已把 R8u-42 的人工非法律回填 preflight 推进为 formal search claim scope patch draft scaffold：新增 `outputs/agent_architecture_consolidation/formal_search_claim_scope_patch_draft.json`。该层只在人工回填包通过结构、覆盖、template marker 和法律/field 边界检查后，把每条 reviewer response 转成 `claim_scope_patch_rows`，逐行保留 work package、hit、非法律 overlap、distinguishing technical detail、fallback scope recommendation、preserved field validation gate、trace id 和 `required_next_review=formal_patent_counsel_review_required`。当前默认状态为 `formal_search_claim_scope_patch_draft_blocked_at_nonlegal_review_response`、`draft_patch_count=0`；测试中的完整临时链路可生成 7 条 draft patch row 并路由到正式专利代理人审查，但仍 `can_emit_claim_text=False`、`can_generate_prior_art_result=False`、`legal_opinion_allowed=False`、`field_claim_upgrade_allowed=False`。
-- R8u-44 已把 R8u-43 的 claim scope patch draft 推进为 formal counsel review response template/source preflight：新增 `outputs/agent_architecture_consolidation/formal_counsel_review_response_template.json` 和 `outputs/agent_architecture_consolidation/formal_counsel_review_response_source_preflight.json`。该层要求 `FORMAL_COUNSEL_REVIEW_RESPONSE_PATH` 指向外部正式审查回填包，根对象包含 `review_metadata` 与 `review_rows`，逐行覆盖 claim scope patch id、work package、hit、formal reviewer、scope disposition、technical revision summary、disclosure revision、follow-up evidence/search 和 preserved field gate。当前默认状态为 `formal_counsel_review_response_template_blocked_at_claim_scope_patch_draft` 与 `formal_counsel_review_response_preflight_blocked_at_template`；测试中的完整临时链路可得到 `formal_counsel_review_response_ready_for_disclosure_revision_queue` 并路由到技术交底修订队列，但仍 `can_emit_claim_text=False`、`can_generate_prior_art_result=False`、`legal_opinion_allowed=False`、`field_claim_upgrade_allowed=False`。
-- R8u-45 已把 R8u-44 的 formal counsel response preflight 推进为 formal disclosure revision queue：新增 `outputs/agent_architecture_consolidation/formal_disclosure_revision_queue.json`。该 queue 只在外部正式审查回填包通过预检后，把 accepted formal review rows 转成 `disclosure_revision_items`，逐项保留 claim scope patch、work package、hit、scope disposition、approved technical revision summary、required disclosure revision、follow-up evidence/search 和 preserved field validation gate。当前默认状态为 `formal_disclosure_revision_queue_blocked_at_formal_counsel_review_response`、`revision_item_count=0`；测试中的完整临时链路可生成 7 条修订队列项并交给人工交底编辑，但仍 `can_apply_disclosure_revision_automatically=False`、`can_emit_claim_text=False`、`legal_opinion_allowed=False`、`field_claim_upgrade_allowed=False`。
-- R8u-46 已把 R8u-45 的 formal disclosure revision queue 推进为 formal disclosure revision impact plan：新增 `outputs/agent_architecture_consolidation/formal_disclosure_revision_impact_plan.json`。该 plan 只在修订队列 ready 后，把每条人工交底修订任务路由到 `patent_technical_feature_ledger`、`technical_claim_skeleton_scaffold`、`technical_embodiment_validation_matrix`、`technical_effect_measurement_matrix`、`prior_art_distinction_matrix` 等核心工件，必要时追加 `formal_search_work_package_matrix`；当前默认状态为 `formal_disclosure_revision_impact_plan_blocked_at_revision_queue`、`revision_impact_item_count=0`。测试中的完整临时链路可生成 7 条 impact item 并交给人工工件修订，但仍 `can_apply_artifact_patch_automatically=False`、`can_emit_claim_text=False`、`can_generate_prior_art_result=False`、`legal_opinion_allowed=False`、`field_claim_upgrade_allowed=False`。
-- R8u-47 已把 Agent61/R8p 的 `field_rows_submission_readiness_review` 回接到 Agent60 全局架构治理 fallback：新增/刷新 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_submission_readiness_review.json`，并在 `outputs/agent_architecture_consolidation/architecture_consolidation_metrics.json` 与 `deliverables/manifest.json` 中透传 `submission_readiness_review_status`、`submission_readiness_next_operator_action`、`submission_readiness_can_route_to_r8v`、直接 R8p 最高补包项和 R7-to-R8p 最高补包项。当前状态为 `submission_readiness_review_blocked_at_source_package`，下一步仍是 `R8p_fix_field_rows_source_preflight`，`can_route_to_r8v=False`；该 review 只汇总 source、schema/provenance、bundle、temporal、semantic、downstream routing 与 R7 work package assembly gate，不产生 field evidence，不写 actuator 或 release gate。
-- R8u-48 已把 R8u-47 的提交就绪审查继续压实为 source package submission route guide：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_source_package_submission_route_guide.json`。该 guide 将 `direct_r8p_json_table_mapping`、`direct_r8p_csv_directory` 和 `r7_to_r8p_route_work_package_submission` 三条路线并列，逐项写明提交目标、环境变量、必需表/字段、验证命令、最高补包项和失败边界；Agent60 fallback 已消费 `source_package_route_guide_status`、`source_package_recommended_route_id`、`source_package_next_operator_action` 和 `source_package_route_option_count`。当前推荐路线为 `direct_r8p_json_or_csv_source_package`，下一步为 `R8p_submit_direct_json_or_csv_source_package`，route option 数为 3，`can_route_to_r8v=False`；该 guide 只是提交路线导引，不产生 field evidence，不生成 Agent52 replay 行，不写 actuator 或 release gate。
-- R8u-49 已把 R8u-48 的路线导引继续压实为 source package route preflight：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_source_package_route_preflight.json`。该 preflight 对 `direct_r8p_json_table_mapping`、`direct_r8p_csv_directory` 和 `r7_to_r8p_route_work_package_submission` 三条路线分别给出 ready/waiting/blocked、当前路径、格式、验证命令、阻塞项和下一步动作；Agent60 fallback 已消费 `source_package_route_preflight_status`、`source_package_recommended_route_preflight_status`、`source_package_ready_route_count`、`source_package_waiting_route_count` 和 `source_package_blocked_route_count`。当前仍无真实 source package，所以状态为 `source_package_route_preflight_waiting_for_source_package_submission`，推荐入口仍是 `direct_r8p_json_or_csv_source_package`，ready/waiting/blocked=0/3/0，`can_route_to_r8v=False`；该 preflight 是路线可行动性元数据，不产生 field evidence，不写 actuator 或 release gate。
-- R8u-50 已把 R8v downstream routing 继续压实为 downstream route handoff：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_route_handoff.json`。该 handoff 把 R8v 的 Agent51 holdout、Agent49 guardrail context、Agent52 replay clearance 和 R7 evidence chain 四个目标逐一绑定到 required inputs、expected gate metrics、执行顺序、blocked writes 和 replay/holdout 边界；Agent60 的 R8v 推荐现在不仅要求 R8p 行级验收和 downstream routing 通过，还要求 `downstream_route_handoff_ready_for_r8v_target_gates`。当前仍无真实 source package，所以 handoff 状态为 `downstream_route_handoff_blocked_by_upstream_r8p_preflight`，ready/blocked=0/4，下一步仍是 `R8p_fix_field_rows_source_preflight`；该 handoff 是下游验证交接合同，不运行下游 gate，不产生 field evidence，不写 actuator 或 release gate。
-- R8u-51 已把 R8v downstream route handoff 继续压实为 downstream target gate preflight：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_preflight.json`。该 preflight 为 Agent51 catalyst proxy holdout、Agent49 guardrail context、Agent52 replay clearance 和 R7 evidence chain 四个目标分别绑定 validation command、required inputs、expected metrics artifact、输出合同、blocked writes 和 target-level blocking reasons；Agent60 的 R8v 推荐现在要求 R8p 行级验收、downstream routing、downstream route handoff 和 downstream target gate preflight 四层同时 ready。当前仍无真实 source package，所以 target gate preflight 状态为 `downstream_target_gate_preflight_blocked_by_downstream_route_handoff`，ready/blocked=0/4，下一步仍是 `R8p_fix_field_rows_source_preflight`；该 preflight 只准备下游 gate 执行合同，不运行下游 gate，不产生 field evidence，不写 actuator 或 release gate。
-- R8u-52 已把 R8v downstream target gate preflight 继续压实为 downstream target gate result intake schema/preflight：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_intake_schema.json` 和 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_preflight.json`。该层规定 Agent51/49/52/R7 四个目标 gate 返回结果包必须包含 target 覆盖、source metrics artifact、reported metrics、batch ids、人工复核边界和禁止写入标志；Agent60 已透传 result preflight 状态、submitted/accepted/rejected count 和下一步动作。当前仍无真实 source package，result preflight 被 target gate preflight 阻断，状态为 `downstream_target_gate_result_preflight_blocked_by_target_gate_preflight`，submitted/accepted/rejected=0/0/0，下一步仍是 `R8p_fix_field_rows_source_preflight`；该层只接收并预检下游 gate 结果包，不做结果仲裁，不写 actuator 或 release gate，不升级 field claim。
-- R8u-53 已把 R8u-52 result intake 推进为 downstream target gate result arbitration：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_arbitration.json`。该仲裁门在 result package 通过结构、source artifact、batch id、指标字段和禁止写入预检后，再汇总 Agent51/49/52/R7 四个目标 gate 的 `passed/failed/blocked/waiting_for_operator_review` 状态；只有四个目标均为 passed 时才允许进入 operator review，任何 failed、blocked、waiting、invalid 或 preflight 阻断都继续阻断控制和放行。当前仍无真实 source package，所以 arbitration 状态为 `downstream_target_gate_result_arbitration_blocked_by_result_preflight`，`can_route_to_operator_review=False`，`can_emit_protective_control_candidate=False`，下一步仍是 `R8p_fix_field_rows_source_preflight`；该层不是现场成功结论，不写 actuator 或 release gate。
-- R8u-54 已把 R8u-53 result arbitration 推进为 downstream target gate operator-review response gate：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_operator_review_template.json` 和 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_operator_review_preflight.json`。该层只有在四个 target gate 仲裁均 ready for operator review 后才读取 `R8V_TARGET_GATE_OPERATOR_REVIEW_PATH`，逐目标检查 operator decision、reviewer、review time、review notes、boundary acknowledgement 和禁止写入标志；全部人工批准时也只允许进入 post-review gate，仍不允许写 actuator、release gate 或 field-supported claim。当前仍无真实 source package，所以 operator-review preflight 状态为 `downstream_target_gate_operator_review_preflight_blocked_by_arbitration`，下一步仍是 `R8p_fix_field_rows_source_preflight`。
-- R8u-55 已把 R8u-54 operator-review response gate 继续推进为 downstream target gate post-review protective candidate gate：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_post_review_gate.json`。该层只有在四个 target gate 结果仲裁通过且四个目标均由人工明确批准后，才允许进入“保护性控制候选评估”；它仍只输出 candidate evaluation route，不写 actuator、不写 release gate、不升级 field-supported claim。当前仍无真实 source package，所以 post-review gate 状态为 `downstream_target_gate_post_review_gate_blocked_by_operator_review_preflight`，`can_route_to_protective_candidate_evaluation=False`，`can_emit_protective_control_candidate=False`，下一步仍是 `R8p_fix_field_rows_source_preflight`。
-- R8u-56 已把 R8u-55 post-review gate 继续推进为 protective-control candidate evaluation gate：新增 `outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_protective_candidate_evaluation.json`。该层把四个已人工批准的 target contribution 转成保护性候选动作包，候选动作只包括暂存、延长停留、回流/回用审查、加药调整候选、催化剂再生/更换审查、单元切换候选和继续阻断 release gate；即使候选评估通过，也仍需 policy gate、actuator safety interlock、operator final execution review、actuator feedback replay gate 和单独 release validation。当前仍无真实 source package，所以 candidate evaluation 状态为 `protective_candidate_evaluation_blocked_by_post_review_gate`，`can_emit_protective_control_candidate=False`，`can_route_to_final_execution_review=False`。
-- 已完成 Agent34 实证校准入口门控：生成现场实证校准协议、现场数据验收门和现场校准运行手册，当前状态为 `calibration_protocol_ready_waiting_for_field_data`。
-- 已完成 Agent35 模型真实性审计：生成 `deliverables/model_realism_audit.md` 和 `deliverables/model_upgrade_backlog.md`，明确当前最大短板是 field_rows=0、现场 holdout 缺失和知识库仍需系统综述式扩展。
-- 已完成 Agent36 软传感不确定性验证：生成 `deliverables/soft_sensor_uncertainty_validation.md`，当前已有 synthetic 不确定性层、预测区间和 OOD 风险门，但仍必须用真实离线标签做 field holdout 与保形校准。
-- 已完成 Agent37 知识图谱策展：生成 `deliverables/knowledge_graph_curation.md` 和 `deliverables/knowledge_graph_schema.md`，把知识库从条目清单升级为污染物-基质-材料-过程-信号-状态-证据轴矩阵，并明确 field-supported edges 仍为 0。
-- 已完成 Agent38 文献证据抽取：生成 `deliverables/literature_evidence_matrix.md` 和 `deliverables/literature_evidence_schema.md`，把多智能体催化剂发现、WWTP 软传感、动态控制、保形不确定性、Scientific KG、抗生素/染料/农药 AOP 文献转成模型升级证据 seed。
-- 已完成 Agent39 软传感保形校准：生成 `deliverables/soft_sensor_conformal_calibration.md` 和 `outputs/soft_sensor_training/soft_sensor_conformal_metrics.json`，把 Agent36 的 synthetic holdout 不确定性推进为 split conformal 校准接口；当前覆盖率为 0.975、平均区间宽度为 0.233，但 `can_write_to_release_gate=False`，必须等待真实 field holdout 后才能写入放行门。
-- 已完成 Agent40 灰箱动态延迟审计：生成 `deliverables/grey_box_dynamic_latency.md` 和 `outputs/grey_box_dynamic_latency/latency_budget_metrics.json`，把采样、质控、软传感、人工复核、离线检测、执行器、混合、暂存和回流显式建成时序约束；当前 synthetic replay 延迟违约率为 0.200，`matrix_shock` 的慢证据余量为 -31 min，必须用现场 timestamped campaign replay 校准。
-- 已完成 Agent41 基质冲击快代理与延迟感知控制：生成 `deliverables/matrix_shock_fast_proxy_control.md` 和 `outputs/matrix_shock_fast_proxy/fast_proxy_metrics.json`，用 EC、浊度、UV254、pH 和 ORP 快代理提前触发保护性 `switch_or_pretreat`，把 `matrix_shock` 暂存窗口从 35 min 增至 90 min；快代理只允许保护性控制，`release_policy` 仍为 `block_release_until_lab_and_field_conformal_calibration`。
-- 已完成 Agent42 现场时间戳回放接口：生成 `deliverables/timestamped_campaign_replay_schema.md`、`outputs/agent42_timestamped_campaign_replay/agent42_report.md` 和 `outputs/timestamped_campaign_replay/timestamped_replay_schema.json`，把 sensor、lab、operation 和 fast_proxy_event_log 对齐到同一 batch 时间轴；当前 synthetic timestamped package 只能验证接口，必须导入真实 field-labeled replay 后才能校准快代理 precision/recall、提前量和误触发成本。
-- 已完成 Agent43 现场回放校准门控：生成 `deliverables/field_replay_calibration_gate.md`、`outputs/agent43_field_replay_calibration_gate/agent43_report.md` 和 `outputs/field_replay_calibration_gate/g6_p6_gate_metrics.json`，把 Agent42 指标转成 G6/P6 硬验收门；当前 synthetic replay 被阻断，`can_write_to_protective_control=False`，只有真实 field-labeled replay 通过 precision/recall、提前量和误触发成本后才可写入保护性控制。
-- 已完成 Agent44 现场 replay 包导入门：生成 `deliverables/field_replay_import_protocol.md`、`outputs/agent44_field_replay_import/agent44_report.md`、`outputs/field_replay_import/import_acceptance_metrics.json` 和 `outputs/field_replay_import/import_schema.json`，先检查 metadata provenance、field origin、四张 CSV 字段、数字/布尔类型转换和 batch 回连；当前 synthetic 包被 `field_replay_import_blocked_non_field_origin` 阻断，真实包必须先通过 Agent44 才能进入 Agent42/Agent43。
-- 已完成 Agent45 现场 replay 证据链：生成 `deliverables/field_replay_evidence_chain.md`、`outputs/agent45_field_replay_evidence_chain/agent45_report.md` 和 `outputs/field_replay_evidence_chain/evidence_chain_metrics.json`，把 Agent44 导入门、Agent42 时间戳回放和 Agent43 G6/P6 串成不可绕过的证据链；当前 synthetic 包被挡在 import stage，不能产生保护性写回候选。
-- 已完成 Agent46 软传感 field holdout 放行门控：生成 `deliverables/soft_sensor_field_holdout_gate.md`、`outputs/agent46_soft_sensor_field_holdout_gate/agent46_report.md` 和 `outputs/soft_sensor_field_holdout_gate/field_holdout_gate_metrics.json`，把 Agent36 不确定性验证与 Agent39 保形校准接成 release gate 硬审查；当前 synthetic holdout 被 `soft_sensor_release_gate_blocked_non_field_holdout` 阻断，不能写入放行门。
-- 已完成 Agent47 弱目标分层保形校准：生成 `deliverables/weak_target_stratified_conformal.md`、`outputs/agent47_weak_target_stratified_conformal/agent47_report.md` 和 `outputs/weak_target_stratified_conformal/weak_target_stratified_metrics.json`，把 Agent46 暴露出的 `matrix_interference` 弱目标覆盖不足转成 target/scenario stratified conformal 审查；当前只是 synthetic diagnostic candidate，必须 field holdout 复核后才能交给 Agent46。
-- 已完成 Agent48 管网布点与稀疏感知升级：生成 `deliverables/sensor_network_sparse_placement.md`、`outputs/agent48_sensor_network_sparse_placement/agent48_report.md` 和 `outputs/sensor_network_sparse_placement/sparse_placement_metrics.json`，把管网/处理单元节点与传感器模态组合成 6x10 稀疏观测矩阵，并比较 greedy、random ablation、cost-only、reconstruction QR proxy、classification SSPOC proxy 和 topology robust cost proxy 六类布点策略；当前选中 `greedy_marginal`，baseline comparison 状态为 `sparse_baseline_comparison_ready_needs_field_topology_and_labels`，best_vs_random_delta=0.062，best_vs_cost_only_delta=0.258。状态仍为 `sparse_sensor_layout_ready_needs_field_topology`，弱状态覆盖仅 0.300，提示 catalyst activity 仍缺专门观测。
-- 已完成 Agent49 多设施协同控制与策略蒸馏：生成 `deliverables/multi_facility_collaborative_control.md`、`outputs/agent49_multi_facility_collaborative_control/agent49_report.md` 和 `outputs/multi_facility_collaborative_control/collaborative_control_metrics.json`，把 Agent48 稀疏观测矩阵接入均质池、反应核心、催化剂床、回流环和末端精处理的协同控制；当前状态为 `synthetic_collaborative_policy_needs_field_replay`，决策树蒸馏准确度代理值为 0.794，必须真实多节点 state-action replay 验证后才能进入执行器候选。
-- 已完成 Agent50 模型核心优化治理：生成 `deliverables/model_core_optimization/` 治理包、`outputs/agent50_model_core_governance/agent50_report.md` 和 `outputs/model_core_governance/priority_ranking.json`；Agent48 可比较布点、Agent51 catalyst proxy synthetic 基线、Agent52 replay-ready synthetic 基线、Agent53 最小灰箱物理 synthetic prior 和 Agent54 软传感矩阵 synthetic contract 已形成，当前最高边际价值任务已自动转为 `P7_engineering_constraints_in_reward_and_arbitration`，同时把 field proxy holdout、真实多节点 replay、field RTD/污染物/氧化剂/催化剂/副产物校准、field node-specific missingness replay 明确列为阻塞项，展示层默认进入低优先级 backlog。
-- 已完成 Agent51 催化剂活性代理观测：生成 `deliverables/catalyst_activity_proxy.md`、`outputs/agent51_catalyst_activity_proxy/agent51_report.md` 和 `outputs/catalyst_activity_proxy/catalyst_activity_proxy_metrics.json`；将 `catalyst_activity` 从单点弱状态拆成床前后 UV254 去除率、ORP 衰减、浊度/压降污堵、再生响应增益和停留时间归一化速率残差，当前代理观测从 0.331 提升到补点设计后的 0.720，但 synthetic 阶段不能解除 Agent49 保护规则。
-- 已完成 Agent52 多设施 replay 离线评估：生成 `deliverables/multi_facility_replay_evaluation.md`、`outputs/agent52_multi_facility_replay_evaluation/agent52_report.md` 和 `outputs/multi_facility_replay_evaluation/replay_evaluation_metrics.json`；把 Agent49 的多设施协同控制候选升级为 replay-ready 离线评估合同，包含 state-action-reward schema、联合动作准确率、reward regret、保护性误触发成本和决策树蒸馏回放准确率。当前 synthetic joint_action_accuracy 为 0.667、mean_reward_regret 为 0.055、保护性误触发成本为 0.18，只能写回 reward prior、replay schema 和 offline metric contract，不能写执行器、release gate 或 online MARL。
-- 已完成 Agent53 最小灰箱物理机制：生成 `deliverables/minimal_grey_box_physics.md`、`outputs/agent53_minimal_grey_box_physics/agent53_report.md` 和 `outputs/minimal_grey_box_physics/grey_box_physics_metrics.json`；把停留时间分布、旁路/短流、拟一级反应、基质抑制、催化剂有效活性、氧化剂消耗、质量守恒和副产物风险纳入最小灰箱 prior。当前 synthetic mean_grey_box_residual 为 0.131，max_mass_balance_residual 为 0.000，仍有反应时间不足、催化剂失活和基质抑制场景违反物理审计阈值；只能写回软传感 physics prior 和 Agent49 reward residual 候选，不能写执行器、release gate 或现场机理结论。
-- 已完成 Agent54 软传感 node-modality/missingness 矩阵耦合：生成 `deliverables/soft_sensor_matrix_coupling.md`、`outputs/agent54_soft_sensor_matrix_coupling/agent54_report.md` 和 `outputs/soft_sensor_matrix_coupling/soft_sensor_matrix_metrics.json`；把 Agent48 的 `layout_id`、node、zone、modality、availability mask、time-since-last-observed 和 Agent53 的 grey-box residual prior 接成软传感输入合同。当前 layout_contract_score 为 1.000，missingness_robustness_score 为 0.684，但 live context 仍是 `global_modality_fallback_used_for_layout`，说明缺真实 node-specific 传感值；只能写回训练/推理 schema 和 P5 completion status，不能写 release gate。
-- 已完成软传感器机器学习校正模型：`rf_multioutput_v3_catalyst`，本地文件为 `models/soft_sensor_calibrator.pkl`
-- 已完成过程动力学闭环仿真：动作及其参数会改变污染物负荷、氧化剂余量、催化活性、基质干扰、传感健康度、水力效率、时间、成本和能耗。
-- 已完成催化剂生命周期闭环：显式跟踪 `catalyst_age_cycles`、`catalyst_regen_count`、`catalyst_lifetime_fraction`，低催化活性且寿命尚可时触发 `regenerate_catalyst`，再生收益耗尽时触发 `replace_catalyst`。
-- 已完成旁路/离线验证规划 Agent：根据传感不确定性、放行证据不足、副产物风险、基质冲击和催化剂寿命风险，规划暂存时间、验证等待时间和验证目标。
-- 已完成多批次运行调度 Agent：将多个 batch 的闭环结果汇总为 campaign 级运行记录，识别验证工时、催化剂备件、氧化剂库存和总运行时间瓶颈。
-- 已完成批次队列规划 Agent：比较不同污染场景到达顺序和排班策略，判断仅靠换顺序能否缓解验证、时间和库存瓶颈。
-- 已完成资源扩容对比 Agent：比较增加验证班次、补充催化剂备件、补充氧化剂、压缩低价值验证项、延长运行窗口和组合干预的瓶颈解除效果。
-- 已完成长期经济性与提前期 Agent：把资源扩容从单 campaign 救急推进到多 campaign 决策，评价预算压力、催化剂/氧化剂采购提前期、验证人员爬坡、验证压缩风险和服务水平。
-- 已完成分阶段实施 Agent：将长期恢复项目拆成过渡期限流、验证与氧化剂爬坡、催化剂采购锁定和完整能力试运行，并输出库存安全线、班次计划和阶段验收指标。
-- 已完成实施压力测试 Agent：对分阶段计划进行催化剂晚到、预算慢批、验证爬坡延迟、进水压力升高和阶段验收失败压力测试，输出保护性进水上限和备用动作。
-- 已完成自适应项目组合 Agent：根据压力测试信号自动选择备用项目包、预算释放顺序和负荷控制策略。
-- 已完成在线滚动项目控制 Agent：每个 campaign 后根据验收、库存、预算、验证工时和进水压力更新进水比例、预算项和重规划触发状态。
-- 已完成 campaign 遥测桥接 Agent：将真实多批次运行记录自动转换为在线项目控制的 rolling campaign updates。
-- 已完成自动重规划编排 Agent：当在线项目控制触发 `replan_required` 时，自动重跑队列规划、资源扩容、长期经济性、分阶段实施、压力测试和项目组合。
-- 已完成控制基线写回 Agent：将自动重规划输出写回下一轮在线控制基线。
-- 已完成重规划后回放验证 Agent：使用 `baseline_v1_replan` 对下一轮 campaign 做投影回放，检查瓶颈是否实际下降。
-- 已完成恢复放量爬坡验证 Agent：在回放验证通过后，按 0.15 梯度模拟恢复进水，判断哪个比例会重新触发瓶颈。
-- 已完成时间预算恢复方案 Agent：针对恢复到 0.75 时出现的 `campaign_time_budget`，比较维持 0.60、延长窗口、验证错峰、短耗时队列和混合方案。
-- 已完成恢复策略写回 Agent：将 `stagger_validation_overlap` 写入 `baseline_v1_replan_recovery`，明确目标进水 0.75、回退比例 0.60 和 campaign 后复核规则。
-- 已完成恢复策略执行回放 Agent：执行写回后的 `baseline_v1_replan_recovery`，验证 0.75 进水配合验证错峰后是否低于时间和验证工时门槛。
-- 已完成恢复在线控制接入 Agent：将恢复执行回放结果输入在线控制，维持条件恢复进水 0.75，同时保留 0.60 回退线和重规划触发。
-- 已完成低成本传感-循环窗口敏感性 Agent：比较观测窗口、采样间隔和禁用传感器后的成功率、成本、能耗和总耗时。
-- 已完成结构化污染物-材料-机制知识库：Agent 3 会把知识条目命中作为机理解释证据，并传递给故障诊断。
-- 已完成知识库动作偏置接入：Agent 5 会读取 `action_biases`，把知识库对加药、回流、预处理、验证、再生和放行的倾向纳入动作评分。
-- 已完成知识库成本安全修正：成本安全 Agent 会根据知识偏置调整安全收益、风险成本和时间成本。
-- 已完成统一策略优化目标：成本安全 Agent 将安全收益、处理成本、等待时间、能耗、误放行风险、副产物风险、人工复核和知识一致性合成为 `objective_score`；仲裁 Agent 使用该目标分数做最终动作筛选与排序。
-- 已完成策略目标场景模板：`balanced`、`safety_first`、`cost_first`、`emergency_response`。
-- 已完成策略目标自动选择 Agent：根据软传感状态和故障诊断选择策略 profile，并传递给成本安全评价。
-- 已完成敏感性分析 Agent 传感器经济性模型：将传感器采购成本、年度维护、月校准工时和采样负担折算为工程成本指数。
-- 已完成敏感性分析 Agent 实验缓存：`run_design_sensitivity.py` 支持缓存、`--force-refresh` 和 `--no-cache`。
-- 已完成敏感性分析 Agent 采样噪声模型：候选传感设计可设置 `sensor_noise_multiplier`，用于模拟低成本测量扰动。
-- 当前回归：Agent48 定向测试 11 passed，Agent48 下游相关链路测试 50 passed，完整回归 `.venv/bin/pytest -q` 为 444 passed。
+## What This Is
 
-## Agent 迭代顺序
+- A research prototype for circular water-treatment control under sparse and low-cost sensing.
+- A structured multi-agent workflow for data quality, soft sensing, mechanism reasoning, fault diagnosis, validation planning, control strategy, safety/cost scoring, and arbitration.
+- A set of experiment runners, templates, manifests, and review artifacts that make each claim traceable.
+- A field-data onboarding scaffold: real sensor/lab/operation/replay packages can be checked before they influence any downstream decision.
 
-1. 数据质控 Agent：识别缺失、越界、突变、卡死、漂移、短窗口低流量和整体传感可信度。
-2. 软测量 Agent：从低成本信号估计隐藏过程状态，并融合机器学习校正；当前包含 `hydraulic_confidence`、`byproduct_risk` 和离线快检慢证据。
-3. 机理解释 Agent：结合规则知识和结构化污染物-材料-机制知识库解释反应状态和异常原因。
-4. 故障诊断 Agent：识别传感异常、水力停留异常、氧化剂不足、催化剂失活、基质干扰、反应时间不足等故障，并携带知识库支持证据。
-5. 催化剂生命周期 Agent：把软传感估计的催化活性、寿命、再生次数和再生潜力转化为“监测/再生/更换”的维护策略。
-6. 旁路验证规划 Agent：把“循环争取时间”转化为具体慢证据计划，输出验证类型、暂存时间和等待时间。
-7. 控制策略 Agent：生成暂存验证、核查泵阀、校准传感器、回流、补加氧化剂、催化剂再生、催化剂更换、切换单元、放行等动作，并动态给出回流比、停留时间、加药系数、再生强度和更换停机时间；当前已接收知识库 `action_biases`、催化剂生命周期建议和验证规划。
-8. 策略目标选择 Agent：根据软传感状态和故障诊断自动选择 `balanced`、`safety_first`、`cost_first` 或 `emergency_response`。
-9. 成本安全 Agent：评价风险、能耗、药耗、时间、副产物风险、再生/更换停机成本和误放行代价；高基质冲击下会优先预处理/切换再回流；当前会根据知识库偏置修正安全收益和风险成本，并输出统一策略目标分数。
-10. 仲裁 Agent：融合各 agent 输出并执行硬安全门，形成最终闭环动作；包含水力置信度、副产物风险安全门、高基质动作顺序约束、低催化活性下再生优先约束和寿命耗尽时更换优先约束。
-11. 敏感性分析 Agent：对低成本传感配置、采样间隔、循环观测窗口、采购成本、维护成本和校准工时进行多场景排序，识别“便宜但不稳定”的方案。
-12. 多批次运行调度 Agent：跨 batch 汇总成功率、总耗时、验证工时、催化剂库存、氧化剂库存和维护动作，决定是否正常进水、错峰进水或限制新批次。
-13. 批次队列规划 Agent：比较到达顺序、验证平滑、催化剂保护、风险优先等候选队列，输出推荐排班策略和无法靠排序解决的资源瓶颈。
-14. 资源扩容对比 Agent：在排序仍无法解除瓶颈时，比较验证班次、备件、库存、运行窗口和验证项压缩等干预的成本收益。
-15. 长期经济性与提前期 Agent：把资源扩容方案放入多 campaign 规划，判断完整恢复、均衡建设或最低响应在预算、提前期、服务水平和残余风险之间的取舍。
-16. 分阶段实施 Agent：把选定长期项目转成 campaign 级落地路线，明确采购排程、过渡期限流、库存安全线、验证班次爬坡和阶段验收指标。
-17. 实施压力测试 Agent：对分阶段计划进行预算、供应、验证爬坡、进水压力和验收失败压力测试，给出备用供应、预算分拆、外包验证和保护性进水阈值。
-18. 自适应项目组合 Agent：将压力测试信号转化为备用项目包、预算释放顺序和负荷控制策略。
-19. 在线滚动项目控制 Agent：每个 campaign 后更新压力信号、预算优先级、保护性进水比例、稳定验收 streak 和重规划触发状态。
-20. Campaign 遥测桥接 Agent：从真实 batch 运行记录生成在线项目控制需要的滚动 campaign 更新，避免手工构造项目状态。
-21. 自动重规划编排 Agent：在真实遥测触发保护模式后，自动重跑后半条规划链并生成新的 replan trace。
-22. 控制基线写回 Agent：把自动重规划生成的新队列、新项目包、新预算顺序和新保护性进水比例写回下一轮在线控制基线。
-23. 重规划后回放验证 Agent：使用写回基线投影下一轮 campaign，对比重规划前后的验证占用、时间占用、库存瓶颈和吞吐代价。
-24. 恢复放量爬坡验证 Agent：从保护性进水比例出发，按写回规则逐步恢复负荷，验证连续稳定 campaign 是否成立，并识别恢复上限和限制瓶颈。
-25. 时间预算恢复方案 Agent：把 Agent24 暴露出的时间预算瓶颈转化为候选工程动作，比较验证错峰、延长窗口和队列调整后能否安全恢复到目标负荷。
-26. 恢复策略写回 Agent：把 Agent25 的可行恢复动作写回在线控制基线，形成带回退门槛和复核要求的条件恢复策略。
-27. 恢复策略执行回放 Agent：按写回后的恢复基线模拟下一轮 campaign，对比无错峰和有错峰下的时间占用、瓶颈和回退需求。
-28. 恢复在线控制接入 Agent：把恢复执行回放结果转成在线控制滚动状态，决定维持 0.75、回退 0.60 或再次重规划。
-29. 项目综合总览 Agent：把前 28 个执行 agent 综合成模块表、总流程图、关键证据链、成熟度判断和真实数据校准路线。
-30. 真实数据接口 Agent：定义并检查真实传感、离线检测、催化剂寿命、campaign 日志和经济性数据表，生成 schema、CSV 模板和合成样例数据包。
-31. 成果整理 Agent：生成执行摘要、汇报/PPT 提纲、关键数值表、成果索引和实证校准任务板。
-32. 图表与汇报素材 Agent：生成视觉故事板、Mermaid 图表规格、逐页讲述脚本和项目书章节素材。
-33. 正式展示包 Agent：生成正式 PPT 的 claim spine、设计系统、QA 清单和 PPTX 展示包；PPTX 已冻结为 Agent33 快照。
-34. 实证校准入口门控 Agent：把 Agent30 的真实数据接口推进到实证校准协议，定义基础 G0-G5 现场验收门、P0-P5 参数写回顺序和 R1-R4 运行手册；Agent43 后补充 G6/P6 时间戳回放与快代理现场校准门。
-35. 模型真实性审计 Agent：审计知识库覆盖、软传感验证、现场校准门控、过程模型现实性缺口和可借鉴 skill 工作流，输出模型优化 backlog。
-36. 软传感不确定性验证 Agent：在 synthetic holdout 上检查预测区间覆盖、误差-不确定性关联、OOD 风险门和放行阻断，并明确下一步 field holdout / conformal calibration。
-37. 知识图谱策展 Agent：按 Scientific Knowledge Graph 思路整理污染物、基质、材料、过程条件、低成本信号、隐藏状态和证据等级，输出 KG schema、轴覆盖缺口、科学审查链和证据抽取 backlog。
-38. 文献证据抽取 Agent：把文献 claim 转成 borrowed idea、现实映射、数据需求、实现路径、评价指标和失败边界，覆盖 KG 缺失的染料、抗生素、农药轴，并保持 field validation required 边界。
-39. 软传感保形校准 Agent：使用 Agent36 的 holdout 误差构建 split conformal 区间、覆盖率、区间宽度、放行 abstention 和 OOD 风险统计；synthetic 阶段只作为校准接口，不允许写回真实放行门。
-40. 灰箱动态延迟审计 Agent：把循环/暂存、低频采样、离线验证、人工复核和执行器响应统一成时序约束，计算 action/evidence latency margins；synthetic 阶段只作为现实性审计，不能作为现场自动放行依据。
-41. 基质冲击快代理 Agent：用低成本原始信号提前触发 matrix_shock 保护性预处理/切换和暂存验证，把慢证据从“动作触发条件”改为“放行/校准条件”；synthetic 阶段不能写入自动放行门。
-42. 时间戳回放接口 Agent：把 sensor、lab、operation 和 fast_proxy_event_log 对齐到同一 batch 时间轴，计算快代理 precision/recall、提前量和误触发成本。
-43. 现场回放校准门控 Agent：把时间戳回放指标转成 G6/P6 写回门，只有 field-labeled replay 达标时才允许写入 matrix_shock 保护性控制；自动放行门始终禁止。
-44. 现场 replay 包导入 Agent：读取带 metadata.json 的 sensor/lab/operation/fast_proxy CSV 包，先做 provenance、field origin、字段、类型转换和 batch 关联验收；synthetic/sample 包只能联调，不能进入 G6/P6。
-45. 现场 replay 证据链 Agent：按 Agent44 -> Agent42 -> Agent43 顺序串联导入、回放和 G6/P6；完整链条通过时只形成保护性写回候选，仍需人工复核且永不写 release gate。
-46. 软传感 field holdout 放行门控 Agent：把 Agent36 不确定性验证和 Agent39 conformal 校准接入硬门控，只有真实 field holdout 同时满足覆盖率、区间宽度、OOD/abstention、弱目标和场景多样性时，才形成软传感 release gate 校准候选；synthetic 阶段一律禁止写入放行门。
-47. 弱目标分层保形校准 Agent：把 catalyst_activity 和 matrix_interference 从总体 coverage 中拆出来，按目标和场景审查 conformal 覆盖；只向 Agent46 提供候选，不能绕过 Agent46 写 release gate。
-48. 管网布点与稀疏感知 Agent：把处理单元/管网节点、传感器模态和隐藏状态观测轴组成 node-modality 矩阵，稀疏选择少量高价值布点，服务软传感重构、故障分类和低延迟控制。
-49. 多设施协同控制 Agent：借鉴污水系统多设施协同优化思路，把 Agent48 稀疏观测矩阵转成均质池、反应核心、催化剂床、回流环和末端精处理的 facility-state/action 矩阵，并用 ID3 风格决策树蒸馏形成可解释控制规则；synthetic 阶段只生成候选，不写执行器。
-50. 模型核心优化治理 Agent：每轮读取 Agent48/49/51 指标、外部 evidence matrix 和 backlog，按边际价值排序；若当前工作偏向 PPT、Word、索引或展示美化且不改变模型指标，则自我打断并回到模型核心。
-51. 催化剂活性代理观测 Agent：把不可直接在线观测的 `catalyst_activity` 拆成床前后 UV254/ORP 差分、浊度/压降污堵、再生响应和停留时间归一化速率残差；当前只形成 synthetic proxy baseline，不能解除 Agent49 保护规则。
-52. 多设施 replay 离线评估 Agent：把 Agent49 协同控制候选转成可回放的 state-action-reward 离线评估框架，计算 joint_action_accuracy、reward_regret、保护性误触发成本和可解释策略蒸馏回放准确率；synthetic 阶段只允许写回评估合同，不写执行器或 release gate。
-53. 最小灰箱物理机制 Agent：把停留时间、旁路/短流、拟一级反应、基质抑制、催化剂有效活性、氧化剂消耗、质量守恒和副产物风险写成可审计 physics prior；synthetic 阶段只能服务软传感先验和 reward residual 候选，不能写执行器或 release gate。
-54. 软传感矩阵耦合 Agent：把 Agent48 的 node-modality 稀疏布点、缺失掩码、低频/延迟观测和 Agent53 灰箱残差先验接入软传感训练/推理合同；synthetic 阶段只证明 schema 和压力测试接口，不能证明现场缺测鲁棒性。
+## What This Is Not
 
-## 模型层
+- Not a production control system.
+- Not an actuator-writing or release-gate-writing system.
+- Not a field-validated model by default.
+- Not a legal, patentability, or regulatory opinion engine.
 
-- `experiments/train_soft_sensor_model.py`：基于合成多场景数据训练软传感器校正模型。
-- `models/soft_sensor_calibrator.pkl`：训练后的本地模型文件，不纳入版本管理。
+## System Workflow
 
-## 常用命令
+```mermaid
+flowchart LR
+  A["Input package<br/>field, synthetic, sample, or template data"] --> B["Data quality gate"]
+  B --> C["Soft sensor + grey-box priors"]
+  C --> D["Mechanism and fault reasoning"]
+  D --> E["Lifecycle and validation planning"]
+  E --> F["Candidate control actions"]
+  F --> G["Cost, safety, and evidence scoring"]
+  G --> H["Arbitration"]
+  H --> I["Operator handoff<br/>reports, manifests, review packets"]
 
-```bash
-.venv/bin/pytest -q
-.venv/bin/python experiments/run_scenario_sweep.py
-.venv/bin/python experiments/run_closed_loop_episode.py
-.venv/bin/python experiments/run_closed_loop_robustness.py
-.venv/bin/python experiments/run_design_sensitivity.py
-.venv/bin/python experiments/run_agent10_catalyst_lifecycle.py
-.venv/bin/python experiments/run_agent11_validation_planning.py
-.venv/bin/python experiments/run_agent12_operations_scheduling.py
-.venv/bin/python experiments/run_agent13_queue_planning.py
-.venv/bin/python experiments/run_agent14_resource_expansion.py
-.venv/bin/python experiments/run_agent15_long_term_economics.py
-.venv/bin/python experiments/run_agent16_phased_implementation.py
-.venv/bin/python experiments/run_agent17_implementation_stress_test.py
-.venv/bin/python experiments/run_agent18_adaptive_portfolio.py
-.venv/bin/python experiments/run_agent19_online_project_control.py
-.venv/bin/python experiments/run_agent20_campaign_telemetry.py
-.venv/bin/python experiments/run_agent21_replanning_orchestrator.py
-.venv/bin/python experiments/run_agent22_control_baseline_update.py
-.venv/bin/python experiments/run_agent23_post_replan_replay.py
-.venv/bin/python experiments/run_agent24_recovery_ramp.py
-.venv/bin/python experiments/run_agent25_time_budget_recovery.py
-.venv/bin/python experiments/run_agent26_recovery_strategy_writeback.py
-.venv/bin/python experiments/run_agent27_recovery_execution_replay.py
-.venv/bin/python experiments/run_agent28_recovery_online_control.py
-.venv/bin/python experiments/run_agent29_project_synthesis.py
-.venv/bin/python experiments/run_agent30_field_data_interface.py
-.venv/bin/python experiments/run_agent31_deliverable_organization.py
-.venv/bin/python experiments/run_agent32_presentation_assets.py
-.venv/bin/python experiments/run_agent33_presentation_deck.py
-.venv/bin/python experiments/run_agent34_field_calibration_gate.py
-.venv/bin/python experiments/run_agent35_model_realism_audit.py
-.venv/bin/python experiments/run_agent36_soft_sensor_uncertainty_validation.py
-.venv/bin/python experiments/run_agent37_knowledge_graph_curation.py
-.venv/bin/python experiments/run_agent38_literature_evidence.py
-.venv/bin/python experiments/run_agent39_soft_sensor_conformal_calibration.py
-.venv/bin/python experiments/run_agent40_grey_box_dynamic_latency.py
-.venv/bin/python experiments/run_agent41_matrix_shock_fast_proxy.py
-.venv/bin/python experiments/run_agent42_timestamped_campaign_replay.py
-.venv/bin/python experiments/run_agent43_field_replay_calibration_gate.py
-.venv/bin/python experiments/run_agent44_field_replay_import.py
-.venv/bin/python experiments/run_agent45_field_replay_evidence_chain.py
-.venv/bin/python experiments/run_agent46_soft_sensor_field_holdout_gate.py
-.venv/bin/python experiments/run_agent47_weak_target_stratified_conformal.py
-.venv/bin/python experiments/run_agent48_sensor_network_sparse_placement.py
-.venv/bin/python experiments/run_agent49_multi_facility_collaborative_control.py
-.venv/bin/python experiments/run_agent50_model_core_governance.py
-.venv/bin/python experiments/run_agent51_catalyst_activity_proxy.py
-.venv/bin/python experiments/run_agent52_multi_facility_replay_evaluation.py
-.venv/bin/python experiments/run_agent53_minimal_grey_box_physics.py
-.venv/bin/python experiments/run_agent54_soft_sensor_matrix_coupling.py
+  B -.-> J["Evidence boundary"]
+  G -.-> J
+  H -.-> J
+  J --> I
 ```
 
-## 当前重点
+## Why Each Step Exists
 
-展示层已经冻结，当前重点是模型真实性优化。每轮实现前先看 `deliverables/model_core_optimization/governance_report.md` 和 `outputs/model_core_governance/priority_ranking.json`；Agent48 可比较布点基线现已包含 random/cost-only/sparse reconstruction/classification/topology-aware 对照，Agent51 催化剂活性代理观测 synthetic 基线、Agent52 多设施 replay-ready synthetic 基线、Agent53 最小灰箱物理 prior 和 Agent54 软传感矩阵耦合合同已完成。当前最高边际价值仍是优先导入真实 field package；若无真实包，则继续补真实 topology/labels 和可比较 baseline，而不是继续打磨 PPT、Word 或索引。
+| Step | Purpose | Why it matters |
+| --- | --- | --- |
+| Input package | Accept field packages, synthetic fixtures, templates, or literature-derived scaffolds. | Keeps the project useful before field data arrives while preserving the difference between test data and real evidence. |
+| Data quality gate | Check missing values, out-of-range values, stale signals, provenance, template markers, and package shape. | Low-cost sensors are noisy; bad input must be blocked before it becomes a model claim. |
+| Soft sensor + grey-box priors | Estimate hidden process states such as catalyst activity, hydraulic confidence, matrix interference, and byproduct risk. | The system often cannot measure the important state directly, so it needs auditable estimates with uncertainty and physics constraints. |
+| Mechanism and fault reasoning | Connect state estimates to likely mechanisms, faults, and knowledge-graph evidence. | Operators need an explanation, not only a score. This layer makes action recommendations inspectable. |
+| Lifecycle and validation planning | Decide whether more hold time, lab validation, catalyst regeneration, replacement, or replay evidence is needed. | Circular operation is valuable because it can buy time for slower evidence instead of forcing premature release. |
+| Candidate control actions | Generate conservative options such as hold, recycle, dose adjustment, unit switch, manual review, regeneration, or replacement. | Separates action generation from final approval so safety gates can reject risky choices later. |
+| Cost, safety, and evidence scoring | Score actions against risk, energy, reagent use, time, evidence strength, and no-write boundaries. | Prevents optimization from drifting into cheap-but-unsafe or unsupported recommendations. |
+| Arbitration | Apply hard gates and produce a final ranked action set. | Centralizes the final decision contract and keeps protected keys stable for tests and downstream manifests. |
+| Operator handoff | Write JSON, Markdown, CSV, and manifest outputs for humans or later agents to review. | The current mature output is a reviewable handoff, not autonomous plant control. |
+
+## Protected Boundaries
+
+These boundaries are part of the research contract and should not be weakened in refactors:
+
+- `synthetic`, `sample`, `template`, and `literature` artifacts are not field evidence.
+- Real field claims require accepted field packages, replay or holdout checks, and human/operator review where required.
+- `can_write_to_actuator=False` and `can_write_to_release_gate=False` semantics must remain intact unless a future documented safety case changes the project scope.
+- Core report structures such as `AgentReport`, `SensorReading`, and `QualityIssue` are treated as public internal contracts.
+- Main-chain ordering is protected: data quality -> soft sensor -> mechanism -> fault diagnosis -> lifecycle -> validation planning -> control strategy -> strategy profile -> cost/safety -> arbitration.
+- Stable metric keys such as `state_estimate`, `ranked_actions`, `evaluated_actions`, `final_plan`, `blocked_actions`, and `selected_profile` should not be renamed casually.
+
+## Quick Start
+
+Use Python 3.12.
+
+```bash
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -U pip
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install -e .
+.venv/bin/python -m pytest -q
+```
+
+If editable install is not available, run experiment scripts with `PYTHONPATH=src`.
+
+## Common Commands
+
+```bash
+.venv/bin/python -m pytest -q
+.venv/bin/python experiments/run_closed_loop_episode.py
+.venv/bin/python experiments/run_scenario_sweep.py
+.venv/bin/python experiments/run_agent44_field_replay_import.py
+.venv/bin/python experiments/run_agent50_model_core_governance.py
+.venv/bin/python experiments/run_formal_search_nonlegal_review_operator_packet.py
+```
+
+Use targeted tests for focused changes:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider tests/test_project_independence.py
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider tests/test_formal_search_nonlegal_review_operator_packet.py
+```
+
+## Repository Map
+
+| Path | Role |
+| --- | --- |
+| `src/water_ai/` | Runtime package: domain objects, pipeline logic, agents, gates, and helper modules. |
+| `experiments/` | Runnable scripts that generate reports, metrics, manifests, and handoff artifacts. |
+| `tests/` | Regression tests for protected behavior, evidence boundaries, runner contracts, and manifests. |
+| `docs/` | Specifications, review notes, field interface docs, and research documents. |
+| `notes/current_status.md` | Detailed internal status log and latest iteration boundaries. |
+| `CODEGRAPH.md` | Short navigation entry for repo structure, core agent routes, and graph artifacts. |
+| `deliverables/` | Publishable or review-facing artifacts, manifests, summaries, and codegraph exports. |
+| `outputs/` | Generated experiment outputs, templates, metrics, and replay packages. |
+| `models/` | Local model artifacts. Large generated binaries are ignored unless explicitly curated. |
+
+## Main Runtime Chain
+
+```mermaid
+flowchart TD
+  DQ["DataQualityAgent"] --> SS["SoftSensorAgent"]
+  SS --> MECH["MechanismAgent"]
+  MECH --> FAULT["FaultDiagnosisAgent"]
+  FAULT --> CAT["CatalystLifecycleAgent"]
+  CAT --> VAL["ValidationPlanningAgent"]
+  VAL --> CTRL["ControlStrategyAgent"]
+  CTRL --> PROFILE["StrategyProfileAgent"]
+  PROFILE --> COST["CostSafetyAgent"]
+  COST --> ARB["ArbitrationAgent"]
+  ARB --> REPORT["AgentReport + metrics"]
+```
+
+Additional agents extend the core chain for sensitivity analysis, campaign planning, sparse sensor placement, catalyst proxy evidence, field replay import, evidence gates, architecture consolidation, and operator handoff preparation. See `CODEGRAPH.md` for the shortest route into those modules.
+
+## Current Maturity
+
+The framework is mature enough for structured review and targeted refactoring:
+
+- Core chain contracts are covered by tests.
+- Field package schemas and templates exist.
+- Evidence gates distinguish synthetic/template/sample data from field evidence.
+- Governance and manifest outputs expose the current blockers.
+- The main bottleneck is real field package availability, not adding more agents.
+
+The recommended next technical work is behavior-preserving cleanup: runner IO helpers, manifest path handling, generated artifact writers, and review-loop guided refactors.
+
+## Review Loop For Contributors
+
+Use this loop for any non-trivial change:
+
+```mermaid
+flowchart LR
+  A["Read context<br/>AGENTS, CODEGRAPH, current status"] --> B["Capability discovery<br/>skills, tools, APIs"]
+  B --> C["Review only<br/>risks and protected interfaces"]
+  C --> D["Define acceptance<br/>tests, no-drift checks, evidence boundary"]
+  D --> E["Implement one small change"]
+  E --> F["Run targeted verification"]
+  F --> G["Record outcome<br/>docs or operation log"]
+  G --> H{"Need another loop?"}
+  H -- yes --> B
+  H -- no --> I["Final report"]
+```
+
+Each recommendation should name:
+
+- the risk it reduces,
+- the interface it must not change,
+- the test command that proves it,
+- the reason it is more valuable than nearby alternatives.
+
+## Open-Source Hygiene
+
+- Keep local absolute paths, personal workspace names, virtual environments, caches, and generated bytecode out of committed docs and code.
+- Keep generated artifacts traceable through manifests, but avoid committing heavy local-only binaries.
+- Do not publish private field data, credentials, operator notes, or unreleased partner material.
+- The repository is MIT licensed; third-party dependencies and any externally supplied datasets remain under their own terms.
+
+## License
+
+MIT License. See `LICENSE`.

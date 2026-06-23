@@ -1,7 +1,7 @@
 # Agent 26 恢复策略写回报告
 
-- source_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent25_time_budget_recovery/agent25_report.json`
-- baseline_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent22_control_baseline_update/agent22_report.json`
+- source_report: `outputs/agent25_time_budget_recovery/agent25_report.json`
+- baseline_report: `outputs/agent22_control_baseline_update/agent22_report.json`
 - summary: 恢复策略写回：conditional_target_recovery；下一轮目标进水 0.75，回退比例 0.6。
 - baseline_version: `baseline_v1_replan_recovery`
 - previous_baseline_version: `baseline_v1_replan`

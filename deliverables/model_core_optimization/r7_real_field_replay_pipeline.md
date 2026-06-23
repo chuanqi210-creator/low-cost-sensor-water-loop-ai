@@ -3,7 +3,7 @@
 该管线把一个 package directory 直接送入 Agent44 preflight/import、Agent45 内部 Agent42/43 replay/G6，再进入 R7 acceptance gate。它用于定位真实现场包卡在哪一段，不会自动写执行器或 release gate。
 
 - 当前 source_package_type：`header_only_template_preflight`
-- 当前 package_dir：`/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_import/real_field_package_template`
+- 当前 package_dir：`outputs/field_replay_import/real_field_package_template`
 - Submission readiness：`field_package_submission_blocked_at_import_preflight`，highest_blocker=`R7A_IMPORT_PREFLIGHT`，next_action=`repair_metadata_headers_and_real_rows_before_agent42`，blocking_stage_count=`5`，agent42_smoke_submission=`False`，path_endpoint_layout_holdout=`False`，no_write=`True`
 - Submission repair work order：`field_package_submission_repair_work_order_blocked_at_import_preflight`，repair_item_count=`13`，path=`outputs/r7_real_field_replay_pipeline/field_package_submission_repair_work_order.json`
 - Submission repair response preflight：`repair_response_preflight_blocked_at_template_markers`，missing_items=`0`，template_markers=`13`，route_to_r7_preflight=`False`

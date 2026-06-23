@@ -8,9 +8,9 @@
 
 ## 生成文件
 
-- field_replay_calibration_gate: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_replay_calibration_gate.md`
-- agent43_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent43_field_replay_calibration_gate/agent43_report.md`
-- g6_p6_gate_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_calibration_gate/g6_p6_gate_metrics.json`
+- field_replay_calibration_gate: `deliverables/field_replay_calibration_gate.md`
+- agent43_report: `outputs/agent43_field_replay_calibration_gate/agent43_report.md`
+- g6_p6_gate_metrics: `outputs/field_replay_calibration_gate/g6_p6_gate_metrics.json`
 
 ## 风险边界
 

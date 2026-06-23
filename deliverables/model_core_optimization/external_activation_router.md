@@ -13,7 +13,7 @@
 - catalyst_patch_candidate_preflight_status：`not_run`
 - catalyst_patch_candidate_remaining_gap_count：`0`
 - catalyst_patch_candidate_can_submit_as_REAL_FIELD_REPLAY_PACKAGE_DIR：`False`
-- catalyst_patch_candidate_package_dir：`/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/catalyst_slice_r7_patch_candidate/r7_patch_candidate_package`
+- catalyst_patch_candidate_package_dir：`outputs/catalyst_slice_r7_patch_candidate/r7_patch_candidate_package`
 - field_activation_upstream_status：`field_activation_external_readiness_waiting_for_external_response`
 - field_activation_upstream_can_submit_to_external_activation_router：`False`
 - field_activation_upstream_first_blocked_step：`response_source`

@@ -19,12 +19,12 @@
 
 ## 生成文件
 
-- multi_facility_replay_evaluation: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/multi_facility_replay_evaluation.md`
-- agent52_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent52_multi_facility_replay_evaluation/agent52_report.md`
-- replay_evaluation_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/multi_facility_replay_evaluation/replay_evaluation_metrics.json`
-- agent52_replay_export_manifest: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/multi_facility_replay_evaluation/agent52_replay_export/agent52_replay_export_manifest.json`
-- agent52_replay_table_csv: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/multi_facility_replay_evaluation/agent52_replay_export/agent52_replay_table.csv`
-- agent52_replay_table_rows_json: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/multi_facility_replay_evaluation/agent52_replay_export/agent52_replay_table.rows.json`
+- multi_facility_replay_evaluation: `deliverables/multi_facility_replay_evaluation.md`
+- agent52_report: `outputs/agent52_multi_facility_replay_evaluation/agent52_report.md`
+- replay_evaluation_metrics: `outputs/multi_facility_replay_evaluation/replay_evaluation_metrics.json`
+- agent52_replay_export_manifest: `outputs/multi_facility_replay_evaluation/agent52_replay_export/agent52_replay_export_manifest.json`
+- agent52_replay_table_csv: `outputs/multi_facility_replay_evaluation/agent52_replay_export/agent52_replay_table.csv`
+- agent52_replay_table_rows_json: `outputs/multi_facility_replay_evaluation/agent52_replay_export/agent52_replay_table.rows.json`
 
 ## 风险边界
 

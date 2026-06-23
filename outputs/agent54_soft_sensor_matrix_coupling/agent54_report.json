@@ -1372,11 +1372,11 @@
     "field_boundary": "global modality fallback is an interface bridge; field deployment must provide node-specific values or explicit missingness masks"
   },
   "generated_files": {
-    "soft_sensor_matrix_coupling": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/soft_sensor_matrix_coupling.md",
-    "agent54_report": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent54_soft_sensor_matrix_coupling/agent54_report.md",
-    "soft_sensor_matrix_metrics": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_matrix_coupling/soft_sensor_matrix_metrics.json",
-    "field_path_endpoint_label_package_contract": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_matrix_coupling/field_path_endpoint_label_package_contract.json",
-    "field_path_endpoint_label_package_preflight": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_matrix_coupling/field_path_endpoint_label_package_preflight.json",
-    "field_path_endpoint_label_package_template": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_matrix_coupling/field_path_endpoint_label_package_template.json"
+    "soft_sensor_matrix_coupling": "deliverables/soft_sensor_matrix_coupling.md",
+    "agent54_report": "outputs/agent54_soft_sensor_matrix_coupling/agent54_report.md",
+    "soft_sensor_matrix_metrics": "outputs/soft_sensor_matrix_coupling/soft_sensor_matrix_metrics.json",
+    "field_path_endpoint_label_package_contract": "outputs/soft_sensor_matrix_coupling/field_path_endpoint_label_package_contract.json",
+    "field_path_endpoint_label_package_preflight": "outputs/soft_sensor_matrix_coupling/field_path_endpoint_label_package_preflight.json",
+    "field_path_endpoint_label_package_template": "outputs/soft_sensor_matrix_coupling/field_path_endpoint_label_package_template.json"
   }
 }

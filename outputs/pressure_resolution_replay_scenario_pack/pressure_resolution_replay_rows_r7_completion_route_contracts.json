@@ -1,6 +1,6 @@
 {
   "completion_route_contracts_id": "R8u24_r7_to_r8p_completion_route_execution_contracts",
-  "completion_route_contracts_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json",
+  "completion_route_contracts_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json",
   "completion_route_contracts_status": "completion_route_contracts_ready_waiting_for_r7_package",
   "source_completion_plan_status": "r7_to_r8p_completion_plan_waiting_for_r7_package",
   "route_contract_count": 4,

@@ -183,7 +183,8 @@
       "lab_label_time_min",
       "detection_limit",
       "method",
-      "unit"
+      "unit",
+      "sample_source"
     ],
     "campaign_operation_log": [
       "campaign_id",
@@ -201,7 +202,8 @@
       "hold_time_min",
       "regeneration_event",
       "bed_id",
-      "pressure_headloss_review_required"
+      "pressure_headloss_review_required",
+      "operator_override"
     ],
     "pressure_headloss_event_log": [
       "campaign_id",
@@ -240,13 +242,55 @@
       "sensor_status",
       "instrument_id",
       "acquisition_time_min",
-      "ingest_time_min"
+      "ingest_time_min",
+      "layout_id",
+      "availability_mask",
+      "time_since_last_observed_min",
+      "data_origin",
+      "sensor_value"
     ],
     "site_topology_or_bed_geometry": [
       "node_id",
       "bed_volume",
       "nominal_HRT_min",
-      "flow_Lmin"
+      "flow_Lmin",
+      "site_id",
+      "zone",
+      "upstream_node_id",
+      "downstream_node_id",
+      "path_stage_id",
+      "hydraulic_path_role",
+      "nominal_flow_Lmin",
+      "recycle_ratio",
+      "release_boundary_flag",
+      "recirculation_loop_flag"
+    ],
+    "hydraulic_path_stage_labels": [
+      "batch_id",
+      "layout_id",
+      "node_id",
+      "zone",
+      "path_stage_id",
+      "hydraulic_path_role",
+      "stage_coverage_label",
+      "direct_path_stage_coverage_label",
+      "proxy_path_stage_coverage_label",
+      "label_source",
+      "reviewer_id",
+      "review_time_min"
+    ],
+    "final_effluent_endpoint_labels": [
+      "batch_id",
+      "endpoint_node_id",
+      "sample_time_min",
+      "final_effluent_direct_observed",
+      "release_gate_label",
+      "release_risk_label",
+      "analyte",
+      "value",
+      "unit",
+      "qa_flag",
+      "reviewer_id"
     ]
   },
   "optional_supplement_files": [

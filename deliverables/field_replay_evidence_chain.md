@@ -25,9 +25,9 @@
 
 ## 生成文件
 
-- field_replay_evidence_chain: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/field_replay_evidence_chain.md`
-- agent45_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent45_field_replay_evidence_chain/agent45_report.md`
-- evidence_chain_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/field_replay_evidence_chain/evidence_chain_metrics.json`
+- field_replay_evidence_chain: `deliverables/field_replay_evidence_chain.md`
+- agent45_report: `outputs/agent45_field_replay_evidence_chain/agent45_report.md`
+- evidence_chain_metrics: `outputs/field_replay_evidence_chain/evidence_chain_metrics.json`
 
 ## 结论
 

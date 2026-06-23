@@ -6,9 +6,9 @@
 
 ## 生成文件
 
-- soft_sensor_uncertainty_validation: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/soft_sensor_uncertainty_validation.md`
-- agent36_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent36_soft_sensor_uncertainty_validation/agent36_report.md`
-- uncertainty_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/soft_sensor_training/soft_sensor_uncertainty_metrics.json`
+- soft_sensor_uncertainty_validation: `deliverables/soft_sensor_uncertainty_validation.md`
+- agent36_report: `outputs/agent36_soft_sensor_uncertainty_validation/agent36_report.md`
+- uncertainty_metrics: `outputs/soft_sensor_training/soft_sensor_uncertainty_metrics.json`
 
 ## 风险边界
 

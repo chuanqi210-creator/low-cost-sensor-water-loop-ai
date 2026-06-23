@@ -1,10 +1,10 @@
 {
   "handoff_id": "R8u133_preliminary_formal_search_handoff",
   "handoff_status": "preliminary_formal_search_package_ready_for_FORMAL_SEARCH_RESULT_PACKAGE_PATH",
-  "package_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json",
+  "package_path": "outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json",
   "source_env_var": "FORMAL_SEARCH_RESULT_PACKAGE_PATH",
   "validation_commands": [
-    "export FORMAL_SEARCH_RESULT_PACKAGE_PATH=/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json",
+    "export FORMAL_SEARCH_RESULT_PACKAGE_PATH=outputs/agent_architecture_consolidation/preliminary_formal_search_result_package.json",
     ".venv/bin/python experiments/run_agent60_agent_architecture_consolidation.py",
     ".venv/bin/python experiments/run_external_activation_router.py",
     ".venv/bin/python experiments/run_agent50_model_core_governance.py"

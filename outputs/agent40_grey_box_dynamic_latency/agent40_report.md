@@ -7,9 +7,9 @@
 
 ## 生成文件
 
-- grey_box_dynamic_latency: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/grey_box_dynamic_latency.md`
-- agent40_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent40_grey_box_dynamic_latency/agent40_report.md`
-- latency_budget_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/grey_box_dynamic_latency/latency_budget_metrics.json`
+- grey_box_dynamic_latency: `deliverables/grey_box_dynamic_latency.md`
+- agent40_report: `outputs/agent40_grey_box_dynamic_latency/agent40_report.md`
+- latency_budget_metrics: `outputs/grey_box_dynamic_latency/latency_budget_metrics.json`
 
 ## 风险边界
 

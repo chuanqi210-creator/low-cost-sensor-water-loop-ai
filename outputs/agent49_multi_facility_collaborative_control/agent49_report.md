@@ -14,9 +14,9 @@
 
 ## 生成文件
 
-- multi_facility_collaborative_control: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/multi_facility_collaborative_control.md`
-- agent49_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent49_multi_facility_collaborative_control/agent49_report.md`
-- collaborative_control_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/multi_facility_collaborative_control/collaborative_control_metrics.json`
+- multi_facility_collaborative_control: `deliverables/multi_facility_collaborative_control.md`
+- agent49_report: `outputs/agent49_multi_facility_collaborative_control/agent49_report.md`
+- collaborative_control_metrics: `outputs/multi_facility_collaborative_control/collaborative_control_metrics.json`
 
 ## 风险边界
 

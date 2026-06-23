@@ -9,9 +9,9 @@
 
 ## 生成文件
 
-- claim_specific_field_package: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/claim_specific_field_package.md`
-- agent59_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent59_claim_specific_field_package/agent59_report.md`
-- claim_specific_field_package_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/claim_specific_field_package/claim_specific_field_package_metrics.json`
+- claim_specific_field_package: `deliverables/claim_specific_field_package.md`
+- agent59_report: `outputs/agent59_claim_specific_field_package/agent59_report.md`
+- claim_specific_field_package_metrics: `outputs/claim_specific_field_package/claim_specific_field_package_metrics.json`
 
 ## 风险边界
 

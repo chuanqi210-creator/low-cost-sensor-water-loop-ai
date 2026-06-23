@@ -6,9 +6,9 @@
 
 ## 生成文件
 
-- weak_target_stratified_conformal: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/weak_target_stratified_conformal.md`
-- agent47_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent47_weak_target_stratified_conformal/agent47_report.md`
-- weak_target_stratified_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/weak_target_stratified_conformal/weak_target_stratified_metrics.json`
+- weak_target_stratified_conformal: `deliverables/weak_target_stratified_conformal.md`
+- agent47_report: `outputs/agent47_weak_target_stratified_conformal/agent47_report.md`
+- weak_target_stratified_metrics: `outputs/weak_target_stratified_conformal/weak_target_stratified_metrics.json`
 
 ## 风险边界
 

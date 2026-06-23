@@ -1,7 +1,7 @@
 # Agent 27 恢复策略执行回放报告
 
-- source_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent26_recovery_strategy_writeback/agent26_report.json`
-- campaign_report: `/Users/chuchenqidawang/Documents/py学习/低成本传感循环式水处理智能闭环项目/outputs/agent24_recovery_ramp/agent24_report.json`
+- source_report: `outputs/agent26_recovery_strategy_writeback/agent26_report.json`
+- campaign_report: `outputs/agent24_recovery_ramp/agent24_report.json`
 - summary: 恢复执行回放：recovery_execution_validated；时间占用 0.978 -> 0.884，建议下一轮进水 0.75。
 - replay_verdict: `recovery_execution_validated`
 - target_intake_fraction: `0.75`

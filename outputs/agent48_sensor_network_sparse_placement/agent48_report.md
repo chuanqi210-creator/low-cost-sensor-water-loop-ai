@@ -24,9 +24,9 @@
 
 ## 生成文件
 
-- sensor_network_sparse_placement: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/deliverables/sensor_network_sparse_placement.md`
-- agent48_report: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/agent48_sensor_network_sparse_placement/agent48_report.md`
-- sparse_placement_metrics: `/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/sensor_network_sparse_placement/sparse_placement_metrics.json`
+- sensor_network_sparse_placement: `deliverables/sensor_network_sparse_placement.md`
+- agent48_report: `outputs/agent48_sensor_network_sparse_placement/agent48_report.md`
+- sparse_placement_metrics: `outputs/sensor_network_sparse_placement/sparse_placement_metrics.json`
 
 ## 风险边界
 

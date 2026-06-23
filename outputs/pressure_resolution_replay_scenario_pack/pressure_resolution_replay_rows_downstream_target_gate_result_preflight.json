@@ -1,6 +1,6 @@
 {
   "downstream_target_gate_result_preflight_id": "R8u52_downstream_target_gate_result_preflight",
-  "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_preflight.json",
+  "preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_preflight.json",
   "result_package_env_var": "R8V_TARGET_GATE_RESULT_PACKAGE_PATH",
   "result_package_source_path": "",
   "linked_target_gate_preflight_status": "downstream_target_gate_preflight_blocked_by_downstream_route_handoff",

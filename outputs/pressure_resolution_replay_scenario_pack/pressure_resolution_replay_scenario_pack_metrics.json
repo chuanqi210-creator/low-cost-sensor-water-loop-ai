@@ -1555,7 +1555,7 @@
     ]
   },
   "field_rows_csv_template": {
-    "template_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template",
+    "template_dir": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template",
     "source_format": "csv_directory_with_optional_metadata_json",
     "required_files": [
       "metadata.json",
@@ -1579,7 +1579,7 @@
     "table_summaries": [
       {
         "table": "agent52_replay_table",
-        "csv_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/agent52_replay_table.csv",
+        "csv_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/agent52_replay_table.csv",
         "row_count": 5,
         "header_count": 16,
         "headers": [
@@ -1616,7 +1616,7 @@
       },
       {
         "table": "campaign_operation_log",
-        "csv_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/campaign_operation_log.csv",
+        "csv_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/campaign_operation_log.csv",
         "row_count": 5,
         "header_count": 17,
         "headers": [
@@ -1655,7 +1655,7 @@
       },
       {
         "table": "fast_proxy_event_log",
-        "csv_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/fast_proxy_event_log.csv",
+        "csv_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/fast_proxy_event_log.csv",
         "row_count": 5,
         "header_count": 11,
         "headers": [
@@ -1682,7 +1682,7 @@
       },
       {
         "table": "node_modality_sensor_timeseries",
-        "csv_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/node_modality_sensor_timeseries.csv",
+        "csv_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/node_modality_sensor_timeseries.csv",
         "row_count": 5,
         "header_count": 14,
         "headers": [
@@ -1715,7 +1715,7 @@
       },
       {
         "table": "offline_lab_results",
-        "csv_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/offline_lab_results.csv",
+        "csv_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/offline_lab_results.csv",
         "row_count": 5,
         "header_count": 14,
         "headers": [
@@ -1748,7 +1748,7 @@
       },
       {
         "table": "pressure_headloss_event_log",
-        "csv_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/pressure_headloss_event_log.csv",
+        "csv_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template/pressure_headloss_event_log.csv",
         "row_count": 5,
         "header_count": 15,
         "headers": [
@@ -1782,7 +1782,7 @@
         ]
       }
     ],
-    "validation_command_with_env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+    "validation_command_with_env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
     "template_boundary": "The generated CSV rows intentionally retain TODO/template markers and template_only flags. Submitting this directory unchanged must fail R8p template-marker/source gates.",
     "can_be_field_evidence_by_template": false,
     "can_write_to_actuator": false,
@@ -1790,7 +1790,7 @@
   },
   "field_rows_r7_alignment": {
     "alignment_id": "R8u20_r7_to_r8p_pressure_resolution_rows_alignment",
-    "alignment_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_alignment.json",
+    "alignment_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_alignment.json",
     "alignment_status": "r7_to_r8p_alignment_ready_requires_r8p_supplements_and_agent52_export",
     "model_core_layers": [
       "observability_layer",
@@ -1953,7 +1953,8 @@
           "hold_time_min",
           "regeneration_event",
           "bed_id",
-          "pressure_headloss_review_required"
+          "pressure_headloss_review_required",
+          "operator_override"
         ],
         "required_fields": [
           "batch_id",
@@ -2179,7 +2180,12 @@
           "sensor_status",
           "instrument_id",
           "acquisition_time_min",
-          "ingest_time_min"
+          "ingest_time_min",
+          "layout_id",
+          "availability_mask",
+          "time_since_last_observed_min",
+          "data_origin",
+          "sensor_value"
         ],
         "required_fields": [
           "batch_id",
@@ -2292,7 +2298,8 @@
           "lab_label_time_min",
           "detection_limit",
           "method",
-          "unit"
+          "unit",
+          "sample_source"
         ],
         "required_fields": [
           "batch_id",
@@ -2537,8 +2544,8 @@
     "source_package": "R7_Agent44_real_field_package",
     "target_package": "R8p_pressure_resolution_replay_rows",
     "r7_package_env_override": "REAL_FIELD_REPLAY_PACKAGE_DIR",
-    "staging_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staging_preflight.json",
-    "staged_draft_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json",
+    "staging_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staging_preflight.json",
+    "staged_draft_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json",
     "expected_tables": [
       "agent52_replay_table",
       "campaign_operation_log",
@@ -2576,7 +2583,7 @@
   },
   "field_rows_r7_completion_plan": {
     "completion_plan_id": "R8u22_r7_to_r8p_pressure_resolution_rows_completion_plan",
-    "completion_plan_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_plan.json",
+    "completion_plan_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_plan.json",
     "completion_plan_status": "r7_to_r8p_completion_plan_waiting_for_r7_package",
     "source_staging_status": "r7_to_r8p_staging_preflight_no_r7_package_supplied",
     "model_core_layers": [
@@ -2783,7 +2790,7 @@
   },
   "field_rows_r7_completion_route_contracts": {
     "completion_route_contracts_id": "R8u24_r7_to_r8p_completion_route_execution_contracts",
-    "completion_route_contracts_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json",
+    "completion_route_contracts_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json",
     "completion_route_contracts_status": "completion_route_contracts_ready_waiting_for_r7_package",
     "source_completion_plan_status": "r7_to_r8p_completion_plan_waiting_for_r7_package",
     "route_contract_count": 4,
@@ -2984,7 +2991,7 @@
   },
   "field_rows_r7_completion_route_work_packages": {
     "route_work_packages_id": "R8u25_r7_to_r8p_completion_route_work_packages",
-    "route_work_packages_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_packages.json",
+    "route_work_packages_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_packages.json",
     "route_work_packages_status": "route_work_packages_ready_waiting_for_r7_package",
     "source_route_contracts_status": "completion_route_contracts_ready_waiting_for_r7_package",
     "work_package_count": 4,
@@ -3011,8 +3018,8 @@
           "pressure_headloss_event_log.csv"
         ],
         "expected_output_files": [
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staging_preflight.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json"
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staging_preflight.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json"
         ],
         "required_completion_item_ids": [
           "R8U22_R7_SOURCE_PACKAGE_R7_TO_R8P_STAGING_PREFLIGHT_NO_R7_PACKAGE_SUPPLIED"
@@ -3065,7 +3072,7 @@
         ],
         "expected_output_files": [
           "pressure_resolution_operator_supplement_rows.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json"
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json"
         ],
         "required_completion_item_ids": [
           "R8U22_OPERATOR_SUPPLEMENT_CAMPAIGN_OPERATION_LOG",
@@ -3136,7 +3143,7 @@
         ],
         "expected_output_files": [
           "agent52_replay_table.rows.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json"
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json"
         ],
         "required_completion_item_ids": [
           "R8U22_AGENT52_REPLAY_EXPORT_AGENT52_REPLAY_TABLE"
@@ -3192,15 +3199,15 @@
         "producer": "Agent61 pressure resolution replay scenario pack",
         "route_status": "route_waiting_for_upstream_evidence_routes",
         "expected_input_files": [
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json"
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json"
         ],
         "expected_output_files": [
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json"
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json"
         ],
         "required_completion_item_ids": [],
         "required_tables": [
@@ -3265,13 +3272,13 @@
   "field_rows_r7_completion_route_work_package_templates": {
     "route_work_package_templates_id": "R8u26_r7_to_r8p_route_work_package_submission_templates",
     "route_work_package_templates_status": "route_work_package_templates_ready_not_evidence",
-    "template_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates",
+    "template_dir": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates",
     "work_package_template_count": 4,
     "package_templates": [
       {
         "work_package_id": "R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE",
         "route_id": "r7_source_package",
-        "template_package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE",
+        "template_package_dir": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE",
         "relative_submission_files": [
           "metadata.json",
           "campaign_operation_log.csv",
@@ -3284,13 +3291,13 @@
         "file_templates": [
           {
             "file": "metadata.json",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/metadata.json",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/metadata.json",
             "format": "json_template",
             "template_boundary": "JSON template contains TODO provenance and must be replaced before evidence gates."
           },
           {
             "file": "campaign_operation_log.csv",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/campaign_operation_log.csv",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/campaign_operation_log.csv",
             "format": "csv_header_only_template",
             "headers": [
               "batch_id",
@@ -3311,7 +3318,7 @@
           },
           {
             "file": "fast_proxy_event_log.csv",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/fast_proxy_event_log.csv",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/fast_proxy_event_log.csv",
             "format": "csv_header_only_template",
             "headers": [
               "batch_id",
@@ -3326,7 +3333,7 @@
           },
           {
             "file": "node_modality_sensor_timeseries.csv",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/node_modality_sensor_timeseries.csv",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/node_modality_sensor_timeseries.csv",
             "format": "csv_header_only_template",
             "headers": [
               "batch_id",
@@ -3344,7 +3351,7 @@
           },
           {
             "file": "offline_lab_results.csv",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/offline_lab_results.csv",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/offline_lab_results.csv",
             "format": "csv_header_only_template",
             "headers": [
               "batch_id",
@@ -3362,7 +3369,7 @@
           },
           {
             "file": "pressure_headloss_event_log.csv",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/pressure_headloss_event_log.csv",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R7_SOURCE_PACKAGE_WORK_PACKAGE/pressure_headloss_event_log.csv",
             "format": "csv_header_only_template",
             "headers": [
               "batch_id",
@@ -3385,7 +3392,7 @@
       {
         "work_package_id": "R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE",
         "route_id": "operator_supplement",
-        "template_package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE",
+        "template_package_dir": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE",
         "relative_submission_files": [
           "operator_supplement_records.csv",
           "calibration_review_log.csv"
@@ -3394,7 +3401,7 @@
         "file_templates": [
           {
             "file": "operator_supplement_records.csv",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE/operator_supplement_records.csv",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE/operator_supplement_records.csv",
             "format": "csv_header_only_template",
             "headers": [
               "batch_id",
@@ -3417,7 +3424,7 @@
           },
           {
             "file": "calibration_review_log.csv",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE/calibration_review_log.csv",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_OPERATOR_SUPPLEMENT_WORK_PACKAGE/calibration_review_log.csv",
             "format": "csv_header_only_template",
             "headers": [
               "batch_id",
@@ -3436,7 +3443,7 @@
       {
         "work_package_id": "R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE",
         "route_id": "agent52_replay_export",
-        "template_package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE",
+        "template_package_dir": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE",
         "relative_submission_files": [
           "agent52_replay_export_manifest.json",
           "agent52_replay_table.csv"
@@ -3445,13 +3452,13 @@
         "file_templates": [
           {
             "file": "agent52_replay_export_manifest.json",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE/agent52_replay_export_manifest.json",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE/agent52_replay_export_manifest.json",
             "format": "json_template",
             "template_boundary": "JSON template contains TODO provenance and must be replaced before evidence gates."
           },
           {
             "file": "agent52_replay_table.csv",
-            "path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE/agent52_replay_table.csv",
+            "path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_AGENT52_REPLAY_EXPORT_WORK_PACKAGE/agent52_replay_table.csv",
             "format": "csv_header_only_template",
             "headers": [
               "batch_id",
@@ -3475,19 +3482,19 @@
       {
         "work_package_id": "R8U25_R8P_VALIDATION_GATES_WORK_PACKAGE",
         "route_id": "r8p_validation_gates",
-        "template_package_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R8P_VALIDATION_GATES_WORK_PACKAGE",
+        "template_package_dir": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates/R8U25_R8P_VALIDATION_GATES_WORK_PACKAGE",
         "relative_submission_files": [],
         "project_dependency_files": [
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json"
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_contracts.json"
         ],
         "file_templates": [],
         "can_generate_field_evidence_from_template": false
       }
     ],
     "submission_env_var": "R7_TO_R8P_WORK_PACKAGE_DIR",
-    "submission_preflight_command": "R7_TO_R8P_WORK_PACKAGE_DIR=/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
+    "submission_preflight_command": "R7_TO_R8P_WORK_PACKAGE_DIR=outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
     "template_boundary": "These package directories are fillable submission templates. They intentionally contain TODO/header-only placeholders and cannot create field, operator-reviewed, replay, actuator, or release-gate evidence.",
     "can_generate_field_evidence_from_templates": false,
     "can_write_to_actuator": false,
@@ -3495,7 +3502,7 @@
   },
   "field_rows_r7_completion_route_work_package_preflight": {
     "route_work_package_preflight_id": "R8u26_r7_to_r8p_route_work_package_submission_preflight",
-    "route_work_package_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_preflight.json",
+    "route_work_package_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_preflight.json",
     "submission_env_var": "R7_TO_R8P_WORK_PACKAGE_DIR",
     "configured_submission_dir": "",
     "expected_work_package_count": 4,
@@ -3517,7 +3524,7 @@
   },
   "field_rows_r7_completion_route_work_package_patch_plan": {
     "route_work_package_patch_plan_id": "R8u27_r7_to_r8p_route_work_package_preflight_patch_plan",
-    "route_work_package_patch_plan_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_patch_plan.json",
+    "route_work_package_patch_plan_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_patch_plan.json",
     "route_work_package_patch_plan_status": "route_work_package_patch_plan_waiting_for_submission_dir",
     "source_preflight_status": "route_work_package_preflight_waiting_for_submission_dir",
     "configured_submission_dir": "",
@@ -3552,7 +3559,7 @@
   },
   "field_rows_r7_completion_route_work_package_assembly_gate": {
     "route_work_package_assembly_gate_id": "R8u28_r7_to_r8p_route_work_package_assembly_gate",
-    "route_work_package_assembly_gate_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_assembly_gate.json",
+    "route_work_package_assembly_gate_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_assembly_gate.json",
     "route_work_package_assembly_gate_status": "route_work_package_assembly_gate_blocked_waiting_for_submission_dir",
     "source_preflight_status": "route_work_package_preflight_waiting_for_submission_dir",
     "source_patch_plan_status": "route_work_package_patch_plan_waiting_for_submission_dir",
@@ -3575,7 +3582,7 @@
         "required_input_artifacts": [
           "R7_TO_R8P_WORK_PACKAGE_DIR"
         ],
-        "output_artifact": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_preflight.json",
+        "output_artifact": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_preflight.json",
         "operator_action": "Submit a complete R7_TO_R8P_WORK_PACKAGE_DIR and rerun Agent61 work-package preflight.",
         "acceptance_check": "route_work_package_preflight_status must be route_work_package_preflight_passed_candidate_submission.",
         "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
@@ -3591,7 +3598,7 @@
           "metadata.json",
           "five shared R7 CSV files"
         ],
-        "output_artifact": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json",
+        "output_artifact": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_staged_draft.json",
         "operator_action": "Convert field-origin R7 shared tables into R8p staged draft rows and preserve provenance columns.",
         "acceptance_check": "R7 staged draft exists with direct/alias/metadata-copy provenance and no template markers.",
         "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
@@ -3642,7 +3649,7 @@
           "operator supplement rows",
           "agent52 replay rows"
         ],
-        "output_artifact": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+        "output_artifact": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
         "operator_action": "Materialize a candidate R8p rows JSON/table directory package and point PRESSURE_RESOLUTION_REPLAY_ROWS_PATH to it.",
         "acceptance_check": "Candidate package contains six required tables plus agent52_replay_table with source/origin columns intact.",
         "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
@@ -3655,20 +3662,20 @@
           "R8U25_R8P_VALIDATION_GATES_WORK_PACKAGE"
         ],
         "required_input_artifacts": [
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
-          "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json"
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
+          "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json"
         ],
-        "output_artifact": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_scenario_pack_metrics.json",
+        "output_artifact": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_scenario_pack_metrics.json",
         "operator_action": "Rerun Agent61 with the candidate rows package and review R8p/R8v gates before routing to field replay.",
         "acceptance_check": "R8p schema/provenance/template/bundle/temporal/semantic gates and R8v routing preflight must pass.",
         "assembly_step_status": "assembly_step_blocked_waiting_for_submission_dir",
         "blocking_patch_id": "R8U27_SET_R7_TO_R8P_WORK_PACKAGE_DIR"
       }
     ],
-    "candidate_rows_package_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+    "candidate_rows_package_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
     "candidate_rows_package_format": "json_table_mapping_or_metadata_plus_six_csv_directory",
     "required_env_after_materialization": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH",
     "technical_feature_mapping": {
@@ -3686,7 +3693,7 @@
   "field_rows_submission_readiness_review": {
     "submission_readiness_review_id": "R8u47_pressure_resolution_submission_readiness_review",
     "submission_readiness_review_status": "submission_readiness_review_blocked_at_source_package",
-    "review_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_submission_readiness_review.json",
+    "review_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_submission_readiness_review.json",
     "model_core_layers": [
       "observability_layer",
       "closed_loop_execution_layer",
@@ -3834,7 +3841,7 @@
   "field_rows_source_package_submission_route_guide": {
     "source_package_submission_route_guide_id": "R8u48_source_package_submission_route_guide",
     "source_package_submission_route_guide_status": "source_package_submission_route_guide_ready_for_source_package_submission",
-    "guide_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_source_package_submission_route_guide.json",
+    "guide_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_source_package_submission_route_guide.json",
     "model_core_layers": [
       "observability_layer",
       "closed_loop_execution_layer",
@@ -3861,7 +3868,7 @@
         "route_id": "direct_r8p_json_table_mapping",
         "route_kind": "direct_r8p_source_package",
         "when_to_use": "Use when field rows can be exported directly as a JSON table mapping with all required tables.",
-        "submission_target": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+        "submission_target": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
         "env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=/absolute/path/to/pressure_resolution_replay_rows.json",
         "required_inputs": [
           "one JSON object whose keys are required table names",
@@ -3957,7 +3964,7 @@
         "route_id": "direct_r8p_csv_directory",
         "route_kind": "direct_r8p_source_package",
         "when_to_use": "Use when field rows are easier to collect as metadata.json plus one CSV per required table.",
-        "submission_target": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template",
+        "submission_target": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template",
         "env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=/absolute/path/to/pressure_resolution_replay_rows_csv_directory",
         "required_inputs": [
           "metadata.json",
@@ -3984,7 +3991,7 @@
         "route_id": "r7_to_r8p_route_work_package_submission",
         "route_kind": "assembled_from_r7_field_package_operator_supplement_and_agent52_export",
         "when_to_use": "Use when an R7 field package already exists and R8p rows should be assembled from R7 shared tables, operator supplement records, and Agent52 replay export.",
-        "submission_target": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates",
+        "submission_target": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_completion_route_work_package_templates",
         "env_override": "R7_TO_R8P_WORK_PACKAGE_DIR=/absolute/path/to/r7_to_r8p_work_package_submission",
         "required_inputs": [
           "R7 source package work package",
@@ -4025,7 +4032,7 @@
       "json_table_mapping",
       "csv_directory_with_optional_metadata_json"
     ],
-    "default_field_rows_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+    "default_field_rows_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
     "env_override_name": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH",
     "validation_command_default": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
     "validation_command_with_env_override": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH=/absolute/path/to/pressure_resolution_replay_rows.json .venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
@@ -4109,9 +4116,9 @@
           "data_origin"
         ]
       },
-      "schema_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
-      "collection_checklist_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_collection_checklist.json",
-      "submission_readiness_review_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_submission_readiness_review.json"
+      "schema_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
+      "collection_checklist_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_collection_checklist.json",
+      "submission_readiness_review_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_submission_readiness_review.json"
     },
     "technical_feature_mapping": {
       "technical_problem": "The pressure-resolution evidence chain allows multiple source-package entry routes, but field operators need a single route decision before replay/holdout gates can run.",
@@ -4132,7 +4139,7 @@
   "field_rows_source_package_route_preflight": {
     "source_package_route_preflight_id": "R8u49_source_package_route_preflight",
     "source_package_route_preflight_status": "source_package_route_preflight_waiting_for_source_package_submission",
-    "route_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_source_package_route_preflight.json",
+    "route_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_source_package_route_preflight.json",
     "model_core_layers": [
       "observability_layer",
       "closed_loop_execution_layer",
@@ -4146,7 +4153,7 @@
     ],
     "current_source_status": "field_rows_file_missing",
     "current_source_format": "missing",
-    "current_source_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+    "current_source_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
     "source_path_exists": false,
     "recommended_route_id": "direct_r8p_json_or_csv_source_package",
     "recommended_route_preflight_status": "recommended_route_preflight_waiting_for_direct_source_package",
@@ -4160,7 +4167,7 @@
         "route_kind": "direct_r8p_source_package",
         "expected_source_format": "json_table_mapping",
         "route_preflight_status": "route_preflight_waiting_for_source_package_submission",
-        "configured_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+        "configured_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
         "path_exists": false,
         "path_is_directory": false,
         "current_source_status": "field_rows_file_missing",
@@ -4183,7 +4190,7 @@
         "route_kind": "direct_r8p_source_package",
         "expected_source_format": "csv_directory_with_optional_metadata_json",
         "route_preflight_status": "route_preflight_waiting_for_source_package_submission",
-        "configured_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+        "configured_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
         "path_exists": false,
         "path_is_directory": false,
         "current_source_status": "field_rows_file_missing",
@@ -4244,7 +4251,7 @@
     "field_claim_upgrade_allowed": false
   },
   "field_rows_source": {
-    "field_rows_source_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+    "field_rows_source_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
     "field_rows_source": "default_path",
     "expected_tables": [
       "agent52_replay_table",
@@ -4839,7 +4846,7 @@
   },
   "field_rows_schema_validation": {
     "field_rows_schema_validation_status": "schema_validation_blocked_at_source_preflight",
-    "schema_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
+    "schema_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
     "schema_id": "pressure_resolution_replay_rows.schema.json",
     "source_status": "field_rows_file_missing",
     "required_table_count": 6,
@@ -5011,7 +5018,7 @@
   },
   "field_rows_batch_bundle_preflight": {
     "field_rows_batch_bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight",
-    "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
+    "preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
     "expected_tables": [
       "agent52_replay_table",
       "campaign_operation_log",
@@ -5083,7 +5090,7 @@
   },
   "field_rows_temporal_window_preflight": {
     "field_rows_temporal_window_preflight_status": "temporal_window_preflight_blocked_at_source_preflight",
-    "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
+    "preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
     "source_status": "field_rows_file_missing",
     "schema_validation_status": "schema_validation_blocked_at_source_preflight",
     "batch_bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight",
@@ -5147,7 +5154,7 @@
   },
   "field_rows_scenario_semantic_preflight": {
     "field_rows_scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight",
-    "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
+    "preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
     "source_status": "field_rows_file_missing",
     "schema_validation_status": "schema_validation_blocked_at_source_preflight",
     "batch_bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight",
@@ -5212,7 +5219,7 @@
   },
   "field_rows_downstream_routing_preflight": {
     "field_rows_downstream_routing_preflight_status": "downstream_routing_preflight_blocked_at_source_preflight",
-    "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json",
+    "preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json",
     "source_status": "field_rows_file_missing",
     "schema_validation_status": "schema_validation_blocked_at_source_preflight",
     "batch_bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight",
@@ -5313,7 +5320,7 @@
   "field_rows_downstream_route_handoff": {
     "downstream_route_handoff_id": "R8u50_downstream_route_handoff",
     "downstream_route_handoff_status": "downstream_route_handoff_blocked_by_upstream_r8p_preflight",
-    "handoff_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_route_handoff.json",
+    "handoff_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_route_handoff.json",
     "linked_downstream_routing_preflight_status": "downstream_routing_preflight_blocked_at_source_preflight",
     "model_core_layers": [
       "diagnostic_decision_layer",
@@ -5544,7 +5551,7 @@
   "field_rows_downstream_target_gate_preflight": {
     "downstream_target_gate_preflight_id": "R8u51_downstream_target_gate_preflight",
     "downstream_target_gate_preflight_status": "downstream_target_gate_preflight_blocked_by_downstream_route_handoff",
-    "target_gate_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_preflight.json",
+    "target_gate_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_preflight.json",
     "linked_downstream_route_handoff_status": "downstream_route_handoff_blocked_by_upstream_r8p_preflight",
     "model_core_layers": [
       "diagnostic_decision_layer",
@@ -5788,7 +5795,7 @@
   },
   "field_rows_downstream_target_gate_result_intake_schema": {
     "downstream_target_gate_result_intake_schema_id": "R8u52_downstream_target_gate_result_intake_schema",
-    "schema_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_intake_schema.json",
+    "schema_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_intake_schema.json",
     "result_package_env_var": "R8V_TARGET_GATE_RESULT_PACKAGE_PATH",
     "linked_target_gate_preflight_status": "downstream_target_gate_preflight_blocked_by_downstream_route_handoff",
     "expected_target_count": 4,
@@ -5980,7 +5987,7 @@
   },
   "field_rows_downstream_target_gate_result_preflight": {
     "downstream_target_gate_result_preflight_id": "R8u52_downstream_target_gate_result_preflight",
-    "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_preflight.json",
+    "preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_preflight.json",
     "result_package_env_var": "R8V_TARGET_GATE_RESULT_PACKAGE_PATH",
     "result_package_source_path": "",
     "linked_target_gate_preflight_status": "downstream_target_gate_preflight_blocked_by_downstream_route_handoff",
@@ -6026,7 +6033,7 @@
   },
   "field_rows_downstream_target_gate_result_arbitration": {
     "downstream_target_gate_result_arbitration_id": "R8u53_downstream_target_gate_result_arbitration",
-    "arbitration_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_arbitration.json",
+    "arbitration_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_result_arbitration.json",
     "linked_result_preflight_status": "downstream_target_gate_result_preflight_blocked_by_target_gate_preflight",
     "expected_target_count": 4,
     "expected_target_ids": [
@@ -6079,7 +6086,7 @@
   },
   "field_rows_downstream_target_gate_operator_review_template": {
     "downstream_target_gate_operator_review_template_id": "R8u54_downstream_target_gate_operator_review_template",
-    "template_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_operator_review_template.json",
+    "template_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_operator_review_template.json",
     "operator_review_env_var": "R8V_TARGET_GATE_OPERATOR_REVIEW_PATH",
     "linked_result_arbitration_status": "downstream_target_gate_result_arbitration_blocked_by_result_preflight",
     "expected_target_count": 0,
@@ -6135,7 +6142,7 @@
   },
   "field_rows_downstream_target_gate_operator_review_preflight": {
     "downstream_target_gate_operator_review_preflight_id": "R8u54_downstream_target_gate_operator_review_preflight",
-    "preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_operator_review_preflight.json",
+    "preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_operator_review_preflight.json",
     "operator_review_env_var": "R8V_TARGET_GATE_OPERATOR_REVIEW_PATH",
     "operator_review_source_path": "",
     "linked_result_arbitration_status": "downstream_target_gate_result_arbitration_blocked_by_result_preflight",
@@ -6174,7 +6181,7 @@
   },
   "field_rows_downstream_target_gate_post_review_gate": {
     "downstream_target_gate_post_review_gate_id": "R8u55_downstream_target_gate_post_review_protective_candidate_gate",
-    "post_review_gate_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_post_review_gate.json",
+    "post_review_gate_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_post_review_gate.json",
     "linked_operator_review_preflight_status": "downstream_target_gate_operator_review_preflight_blocked_by_arbitration",
     "expected_target_count": 0,
     "expected_target_ids": [],
@@ -6215,7 +6222,7 @@
   },
   "field_rows_downstream_target_gate_protective_candidate_evaluation": {
     "downstream_target_gate_protective_candidate_evaluation_id": "R8u56_downstream_target_gate_protective_candidate_evaluation",
-    "protective_candidate_evaluation_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_protective_candidate_evaluation.json",
+    "protective_candidate_evaluation_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_target_gate_protective_candidate_evaluation.json",
     "linked_post_review_gate_status": "downstream_target_gate_post_review_gate_blocked_by_operator_review_preflight",
     "expected_target_count": 0,
     "expected_target_ids": [],
@@ -6297,7 +6304,7 @@
         "priority": "P0",
         "patch_type": "source_preflight",
         "blocking_condition": "field_rows_file_missing",
-        "target": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+        "target": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
         "operator_action": "Create a real field rows JSON file or a six-table CSV directory at this path, or set PRESSURE_RESOLUTION_REPLAY_ROWS_PATH to either source format. Use templates only as a form, then replace every TODO/template marker with field-origin rows.",
         "required_tables": [
           "agent52_replay_table",
@@ -6632,7 +6639,7 @@
   "field_rows_collection_checklist": {
     "checklist_id": "R8u11_pressure_resolution_real_rows_collection_checklist",
     "field_rows_collection_checklist_status": "field_rows_collection_checklist_ready_needs_source_package",
-    "checklist_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_collection_checklist.json",
+    "checklist_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_collection_checklist.json",
     "model_core_layers": [
       "observability_layer",
       "diagnostic_decision_layer",
@@ -7633,23 +7640,23 @@
     "field_rows_operator_handoff_status": "field_rows_operator_handoff_ready_needs_source_package",
     "field_rows_package_schema_status": "field_rows_package_schema_ready",
     "field_rows_schema_validation_status": "schema_validation_blocked_at_source_preflight",
-    "working_directory": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目",
-    "default_field_rows_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
-    "configured_field_rows_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
-    "template_rows_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_template.json",
-    "csv_template_dir": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template",
-    "r7_to_r8p_alignment_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_alignment.json",
-    "rows_schema_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
-    "collection_checklist_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_collection_checklist.json",
+    "working_directory": ".",
+    "default_field_rows_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+    "configured_field_rows_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows.json",
+    "template_rows_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_template.json",
+    "csv_template_dir": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_csv_template",
+    "r7_to_r8p_alignment_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_r7_alignment.json",
+    "rows_schema_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_schema.json",
+    "collection_checklist_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_collection_checklist.json",
     "field_rows_collection_checklist_status": "field_rows_collection_checklist_ready_needs_source_package",
     "field_rows_batch_bundle_preflight_status": "batch_bundle_preflight_blocked_at_source_preflight",
-    "field_rows_batch_bundle_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
+    "field_rows_batch_bundle_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_batch_bundle_preflight.json",
     "field_rows_temporal_window_preflight_status": "temporal_window_preflight_blocked_at_source_preflight",
-    "field_rows_temporal_window_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
+    "field_rows_temporal_window_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_temporal_window_preflight.json",
     "field_rows_scenario_semantic_preflight_status": "scenario_semantic_preflight_blocked_at_source_preflight",
-    "field_rows_scenario_semantic_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
+    "field_rows_scenario_semantic_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_scenario_semantic_preflight.json",
     "field_rows_downstream_routing_preflight_status": "downstream_routing_preflight_blocked_at_source_preflight",
-    "field_rows_downstream_routing_preflight_path": "/Users/chuchenqidawang/Documents/低成本传感循环式水处理智能闭环项目/outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json",
+    "field_rows_downstream_routing_preflight_path": "outputs/pressure_resolution_replay_scenario_pack/pressure_resolution_replay_rows_downstream_routing_preflight.json",
     "field_rows_collection_checklist_item_count": 11,
     "env_override_name": "PRESSURE_RESOLUTION_REPLAY_ROWS_PATH",
     "validation_command_default": ".venv/bin/python experiments/run_agent61_pressure_resolution_replay_scenario_pack.py",
